@@ -1,5 +1,6 @@
 ---
 - name: Add domain users to local groups
+  ignore_errors: true
   win_group_membership:
     name: "{{item.key}}"
     members: "{{ item.value }}"

@@ -1,5 +1,6 @@
 
 - name: "Configure ATTRIBUTESUBJECTALTNAME2 on CA - ESC6"
+  ignore_errors: true
   win_shell: |
     certutil -setreg policy\Editflags +EDITF_ATTRIBUTESUBJECTALTNAME2
   vars:

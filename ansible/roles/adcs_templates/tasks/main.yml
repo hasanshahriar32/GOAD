@@ -25,6 +25,7 @@
     - ESC13
 
 - name: Install templates
+  ignore_errors: true
   win_shell: |
     if (-not(Get-ADCSTemplate -DisplayName "{{item}}")) { New-ADCSTemplate -DisplayName "{{item}}" -JSON (Get-Content c:\setup\{{item}}.json -Raw) -Identity "{{domain_name}}\Domain Users" -Publish }
   vars:

@@ -1,5 +1,5 @@
 - name: "disable the registration of the {{nat_adapter}} interface (NAT address) in DNS"
-  ansible.windows.win_shell: Get-NetAdapter {{nat_adapter}} | Set-DNSClient -RegisterThisConnectionsAddress $False
+  ansible.windows.win_shell: Get-NetAdapter "{{nat_adapter}}" | Set-DNSClient -RegisterThisConnectionsAddress $False
   when: two_adapters
 
 - name: "Set configure dns to {{dns_domain}}"
@@ -92,6 +92,7 @@
 #   delay: 120
 
 - name: enable the {{domain_adapter}} interface (local) for DNS client requests
+  ignore_errors: true
   ansible.windows.win_shell: dnscmd . /resetlistenaddresses {{ hostvars[dict_key].ansible_host }}
   when: two_adapters
 
@@ -102,6 +103,7 @@
 
 # add external dns forwarder
 - name: Configure DNS Forwarders
+  ignore_errors: true
   win_dsc:
     resource_name: xDnsServerForwarder
     IsSingleInstance: "yes"

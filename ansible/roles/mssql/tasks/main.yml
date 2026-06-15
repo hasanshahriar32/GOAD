@@ -59,6 +59,7 @@
   when: not installer_file.stat.exists
 
 - name: Add service account to Log on as a service
+  ignore_errors: true
   win_user_right:
     name: SeServiceLogonRight
     users:
@@ -87,6 +88,7 @@
 
 # Install the database with a domain admin user
 - name: Install the database
+  ignore_errors: true
   win_command: c:\setup\mssql\sql_installer.exe /configurationfile=c:\setup\mssql\sql_conf.ini /IACCEPTSQLSERVERLICENSETERMS /MEDIAPATH=c:\setup\mssql\media /QUIET /HIDEPROGRESSBAR
   args:
     chdir: c:\setup

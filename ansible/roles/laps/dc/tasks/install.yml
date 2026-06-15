@@ -76,6 +76,7 @@
   become_user: SYSTEM
 
 - name: Add LAPS attributes to the Computer Attribute
+  ignore_errors: true
   win_ad_object:
     name: Computer
     may_contain:
