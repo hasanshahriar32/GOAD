@@ -1,0 +1,248 @@
+{
+    "sevenkingdoms_extracted": [
+        {
+            "case_name": "ESC1",
+            "ground_truth": "ESC1",
+            "certgraph_pred": "ESC1",
+            "rule_pred": "ESC1",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC2",
+            "ground_truth": "ESC2",
+            "certgraph_pred": "ESC2",
+            "rule_pred": "ESC2",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC3",
+            "ground_truth": "ESC3",
+            "certgraph_pred": "ESC3",
+            "rule_pred": "ESC3",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC4",
+            "ground_truth": "ESC4",
+            "certgraph_pred": "ESC4",
+            "rule_pred": "ESC4",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC9",
+            "ground_truth": "ESC9",
+            "certgraph_pred": "ESC9",
+            "rule_pred": "ESC9",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC13",
+            "ground_truth": "ESC13",
+            "certgraph_pred": "ESC13",
+            "rule_pred": "ESC13",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "Safe",
+            "ground_truth": "Safe",
+            "certgraph_pred": "Safe",
+            "rule_pred": "Safe",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "HN_ESC1",
+            "ground_truth": "Safe",
+            "certgraph_pred": "Safe",
+            "rule_pred": "ESC1",
+            "cg_correct": true,
+            "rule_correct": false
+        },
+        {
+            "case_name": "HN_ESC4",
+            "ground_truth": "Safe",
+            "certgraph_pred": "ESC4",
+            "rule_pred": "ESC4",
+            "cg_correct": false,
+            "rule_correct": false
+        },
+        {
+            "case_name": "HN_ESC13",
+            "ground_truth": "Safe",
+            "certgraph_pred": "Safe",
+            "rule_pred": "ESC13",
+            "cg_correct": true,
+            "rule_correct": false
+        }
+    ],
+    "essos_extracted": [
+        {
+            "case_name": "ESC1",
+            "ground_truth": "ESC1",
+            "certgraph_pred": "ESC1",
+            "rule_pred": "ESC1",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC2",
+            "ground_truth": "ESC2",
+            "certgraph_pred": "ESC2",
+            "rule_pred": "ESC2",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC3",
+            "ground_truth": "ESC3",
+            "certgraph_pred": "ESC3",
+            "rule_pred": "ESC3",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC4",
+            "ground_truth": "ESC4",
+            "certgraph_pred": "ESC4",
+            "rule_pred": "ESC4",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC9",
+            "ground_truth": "ESC9",
+            "certgraph_pred": "ESC9",
+            "rule_pred": "ESC9",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC13",
+            "ground_truth": "ESC13",
+            "certgraph_pred": "ESC13",
+            "rule_pred": "ESC13",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "Safe",
+            "ground_truth": "Safe",
+            "certgraph_pred": "ESC4",
+            "rule_pred": "ESC4",
+            "cg_correct": false,
+            "rule_correct": false
+        },
+        {
+            "case_name": "HN_ESC1",
+            "ground_truth": "Safe",
+            "certgraph_pred": "Safe",
+            "rule_pred": "ESC1",
+            "cg_correct": true,
+            "rule_correct": false
+        },
+        {
+            "case_name": "HN_ESC4",
+            "ground_truth": "Safe",
+            "certgraph_pred": "ESC4",
+            "rule_pred": "ESC4",
+            "cg_correct": false,
+            "rule_correct": false
+        },
+        {
+            "case_name": "HN_ESC13",
+            "ground_truth": "Safe",
+            "certgraph_pred": "Safe",
+            "rule_pred": "ESC13",
+            "cg_correct": true,
+            "rule_correct": false
+        }
+    ],
+    "north_extracted": [
+        {
+            "case_name": "ESC1",
+            "ground_truth": "ESC1",
+            "certgraph_pred": "ESC1",
+            "rule_pred": "ESC1",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC2",
+            "ground_truth": "ESC2",
+            "certgraph_pred": "ESC2",
+            "rule_pred": "ESC2",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC3",
+            "ground_truth": "ESC3",
+            "certgraph_pred": "ESC3",
+            "rule_pred": "ESC3",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC4",
+            "ground_truth": "ESC4",
+            "certgraph_pred": "ESC4",
+            "rule_pred": "ESC4",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC9",
+            "ground_truth": "ESC9",
+            "certgraph_pred": "ESC9",
+            "rule_pred": "ESC9",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "ESC13",
+            "ground_truth": "ESC13",
+            "certgraph_pred": "ESC13",
+            "rule_pred": "ESC13",
+            "cg_correct": true,
+            "rule_correct": true
+        },
+        {
+            "case_name": "Safe",
+            "ground_truth": "Safe",
+            "certgraph_pred": "ESC13",
+            "rule_pred": "ESC13",
+            "cg_correct": false,
+            "rule_correct": false
+        },
+        {
+            "case_name": "HN_ESC1",
+            "ground_truth": "Safe",
+            "certgraph_pred": "Safe",
+            "rule_pred": "ESC1",
+            "cg_correct": true,
+            "rule_correct": false
+        },
+        {
+            "case_name": "HN_ESC4",
+            "ground_truth": "Safe",
+            "certgraph_pred": "ESC4",
+            "rule_pred": "ESC4",
+            "cg_correct": false,
+            "rule_correct": false
+        },
+        {
+            "case_name": "HN_ESC13",
+            "ground_truth": "Safe",
+            "certgraph_pred": "Safe",
+            "rule_pred": "ESC13",
+            "cg_correct": true,
+            "rule_correct": false
+        }
+    ]
+}
