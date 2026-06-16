@@ -341,7 +341,12 @@ def inject_adcs_vulnerability(
         data["Template", "linked_to", "Group"].edge_index = (
             torch.tensor(policy_edges, dtype=torch.long).t().contiguous()
         )
+        rev_edges = [[g, t] for t, g in policy_edges]
+        data["Group", "links_policy", "Template"].edge_index = (
+            torch.tensor(rev_edges, dtype=torch.long).t().contiguous()
+        )
     else:
         data["Template", "linked_to", "Group"].edge_index = torch.empty((2, 0), dtype=torch.long)
+        data["Group", "links_policy", "Template"].edge_index = torch.empty((2, 0), dtype=torch.long)
 
     return data, target_template_idx

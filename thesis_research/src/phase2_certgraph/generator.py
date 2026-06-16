@@ -379,6 +379,11 @@ def generate_environment(
                 for u in range(max(1, num_users // 10), num_users):
                     if random.random() < 0.3:
                         tmpl_acl_edges.append([u, t])
+            else:
+                # HN_ESC4: Writable only by admin users (safe)
+                for u in range(max(1, num_users // 10)):
+                    if random.random() < 0.5:
+                        tmpl_acl_edges.append([u, t])
     if tmpl_acl_edges:
         data["User", "write_dacl", "Template"].edge_index = (
             torch.tensor(tmpl_acl_edges, dtype=torch.long).t().contiguous()
@@ -427,12 +432,21 @@ def generate_environment(
             # Real ESC13 has issuance policy linked to high-value group; HN_ESC13 does not!
             if not is_hn_esc13:
                 policy_edges.append([t, da_idx])
+            else:
+                # HN_ESC13: Linked to a low-priv group (safe)
+                low_priv_group_idx = random.randint(max(1, num_groups // 5), num_groups - 1)
+                policy_edges.append([t, low_priv_group_idx])
     if policy_edges:
         data["Template", "linked_to", "Group"].edge_index = (
             torch.tensor(policy_edges, dtype=torch.long).t().contiguous()
         )
+        rev_edges = [[g, t] for t, g in policy_edges]
+        data["Group", "links_policy", "Template"].edge_index = (
+            torch.tensor(rev_edges, dtype=torch.long).t().contiguous()
+        )
     else:
         data["Template", "linked_to", "Group"].edge_index = torch.empty((2, 0), dtype=torch.long)
+        data["Group", "links_policy", "Template"].edge_index = torch.empty((2, 0), dtype=torch.long)
 
     # ── Computer → member_of → Group ──
     comp_group_edges = [[c, random.randint(0, num_groups - 1)] for c in range(num_computers)]

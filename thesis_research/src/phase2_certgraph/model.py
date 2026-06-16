@@ -298,5 +298,273 @@ class RuleBaseline:
         return torch.tensor(preds, dtype=torch.long)
 
 
+# ─────────────────────────────────────────────────────────────────────
+# Baseline 3: Homogeneous GCN
+# ─────────────────────────────────────────────────────────────────────
+
+class GCNBaseline(nn.Module):
+    """
+    Homogeneous GCN Baseline.
+    Projects node features of different types to a common dimension,
+    converts the heterogeneous graph to a homogeneous one,
+    and applies GCNConv.
+    """
+
+    def __init__(self, metadata: tuple, hidden_channels: int = 32, out_channels: int = 16, num_classes: int = 7, dropout: float = 0.2):
+        super().__init__()
+        self.node_types = metadata[0]
+        self.edge_types = metadata[1]
+        self.dropout = dropout
+        self.hidden_channels = hidden_channels
+        self.out_channels = out_channels
+
+        # Projections for each node type to hidden_channels
+        self.projs = nn.ModuleDict()
+        self._projs_initialized = False
+
+        from torch_geometric.nn import GCNConv
+        self.conv1 = GCNConv(hidden_channels, hidden_channels)
+        self.conv2 = GCNConv(hidden_channels, out_channels)
+
+        self.classifier = nn.Sequential(
+            nn.Linear(out_channels, out_channels),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(out_channels, num_classes),
+        )
+
+    def _init_projs(self, x_dict):
+        if self._projs_initialized:
+            return
+        for ntype, x in x_dict.items():
+            self.projs[ntype] = nn.Linear(x.shape[1], self.hidden_channels)
+        self._projs_initialized = True
+
+    def forward(self, x_dict, edge_index_dict):
+        self._init_projs(x_dict)
+
+        # 1. Project node features
+        proj_x = {}
+        for ntype, x in x_dict.items():
+            proj_x[ntype] = self.projs[ntype](x)
+
+        # 2. Build homogeneous node representation and track offsets
+        node_offsets = {}
+        total_nodes = 0
+        x_list = []
+
+        # Order node types deterministically
+        sorted_ntypes = sorted(self.node_types)
+        for ntype in sorted_ntypes:
+            num_nodes = proj_x[ntype].shape[0]
+            node_offsets[ntype] = total_nodes
+            x_list.append(proj_x[ntype])
+            total_nodes += num_nodes
+
+        x_homo = torch.cat(x_list, dim=0)
+
+        # 3. Build homogeneous edge index
+        edge_index_list = []
+        for edge_type in self.edge_types:
+            src, rel, dst = edge_type
+            if edge_type in edge_index_dict:
+                edge_index = edge_index_dict[edge_type]
+                src_offset = node_offsets[src]
+                dst_offset = node_offsets[dst]
+
+                shifted_edge_index = edge_index.clone()
+                shifted_edge_index[0] += src_offset
+                shifted_edge_index[1] += dst_offset
+                edge_index_list.append(shifted_edge_index)
+
+        if len(edge_index_list) > 0:
+            edge_index_homo = torch.cat(edge_index_list, dim=1)
+        else:
+            edge_index_homo = torch.empty((2, 0), dtype=torch.long, device=x_homo.device)
+
+        # 4. GCN Conv
+        h = self.conv1(x_homo, edge_index_homo)
+        h = F.relu(h)
+        h = F.dropout(h, p=self.dropout, training=self.training)
+        h = self.conv2(h, edge_index_homo)
+
+        # 5. Extract Template node embeddings to classify
+        template_offset = node_offsets["Template"]
+        num_templates = x_dict["Template"].shape[0]
+        template_emb = h[template_offset : template_offset + num_templates]
+
+        return self.classifier(template_emb)
+
+
+# ─────────────────────────────────────────────────────────────────────
+# Baseline 4: Heterogeneous GCN
+# ─────────────────────────────────────────────────────────────────────
+
+class HeteroGCNBaseline(nn.Module):
+    """
+    Heterogeneous GCN Baseline.
+    Uses HeteroConv with GraphConv layers instead of GATConv layers.
+    """
+
+    def __init__(self, metadata: tuple, hidden_channels: int = 32, out_channels: int = 16, num_classes: int = 7, dropout: float = 0.2):
+        super().__init__()
+        self.dropout = dropout
+        self.num_classes = num_classes
+        self.node_types = metadata[0]
+        self.hidden_channels = hidden_channels
+        self.out_channels = out_channels
+
+        from torch_geometric.nn import GraphConv
+
+        # Layer 1: GraphConv per relation type
+        self.conv1 = HeteroConv(
+            {
+                edge_type: GraphConv((-1, -1), hidden_channels)
+                for edge_type in metadata[1]
+            },
+            aggr="sum",
+        )
+
+        # Layer 2: GraphConv
+        self.conv2 = HeteroConv(
+            {
+                edge_type: GraphConv((hidden_channels, hidden_channels), out_channels)
+                for edge_type in metadata[1]
+            },
+            aggr="sum",
+        )
+
+        self._projections_initialized = False
+        self.skip1 = nn.ModuleDict()
+        self.skip2 = nn.ModuleDict()
+
+        self.classifier = nn.Sequential(
+            nn.Linear(out_channels, out_channels),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(out_channels, num_classes),
+        )
+
+    def _ensure_projections(self, x_dict):
+        if self._projections_initialized:
+            return
+        for ntype, x in x_dict.items():
+            self.skip1[ntype] = nn.Linear(x.shape[1], self.hidden_channels)
+            self.skip2[ntype] = nn.Linear(self.hidden_channels, self.out_channels)
+        self._projections_initialized = True
+
+    def forward(self, x_dict, edge_index_dict):
+        self._ensure_projections(x_dict)
+
+        x_dict_1 = self.conv1(x_dict, edge_index_dict)
+        out_dict_1 = {}
+        for k, v in x_dict.items():
+            proj_val = self.skip1[k](v)
+            if k in x_dict_1 and x_dict_1[k] is not None:
+                out_dict_1[k] = x_dict_1[k] + proj_val
+            else:
+                out_dict_1[k] = proj_val
+        out_dict_1 = {k: F.relu(v) for k, v in out_dict_1.items()}
+        out_dict_1 = {k: F.dropout(v, p=self.dropout, training=self.training) for k, v in out_dict_1.items()}
+
+        # Layer 2
+        x_dict_2 = self.conv2(out_dict_1, edge_index_dict)
+        out_dict_2 = {}
+        for k, v in out_dict_1.items():
+            proj_val = self.skip2[k](v)
+            if k in x_dict_2 and x_dict_2[k] is not None:
+                out_dict_2[k] = x_dict_2[k] + proj_val
+            else:
+                out_dict_2[k] = proj_val
+
+        template_emb = out_dict_2["Template"]
+        return self.classifier(template_emb)
+
+
+# ─────────────────────────────────────────────────────────────────────
+# Baseline 5: Heterogeneous GraphSAGE
+# ─────────────────────────────────────────────────────────────────────
+
+class HeteroSAGEBaseline(nn.Module):
+    """
+    Heterogeneous GraphSAGE Baseline.
+    Uses HeteroConv with SAGEConv layers instead of GATConv layers.
+    """
+
+    def __init__(self, metadata: tuple, hidden_channels: int = 32, out_channels: int = 16, num_classes: int = 7, dropout: float = 0.2):
+        super().__init__()
+        self.dropout = dropout
+        self.num_classes = num_classes
+        self.node_types = metadata[0]
+        self.hidden_channels = hidden_channels
+        self.out_channels = out_channels
+
+        from torch_geometric.nn import SAGEConv
+
+        # Layer 1: SAGE per relation type
+        self.conv1 = HeteroConv(
+            {
+                edge_type: SAGEConv((-1, -1), hidden_channels)
+                for edge_type in metadata[1]
+            },
+            aggr="sum",
+        )
+
+        # Layer 2: SAGE
+        self.conv2 = HeteroConv(
+            {
+                edge_type: SAGEConv((hidden_channels, hidden_channels), out_channels)
+                for edge_type in metadata[1]
+            },
+            aggr="sum",
+        )
+
+        self._projections_initialized = False
+        self.skip1 = nn.ModuleDict()
+        self.skip2 = nn.ModuleDict()
+
+        self.classifier = nn.Sequential(
+            nn.Linear(out_channels, out_channels),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(out_channels, num_classes),
+        )
+
+    def _ensure_projections(self, x_dict):
+        if self._projections_initialized:
+            return
+        for ntype, x in x_dict.items():
+            self.skip1[ntype] = nn.Linear(x.shape[1], self.hidden_channels)
+            self.skip2[ntype] = nn.Linear(self.hidden_channels, self.out_channels)
+        self._projections_initialized = True
+
+    def forward(self, x_dict, edge_index_dict):
+        self._ensure_projections(x_dict)
+
+        x_dict_1 = self.conv1(x_dict, edge_index_dict)
+        out_dict_1 = {}
+        for k, v in x_dict.items():
+            proj_val = self.skip1[k](v)
+            if k in x_dict_1 and x_dict_1[k] is not None:
+                out_dict_1[k] = x_dict_1[k] + proj_val
+            else:
+                out_dict_1[k] = proj_val
+        out_dict_1 = {k: F.relu(v) for k, v in out_dict_1.items()}
+        out_dict_1 = {k: F.dropout(v, p=self.dropout, training=self.training) for k, v in out_dict_1.items()}
+
+        # Layer 2
+        x_dict_2 = self.conv2(out_dict_1, edge_index_dict)
+        out_dict_2 = {}
+        for k, v in out_dict_1.items():
+            proj_val = self.skip2[k](v)
+            if k in x_dict_2 and x_dict_2[k] is not None:
+                out_dict_2[k] = x_dict_2[k] + proj_val
+            else:
+                out_dict_2[k] = proj_val
+
+        template_emb = out_dict_2["Template"]
+        return self.classifier(template_emb)
+
+
 if __name__ == "__main__":
-    print("CertGraph model with skip connections initialized.")
+    print("CertGraph model with skip connections and baselines initialized.")

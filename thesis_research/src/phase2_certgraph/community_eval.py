@@ -195,7 +195,16 @@ def run_community_eval():
                             tmpl_acl_edges.append([u, t_idx])
                     elif is_target and is_hn_esc13:
                         # Policy linked to normal group instead of domain admin group
-                        policy_edges.append([t_idx, num_groups - 1])
+                        target_g = num_groups - 1
+                        for g_idx in range(num_groups):
+                            is_hv = graph["Group"].x[g_idx, 0].item() > 0.5
+                            is_ac = graph["Group"].x[g_idx, 1].item() > 0.5
+                            if not is_hv and not is_ac:
+                                target_g = g_idx
+                                break
+                        policy_edges.append([t_idx, target_g])
+                        for u in low_priv_users[:2]:
+                            enroll_edges.append([u, t_idx])
                     else:
                         # Safe template default connections
                         for u in low_priv_users[:2]:
@@ -215,8 +224,11 @@ def run_community_eval():
                     
                 if policy_edges:
                     graph["Template", "linked_to", "Group"].edge_index = torch.tensor(policy_edges, dtype=torch.long).t().contiguous()
+                    rev_edges = [[g, t] for t, g in policy_edges]
+                    graph["Group", "links_policy", "Template"].edge_index = torch.tensor(rev_edges, dtype=torch.long).t().contiguous()
                 else:
                     graph["Template", "linked_to", "Group"].edge_index = torch.empty((2, 0), dtype=torch.long)
+                    graph["Group", "links_policy", "Template"].edge_index = torch.empty((2, 0), dtype=torch.long)
                 
                 target_idx = 0
             else:

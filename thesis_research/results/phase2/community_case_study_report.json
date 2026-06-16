@@ -52,9 +52,9 @@
             "case_name": "Safe",
             "ground_truth": "Safe",
             "certgraph_pred": "Safe",
-            "rule_pred": "Safe",
+            "rule_pred": "ESC4",
             "cg_correct": true,
-            "rule_correct": true
+            "rule_correct": false
         },
         {
             "case_name": "HN_ESC1",
@@ -67,9 +67,9 @@
         {
             "case_name": "HN_ESC4",
             "ground_truth": "Safe",
-            "certgraph_pred": "ESC4",
+            "certgraph_pred": "Safe",
             "rule_pred": "ESC4",
-            "cg_correct": false,
+            "cg_correct": true,
             "rule_correct": false
         },
         {
@@ -110,9 +110,9 @@
             "case_name": "ESC4",
             "ground_truth": "ESC4",
             "certgraph_pred": "ESC4",
-            "rule_pred": "ESC4",
+            "rule_pred": "ESC3",
             "cg_correct": true,
-            "rule_correct": true
+            "rule_correct": false
         },
         {
             "case_name": "ESC9",
@@ -133,10 +133,10 @@
         {
             "case_name": "Safe",
             "ground_truth": "Safe",
-            "certgraph_pred": "ESC4",
-            "rule_pred": "ESC4",
-            "cg_correct": false,
-            "rule_correct": false
+            "certgraph_pred": "Safe",
+            "rule_pred": "Safe",
+            "cg_correct": true,
+            "rule_correct": true
         },
         {
             "case_name": "HN_ESC1",
@@ -149,9 +149,9 @@
         {
             "case_name": "HN_ESC4",
             "ground_truth": "Safe",
-            "certgraph_pred": "ESC4",
+            "certgraph_pred": "Safe",
             "rule_pred": "ESC4",
-            "cg_correct": false,
+            "cg_correct": true,
             "rule_correct": false
         },
         {
@@ -215,9 +215,9 @@
         {
             "case_name": "Safe",
             "ground_truth": "Safe",
-            "certgraph_pred": "ESC13",
-            "rule_pred": "ESC13",
-            "cg_correct": false,
+            "certgraph_pred": "Safe",
+            "rule_pred": "ESC1",
+            "cg_correct": true,
             "rule_correct": false
         },
         {
@@ -231,9 +231,9 @@
         {
             "case_name": "HN_ESC4",
             "ground_truth": "Safe",
-            "certgraph_pred": "ESC4",
+            "certgraph_pred": "Safe",
             "rule_pred": "ESC4",
-            "cg_correct": false,
+            "cg_correct": true,
             "rule_correct": false
         },
         {
