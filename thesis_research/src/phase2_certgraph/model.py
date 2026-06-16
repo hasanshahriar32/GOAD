@@ -48,6 +48,7 @@ class CertGraph(nn.Module):
         num_classes: int = 7,
         num_heads: int = 4,
         dropout: float = 0.2,
+        skip_connections: bool = True,
     ):
         super().__init__()
         self.dropout = dropout
@@ -55,6 +56,7 @@ class CertGraph(nn.Module):
         self.node_types = metadata[0]
         self._hidden_total = hidden_channels * num_heads
         self._out_channels = out_channels
+        self.skip_connections = skip_connections
 
         # Layer 1: Multi-head GAT per relation type
         self.conv1 = HeteroConv(
@@ -121,11 +123,14 @@ class CertGraph(nn.Module):
         # Apply Layer 1 skip connections (ResNet residual block)
         out_dict_1 = {}
         for k, v in x_dict.items():
-            skip_val = self.skip1[k](v)
+            proj_val = self.skip1[k](v)
             if k in x_dict_1 and x_dict_1[k] is not None:
-                out_dict_1[k] = x_dict_1[k] + skip_val
+                if self.skip_connections:
+                    out_dict_1[k] = x_dict_1[k] + proj_val
+                else:
+                    out_dict_1[k] = x_dict_1[k]
             else:
-                out_dict_1[k] = skip_val
+                out_dict_1[k] = proj_val
                 
         out_dict_1 = {k: F.relu(v) for k, v in out_dict_1.items()}
         out_dict_1 = {
@@ -139,11 +144,14 @@ class CertGraph(nn.Module):
         # Apply Layer 2 skip connections
         out_dict_2 = {}
         for k, v in out_dict_1.items():
-            skip_val = self.skip2[k](v)
+            proj_val = self.skip2[k](v)
             if k in x_dict_2 and x_dict_2[k] is not None:
-                out_dict_2[k] = x_dict_2[k] + skip_val
+                if self.skip_connections:
+                    out_dict_2[k] = x_dict_2[k] + proj_val
+                else:
+                    out_dict_2[k] = x_dict_2[k]
             else:
-                out_dict_2[k] = skip_val
+                out_dict_2[k] = proj_val
 
         # Classify Template nodes
         template_emb = out_dict_2["Template"]
@@ -161,23 +169,46 @@ class CertGraph(nn.Module):
         x_dict_1 = self.conv1(x_dict, edge_index_dict)
         out_dict_1 = {}
         for k, v in x_dict.items():
-            skip_val = self.skip1[k](v)
+            proj_val = self.skip1[k](v)
             if k in x_dict_1 and x_dict_1[k] is not None:
-                out_dict_1[k] = x_dict_1[k] + skip_val
+                if self.skip_connections:
+                    out_dict_1[k] = x_dict_1[k] + proj_val
+                else:
+                    out_dict_1[k] = x_dict_1[k]
             else:
-                out_dict_1[k] = skip_val
+                out_dict_1[k] = proj_val
         out_dict_1 = {k: F.relu(v) for k, v in out_dict_1.items()}
         
         x_dict_2 = self.conv2(out_dict_1, edge_index_dict)
         out_dict_2 = {}
         for k, v in out_dict_1.items():
-            skip_val = self.skip2[k](v)
+            proj_val = self.skip2[k](v)
             if k in x_dict_2 and x_dict_2[k] is not None:
-                out_dict_2[k] = x_dict_2[k] + skip_val
+                if self.skip_connections:
+                    out_dict_2[k] = x_dict_2[k] + proj_val
+                else:
+                    out_dict_2[k] = x_dict_2[k]
             else:
-                out_dict_2[k] = skip_val
+                out_dict_2[k] = proj_val
                 
         return out_dict_2
+
+    def get_attention_weights(
+        self,
+        x_dict: dict[str, torch.Tensor],
+        edge_index_dict: dict[tuple, torch.Tensor],
+    ) -> dict[tuple, tuple[torch.Tensor, torch.Tensor]]:
+        """Extract attention weights for conv1."""
+        self._ensure_projections(x_dict)
+        attentions = {}
+        for edge_type, edge_index in edge_index_dict.items():
+            src, rel, dst = edge_type
+            h_src = x_dict[src]
+            h_dst = x_dict[dst]
+            conv = self.conv1.convs[edge_type]
+            _, (edge_index_out, alpha) = conv((h_src, h_dst), edge_index, return_attention_weights=True)
+            attentions[edge_type] = (edge_index_out, alpha)
+        return attentions
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -265,81 +296,6 @@ class RuleBaseline:
                 preds.append(6)  # Safe
 
         return torch.tensor(preds, dtype=torch.long)
-
-
-def train_mlp_fold(train_data, test_data) -> dict:
-    """Train MLP baseline for one fold using batching."""
-    model = MLPBaseline(input_dim=TEMPLATE_FEATURE_DIM, hidden_dim=32, num_classes=NUM_CLASSES)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=1e-4)
-
-    # Collate all training samples
-    X_train = torch.stack([d["Template"].x[ti] for d, _, ti in train_data])
-    y_train = torch.tensor([CLASS_TO_IDX[ec] for _, ec, _ in train_data], dtype=torch.long)
-
-    # Train in batch
-    for epoch in range(1, 101):
-        model.train()
-        optimizer.zero_grad()
-        logits = model(X_train)
-        loss = F.cross_entropy(logits, y_train)
-        loss.backward()
-        optimizer.step()
-
-    model.eval()
-    X_test = torch.stack([d["Template"].x[ti] for d, _, ti in test_data])
-    y_test = [CLASS_TO_IDX[ec] for _, ec, _ in test_data]
-
-    with torch.no_grad():
-        preds = model(X_test).argmax(dim=1).cpu().tolist()
-
-    return {
-        "test_f1": f1_score(y_test, preds, average="macro", zero_division=0),
-        "test_acc": accuracy_score(y_test, preds),
-        "test_preds": preds,
-        "test_labels": y_test,
-    }
-
-
-def eval_rule_baseline(test_data) -> dict:
-    """Evaluate rule-based baseline."""
-    rule = RuleBaseline()
-    preds, labels = [], []
-
-    for data, esc_class, target_idx in test_data:
-        feat = data["Template"].x[target_idx].unsqueeze(0)
-        pred = rule.predict(feat)[0].item()
-        preds.append(pred)
-        labels.append(CLASS_TO_IDX[esc_class])
-
-    return {
-        "test_f1": f1_score(labels, preds, average="macro", zero_division=0),
-        "test_acc": accuracy_score(labels, preds),
-        "test_preds": preds,
-        "test_labels": labels,
-    }
-
-
-def train_rf_fold(train_data, test_data) -> dict:
-    """Train Random Forest baseline for one fold."""
-    X_train, y_train = [], []
-    for data, esc_class, target_idx in train_data:
-        X_train.append(data["Template"].x[target_idx].numpy())
-        y_train.append(CLASS_TO_IDX[esc_class])
-    X_test, y_test = [], []
-    for data, esc_class, target_idx in test_data:
-        X_test.append(data["Template"].x[target_idx].numpy())
-        y_test.append(CLASS_TO_IDX[esc_class])
-
-    rf = RandomForestClassifier(n_estimators=100, random_state=42, max_depth=5)
-    rf.fit(np.array(X_train), np.array(y_train))
-    preds = rf.predict(np.array(X_test)).tolist()
-
-    return {
-        "test_f1": f1_score(y_test, preds, average="macro", zero_division=0),
-        "test_acc": accuracy_score(y_test, preds),
-        "test_preds": preds,
-        "test_labels": y_test,
-    }
 
 
 if __name__ == "__main__":

@@ -492,7 +492,10 @@ def build_phase2_notebook():
     # Setup
     cells.append(md(['## 2. Environment Setup']))
     cells.append(code([
-        'import json, os, time, random, warnings',
+        'import json, os, time, random, warnings, sys',
+        'sys.path.append(os.path.abspath(os.path.join("..")))',
+        'sys.path.append(os.path.abspath(os.path.join("..", "src")))',
+        'sys.path.append(os.path.abspath(os.path.join("..", "src", "phase2_certgraph")))',
         'import numpy as np',
         'import torch',
         'import torch.nn as nn',
@@ -566,6 +569,9 @@ def build_phase2_notebook():
     # CV Training Loop
     cells.append(md(['## 6. 5-Fold Cross-Validation Training']))
     cells.append(code([
+        '# Import baselines from train.py module',
+        'from train import train_mlp_fold, eval_rule_baseline, train_rf_fold',
+        '',
         '# ── Hyperparameters ──',
         'HIDDEN_DIM, OUT_DIM, NUM_HEADS, DROPOUT = 32, 16, 4, 0.2',
         'LR, EPOCHS, N_FOLDS, BATCH_SIZE = 0.005, 100, 5, 64',
@@ -753,9 +759,127 @@ def build_phase2_notebook():
         '        plt.tight_layout(); plt.show()'
     ]))
 
+    # Advanced Academic Evaluations
+    cells.append(md([
+        '## 8. Advanced Academic Evaluations (Q1/Peer-Review Enhancements)',
+        '',
+        'To establish scientific rigor, interpretability, and practical scalability, we evaluate CertGraph under four advanced experimental protocols:',
+        '',
+        '1. **Ablation Studies**: Evaluating key architectural configurations (Residual Skip Connections, Graph structure, Attention mechanisms).',
+        '2. **GNN Explainability**: Extracting and plotting GAT attention coefficients to prove the model attends to valid security-relevant relationships.',
+        '3. **Scalability Testing**: Benchmarking training/inference latency and memory consumption on AD graphs scaled up to 10,000 nodes.',
+        '4. **Adversarial Hard Negative Evaluation**: Assessing performance on safe templates designed to mimic vulnerabilities via configuration flags but lacking exploitable graph relationships.'
+    ]))
+
+    cells.append(md([
+        '### 8.1 Ablation Study Results',
+        '',
+        'We compare the macro-F1 and accuracy of the full model against:',
+        '- **No Skip**: Disables the ResNet-style residual projection skip connections.',
+        '- **Single-Head**: Uses single-head GAT attention (parameter matched).',
+        '- **No Graph**: Zeroes out all relationship edges, reducing representation learning to node properties.',
+        '',
+        '*Note: These results are pre-computed by running the ablation pipeline (`src/phase2_certgraph/ablation.py`).*'
+    ]))
+
+    cells.append(code([
+        'import os, json',
+        'from IPython.display import Image, display',
+        'results_dir = "../results/phase2"',
+        'ablation_json = os.path.join(results_dir, "ablation_results.json")',
+        'ablation_plot = os.path.join(results_dir, "ablation_comparison.png")',
+        '',
+        'if os.path.exists(ablation_json):',
+        '    with open(ablation_json) as f:',
+        '        data = json.load(f)',
+        '    print(f"{chr(61)*62}")',
+        '    print(f"{\'Variant\':<26} {\'Macro-F1\':>12} {\'Accuracy\':>12}")',
+        '    print(f"{chr(45)*62}")',
+        '    for var, metrics in data.items():',
+        '        print(f"{var:<26} {metrics[\'f1_mean\']:.4f}\u00b1{metrics[\'f1_std\']:.4f} {metrics[\'acc_mean\']:.4f}\u00b1{metrics[\'acc_std\']:.4f}")',
+        '    print(f"{chr(61)*62}")',
+        'else:',
+        '    print("[!] Ablation results JSON not found. Please run ablation.py to populate.")',
+        '',
+        'if os.path.exists(ablation_plot):',
+        '    display(Image(filename=ablation_plot))'
+    ]))
+
+    cells.append(md([
+        '### 8.2 Explainability & Attention Analysis',
+        '',
+        'GNN interpretability is evaluated by extracting the attention coefficients ($\\alpha_{ij}$) from GATConv layer 1. We plot the top edges that received the highest attention weights when predicting an ESC13 vulnerability, demonstrating that the GNN utilizes domain-specific AD security relationships rather than local node heuristics.',
+        '',
+        '*Note: These results are pre-computed by running the explainability pipeline (`src/phase2_certgraph/explain.py`).*'
+    ]))
+
+    cells.append(code([
+        'explain_plot = os.path.join(results_dir, "attention_explainability.png")',
+        'if os.path.exists(explain_plot):',
+        '    display(Image(filename=explain_plot))',
+        'else:',
+        '    print("[!] Explainability plot not found. Please run explain.py to populate.")'
+    ]))
+
+    cells.append(md([
+        '### 8.3 Scalability & Performance Benchmarks',
+        '',
+        'We evaluate how CertGraph scales to massive enterprise networks by measuring inference latency (ms), peak memory (MB), and generation time across AD graphs ranging from 100 nodes to 10,000 nodes.',
+        '',
+        '*Note: These results are pre-computed by running the scalability pipeline (`src/phase2_certgraph/scale_test.py`).*'
+    ]))
+
+    cells.append(code([
+        'scale_json = os.path.join(results_dir, "scalability_results.json")',
+        'scale_plot = os.path.join(results_dir, "scalability_metrics.png")',
+        '',
+        'if os.path.exists(scale_json):',
+        '    with open(scale_json) as f:',
+        '        scales = json.load(f)',
+        '    print(f"{chr(61)*75}")',
+        '    print(f"{\'Scale (Nodes)\':<15} {\'Edges\':>12} {\'Gen Time (ms)\':>15} {\'Memory (MB)\':>12} {\'Inference (ms)\':>15}")',
+        '    print(f"{chr(45)*75}")',
+        '    for r in scales:',
+        '        print(f"{r[\'actual_nodes\']:<15,} {r[\'actual_edges\']:>12,} {r[\'generation_time_ms\']:>15.1f} {r[\'memory_usage_mb\']:>12.3f} {r[\'inference_latency_ms_mean\']:>15.2f}")',
+        '    print(f"{chr(61)*75}")',
+        'else:',
+        '    print("[!] Scalability results JSON not found. Please run scale_test.py to populate.")',
+        '',
+        'if os.path.exists(scale_plot):',
+        '    display(Image(filename=scale_plot))'
+    ]))
+
+    cells.append(md([
+        '### 8.4 Adversarial Hard Negative Performance',
+        '',
+        'Finally, we prove that flat machine learning classifiers (MLP, RF) and heuristic rule-based systems are easily fooled by AD objects configured to look like vulnerabilities (e.g. templates with the enrollee supplies subject flag enabled) but lacking the corresponding enrollment permissions or DACL write relationships. CertGraph correctly routes updates and identifies these templates as Safe using relation-specific message passing.',
+        '',
+        '*Note: These results are pre-computed by running the hard negative pipeline (`src/phase2_certgraph/hard_negatives.py`).*'
+    ]))
+
+    cells.append(code([
+        'hn_json = os.path.join(results_dir, "hard_negatives_results.json")',
+        'hn_plot = os.path.join(results_dir, "hard_negatives_comparison.png")',
+        '',
+        'if os.path.exists(hn_json):',
+        '    with open(hn_json) as f:',
+        '        data = json.load(f)',
+        '    print(f"{chr(61)*52}")',
+        '    print(f"{\'Model\':<25} {\'Accuracy on Hard Negatives\':>25}")',
+        '    print(f"{chr(45)*52}")',
+        '    for model_name, acc in data.items():',
+        '        print(f"{model_name:<25} {acc*100:>23.2f}%")',
+        '    print(f"{chr(61)*52}")',
+        'else:',
+        '    print("[!] Hard negatives results JSON not found. Please run hard_negatives.py to populate.")',
+        '',
+        'if os.path.exists(hn_plot):',
+        '    display(Image(filename=hn_plot))'
+    ]))
+
     # Defenses & Conclusion
     cells.append(md([
-        '## 8. Defense Recommendations',
+        '## 9. Defense Recommendations',
         '',
         'Based on CertGraph analysis:',
         '',
@@ -771,7 +895,7 @@ def build_phase2_notebook():
     ]))
 
     cells.append(md([
-        '## 9. Conclusion',
+        '## 10. Conclusion',
         '',
         'CertGraph demonstrates that a **certificate-aware heterogeneous GNN** can:',
         '- Classify 7 distinct ESC vulnerability types with high accuracy',

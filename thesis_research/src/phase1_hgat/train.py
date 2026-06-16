@@ -228,6 +228,56 @@ def train():
             dst_name = data[dst_type].names[dst_idx] if hasattr(data[dst_type], "names") else f"{dst_type}[{dst_idx}]"
             print(f"  {src_name} --impersonates--> {dst_name}: {score:.4f}")
 
+    # Save training curves and metrics JSON
+    import json
+    import matplotlib.pyplot as plt
+
+    metrics_path = os.path.join(CHECKPOINT_DIR, "metrics.json")
+    with open(metrics_path, "w") as f:
+        json.dump({
+            "final_loss": history["loss"][-1],
+            "final_auc": history["auc"][-1],
+            "epochs": EPOCHS,
+            "hidden_dim": HIDDEN_DIM,
+            "out_dim": OUT_DIM,
+            "num_heads": NUM_HEADS,
+            "dropout": DROPOUT,
+            "lr": LR,
+            "loss_history": history["loss"],
+            "auc_history": history["auc"]
+        }, f, indent=2)
+    print(f"[✓] Metrics JSON saved to {metrics_path}")
+
+    # Generate and save the loss and AUC curves
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+    
+    # Loss plot
+    ax1.plot(history["epoch"], history["loss"], color="#FF6B6B", lw=2, alpha=0.9)
+    ax1.fill_between(history["epoch"], history["loss"], alpha=0.15, color="#FF6B6B")
+    ax1.set_title("Training Loss", fontsize=13, fontweight="bold")
+    ax1.set_xlabel("Epoch")
+    ax1.set_ylabel("BCE Loss")
+    ax1.grid(True, alpha=0.1, color="#555")
+    
+    # AUC plot
+    ax2.plot(history["epoch"], history["auc"], color="#4ECDC4", lw=2, alpha=0.9)
+    ax2.fill_between(history["epoch"], history["auc"], alpha=0.15, color="#4ECDC4")
+    ax2.set_title("ROC-AUC Score", fontsize=13, fontweight="bold")
+    ax2.set_xlabel("Epoch")
+    ax2.set_ylabel("AUC")
+    ax2.set_ylim(0, 1.05)
+    ax2.axhline(0.5, color="#666", ls="--", alpha=0.5, label="Random")
+    ax2.legend(facecolor="#0e1628", edgecolor="#333", labelcolor="white")
+    ax2.grid(True, alpha=0.1, color="#555")
+    
+    fig.suptitle("HGAT Training — ESC13 Attack Path Prediction", fontsize=15, fontweight="bold", y=1.02)
+    plt.tight_layout()
+    
+    plot_path = os.path.join(CHECKPOINT_DIR, "training_curves.png")
+    plt.savefig(plot_path, dpi=300, bbox_inches="tight")
+    plt.close()
+    print(f"[✓] Training curves saved to {plot_path}")
+
     print(f"\n[✓] Training complete. Final Loss: {history['loss'][-1]:.4f}, AUC: {history['auc'][-1]:.4f}")
 
     return model, data, history

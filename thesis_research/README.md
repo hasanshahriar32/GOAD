@@ -26,10 +26,14 @@ thesis_research/
 │   └── phase2_certgraph/          # Phase 2 code (CertGraph multi-class node classification)
 │       ├── generator.py
 │       ├── model.py
-│       └── train.py
+│       ├── train.py
+│       ├── ablation.py            # GNN architecture ablation studies (Skip, Heads, Graph)
+│       ├── explain.py             # Attention weight explainability and visualization
+│       ├── hard_negatives.py      # Evaluation on adversarial hard negatives
+│       └── scale_test.py          # Scalability and performance benchmarks
 ├── results/                       # Generated outputs
 │   ├── phase1/                    # Phase 1 checkpoints and figures
-│   └── phase2/                    # Phase 2 confusion matrices, metrics JSON, and checkpoints
+│   └── phase2/                    # Phase 2 CV results, ablation, explainability, scale benchmarks
 └── notes/                         # Planning, logs, and installation guides
 ```
 
@@ -92,8 +96,51 @@ python3 src/phase1_hgat/visualize.py
 ```
 Outputs (training curves, t-SNE projections, checkpoints) will be written to `results/phase1/`.
 
-### Phase 2 (CertGraph Multi-Class Classification)
-```bash
-python3 src/phase2_certgraph/train.py
-```
-Outputs (cross-validation metrics JSON, best model checkpoints) will be written to `results/phase2/`.
+### Phase 2 (CertGraph Multi-Class Classification & Evaluation)
+
+1. **Train Model & Run 5-Fold Cross Validation**:
+   ```bash
+   python3 src/phase2_certgraph/train.py
+   ```
+   Generates cross-validation performance tables, per-class classification reports, and statistical significance p-values against baselines. Saves results to `results/phase2/cv_results.json`.
+
+2. **Run Architecture Ablation Studies**:
+   ```bash
+   python3 src/phase2_certgraph/ablation.py
+   ```
+   Trains and compares full CertGraph, no-skip connection GNN, single-attention head GNN, and graph-less GNN variants. Generates `results/phase2/ablation_comparison.png` and `results/phase2/ablation_results.json`.
+
+3. **Run Explainability & Attention Analysis**:
+   ```bash
+   python3 src/phase2_certgraph/explain.py
+   ```
+   Extracts relation attention coefficients in the target template's 2-hop local subgraph and produces attention attribution plots at `results/phase2/explainability_attention.png` (or `explain_attention.png`).
+
+4. **Evaluate on Adversarial Hard Negatives**:
+   ```bash
+   python3 src/phase2_certgraph/hard_negatives.py
+   ```
+   Tests CertGraph against baselines on hard negative samples (templates with vulnerable features but blocked graph path permissions). Saves results to `results/phase2/hard_negatives_results.json`.
+
+5. **Run Performance and Scalability Benchmarking**:
+   ```bash
+   python3 src/phase2_certgraph/scale_test.py
+   ```
+   Measures time complexity, model inference latency, and peak memory footprint (max RSS or peak CUDA GPU memory) across graph sizes up to 10,000 nodes. Generates `results/phase2/scalability_metrics.png` and `results/phase2/scalability_results.json`.
+
+## Reproducibility & Environment Details
+
+To ensure exact reproducibility of the results presented in our evaluations:
+
+- **Python Version**: `3.11.11` (managed via pyenv).
+- **Deep Learning Frameworks**: 
+  - `torch==2.3.0`
+  - `torch_geometric==2.5.3`
+- **Machine Learning & Stats Libraries**:
+  - `scikit-learn==1.4.2`
+  - `scipy==1.13.0`
+- **Hardware Profile**:
+  - Experiments were run on a CPU system (CUDA optional and automatically leveraged if available).
+  - Benchmarks measured peak Resident Set Size (RSS) process memory footprint and GPU max memory allocation if active.
+- **Random Seeds**:
+  - Global random seeds (`42` for python `random`, `numpy`, and `torch`) are set in all training scripts to guarantee identical synthetic data folds, initialization weights, and baseline comparisons.

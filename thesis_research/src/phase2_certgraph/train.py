@@ -264,6 +264,18 @@ def main():
         "Rule-Based": defaultdict(list),
         "Random Forest": defaultdict(list),
     }
+    results_preds = {
+        "CertGraph": [],
+        "MLP": [],
+        "Rule-Based": [],
+        "Random Forest": [],
+    }
+    results_labels = {
+        "CertGraph": [],
+        "MLP": [],
+        "Rule-Based": [],
+        "Random Forest": [],
+    }
     all_histories = []
     best_model = None
     best_f1 = 0
@@ -279,6 +291,8 @@ def main():
         cg_results = train_certgraph_fold(train_data, test_data, fold)
         results["CertGraph"]["f1"].append(cg_results["test_f1"])
         results["CertGraph"]["acc"].append(cg_results["test_acc"])
+        results_preds["CertGraph"].extend(cg_results["test_preds"])
+        results_labels["CertGraph"].extend(cg_results["test_labels"])
         all_histories.append(cg_results["history"])
         if cg_results["test_f1"] > best_f1:
             best_f1 = cg_results["test_f1"]
@@ -289,32 +303,62 @@ def main():
         mlp_results = train_mlp_fold(train_data, test_data)
         results["MLP"]["f1"].append(mlp_results["test_f1"])
         results["MLP"]["acc"].append(mlp_results["test_acc"])
+        results_preds["MLP"].extend(mlp_results["test_preds"])
+        results_labels["MLP"].extend(mlp_results["test_labels"])
         print(f"  [MLP]       → F1: {mlp_results['test_f1']:.4f} | Acc: {mlp_results['test_acc']:.4f}")
 
         # Rule-based
         rule_results = eval_rule_baseline(test_data)
         results["Rule-Based"]["f1"].append(rule_results["test_f1"])
         results["Rule-Based"]["acc"].append(rule_results["test_acc"])
+        results_preds["Rule-Based"].extend(rule_results["test_preds"])
+        results_labels["Rule-Based"].extend(rule_results["test_labels"])
         print(f"  [Rule]      → F1: {rule_results['test_f1']:.4f} | Acc: {rule_results['test_acc']:.4f}")
 
         # Random Forest
         rf_results = train_rf_fold(train_data, test_data)
         results["Random Forest"]["f1"].append(rf_results["test_f1"])
         results["Random Forest"]["acc"].append(rf_results["test_acc"])
+        results_preds["Random Forest"].extend(rf_results["test_preds"])
+        results_labels["Random Forest"].extend(rf_results["test_labels"])
         print(f"  [RF]        → F1: {rf_results['test_f1']:.4f} | Acc: {rf_results['test_acc']:.4f}")
 
-    # 3. Aggregate results
-    print(f"\n\n{'=' * 70}")
+    # 3. Aggregate results & Statistical Significance
+    from scipy.stats import ttest_rel
+    
+    cg_f1s = results["CertGraph"]["f1"]
+    p_values = {}
+    for model_name in ["MLP", "Rule-Based", "Random Forest"]:
+        base_f1s = results[model_name]["f1"]
+        # Paired t-test
+        _, p_val = ttest_rel(cg_f1s, base_f1s)
+        if np.isnan(p_val):
+            p_val = 1.0
+        p_values[model_name] = p_val
+
+    print(f"\n\n{'=' * 85}")
     print("RESULTS SUMMARY — {}-fold Cross-Validation".format(N_FOLDS))
-    print(f"{'=' * 70}")
-    print(f"{'Model':<20} {'Macro-F1':>10} {'Accuracy':>10}")
-    print("-" * 42)
+    print(f"{'=' * 85}")
+    print(f"{'Model':<20} {'Macro-F1':>15} {'Accuracy':>15} {'p-value (vs CG)':>20}")
+    print("-" * 75)
     for model_name, metrics in results.items():
         f1_mean = np.mean(metrics["f1"])
         f1_std = np.std(metrics["f1"])
         acc_mean = np.mean(metrics["acc"])
         acc_std = np.std(metrics["acc"])
-        print(f"{model_name:<20} {f1_mean:.4f}±{f1_std:.4f} {acc_mean:.4f}±{acc_std:.4f}")
+        p_str = f"{p_values[model_name]:.4e}" if model_name in p_values else "N/A (Reference)"
+        print(f"{model_name:<20} {f1_mean:.4f}±{f1_std:.4f} {acc_mean:.4f}±{acc_std:.4f} {p_str:>20}")
+
+    # Detailed Per-class Report for CertGraph
+    print(f"\n\n{'=' * 85}")
+    print("DETAILED PER-CLASS CLASSIFICATION REPORT FOR CERTGRAPH (AGGREGATED OVER ALL FOLDS)")
+    print(f"{'=' * 85}")
+    report = classification_report(
+        results_labels["CertGraph"], results_preds["CertGraph"],
+        target_names=ESC_CLASSES, zero_division=0
+    )
+    print(report)
+    print(f"{'=' * 85}")
 
     # 4. Save results
     print(f"\n[3/4] Saving results...")
@@ -341,6 +385,10 @@ def main():
     # Save results JSON
     results_json = {}
     for model_name, metrics in results.items():
+        agg_report = classification_report(
+            results_labels[model_name], results_preds[model_name],
+            target_names=ESC_CLASSES, output_dict=True, zero_division=0
+        )
         results_json[model_name] = {
             "f1_mean": float(np.mean(metrics["f1"])),
             "f1_std": float(np.std(metrics["f1"])),
@@ -348,6 +396,8 @@ def main():
             "acc_std": float(np.std(metrics["acc"])),
             "f1_per_fold": [float(x) for x in metrics["f1"]],
             "acc_per_fold": [float(x) for x in metrics["acc"]],
+            "p_value_vs_certgraph": float(p_values[model_name]) if model_name in p_values else None,
+            "detailed_report": agg_report,
         }
     json_path = os.path.join(RESULTS_DIR, "cv_results.json")
     with open(json_path, "w") as f:
