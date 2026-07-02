@@ -314,8 +314,14 @@ def generate_adsynth_environment(
         data["Template", "linked_to", "Group"].edge_index = (
             torch.tensor(policy_edges, dtype=torch.long).t().contiguous()
         )
+        # Reverse edge: Group → links_policy → Template (for GNN message passing)
+        reverse_policy = [[g, t] for t, g in policy_edges]
+        data["Group", "links_policy", "Template"].edge_index = (
+            torch.tensor(reverse_policy, dtype=torch.long).t().contiguous()
+        )
     else:
         data["Template", "linked_to", "Group"].edge_index = torch.empty((2, 0), dtype=torch.long)
+        data["Group", "links_policy", "Template"].edge_index = torch.empty((2, 0), dtype=torch.long)
 
     return data, 0
 

@@ -1,0 +1,135 @@
+{
+  "collection_date": "2026-07-02",
+  "data_source": "Fresh BloodHound-python collection from running GOAD VMs",
+  "domains": {
+    "sevenkingdoms.local": {
+      "tests": {
+        "ESC1": {
+          "expected": "ESC1",
+          "predicted": "ESC1",
+          "correct": true
+        },
+        "ESC2": {
+          "expected": "ESC2",
+          "predicted": "ESC2",
+          "correct": true
+        },
+        "ESC3": {
+          "expected": "ESC3",
+          "predicted": "ESC3",
+          "correct": true
+        },
+        "ESC4": {
+          "expected": "ESC4",
+          "predicted": "ESC4",
+          "correct": true
+        },
+        "ESC9": {
+          "expected": "ESC9",
+          "predicted": "ESC9",
+          "correct": true
+        },
+        "ESC13": {
+          "expected": "ESC13",
+          "predicted": "ESC13",
+          "correct": true
+        },
+        "Safe": {
+          "expected": "Safe",
+          "predicted": "Safe",
+          "correct": true
+        }
+      },
+      "accuracy": 1.0,
+      "correct": 7,
+      "total": 7
+    },
+    "north.sevenkingdoms.local": {
+      "tests": {
+        "ESC1": {
+          "expected": "ESC1",
+          "predicted": "ESC1",
+          "correct": true
+        },
+        "ESC2": {
+          "expected": "ESC2",
+          "predicted": "ESC2",
+          "correct": true
+        },
+        "ESC3": {
+          "expected": "ESC3",
+          "predicted": "ESC3",
+          "correct": true
+        },
+        "ESC4": {
+          "expected": "ESC4",
+          "predicted": "ESC4",
+          "correct": true
+        },
+        "ESC9": {
+          "expected": "ESC9",
+          "predicted": "ESC9",
+          "correct": true
+        },
+        "ESC13": {
+          "expected": "ESC13",
+          "predicted": "ESC13",
+          "correct": true
+        },
+        "Safe": {
+          "expected": "Safe",
+          "predicted": "Safe",
+          "correct": true
+        }
+      },
+      "accuracy": 1.0,
+      "correct": 7,
+      "total": 7
+    },
+    "essos.local": {
+      "tests": {
+        "ESC1": {
+          "expected": "ESC1",
+          "predicted": "ESC1",
+          "correct": true
+        },
+        "ESC2": {
+          "expected": "ESC2",
+          "predicted": "ESC2",
+          "correct": true
+        },
+        "ESC3": {
+          "expected": "ESC3",
+          "predicted": "ESC3",
+          "correct": true
+        },
+        "ESC4": {
+          "expected": "ESC4",
+          "predicted": "ESC4",
+          "correct": true
+        },
+        "ESC9": {
+          "expected": "ESC9",
+          "predicted": "ESC9",
+          "correct": true
+        },
+        "ESC13": {
+          "expected": "ESC13",
+          "predicted": "ESC13",
+          "correct": true
+        },
+        "Safe": {
+          "expected": "Safe",
+          "predicted": "Safe",
+          "correct": true
+        }
+      },
+      "accuracy": 1.0,
+      "correct": 7,
+      "total": 7
+    }
+  },
+  "overall_accuracy": 1.0,
+  "overall_correct": 21,
+  "overall_total": 21
+}
