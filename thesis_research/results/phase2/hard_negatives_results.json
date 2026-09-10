@@ -1,6 +1,37 @@
 {
-  "CertGraph": 1.0,
-  "MLP": 0.0,
-  "Random Forest": 0.0,
-  "Rule-Based": 0.0
+  "CertGraph": {
+    "accuracy": 0.015873015873015872,
+    "correct": 1,
+    "total": 63
+  },
+  "MLP (Features)": {
+    "accuracy": 0.0,
+    "correct": 0,
+    "total": 63
+  },
+  "Random Forest (Features)": {
+    "accuracy": 0.0,
+    "correct": 0,
+    "total": 63
+  },
+  "Rule-Based": {
+    "accuracy": 0.0,
+    "correct": 0,
+    "total": 63
+  },
+  "Graph-Augmented MLP": {
+    "accuracy": 0.2857142857142857,
+    "correct": 18,
+    "total": 63
+  },
+  "Graph-Augmented RF": {
+    "accuracy": 0.0,
+    "correct": 0,
+    "total": 63
+  },
+  "BloodHound BFS": {
+    "accuracy": 0.8412698412698413,
+    "correct": 53,
+    "total": 63
+  }
 }

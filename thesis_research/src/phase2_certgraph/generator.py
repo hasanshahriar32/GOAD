@@ -133,14 +133,18 @@ def _gen_esc13_template() -> dict:
     }
 
 
-def _gen_safe_template() -> dict:
+def _gen_safe_template(include_hard_negatives: bool = True) -> dict:
     """
     Safe: Non-vulnerable template.
-    Adversarial Modification: 50% of Safe templates are generated as 'Hard Negatives'
+    Adversarial Modification: Safe templates can include 'Hard Negatives'
     that look like vulnerabilities based on configuration flags, but lack the critical
     graph permissions (edges) required for exploitation.
     """
-    mode = random.choice(["Normal", "HN_ESC1", "HN_ESC4", "HN_ESC13"])
+    if not include_hard_negatives:
+        mode = "Normal"
+    else:
+        mode = random.choice(["Normal", "HN_ESC1", "HN_ESC4", "HN_ESC13"])
+
     if mode == "Normal":
         return {
             "name_flag": 0x2000000,  # no enrollee-supplies-subject
@@ -151,9 +155,10 @@ def _gen_safe_template() -> dict:
             "has_vulnerable_acl": False,
             "schema_version": random.choice([1, 2, 4]),
             "hard_negative_type": None,
+            "hn_variant": None,
         }
     elif mode == "HN_ESC1":
-        # Features match ESC1, but we will block enrollment edges for low-priv users
+        # Features match ESC1, but we block enrollment edges for low-priv users
         return {
             "name_flag": CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT,
             "enrollment_flag": 0,
@@ -163,9 +168,10 @@ def _gen_safe_template() -> dict:
             "has_vulnerable_acl": False,
             "schema_version": 2,
             "hard_negative_type": "ESC1",
+            "hn_variant": None,
         }
     elif mode == "HN_ESC4":
-        # Features match ESC4, but we will block vulnerable ACL write edges
+        # Features match ESC4, but vulnerable write access is restricted to admins
         return {
             "name_flag": random.choice([0, 0x2000000]),
             "enrollment_flag": random.choice([0, 32, 43]),
@@ -175,9 +181,10 @@ def _gen_safe_template() -> dict:
             "has_vulnerable_acl": True,
             "schema_version": 2,
             "hard_negative_type": "ESC4",
+            "hn_variant": None,
         }
     else:  # HN_ESC13
-        # Features match ESC13, but we will block the linked issuance policy edge
+        # Features match ESC13, but policy link points to low-value group or enrollment is blocked
         return {
             "name_flag": 0x2000000,
             "enrollment_flag": 0,
@@ -187,6 +194,7 @@ def _gen_safe_template() -> dict:
             "has_vulnerable_acl": False,
             "schema_version": 2,
             "hard_negative_type": "ESC13",
+            "hn_variant": random.choice(["low_value_group", "admin_only_enroll"]),
         }
 
 
@@ -250,6 +258,7 @@ def generate_environment(
     num_computers: int | None = None,
     num_extra_templates: int | None = None,
     seed: int | None = None,
+    include_hard_negatives: bool = True,
 ) -> tuple[HeteroData, int]:
     """Generate a single synthetic AD environment with one target template."""
     if seed is not None:
@@ -259,15 +268,19 @@ def generate_environment(
     num_users = num_users or random.randint(10, 80)
     num_groups = num_groups or random.randint(5, 30)
     num_computers = num_computers or random.randint(1, 5)
-    num_extra_templates = num_extra_templates or random.randint(0, 3)
-    num_cas = 1
+    num_extra_templates = num_extra_templates if num_extra_templates is not None else random.randint(0, 3)
 
     data = HeteroData()
 
     # ── User features ──
+    # Assign admin users randomly across indices (decoupling privilege from index)
+    num_admins = max(1, num_users // 10)
+    admin_indices = set(random.sample(range(num_users), num_admins))
+    lowpriv_indices = set(range(num_users)) - admin_indices
+
     user_feats = []
     for i in range(num_users):
-        is_admin = i < max(1, num_users // 10)
+        is_admin = i in admin_indices
         user_feats.append([
             1.0,
             1.0 if is_admin and random.random() < 0.3 else 0.0,
@@ -279,13 +292,17 @@ def generate_environment(
     data["User"].x = torch.tensor(user_feats, dtype=torch.float)
 
     # ── Group features ──
+    # Assign high-value groups randomly across indices (no fixed group 0 artifact)
+    num_hv_groups = max(1, num_groups // 5)
+    highvalue_indices = set(random.sample(range(num_groups), num_hv_groups))
+    lowvalue_indices = set(range(num_groups)) - highvalue_indices
+
     group_feats = []
-    da_idx = 0
     for i in range(num_groups):
-        is_highvalue = i < max(1, num_groups // 5)
+        is_hv = i in highvalue_indices
         group_feats.append([
-            1.0 if is_highvalue else 0.0,
-            1.0 if is_highvalue else 0.0,
+            1.0 if is_hv else 0.0,
+            1.0 if is_hv else 0.0,
         ])
     data["Group"].x = torch.tensor(group_feats, dtype=torch.float)
 
@@ -308,12 +325,26 @@ def generate_environment(
     data["CA"].x = torch.tensor(ca_feats, dtype=torch.float)
 
     # ── Template features ──
-    target_tmpl = TEMPLATE_GENERATORS[esc_class]()
-    templates = [target_tmpl]
+    # Place target_tmpl at a randomized index target_idx
+    target_tmpl = (
+        TEMPLATE_GENERATORS[esc_class](include_hard_negatives=include_hard_negatives)
+        if esc_class == "Safe"
+        else TEMPLATE_GENERATORS[esc_class]()
+    )
 
-    for _ in range(num_extra_templates):
-        extra_class = random.choice(["Safe", "Safe", "Safe", esc_class])
-        templates.append(TEMPLATE_GENERATORS[extra_class]())
+    templates = []
+    target_idx = random.randint(0, num_extra_templates)
+    for t_idx in range(num_extra_templates + 1):
+        if t_idx == target_idx:
+            templates.append(target_tmpl)
+        else:
+            extra_class = random.choice(["Safe", "Safe", "Safe", esc_class])
+            extra_tmpl = (
+                TEMPLATE_GENERATORS[extra_class](include_hard_negatives=include_hard_negatives)
+                if extra_class == "Safe"
+                else TEMPLATE_GENERATORS[extra_class]()
+            )
+            templates.append(extra_tmpl)
 
     template_feats = [template_to_features(t) for t in templates]
     data["Template"].x = torch.tensor(template_feats, dtype=torch.float)
@@ -321,13 +352,13 @@ def generate_environment(
 
     # Template labels
     labels = torch.full((num_templates,), CLASS_TO_IDX["Safe"], dtype=torch.long)
-    labels[0] = CLASS_TO_IDX[esc_class]
+    labels[target_idx] = CLASS_TO_IDX[esc_class]
     data["Template"].y = labels
 
     # ── User → member_of → Group ──
     user_group_edges = []
-    for u in range(max(1, num_users // 10)):
-        for g in range(max(1, num_groups // 5)):
+    for u in admin_indices:
+        for g in highvalue_indices:
             if random.random() < 0.6:
                 user_group_edges.append([u, g])
     for u in range(num_users):
@@ -344,10 +375,13 @@ def generate_environment(
 
     # ── Group → member_of → Group ──
     group_group_edges = []
-    for g in range(1, num_groups):
-        if random.random() < 0.2:
-            parent = random.randint(0, g - 1)
-            group_group_edges.append([g, parent])
+    all_groups = list(range(num_groups))
+    for g in all_groups:
+        if random.random() < 0.25:
+            other_groups = [og for og in all_groups if og != g]
+            if other_groups:
+                parent = random.choice(other_groups)
+                group_group_edges.append([g, parent])
     if group_group_edges:
         data["Group", "member_of", "Group"].edge_index = (
             torch.tensor(group_group_edges, dtype=torch.long).t().contiguous()
@@ -357,9 +391,9 @@ def generate_environment(
 
     # ── Group → generic_all → Group ──
     ace_edges_gg = []
-    for g_src in range(max(1, num_groups // 5)):
+    for g_src in highvalue_indices:
         for g_dst in range(num_groups):
-            if random.random() < 0.15:
+            if g_src != g_dst and random.random() < 0.15:
                 ace_edges_gg.append([g_src, g_dst])
     if ace_edges_gg:
         data["Group", "generic_all", "Group"].edge_index = (
@@ -368,20 +402,23 @@ def generate_environment(
     else:
         data["Group", "generic_all", "Group"].edge_index = torch.empty((2, 0), dtype=torch.long)
 
-    # ── User → write_dacl → Template ──
+    # ── User → write_dacl → Template (ESC4 vs HN_ESC4) ──
     tmpl_acl_edges = []
     for t in range(num_templates):
         tmpl = templates[t]
         if tmpl["has_vulnerable_acl"]:
             is_hn_esc4 = tmpl.get("hard_negative_type") == "ESC4"
-            # Real ESC4 has low-priv write DACL; HN_ESC4 does not!
             if not is_hn_esc4:
-                for u in range(max(1, num_users // 10), num_users):
+                # Real ESC4: low-privileged users have write DACL
+                for u in lowpriv_indices:
                     if random.random() < 0.3:
                         tmpl_acl_edges.append([u, t])
+                for u in admin_indices:
+                    if random.random() < 0.2:
+                        tmpl_acl_edges.append([u, t])
             else:
-                # HN_ESC4: Writable only by admin users (safe)
-                for u in range(max(1, num_users // 10)):
+                # HN_ESC4: ONLY admin users have write DACL
+                for u in admin_indices:
                     if random.random() < 0.5:
                         tmpl_acl_edges.append([u, t])
     if tmpl_acl_edges:
@@ -391,25 +428,30 @@ def generate_environment(
     else:
         data["User", "write_dacl", "Template"].edge_index = torch.empty((2, 0), dtype=torch.long)
 
-    # ── User → enrolls → Template ──
+    # ── User → enrolls → Template (ESC1 / General Enrollment) ──
     enroll_edges = []
-    for u in range(num_users):
-        is_admin = u < max(1, num_users // 10)
-        for t in range(num_templates):
-            tmpl = templates[t]
-            is_hn_esc1 = tmpl.get("hard_negative_type") == "ESC1"
-            
-            # Hard Negative ESC1: low-priv users CANNOT enroll (only admins can)
-            if is_hn_esc1:
-                if is_admin and random.random() < 0.4:
+    for t in range(num_templates):
+        tmpl = templates[t]
+        is_hn_esc1 = tmpl.get("hard_negative_type") == "ESC1"
+        is_hn_esc13_admin_only = (
+            tmpl.get("hard_negative_type") == "ESC13"
+            and tmpl.get("hn_variant") == "admin_only_enroll"
+        )
+
+        if is_hn_esc1 or is_hn_esc13_admin_only:
+            # Low-priv users blocked; only admins can enroll
+            for u in admin_indices:
+                if random.random() < 0.4:
                     enroll_edges.append([u, t])
-            else:
-                # Normal or other ESC: standard enroll permissions
-                if not is_admin and random.random() < 0.4:
+        else:
+            # Low-priv users can enroll
+            for u in lowpriv_indices:
+                if random.random() < 0.4:
                     enroll_edges.append([u, t])
-                elif is_admin and random.random() < 0.2:
+            for u in admin_indices:
+                if random.random() < 0.2:
                     enroll_edges.append([u, t])
-                    
+
     if enroll_edges:
         data["User", "enrolls", "Template"].edge_index = (
             torch.tensor(enroll_edges, dtype=torch.long).t().contiguous()
@@ -423,19 +465,27 @@ def generate_environment(
         torch.tensor(issued_edges, dtype=torch.long).t().contiguous()
     )
 
-    # ── Template → linked_to → Group ──
+    # ── Template → linked_to → Group (ESC13 vs HN_ESC13) ──
     policy_edges = []
     for t in range(num_templates):
         tmpl = templates[t]
         if tmpl["has_issuance_policy_oid"]:
             is_hn_esc13 = tmpl.get("hard_negative_type") == "ESC13"
-            # Real ESC13 has issuance policy linked to high-value group; HN_ESC13 does not!
             if not is_hn_esc13:
-                policy_edges.append([t, da_idx])
+                # Real ESC13: links to a random HIGH-VALUE group
+                target_g = random.choice(list(highvalue_indices))
+                policy_edges.append([t, target_g])
             else:
-                # HN_ESC13: Linked to a low-priv group (safe)
-                low_priv_group_idx = random.randint(max(1, num_groups // 5), num_groups - 1)
-                policy_edges.append([t, low_priv_group_idx])
+                hn_var = tmpl.get("hn_variant")
+                if hn_var == "low_value_group":
+                    # Links to a LOW-VALUE group
+                    target_g = random.choice(list(lowvalue_indices)) if lowvalue_indices else random.choice(list(highvalue_indices))
+                    policy_edges.append([t, target_g])
+                else:
+                    # Links to a high-value group, but low-priv enrollment is blocked
+                    target_g = random.choice(list(highvalue_indices))
+                    policy_edges.append([t, target_g])
+
     if policy_edges:
         data["Template", "linked_to", "Group"].edge_index = (
             torch.tensor(policy_edges, dtype=torch.long).t().contiguous()
@@ -454,13 +504,14 @@ def generate_environment(
         torch.tensor(comp_group_edges, dtype=torch.long).t().contiguous()
     )
 
-    return data, 0
+    return data, target_idx
 
 
 def generate_dataset(
     num_envs: int = 500,
     balanced: bool = True,
     seed: int = 42,
+    include_hard_negatives: bool = True,
 ) -> list[tuple[HeteroData, str, int]]:
     """Generate a full labeled dataset of synthetic AD environments."""
     random.seed(seed)
@@ -483,6 +534,7 @@ def generate_dataset(
             data, target_idx = generate_environment(
                 esc_class=esc_class,
                 seed=seed + env_id,
+                include_hard_negatives=include_hard_negatives,
             )
             dataset.append((data, esc_class, target_idx))
             env_id += 1
@@ -492,4 +544,4 @@ def generate_dataset(
 
 
 if __name__ == "__main__":
-    print("Dataset generator with hard negatives initialized.")
+    print("Dataset generator initialized with robust feature-based logic and hard negatives.")
