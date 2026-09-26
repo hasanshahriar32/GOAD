@@ -11,7 +11,7 @@
   #text(size: 17pt, weight: "bold")[CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense]
   
   #v(0.6cm)
-  #text(size: 11pt, weight: "bold")[Course Code: ECE 402 #h(0.8cm) Course Title: Project and Thesis]
+  #text(size: 11pt, weight: "bold")[Course Code: ECE 452 #h(0.8cm) Course Title: Project and Thesis]
   
   #v(0.6cm)
   #text(size: 11pt, weight: "bold")[Submitted By---] \
@@ -37,7 +37,7 @@
   #text(size: 10pt)[Dinajpur-5200, Bangladesh]
   
   #v(0.8cm)
-  #text(size: 11pt, weight: "bold")[February, 2025]
+  #text(size: 11pt, weight: "bold")[September, 2026]
 ]
 
 #pagebreak()
@@ -115,7 +115,7 @@ We further solemnly declare that:
 #grid(
   columns: (1fr, 1fr),
   [
-    *Date:* February, 2025 \
+    *Date:* September, 2026 \
     *Place:* HSTU, Dinajpur
   ],
   [
@@ -168,7 +168,7 @@ Finally, we owe an immeasurable debt of gratitude to our parents and families fo
   columns: (1fr, 1fr),
   [
     *HSTU, Dinajpur* \
-    *February, 2025*
+    *September, 2026*
   ],
   [
     *Student ID: 2002126* \
