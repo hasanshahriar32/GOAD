@@ -1,117 +1,78 @@
-#set document(title: "CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense", author: "Hasan Shahriar")
-#set page(paper: "a4", margin: (left: 3.2cm, right: 2.5cm, top: 2.5cm, bottom: 2.5cm), numbering: "1", number-align: center)
+#set document(title: "CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense", author: ("2002126", "2002138", "2102151"))
+#set page(paper: "a4", margin: (left: 3.0cm, right: 2.5cm, top: 2.5cm, bottom: 2.5cm))
 #set text(font: "Liberation Serif", size: 11pt, lang: "en")
-#set par(justify: true, leading: 0.85em, first-line-indent: 1.5em)
-#set heading(numbering: "1.1")
+#set par(justify: true, leading: 0.75em, first-line-indent: 1.5em)
 
 // ─────────────────────────────────────────────────────────────
-// 1. HSTU OFFICIAL COVER PAGE
+// 1. COVER PAGE (Exact replication of final(corrected).docx)
+// ─────────────────────────────────────────────────────────────
+#align(center)[
+  #v(0.2cm)
+  #text(size: 17pt, weight: "bold")[CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense]
+  
+  #v(0.6cm)
+  #text(size: 11pt, weight: "bold")[Course Code: ECE 402 #h(0.8cm) Course Title: Project and Thesis]
+  
+  #v(0.6cm)
+  #text(size: 11pt, weight: "bold")[Submitted By---] \
+  #v(0.15cm)
+  #text(size: 10.5pt)[
+    *Student ID: 2002126* #h(0.4cm) Level: 4, Semester: I \
+    *Student ID: 2002138* #h(0.4cm) Level: 4, Semester: I \
+    *Student ID: 2102151* #h(0.4cm) Level: 4, Semester: I \
+  ]
+  
+  #v(0.6cm)
+  #image("figures/hstu_logo.png", width: 2.6cm)
+  #v(0.5cm)
+  
+  #text(size: 11pt, weight: "bold")[Submitted To---] \
+  #v(0.15cm)
+  #text(size: 12pt, weight: "bold")[Department of Electronics and Communication Engineering] \
+  #text(size: 10pt)[in partial fulfillment of the requirements for the degree of] \
+  #text(size: 11pt, weight: "bold")[Bachelor of Science in Electronics and Communication Engineering]
+  
+  #v(0.5cm)
+  #text(size: 12pt, weight: "bold")[Hajee Mohammad Danesh Science and Technology University (HSTU)] \
+  #text(size: 10pt)[Dinajpur-5200, Bangladesh]
+  
+  #v(0.8cm)
+  #text(size: 11pt, weight: "bold")[February, 2025]
+]
+
+#pagebreak()
+
+// Set Roman numeral page numbering for Front Matter
+#set page(numbering: "i", number-align: center)
+#counter(page).update(1)
+
+// ─────────────────────────────────────────────────────────────
+// 2. CERTIFICATE PAGE (Exact replication of final(corrected).docx)
 // ─────────────────────────────────────────────────────────────
 #align(center)[
   #v(0.5cm)
-  #text(size: 18pt, weight: "bold")[CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense]
-  
-  #v(1.0cm)
-  #text(size: 12pt, weight: "bold")[Course Code: CSE 400 #h(1cm) Course Title: Project and Thesis]
-  
-  #v(1.2cm)
-  #text(size: 12pt, weight: "bold")[Submitted By---] \
-  #v(0.3cm)
-  #text(size: 13pt, weight: "bold")[Hasan Shahriar] \
-  #text(size: 11pt)[Student ID: 2002126 #h(0.5cm) Level: 4, Semester: II]
-  
-  #v(1.2cm)
-  #image("figures/hstu_logo.png", width: 2.8cm)
-  #v(1.0cm)
-  
-  #text(size: 12pt, weight: "bold")[Submitted To---] \
-  #v(0.3cm)
-  #text(size: 13pt, weight: "bold")[Department of Computer Science and Engineering] \
-  #text(size: 11pt)[in partial fulfillment of the requirements for the degree of] \
-  #text(size: 12pt, weight: "bold")[Bachelor of Science in Computer Science and Engineering]
-  
-  #v(1.0cm)
-  #text(size: 13pt, weight: "bold")[Hajee Mohammad Danesh Science and Technology University (HSTU)] \
-  #text(size: 11pt)[Dinajpur-5200, Bangladesh]
-  
-  #v(1.2cm)
-  #text(size: 11pt, weight: "bold")[September, 2026]
+  #text(size: 16pt, weight: "bold")[Certificate]
 ]
 
-#pagebreak()
+#v(0.8cm)
+This is to certify that the thesis work entitled *“CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense”* is carried by the following ID numbers: *2002126, 2002138, 2102151*. To the fullest extent of our knowledge, we assert that this undertaking is an authentic and original contribution to the field. We certify that this thesis has not been previously submitted for the award of any other degree or diploma at this or any other institution.
 
-// ─────────────────────────────────────────────────────────────
-// 2. INNER TITLE PAGE
-// ─────────────────────────────────────────────────────────────
-#align(center)[
-  #v(1.0cm)
-  #text(size: 18pt, weight: "bold")[CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense]
-  
-  #v(1.5cm)
-  #text(size: 11.5pt)[A Thesis Submitted to the Department of Computer Science and Engineering \
-  Hajee Mohammad Danesh Science and Technology University \
-  in Partial Fulfillment of the Requirements for the Degree of] \
-  #v(0.3cm)
-  #text(size: 13pt, weight: "bold")[Bachelor of Science in Computer Science and Engineering]
-  
-  #v(2.0cm)
-  #text(size: 12pt, weight: "bold")[Author:] \
-  #text(size: 13pt, weight: "bold")[Hasan Shahriar] \
-  #text(size: 11pt)[Student ID: 2002126] \
-  #text(size: 11pt)[Department of Computer Science and Engineering]
-  
-  #v(2.0cm)
-  #text(size: 12pt, weight: "bold")[Supervised By:] \
-  #text(size: 13pt, weight: "bold")[Professor / Associate Professor] \
-  #text(size: 11pt)[Department of Computer Science and Engineering \
-  Hajee Mohammad Danesh Science and Technology University]
-  
-  #v(2.5cm)
-  #image("figures/hstu_logo.png", width: 2.2cm) \
-  #v(0.3cm)
-  #text(size: 12pt, weight: "bold")[Hajee Mohammad Danesh Science and Technology University (HSTU)] \
-  #text(size: 11pt)[Dinajpur-5200, Bangladesh \
-  September, 2026]
-]
+#v(1.8cm)
+*Signed by the Final Examining committee:*
 
-#pagebreak()
-
-// ─────────────────────────────────────────────────────────────
-// 3. CERTIFICATE PAGE
-// ─────────────────────────────────────────────────────────────
-#align(center)[
-  #text(size: 18pt, weight: "bold")[Certificate]
-]
-
-#v(1.0cm)
-This is to certify that the thesis work entitled *“CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense”* is carried out by the following student:
-
-#align(center)[
-  #text(size: 12pt, weight: "bold")[Hasan Shahriar #h(1cm) (Student ID: 2002126)]
-]
-
-in partial fulfillment of the requirements for the degree of *Bachelor of Science in Computer Science and Engineering* at Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur, Bangladesh.
-
-#v(0.5cm)
-To the fullest extent of our knowledge, we assert that this undertaking is an authentic, original contribution to the field of cybersecurity and machine learning. We certify that this thesis has not been previously submitted for the award of any other degree, diploma, fellowship, or associateship at this or any other institution.
-
-#v(2.5cm)
-*Signed by the Final Examining Committee:*
-
-#v(2.0cm)
+#v(1.2cm)
 #grid(
   columns: (1fr, 1fr),
-  row-gutter: 2.5cm,
+  row-gutter: 1.8cm,
   [
     .................................................... \
     *Chairman* \
-    Examination Committee \
-    Department of CSE, HSTU
+    Examination Committee
   ],
   [
     .................................................... \
     *Supervisor* \
-    Department of CSE, HSTU
+    Department of ECE, HSTU
   ],
   [
     .................................................... \
@@ -121,13 +82,12 @@ To the fullest extent of our knowledge, we assert that this undertaking is an au
   [
     .................................................... \
     *Co-Supervisor* \
-    Department of CSE, HSTU
+    Department of ECE, HSTU
   ],
   [
     .................................................... \
     *Internal Member* \
-    Examination Committee \
-    Department of CSE, HSTU
+    Examination Committee
   ],
   []
 )
@@ -135,113 +95,117 @@ To the fullest extent of our knowledge, we assert that this undertaking is an au
 #pagebreak()
 
 // ─────────────────────────────────────────────────────────────
-// 4. CANDIDATE'S DECLARATION
+// 3. CANDIDATE'S DECLARATION
 // ─────────────────────────────────────────────────────────────
 #align(center)[
-  #text(size: 18pt, weight: "bold")[Candidate's Declaration]
+  #v(0.5cm)
+  #text(size: 16pt, weight: "bold")[Candidate's Declaration]
 ]
 
-#v(1.0cm)
-I hereby declare that the research work presented in this thesis entitled *“CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense”* is the outcome of an original investigation conducted by me under the supervision of the Department of Computer Science and Engineering, Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur-5200, Bangladesh.
+#v(0.8cm)
+We hereby declare that the research work presented in this thesis entitled *“CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense”* is the outcome of an original investigation conducted by us under the supervision of the Department of Electronics and Communication Engineering, Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur-5200, Bangladesh.
 
-#v(0.5cm)
-I further solemnly declare that:
+#v(0.4cm)
+We further solemnly declare that:
 1. This work, or any part thereof, has not been submitted previously to any university or institution for the award of any degree, diploma, or other academic qualification.
 2. All material, concepts, and algorithms taken from the published or unpublished work of others have been fully and properly acknowledged and cited in accordance with standard academic referencing protocols.
 3. All synthetic datasets, forensic auditing scripts, empirical benchmark routines, and graph learning models described herein were constructed with rigorous adherence to ethical scientific standards and academic integrity.
 
-#v(3.0cm)
+#v(2.0cm)
 #grid(
   columns: (1fr, 1fr),
   [
-    *Date:* September, 2026 \
+    *Date:* February, 2025 \
     *Place:* HSTU, Dinajpur
   ],
   [
     .................................................... \
-    *Hasan Shahriar* \
-    Student ID: 2002126 \
-    Level: 4, Semester: II \
-    Department of CSE, HSTU
+    *Student ID: 2002126* \
+    *Student ID: 2002138* \
+    *Student ID: 2102151* \
+    Department of ECE, HSTU
   ]
 )
 
 #pagebreak()
 
 // ─────────────────────────────────────────────────────────────
-// 5. DEDICATION & ACKNOWLEDGEMENTS
+// 4. DEDICATION & ACKNOWLEDGEMENTS
 // ─────────────────────────────────────────────────────────────
 #align(center + horizon)[
-  #text(size: 16pt, weight: "bold")[Dedication] \
-  #v(1.5cm)
-  #text(size: 12pt, style: "italic")[
-    This thesis is dedicated to my beloved parents, \
+  #text(size: 15pt, weight: "bold")[Dedication] \
+  #v(1.0cm)
+  #text(size: 11pt, style: "italic")[
+    This thesis is dedicated to our beloved parents, \
     whose endless sacrifices, prayers, and unconditional love \
-    have been the guiding light of my life. \
+    have been the guiding light of our lives. \
     \
-    And to all my teachers and mentors, \
-    who inspired my passion for computer science and scientific discovery.
+    And to all our respected teachers and mentors, \
+    who inspired our passion for engineering and scientific discovery.
   ]
 ]
 
 #pagebreak()
 
 #align(center)[
-  #text(size: 18pt, weight: "bold")[Acknowledgements]
+  #v(0.5cm)
+  #text(size: 16pt, weight: "bold")[Acknowledgements]
 ]
 
-#v(0.8cm)
-First and foremost, all praises are due to Almighty Allah, the Most Merciful and Most Beneficent, who bestowed upon me the health, strength, patience, and intellect required to complete this thesis research successfully.
+#v(0.6cm)
+First and foremost, all praises are due to Almighty Allah, the Most Merciful and Most Beneficent, who bestowed upon us the health, strength, patience, and intellect required to complete this project and thesis research successfully.
 
-I express my profound gratitude, respect, and deepest indebtedness to my respected thesis supervisor in the Department of Computer Science and Engineering, Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur. Their exemplary guidance, insightful suggestions, constant encouragement, and critical academic reviews were invaluable throughout the formulation, mathematical derivation, experimental validation, and manuscript preparation of this research.
+We express our profound gratitude, respect, and deepest indebtedness to our respected thesis supervisor and co-supervisor in the Department of Electronics and Communication Engineering, Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur. Their exemplary guidance, insightful suggestions, constant encouragement, and critical academic reviews were invaluable throughout the formulation, mathematical derivation, experimental validation, and manuscript preparation of this research.
 
-I am deeply thankful to the Chairman and all distinguished faculty members of the Department of Computer Science and Engineering, HSTU, for providing a vibrant academic environment, high-quality computational facilities, and continuous moral support during my undergraduate curriculum.
+We are deeply thankful to the Chairman and all distinguished faculty members of the Department of Electronics and Communication Engineering, HSTU, for providing a vibrant academic environment, high-quality computational facilities, and continuous moral support during our undergraduate curriculum.
 
-My sincere gratitude goes to the global open-source cybersecurity and machine learning research communities. In particular, I acknowledge the pioneering work of Will Schroeder and Lee Christensen (SpecterOps) for uncovering the ADCS attack surface; the creators of BloodHound, SharpHound, and Certipy for their foundational offensive graph tools; the developers of the Game of Active Directory (GOAD) laboratory; and the core contributors of PyTorch Geometric and NetworkX.
+Our sincere gratitude goes to the global open-source cybersecurity and machine learning research communities. In particular, we acknowledge the pioneering work of Will Schroeder and Lee Christensen (SpecterOps) for uncovering the ADCS attack surface; the creators of BloodHound, SharpHound, and Certipy for their foundational offensive graph tools; the developers of the Game of Active Directory (GOAD) laboratory; and the core contributors of PyTorch Geometric and NetworkX.
 
-Finally, I owe an immeasurable debt of gratitude to my family for their unending sacrifices, patience, and blessings throughout my university education. I also express warm appreciation to my batchmates, lab peers, and friends whose intellectual discussions, camaraderie, and encouragement enriched every stage of this thesis journey.
+Finally, we owe an immeasurable debt of gratitude to our parents and families for their unending sacrifices, patience, and blessings throughout our university education. We also express warm appreciation to our batchmates, lab peers, and friends whose intellectual discussions, camaraderie, and encouragement enriched every stage of this thesis journey.
 
-#v(1.5cm)
+#v(1.2cm)
 #grid(
   columns: (1fr, 1fr),
   [
     *HSTU, Dinajpur* \
-    *September, 2026*
+    *February, 2025*
   ],
   [
-    *Hasan Shahriar* \
-    Student ID: 2002126 \
-    Department of CSE, HSTU
+    *Student ID: 2002126* \
+    *Student ID: 2002138* \
+    *Student ID: 2102151* \
+    Department of ECE, HSTU
   ]
 )
 
 #pagebreak()
 
 // ─────────────────────────────────────────────────────────────
-// 6. ABSTRACT
+// 5. ABSTRACT (Fitted cleanly on a single page)
 // ─────────────────────────────────────────────────────────────
 #align(center)[
-  #text(size: 18pt, weight: "bold")[Abstract]
+  #v(0.3cm)
+  #text(size: 16pt, weight: "bold")[Abstract]
 ]
 
-#v(0.8cm)
-Active Directory Certificate Services (ADCS) is deployed in over 90% of modern enterprise networks to administer Public Key Infrastructure (PKI) credentials for authentication and encryption. However, subtle architectural misconfigurations across certificate templates, Access Control Lists (ACLs), and issuance policies frequently introduce catastrophic privilege escalation vectors (designated ESC1 through ESC15), enabling unprivileged actors to compromise entire Active Directory domains. Existing auditing utilities (such as Certipy, BloodHound, and PSPKIAudit) are predominantly rule-based and signature-driven: they evaluate isolated template configuration flags via static heuristics without learning from global environment topology, context-dependent reachability, or complex multi-hop delegation chains.
+#v(0.4cm)
+Active Directory Certificate Services (ADCS) is deployed across more than 90% of enterprise networks to administer Public Key Infrastructure (PKI) credentials for authentication and encryption. However, subtle architectural misconfigurations across certificate templates, Access Control Lists (ACLs), and issuance policies introduce catastrophic privilege escalation vectors (designated ESC1 through ESC15), enabling unprivileged actors to compromise entire Active Directory domains. Existing auditing utilities (Certipy, BloodHound, PSPKIAudit) are predominantly rule-based and signature-driven: they evaluate isolated template configuration flags via static heuristics without learning from global environment topology, reachability, or multi-hop delegation chains.
 
-In this thesis, we introduce *CertGraph*, the first heterogeneous Graph Neural Network architecture designed specifically for structural vulnerability detection across Active Directory Certificate Services attack graphs. We formalize enterprise identity infrastructure as a typed, directed, heterogeneous multigraph $G = (V, E, cal(T)_V, cal(T)_E)$ and employ a Heterogeneous Graph Attention Network (Hetero-GAT) equipped with relation-specific message passing and multi-head attention mechanisms to perform inductive node-level classification over certificate templates.
+This thesis introduces *CertGraph*, the first heterogeneous Graph Neural Network architecture designed for structural vulnerability detection across Active Directory Certificate Services attack graphs. We formalize enterprise identity infrastructure as a typed, directed, heterogeneous multigraph $G = (V, E, cal(T)_V, cal(T)_E)$ and deploy a Heterogeneous Graph Attention Network (Hetero-GAT) equipped with relation-specific message passing and multi-head attention mechanisms to perform inductive node-level classification over certificate templates.
 
-Crucially, our investigation was grounded in a rigorous, end-to-end *Forensic Audit* of experimental methodology. We uncovered and eliminated critical structural illusions common to security machine learning research: synthetic positional index leakage (where administrative entities occupy predictable array offsets), baseline information asymmetry (where flat ML baselines are deprived of graph topological features), and test-set memorization under synthetic hard negatives. We mathematically prove that in directed heterogeneous identity graphs containing source-only entities (e.g., Users and Computers with zero in-degree), residual skip-connections are indispensable; without them, message-passing aggregation triggers catastrophic representation collapse ($h_v^((l+1)) = bold(0)$), causing Macro-F1 to collapse from $0.9986$ to $0.4768$ ($p = 1.31 times 10^(-6)$).
+Crucially, our investigation was grounded in an end-to-end *Forensic Audit* of experimental methodology. We uncovered and eliminated critical structural illusions: synthetic positional index leakage (where administrative entities occupy predictable array offsets), baseline information asymmetry (where flat ML baselines are deprived of graph topological features), and test-set memorization under synthetic hard negatives. We mathematically prove that in directed heterogeneous identity graphs containing source-only entities (Users and Computers with zero in-degree), residual skip-connections are indispensable; without them, message-passing aggregation triggers catastrophic representation collapse ($h_v^((l+1)) = bold(0)$), causing Macro-F1 to collapse from $0.9986$ to $0.4768$ ($p = 1.31 times 10^(-6)$).
 
-On a sanitized, leakage-free benchmark of 700 enterprise environments evaluated under 5-fold cross-validation, CertGraph achieves a Macro-F1 score of *0.9986 ± 0.0029*, substantially outperforming signature-based heuristics ($0.7791 plus.minus 0.0247, p < 10^(-4)$) and flat ML ($0.8600 plus.minus 0.0130, p < 10^(-4)$). To probe model reliability, we formulated a novel *Zero-Shot Adversarial Hard Negative* benchmark where models trained exclusively on benign environments are tested against non-exploitable templates bearing vulnerable flags. Under this out-of-distribution shift, all neural models—including GNNs—succumb to shortcut learning, collapsing to $1.59%$ accuracy by relying on template flag semantics rather than verifying path reachability. Conversely, symbolic graph traversal (BloodHound BFS) retains $84.13%$ accuracy.
+On a sanitized, leakage-free benchmark of 700 enterprise environments evaluated under 5-fold cross-validation, CertGraph achieves a Macro-F1 score of *0.9986 ± 0.0029*, substantially outperforming signature heuristics ($0.7791 plus.minus 0.0247, p < 10^(-4)$) and flat ML ($0.8600 plus.minus 0.0130, p < 10^(-4)$). To probe model reliability, we formulated a novel *Zero-Shot Adversarial Hard Negative* benchmark where models trained on benign environments are tested against non-exploitable templates bearing vulnerable flags. Under this shift, neural models—including GNNs—succumb to shortcut learning, collapsing to $1.59%$ accuracy by relying on template flags rather than verifying path reachability. Conversely, symbolic graph traversal (BloodHound BFS) retains $84.13%$ accuracy.
 
-These findings provide the first empirical and theoretical justification for a *Neuro-Symbolic Hybrid Architecture* in enterprise identity defense: leveraging fast relational GNNs for heuristic risk prioritization ($O(1)$ amortized screening) coupled with symbolic graph algorithms for deterministic exploitability proofs. Finally, we formulate the autonomous edge-severing defense problem as a Stackelberg security game and mathematically prove its NP-hardness via reduction to the Directed Multi-way Cut problem.
+These findings provide the first empirical justification for a *Neuro-Symbolic Hybrid Architecture* in enterprise identity defense: leveraging fast relational GNNs for heuristic risk prioritization ($O(1)$ amortized screening) coupled with symbolic graph algorithms for deterministic exploitability proofs. Finally, we formulate the autonomous edge-severing defense problem as a Stackelberg security game and mathematically prove its NP-hardness via reduction to the Directed Multi-way Cut problem.
 
-#v(0.8cm)
+#v(0.4cm)
 *Keywords:* Active Directory Certificate Services (ADCS), Graph Attention Networks, Heterogeneous Graphs, Identity and Access Management, Neuro-Symbolic Security, Shortcut Learning, Autonomous Cyber Defense.
 
 #pagebreak()
 
 // ─────────────────────────────────────────────────────────────
-// 7. PRELIMINARY LISTS
+// 6. PRELIMINARY LISTS
 // ─────────────────────────────────────────────────────────────
 #outline(title: "Table of Contents", depth: 3, indent: auto)
 #pagebreak()
@@ -251,6 +215,7 @@ These findings provide the first empirical and theoretical justification for a *
 #pagebreak()
 
 #heading(numbering: none)[List of Acronyms]
+#v(0.5cm)
 #table(
   columns: (1fr, 3fr),
   align: (left, left),
@@ -266,6 +231,7 @@ These findings provide the first empirical and theoretical justification for a *
   [*DACL*], [Discretionary Access Control List],
   [*DC*], [Domain Controller],
   [*DDQN*], [Dueling Double Deep Q-Network],
+  [*ECE*], [Electronics and Communication Engineering],
   [*EKU*], [Extended Key Usage],
   [*ESC*], [Escalation Vector (ADCS Misconfiguration Primitive)],
   [*GAT*], [Graph Attention Network],
@@ -296,8 +262,11 @@ These findings provide the first empirical and theoretical justification for a *
 #pagebreak()
 
 // ─────────────────────────────────────────────────────────────
-// MAIN CHAPTERS
+// MAIN CHAPTERS (Arabic page numbering)
 // ─────────────────────────────────────────────────────────────
+#set page(numbering: "1", number-align: center)
+#counter(page).update(1)
+#set heading(numbering: "1.1")
 
 = Introduction
 
@@ -509,7 +478,7 @@ We mathematically prove that finding the minimal disruption edge set $E_"cut"$ t
 
 #heading(numbering: none)[Appendix: Formal Mathematical Proofs]
 
-== Proof of Theorem 1: Representation Collapse of Source-Only Entities
+#heading(level: 2, numbering: none)[Proof of Theorem 1: Representation Collapse of Source-Only Entities]
 Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous graph. Let $cal(T)_"source"$ denote the set of source-only node types with $d_"in"(v) = 0$. In an $L$-layer network without skip connections:
 $ h_v^((l)) = sigma(sum_(r) plus.circle_(u in cal(N)_r (v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1))) $
 Because $cal(N)_r (v) = emptyset$, the aggregation operator returns the identity $plus.circle_(u in emptyset) (dot.c) = bold(0)$. Since $sigma(bold(0)) = bold(0)$, we obtain $h_v^((l)) = bold(0)$ for all $l >= 1$. The gradient $(partial cal(L)) / (partial x_v) = bold(0)$ vanishes identically.
@@ -517,7 +486,8 @@ With additive skip connections $tilde(h)_v^((l)) = h_v^((l)) + W_"skip"^((l)) ti
 $ tilde(h)_v^((L)) = (product_(k=1)^L W_"skip"^((k))) x_v eq.not bold(0) $
 preserving input feature sensitivity and gradient backpropagation.
 
-== Proof of Theorem 2: NP-Hardness of Minimal-Capacity Edge-Severing
+#v(0.5cm)
+#heading(level: 2, numbering: none)[Proof of Theorem 2: NP-Hardness of Minimal-Capacity Edge-Severing]
 Membership in NP is immediate via polynomial-time path verification. We reduce from Directed Multi-way Cut. Given terminal set $X = {x_1, dots, x_k}$, construct source set $S = {s_1, dots, s_k}$ and target set $T = {t_1, dots, t_k}$ with infinite-capacity edges $(t_i, s_i)$. A cut of capacity $<= K$ severs all $s_i arrow.r t_j$ paths if and only if it disconnects all distinct terminal pairs $x_i arrow.r x_j$ in the Multi-way Cut instance. Thus, ADESDP is NP-complete, and the optimization problem is NP-hard.
 
 #pagebreak()

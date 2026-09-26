@@ -87,7 +87,7 @@ For each candidate template $t \in \mathcal{Q}_{\text{suspect}}$, a symbolic gra
 \subsection{Algorithmic Specification}
 Algorithm~\ref{alg:neuro_symbolic} formalizes this cooperative workflow.
 
-\begin{lstlisting}[language=Python,caption={Two-tier neuro-symbolic defense pipeline.}]
+\begin{lstlisting}[language=Python,caption={Two-tier neuro-symbolic defense pipeline.},label={alg:neuro_symbolic}]
 def neuro_symbolic_auditor(graph, suspect_threshold=0.5):
     # Tier 1: Fast GNN screening (tensor inference)
     logits = certgraph_model(graph)
