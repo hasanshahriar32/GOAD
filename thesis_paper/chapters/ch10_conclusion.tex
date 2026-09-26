@@ -15,12 +15,12 @@ This thesis has presented \textbf{CertGraph}, the first comprehensive heterogene
 
 \section{Synthesis: Answers to Research Questions}
 We revisit the four central research questions posed in Chapter~\ref{ch:introduction}:
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{RQ1 (Relational Necessity):} \textit{Yes.} On in-distribution data, CertGraph achieves Macro-F1 = $\mathbf{0.9986 \pm 0.0029}$, substantially outperforming signature-based heuristics ($0.7791, p < 10^{-4}$) and flat ML ($0.8600, p < 10^{-4}$). GNN relational modeling successfully captures cross-object DACL and issuance policy chains that flat classifiers cannot represent.
     \item \textbf{RQ2 (Architectural Dynamics):} \textit{Residual skip connections are mathematically indispensable.} In directed graphs where authorization originates at source-only nodes, standard neighborhood aggregation destroys input identities. Skip connections preserve gradient flow and feature identity, preventing representation collapse.
     \item \textbf{RQ3 (Adversarial Robustness and Shortcut Learning):} \textit{Neural GNNs alone are not robust to adversarial hard negatives.} GNNs default to template flag shortcuts during training. When flags indicate vulnerability but graph paths are severed, GNNs produce false positives ($1.59\%$ zero-shot accuracy).
     \item \textbf{RQ4 (Optimal Defense Paradigm):} \textit{A two-tier neuro-symbolic hybrid.} Fast neural screening should be deployed to rank and prioritize suspicious templates, while symbolic graph search must be retained as an exact verification oracle.
-\end{itemize}
+\end{enumerate}
 
 \section{Honest Limitations to Acknowledge}
 In adherence to scientific rigor, we explicitly acknowledge four operational limitations of this research:

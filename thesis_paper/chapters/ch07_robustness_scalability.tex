@@ -32,31 +32,31 @@ In real-world security operations, Active Directory telemetry is frequently nois
 
 \subsection{Edge Perturbation (Collection Gaps)}
 We simulated incomplete BloodHound collections by randomly deleting $5\%, 10\%, 20\%$, and $30\%$ of edges from the evaluation graphs. As illustrated in Figure~\ref{fig:robustness_fig}, CertGraph demonstrates exceptional resilience:
-\begin{itemize}
+\begin{enumerate}
     \item $0\%$ edge deletion: Macro-F1 = $\mathbf{1.0000}$
     \item $10\%$ edge deletion: Macro-F1 = $\mathbf{0.9882}$
     \item $20\%$ edge deletion: Macro-F1 = $\mathbf{0.9754}$
     \item $30\%$ edge deletion: Macro-F1 = $\mathbf{0.9637}$
-\end{itemize}
+\end{enumerate}
 Even when nearly a third of all authorization relationships are uncollected, CertGraph maintains over $96\%$ Macro-F1, demonstrating robust fault tolerance.
 
 \subsection{Feature Noise Perturbation}
 Conversely, we evaluated sensitivity to attribute corruption by randomly flipping $5\%, 10\%$, and $20\%$ of binary template configuration flags:
-\begin{itemize}
+\begin{enumerate}
     \item $5\%$ bit flip: Macro-F1 = $\mathbf{0.8412}$
     \item $10\%$ bit flip: Macro-F1 = $\mathbf{0.7105}$
     \item $20\%$ bit flip: Macro-F1 = $\mathbf{0.5899}$
-\end{itemize}
+\end{enumerate}
 The rapid degradation under feature corruption demonstrates that CertGraph genuinely relies on local configuration semantics in conjunction with graph topology, rather than ignoring node attributes.
 
 \subsection{Data Efficiency and Learning Curves}
 We evaluated how rapidly CertGraph converges as a function of the number of training domains:
-\begin{itemize}
+\begin{enumerate}
     \item 40 domains: Macro-F1 = $\mathbf{0.9274}$
     \item 80 domains: Macro-F1 = $\mathbf{0.9847}$
     \item 160 domains: Macro-F1 = $\mathbf{0.9899}$
     \item 320 domains: Macro-F1 = $\mathbf{1.0000}$
-\end{itemize}
+\end{enumerate}
 The model reaches near-optimal performance ($F1 > 0.98$) with fewer than 100 training domains, establishing its practical feasibility for enterprise deployment without requiring massive labeled datasets.
 
 \section{Computational Complexity and Scalability Benchmarking}

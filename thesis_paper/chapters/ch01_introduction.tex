@@ -27,12 +27,12 @@ To date, machine learning—and specifically \textbf{Graph Neural Networks (GNNs
 \section{Research Questions and Thesis Objectives}
 This thesis addresses this critical gap by exploring whether relational representation learning can automate, generalize, and prioritize the detection of complex ADCS privilege escalation vulnerabilities. Specifically, we investigate four central research questions:
 
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{RQ1 (Relational Necessity):} Can a heterogeneous Graph Attention Network effectively learn to classify subtle ADCS vulnerability classes (ESC1–ESC13) by jointly modeling template configurations and directory authorization topology?
     \item \textbf{RQ2 (Architectural Dynamics):} How do the directed, asymmetric topological properties of Active Directory authorization graphs impact standard message passing, and what architectural inductive biases (e.g., residual skip connections) are mathematically necessary to prevent representation collapse?
     \item \textbf{RQ3 (Adversarial Robustness and Shortcut Learning):} When subjected to rigorous out-of-distribution adversarial hard negatives (templates bearing vulnerable flags but lacking valid authorization paths), do neural security models genuinely evaluate graph reachability, or do they succumb to feature-level shortcut learning?
     \item \textbf{RQ4 (Optimal Defense Paradigm):} Given the trade-offs between inductive statistical pattern recognition and deterministic symbolic graph algorithms, what is the optimal architectural paradigm for enterprise-grade autonomous identity defense?
-\end{itemize}
+\end{enumerate}
 
 \section{Summary of Key Contributions}
 The primary contributions of this thesis are as follows:

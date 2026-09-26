@@ -26,12 +26,12 @@ To prevent the autonomous defender from succumbing to reward hacking (catastroph
 U_D(a_D, a_A) = R_{\text{sec}}(G') - \lambda_{\text{ops}} \sum_{e \in E_{\text{cut}}} c(e) - \beta \cdot \mathbb{I}(t \in \operatorname{Reachable}(S, G'))
 \end{equation}
 where:
-\begin{itemize}
+\begin{enumerate}
     \item $R_{\text{sec}}(G')$ is the security reward proportional to the reduction in attack surface blast radius.
     \item $\sum_{e \in E_{\text{cut}}} c(e)$ is the operational penalty representing business workflow disruption.
     \item $\beta$ is a catastrophic penalty applied if the attacker successfully retains any valid path to a Tier-0 asset $t \in T$.
     \item $\lambda_{\text{ops}} > 0$ is a regularization hyperparameter balancing security against business continuity.
-\end{itemize}
+\end{enumerate}
 
 \section{Theoretical Complexity: The NP-Hardness of Minimal-Capacity Edge-Severing}
 A critical theoretical question confronting autonomous identity defense is: can an algorithm compute the optimal edge-severing strategy in polynomial time?

@@ -85,10 +85,10 @@ The removal of residual skip connections triggers a catastrophic drop in Macro-F
 
 \section{The Zero-Shot Adversarial Hard Negative Benchmark}
 To determine whether learned models verify topological reachability or exploit feature-level shortcuts, we executed an adversarial zero-shot benchmark:
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{Training Set:} 1,400 clean environments containing zero hard negative samples.
     \item \textbf{Test Set:} 63 out-of-distribution Hard Negative environments. Each hard negative template has ESC configuration flags enabled (e.g., \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} or policy links) but has all incoming \texttt{Enroll} or DACL permissions strictly blocked. The true ground-truth label is \texttt{Safe}.
-\end{itemize}
+\end{enumerate}
 
 \begin{table}[ht]
 \centering

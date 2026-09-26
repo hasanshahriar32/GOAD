@@ -10,19 +10,19 @@ An Active Directory environment is defined as a 6-tuple:
 G = (V, E, \mathcal{T}_V, \mathcal{T}_E, \phi_V, \psi_E)
 \end{equation}
 where:
-\begin{itemize}
+\begin{enumerate}
     \item $V = \bigcup_{\tau \in \mathcal{T}_V} V_\tau$ is the set of all directory entities (vertices).
     \item $E \subseteq V \times \mathcal{T}_E \times V$ is the multiset of directed authorization and administrative relationships (edges).
     \item $\mathcal{T}_V = \{\text{User}, \text{Computer}, \text{Group}, \text{Template}, \text{EnterpriseCA}\}$ represents the discrete set of node entity types.
     \item $\mathcal{T}_E = \{\text{MemberOf}, \text{Enroll}, \text{GenericAll}, \text{WriteDacl}, \text{WriteOwner}, \text{PublishedTo}, \text{ManageCA}, \text{LinksPolicy}\}$ represents the discrete set of relation types.
     \item $\phi_V: V \to \mathcal{T}_V$ is a type-mapping function assigning each vertex $v \in V$ its structural type $\tau(v)$.
     \item $\psi_E: E \to \mathcal{T}_E$ is a relation-mapping function assigning each edge $e = (u, r, v)$ its relation type $r$.
-\end{itemize}
+\end{enumerate}
 \end{definition}
 
 \subsection{Node Feature Vector Spaces}
 Each vertex $v \in V$ is assigned an initial feature vector $x_v \in \mathbb{R}^{d_{\tau(v)}}$ encoding intrinsic local attributes extracted from LDAP:
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{Template Nodes ($x_{\text{Template}} \in \mathbb{R}^{10}$):} Feature vectors capture binary configuration flags:
     \begin{equation}
     x_{\text{Template}} = [f_{\text{supplies\_subject}}, f_{\text{client\_auth}}, f_{\text{any\_purpose}}, f_{\text{agent\_eku}}, f_{\text{no\_security\_ext}}, f_{\text{schema\_v1}}, f_{\text{requires\_approval}}, f_{\text{has\_policy\_link}}, f_{\text{has\_dangerous\_dacl}}, f_{\text{is\_published}}]^T
@@ -39,7 +39,7 @@ Each vertex $v \in V$ is assigned an initial feature vector $x_v \in \mathbb{R}^
     \begin{equation}
     x_{\text{CA}} = [f_{\text{is\_root\_ca}}, f_{\text{allows\_user\_spec}}, f_{\text{enforces\_encryption}}]^T
     \end{equation}
-\end{itemize}
+\end{enumerate}
 
 \subsection{Relational Adjacency and Canonical Relations}
 For each relation type $r = (\tau_s, \text{rel}, \tau_t) \in \mathcal{T}_E$, the directed adjacency matrix $A_r \in \{0, 1\}^{|V_{\tau_s}| \times |V_{\tau_t}|}$ satisfies:

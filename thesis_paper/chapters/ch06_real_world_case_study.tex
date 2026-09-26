@@ -43,21 +43,21 @@ To benchmark CertGraph against traditional heuristic auditing tools (Certipy) on
 \end{table}
 
 \paragraph{Case Study Analysis:}
-\begin{itemize}
+\begin{enumerate}
     \item \textbf{Detection of Novel Vector (ESC13):} Standard Certipy heuristic rules failed to detect the ESC13 attack vector because its signature database lacked support for \texttt{msPKI-Certificate-Policy} OID mapping logic. CertGraph successfully identified ESC13 by tracing the 2-hop path through the template's policy link to the Tier-0 group.
     \item \textbf{False Positive Elimination on Hard Negatives:} On \texttt{HN\_ESC1} (configured with \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} but restricted to administrative enrollers), Certipy triggered a critical severity false positive. CertGraph correctly evaluated the template as \texttt{Safe}, recognizing that no unprivileged user possessed an enrollment path.
-\end{itemize}
+\end{enumerate}
 
 \section{Temporal Validation Across Independent Collection Dates}
 A major vulnerability in machine learning evaluations is sensitivity to temporal environmental drift. To provide rigorous temporal separation, we conducted an independent data collection against the running GOAD virtual machines on July 2, 2026—several weeks after the initial baseline collection on June 15, 2026.
 
 CertGraph was evaluated zero-shot against the freshly collected GOAD topologies without fine-tuning:
-\begin{itemize}
+\begin{enumerate}
     \item \texttt{sevenkingdoms.local}: 7/7 correct ($100.0\%$).
     \item \texttt{north.sevenkingdoms.local}: 7/7 correct ($100.0\%$).
     \item \texttt{essos.local}: 7/7 correct ($100.0\%$).
     \item \textbf{Overall Fresh Temporal Accuracy:} $\mathbf{21/21}$ ($\mathbf{100.0\%}$).
-\end{itemize}
+\end{enumerate}
 This confirms that the model's learned relational representations are stable across temporal snapshot variations and collection artifacts.
 
 \section{External Community Benchmark Validation}

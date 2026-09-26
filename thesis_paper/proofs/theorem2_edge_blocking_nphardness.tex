@@ -32,11 +32,11 @@ We prove NP-completeness by showing that:
 
 \paragraph{Part 1: Membership in NP.}
 Given a candidate edge set $E_{\text{cut}} \subseteq E$:
-\begin{itemize}
+\begin{enumerate}
     \item We compute the sum of edge costs $\sum_{e \in E_{\text{cut}}} c(e)$ in $O(|E_{\text{cut}}|)$ time and verify if it is $\le K$.
     \item We construct the residual graph $G' = (V, E \setminus E_{\text{cut}})$ in $O(|V| + |E|)$ time.
     \item For each pair $(s, t) \in S \times T$, we run Breadth-First Search (BFS) or Depth-First Search (DFS) on $G'$ to verify that $t$ is unreachable from $s$. This requires $O(|S| \cdot (|V| + |E|))$ time.
-\end{itemize}
+\end{enumerate}
 Because all verification steps complete in deterministic polynomial time with respect to the input size, $\text{ADESDP} \in \text{NP}$.
 
 \paragraph{Part 2: Polynomial-Time Reduction from Directed Multi-way Cut.}
@@ -55,17 +55,17 @@ Given an arbitrary instance $\langle H, w, X, W \rangle$ of the Directed Multi-w
     Set the attacker source set as $S = \{s_1, \dots, s_k\}$ and the administrative target set as $T = \{t_1, \dots, t_k\}$.
 
     \item \textbf{Edge and Cost Construction:}
-    \begin{itemize}
+    \begin{enumerate}
         \item For every original directed edge $(u, v) \in E_H$:
-        \begin{itemize}
+        \begin{enumerate}
             \item If $u \notin X$ and $v \notin X$, add $(u, v)$ to $E$ with cost $c(u, v) = w(u, v)$.
             \item If $u = x_i \in X$ and $v \notin X$, add $(s_i, v)$ to $E$ with cost $c(s_i, v) = w(x_i, v)$.
             \item If $u \notin X$ and $v = x_j \in X$, add $(u, t_j)$ to $E$ with cost $c(u, t_j) = w(u, x_j)$.
             \item If $u = x_i \in X$ and $v = x_j \in X$ ($i \neq j$), add $(s_i, t_j)$ to $E$ with cost $c(s_i, t_j) = w(x_i, x_j)$.
-        \end{itemize}
+        \end{enumerate}
         \item For each $i \in \{1, \dots, k\}$, add a zero-cost directed enforcement edge $(t_i, s_i)$ with cost $c(t_i, s_i) = \infty$ (or $W + 1$). This ensures that reaching terminal $t_i$ allows reaching all outgoing paths from $s_i$, faithfully reproducing the transitivity of terminal $x_i$ in $H$.
         \item Ensure that self-reachability $s_i \rightsquigarrow t_i$ does not represent an inter-terminal path by adding an independent dummy terminal set if necessary, or simply setting the target requirement to: disconnect all pairs $(s_i, t_j)$ for $i \neq j$. By introducing an auxiliary collector vertex $T^*$ for each $s_i$ connected to all $t_j$ ($j \neq i$) with capacity $\infty$, we map this directly into the bipartite source-target formulation.
-    \end{itemize}
+    \end{enumerate}
 
     \item \textbf{Cost Threshold:} Set $K = W$.
 \end{enumerate}
@@ -73,10 +73,10 @@ Given an arbitrary instance $\langle H, w, X, W \rangle$ of the Directed Multi-w
 The construction introduces at most $2|V_H|$ vertices and $|E_H| + k$ edges, which is computable in $O(|V_H| + |E_H|)$ time.
 
 \paragraph{Equivalence of Solutions:}
-\begin{itemize}
+\begin{enumerate}
     \item $(\Rightarrow)$ Suppose there exists a cut $C \subseteq E_H$ in $H$ with $\sum_{e \in C} w(e) \le W$ that disconnects all terminal pairs $x_i \rightsquigarrow x_j$ ($i \neq j$). Let $E_{\text{cut}}$ be the corresponding set of edges in $G$. Since no path existed between $x_i$ and $x_j$ in $H \setminus C$, no directed path can exist between $s_i$ and $t_j$ in $G \setminus E_{\text{cut}}$. The infinite-capacity edges $(t_i, s_i)$ are never cut, and $\sum_{e \in E_{\text{cut}}} c(e) = \sum_{e \in C} w(e) \le W = K$.
     \item $(\Leftarrow)$ Conversely, suppose there exists an edge cut $E_{\text{cut}} \subseteq E$ in $G$ with cost $\le K = W$ severing all $s_i \rightsquigarrow t_j$ paths ($i \neq j$). None of the infinite-cost edges $(t_i, s_i)$ can belong to $E_{\text{cut}}$ because $K < \infty$. Therefore, $E_{\text{cut}}$ corresponds strictly to a subset of original edges $C \subseteq E_H$ with $\sum_{e \in C} w(e) \le W$ that eliminates all paths between distinct terminals in $H$.
-\end{itemize}
+\end{enumerate}
 
 This proves that ADESDP is NP-complete. The optimization version—finding the minimal disruption edge set—is therefore NP-hard.
 \end{proof}

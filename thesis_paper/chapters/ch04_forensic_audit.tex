@@ -12,11 +12,11 @@ Our audit revealed four profound structural illusions that had artificially infl
 
 \subsection{Illusion 1: Positional Index Leakage in Synthetic Topologies}
 In synthetic network generators, entities are conventionally allocated sequentially within fixed memory buffers or tensor arrays. In our initial generator implementation, high-value entities and administrative users were allocated deterministically:
-\begin{itemize}
+\begin{enumerate}
     \item The Tier-0 administrative security group (\texttt{Domain Admins}) was consistently instantiated at index $0$ of the \texttt{Group} tensor ($v_{\text{group}} = 0$).
     \item Domain administrators were systematically assigned to the lowest index partition of the \texttt{User} tensor ($v_{\text{user}} \in [0, \lfloor N_{\text{users}} / 10 \rfloor]$).
     \item In ESC13 vulnerability generation, the issuance policy OID was hardcoded to link exclusively to group index $0$.
-\end{itemize}
+\end{enumerate}
 
 \paragraph{The 1-Line Exploitation Rule:}
 To establish whether the GNN had learned true topological semantics or was merely exploiting positional index artifacts, we constructed a trivial deterministic heuristic:
@@ -36,10 +36,10 @@ This trivial heuristic achieved an astronomical \textbf{100\% classification acc
 
 \subsection{Illusion 2: Baseline Information Asymmetry}
 In comparative benchmark evaluations, the standard practice in prior security ML literature has been to benchmark GNNs against flat tabular classifiers (such as Multi-Layer Perceptrons and Random Forests). However, our audit identified a fatal \textbf{information asymmetry}:
-\begin{itemize}
+\begin{enumerate}
     \item Flat classifiers (MLP, RF) were supplied exclusively with the 10-dimensional template configuration vector $x_{\text{Template}} \in \mathbb{R}^{10}$.
     \item CertGraph was supplied with both $x_{\text{Template}}$ and the entire heterogeneous graph adjacency multiset $E$.
-\end{itemize}
+\end{enumerate}
 Because vulnerability exploitability inherently depends on graph reachability (e.g., whether an unprivileged user has an \texttt{Enroll} path), flat classifiers were structurally starved of the information necessary to resolve ambiguous templates. Their observed failure (F1 $\approx 0.84$) did not prove the superiority of GNN message-passing convolutions; it merely reflected an unequal distribution of input data.
 
 \subsection{Illusion 3: The 7-Node Decision Tree Counterexample}

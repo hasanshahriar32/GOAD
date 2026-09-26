@@ -23,12 +23,12 @@ When Public Key Cryptography for Initial Authentication (PKINIT) is enabled via 
 
 \subsection{Access Control Lists (ACLs) and Delegation Primitives}
 Every Active Directory object is protected by a \textbf{Security Descriptor} containing a Discretionary Access Control List (DACL). A DACL comprises an ordered sequence of Access Control Entries (ACEs) defining permissions granted or denied to specific SIDs. Key administrative ACEs include:
-\begin{itemize}
+\begin{enumerate}
     \item \texttt{GenericAll}: Full unrestricted control over the target object (enabling password resets, attribute modification, and object deletion).
     \item \texttt{GenericWrite}: Permission to modify any non-confidential attribute of the object.
     \item \texttt{WriteDacl}: Permission to modify the DACL itself, enabling an attacker to grant themselves \texttt{GenericAll}.
     \item \texttt{WriteOwner}: Permission to assume ownership of the object and subsequently rewrite its security descriptor.
-\end{itemize}
+\end{enumerate}
 
 \section{Active Directory Certificate Services (ADCS) Mechanics}
 Active Directory Certificate Services (ADCS) is an integrated Windows role that allows an organization to construct an internal Public Key Infrastructure (PKI). ADCS comprises several core architectural components:
@@ -44,12 +44,12 @@ Active Directory Certificate Services (ADCS) is an integrated Windows role that 
     \item \textbf{Enterprise Certificate Authority (CA):} A server hosting the ADCS role integrated with Active Directory. Enterprise CAs store their configuration, trust anchors, and published templates directly within the LDAP Configuration partition (\texttt{CN=Configuration,DC=domain,DC=local}).
     \item \textbf{Certificate Templates:} LDAP objects (\texttt{class: pKICertificateTemplate}) defining the cryptographic and authorization parameters of certificates issued by the CA. Templates control key usage, validity periods, issuance requirements, and enrollment permissions.
     \item \textbf{Extended Key Usages (EKUs):} Object Identifiers (OIDs) embedded in certificates designating their authorized operational functions. Critical security-relevant EKUs include:
-    \begin{itemize}
+    \begin{enumerate}
         \item \textbf{Client Authentication} (\texttt{1.3.6.1.5.5.7.3.2}): Authorizes the certificate for Kerberos PKINIT and TLS client authentication.
         \item \textbf{Smart Card Logon} (\texttt{1.3.6.1.4.1.311.20.2.2}): Enables interactive smart card authentication to Windows domains.
         \item \textbf{Any Purpose} (\texttt{2.5.29.37.0}): Wildcard EKU granting authorization for any cryptographic purpose.
         \item \textbf{Certificate Request Agent} (\texttt{1.3.6.1.4.1.311.20.2.1}): Authorizes an enrollee to request enrollment on behalf of other users (enrollment agent).
-    \end{itemize}
+    \end{enumerate}
     \item \textbf{Enrollment Flags and Subject Specification:} The \texttt{mspki-certificate-name-flag} attribute governs how the certificate's subject identity is populated. If the flag \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} (\texttt{0x00000001}) is set, the certificate requestor explicitly defines the subject and SAN in their Certificate Signing Request (CSR).
 \end{enumerate}
 

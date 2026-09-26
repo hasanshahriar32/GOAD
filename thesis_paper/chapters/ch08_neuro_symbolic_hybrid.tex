@@ -3,10 +3,10 @@
 
 \section{The Core Dilemma: Shortcut Learning in Security GNNs}
 The empirical results established in Chapter~\ref{ch:evaluation} present a profound scientific paradox:
-\begin{itemize}
+\begin{enumerate}
     \item On in-distribution enterprise data, CertGraph achieves near-perfect classification (Macro-F1 = $0.9986$), outperforming signature-based heuristics by $+28\%$.
     \item Under zero-shot adversarial hard negatives, CertGraph's accuracy collapses catastrophically to **1.59\%**, whereas symbolic BFS path traversal retains **84.13\%**.
-\end{itemize}
+\end{enumerate}
 
 Why do state-of-the-art Graph Attention Networks—possessing full relational message-passing capabilities—fail so comprehensively when confronted with adversarial hard negatives?
 
@@ -47,10 +47,10 @@ This finding highlights the irreconcilable divide between pure statistical deep 
 \end{table}
 
 Neither pure statistical machine learning nor pure symbolic rule-checking is sufficient on its own:
-\begin{itemize}
+\begin{enumerate}
     \item Pure symbolic tools (Certipy/BloodHound) are completely blind to novel, un-modeled misconfiguration combinations (e.g., missing ESC13 until explicit rules were written) and cannot prioritize remediation.
     \item Pure GNN models are vulnerable to adversarial feature manipulation and cannot provide absolute mathematical guarantees of exploitability.
-\end{itemize}
+\end{enumerate}
 
 \section{The Two-Tier Neuro-Symbolic Architecture}
 To resolve this dichotomy, we propose a unified **Two-Tier Neuro-Symbolic Architecture** that harmonizes the complementary strengths of inductive representation learning and deductive graph verification.
@@ -79,10 +79,10 @@ For each candidate template $t \in \mathcal{Q}_{\text{suspect}}$, a symbolic gra
 \begin{equation}
 \text{IsExploitable}(t) = \operatorname{BFS\_Verify}(G, S_{\text{low-priv}}, t, \text{Condition}(\hat{y}_t))
 \end{equation}
-\begin{itemize}
+\begin{enumerate}
     \item If a valid path is confirmed, the system outputs an **Absolute Exploitability Proof** containing the exact edge sequence, triggering autonomous remediation.
     \item If no path exists, the candidate is flagged as an **Adversarial Hard Negative**, suppressing false alarms and logging the anomalous template for security review.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Algorithmic Specification}
 Algorithm~\ref{alg:neuro_symbolic} formalizes this cooperative workflow.

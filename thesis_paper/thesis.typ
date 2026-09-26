@@ -296,22 +296,22 @@ In response to the ADCS threat, the cybersecurity community developed several au
 
 == Research Questions and Thesis Objectives
 This thesis addresses this critical gap by exploring four central research questions:
-- *RQ1 (Relational Necessity):* Can a heterogeneous Graph Attention Network effectively learn to classify subtle ADCS vulnerability classes (ESC1–ESC13) by jointly modeling template configurations and directory authorization topology?
-- *RQ2 (Architectural Dynamics):* How do the directed, asymmetric topological properties of Active Directory authorization graphs impact standard message passing, and what architectural inductive biases (e.g., residual skip connections) are mathematically necessary to prevent representation collapse?
-- *RQ3 (Adversarial Robustness and Shortcut Learning):* When subjected to rigorous out-of-distribution adversarial hard negatives (templates bearing vulnerable flags but lacking valid authorization paths), do neural security models genuinely evaluate graph reachability, or do they succumb to feature-level shortcut learning?
-- *RQ4 (Optimal Defense Paradigm):* Given the trade-offs between inductive statistical pattern recognition and deterministic symbolic graph algorithms, what is the optimal architectural paradigm for enterprise-grade autonomous identity defense?
++ *RQ1 (Relational Necessity):* Can a heterogeneous Graph Attention Network effectively learn to classify subtle ADCS vulnerability classes (ESC1–ESC13) by jointly modeling template configurations and directory authorization topology?
++ *RQ2 (Architectural Dynamics):* How do the directed, asymmetric topological properties of Active Directory authorization graphs impact standard message passing, and what architectural inductive biases (e.g., residual skip connections) are mathematically necessary to prevent representation collapse?
++ *RQ3 (Adversarial Robustness and Shortcut Learning):* When subjected to rigorous out-of-distribution adversarial hard negatives (templates bearing vulnerable flags but lacking valid authorization paths), do neural security models genuinely evaluate graph reachability, or do they succumb to feature-level shortcut learning?
++ *RQ4 (Optimal Defense Paradigm):* Given the trade-offs between inductive statistical pattern recognition and deterministic symbolic graph algorithms, what is the optimal architectural paradigm for enterprise-grade autonomous identity defense?
 
 == Thesis Organization and Roadmap
 The remainder of this thesis is structured as follows:
-- *Chapter 2 (Literature Review & Related Work):* Reviews identity-based lateral movement, attack graph algorithms, deep graph representation learning, and shortcut learning in machine learning.
-- *Chapter 3 (Background & Threat Model):* Explains Active Directory internals, Kerberos authentication, PKINIT, certificate template mechanics, and the ESC1–ESC15 taxonomy.
-- *Chapter 4 (Methodology & Architecture):* Formulates the AD multigraph, details the CertGraph Hetero-GAT model, and presents Theorem 1.
-- *Chapter 5 (The Forensic Audit):* Dissects the four experimental illusions uncovered during research and details the generator sanitization.
-- *Chapter 6 (Empirical Benchmarks & Evaluation):* Reports cross-validation, ablation studies, and the zero-shot adversarial hard negative benchmark.
-- *Chapter 7 (Real-World Case Studies):* Validates CertGraph on the GOAD multi-forest testbed, temporal collections, and community datasets.
-- *Chapter 8 (Generalization & Scalability):* Analyzes ADSynth tiered transfer, edge perturbations, feature noise, and scaling up to 10,000 nodes.
-- *Chapter 9 (The Neuro-Symbolic Paradigm & Defense):* Develops the two-tier hybrid defense architecture, the Stackelberg security game, and Theorem 2.
-- *Chapter 10 (Conclusion & Future Horizons):* Synthesizes findings, discusses ethical considerations, and concludes the thesis.
++ *Chapter 2 (Literature Review & Related Work):* Reviews identity-based lateral movement, attack graph algorithms, deep graph representation learning, and shortcut learning in machine learning.
++ *Chapter 3 (Background & Threat Model):* Explains Active Directory internals, Kerberos authentication, PKINIT, certificate template mechanics, and the ESC1–ESC15 taxonomy.
++ *Chapter 4 (Methodology & Architecture):* Formulates the AD multigraph, details the CertGraph Hetero-GAT model, and presents Theorem 1.
++ *Chapter 5 (The Forensic Audit):* Dissects the four experimental illusions uncovered during research and details the generator sanitization.
++ *Chapter 6 (Empirical Benchmarks & Evaluation):* Reports cross-validation, ablation studies, and the zero-shot adversarial hard negative benchmark.
++ *Chapter 7 (Real-World Case Studies):* Validates CertGraph on the GOAD multi-forest testbed, temporal collections, and community datasets.
++ *Chapter 8 (Generalization & Scalability):* Analyzes ADSynth tiered transfer, edge perturbations, feature noise, and scaling up to 10,000 nodes.
++ *Chapter 9 (The Neuro-Symbolic Paradigm & Defense):* Develops the two-tier hybrid defense architecture, the Stackelberg security game, and Theorem 2.
++ *Chapter 10 (Conclusion & Future Horizons):* Synthesizes findings, discusses ethical considerations, and concludes the thesis.
 
 #pagebreak()
 
@@ -329,9 +329,9 @@ Vazarkar, Schroeder, and Robbins introduced *BloodHound* @robbins2017bloodhound,
 While graph-based Active Directory security focused heavily on Kerberos delegation and local administrator rights, Schroeder and Christensen @schroeder2021certified revolutionized the field by demonstrating that Public Key Infrastructure (PKI) components integrated within Active Directory represent a massive, unmonitored privilege escalation surface. Their research categorized eight core misconfigurations (ESC1 to ESC8).
 
 Subsequent offensive research expanded this taxonomy:
-- *ESC9 and ESC10 (2022):* Exploited weak certificate mappings and certificate extension stripping in environments lacking the KB5014754 security patch.
-- *ESC13 (2023):* Disclosed by Jonas Feynman, ESC13 demonstrated that certificate templates linking to an Issuance Policy Object Identifier (OID) mapped to a privileged group allow enrollees to receive elevated group memberships directly in their Kerberos PAC token.
-- *ESC14 and ESC15 (2024):* Exploited weak `altSecurityIdentities` mappings and legacy Schema Version 1 template application policies (CVE-2024-49019, "EKUwu") @feynman2024ekuwu.
++ *ESC9 and ESC10 (2022):* Exploited weak certificate mappings and certificate extension stripping in environments lacking the KB5014754 security patch.
++ *ESC13 (2023):* Disclosed by Jonas Feynman, ESC13 demonstrated that certificate templates linking to an Issuance Policy Object Identifier (OID) mapped to a privileged group allow enrollees to receive elevated group memberships directly in their Kerberos PAC token.
++ *ESC14 and ESC15 (2024):* Exploited weak `altSecurityIdentities` mappings and legacy Schema Version 1 template application policies (CVE-2024-49019, "EKUwu") @feynman2024ekuwu.
 
 Despite the proliferation of offensive scripts like *Certipy* @alldritt2023certipy, defensive tooling has remained fundamentally static, relying on hardcoded heuristics that evaluate individual templates without context.
 
@@ -378,12 +378,12 @@ ADCS operates as an enterprise PKI. Enterprise CAs publish certificate templates
 )
 
 == Taxonomy of ADCS Vulnerability Classes
-- *ESC1:* Enrollee supplies arbitrary SAN with client authentication EKU and unprivileged enrollment rights. An attacker requests a certificate impersonating `administrator@domain.local` and exchanges it for a Domain Admin Kerberos TGT.
-- *ESC2:* Template specifies Any Purpose EKU or lacks EKU constraints, allowing the certificate to be used for client authentication.
-- *ESC3:* Template specifies Certificate Request Agent EKU, allowing an attacker to request certificates on behalf of arbitrary users.
-- *ESC4:* Template DACL grants unprivileged users `GenericAll`, `GenericWrite`, or `WriteDacl` permissions, allowing the attacker to rewrite template flags via LDAP.
-- *ESC9:* Missing security extension (`szOID_NTDS_CA_SECURITY_EXT`), enabling UPN spoofing without PAC SID validation.
-- *ESC13:* Template specifies an issuance policy OID linked via AD schema to a high-value security group (Tier-0 asset), granting Domain Admin PAC tokens upon enrollment.
++ *ESC1:* Enrollee supplies arbitrary SAN with client authentication EKU and unprivileged enrollment rights. An attacker requests a certificate impersonating `administrator@domain.local` and exchanges it for a Domain Admin Kerberos TGT.
++ *ESC2:* Template specifies Any Purpose EKU or lacks EKU constraints, allowing the certificate to be used for client authentication.
++ *ESC3:* Template specifies Certificate Request Agent EKU, allowing an attacker to request certificates on behalf of arbitrary users.
++ *ESC4:* Template DACL grants unprivileged users `GenericAll`, `GenericWrite`, or `WriteDacl` permissions, allowing the attacker to rewrite template flags via LDAP.
++ *ESC9:* Missing security extension (`szOID_NTDS_CA_SECURITY_EXT`), enabling UPN spoofing without PAC SID validation.
++ *ESC13:* Template specifies an issuance policy OID linked via AD schema to a high-value security group (Tier-0 asset), granting Domain Admin PAC tokens upon enrollment.
 
 #figure(
   image("figures/esc13_attack_path_diagram.png", width: 90%),
@@ -392,9 +392,9 @@ ADCS operates as an enterprise PKI. Enterprise CAs publish certificate templates
 
 == Formal Threat Model
 We operate under an *Assumed-Breach Posture*:
-- *Attacker:* An unprivileged domain user with read-only LDAP enumeration capabilities attempting to escalate to Domain Admin status via ADCS.
-- *Defender:* Security Operations Center (SOC) possessing directory auditing telemetry seeking to identify and neutralize attack paths.
-- *Operational Constraint:* Defensive mitigations (such as edge-severing or template revocations) must minimize business disruption and avoid denial-of-service to legitimate enterprise users.
++ *Attacker:* An unprivileged domain user with read-only LDAP enumeration capabilities attempting to escalate to Domain Admin status via ADCS.
++ *Defender:* Security Operations Center (SOC) possessing directory auditing telemetry seeking to identify and neutralize attack paths.
++ *Operational Constraint:* Defensive mitigations (such as edge-severing or template revocations) must minimize business disruption and avoid denial-of-service to legitimate enterprise users.
 
 #pagebreak()
 
@@ -410,10 +410,10 @@ where $cal(T)_V = {"User", "Computer", "Group", "Template", "EnterpriseCA"}$ and
 
 == Entity Feature Space Engineering
 Each node $v in V$ is initialized with a feature vector $x_v in bb(R)^(d_(tau(v)))$:
-- *Template Nodes ($x_"Template" in bb(R)^(10)$):* Binary flags capturing subject supply rules, client authentication, any purpose, enrollment agent, policy links, and dangerous DACLs.
-- *User & Computer Nodes ($x_"User" in bb(R)^6, x_"Computer" in bb(R)^6$):* Enabled status, sensitive flag, pre-auth requirements, delegation flags, and administrative role.
-- *Group Nodes ($x_"Group" in bb(R)^2$):* High-value Tier-0 indicator and built-in group flag.
-- *Enterprise CA Nodes ($x_"CA" in bb(R)^3$):* Root CA status, user specification support, and encryption enforcement.
++ *Template Nodes ($x_"Template" in bb(R)^(10)$):* Binary flags capturing subject supply rules, client authentication, any purpose, enrollment agent, policy links, and dangerous DACLs.
++ *User & Computer Nodes ($x_"User" in bb(R)^6, x_"Computer" in bb(R)^6$):* Enabled status, sensitive flag, pre-auth requirements, delegation flags, and administrative role.
++ *Group Nodes ($x_"Group" in bb(R)^2$):* High-value Tier-0 indicator and built-in group flag.
++ *Enterprise CA Nodes ($x_"CA" in bb(R)^3$):* Root CA status, user specification support, and encryption enforcement.
 
 == CertGraph Hetero-GAT Pipeline
 For each relation $r = (tau(u), "rel", tau(v))$, node features are projected via relation-specific matrices $W_"src"^((l, r))$ and $W_"dst"^((l, r))$. Multi-head attention coefficients are computed as:
@@ -456,11 +456,11 @@ Our audit revealed four fatal methodological illusions:
 
 == Generator Sanitization and Verification
 We completely re-engineered `generator.py` to:
-- Randomize group and user placement uniformly across tensor buffers ($g_"target" tilde cal(U){0, |V_"Group"|-1}$).
-- Implement feature-based access control rather than positional rules.
-- Introduce fair Graph-Augmented baselines (MLP and RF with 14 input features).
-- Implement a symbolic BloodHound BFS path traversal baseline.
-- Establish a strict Zero-Shot Adversarial Hard Negative evaluation protocol.
++ Randomize group and user placement uniformly across tensor buffers ($g_"target" tilde cal(U){0, |V_"Group"|-1}$).
++ Implement feature-based access control rather than positional rules.
++ Introduce fair Graph-Augmented baselines (MLP and RF with 14 input features).
++ Implement a symbolic BloodHound BFS path traversal baseline.
++ Establish a strict Zero-Shot Adversarial Hard Negative evaluation protocol.
 
 Statistical verification confirmed that co-occurrence of admin at index 0 dropped from *100% (700/700)* to exactly *1.3% (9/700)*, matching uniform random probability and eliminating positional leakage.
 
@@ -500,10 +500,10 @@ CertGraph substantially outperforms signature-based heuristics (Certipy) by $+28
 )
 
 == Architectural Ablations: Confirmation of Theorem 1
-- *Full CertGraph:* Macro-F1 = *0.9986*
-- *Single-Head Attention:* Macro-F1 = *1.0000* ($p = 0.3739$)
-- *No Graph Context:* Macro-F1 = *0.8600* ($p = 2.62 times 10^(-5)$)
-- *No Skip Connections:* Macro-F1 = *0.4768 ± 0.0532* ($p = 1.31 times 10^(-6)$)
++ *Full CertGraph:* Macro-F1 = *0.9986*
++ *Single-Head Attention:* Macro-F1 = *1.0000* ($p = 0.3739$)
++ *No Graph Context:* Macro-F1 = *0.8600* ($p = 2.62 times 10^(-5)$)
++ *No Skip Connections:* Macro-F1 = *0.4768 ± 0.0532* ($p = 1.31 times 10^(-6)$)
 
 #figure(
   image("figures/ablation_comparison.png", width: 70%),
@@ -514,10 +514,10 @@ The collapse from $0.9986$ to $0.4768$ empirically validates Theorem 1: without 
 
 == Zero-Shot Adversarial Hard Negative Benchmark
 When tested zero-shot on 63 adversarial hard negatives (templates bearing vulnerable flags but lacking valid authorization paths):
-- *BloodHound BFS (Symbolic):* *84.13%* (53/63 correct)
-- *Graph-Augmented MLP:* *28.57%* (18/63 correct)
-- *CertGraph (Hetero-GAT):* *1.59%* (1/63 correct)
-- *Flat Baselines & Rule-Based:* *0.00%* (0/63 correct)
++ *BloodHound BFS (Symbolic):* *84.13%* (53/63 correct)
++ *Graph-Augmented MLP:* *28.57%* (18/63 correct)
++ *CertGraph (Hetero-GAT):* *1.59%* (1/63 correct)
++ *Flat Baselines & Rule-Based:* *0.00%* (0/63 correct)
 
 #figure(
   image("figures/hard_negatives_comparison.png", width: 70%),
@@ -543,10 +543,10 @@ We deployed CertGraph against the *Game of Active Directory (GOAD)* testbed acro
 SharpHound v5 JSON collections were ingested and parsed into PyTorch Geometric `HeteroData` tensors using `bloodhound_parser.py`.
 
 == Evaluation on Injected Vulnerabilities
-- *Detection of Novel Vectors:* CertGraph correctly identified ESC13 via policy links where Certipy heuristics failed.
-- *Suppression of False Positives:* On hard negatives, Certipy generated false alarms while CertGraph correctly recognized the absence of enrollment paths.
-- *Temporal Validation:* Independent data collection on July 2, 2026 vs June 15, 2026 achieved *21/21 (100.0%)* accuracy.
-- *External Community Dataset:* On public `m4lwhere/Bloodhound-CE-Sample-Data`, CertGraph achieved *100.0% (30/30)* accuracy vs *63.3%* for heuristics.
++ *Detection of Novel Vectors:* CertGraph correctly identified ESC13 via policy links where Certipy heuristics failed.
++ *Suppression of False Positives:* On hard negatives, Certipy generated false alarms while CertGraph correctly recognized the absence of enrollment paths.
++ *Temporal Validation:* Independent data collection on July 2, 2026 vs June 15, 2026 achieved *21/21 (100.0%)* accuracy.
++ *External Community Dataset:* On public `m4lwhere/Bloodhound-CE-Sample-Data`, CertGraph achieved *100.0% (30/30)* accuracy vs *63.3%* for heuristics.
 
 #pagebreak()
 
@@ -557,9 +557,9 @@ SharpHound v5 JSON collections were ingested and parsed into PyTorch Geometric `
 
 == Domain Transfer Learning on ADSynth Tiered Networks
 We evaluated domain transfer learning against networks generated via ADSynth conforming to Microsoft's Enterprise Administrative Tiering Model:
-- *Train Synthetic -> Test ADSynth:* Macro-F1 = *1.0000*
-- *Train ADSynth -> Test Synthetic:* Macro-F1 = *0.9347*
-- *ADSynth 5-Fold Cross-Validation:* Macro-F1 = *1.0000 ± 0.0000*
++ *Train Synthetic -> Test ADSynth:* Macro-F1 = *1.0000*
++ *Train ADSynth -> Test Synthetic:* Macro-F1 = *0.9347*
++ *ADSynth 5-Fold Cross-Validation:* Macro-F1 = *1.0000 ± 0.0000*
 
 #grid(
   columns: (1fr, 1fr),
@@ -569,9 +569,9 @@ We evaluated domain transfer learning against networks generated via ADSynth con
 )
 
 == Sensitivity and Perturbation Robustness
-- *Edge Deletions:* Randomly dropping 30% of edges (simulating SharpHound collection gaps) caused minimal degradation (F1 = *0.9637*).
-- *Feature Noise:* 20% bit flips degraded F1 to *0.5899*, proving reliance on configuration semantics.
-- *Data Efficiency:* The model reaches F1 > 0.98 with fewer than 100 training domains.
++ *Edge Deletions:* Randomly dropping 30% of edges (simulating SharpHound collection gaps) caused minimal degradation (F1 = *0.9637*).
++ *Feature Noise:* 20% bit flips degraded F1 to *0.5899*, proving reliance on configuration semantics.
++ *Data Efficiency:* The model reaches F1 > 0.98 with fewer than 100 training domains.
 
 == Computational Scalability Benchmarking
 On graphs up to 10,000 nodes (~770,000 edges), inference latency scaled linearly to *342.99 ms* while peak RSS memory remained strictly flat at *894.64 MB*.
@@ -617,11 +617,11 @@ We mathematically prove that finding the minimal disruption edge set $E_"cut"$ t
 = Conclusion, Limitations, and Future Horizons
 
 == Summary of Findings
-- *CertGraph* achieves Macro-F1 = *0.9986* on in-distribution ADCS vulnerability classification, outperforming traditional signature heuristics by $+28%$.
-- *Theorem 1* proves that residual skip connections are mathematically required in directed heterogeneous identity graphs to prevent representation collapse of source-only nodes ($h_v^((l)) = bold(0)$).
-- Our *Forensic Audit* uncovered positional index leakage, information asymmetry, and hard negative memorization, establishing essential experimental hygiene for security ML.
-- Under zero-shot adversarial shift, neural models suffer *shortcut learning collapse* (1.59% accuracy), while symbolic BFS retains 84.13%, establishing the necessity of *Neuro-Symbolic Hybrid Architectures*.
-- *Theorem 2* proves that optimal identity attack path mitigation is NP-hard.
++ *CertGraph* achieves Macro-F1 = *0.9986* on in-distribution ADCS vulnerability classification, outperforming traditional signature heuristics by $+28%$.
++ *Theorem 1* proves that residual skip connections are mathematically required in directed heterogeneous identity graphs to prevent representation collapse of source-only nodes ($h_v^((l)) = bold(0)$).
++ Our *Forensic Audit* uncovered positional index leakage, information asymmetry, and hard negative memorization, establishing essential experimental hygiene for security ML.
++ Under zero-shot adversarial shift, neural models suffer *shortcut learning collapse* (1.59% accuracy), while symbolic BFS retains 84.13%, establishing the necessity of *Neuro-Symbolic Hybrid Architectures*.
++ *Theorem 2* proves that optimal identity attack path mitigation is NP-hard.
 
 == Honest Limitations
 1. *Synthetic Data Bounds:* The generator models documented ESC rules faithfully but cannot capture all misconfiguration combinations in wild enterprise forests.
