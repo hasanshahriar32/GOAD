@@ -4,18 +4,18 @@
 % Page geometry: 1.25 inch left for binding, 1.0 inch top/bottom/right
 \RequirePackage[a4paper,top=1in,bottom=1in,left=1.25in,right=1in]{geometry}
 
-% Typography & Spacing
-\RequirePackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage{lmodern}
-\RequirePackage{microtype}
-\RequirePackage{setspace}
-\onehalfspacing % Standard 1.5 line spacing for thesis
-
 % Mathematics
 \RequirePackage{amsmath,amssymb,amsfonts,amsthm}
 \RequirePackage{mathtools}
 \RequirePackage{bm}
+
+% Typography & Spacing (Times New Roman, 11pt)
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{newtxtext,newtxmath}
+\RequirePackage{microtype}
+\RequirePackage{setspace}
+\onehalfspacing % Standard 1.5 line spacing for thesis
 
 % Graphics & Colors
 \RequirePackage{graphicx}
@@ -55,8 +55,10 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
-% Code listings
+% Code listings & Algorithms
 \RequirePackage{listings}
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
 \lstset{
     backgroundcolor=\color{codebg},
     basicstyle=\ttfamily\footnotesize,

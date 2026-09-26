@@ -1,15 +1,100 @@
-\chapter{Background and Threat Model}
+\chapter{Literature Review and Domain Background}
 \label{ch:background}
 
-\section{Active Directory Architecture and Identity Primitives}
-Active Directory Domain Services (AD DS) is Microsoft's distributed, hierarchical directory service that stores information about network resources and centrally manages security across Windows enterprise domains. At its foundation, Active Directory implements the Lightweight Directory Access Protocol (LDAP) to structure domain objects within a forest partition.
+\section{Evolution of Identity-Based Lateral Movement in Enterprise Networks}
+For nearly three decades, enterprise information security architectures were predicated on the assumption of a defensible physical and logical perimeter. Organizations invested heavily in hardening network boundaries using stateful firewalls, intrusion detection and prevention systems (IDS/IPS), virtual private networks (VPNs), and demilitarized zones (DMZs). In this traditional fortress-and-moat doctrine, network traffic originating within the internal intranet was implicitly categorized as trusted, whereas external packets were subjected to rigorous perimeter inspection.
 
-\subsection{Security Principals and Identifiers}
-Every security entity within Active Directory—including individual users, computer accounts, security groups, and managed service accounts—is termed a \textbf{Security Principal}. Each security principal is assigned a globally unique, immutable identifier called a \textbf{Security Identifier (SID)}:
+The widespread adoption of cloud-native computing, remote and hybrid work models, bring-your-own-device (BYOD) policies, and software-as-a-service (SaaS) platforms has effectively obliterated this logical boundary. Advanced Persistent Threat (APT) actors, nation-state adversaries, and professionalized ransomware cartels routinely bypass perimeter defenses through spear-phishing campaigns, supply-chain compromises, edge device vulnerabilities, or credential theft. Once an initial foothold is established on a single compromised workstation within an internal corporate network, the perimeter provides zero defensive efficacy.
+
+Once an adversary achieves code execution on any machine in an internal corporate network, enterprise defense shifts entirely to combating \textbf{Lateral Movement}---the techniques adversaries use to extend access across systems, servers, and security principals to locate and compromise high-value assets.
+
+\subsection{Historical Precedents: Memory-Based Credential Abuse}
+Historically, identity lateral movement within Windows enterprise environments relied on memory-based credential dumping and protocol replay attacks:
+\begin{enumerate}
+    \item \textbf{Pass-the-Hash (PtH):} Exploiting legacy NTLM authentication by extracting the NTLM password hash of a user from the Local Security Authority Subsystem Service (LSASS) process memory (using utilities such as Mimikatz) and presenting that hash in network challenge-response exchanges without knowing the plaintext password.
+    \item \textbf{Pass-the-Ticket (PtT):} Harvesting active Kerberos Ticket Granting Tickets (TGTs) or Service Tickets directly from LSASS memory to impersonate logged-on users across the enterprise.
+    \item \textbf{Overpass-the-Hash / Pass-the-Key:} Supplying an extracted NTLM hash or Kerberos AES-256 encryption key to request a valid Kerberos TGT directly from the Key Distribution Center (KDC) via the Kerberos Authentication Service (AS) exchange.
+    \item \textbf{Golden and Silver Tickets:} Forging cryptographically authentic Kerberos TGTs using the secret symmetric key of the domain's \texttt{KRBTGT} service account (Golden Ticket), or forging targeted service tickets using a specific server's machine account password hash (Silver Ticket), embedding arbitrary administrative group SIDs directly into the authorization token.
+\end{enumerate}
+
+With the widespread deployment of Microsoft Credential Guard, Remote Credential Guard, Virtualization-Based Security (VBS), and Protected Process Light (PPL) in modern Windows operating systems, raw LSASS memory dumping has become substantially more difficult, triggering aggressive Endpoint Detection and Response (EDR) behavioral telemetry. Consequently, sophisticated adversaries have shifted their primary attack vector from host memory exploitation to **architectural access-control abuse** and **Active Directory Certificate Services (ADCS)**.
+
+\section{Graph-Theoretic Modeling of Active Directory Security}
+Active Directory Domain Services (AD DS) is fundamentally a massive, distributed, multi-relational graph database. In 2016, the release of \textbf{BloodHound} by Robbins, Schroeder, and Morreale~\cite{robbins2017bloodhound} transformed enterprise offensive and defensive security by formalizing Active Directory permissions as a directed identity attack graph.
+
+\subsection{Prior Attack Graph Literature}
+The concept of modeling security vulnerabilities as attack graphs dates back to foundational work by Phillips and Swiler (1998) and Sheyner et al. (2002)~\cite{sheyner2002automated}, who represented computer network state transitions as directed graphs to analyze multi-step vulnerability chaining. However, early attack graph models suffered from severe combinatorial state explosion when applied to realistic enterprise networks, as they attempted to model low-level host vulnerabilities, network service versions, and system exploit states simultaneously.
+
+BloodHound resolved this scalability dilemma by decoupling host-level software vulnerabilities from \textbf{identity authorization topology}. In BloodHound's formulation, vertices represent directory security principals (Users, Computers, Groups, Organizational Units, Domains), while edges represent discrete administrative access rights granted via Discretionary Access Control Lists (DACLs) or network session dependencies:
+\begin{enumerate}
+    \item \texttt{MemberOf}: Direct or transitive security group containment.
+    \item \texttt{AdminTo}: Administrative execution privileges on a remote workstation or server.
+    \item \texttt{HasSession}: An interactive or network session active on a host, indicating that user credentials reside in local memory.
+    \item \texttt{GenericAll}, \texttt{GenericWrite}, \texttt{WriteDacl}, \texttt{WriteOwner}: Granular object-level permissions within the directory schema.
+\end{enumerate}
+
+\subsection{Limitations of Deterministic Graph Traversal}
+While BloodHound and related graph databases (Neo4j) allow security analysts to execute Cypher queries (such as shortest path queries from \texttt{Domain Users} to \texttt{Domain Admins}), deterministic graph traversal exhibits acute limitations in modern enterprise environments:
+\begin{enumerate}
+    \item \textbf{Computational Intractability on Dense Enterprise Graphs:} Large multi-forest enterprises routinely contain over 100,000 security principals and tens of millions of access control entries. Exhaustive multi-hop traversal suffers from exponential branching factors, causing path-finding queries to time out or exhaust server memory.
+    \item \textbf{Absence of Contextual Probabilistic Risk Scoring:} Deterministic graph traversal treats every valid edge as equally likely to be traversed. It cannot incorporate operational context, such as whether a workstation is actively monitored by an EDR agent, whether a service account has been dormant, or whether an attack step requires complex operational prerequisites.
+    \item \textbf{Brittleness to Un-modeled Attack Vectors:} BloodHound relies on handcrafted edge collectors (SharpHound). If an organization deploys a novel authentication protocol or certificate configuration that has not been explicitly codified into the BloodHound Cypher schema, the attack path is completely invisible.
+\end{enumerate}
+
+\section{Graph Representation Learning in Security}
+To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated \textbf{Graph Representation Learning} and \textbf{Graph Neural Networks (GNNs)} for cybersecurity applications.
+
+\subsection{The Message-Passing Neural Network (MPNN) Framework}
+Gilmer et al.~\cite{gilmer2017neural} unified modern graph deep learning architectures under the Message-Passing Neural Network (MPNN) framework. For a graph $G = (V, E)$ with node feature vectors $x_v \in \mathbb{R}^d$, an MPNN layer computes updated node representations $h_v^{(l)}$ through three core computational phases:
+\begin{enumerate}
+    \item \textbf{Message Computation:} For each directed edge $(u, v) \in E$, a message vector is computed:
+    \begin{equation}
+    m_{vu}^{(l)} = M_l \left( h_v^{(l-1)}, h_u^{(l-1)}, e_{vu} \right)
+    \end{equation}
+    where $M_l$ is a parameterized message function, and $e_{vu}$ represents edge features.
+    
+    \item \textbf{Message Aggregation:} Messages from all incoming neighbors in $\mathcal{N}(v)$ are aggregated using a permutation-invariant aggregation operator $\bigoplus$:
+    \begin{equation}
+    \bar{m}_v^{(l)} = \bigoplus_{u \in \mathcal{N}(v)} m_{vu}^{(l)}
+    \end{equation}
+    
+    \item \textbf{State Update:} The node's hidden representation is updated by combining its previous state with the aggregated message:
+    \begin{equation}
+    h_v^{(l)} = U_l \left( h_v^{(l-1)}, \bar{m}_v^{(l)} \right)
+    \end{equation}
+    where $U_l$ is a parameterized update function (e.g., a Multi-Layer Perceptron or gated recurrent unit).
+\end{enumerate}
+
+\subsection{Homogeneous vs. Heterogeneous GNNs}
+Early GNN architectures---including Graph Convolutional Networks (GCN)~\cite{kipf2017semi}, GraphSAGE~\cite{hamilton2017inductive}, and Graph Attention Networks (GAT)~\cite{velickovic2018graph}---were designed for homogeneous graphs where all nodes belong to a single entity type and all edges represent uniform relationships.
+
+In contrast, enterprise identity graphs are profoundly \textbf{heterogeneous}. Modeling an Active Directory forest requires distinguishing between distinct node types (Users, Computers, Groups, Certificate Templates, Certificate Authorities) and distinct relational edge semantics (\texttt{MemberOf}, \texttt{Enroll}, \texttt{WriteDacl}, \texttt{LinksPolicy}). Applying homogeneous GNNs to identity graphs destroys the semantic boundaries between entities, leading to severe representation conflation.
+
+To handle heterogeneous structures, specialized architectures have been proposed:
+\begin{enumerate}
+    \item \textbf{Relational GCN (R-GCN):} Schlichtkrull et al.~\cite{schlichtkrull2018modeling} introduced relation-specific transformation matrices $W_r$, parameterizing message passing per edge type.
+    \item \textbf{Heterogeneous Graph Attention Networks (HAN):} Wang et al.~\cite{wang2019heterogeneous} introduced hierarchical attention, computing node-level attention followed by semantic-level meta-path attention.
+    \item \textbf{Heterogeneous Graph Transformer (HGT):} Hu et al.~\cite{hu2020heterogeneous} parameterized self-attention using source-type, target-type, and relation-type matrices to model continuous web-scale graphs.
+\end{enumerate}
+
+In this thesis, we build upon the principles of Heterogeneous Graph Attention Networks to engineer \textbf{CertGraph}, introducing relation-specific multi-head attention alongside crucial additive residual skip-connections necessary to survive asymmetric enterprise identity topologies.
+
+\section{Active Directory Architecture and Cryptographic Primitives}
+To establish the technical foundation for our attack graph formulation, we examine the core internal mechanisms of Active Directory.
+
+\subsection{Security Principals and Security Identifiers (SIDs)}
+Every security entity within Active Directory is termed a \textbf{Security Principal}. Each security principal is assigned a globally unique, immutable identifier called a \textbf{Security Identifier (SID)}:
 \begin{equation}
 \text{SID} = \text{S-}1\text{-}5\text{-}21\text{-}D_1\text{-}D_2\text{-}D_3\text{-}R
 \end{equation}
-where $D_1, D_2, D_3$ denote the unique domain sub-authority, and $R$ represents the Relative Identifier (RID). RIDs below 1000 are reserved for well-known administrative entities (e.g., RID 500 represents the built-in \texttt{Administrator}, RID 512 represents \texttt{Domain Admins}, RID 519 represents \texttt{Enterprise Admins}). RIDs above 1000 designate dynamically created domain users, groups, and workstations.
+where $D_1, D_2, D_3$ denote the unique domain sub-authority, and $R$ represents the Relative Identifier (RID). RIDs below 1000 are reserved for well-known administrative entities:
+\begin{enumerate}
+    \item \texttt{RID 500}: Built-in \texttt{Administrator}.
+    \item \texttt{RID 502}: Built-in \texttt{KRBTGT} (Kerberos Key Distribution Center service account).
+    \item \texttt{RID 512}: \texttt{Domain Admins} security group.
+    \item \texttt{RID 519}: \texttt{Enterprise Admins} security group (Tier-0 forest root).
+\end{enumerate}
+RIDs above 1000 designate dynamically created domain users, groups, and computer workstations.
 
 \subsection{Kerberos Authentication and Token Construction}
 Authentication in Active Directory is governed primarily by the Kerberos v5 protocol. The authentication workflow proceeds through the following sequential stages:
@@ -19,15 +104,27 @@ Authentication in Active Directory is governed primarily by the Kerberos v5 prot
     \item \textbf{Ticket Granting Service (TGS) Exchange:} When the client desires access to a network service (e.g., an SMB share or LDAP directory), it presents its TGT to the KDC via a \texttt{TGS-REQ}. The KDC validates the PAC signature and issues a service ticket (\texttt{TGS-REP}) encrypted with the target service's long-term key.
 \end{enumerate}
 
-When Public Key Cryptography for Initial Authentication (PKINIT) is enabled via ADCS, a client can initiate the AS exchange by presenting an X.509 digital certificate rather than a password hash. The KDC maps the certificate to a domain account using the User Principal Name (UPN) or sAMAccountName embedded within the certificate's \textbf{Subject Alternative Name (SAN)} extension, directly generating a privileged TGT.
+\subsection{PKINIT: Public Key Cryptography for Initial Authentication}
+When Public Key Cryptography for Initial Authentication (PKINIT) is enabled via ADCS (standardized in RFC 4556), a client can initiate the AS exchange by presenting an X.509 digital certificate rather than a password hash. The client signs the \texttt{PA-PK-AS-REQ} pre-authentication structure using its private key and includes its X.509 certificate.
 
-\subsection{Access Control Lists (ACLs) and Delegation Primitives}
+Upon receipt, the KDC:
+\begin{enumerate}
+    \item Validates that the certificate was signed by a trusted Enterprise Certificate Authority listed in the domain's NTAuth store (\texttt{CN=NTAuthCertificates,CN=Public Key Services,CN=Services,CN=Configuration,DC=domain,DC=local}).
+    \item Verifies that the certificate contains an authorized Extended Key Usage (EKU) permitting client authentication.
+    \item Extracts the user identity from the certificate's \textbf{Subject Alternative Name (SAN)} extension (matching User Principal Name or sAMAccountName) or \texttt{altSecurityIdentities} attribute.
+    \item Constructs a Kerberos TGT carrying a PAC populated with the privileges of the mapped account.
+\end{enumerate}
+
+This mechanism allows any valid certificate carrying an administrative SAN to be exchanged directly for an administrative Kerberos TGT.
+
+\subsection{Access Control Lists (ACLs) and Security Descriptors}
 Every Active Directory object is protected by a \textbf{Security Descriptor} containing a Discretionary Access Control List (DACL). A DACL comprises an ordered sequence of Access Control Entries (ACEs) defining permissions granted or denied to specific SIDs. Key administrative ACEs include:
 \begin{enumerate}
     \item \texttt{GenericAll}: Full unrestricted control over the target object (enabling password resets, attribute modification, and object deletion).
     \item \texttt{GenericWrite}: Permission to modify any non-confidential attribute of the object.
     \item \texttt{WriteDacl}: Permission to modify the DACL itself, enabling an attacker to grant themselves \texttt{GenericAll}.
     \item \texttt{WriteOwner}: Permission to assume ownership of the object and subsequently rewrite its security descriptor.
+    \item \texttt{ExtendedRight}: Special domain rights, including \texttt{Certificate-Enrollment} and \texttt{All-Extended-Rights}.
 \end{enumerate}
 
 \section{Active Directory Certificate Services (ADCS) Mechanics}
@@ -53,34 +150,36 @@ Active Directory Certificate Services (ADCS) is an integrated Windows role that 
     \item \textbf{Enrollment Flags and Subject Specification:} The \texttt{mspki-certificate-name-flag} attribute governs how the certificate's subject identity is populated. If the flag \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} (\texttt{0x00000001}) is set, the certificate requestor explicitly defines the subject and SAN in their Certificate Signing Request (CSR).
 \end{enumerate}
 
-\section{Taxonomy of ADCS Vulnerability Classes (ESC1–ESC15)}
-SpecterOps and subsequent security researchers categorized common ADCS misconfiguration patterns into numbered Escalation Vectors (ESC). In this research, we focus on the most impactful structural classes:
+\section{Exhaustive Taxonomy of ADCS Vulnerability Classes (ESC1--ESC15)}
+SpecterOps and subsequent security researchers categorized common ADCS misconfiguration patterns into numbered Escalation Vectors (ESC). Table~\ref{tab:esc_taxonomy} presents a comprehensive comparative analysis of all 15 documented classes.
 
-\subsection{ESC1: Enrollee Supplies Arbitrary SAN with Client Authentication}
-A certificate template is vulnerable to ESC1 if all four conditions hold:
-\begin{enumerate}
-    \item The Enterprise CA grants enrollment rights to low-privileged users (e.g., \texttt{Authenticated Users} or \texttt{Domain Users}).
-    \item The template grants enrollment permissions (\texttt{Enroll} or \texttt{ExtendedRight}) to unprivileged users.
-    \item The template enables \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT}, allowing the requestor to supply an arbitrary SAN.
-    \item The template specifies an EKU that permits client authentication (Client Authentication, PKINIT, Smart Card Logon, or Any Purpose).
-\end{enumerate}
-\textit{Exploitation Impact:} An attacker requests a certificate while supplying the UPN of a high-value administrator (e.g., \texttt{administrator@domain.local}). The CA issues a valid certificate for the administrator, which the attacker immediately exchanges for an administrative Kerberos TGT.
-
-\subsection{ESC2: Any Purpose EKU or Missing EKU}
-Similar to ESC1, but the template specifies the \texttt{Any Purpose} EKU or lacks any EKU definition altogether. Certificates without defined EKUs are treated as valid for all applications, including client authentication.
-
-\subsection{ESC3: Certificate Request Agent (Enrollment Agent Abuse)}
-The template specifies the \texttt{Certificate Request Agent} EKU without requiring manager approval. An attacker enrolls in this template to obtain an Enrollment Agent certificate, and subsequently submits a co-signed request for an administrative user against another template.
-
-\subsection{ESC4: Vulnerable Template Access Control List (DACL)}
-The template's DACL grants unprivileged users write permissions (\texttt{GenericAll}, \texttt{GenericWrite}, or \texttt{WriteDacl}).
-\textit{Exploitation Impact:} The attacker overwrites the template's configuration attributes via LDAP, toggling \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} on and adding Client Authentication to the EKU list. The attacker enrolls as Domain Admin and restores the original template parameters to conceal the compromise.
-
-\subsection{ESC9: Missing Security Extension (No-PAC Mapping)}
-Templates with schema version 2+ configured without the \texttt{szOID\_NTDS\_CA\_SECURITY\_EXT} extension (\texttt{1.3.6.1.4.1.311.25.2}), introduced in Microsoft patch KB5014754. An attacker with write access over a low-privileged account can modify its UPN to match a high-privileged account, request a certificate, and authenticate without SID validation.
-
-\subsection{ESC13: Issuance Policy OID Linked to High-Value Groups}
-Discovered by Jonas Feynman in 2023, ESC13 exploits the \texttt{msPKI-Certificate-Policy} attribute. A certificate template specifies an Issuance Policy OID that is linked via Active Directory schema to a high-value security group (e.g., Tier-0 administrators):
+\begin{table}[ht]
+\centering
+\small
+\caption{Comprehensive Comparative Taxonomy of ADCS Privilege Escalation Vectors (ESC1--ESC15).}
+\label{tab:esc_taxonomy}
+\begin{tabularx}{\textwidth}{llp{4.2cm}X}
+\toprule
+\textbf{Vector} & \textbf{Vulnerability Name} & \textbf{Key Configuration Prerequisites} & \textbf{Exploitation Impact} \\
+\midrule
+ESC1 & Enrollee Supplies SAN & \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} + Client Auth EKU + Unprivileged Enroll & Direct domain admin impersonation via Kerberos PKINIT \\
+ESC2 & Any Purpose EKU & Any Purpose EKU (\texttt{2.5.29.37.0}) or missing EKU + Unprivileged Enroll & Arbitrary impersonation across all cryptographic protocols \\
+ESC3 & Enrollment Agent & Certificate Request Agent EKU + 2-hop template enrollment path & Co-signs CSR on behalf of arbitrary domain accounts \\
+ESC4 & Insecure Template DACL & \texttt{GenericAll} / \texttt{WriteDacl} / \texttt{WriteOwner} on template object & Rewrites template to ESC1, enrolls, reverts configuration \\
+ESC5 & Insecure PKI Object DACL & Insecure ACLs on CA container / enrollment services object & Takes ownership of PKI infrastructure and roots \\
+ESC6 & CA SAN Flag Active & \texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} enabled on CA server & Injects arbitrary SAN into any template request \\
+ESC7 & Insecure CA Permissions & \texttt{ManageCA} or \texttt{ManageCertificates} rights on CA object & Overrides CA settings, approves unprivileged requests \\
+ESC8 & HTTP Enrollment Relay & NTLM authentication enabled on Web Enrollment HTTP endpoints & Coerced NTLM relay from DC to obtain DC certificate \\
+ESC9 & Missing Security Ext. & \texttt{CT\_FLAG\_NO\_SECURITY\_EXTENSION} enabled on template & UPN spoofing bypasses strong mapping without PAC check \\
+ESC10 & Weak Certificate Mapping & \texttt{altSecurityIdentities} weak registry keys on Domain Controllers & Account takeover via unverified X.509 mapping syntax \\
+ESC11 & Insecure RPC Interface & RPC enrollment endpoint lacking packet privacy / signing & Relays NTLM to RPC enrollment interface MS-ICPR \\
+ESC12 & Vulnerable Hardware Key & CA administrator key stored in vulnerable smart card / token & Direct exfiltration of CA root signing keys \\
+ESC13 & Issuance Policy Link & \texttt{msPKI-Certificate-Policy} OID maps to Tier-0 security group & Injects Tier-0 group SID into Kerberos PAC token \\
+ESC14 & altSecurityIdentities Hijack & Insecure write permissions over user \texttt{altSecurityIdentities} & Links arbitrary victim certificates to attacker account \\
+ESC15 & EKUwu (CVE-2024-49019) & Schema Version 1 template allows custom CSR application policy & Injects Client Authentication EKU into non-auth templates \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \begin{figure}[t]
     \centering
@@ -88,12 +187,6 @@ Discovered by Jonas Feynman in 2023, ESC13 exploits the \texttt{msPKI-Certificat
     \caption{Two-hop ESC13 privilege escalation attack path, showing the chain from an unprivileged user through enrollment permissions and issuance policy OID linkage to high-value domain administrative group tokens.}
     \label{fig:esc13_path}
 \end{figure}
-
-When a user enrolls in an ESC13-vulnerable template, the resulting certificate embeds the policy OID. When used for Kerberos authentication, the KDC maps the OID to the linked security group's SID and automatically appends that SID to the user's Kerberos PAC token.
-\textit{Exploitation Impact:} A low-privileged user receives full Domain Admin privileges purely through cryptographic token extension.
-
-\subsection{ESC14 and ESC15 (CVE-2024-49019 ``EKUwu'')}
-ESC14 targets weak certificate mappings through \texttt{altSecurityIdentities} attribute spoofing. ESC15, disclosed in November 2024 as CVE-2024-49019, targets legacy Schema Version 1 templates. Because Schema V1 templates do not enforce application policy restrictions at the CA validation layer, an attacker can inject custom Application Policies directly into the CSR, overriding template restrictions and obtaining client authentication rights on templates intended strictly for non-authentication purposes.
 
 \section{Formal Threat Model}
 To establish rigorous scientific boundaries, we define our threat model following standard enterprise security conventions:

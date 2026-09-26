@@ -1,55 +1,113 @@
 \chapter{Formal Methodology and CertGraph Architecture}
 \label{ch:methodology}
 
-\section{Mathematical Formulation of Enterprise Identity Graphs}
-To rigorously model the complex authorization topology of Active Directory and ADCS, we formalize the enterprise environment as a typed, directed, heterogeneous multigraph.
+\section{Mathematical Formalization of Enterprise Identity Multigraphs}
+To rigorously model the complex, relational authorization topology of Active Directory (AD) and Active Directory Certificate Services (ADCS), we formalize the enterprise environment as a typed, directed, heterogeneous multigraph. Unlike flat tabular databases or homogeneous network graphs that treat all entities and connections identically, a heterogeneous multigraph explicitly preserves the distinct semantic properties of different directory objects and authorization relationships.
 
 \begin{definition}[Active Directory Heterogeneous Multigraph]
-An Active Directory environment is defined as a 6-tuple:
+An Active Directory enterprise environment is formally defined as a 6-tuple:
 \begin{equation}
 G = (V, E, \mathcal{T}_V, \mathcal{T}_E, \phi_V, \psi_E)
 \end{equation}
 where:
 \begin{enumerate}
-    \item $V = \bigcup_{\tau \in \mathcal{T}_V} V_\tau$ is the set of all directory entities (vertices).
-    \item $E \subseteq V \times \mathcal{T}_E \times V$ is the multiset of directed authorization and administrative relationships (edges).
-    \item $\mathcal{T}_V = \{\text{User}, \text{Computer}, \text{Group}, \text{Template}, \text{EnterpriseCA}\}$ represents the discrete set of node entity types.
-    \item $\mathcal{T}_E = \{\text{MemberOf}, \text{Enroll}, \text{GenericAll}, \text{WriteDacl}, \text{WriteOwner}, \text{PublishedTo}, \text{ManageCA}, \text{LinksPolicy}\}$ represents the discrete set of relation types.
-    \item $\phi_V: V \to \mathcal{T}_V$ is a type-mapping function assigning each vertex $v \in V$ its structural type $\tau(v)$.
-    \item $\psi_E: E \to \mathcal{T}_E$ is a relation-mapping function assigning each edge $e = (u, r, v)$ its relation type $r$.
+    \item $V = \bigcup_{\tau \in \mathcal{T}_V} V_\tau$ is the finite set of all directory entities (vertices), partitioned into disjoint subsets by entity type, such that $V_{\tau_1} \cap V_{\tau_2} = \emptyset$ for all $\tau_1 \neq \tau_2$.
+    \item $E \subseteq V \times \mathcal{T}_E \times V$ is the multiset of directed authorization, administrative, and enrollment relationships (edges). An edge $e = (u, r, v) \in E$ indicates a directed relationship of relation type $r$ from source entity $u$ to target entity $v$.
+    \item $\mathcal{T}_V = \{\text{User}, \text{Computer}, \text{Group}, \text{Template}, \text{EnterpriseCA}\}$ represents the discrete set of node entity types ($|\mathcal{T}_V| = 5$).
+    \item $\mathcal{T}_E = \{\text{MemberOf}, \text{Enroll}, \text{GenericAll}, \text{WriteDacl}, \text{WriteOwner}, \text{PublishedTo}, \text{ManageCA}, \text{LinksPolicy}\}$ represents the discrete set of canonical directed relation types ($|\mathcal{T}_E| = 8$).
+    \item $\phi_V: V \to \mathcal{T}_V$ is an ontological type-mapping function assigning each vertex $v \in V$ its unique structural entity type $\tau(v) \in \mathcal{T}_V$.
+    \item $\psi_E: E \to \mathcal{T}_E$ is a relation-mapping function assigning each directed edge $e = (u, r, v) \in E$ its canonical relation type $r \in \mathcal{T}_E$.
 \end{enumerate}
 \end{definition}
 
-\subsection{Node Feature Vector Spaces}
-Each vertex $v \in V$ is assigned an initial feature vector $x_v \in \mathbb{R}^{d_{\tau(v)}}$ encoding intrinsic local attributes extracted from LDAP:
+\begin{definition}[Network Schema and Canonical Metapaths]
+The network schema of the enterprise identity multigraph is a directed meta-graph $\mathcal{S}_G = (\mathcal{T}_V, \mathcal{T}_E)$, specifying allowable directed relations between node types. A metapath $\mathcal{P}$ of length $l$ is a sequence of entity types and relation types:
+\begin{equation}
+\mathcal{P} = \tau_0 \xrightarrow{r_1} \tau_1 \xrightarrow{r_2} \tau_2 \xrightarrow{r_3} \dots \xrightarrow{r_l} \tau_l
+\end{equation}
+In Active Directory Certificate Services, privilege escalation is formalized as the existence of a valid composite metapath connecting an unprivileged security principal $s \in V_{\text{User}} \cup V_{\text{Computer}}$ to an administrative certificate issuance template $t \in V_{\text{Template}}$, followed by an authentication exchange terminating at a Tier-0 asset.
+\end{definition}
+
+\section{Node Feature Vector Spaces and Semantic Encodings}
+Each vertex $v \in V$ is assigned an initial feature vector $x_v \in \mathbb{R}^{d_{\tau(v)}}$ encoding intrinsic local attributes extracted directly from LDAP directory queries and Active Directory security descriptors. Because different entity types possess distinct configuration schemas, feature spaces are typed and heterogeneous.
+
+\subsection{Certificate Template Feature Representation}
+Certificate templates are the primary targets of ADCS audits. A template vertex $t \in V_{\text{Template}}$ is assigned a 10-dimensional binary feature vector $x_{\text{Template}} \in \mathbb{R}^{10}$:
+\begin{equation}
+\begin{aligned}
+x_{\text{Template}} = [ & f_{\text{supplies\_subject}}, f_{\text{client\_auth}}, f_{\text{any\_purpose}}, f_{\text{agent\_eku}}, f_{\text{no\_security\_ext}}, \\
+& f_{\text{schema\_v1}}, f_{\text{requires\_approval}}, f_{\text{has\_policy\_link}}, f_{\text{has\_dangerous\_dacl}}, f_{\text{is\_published}} ]^T
+\end{aligned}
+\end{equation}
+The individual binary dimensions are defined and extracted as follows:
 \begin{enumerate}
-    \item \textbf{Template Nodes ($x_{\text{Template}} \in \mathbb{R}^{10}$):} Feature vectors capture binary configuration flags:
+    \item $f_{\text{supplies\_subject}} \in \{0, 1\}$: Extracted from the LDAP integer attribute \texttt{msPKI-Certificate-Name-Flag}. Evaluates to $1$ if the bitwise flag \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} (\texttt{0x00000001}) is set, indicating that the enroller can specify an arbitrary Subject Alternative Name (SAN).
+    \item $f_{\text{client\_auth}} \in \{0, 1\}$: Extracted from the multi-valued string attribute \texttt{pKIExtendedKeyUsage}. Evaluates to $1$ if the template includes the Client Authentication Object Identifier (OID \texttt{1.3.6.1.5.5.7.3.2}) or Smart Card Logon (OID \texttt{1.3.6.1.4.1.311.20.2.2}).
+    \item $f_{\text{any\_purpose}} \in \{0, 1\}$: Evaluates to $1$ if \texttt{pKIExtendedKeyUsage} contains the Any Purpose OID (\texttt{2.5.29.37.0}) or if the attribute is empty/null, which Windows CryptoAPI interprets as valid for all cryptographic applications.
+    \item $f_{\text{agent\_eku}} \in \{0, 1\}$: Evaluates to $1$ if \texttt{pKIExtendedKeyUsage} contains the Certificate Request Agent OID (\texttt{1.3.6.1.4.1.311.20.2.1}), permitting on-behalf-of enrollment.
+    \item $f_{\text{no\_security\_ext}} \in \{0, 1\}$: Extracted from \texttt{msPKI-Enrollment-Flag}. Evaluates to $1$ if the flag \texttt{CT\_FLAG\_NO\_SECURITY\_EXTENSION} (\texttt{0x00080000}) is enabled, instructing the CA to omit the security extension embedding the requestor's SID.
+    \item $f_{\text{schema\_v1}} \in \{0, 1\}$: Extracted from the integer attribute \texttt{msPKI-Template-Schema-Version}. Evaluates to $1$ if the schema version equals $1$, signifying a legacy Windows 2000 template susceptible to CVE-2024-49019 (EKUwu).
+    \item $f_{\text{requires\_approval}} \in \{0, 1\}$: Extracted from \texttt{msPKI-Enrollment-Flag}. Evaluates to $1$ if \texttt{CT\_FLAG\_PEND\_ALL\_REQUESTS} (\texttt{0x00000002}) is set, mandating CA certificate manager intervention prior to certificate issuance.
+    \item $f_{\text{has\_policy\_link}} \in \{0, 1\}$: Extracted from \texttt{msPKI-Certificate-Policy}. Evaluates to $1$ if the template references one or more Issuance Policy OIDs.
+    \item $f_{\text{has\_dangerous\_dacl}} \in \{0, 1\}$: Extracted by evaluating the Discretionary Access Control List (DACL) in \texttt{nTSecurityDescriptor}. Evaluates to $1$ if any low-privileged security principal holds \texttt{GenericAll}, \texttt{GenericWrite}, \texttt{WriteDacl}, or \texttt{WriteOwner} access rights on the template object.
+    \item $f_{\text{is\_published}} \in \{0, 1\}$: Evaluates to $1$ if the template name is actively listed in the \texttt{certificateTemplates} attribute of at least one operational Enterprise CA object within the Active Directory configuration partition.
+\end{enumerate}
+
+\subsection{Security Principal Feature Representations}
+The security principals capable of initiating or forwarding access control operations are represented by typed feature vectors capturing administrative tiering, protocol configuration, and account state:
+
+\begin{enumerate}
+    \item \textbf{User Nodes ($x_{\text{User}} \in \mathbb{R}^6$):}
     \begin{equation}
-    x_{\text{Template}} = [f_{\text{supplies\_subject}}, f_{\text{client\_auth}}, f_{\text{any\_purpose}}, f_{\text{agent\_eku}}, f_{\text{no\_security\_ext}}, f_{\text{schema\_v1}}, f_{\text{requires\_approval}}, f_{\text{has\_policy\_link}}, f_{\text{has\_dangerous\_dacl}}, f_{\text{is\_published}}]^T
+    \begin{aligned}
+    x_{\text{User}} = [ & f_{\text{is\_enabled}}, f_{\text{is\_sensitive}}, f_{\text{dont\_req\_preauth}}, \\
+    & f_{\text{trusted\_for\_delegation}}, f_{\text{has\_spn}}, f_{\text{is\_admin}} ]^T
+    \end{aligned}
     \end{equation}
-    \item \textbf{User and Computer Nodes ($x_{\text{User}} \in \mathbb{R}^6, x_{\text{Computer}} \in \mathbb{R}^6$):}
+    where $f_{\text{is\_enabled}}$ indicates whether \texttt{ACCOUNTDISABLE} is absent from \texttt{userAccountControl}; $f_{\text{is\_sensitive}}$ indicates \texttt{NOT\_DELEGATED}; $f_{\text{dont\_req\_preauth}}$ identifies accounts vulnerable to AS-REP roasting; $f_{\text{trusted\_for\_delegation}}$ flags unconstrained Kerberos delegation; $f_{\text{has\_spn}}$ flags accounts susceptible to Kerberoasting; and $f_{\text{is\_admin}} \in \{0, 1\}$ indicates membership in a Tier-0 administrative role (\texttt{adminCount} = 1).
+    
+    \item \textbf{Computer Nodes ($x_{\text{Computer}} \in \mathbb{R}^6$):}
     \begin{equation}
-    x_v = [f_{\text{is\_enabled}}, f_{\text{is\_sensitive}}, f_{\text{dont\_req\_preauth}}, f_{\text{trusted\_for\_delegation}}, f_{\text{has\_spn}}, f_{\text{is\_admin}}]^T
+    \begin{aligned}
+    x_{\text{Computer}} = [ & f_{\text{is\_enabled}}, f_{\text{is\_dc}}, f_{\text{unconstrained}}, \\
+    & f_{\text{constrained}}, f_{\text{rbcd}}, f_{\text{is\_admin}} ]^T
+    \end{aligned}
     \end{equation}
-    \item \textbf{Group Nodes ($x_{\text{Group}} \in \mathbb{R}^2$):}
+    where $f_{\text{is\_dc}}$ indicates a primary Domain Controller; $f_{\text{unconstrained}}$ and $f_{\text{constrained}}$ capture Kerberos delegation settings; and $f_{\text{rbcd}}$ flags resource-based constrained delegation configurations.
+    
+    \item \textbf{Security Group Nodes ($x_{\text{Group}} \in \mathbb{R}^2$):}
     \begin{equation}
-    x_{\text{Group}} = [f_{\text{is\_high\_value\_tier0}}, f_{\text{is\_builtin}}]^T
+    x_{\text{Group}} = [f_{\text{is\_tier0}}, f_{\text{is\_builtin}}]^T
     \end{equation}
-    \item \textbf{Enterprise CA Nodes ($x_{\text{CA}} \in \mathbb{R}^3$):}
+    where $f_{\text{is\_tier0}} = 1$ denotes high-value administrative groups (e.g., \texttt{Domain Admins}, \texttt{Enterprise Admins}, \texttt{Schema Admins}, \texttt{Administrators}, \texttt{Account Operators}); and $f_{\text{is\_builtin}} = 1$ indicates standard well-known Windows security groups.
+    
+    \item \textbf{Enterprise Certificate Authority Nodes ($x_{\text{CA}} \in \mathbb{R}^3$):}
     \begin{equation}
     x_{\text{CA}} = [f_{\text{is\_root\_ca}}, f_{\text{allows\_user\_spec}}, f_{\text{enforces\_encryption}}]^T
     \end{equation}
+    where $f_{\text{is\_root\_ca}}$ identifies root CAs; $f_{\text{allows\_user\_spec}}$ flags the presence of the dangerous registry setting \texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2}; and $f_{\text{enforces\_encryption}}$ identifies whether RPC interface encryption is mandated on the CA endpoint (relevant to ESC11).
 \end{enumerate}
 
-\subsection{Relational Adjacency and Canonical Relations}
+\subsection{Relational Adjacency and Canonical Reverse Relations}
 For each relation type $r = (\tau_s, \text{rel}, \tau_t) \in \mathcal{T}_E$, the directed adjacency matrix $A_r \in \{0, 1\}^{|V_{\tau_s}| \times |V_{\tau_t}|}$ satisfies:
 \begin{equation}
 A_r[u, v] = 1 \iff (u, r, v) \in E
 \end{equation}
-Because information flow in GNNs must model both vulnerability propagation (from users to templates) and reverse privilege lookup (from templates to authorized users), we introduce reverse canonical relations $r^{-1} = (\tau_t, \text{rel}^{-1}, \tau_s)$ with transposed adjacency $A_{r^{-1}} = A_r^T$.
+
+A fundamental challenge in graph representation learning on directed identity graphs is that access control permissions flow from principals to resources (e.g., $\text{User} \xrightarrow{\text{Enroll}} \text{Template}$), whereas vulnerability reasoning requires evaluating the reverse query: \textit{"Which unprivileged principals possess an inbound access path to this template?"}
+
+To facilitate bidirectional information exchange across the message-passing layers, we introduce formal reverse canonical relations for every directed edge type:
+\begin{equation}
+\forall r = (\tau_s, \text{rel}, \tau_t) \in \mathcal{T}_E \implies r^{-1} = (\tau_t, \text{rel}^{-1}, \tau_s) \in \mathcal{T}_E^{-1}
+\end{equation}
+The adjacency matrix for the reverse relation is the exact transpose of the forward adjacency:
+\begin{equation}
+A_{r^{-1}} = A_r^T
+\end{equation}
+The augmented relational set $\tilde{\mathcal{T}}_E = \mathcal{T}_E \cup \mathcal{T}_E^{-1}$ contains 16 directed relations, ensuring that certificate templates can gather structural context from prospective enrollers and administrative controllers during forward message passing.
 
 \section{The CertGraph Hetero-GAT Architecture}
-CertGraph implements an inductive Heterogeneous Graph Attention Network (Hetero-GAT). Unlike homogeneous GNNs that collapse node and edge distinctions, CertGraph processes distinct linear transformations and attention projections for each canonical relation $r \in \mathcal{T}_E$.
+CertGraph implements an inductive Heterogeneous Graph Attention Network (Hetero-GAT). Unlike homogeneous GNNs that collapse entity distinctions into a single latent space, CertGraph maintains type-specific linear projections and relation-specific multi-head attention mechanisms.
 
 \begin{figure}[t]
     \centering
@@ -58,73 +116,189 @@ CertGraph implements an inductive Heterogeneous Graph Attention Network (Hetero-
     \label{fig:certgraph_arch}
 \end{figure}
 
-\subsection{Relation-Specific Multi-Head Graph Attention}
-Let $h_u^{(l-1)} \in \mathbb{R}^{d_{\tau(u)}^{(l-1)}}$ denote the hidden representation of node $u$ at layer $l-1$. For a directed relation $r = (\tau(u), \text{rel}, \tau(v))$ terminating at target node $v$, we project source and target features via relation-specific linear transformation matrices:
+\subsection{Relation-Specific Linear Feature Projections}
+Let $h_u^{(l-1)} \in \mathbb{R}^{d_{\tau(u)}^{(l-1)}}$ denote the hidden representation of node $u$ at layer $l-1$, where $h_u^{(0)} = x_u$. For each canonical relation $r = (\tau(u), \text{rel}, \tau(v)) \in \tilde{\mathcal{T}}_E$ terminating at target node $v$, source and target node representations are projected into a common relational metric space $\mathbb{R}^{d_{\text{out}}^{(l)}}$:
 \begin{equation}
 z_u^{(l, r)} = W_{\text{src}}^{(l, r)} h_u^{(l-1)}, \quad z_v^{(l, r)} = W_{\text{dst}}^{(l, r)} h_v^{(l-1)}
 \end{equation}
-where $W_{\text{src}}^{(l, r)} \in \mathbb{R}^{d_{\text{out}}^{(l)} \times d_{\tau(u)}^{(l-1)}}$ and $W_{\text{dst}}^{(l, r)} \in \mathbb{R}^{d_{\text{out}}^{(l)} \times d_{\tau(v)}^{(l-1)}}$.
+where $W_{\text{src}}^{(l, r)} \in \mathbb{R}^{d_{\text{out}}^{(l)} \times d_{\tau(u)}^{(l-1)}}$ and $W_{\text{dst}}^{(l, r)} \in \mathbb{R}^{d_{\text{out}}^{(l)} \times d_{\tau(v)}^{(l-1)}}$ are learnable projection matrices. In our implementation, hidden dimensions are set to $d_{\text{hidden}} = 64$ across all layers.
 
-To capture multi-faceted structural dependencies, we deploy $K$ independent attention heads. For head $k \in \{1, \dots, K\}$, the unnormalized attention coefficient $e_{vu}^{(k, r)}$ quantifying the importance of node $u$ to node $v$ across relation $r$ is:
-\begin{equation}
-e_{vu}^{(k, r)} = \operatorname{LeakyReLU} \left( \mathbf{a}_k^{(l, r) T} \left[ z_v^{(k, l, r)} \,\|\, z_u^{(k, l, r)} \right] \right)
-\end{equation}
-where $\mathbf{a}_k^{(l, r)} \in \mathbb{R}^{2 d_{\text{head}}}$ is the parameterized attention vector, and $\|$ denotes vector concatenation.
+\subsection{Multi-Head Relational Graph Attention}
+To capture multi-faceted topological dependencies (e.g., distinguishing between direct group membership and delegated write permissions), CertGraph deploys $K$ independent attention heads per relation.
 
-Normalized attention weights $\alpha_{vu}^{(k, r)}$ are computed via relation-level softmax over all incoming neighbors $\mathcal{N}_r(v)$:
+For attention head $k \in \{1, \dots, K\}$, the unnormalized attention coefficient $e_{vu}^{(k, l, r)}$ quantifying the importance of incoming source node $u$ to target node $v$ across relation $r$ is computed as:
 \begin{equation}
-\alpha_{vu}^{(k, r)} = \frac{\exp \left( e_{vu}^{(k, r)} \right)}{\sum_{w \in \mathcal{N}_r(v)} \exp \left( e_{vw}^{(k, r)} \right)}
+e_{vu}^{(k, l, r)} = \operatorname{LeakyReLU} \left( \mathbf{a}_k^{(l, r) T} \left[ z_v^{(k, l, r)} \,\|\, z_u^{(k, l, r)} \right] \right)
 \end{equation}
+where $\mathbf{a}_k^{(l, r)} \in \mathbb{R}^{2 d_{\text{head}}}$ is a learnable relation-specific attention vector, $\|$ denotes vector concatenation, and the LeakyReLU non-linearity employs a negative slope parameter of $\alpha_{\text{leaky}} = 0.2$. The head dimension satisfies $d_{\text{head}} = d_{\text{out}}^{(l)} / K$.
 
-The aggregated representation of node $v$ under relation $r$ is the multi-head concatenation:
+To ensure comparability across nodes with varying in-degrees, attention coefficients are normalized across the set of incoming relation neighbors $\mathcal{N}_r(v) = \{u \in V_{\tau_s} \mid (u, r, v) \in E\}$ using the relational softmax function:
 \begin{equation}
-\mu_{v, r}^{(l)} = \prod_{k=1}^K \left( \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(k, r)} z_u^{(k, l, r)} \right)
+\alpha_{vu}^{(k, l, r)} = \frac{\exp \left( e_{vu}^{(k, l, r)} \right)}{\sum_{w \in \mathcal{N}_r(v)} \exp \left( e_{vw}^{(k, l, r)} \right)}
 \end{equation}
+The aggregated message for node $v$ under relation $r$ across all $K$ attention heads is obtained via concatenation:
+\begin{equation}
+\mu_{v, r}^{(l)} = \prod_{k=1}^K \left( \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(k, l, r)} z_u^{(k, l, r)} \right)
+\end{equation}
+where $\|$ denotes concatenation along the channel dimension, resulting in $\mu_{v, r}^{(l)} \in \mathbb{R}^{d_{\text{out}}^{(l)}}$.
 
 \subsection{Semantic-Level Aggregation and Residual Skip-Connections}
-Because target node $v$ may receive messages from multiple distinct incoming relation types $\mathcal{R}_{\text{in}}(\tau(v))$, CertGraph computes semantic-level aggregation via vector summation:
+Because a target entity $v$ may receive incoming messages from multiple distinct relation types $\mathcal{R}_{\text{in}}(\tau(v)) = \{r \in \tilde{\mathcal{T}}_E \mid \text{target}(r) = \tau(v)\}$, CertGraph performs semantic-level aggregation via vector summation:
 \begin{equation}
 h_{v, \text{agg}}^{(l)} = \sum_{r \in \mathcal{R}_{\text{in}}(\tau(v))} \mu_{v, r}^{(l)}
 \end{equation}
 
-\paragraph{Crucial Residual Skip Connection:}
-To prevent representation collapse and preserve node-specific attributes across message-passing iterations, we introduce parameterized additive residual skip-connections:
+\paragraph{Additive Residual Skip-Connections:}
+As established theoretically in Section~\ref{sec:theorem1_discussion}, pure neighborhood aggregation in directed acyclic or source-dominated subgraphs suffers from catastrophic representation collapse. To preserve node-specific identity features and maintain stable gradient flow, CertGraph incorporates parameterized additive residual skip-connections:
 \begin{equation}
-h_v^{(l)} = \operatorname{ELU} \left( h_{v, \text{agg}}^{(l)} + W_{\text{skip}}^{(l, \tau(v))} h_v^{(l-1)} \right)
+\tilde{h}_v^{(l)} = h_{v, \text{agg}}^{(l)} + W_{\text{skip}}^{(l, \tau(v))} h_v^{(l-1)}
 \end{equation}
-where $W_{\text{skip}}^{(l, \tau(v))} \in \mathbb{R}^{d_{\text{out}}^{(l)} \times d_{\tau(v)}^{(l-1)}}$ is a type-specific linear projection. Each convolution layer is followed by Layer Normalization and Dropout ($p = 0.2$).
+where $W_{\text{skip}}^{(l, \tau(v))} \in \mathbb{R}^{d_{\text{out}}^{(l)} \times d_{\tau(v)}^{(l-1)}}$ is a type-specific linear projection matrix.
+
+The pre-activation state is transformed via the Exponential Linear Unit (ELU) activation function, followed by Layer Normalization and Dropout:
+\begin{align}
+\bar{h}_v^{(l)} &= \operatorname{ELU} \left( \tilde{h}_v^{(l)} \right) \\
+h_v^{(l)} &= \operatorname{Dropout} \left( \operatorname{LayerNorm} \left( \bar{h}_v^{(l)} \right), p = 0.2 \right)
+\end{align}
 
 \subsection{Multi-Class Vulnerability Classification Head}
-After $L = 2$ message passing layers (providing a 2-hop receptive field sufficient to capture indirect delegation and issuance policy chains), we isolate the target certificate template embedding $h_{\text{target}}^{(L)} \in \mathbb{R}^{64}$. 
+CertGraph stacks $L = 2$ heterogeneous graph attention layers. A 2-hop receptive field is mathematically sufficient to resolve all standard ADCS escalation paths:
+\begin{enumerate}
+    \item $\text{User} \xrightarrow{\text{MemberOf}} \text{Group} \xrightarrow{\text{Enroll}} \text{Template}$ (2 hops).
+    \item $\text{User} \xrightarrow{\text{Enroll}} \text{Template} \xrightarrow{\text{LinksPolicy}} \text{Group}$ (2 hops).
+    \item $\text{User} \xrightarrow{\text{WriteDacl}} \text{Template} \xrightarrow{\text{PublishedTo}} \text{CA}$ (2 hops).
+\end{enumerate}
 
-The embedding is passed through a Multi-Layer Perceptron (MLP) classification head:
+Following the second message-passing layer, we isolate the final latent representation of the target certificate template $h_t^{(L)} \in \mathbb{R}^{64}$. This embedding is forwarded to a two-layer Multi-Layer Perceptron (MLP) classification head:
 \begin{align}
-\tilde{z} &= \operatorname{ReLU} \left( W_1 h_{\text{target}}^{(L)} + b_1 \right), \quad W_1 \in \mathbb{R}^{32 \times 64} \\
-\hat{y} &= \operatorname{Softmax} \left( W_2 \tilde{z} + b_2 \right), \quad W_2 \in \mathbb{R}^{7 \times 32}
+z_t &= \operatorname{ReLU} \left( W_1 h_t^{(L)} + b_1 \right), \quad W_1 \in \mathbb{R}^{32 \times 64}, \, b_1 \in \mathbb{R}^{32} \\
+\hat{y}_t &= \operatorname{Softmax} \left( W_2 z_t + b_2 \right), \quad W_2 \in \mathbb{R}^{7 \times 32}, \, b_2 \in \mathbb{R}^{7}
 \end{align}
-where $\hat{y} \in \Delta^6$ is the predicted probability distribution over the 7 target classes:
+where $\hat{y}_t \in \Delta^6$ represents the predicted probability distribution over the 7 target vulnerability classes:
 \begin{equation}
 \mathcal{C} = \{\text{Safe}, \text{ESC1}, \text{ESC2}, \text{ESC3}, \text{ESC4}, \text{ESC9}, \text{ESC13}\}
 \end{equation}
 
-The network is trained end-to-end by minimizing the Cross-Entropy loss with $L_2$ weight regularization:
+\subsection{Objective Function with Class Imbalance Regularization}
+In enterprise Active Directory environments, vulnerable certificate templates are rare relative to benign configurations. To counter class imbalance and prevent overfitting, the network is trained end-to-end by minimizing the Weighted Cross-Entropy Loss with $L_2$ weight regularization:
 \begin{equation}
-\mathcal{L} = - \sum_{c=1}^7 y_c \log \hat{y}_c + \lambda \sum_{\theta \in \Theta} \|\theta\|_2^2
+\mathcal{L}(\Theta) = - \sum_{i=1}^N \sum_{c=1}^{|\mathcal{C}|} \omega_c \, y_{i, c} \log \hat{y}_{i, c} + \lambda_{\text{reg}} \sum_{\theta \in \Theta} \|\theta\|_2^2
 \end{equation}
+where $N$ is the batch size; $y_{i, c} \in \{0, 1\}$ is the one-hot encoded ground truth; $\omega_c = \frac{N}{|\mathcal{C}| \cdot N_c}$ is the inverse class frequency weight; $\lambda_{\text{reg}} = 10^{-4}$ is the weight decay coefficient; and $\Theta$ denotes all learnable parameters ($W_{\text{src}}, W_{\text{dst}}, \mathbf{a}_k, W_{\text{skip}}, W_1, W_2$). Parameter optimization is performed using AdamW with an initial learning rate of $\eta = 10^{-3}$ and a cosine annealing learning rate schedule.
+
+\section{Formal Algorithmic Specifications}
+To ensure complete scientific reproducibility, we formalize the core execution routines of CertGraph into algorithmic specifications.
+
+\subsection{End-to-End Layer Forward Pass}
+Algorithm~\ref{alg:certgraph_layer} formalizes the computation of a single CertGraph heterogeneous attention layer with residual skip-connections and relational softmax.
+
+\begin{algorithm}[ht]
+\caption{CertGraph Heterogeneous Attention Layer Forward Pass}
+\label{alg:certgraph_layer}
+\begin{algorithmic}[1]
+\Require Heterogeneous Multigraph $G = (V, E, \tilde{\mathcal{T}}_E)$; Input hidden states $\{h_v^{(l-1)}\}_{v \in V}$; Projection matrices $\{W_{\text{src}}^{(l, r)}, W_{\text{dst}}^{(l, r)}\}$; Attention vectors $\{\mathbf{a}_k^{(l, r)}\}$; Skip projections $\{W_{\text{skip}}^{(l, \tau)}\}$.
+\Ensure Updated hidden representations $\{h_v^{(l)}\}_{v \in V}$.
+\For{each canonical relation $r = (\tau_s, \text{rel}, \tau_t) \in \tilde{\mathcal{T}}_E$}
+    \State Compute projected representations:
+    \State \quad $z_u^{(l, r)} \gets W_{\text{src}}^{(l, r)} h_u^{(l-1)}$ for all $u \in V_{\tau_s}$
+    \State \quad $z_v^{(l, r)} \gets W_{\text{dst}}^{(l, r)} h_v^{(l-1)}$ for all $v \in V_{\tau_t}$
+    \For{each attention head $k \in \{1, \dots, K\}$}
+        \For{each edge $(u, r, v) \in E_r$}
+            \State $e_{vu}^{(k, l, r)} \gets \operatorname{LeakyReLU} \left( \mathbf{a}_k^{(l, r) T} [z_v^{(k, l, r)} \,\|\, z_u^{(k, l, r)}] \right)$
+        \EndFor
+        \For{each target node $v \in V_{\tau_t}$}
+            \State Normalize: $\alpha_{vu}^{(k, l, r)} \gets \frac{\exp(e_{vu}^{(k, l, r)})}{\sum_{w \in \mathcal{N}_r(v)} \exp(e_{vw}^{(k, l, r)})}$
+        \EndFor
+    \EndFor
+    \For{each target node $v \in V_{\tau_t}$}
+        \State Compute head concatenation: $\mu_{v, r}^{(l)} \gets \prod_{k=1}^K \left( \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(k, l, r)} z_u^{(k, l, r)} \right)$
+    \EndFor
+\EndFor
+\For{each entity $v \in V$}
+    \State Semantic aggregation: $h_{v, \text{agg}}^{(l)} \gets \sum_{r \in \mathcal{R}_{\text{in}}(\tau(v))} \mu_{v, r}^{(l)}$
+    \State Additive residual skip: $\tilde{h}_v^{(l)} \gets h_{v, \text{agg}}^{(l)} + W_{\text{skip}}^{(l, \tau(v))} h_v^{(l-1)}$
+    \State Non-linear activation: $\bar{h}_v^{(l)} \gets \operatorname{ELU}(\tilde{h}_v^{(l)})$
+    \State Normalization \& Regularization: $h_v^{(l)} \gets \operatorname{Dropout}(\operatorname{LayerNorm}(\bar{h}_v^{(l)}), p = 0.2)$
+\EndFor
+\State \Return $\{h_v^{(l)}\}_{v \in V}$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Vulnerability Inference and Calibrated Risk Scoring}
+Algorithm~\ref{alg:certgraph_infer} details the inference pipeline that ingests raw enterprise graphs, executes message passing, and generates calibrated risk rankings for security teams.
+
+\begin{algorithm}[ht]
+\caption{CertGraph Enterprise Vulnerability Screening and Risk Prioritization}
+\label{alg:certgraph_infer}
+\begin{algorithmic}[1]
+\Require Enterprise Active Directory Graph $G = (V, E)$; Trained CertGraph model $\mathcal{M}_\Theta$; Risk threshold $\tau_{\text{risk}} \in [0, 1]$.
+\Ensure Prioritized list of high-risk certificate templates $\mathcal{R}_{\text{alerts}}$.
+\State Extract node feature tensors $\{x_v\}_{v \in V}$ from LDAP and DACL attributes
+\State Construct reverse relations $r^{-1}$ for all $r \in \mathcal{T}_E$ to form augmented graph $\tilde{G}$
+\State Initialize $h_v^{(0)} \gets x_v$ for all $v \in V$
+\For{layer $l = 1$ to $L=2$}
+    \State $\{h_v^{(l)}\}_{v \in V} \gets \operatorname{CertGraphLayerForward}(\tilde{G}, \{h_v^{(l-1)}\}_{v \in V}, \Theta^{(l)})$
+\EndFor
+\State Initialize empty alert queue $\mathcal{R}_{\text{alerts}} \gets []$
+\For{each published template $t \in V_{\text{Template}}$}
+    \State Forward embedding $h_t^{(L)}$ to classification head: $\hat{y}_t \gets \operatorname{Softmax}(W_2 \operatorname{ReLU}(W_1 h_t^{(L)} + b_1) + b_2)$
+    \State Compute composite risk score: $S_{\text{risk}}(t) \gets 1.0 - \hat{y}_t[\text{Safe}]$
+    \State Determine predicted vector: $c_{\text{pred}} \gets \operatorname{argmax}_{c} \hat{y}_t[c]$
+    \If{$S_{\text{risk}}(t) \ge \tau_{\text{risk}}$ and $c_{\text{pred}} \neq \text{Safe}$}
+        \State Append $(t, c_{\text{pred}}, S_{\text{risk}}(t), \hat{y}_t)$ to $\mathcal{R}_{\text{alerts}}$
+    \EndIf
+\EndFor
+\State Sort $\mathcal{R}_{\text{alerts}}$ in descending order of risk score $S_{\text{risk}}(t)$
+\State \Return $\mathcal{R}_{\text{alerts}}$
+\end{algorithmic}
+\end{algorithm}
 
 \section{Theoretical Analysis: Representation Collapse in Directed Graphs}
-A foundational theoretical contribution of this research is the formal mathematical proof that residual skip-connections are not merely an optimization heuristic in enterprise identity graphs, but a strict mathematical requirement.
+\label{sec:theorem1_discussion}
+A foundational theoretical contribution of this thesis is the formal proof that residual skip-connections are not merely an optimization heuristic in enterprise identity graphs, but a strict mathematical requirement.
 
 \begin{theorem}[Representation Collapse of Source-Only Entities]
-In any directed heterogeneous graph $G = (V, E, \mathcal{T}_V, \mathcal{T}_E)$ where a subset of node types $\mathcal{T}_{\text{source}}$ possesses zero incoming edges ($d_{\text{in}}(v) = 0$ for all $v \in V$ with $\tau(v) \in \mathcal{T}_{\text{source}}$), an $L$-layer heterogeneous message-passing neural network lacking residual skip-connections collapses the representations of all source-only nodes to the zero vector:
+\label{thm:representation_collapse}
+In any directed heterogeneous graph $G = (V, E, \mathcal{T}_V, \mathcal{T}_E)$ where a subset of node types $\mathcal{T}_{\text{source}} \subset \mathcal{T}_V$ possesses zero incoming edges ($d_{\text{in}}(v) = 0$ for all $v \in V$ with $\tau(v) \in \mathcal{T}_{\text{source}}$), an $L$-layer heterogeneous message-passing neural network lacking residual skip-connections collapses the hidden representations of all source-only nodes to the zero vector:
 \begin{equation}
-h_v^{(l)} = \mathbf{0}, \quad \forall v \in \mathcal{T}_{\text{source}}, \forall l \ge 1
+h_v^{(l)} = \mathbf{0}, \quad \forall v \text{ with } \tau(v) \in \mathcal{T}_{\text{source}}, \forall l \ge 1
 \end{equation}
-Furthermore, the gradient of the loss $\mathcal{L}$ with respect to the input features $x_v$ vanishes identically ($\frac{\partial \mathcal{L}}{\partial x_v} = \mathbf{0}$).
+Furthermore, the gradient of the objective loss function $\mathcal{L}$ with respect to the input feature vector $x_v$ vanishes identically:
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial x_v} = \mathbf{0}
+\end{equation}
 \end{theorem}
 
-\noindent\textit{Proof.} The full formal proof is provided in Section~\ref{proof:theorem1}.
+\noindent\textit{Proof Outline.} The full, rigorous mathematical proof is provided in Appendix~\ref{proof:theorem1}. Because $d_{\text{in}}(v) = 0$, the set of incoming neighbors $\mathcal{N}_r(v) = \emptyset$ for all canonical relations $r$. By definition of graph aggregation operators, message aggregation over an empty set returns the zero vector identity $\mathbf{0}$. Without a skip projection $W_{\text{skip}} h_v^{(l-1)}$, the node state update simplifies to $h_v^{(l)} = \sigma(\mathbf{0}) = \mathbf{0}$. By application of the multi-variable chain rule across successive layers, the gradient $\frac{\partial \mathcal{L}}{\partial x_v}$ factors through $\frac{\partial h_v^{(1)}}{\partial x_v} = \mathbf{0}$, causing input feature sensitivities to vanish identically.
 
-\begin{corollary}
-In Active Directory graphs, user and workstation accounts frequently exhibit pure source topology in administrative authorization subgraphs. Omitting skip connections mathematically guarantees that the network becomes entirely blind to whether an enroller account is a privileged administrator or an unprivileged guest, destroying model capacity.
+\begin{corollary}[Security Blindness Corollary]
+In Active Directory graphs, user and workstation accounts frequently exhibit pure source topology in administrative authorization subgraphs (i.e., they possess outgoing permissions to groups and templates, but no directory objects hold incoming access rights over them). Omitting skip connections mathematically guarantees that the neural network becomes completely blind to whether an enroller account is a privileged administrator ($f_{\text{is\_admin}} = 1$) or an unprivileged guest ($f_{\text{is\_admin}} = 0$).
 \end{corollary}
+
+\section{Computational Complexity and Scalability Analysis}
+To understand why CertGraph can screen enterprise networks in milliseconds while graph traversal tools encounter combinatorial slowdowns, we analyze its asymptotic time and space complexity:
+
+\begin{proposition}[Computational Complexity of CertGraph Inference]
+Let $G = (V, E)$ denote an enterprise identity multigraph with $|V|$ vertices, $|E|$ edges, hidden dimension $d$, and $L$ convolutional layers. The computational time complexity of a CertGraph forward pass is:
+\begin{equation}
+\mathcal{O} \left( L \cdot \left( |E| \cdot d + |V| \cdot d^2 \right) \right)
+\end{equation}
+and its auxiliary space complexity is $\mathcal{O}(|V| \cdot d + |E|)$.
+\end{proposition}
+
+\begin{proof}
+For each layer $l \in \{1, \dots, L\}$:
+\begin{enumerate}
+    \item \textbf{Node Feature Projections:} Projecting all $|V|$ nodes across incoming relations requires $|V| \cdot d^2$ multiply-accumulate operations.
+    \item \textbf{Attention Logit Computation:} Computing unnormalized attention coefficients $e_{vu}^{(k, l, r)}$ requires evaluating the dot product $\mathbf{a}_k^T [z_v \| z_u]$ for every directed edge in $E$. This evaluates in $\mathcal{O}(|E| \cdot d)$ operations.
+    \item \textbf{Relational Softmax and Aggregation:} Normalizing attention coefficients and taking the weighted sum over neighbor feature vectors evaluates in $\mathcal{O}(|E| \cdot d)$ operations using sparse segment reduction primitives.
+    \item \textbf{Skip Connection and Non-Linearity:} Adding the residual projection and evaluating ELU and LayerNorm requires $\mathcal{O}(|V| \cdot d)$ operations.
+\end{enumerate}
+Summing these stages across $L$ layers yields $\mathcal{O}(L (|E| d + |V| d^2))$. Because $L = 2$ and $d = 64$ are fixed constants, the complexity scales strictly linearly with graph volume:
+\begin{equation}
+\mathcal{O}(|V| + |E|)
+\end{equation}
+Memory space is dominated by the node state tensors $\mathbb{R}^{|V| \times d}$ and the edge index tensor $\mathbb{Z}^{2 \times |E|}$, bounded by $\mathcal{O}(|V| d + |E|)$.
+\end{proof}
+
+In contrast, deterministic graph traversal (e.g., Breadth-First Search or Cypher shortest-path queries) across all published templates exhibits worst-case computational complexity of $\mathcal{O}(|V_{\text{Template}}| \cdot (|V| + |E|))$. In densely connected enterprise forests where $|E| \gg |V|$, recursive path-finding encounters exponential path explosion along cyclic group delegation chains, whereas CertGraph executes as a sequence of highly parallelized, constant-depth GPU tensor operations.
