@@ -1,0 +1,49 @@
+\chapter{Introduction}
+\label{ch:introduction}
+
+\section{The Modern Identity Attack Surface}
+Enterprise security architectures have undergone a fundamental paradigm shift over the past decade. The traditional perimeter defense model—predicated on securing network boundaries via firewalls, intrusion detection systems, and demilitarized zones (DMZs)—has proven wholly inadequate against modern Advanced Persistent Threats (APTs) and sophisticated ransomware operators. Today, the true operational perimeter of an enterprise is its \textbf{identity and access management (IAM) fabric}. Within this fabric, Microsoft Active Directory (AD) stands as the undisputed centerpiece, deployed across more than 90\% of Fortune 1000 organizations and global enterprise IT infrastructures to manage authentication, authorization, and directory services.
+
+Active Directory is not merely a database of usernames and passwords; it is an immensely dense, dynamic, and heterogeneous relational graph. Entities such as user accounts, computer workstations, domain controllers, security groups, and organizational units are interlinked by intricate webs of Kerberos delegations, group memberships, and Discretionary Access Control Lists (DACLs). When an attacker obtains an initial foothold inside an enterprise network—whether through phishing, credential stuffing, or edge device exploitation—they rarely attempt to brute-force domain controllers. Instead, they execute identity-based lateral movement, traversing implicit trust relationships and privilege delegation edges to escalate their privileges until achieving total domain compromise (\textit{Domain Admin} status).
+
+\section{The Rise of Active Directory Certificate Services (ADCS)}
+In 2021, SpecterOps researchers Will Schroeder and Lee Christensen published their seminal whitepaper, \textit{Certified Pre-Owned: Abusing Active Directory Certificate Services}~\cite{schroeder2021certified}. This work exposed a vast, historically overlooked attack surface: Active Directory Certificate Services (ADCS). ADCS is Microsoft's native Public Key Infrastructure (PKI) implementation, integrated deeply into Active Directory to issue digital certificates for code signing, smart card logons, TLS encryption, and, crucially, \textbf{client authentication}.
+
+Because ADCS relies on complex, legacy directory schema configurations, subtle misconfigurations in certificate templates and CA permissions can allow low-privileged attackers to impersonate arbitrary domain entities—including high-value Domain Admins. SpecterOps formalized these misconfiguration primitives as \textit{Escalation Vectors} (designated ESC1 through ESC8 in the original publication, and expanding to ESC15 by 2024 with discoveries like ESC13, ESC14, and ESC15/CVE-2024-49019 ``EKUwu''~\cite{feynman2024ekuwu}).
+
+Unlike traditional credential theft techniques (e.g., Mimikatz LSASS dumping), ADCS exploits generate \textbf{cryptographically legitimate certificates signed by the enterprise's trusted Root Certificate Authority}. Once issued, the attacker presents this certificate to the Kerberos Key Distribution Center (KDC) to request a Kerberos Ticket Granting Ticket (TGT) carrying a privileged Privilege Attribute Certificate (PAC). Security Information and Event Management (SIEM) solutions and endpoint sensors perceive the transaction as an entirely benign, legitimate certificate enrollment, rendering ADCS abuse one of the stealthiest and most destructive attack vectors in enterprise cybersecurity.
+
+\section{Limitations of Prior Art: Why Rule-Based Tools Fall Short}
+In response to the ADCS threat, the cybersecurity community developed several automated auditing utilities, most notably \textbf{Certipy}~\cite{alldritt2023certipy}, \textbf{BloodHound}~\cite{robbins2017bloodhound}, and \textbf{PSPKIAudit}. While indispensable for penetration testers and red teams, these tools suffer from three fundamental architectural limitations:
+
+\begin{enumerate}
+    \item \textbf{Isolated Attribute Inspection:} Existing scanners predominantly evaluate certificate templates in isolation by checking local property flags (e.g., checking whether \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} is enabled alongside a Client Authentication EKU). However, in realistic environments, a template's exploitability depends on whether an unprivileged actor possesses an end-to-end authorization path to enroll in the template, modify its DACL, or link an issuance policy. Inspecting template attributes without evaluating the surrounding graph topology results in massive volumes of false positives.
+    \item \textbf{Absence of Contextual Risk Scoring:} Signature-based tools generate unranked lists of vulnerable templates without quantifying the blast radius or the probability of path traversal. Defenders facing hundreds of reported issues have no automated means of prioritizing remediation based on environmental context.
+    \item \textbf{Inability to Generalize to Chained Multi-Hop Misconfigurations:} Modern attack paths frequently chain together subtle cross-object permissions (e.g., a low-privileged contractor belonging to an obscure security group that owns a group with \texttt{WriteDacl} over a certificate template published to a subordinate CA). Handcrafted rules cannot anticipate the combinatorial explosion of potential multi-hop delegation chains.
+\end{enumerate}
+
+To date, machine learning—and specifically \textbf{Graph Neural Networks (GNNs)}—has been virtually unapplied to the ADCS attack surface.
+
+\section{Research Questions and Thesis Objectives}
+This thesis addresses this critical gap by exploring whether relational representation learning can automate, generalize, and prioritize the detection of complex ADCS privilege escalation vulnerabilities. Specifically, we investigate four central research questions:
+
+\begin{itemize}
+    \item \textbf{RQ1 (Relational Necessity):} Can a heterogeneous Graph Attention Network effectively learn to classify subtle ADCS vulnerability classes (ESC1–ESC13) by jointly modeling template configurations and directory authorization topology?
+    \item \textbf{RQ2 (Architectural Dynamics):} How do the directed, asymmetric topological properties of Active Directory authorization graphs impact standard message passing, and what architectural inductive biases (e.g., residual skip connections) are mathematically necessary to prevent representation collapse?
+    \item \textbf{RQ3 (Adversarial Robustness and Shortcut Learning):} When subjected to rigorous out-of-distribution adversarial hard negatives (templates bearing vulnerable flags but lacking valid authorization paths), do neural security models genuinely evaluate graph reachability, or do they succumb to feature-level shortcut learning?
+    \item \textbf{RQ4 (Optimal Defense Paradigm):} Given the trade-offs between inductive statistical pattern recognition and deterministic symbolic graph algorithms, what is the optimal architectural paradigm for enterprise-grade autonomous identity defense?
+\end{itemize}
+
+\section{Summary of Key Contributions}
+The primary contributions of this thesis are as follows:
+
+\begin{enumerate}
+    \item \textbf{CertGraph Heterogeneous Architecture:} We propose CertGraph, the first heterogeneous Graph Attention Network (Hetero-GAT) tailored to ADCS vulnerability auditing. CertGraph integrates typed node features, relation-specific message passing, and multi-head attention to classify multi-class ESC vulnerabilities directly from Active Directory graphs.
+    \item \textbf{Mathematical Proof of Representation Collapse (Theorem 1):} We mathematically prove and empirically validate that in directed heterogeneous graphs containing source-only entities (Users and Computers with zero in-degree), relational message passing without residual skip connections destroys feature representations ($h_v^{(l)} = \mathbf{0}$), causing Macro-F1 to collapse from $0.9986$ to $0.4768$ ($p = 1.31 \times 10^{-6}$).
+    \item \textbf{Forensic Audit of Security ML Illusions:} We conduct an end-to-end forensic audit of experimental security ML practices, identifying and correcting three pervasive methodological pitfalls: positional index leakage in synthetic generators, baseline information asymmetry, and hard negative memorization under in-distribution cross-validation.
+    \item \textbf{The Zero-Shot Hard Negative Benchmark:} We introduce an adversarial zero-shot benchmark exposing that neural models suffer catastrophic shortcut learning collapse (dropping to $1.59\%$ accuracy), while symbolic BFS traversal retains $84.13\%$ accuracy.
+    \item \textbf{Neuro-Symbolic Defense Framework and NP-Hardness Proof (Theorem 2):} We propose a two-tier neuro-symbolic architecture pairing fast GNN screening with symbolic verification, and prove that minimal-disruption attack path severing in Active Directory is NP-hard via reduction from Directed Multi-way Cut.
+\end{enumerate}
+
+\section{Thesis Roadmap}
+The remainder of this thesis is structured as follows. Chapter~\ref{ch:background} provides technical background on Active Directory internals, PKI semantics, and the formal ESC taxonomy. Chapter~\ref{ch:methodology} presents the formal mathematical modeling of ADCS as a heterogeneous multigraph and the CertGraph architecture. Chapter~\ref{ch:audit} details our forensic audit and generator sanitization. Chapter~\ref{ch:evaluation} reports extensive 5-fold cross-validation, ablation studies, and the zero-shot adversarial evaluation. Chapter~\ref{ch:case_study} and Chapter~\ref{ch:robustness} present real-world GOAD evaluations, transfer learning, and scalability benchmarks. Chapter~\ref{ch:neuro_symbolic} and Chapter~\ref{ch:game_theory} develop the neuro-symbolic hybrid architecture and game-theoretic defense proofs. Chapter~\ref{ch:conclusion} concludes the thesis.

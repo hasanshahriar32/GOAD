@@ -1,0 +1,39 @@
+\chapter{Conclusion, Limitations, and Future Horizons}
+\label{ch:conclusion}
+
+\section{Summary of Thesis Contributions}
+This thesis has presented \textbf{CertGraph}, the first comprehensive heterogeneous Graph Neural Network architecture designed for automated, context-aware vulnerability detection across Active Directory Certificate Services (ADCS) attack graphs. Over the course of this investigation, we established foundational theoretical, methodological, and empirical contributions to the fields of applied machine learning and enterprise identity security:
+
+\begin{enumerate}
+    \item \textbf{Formalization of ADCS Attack Graphs:} We formalized the complex relational fabric of Active Directory PKI as a typed, directed, heterogeneous multigraph, capturing five distinct entity types and eight canonical authorization relations.
+    \item \textbf{Mathematical Proof of Representation Collapse (Theorem 1):} We mathematically proved that in directed heterogeneous identity graphs containing source-only entities (Users and Computers with zero in-degree), relational message passing without residual skip connections destroys input feature representations ($h_v^{(l)} = \mathbf{0}$). Empirical ablations confirmed this proof, showing a severe Macro-F1 collapse from $0.9986$ to $0.4768$ ($p = 1.31 \times 10^{-6}$) when skips are omitted.
+    \item \textbf{Forensic Audit of Security ML Practices:} We exposed four critical methodological illusions common to applied security ML: positional index leakage in synthetic generators, baseline information asymmetry, low-dimensional Decision Tree equivalence (F1 = $0.9928$), and test-set memorization under synthetic hard negatives. We published a sanitized, leakage-free benchmark establishing gold-standard experimental hygiene.
+    \item \textbf{Discovery of Neural Shortcut Learning in Security GNNs:} Through a novel zero-shot adversarial hard-negative protocol, we demonstrated that neural models—including GNNs—succumb to shortcut learning, collapsing to $1.59\%$ accuracy by relying on template configuration flags rather than evaluating graph reachability. In contrast, symbolic graph algorithms (BloodHound BFS) achieved $84.13\%$.
+    \item \textbf{The Neuro-Symbolic Defense Paradigm:} We provided the first theoretical and empirical justification for a two-tier neuro-symbolic architecture in enterprise identity defense, combining fast GNN screening ($O(1)$ amortized per node) with symbolic path verification.
+    \item \textbf{Complexity Proof of Identity Defense (Theorem 2):} We proved that minimal-disruption attack path severing in Active Directory is NP-hard via polynomial-time reduction from Directed Multi-way Cut, establishing the theoretical necessity of heuristic approximation algorithms in autonomous defense.
+\end{enumerate}
+
+\section{Synthesis: Answers to Research Questions}
+We revisit the four central research questions posed in Chapter~\ref{ch:introduction}:
+\begin{itemize}
+    \item \textbf{RQ1 (Relational Necessity):} \textit{Yes.} On in-distribution data, CertGraph achieves Macro-F1 = $\mathbf{0.9986 \pm 0.0029}$, substantially outperforming signature-based heuristics ($0.7791, p < 10^{-4}$) and flat ML ($0.8600, p < 10^{-4}$). GNN relational modeling successfully captures cross-object DACL and issuance policy chains that flat classifiers cannot represent.
+    \item \textbf{RQ2 (Architectural Dynamics):} \textit{Residual skip connections are mathematically indispensable.} In directed graphs where authorization originates at source-only nodes, standard neighborhood aggregation destroys input identities. Skip connections preserve gradient flow and feature identity, preventing representation collapse.
+    \item \textbf{RQ3 (Adversarial Robustness and Shortcut Learning):} \textit{Neural GNNs alone are not robust to adversarial hard negatives.} GNNs default to template flag shortcuts during training. When flags indicate vulnerability but graph paths are severed, GNNs produce false positives ($1.59\%$ zero-shot accuracy).
+    \item \textbf{RQ4 (Optimal Defense Paradigm):} \textit{A two-tier neuro-symbolic hybrid.} Fast neural screening should be deployed to rank and prioritize suspicious templates, while symbolic graph search must be retained as an exact verification oracle.
+\end{itemize}
+
+\section{Honest Limitations to Acknowledge}
+In adherence to scientific rigor, we explicitly acknowledge four operational limitations of this research:
+
+\begin{enumerate}
+    \item \textbf{Synthetic Generator Bounds:} While our synthetic generator models documented SpecterOps ESC rules faithfully and transfers seamlessly to ADSynth tiered environments, it cannot capture the full, unpredictable diversity of misconfiguration chains present in real multi-decade enterprise forests.
+    \item \textbf{Single-Label Target Formulation:} Our experimental benchmarks evaluated environments where each target template is assigned a primary mutually exclusive ESC class. In production networks, templates can exhibit multi-label vulnerability co-occurrence (e.g., simultaneous ESC1 and ESC4).
+    \item \textbf{Absence of Production Enterprise Ground Truth:} Due to legal, confidentiality, and data privacy restrictions, training models on real, un-sanitized Fortune 500 Active Directory exports remains impossible without formal enterprise nondisclosure agreements.
+    \item \textbf{Scale Boundaries:} While our scalability benchmarks confirmed linear runtime scaling up to 10,000 nodes, global multi-national directory trees often exceed 200,000 nodes and millions of edges, requiring distributed graph processing frameworks (e.g., PyG GraphStore).
+\end{enumerate}
+
+\section{Ethical Considerations and Dual-Use Analysis}
+The methodologies developed in this thesis are inherently dual-use: an adversary possessing a trained CertGraph model could rapidly locate subtle ADCS escalation vectors during internal red-team operations. However, offensive tools such as Certipy and BloodHound already provide adversaries with automated discovery. By introducing the first machine-learning-driven auditing framework, open-sourcing a sanitized benchmark dataset, and formally proving the limits of neural security models, this research directly empowers defensive teams, enterprise architects, and autonomous security response systems.
+
+\section{Concluding Remarks}
+Active Directory Certificate Services represents one of the most consequential battlegrounds in modern enterprise cybersecurity. By demonstrating both the remarkable power and the acute vulnerabilities of Graph Neural Networks in this domain, this thesis bridges the divide between theoretical computer science and applied systems security. The future of enterprise identity defense belongs not to pure deep learning, nor to brittle hand-crafted rules, but to principled neuro-symbolic systems capable of learning from graph topology while providing mathematical guarantees of security.

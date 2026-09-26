@@ -1,0 +1,133 @@
+\chapter{Empirical Evaluation and Benchmarks}
+\label{ch:evaluation}
+
+\section{Experimental Configuration}
+All experiments were conducted on a standardized benchmarking workstation using Python 3.11, PyTorch 2.3.0, and PyTorch Geometric 2.5.3. Evaluation was performed on 700 independently generated enterprise environments comprising an average of 30 nodes and 120 typed edges per domain. 
+
+The dataset maintains a balanced class distribution across the 7 target classes: \texttt{Safe}, \texttt{ESC1}, \texttt{ESC2}, \texttt{ESC3}, \texttt{ESC4}, \texttt{ESC9}, and \texttt{ESC13} (100 environments per class). Random seeds were globally fixed to 42 for python, numpy, and torch to guarantee deterministic reproducibility.
+
+\section{In-Distribution 5-Fold Cross-Validation}
+We benchmarked CertGraph against six baseline classifiers across stratified 5-fold cross-validation. Statistical significance against CertGraph was computed via two-tailed paired $t$-tests across the 5 validation folds.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{5-Fold Cross-Validation Performance across 7 Evaluated Models on 700 Enterprise Domains.}
+\label{tab:cv_results}
+\begin{tabularx}{\textwidth}{lcccc}
+\toprule
+\textbf{Model Architecture} & \textbf{Macro-F1 (Mean $\pm$ Std)} & \textbf{Accuracy (Mean $\pm$ Std)} & \textbf{Input Dimension} & \textbf{$p$-value vs CertGraph} \\
+\midrule
+\textbf{CertGraph (Hetero-GAT)} & $\mathbf{0.9986 \pm 0.0029}$ & $\mathbf{0.9986 \pm 0.0029}$ & Relational Graph & Reference \\
+Graph-Augmented MLP & $0.9971 \pm 0.0035$ & $0.9971 \pm 0.0035$ & $\mathbb{R}^{14}$ (Feat + Counts) & $0.6213$ (Not Sig.) \\
+Graph-Augmented RF & $0.9871 \pm 0.0084$ & $0.9871 \pm 0.0084$ & $\mathbb{R}^{14}$ (Feat + Counts) & $0.0780$ (Marginal) \\
+BloodHound BFS (Symbolic) & $0.9082 \pm 0.0229$ & $0.9100 \pm 0.0215$ & Symbolic Graph & $1.64 \times 10^{-3}$ ($p < 0.01$) \\
+Flat MLP (Features Only) & $0.8600 \pm 0.0130$ & $0.8643 \pm 0.0118$ & $\mathbb{R}^{10}$ (Flags Only) & $2.62 \times 10^{-5}$ ($p < 10^{-4}$) \\
+Flat RF (Features Only) & $0.8384 \pm 0.0057$ & $0.8443 \pm 0.0051$ & $\mathbb{R}^{10}$ (Flags Only) & $1.32 \times 10^{-6}$ ($p < 10^{-5}$) \\
+Rule-Based (Certipy Heuristic) & $0.7791 \pm 0.0247$ & $0.8143 \pm 0.0205$ & Fixed Rules & $6.33 \times 10^{-5}$ ($p < 10^{-4}$) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/confusion_matrix.png}
+        \caption{CertGraph 7-Class Confusion Matrix.}
+        \label{fig:conf_matrix}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/gnn_baselines_comparison.png}
+        \caption{GNN Family Comparison.}
+        \label{fig:gnn_family}
+    \end{subfigure}
+    \caption{Empirical classification results: (a) Confusion matrix showing near-perfect diagonal alignment on 7 ESC classes; (b) Comparison of GNN architectures confirming the necessity of heterogeneous modeling.}
+\end{figure}
+
+\paragraph{Critical Analysis of Findings:}
+\begin{enumerate}
+    \item \textbf{Significant Advantage Over Signatures and Flat ML:} CertGraph outperforms signature heuristics (Certipy) by $+28.2\%$ in Macro-F1 ($0.9986$ vs $0.7791, p < 10^{-4}$) and flat ML by $+16.1\%$ ($0.9986$ vs $0.8600, p < 10^{-4}$).
+    \item \textbf{Statistical Equivalence to Graph-Augmented MLP:} The paired $t$-test between CertGraph and Graph-Augmented MLP yields $p = 0.6213$, confirming no statistically significant difference on in-distribution data. When flat models are provided with explicit topological summary counts, they achieve comparable in-distribution F1.
+\end{enumerate}
+
+\section{GNN Architectural Ablation Studies}
+To rigorously validate each component of the CertGraph architecture, we conducted systematic ablation experiments across four controlled variants:
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Architectural Ablation Study under 5-Fold Cross-Validation.}
+\label{tab:ablation}
+\begin{tabularx}{\textwidth}{lccc}
+\toprule
+\textbf{Ablation Variant} & \textbf{Macro-F1 (Mean $\pm$ Std)} & \textbf{Accuracy (Mean $\pm$ Std)} & \textbf{$p$-value vs Full CertGraph} \\
+\midrule
+\textbf{Full CertGraph (Multi-Head + Skips)} & $\mathbf{0.9986 \pm 0.0029}$ & $\mathbf{0.9986 \pm 0.0029}$ & Reference \\
+Single-Head Attention ($K = 1$) & $1.0000 \pm 0.0000$ & $1.0000 \pm 0.0000$ & $0.3739$ (Not Sig.) \\
+No Graph Context (Graph-less MLP) & $0.8600 \pm 0.0130$ & $0.8643 \pm 0.0118$ & $2.62 \times 10^{-5}$ ($p < 10^{-4}$) \\
+\textbf{No Skip Connections (No Residuals)} & $\mathbf{0.4768 \pm 0.0532}$ & $\mathbf{0.5057 \pm 0.0463}$ & $\mathbf{1.31 \times 10^{-6}}$ ($p < 10^{-5}$) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/ablation_comparison.png}
+    \caption{Ablation study comparison highlighting the catastrophic performance collapse when residual skip connections are disabled.}
+    \label{fig:ablation_fig}
+\end{figure}
+
+\paragraph{Empirical Confirmation of Theorem 1:}
+The removal of residual skip connections triggers a catastrophic drop in Macro-F1 from $0.9986$ to $0.4768$ ($p = 1.31 \times 10^{-6}$). Without skip connections, feature vectors of source-only nodes (Users and Computers) collapse to zero after Layer 1 as mathematically proven in Theorem 1, destroying the network's ability to propagate administrative identity context.
+
+\section{The Zero-Shot Adversarial Hard Negative Benchmark}
+To determine whether learned models verify topological reachability or exploit feature-level shortcuts, we executed an adversarial zero-shot benchmark:
+\begin{itemize}
+    \item \textbf{Training Set:} 1,400 clean environments containing zero hard negative samples.
+    \item \textbf{Test Set:} 63 out-of-distribution Hard Negative environments. Each hard negative template has ESC configuration flags enabled (e.g., \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} or policy links) but has all incoming \texttt{Enroll} or DACL permissions strictly blocked. The true ground-truth label is \texttt{Safe}.
+\end{itemize}
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Zero-Shot Adversarial Hard Negative Benchmark Results (Evaluated on 63 Test Hard Negatives).}
+\label{tab:hn_results}
+\begin{tabularx}{\textwidth}{lccc}
+\toprule
+\textbf{Model Architecture} & \textbf{Correctly Classified Safe} & \textbf{Accuracy} & \textbf{Observed Behavior} \\
+\midrule
+\textbf{BloodHound BFS (Symbolic)} & $\mathbf{53 / 63}$ & $\mathbf{84.13\%}$ & \textbf{Verifies path absence} \\
+Graph-Augmented MLP & $18 / 63$ & $28.57\%$ & Weak path count conditioning \\
+\textbf{CertGraph (Hetero-GAT)} & $\mathbf{1 / 63}$ & $\mathbf{1.59\%}$ & \textbf{Catastrophic Shortcut Collapse} \\
+Flat MLP (Features Only) & $0 / 63$ & $0.00\%$ & Fooled by template flags \\
+Flat RF (Features Only) & $0 / 63$ & $0.00\%$ & Fooled by template flags \\
+Graph-Augmented RF & $0 / 63$ & $0.00\%$ & Tree split prioritized flags \\
+Rule-Based (Certipy) & $0 / 63$ & $0.00\%$ & Signature false positive \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/hard_negatives_comparison.png}
+    \caption{Zero-shot adversarial evaluation demonstrating the complete failure of neural models (shortcut learning) compared to symbolic BFS path traversal.}
+    \label{fig:hn_fig}
+\end{figure}
+
+\paragraph{Discovery of Neural Shortcut Learning:}
+Under zero-shot adversarial shift, CertGraph's accuracy collapses to **1.59\%** (1/63). The GNN learned to rely on template configuration flags as predictive shortcuts during training. When presented with unseen configurations where flags indicate vulnerability but graph paths are absent, the neural model blindly predicts the vulnerability class. In contrast, the symbolic BFS baseline explicitly traverses the graph, achieving **84.13\%**.
+
+\section{Attention Weight Explainability}
+We analyzed CertGraph's learned multi-head attention weights $\alpha_{vu}^{(k, r)}$ using localized 2-hop receptive field extraction.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/attention_explainability.png}
+    \caption{Localized 2-hop attention weight attribution for an ESC13 template, showing concentrated attention along the valid enrollment and issuance policy path.}
+    \label{fig:attention_exp}
+\end{figure}
+
+As shown in Figure~\ref{fig:attention_exp}, the model assigns highest attention coefficients ($\alpha > 0.85$) to edges directly linking the low-privileged enroller group to the template, and from the template to the issuance policy target group, providing transparent interpretability for Security Operations Center (SOC) analysts.

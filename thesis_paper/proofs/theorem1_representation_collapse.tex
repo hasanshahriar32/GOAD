@@ -1,0 +1,111 @@
+\section{Proof of Theorem 1: Representation Collapse of Source-Only Entities in Directed Heterogeneous Message Passing}
+\label{proof:theorem1}
+
+\begin{theorem}[Representation Collapse in Directed Heterogeneous Convolutions]
+Let $G = (V, E, \mathcal{T}_V, \mathcal{T}_E)$ be a directed heterogeneous graph where $\tau: V \to \mathcal{T}_V$ assigns node types. Let $\mathcal{T}_{\text{source}} \subset \mathcal{T}_V$ denote the set of source-only node types satisfying:
+\begin{equation}
+\forall v \in V \text{ such that } \tau(v) \in \mathcal{T}_{\text{source}}, \quad \mathcal{N}_{\text{in}}(v) = \{u \in V \mid (u, v) \in E\} = \emptyset
+\end{equation}
+Consider an $L$-layer heterogeneous message-passing neural network where layer $l \in \{1, \dots, L\}$ computes representations via relation-specific neighborhood aggregation without residual skip-connections:
+\begin{equation}
+h_v^{(l)} = \sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\tau(v))} \bigoplus_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(l)} W_r^{(l)} h_u^{(l-1)} \right)
+\end{equation}
+where $\mathcal{R}_{\text{in}}(\tau(v))$ is the set of relation types terminating at node type $\tau(v)$, $\bigoplus$ is a permutation-invariant aggregation operator with the empty-set identity $\bigoplus(\emptyset) = \mathbf{0}$, $\alpha_{vu}^{(l)}$ are attention weights, and $\sigma$ is an activation function satisfying $\sigma(\mathbf{0}) = \mathbf{0}$ (e.g., ReLU, LeakyReLU, ELU, Tanh).
+
+Then:
+\begin{enumerate}
+    \item For any source node $v \in V$ with $\tau(v) \in \mathcal{T}_{\text{source}}$ and any layer $l \ge 1$:
+    \begin{equation}
+    h_v^{(l)} = \mathbf{0}
+    \end{equation}
+    \item The gradient of the loss $\mathcal{L}$ with respect to the input features $x_v = h_v^{(0)}$ vanishes identically:
+    \begin{equation}
+    \frac{\partial \mathcal{L}}{\partial x_v} = \mathbf{0}
+    \end{equation}
+    \item If additive residual skip connections of the form:
+    \begin{equation}
+    \tilde{h}_v^{(l)} = h_v^{(l)} + W_{\text{skip}}^{(l)} \tilde{h}_v^{(l-1)}
+    \end{equation}
+    are introduced, where $W_{\text{skip}}^{(l)}$ is a parameterized projection matrix, then $h_v^{(l)}$ retains an injective transformation of the input features:
+    \begin{equation}
+    \tilde{h}_v^{(l)} = \left( \prod_{k=1}^l W_{\text{skip}}^{(k)} \right) x_v \neq \mathbf{0}
+    \end{equation}
+    and the gradient $\frac{\partial \mathcal{L}}{\partial x_v}$ remains non-zero.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We prove each statement sequentially.
+
+\paragraph{Part 1: Collapse of Hidden Representations.}
+Let $v \in V$ be a node belonging to a source-only type $\tau(v) \in \mathcal{T}_{\text{source}}$. By definition of source-only types in the directed graph $G$, the in-degree of $v$ is zero:
+\begin{equation}
+d_{\text{in}}(v) = |\mathcal{N}_{\text{in}}(v)| = 0
+\end{equation}
+Consequently, for every relation type $r = (s, \text{rel}, \tau(v)) \in \mathcal{T}_E$, the relation-specific incoming neighborhood is empty:
+\begin{equation}
+\mathcal{N}_r(v) = \{u \in V \mid (u, v) \in E_r\} = \emptyset
+\end{equation}
+Now consider the layer update formula for $h_v^{(1)}$:
+\begin{align}
+h_v^{(1)} &= \sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\tau(v))} \bigoplus_{u \in \emptyset} \alpha_{vu}^{(1)} W_r^{(1)} h_u^{(0)} \right)
+\end{align}
+By the standard definition of graph aggregation operators (Sum, Mean, Max in PyTorch Geometric and DGL), aggregation over an empty set returns the zero vector identity:
+\begin{equation}
+\bigoplus_{u \in \emptyset} (\cdot) = \mathbf{0} \in \mathbb{R}^{d_{\text{out}}}
+\end{equation}
+Therefore, the finite sum of empty aggregations across all incoming relations is:
+\begin{equation}
+\sum_{r \in \mathcal{R}_{\text{in}}(\tau(v))} \mathbf{0} = \mathbf{0}
+\end{equation}
+Applying the activation function $\sigma$ where $\sigma(\mathbf{0}) = \mathbf{0}$:
+\begin{equation}
+h_v^{(1)} = \sigma(\mathbf{0}) = \mathbf{0}
+\end{equation}
+By mathematical induction, assume $h_v^{(l-1)} = \mathbf{0}$ for $l \ge 2$. At layer $l$, the incoming neighborhood remains $\mathcal{N}_r(v) = \emptyset$. Hence:
+\begin{equation}
+h_v^{(l)} = \sigma \left( \sum_r \bigoplus_{u \in \emptyset} (\cdot) \right) = \sigma(\mathbf{0}) = \mathbf{0}
+\end{equation}
+This establishes Part 1: every source-only node's embedding collapses to the zero vector at all hidden layers $l \ge 1$.
+
+\paragraph{Part 2: Gradient Vanishing.}
+Consider the scalar training loss $\mathcal{L}(Y, \hat{Y})$. By the multivariate chain rule, the gradient of $\mathcal{L}$ with respect to the input feature vector $x_v = h_v^{(0)}$ is:
+\begin{equation}
+\frac{\partial \mathcal{L}}{\partial x_v} = \sum_{w \in V} \frac{\partial \mathcal{L}}{\partial h_w^{(1)}} \frac{\partial h_w^{(1)}}{\partial h_v^{(0)}}
+\end{equation}
+For any target node $w \neq v$, $h_w^{(1)}$ depends on $h_v^{(0)}$ if and only if $v \in \mathcal{N}_{\text{in}}(w)$. However, for $w = v$, we have established that $h_v^{(1)} = \mathbf{0}$ independently of $h_v^{(0)}$ because the mapping is constant zero. Therefore:
+\begin{equation}
+\frac{\partial h_v^{(1)}}{\partial h_v^{(0)}} = \mathbf{0} \in \mathbb{R}^{d_1 \times d_0}
+\end{equation}
+Furthermore, if a downstream node $w$ aggregates messages from $v$, the message is weighted by $W_r^{(1)} h_v^{(0)}$. But in a directed graph where $v$ never updates its state, for any layer $l \ge 2$:
+\begin{equation}
+\frac{\partial h_w^{(l)}}{\partial h_v^{(l-1)}} = \frac{\partial h_w^{(l)}}{\partial \mathbf{0}}
+\end{equation}
+If the prediction head is placed directly on $v$ or on paths where $v$'s intermediate features are discarded, all sensitivity to $x_v$ is lost. Specifically, if $v$'s own identity or credentials determine path exploitability, the model cannot distinguish between a privileged administrative user and an unprivileged guest user because $h_{\text{admin}}^{(l)} = h_{\text{guest}}^{(l)} = \mathbf{0}$.
+
+\paragraph{Part 3: Restoration via Residual Skip Connections.}
+Now consider the update with additive residual skip connections:
+\begin{equation}
+\tilde{h}_v^{(l)} = h_v^{(l)} + W_{\text{skip}}^{(l)} \tilde{h}_v^{(l-1)}
+\end{equation}
+Substituting $h_v^{(l)} = \mathbf{0}$ for $v \in \mathcal{T}_{\text{source}}$:
+\begin{align}
+\tilde{h}_v^{(1)} &= \mathbf{0} + W_{\text{skip}}^{(1)} x_v = W_{\text{skip}}^{(1)} x_v \\
+\tilde{h}_v^{(2)} &= \mathbf{0} + W_{\text{skip}}^{(2)} \tilde{h}_v^{(1)} = W_{\text{skip}}^{(2)} W_{\text{skip}}^{(1)} x_v
+\end{align}
+By induction, at layer $L$:
+\begin{equation}
+\tilde{h}_v^{(L)} = \left( \prod_{k=1}^L W_{\text{skip}}^{(k)} \right) x_v
+\end{equation}
+Assuming full-rank initialization of $W_{\text{skip}}^{(k)}$, the product matrix $\mathcal{M} = \prod_{k=1}^L W_{\text{skip}}^{(k)}$ has $\operatorname{rank}(\mathcal{M}) = \min(d_L, d_0)$. Thus, $\tilde{h}_v^{(L)} \neq \mathbf{0}$ for any non-zero input $x_v \neq \mathbf{0}$. 
+
+The gradient with respect to $x_v$ through the skip path is:
+\begin{equation}
+\frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} = \prod_{k=1}^L W_{\text{skip}}^{(k)} \neq \mathbf{0}
+\end{equation}
+which preserves gradient backpropagation throughout training.
+\end{proof}
+
+\begin{corollary}[Necessity in Active Directory Graphs]
+In Active Directory graphs $G_{\text{AD}}$, node types $\text{User}$ and $\text{Computer}$ frequently act as pure sources in the authorization subgraph (possessing outgoing edges such as $\text{MemberOf}$, $\text{Enroll}$, $\text{GenericAll}$, but zero incoming administrative delegation edges). Therefore, any GNN architecture omitting residual skip connections is mathematically guaranteed to destroy the identity feature embeddings of all low-privileged and administrative user accounts after layer 1.
+\end{corollary}

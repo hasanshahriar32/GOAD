@@ -1,0 +1,84 @@
+\chapter{Real-World Active Directory Case Studies: GOAD and Community Benchmarks}
+\label{ch:case_study}
+
+\section{The Game of Active Directory (GOAD) Multi-Forest Testbed}
+To evaluate whether CertGraph generalizes to complex, non-synthetic topologies, we deployed our evaluation framework against the **Game of Active Directory (GOAD)**~\cite{garla2020game}. GOAD is an acclaimed, highly complex vulnerable Active Directory research environment modeled on enterprise Windows infrastructure. 
+
+Our testbed encompasses three fully operational Active Directory domains configured across cross-forest trust relationships:
+\begin{enumerate}
+    \item \texttt{sevenkingdoms.local}: Root parent domain (16 users, 59 security groups, 1 domain controller).
+    \item \texttt{north.sevenkingdoms.local}: Child domain in a two-way transitive trust (5 users, 47 security groups, 2 computers).
+    \item \texttt{essos.local}: External forest in a one-way forest trust relationship (14 users, 60 security groups, 2 computers).
+\end{enumerate}
+
+\section{Data Ingestion and Schema Translation}
+We utilized SharpHound v5 to execute full directory enumeration against all three domain controllers. SharpHound collects raw JSON data structures capturing active directory objects, group memberships, session data, and Discretionary Access Control Lists (DACLs). 
+
+We engineered an automated ingestion pipeline (\texttt{bloodhound\_parser.py}) that parses SharpHound JSON collections into PyTorch Geometric \texttt{HeteroData} graph tensors. The pipeline maps Windows SIDs to integer vertex identifiers and maps LDAP access rights (e.g., \texttt{ActiveDirectoryRights: ExtendedRight}, \texttt{Enroll}) into canonical relation types.
+
+\section{Injected ADCS Vulnerability Case Studies}
+To benchmark CertGraph against traditional heuristic auditing tools (Certipy) on real domain topologies, we synthesized realistic certificate templates within the parsed GOAD directory structures across 10 representative security scenarios (including both exploitable ESC classes and hard negative configurations):
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Comparative Auditing Performance on Real-World Ingested GOAD Topologies.}
+\label{tab:goad_results}
+\begin{tabularx}{\textwidth}{lcccc}
+\toprule
+\textbf{Case Study Target} & \textbf{Ground Truth} & \textbf{Certipy Prediction} & \textbf{CertGraph Prediction} & \textbf{Outcome} \\
+\midrule
+\texttt{ESC1\_Standard} & ESC1 & ESC1 & ESC1 & Both Correct \\
+\texttt{ESC2\_AnyPurpose} & ESC2 & ESC2 & ESC2 & Both Correct \\
+\texttt{ESC3\_Agent} & ESC3 & ESC3 & ESC3 & Both Correct \\
+\texttt{ESC4\_DACL\_Abuse} & ESC4 & ESC4 & ESC4 & Both Correct \\
+\texttt{ESC9\_NoPAC} & ESC9 & ESC9 & ESC9 & Both Correct \\
+\texttt{ESC13\_PolicyLink} & ESC13 & Safe (Missed) & ESC13 & \textbf{CertGraph Discovers} \\
+\texttt{HN\_ESC1 (Hard Neg.)} & Safe & ESC1 (False Pos.) & Safe & \textbf{CertGraph Avoids FP} \\
+\texttt{HN\_ESC4 (Hard Neg.)} & Safe & ESC4 (False Pos.) & Safe & \textbf{CertGraph Avoids FP} \\
+\texttt{HN\_ESC13 (Hard Neg.)} & Safe & Safe & Safe & Both Correct \\
+\texttt{Benign\_Template} & Safe & Safe & Safe & Both Correct \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Case Study Analysis:}
+\begin{itemize}
+    \item \textbf{Detection of Novel Vector (ESC13):} Standard Certipy heuristic rules failed to detect the ESC13 attack vector because its signature database lacked support for \texttt{msPKI-Certificate-Policy} OID mapping logic. CertGraph successfully identified ESC13 by tracing the 2-hop path through the template's policy link to the Tier-0 group.
+    \item \textbf{False Positive Elimination on Hard Negatives:} On \texttt{HN\_ESC1} (configured with \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} but restricted to administrative enrollers), Certipy triggered a critical severity false positive. CertGraph correctly evaluated the template as \texttt{Safe}, recognizing that no unprivileged user possessed an enrollment path.
+\end{itemize}
+
+\section{Temporal Validation Across Independent Collection Dates}
+A major vulnerability in machine learning evaluations is sensitivity to temporal environmental drift. To provide rigorous temporal separation, we conducted an independent data collection against the running GOAD virtual machines on July 2, 2026—several weeks after the initial baseline collection on June 15, 2026.
+
+CertGraph was evaluated zero-shot against the freshly collected GOAD topologies without fine-tuning:
+\begin{itemize}
+    \item \texttt{sevenkingdoms.local}: 7/7 correct ($100.0\%$).
+    \item \texttt{north.sevenkingdoms.local}: 7/7 correct ($100.0\%$).
+    \item \texttt{essos.local}: 7/7 correct ($100.0\%$).
+    \item \textbf{Overall Fresh Temporal Accuracy:} $\mathbf{21/21}$ ($\mathbf{100.0\%}$).
+\end{itemize}
+This confirms that the model's learned relational representations are stable across temporal snapshot variations and collection artifacts.
+
+\section{External Community Benchmark Validation}
+To eliminate dataset collection bias and verify model robustness on telemetry collected outside our local testbed, we evaluated CertGraph against an open-source community dataset from \texttt{m4lwhere/Bloodhound-CE-Sample-Data} on GitHub. This dataset represents an external third-party collection of a multi-domain GOADv2 enterprise forest.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Classification Accuracy on External Community-Collected Enterprise Topologies.}
+\label{tab:community_results}
+\begin{tabularx}{\textwidth}{lcccc}
+\toprule
+\textbf{External Domain} & \textbf{Total Test Cases} & \textbf{Certipy / Heuristic Accuracy} & \textbf{CertGraph Accuracy} & \textbf{Performance Gain} \\
+\midrule
+\texttt{sevenkingdoms} & 10 & $70.0\%$ (7/10) & $\mathbf{100.0\%}$ (10/10) & $+30.0\%$ \\
+\texttt{essos} & 10 & $60.0\%$ (6/10) & $\mathbf{100.0\%}$ (10/10) & $+40.0\%$ \\
+\texttt{north} & 10 & $60.0\%$ (6/10) & $\mathbf{100.0\%}$ (10/10) & $+40.0\%$ \\
+\midrule
+\textbf{Overall Average} & \textbf{30} & $\mathbf{63.3\%}$ (19/30) & $\mathbf{100.0\%}$ (30/30) & $\mathbf{+36.7\%}$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Across 30 distinct test cases across three external domains, CertGraph achieved a flawless **100.0\%** accuracy, whereas signature-based heuristics averaged only **63.3\%**. The introduction of relation-specific reverse policy relationships (\texttt{links\_policy}) and proper DACL modeling in the repaired architecture successfully generalized to completely external enterprise directory trees.

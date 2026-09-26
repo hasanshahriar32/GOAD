@@ -1,0 +1,89 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+% Include custom professional HSTU thesis styling
+\usepackage{config/thesis}
+
+\begin{document}
+
+% ─────────────────────────────────────────────────────────────
+% FRONT MATTER (ROMAN NUMBERING)
+% ─────────────────────────────────────────────────────────────
+\pagenumbering{roman}
+
+% 1. Outer Cover Page
+\input{frontmatter/cover}
+\clearpage
+
+% 2. Inner Title Page
+\input{frontmatter/title_page}
+\clearpage
+
+% 3. Official Certificate Page
+\input{frontmatter/certificate}
+\clearpage
+
+% 4. Candidate's Declaration
+\input{frontmatter/declaration}
+\clearpage
+
+% 5. Dedication
+\input{frontmatter/dedication}
+\clearpage
+
+% 6. Acknowledgements
+\input{frontmatter/acknowledgements}
+\clearpage
+
+% 7. Abstract
+\input{frontmatter/abstract}
+\clearpage
+
+% 8. Table of Contents, Lists of Tables & Figures
+\tableofcontents
+\clearpage
+
+\listoftables
+\clearpage
+
+\listoffigures
+\clearpage
+
+% 9. List of Acronyms
+\input{config/acronyms}
+\clearpage
+
+% ─────────────────────────────────────────────────────────────
+% MAIN BODY CHAPTERS (ARABIC NUMBERING)
+% ─────────────────────────────────────────────────────────────
+\pagenumbering{arabic}
+\doublespacing
+
+\input{chapters/ch01_introduction}
+\input{chapters/ch02_background_threat}
+\input{chapters/ch03_formal_methodology}
+\input{chapters/ch04_forensic_audit}
+\input{chapters/ch05_empirical_benchmarks}
+\input{chapters/ch06_real_world_case_study}
+\input{chapters/ch07_robustness_scalability}
+\input{chapters/ch08_neuro_symbolic_hybrid}
+\input{chapters/ch09_game_theoretic_defense}
+\input{chapters/ch10_conclusion}
+
+% ─────────────────────────────────────────────────────────────
+% APPENDICES
+% ─────────────────────────────────────────────────────────────
+\appendix
+\chapter{Formal Mathematical Proofs}
+\label{app:proofs}
+
+\input{proofs/theorem1_representation_collapse}
+\clearpage
+\input{proofs/theorem2_edge_blocking_nphardness}
+
+% ─────────────────────────────────────────────────────────────
+% BIBLIOGRAPHY
+% ─────────────────────────────────────────────────────────────
+\clearpage
+\bibliography{references}
+
+\end{document}
