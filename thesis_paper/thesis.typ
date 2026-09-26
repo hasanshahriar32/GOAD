@@ -539,6 +539,11 @@ We deployed CertGraph against the *Game of Active Directory (GOAD)* testbed acro
 2. `north.sevenkingdoms.local`: Child domain with two-way transitive trust (5 users, 47 groups, 2 computers).
 3. `essos.local`: External forest with one-way trust (14 users, 60 groups, 2 computers).
 
+#figure(
+  image("figures/goad_forest_topology.png", width: 85%),
+  caption: [Architecture and trust schema of the Game of Active Directory (GOAD) multi-forest laboratory environment.]
+)
+
 == SharpHound Ingestion Pipeline
 SharpHound v5 JSON collections were ingested and parsed into PyTorch Geometric `HeteroData` tensors using `bloodhound_parser.py`.
 

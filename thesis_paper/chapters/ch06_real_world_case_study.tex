@@ -15,11 +15,20 @@ To establish whether CertGraph generalizes beyond synthetic graphs to real Windo
 \section{The Game of Active Directory (GOAD) Multi-Forest Testbed}
 GOAD is an acclaimed, widely recognized vulnerable enterprise research environment deployed on dedicated virtualization hardware. The infrastructure mirrors the complex identity architecture of a multi-national conglomerate spanning five dedicated virtual machines running licensed Windows Server 2016, Windows Server 2019, and Windows 10 Enterprise operating systems:
 
-\begin{enumerate}
-    \item \textbf{\texttt{sevenkingdoms.local} (Parent Root Domain):} Hosted on Domain Controller \texttt{kingslanding.sevenkingdoms.local} (Windows Server 2019). Manages 16 human user accounts, 59 global and universal security groups, Enterprise Certificate Services infrastructure, and authoritative Tier-0 administrative roles (\texttt{Enterprise Admins}, \texttt{Schema Admins}).
-    \item \textbf{\texttt{north.sevenkingdoms.local} (Child Domain):} Operates in a bidirectional transitive parent-child domain trust with the parent domain. Hosted across two dedicated systems: Primary Domain Controller \texttt{winterfell.north.sevenkingdoms.local} (Windows Server 2019) and secondary enterprise server \texttt{castelblack.north.sevenkingdoms.local} (Windows Server 2016). Manages 5 regional user accounts and 47 security groups.
-    \item \textbf{\texttt{essos.local} (External Forest):} An independent corporate forest connected to \texttt{sevenkingdoms.local} via a one-way, non-transitive external forest trust with selective authentication and SID filtering. Hosted on Domain Controller \texttt{braavos.essos.local} (Windows Server 2019) and workstation client \texttt{meereen.essos.local} (Windows 10). Manages 14 user accounts and 60 security groups.
+\begin{enumerate}\sloppy
+    \item \textbf{\texttt{sevenkingdoms.local} (Parent Root Domain):} Hosted on Domain Controller \texttt{kingslanding.}\allowbreak\texttt{sevenkingdoms.local} (Windows Server 2019). Manages 16 human user accounts, 59 global and universal security groups, Enterprise Certificate Services infrastructure, and authoritative Tier-0 administrative roles (\texttt{Enterprise Admins}, \texttt{Schema Admins}).
+    \item \textbf{\texttt{north.sevenkingdoms.local} (Child Domain):} Operates in a bidirectional transitive parent-child domain trust with the parent domain. Hosted across two dedicated systems: Primary Domain Controller \texttt{winterfell.}\allowbreak\texttt{north.}\allowbreak\texttt{sevenkingdoms.local} (Windows Server 2019) and secondary enterprise server \texttt{castelblack.}\allowbreak\texttt{north.}\allowbreak\texttt{sevenkingdoms.local} (Windows Server 2016). Manages 5 regional user accounts and 47 security groups.
+    \item \textbf{\texttt{essos.local} (External Forest):} An independent corporate forest connected to \texttt{sevenkingdoms.local} via a one-way, non-transitive external forest trust with selective authentication and SID filtering. Hosted on Domain Controller \texttt{braavos.}\allowbreak\texttt{essos.local} (Windows Server 2019) and workstation client \texttt{meereen.}\allowbreak\texttt{essos.local} (Windows 10). Manages 14 user accounts and 60 security groups.
 \end{enumerate}
+
+As illustrated in Figure~\ref{fig:goad_topology}, the multi-forest architecture features interconnected parent, child, and external domains. Of critical operational relevance to this thesis, the Enterprise Certificate Authority (\texttt{ADCS - ESSOS-CA}) is hosted on \texttt{SRV03 - braavos}, representing an authentic enterprise PKI target accessible via both LDAP enrollment and cross-domain authentication links.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.92\textwidth]{figures/goad_forest_topology.png}
+    \caption{Architecture and trust relationship schema of the Game of Active Directory (GOAD) multi-forest lab environment, detailing domain controllers, member servers (including the ADCS Certificate Authority \texttt{SRV03 - braavos}), and cross-forest authentication links.}
+    \label{fig:goad_topology}
+\end{figure}
 
 \section{Data Ingestion, Extraction, and Schema Translation}
 To bridge live Windows domain controllers and our PyTorch Geometric deep learning pipeline, we engineered an automated data ingestion and schema translation engine implemented in \texttt{bloodhound\_parser.py}.
@@ -87,6 +96,15 @@ In scenario \texttt{HN\_ESC1}, a template was configured with the dangerous flag
     \item \textbf{Certipy False Alarm:} Certipy flagged the template as a \textbf{Critical ESC1 Privilege Escalation Vulnerability}, generating an urgent security alert. Because Certipy inspects configuration flags without verifying unprivileged graph reachability, it could not determine whether an attacker could actually invoke the template.
     \item \textbf{CertGraph Accurate Assessment:} CertGraph evaluated the template as \textbf{\texttt{Safe}}, recognizing that the incoming enrollment edges originated exclusively from nodes where $f_{\text{is\_admin}} = 1.0$. By jointly evaluating configuration attributes and authorization topology, CertGraph successfully eliminated alert fatigue.
 \end{enumerate}
+
+The full complexity of transitive compromise chains across GOAD is visualized in Figure~\ref{fig:goad_paths}. From unprivileged workstations and compromised user credentials, adversaries execute multi-stage attacks chaining Kerberoasting, NTLM relaying, and ADCS misconfigurations (ESC1, ESC2, ESC3, ESC6, ESC8) to cross domain trusts and compromise root enterprise domain controllers.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figures/goad_attack_paths.png}
+    \caption{End-to-end multi-hop compromise and privilege escalation attack graph across the GOAD domain infrastructure, illustrating how unprivileged foothold credentials traverse ADCS certificate misconfigurations (ESC1--ESC8), Kerberos delegations, and inter-domain trusts to achieve enterprise domain dominance.}
+    \label{fig:goad_paths}
+\end{figure}
 
 \section{Temporal Validation Across Independent Collection Dates}
 A major vulnerability in machine learning evaluations is sensitivity to temporal environmental drift and collection artifacts. In operational enterprise environments, Active Directory graphs mutate continuously as users log on, temporary sessions expire, and security groups are modified.
