@@ -7,37 +7,47 @@
 // 1. COVER PAGE (Exact replication of final(corrected).docx)
 // ─────────────────────────────────────────────────────────────
 #align(center)[
+  #v(0.5fr)
+  #text(size: 18pt, weight: "bold")[CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense]
+  
+  #v(0.8fr)
+  #text(size: 11.5pt, weight: "bold")[Course Code: ECE 452 #h(0.8cm) Course Title: Project and Thesis]
+  
+  #v(0.8fr)
+  #text(size: 11.5pt, weight: "bold")[Submitted By---] \
   #v(0.2cm)
-  #text(size: 17pt, weight: "bold")[CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense]
-  
-  #v(0.6cm)
-  #text(size: 11pt, weight: "bold")[Course Code: ECE 452 #h(0.8cm) Course Title: Project and Thesis]
-  
-  #v(0.6cm)
-  #text(size: 11pt, weight: "bold")[Submitted By---] \
-  #v(0.15cm)
-  #text(size: 10.5pt)[
-    *Student ID: 2002126* #h(0.4cm) Level: 4, Semester: I \
-    *Student ID: 2002138* #h(0.4cm) Level: 4, Semester: I \
-    *Student ID: 2102151* #h(0.4cm) Level: 4, Semester: I \
+  #align(center)[
+    #table(
+      columns: (auto, auto),
+      stroke: none,
+      inset: (x: 8pt, y: 3pt),
+      align: (left, left),
+      [*Student ID: 2002126*], [Level: 4, Semester: I],
+      [*Student ID: 2002138*], [Level: 4, Semester: I],
+      [*Student ID: 2102151*], [Level: 4, Semester: I],
+    )
   ]
   
-  #v(0.6cm)
-  #image("figures/hstu_logo.png", width: 2.6cm)
-  #v(0.5cm)
+  #v(1.0fr)
+  #image("figures/hstu_logo.png", width: 3.0cm)
+  #v(1.0fr)
   
-  #text(size: 11pt, weight: "bold")[Submitted To---] \
-  #v(0.15cm)
-  #text(size: 12pt, weight: "bold")[Department of Electronics and Communication Engineering] \
-  #text(size: 10pt)[in partial fulfillment of the requirements for the degree of] \
-  #text(size: 11pt, weight: "bold")[Bachelor of Science in Electronics and Communication Engineering]
+  #text(size: 11.5pt, weight: "bold")[Submitted To---] \
+  #v(0.2cm)
+  #text(size: 12.5pt, weight: "bold")[Department of Electronics and Communication Engineering] \
+  #v(0.1cm)
+  #text(size: 10.5pt)[in partial fulfillment of the requirements for the degree of] \
+  #v(0.1cm)
+  #text(size: 11.5pt, weight: "bold")[Bachelor of Science in Electronics and Communication Engineering]
   
-  #v(0.5cm)
-  #text(size: 12pt, weight: "bold")[Hajee Mohammad Danesh Science and Technology University (HSTU)] \
-  #text(size: 10pt)[Dinajpur-5200, Bangladesh]
+  #v(0.9fr)
+  #text(size: 12.5pt, weight: "bold")[Hajee Mohammad Danesh Science and Technology University (HSTU)] \
+  #v(0.1cm)
+  #text(size: 10.5pt)[Dinajpur-5200, Bangladesh] \
+  #v(0.4cm)
+  #text(size: 11.5pt, weight: "bold")[October, 2026]
   
-  #v(0.8cm)
-  #text(size: 11pt, weight: "bold")[October, 2026]
+  #v(0.5fr)
 ]
 
 #pagebreak()
