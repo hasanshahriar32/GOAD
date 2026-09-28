@@ -11,10 +11,10 @@ However, transitioning from passive GNN classification to active autonomous defe
     \item \textbf{Combinatorial Optimization Complexity:} Finding the minimal set of access control modifications that severs all attack paths while minimizing operational disruption is a combinatorial optimization challenge over massive graphs.
 \end{enumerate}
 
-To resolve these challenges, this chapter formalizes enterprise identity defense as a **Bayesian Stackelberg Security Game**, establishes the **NP-Hardness of Minimal-Capacity Edge-Severing (Theorem 2)**, specifies polynomial-time heuristic approximation algorithms, and proves convergence stability using the **ODE Method of Stochastic Approximation**.
+To resolve these challenges, this chapter formalizes enterprise identity defense as a \textbf{Bayesian Stackelberg Security Game}, establishes the \textbf{NP-Hardness of Minimal-Capacity Edge-Severing (Theorem~2)}, specifies polynomial-time heuristic approximation algorithms, and proves convergence stability using the \textbf{ODE Method of Stochastic Approximation}.
 
 \section{The Stackelberg Security Game Formulation}
-We model the strategic interaction between an autonomous defender and an intelligent adversary on the Active Directory multigraph $G = (V, E)$ as a two-player, asymmetric, extensive-form **Stackelberg Security Game**.
+We model the strategic interaction between an autonomous defender and an intelligent adversary on the Active Directory multigraph $G = (V, E)$ as a two-player, asymmetric, extensive-form \textbf{Stackelberg Security Game}.
 
 \subsection{Players and Asymmetric Action Spaces}
 The game features two rational, utility-maximizing players with asymmetric roles:
@@ -52,7 +52,7 @@ U_A(a_D, a_A) = V_{\text{target}}(t) \cdot \mathbb{I}(t \in \operatorname{Reacha
 \end{equation}
 where $V_{\text{target}}(t)$ is the asset value of compromising Tier-0, and $c_{\text{stealth}}(e_i)$ represents the risk of detection associated with traversing edge $e_i$.
 
-\section{Theoretical Complexity: The NP-Hardness of Edge-Severing}
+\section[Theoretical Complexity: NP-Hardness of Edge-Severing]{Theoretical Complexity: The NP-Hardness of Edge-Severing}
 A foundational question in autonomous cyber defense is whether an automated agent can compute the optimal, minimal-disruption edge-severing strategy in polynomial time. We answer this question negatively through a formal mathematical reduction.
 
 \begin{theorem}[NP-Hardness of Minimal-Capacity Identity Edge-Severing]
@@ -64,14 +64,14 @@ Given an Active Directory multigraph $G = (V, E)$, non-negative operational disr
 is NP-hard.
 \end{theorem}
 
-\noindent\textit{Proof Outline.} The full, rigorous reduction is presented in Appendix~\ref{proof:theorem2}. We establish NP-hardness via a polynomial-time reduction from the classical **Directed Multi-way Cut** problem, known to be NP-hard for any fixed number of terminals $k \ge 3$~\cite{garg1997approximability}. Given an arbitrary instance of Directed Multi-way Cut with directed graph $H = (V_H, E_H)$, terminals $K = \{s_1, \dots, s_k\}$, and capacity function $w: E_H \to \mathbb{R}^+$, we construct an Active Directory identity multigraph $G$ in polynomial time $\mathcal{O}(|V_H| + |E_H|)$. We demonstrate that an edge cut $E_{\text{cut}}$ severs all directed paths between source terminals $S$ and administrative target terminals $T$ if and only if the corresponding edge cut in $H$ separates all terminal pairs in $K$.
+\noindent\textit{Proof Outline.} The full, rigorous reduction is presented in Appendix~\ref{proof:theorem2}. We establish NP-hardness via a polynomial-time reduction from the classical \textbf{Directed Multi-way Cut} problem, known to be NP-hard for any fixed number of terminals $k \ge 3$~\cite{garg1997approximability}. Given an arbitrary instance of Directed Multi-way Cut with directed graph $H = (V_H, E_H)$, terminals $K = \{s_1, \dots, s_k\}$, and capacity function $w: E_H \to \mathbb{R}^+$, we construct an Active Directory identity multigraph $G$ in polynomial time $\mathcal{O}(|V_H| + |E_H|)$. We demonstrate that an edge cut $E_{\text{cut}}$ severs all directed paths between source terminals $S$ and administrative target terminals $T$ if and only if the corresponding edge cut in $H$ separates all terminal pairs in $K$.
 
 \begin{corollary}[Intractability of Brute-Force Remediation]
 Because minimal-capacity edge-severing is NP-hard, exact combinatorial optimization algorithms (such as Integer Linear Programming or branch-and-bound graph search) exhibit exponential worst-case time complexity $\mathcal{O}(2^{|E|})$. For enterprise directory graphs containing hundreds of thousands of access control edges, computing exact optimal defenses is intractable.
 \end{corollary}
 
 \section{Polynomial-Time Heuristic Approximation Algorithms}
-Because exact optimization is NP-hard, autonomous defense systems strictly require polynomial-time approximation heuristics. We design a greedy capacity-disruption approximation algorithm (\textbf{Algorithm~\ref{alg:greedy_sever}}).
+Because exact optimization is NP-hard, autonomous defense systems require polynomial-time approximation heuristics. We design a greedy capacity-disruption edge-severing heuristic (Algorithm~\ref{alg:greedy_sever}).
 
 \begin{algorithm}[ht]
 \caption{Greedy Capacity-Disruption Edge Severing Heuristic}
@@ -101,7 +101,7 @@ Algorithm~\ref{alg:greedy_sever} iteratively computes the path centrality $\phi(
 \section{Convergence Dynamics via Stochastic Approximation}
 To train the autonomous agent within the bounded continuous state space provided by CertGraph node embeddings, we deploy Hierarchical Multi-Agent Reinforcement Learning (H-MARL). 
 
-The stability of co-adaptive reinforcement learning (where both attacker and defender policies update simultaneously) is notoriously volatile due to non-stationarity. We analyze policy convergence using the **Ordinary Differential Equation (ODE) method of Stochastic Approximation**~\cite{borkar2008stochastic}.
+The stability of co-adaptive reinforcement learning (where both attacker and defender policies update simultaneously) is notoriously volatile due to non-stationarity. We analyze policy convergence using the \textbf{Ordinary Differential Equation (ODE) method of Stochastic Approximation}~\cite{borkar2008stochastic}.
 
 \subsection{Robbins-Monro Step-Size Conditions}
 Let $\theta_k \in \mathbb{R}^d$ denote the parameter vector of the defender's policy network at discrete training step $k$. Parameter updates follow the policy gradient scheme:

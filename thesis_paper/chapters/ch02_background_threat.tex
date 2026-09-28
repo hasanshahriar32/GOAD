@@ -17,7 +17,7 @@ Historically, identity lateral movement within Windows enterprise environments r
     \item \textbf{Golden and Silver Tickets:} Forging cryptographically authentic Kerberos TGTs using the secret symmetric key of the domain's \texttt{KRBTGT} service account (Golden Ticket), or forging targeted service tickets using a specific server's machine account password hash (Silver Ticket), embedding arbitrary administrative group SIDs directly into the authorization token.
 \end{enumerate}
 
-With the widespread deployment of Microsoft Credential Guard, Remote Credential Guard, Virtualization-Based Security (VBS), and Protected Process Light (PPL) in modern Windows operating systems, raw LSASS memory dumping has become substantially more difficult, triggering aggressive Endpoint Detection and Response (EDR) behavioral telemetry. Consequently, sophisticated adversaries have shifted their primary attack vector from host memory exploitation to **architectural access-control abuse** and **Active Directory Certificate Services (ADCS)**.
+With the widespread deployment of Microsoft Credential Guard, Remote Credential Guard, Virtualization-Based Security (VBS), and Protected Process Light (PPL) in modern Windows operating systems, raw LSASS memory dumping has become substantially more difficult, triggering aggressive Endpoint Detection and Response (EDR) behavioral telemetry. Consequently, sophisticated adversaries have shifted their primary attack vector from host memory exploitation to \textbf{architectural access-control abuse} and \textbf{Active Directory Certificate Services (ADCS)}.
 
 \section{Graph-Theoretic Modeling of Active Directory Security}
 Active Directory Domain Services (AD DS) is fundamentally a massive, distributed, multi-relational graph database. In 2016, the release of \textbf{BloodHound} by Robbins, Schroeder, and Morreale~\cite{robbins2017bloodhound} transformed enterprise offensive and defensive security by formalizing Active Directory permissions as a directed identity attack graph.
@@ -109,7 +109,7 @@ When Public Key Cryptography for Initial Authentication (PKINIT) is enabled via 
 
 Upon receipt, the KDC:
 \begin{enumerate}
-    \item Validates that the certificate was signed by a trusted Enterprise Certificate Authority listed in the domain's NTAuth store (\texttt{CN=NTAuthCertificates,CN=Public Key Services,CN=Services,CN=Configuration,DC=domain,DC=local}).
+    \item Validates that the certificate was signed by a trusted Enterprise Certificate Authority listed in the domain's NTAuth store (\nolinkurl{CN=NTAuthCertificates,CN=Public Key Services,CN=Services,CN=Configuration,DC=domain,DC=local}).
     \item Verifies that the certificate contains an authorized Extended Key Usage (EKU) permitting client authentication.
     \item Extracts the user identity from the certificate's \textbf{Subject Alternative Name (SAN)} extension (matching User Principal Name or sAMAccountName) or \texttt{altSecurityIdentities} attribute.
     \item Constructs a Kerberos TGT carrying a PAC populated with the privileges of the mapped account.
@@ -138,7 +138,7 @@ Active Directory Certificate Services (ADCS) is an integrated Windows role that 
 \end{figure}
 
 \begin{enumerate}
-    \item \textbf{Enterprise Certificate Authority (CA):} A server hosting the ADCS role integrated with Active Directory. Enterprise CAs store their configuration, trust anchors, and published templates directly within the LDAP Configuration partition (\texttt{CN=Configuration,DC=domain,DC=local}).
+    \item \textbf{Enterprise Certificate Authority (CA):} A server hosting the ADCS role integrated with Active Directory. Enterprise CAs store their configuration, trust anchors, and published templates directly within the LDAP Configuration partition (\nolinkurl{CN=Configuration,DC=domain,DC=local}).
     \item \textbf{Certificate Templates:} LDAP objects (\texttt{class: pKICertificateTemplate}) defining the cryptographic and authorization parameters of certificates issued by the CA. Templates control key usage, validity periods, issuance requirements, and enrollment permissions.
     \item \textbf{Extended Key Usages (EKUs):} Object Identifiers (OIDs) embedded in certificates designating their authorized operational functions. Critical security-relevant EKUs include:
     \begin{enumerate}
@@ -155,10 +155,10 @@ SpecterOps and subsequent security researchers categorized common ADCS misconfig
 
 \begin{table}[ht]
 \centering
-\small
+\footnotesize
 \caption{Comprehensive Comparative Taxonomy of ADCS Privilege Escalation Vectors (ESC1--ESC15).}
 \label{tab:esc_taxonomy}
-\begin{tabularx}{\textwidth}{llp{4.2cm}X}
+\begin{tabularx}{\textwidth}{l >{\hsize=0.7\hsize\raggedright\arraybackslash}X >{\hsize=1.15\hsize\raggedright\arraybackslash}X >{\hsize=1.15\hsize\raggedright\arraybackslash}X}
 \toprule
 \textbf{Vector} & \textbf{Vulnerability Name} & \textbf{Key Configuration Prerequisites} & \textbf{Exploitation Impact} \\
 \midrule
@@ -167,7 +167,7 @@ ESC2 & Any Purpose EKU & Any Purpose EKU (\texttt{2.5.29.37.0}) or missing EKU +
 ESC3 & Enrollment Agent & Certificate Request Agent EKU + 2-hop template enrollment path & Co-signs CSR on behalf of arbitrary domain accounts \\
 ESC4 & Insecure Template DACL & \texttt{GenericAll} / \texttt{WriteDacl} / \texttt{WriteOwner} on template object & Rewrites template to ESC1, enrolls, reverts configuration \\
 ESC5 & Insecure PKI Object DACL & Insecure ACLs on CA container / enrollment services object & Takes ownership of PKI infrastructure and roots \\
-ESC6 & CA SAN Flag Active & \texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} enabled on CA server & Injects arbitrary SAN into any template request \\
+ESC6 & CA SAN Flag Active & \texttt{EDITF\_ATTRIBUTE}\allowbreak\texttt{SUBJECTALTNAME2} enabled on CA server & Injects arbitrary SAN into any template request \\
 ESC7 & Insecure CA Permissions & \texttt{ManageCA} or \texttt{ManageCertificates} rights on CA object & Overrides CA settings, approves unprivileged requests \\
 ESC8 & HTTP Enrollment Relay & NTLM authentication enabled on Web Enrollment HTTP endpoints & Coerced NTLM relay from DC to obtain DC certificate \\
 ESC9 & Missing Security Ext. & \texttt{CT\_FLAG\_NO\_SECURITY\_EXTENSION} enabled on template & UPN spoofing bypasses strong mapping without PAC check \\

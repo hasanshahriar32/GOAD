@@ -1,4 +1,4 @@
-\section{Proof of Theorem 1: Representation Collapse of Source-Only Entities in Directed Heterogeneous Message Passing}
+\section[Proof of Theorem 1: Source Entity Representation Collapse]{Proof of Theorem 1: Representation Collapse of Source-Only Entities in Directed Heterogeneous Message Passing}
 \label{proof:theorem1}
 
 \begin{theorem}[Representation Collapse in Directed Heterogeneous Convolutions]
@@ -97,7 +97,7 @@ By induction, at layer $L$:
 \begin{equation}
 \tilde{h}_v^{(L)} = \left( \prod_{k=1}^L W_{\text{skip}}^{(k)} \right) x_v
 \end{equation}
-Assuming full-rank initialization of $W_{\text{skip}}^{(k)}$, the product matrix $\mathcal{M} = \prod_{k=1}^L W_{\text{skip}}^{(k)}$ has $\operatorname{rank}(\mathcal{M}) = \min(d_L, d_0)$. Thus, $\tilde{h}_v^{(L)} \neq \mathbf{0}$ for any non-zero input $x_v \neq \mathbf{0}$. 
+Assuming full-rank initialization of $W_{\text{skip}}^{(k)}$, the product matrix $\mathcal{M} = \prod_{k=1}^L W_{\text{skip}}^{(k)}$ satisfies $\operatorname{rank}(\mathcal{M}) = \min(d_L, d_0)$. Thus, $\tilde{h}_v^{(L)} \neq \mathbf{0}$ for any non-zero input $x_v \neq \mathbf{0}$. 
 
 The gradient with respect to $x_v$ through the skip path is:
 \begin{equation}

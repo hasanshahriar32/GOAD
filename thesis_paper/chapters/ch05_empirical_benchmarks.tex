@@ -153,7 +153,7 @@ This empirical collapse directly confirms Theorem~\ref{thm:representation_collap
 \section{The Zero-Shot Adversarial Hard Negative Benchmark}
 While in-distribution cross-validation demonstrated near-perfect metrics for both CertGraph and Graph-Augmented MLP, the critical scientific question remained: \textit{Did the neural models learn to reason about topological graph reachability, or did they merely exploit feature-level statistical shortcuts?}
 
-To answer this question, we established an out-of-distribution **Zero-Shot Adversarial Hard Negative Benchmark**:
+To answer this question, we established an out-of-distribution \textbf{Zero-Shot Adversarial Hard Negative Benchmark}:
 \begin{enumerate}
     \item \textbf{Training Environment:} 1,400 clean enterprise domains containing zero hard negative samples. Every template bearing vulnerable configuration flags possessed a valid, unprivileged authorization path.
     \item \textbf{Adversarial Test Suite:} 63 out-of-distribution enterprise domains containing "Hard Negative" templates. Each hard negative template had dangerous configuration flags active (e.g., \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} or policy links enabled), but all incoming \texttt{Enroll} and DACL permissions were strictly restricted to administrative Tier-0 accounts. The ground-truth security label was strictly \texttt{Safe}.
@@ -189,8 +189,8 @@ Rule-Based (Certipy Heuristic) & $0 / 63$ & $0.00\%$ & Static signature false po
 \subsection{Theoretical Post-Mortem of Neural Shortcut Collapse}
 The results in Table~\ref{tab:hn_results} represent a landmark empirical finding:
 \begin{enumerate}
-    \item \textbf{The Total Failure of Neural GNNs:} Despite achieving $0.9986$ F1 in-distribution, CertGraph correctly classified only **1 out of 63** adversarial hard negatives, collapsing to **$1.59\%$ accuracy**. All flat models and signature heuristics collapsed to **$0.00\%$ accuracy**.
-    \item \textbf{The Decisive Superiority of Symbolic Path Traversal:} In stark contrast, the deterministic symbolic graph oracle (BloodHound BFS) correctly resolved **$84.13\%$** ($53/63$) of the adversarial environments, deductively verifying that no unprivileged authorization path reached the template.
+    \item \textbf{The Total Failure of Neural GNNs:} Despite achieving $0.9986$ F1 in-distribution, CertGraph correctly classified only \textbf{1 out of 63} adversarial hard negatives, collapsing to \textbf{1.59\% accuracy}. All flat models and signature heuristics collapsed to \textbf{0.00\% accuracy}.
+    \item \textbf{The Decisive Superiority of Symbolic Path Traversal:} In stark contrast, the deterministic symbolic graph oracle (BloodHound BFS) correctly resolved \textbf{84.13\%} ($53/63$) of the adversarial environments, deductively verifying that no unprivileged authorization path reached the template.
 \end{enumerate}
 
 This divergence occurs because neural networks optimize loss functions by identifying the most accessible high-variance statistical correlations in training distributions. Verifying multi-hop reachability requires coordinating high-order tensor conjunctions across multiple layers, whereas inspecting local template flags ($x_{\text{Template}}$) requires a simple single-layer linear combination. Because training data rarely contains disconnected vulnerable flags, the GNN converges to using local flags as a predictive shortcut. When confronted with adversarial out-of-distribution environments where flags and topologies are decoupled, pure neural models fail catastrophically.

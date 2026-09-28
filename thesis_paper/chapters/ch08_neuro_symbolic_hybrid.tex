@@ -74,7 +74,7 @@ Let directory entities be denoted by constants, and let relations and attributes
 When a symbolic solver queries these Horn clauses against the enterprise multigraph $G$, it produces a formal \textbf{Proof Tree} demonstrating the exact transitive sequence of permissions enabling the exploit. If the proof tree resolves to true, the vulnerability is an absolute mathematical certainty.
 
 \section{The Two-Tier Neuro-Symbolic Architecture}
-To harness the speed and inductive pattern discovery of Graph Neural Networks while guaranteeing the absolute mathematical precision of symbolic deduction, we propose a unified **Two-Tier Neuro-Symbolic Architecture**.
+To harness the speed and inductive pattern discovery of Graph Neural Networks while guaranteeing the absolute mathematical precision of symbolic deduction, we propose a unified \textbf{Two-Tier Neuro-Symbolic Architecture}.
 
 \begin{figure}[t]
     \centering
@@ -105,8 +105,8 @@ For each candidate template $t \in \mathcal{Q}_{\text{suspect}}$, the symbolic g
 \text{Exploitable}(t) = \operatorname{SymbolicVerify}(G, V_{\text{low-priv}}, t, \text{Rule}(\hat{y}_t))
 \end{equation}
 \begin{enumerate}
-    \item \textbf{Path Confirmed (True Exploitable Vulnerability):} If the symbolic oracle discovers a valid authorization path connecting an unprivileged principal to the template, the system outputs an **Absolute Exploitability Proof** containing the exact edge sequence, triggering autonomous remediation.
-    \item \textbf{Path Absent (Adversarial Hard Negative):} If no authorization path connects unprivileged accounts to the template, the candidate is flagged as an **Adversarial Hard Negative**, suppressing the false alarm and logging the anomalous template for architectural review.
+    \item \textbf{Path Confirmed (True Exploitable Vulnerability):} If the symbolic oracle discovers a valid authorization path connecting an unprivileged principal to the template, the system outputs an \textbf{Absolute Exploitability Proof} containing the exact edge sequence, triggering autonomous remediation.
+    \item \textbf{Path Absent (Adversarial Hard Negative):} If no authorization path connects unprivileged accounts to the template, the candidate is flagged as an \textbf{Adversarial Hard Negative}, suppressing the false alarm and logging the anomalous template for architectural review.
 \end{enumerate}
 
 \section{Complexity and Performance Guarantees}

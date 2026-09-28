@@ -9,13 +9,18 @@
 \RequirePackage{mathtools}
 \RequirePackage{bm}
 
-% Typography & Spacing (Times New Roman, 11pt)
+% Typography & Spacing (Times New Roman, 12pt)
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{newtxtext,newtxmath}
 \RequirePackage{microtype}
 \RequirePackage{setspace}
 \onehalfspacing % Standard 1.5 line spacing for thesis
+
+% Prevent text overflow into margins
+\tolerance=2000
+\emergencystretch=2.5em
+\hfuzz=1pt
 
 % Graphics & Colors
 \RequirePackage{graphicx}
@@ -31,7 +36,7 @@
 \definecolor{codebg}{RGB}{248, 249, 250}
 \definecolor{grayborder}{RGB}{220, 224, 230}
 
-% Hyperlinks
+% Hyperlinks & URLs
 \RequirePackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -41,6 +46,11 @@
     bookmarksnumbered=true,
     pdfstartview={FitH}
 }
+\RequirePackage{xurl}
+\RequirePackage[htt]{hyphenat}
+
+% Allow line breaks after underscores in both normal text and \texttt
+\DeclareRobustCommand{\_}{\textunderscore\allowbreak}
 
 % Tables & Formatting
 \RequirePackage{booktabs}
@@ -50,6 +60,7 @@
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 \captionsetup{font=small,labelfont=bf,margin=10pt}
+\setlength{\tabcolsep}{5pt}
 
 % Section Numbering Depth (up to subsubsection)
 \setcounter{secnumdepth}{3}

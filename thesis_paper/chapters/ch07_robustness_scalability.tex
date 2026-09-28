@@ -53,7 +53,7 @@ Synthetic & Synthetic (5-Fold CV) & $0.9986 \pm 0.0029$ & $0.9986 \pm 0.0029$ & 
 \end{table}
 
 \paragraph{Discussion of Transfer Dynamics:}
-As reported in Table~\ref{tab:transfer_matrix}, CertGraph trained exclusively on synthetic topologies and evaluated zero-shot on ADSynth tiered topologies achieved a flawless **$\mathbf{1.0000}$ Macro-F1 and $\mathbf{1.0000}$ Accuracy**. In the reverse direction, training on ADSynth and testing on synthetic topologies achieved a robust Macro-F1 of $0.9347$.
+As reported in Table~\ref{tab:transfer_matrix}, CertGraph trained exclusively on synthetic topologies and evaluated zero-shot on ADSynth tiered topologies achieved a flawless \textbf{1.0000 Macro-F1 and 1.0000 Accuracy}. In the reverse direction, training on ADSynth and testing on synthetic topologies achieved a robust Macro-F1 of $0.9347$.
 
 This result confirms that CertGraph does not memorize superficial topological density or specific node counts. Instead, the relation-specific graph attention mechanism successfully learns invariant relational principles of certificate privilege escalation (e.g., verifying that an inbound enrollment path links an unprivileged principal to an enrollment-enabled template with administrative client authentication capabilities) that remain structurally invariant across fundamentally distinct network architectures.
 
@@ -150,10 +150,10 @@ To verify that CertGraph can operate within operational enterprise constraints (
 
 \subsection{Scalability Insights and Profiling}
 \paragraph{Strictly Linear Sub-Second Latency:}
-As documented in Table~\ref{tab:scalability_table}, CertGraph's forward inference latency scales strictly linearly $\mathcal{O}(|V| + |E|)$. On a massive enterprise graph comprising 10,000 nodes and over 760,000 directed edges, CertGraph completes full forward inference across all published templates in just **$342.99$ ms** ($0.34$ seconds). In contrast, exhaustive BloodHound BFS path traversal on graphs of this magnitude regularly exceeds 45 seconds or times out entirely due to cyclic group expansion.
+As documented in Table~\ref{tab:scalability_table}, CertGraph's forward inference latency scales strictly linearly $\mathcal{O}(|V| + |E|)$. On a massive enterprise graph comprising 10,000 nodes and over 760,000 directed edges, CertGraph completes full forward inference across all published templates in just \textbf{342.99 ms} ($0.34$ seconds). In contrast, exhaustive BloodHound BFS path traversal on graphs of this magnitude regularly exceeds 45 seconds or times out entirely due to cyclic group expansion.
 
 \paragraph{Flat, Bounded Memory Footprint:}
-Throughout the entire scaling benchmark, process Resident Set Size (RSS) memory remained strictly flat and bounded at **$894.64$ MB**. PyTorch Geometric's sparse message-passing kernels evaluate edge reductions without materializing dense adjacency tensors. This guarantees that CertGraph can execute seamlessly within lightweight background monitoring daemons on enterprise security appliances.
+Throughout the entire scaling benchmark, process Resident Set Size (RSS) memory remained strictly flat and bounded at \textbf{894.64 MB}. PyTorch Geometric's sparse message-passing kernels evaluate edge reductions without materializing dense adjacency tensors. This guarantees that CertGraph can execute seamlessly within lightweight background monitoring daemons on enterprise security appliances.
 
 \subsection{Large-Scale Multi-Forest Partitioning Strategies}
 For multi-national enterprise conglomerates containing over 100,000 users and computers, monolithic graph loading into GPU memory can exceed VRAM limits. For such mega-forests, CertGraph integrates seamlessly with mini-batch graph sampling algorithms:
