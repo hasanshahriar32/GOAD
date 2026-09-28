@@ -1,6 +1,5 @@
-= Domain Generalization, Robustness, and Scalability
+= Domain Generalization, Robustness, and Scalability <ch:robustness>
 
-<ch:robustness>
 
 == Enterprise Operational Demands on Security Graph Learning
 
@@ -17,9 +16,9 @@ This chapter systematically evaluates CertGraph against each of these operationa
 
 == Domain Generalization: Transfer Learning on ADSynth Tiered Networks
 
-To determine whether CertGraph overfits to synthetic graph topologies, we evaluated domain adaptation against networks generated via *ADSynth* @adsynth2024dsn. 
+To determine whether CertGraph overfits to synthetic graph topologies or generalizes to realistic identity structures, we evaluated domain adaptation against networks generated via *ADSynth* @adsynth2024dsn. 
 
-=== The Enterprise Administrative Tiering Model
+=== The Enterprise Administrative Tiering Model and ADCS Augmentation
 
 ADSynth implements Microsoft's official *Enterprise Access Model* (formerly the Red Forest Tiered Administrative Architecture). This architecture strictly segregates enterprise identity assets into three isolated security planes:
 
@@ -29,7 +28,16 @@ ADSynth implements Microsoft's official *Enterprise Access Model* (formerly the 
 
 
 
-Under strict tiering, credentials and administrative privileges must never cross boundaries downward: Tier-0 administrators are cryptographically prohibited from logging onto Tier-2 workstations, preventing credential harvesting. ADSynth enforces these topological constraints, generating identity multigraphs with structural properties fundamentally distinct from unconstrained synthetic domains.
+Under strict tiering, credentials and administrative privileges must never cross boundaries downward: Tier-0 administrators are prohibited from logging onto Tier-2 workstations, preventing credential harvesting. ADSynth enforces these topological constraints, generating identity multigraphs with realistic clustering coefficients, path lengths, and group nesting depths.
+
+*Methodology for Augmenting ADCS PKI Structures.*
+Because native ADSynth synthesizes identity skeletons (users, computers, groups, sessions, OUs, and administrative delegations) without Active Directory Certificate Services objects, we developed an augmentation procedure to superimpose ADCS PKI components onto the ADSynth graph skeleton. Following Microsoft's PKI design guidelines:
+
++ *Enterprise CAs* were assigned strictly to Tier 0, linking to root Domain Controllers via RPC enrollment endpoints.
++ *Certificate Templates* were instantiated with varying configuration profiles (ESC1, ESC2, ESC3, ESC4, ESC9, ESC13, and hardened benign baselines).
++ *Enrollment and Write DACLs* were mapped across the tiered identity hierarchy: administrative templates restricted enrollment to Tier-0 principals, while general-purpose and vulnerable templates permitted enrollment from Tier-1 servers or Tier-2 domain users, creating multi-tier privilege escalation paths.
+
+
 
 #figure(
   image("figures/tool_comparison_f1.png", width: 90%),
@@ -48,7 +56,7 @@ We conducted bidirectional domain adaptation experiments between our synthetic b
     stroke: (x, y) => if y == 0 { (top: 1.2pt + luma(0), bottom: 0.8pt + luma(0)) } else if y == 1 { (bottom: 0.8pt + luma(0)) } else if y == 5 { (bottom: 1.2pt + luma(0)) } else { none },
     inset: (x: 4pt, y: 3.8pt),
     table.header([*Training Source*], [*Evaluation Target*], [*Macro-F1*], [*Accuracy*], [*Generalization Assessment*]),
-    [*Synthetic*], [*ADSynth (Zero-Shot)*], [$bold(1.0000)$], [$bold(1.0000)$], [*Flawless Zero-Shot Transfer*],
+    [*Synthetic*], [*ADSynth (Zero-Shot)*], [$bold(1.0000)$], [$bold(1.0000)$], [*High Zero-Shot Transfer*],
     [ADSynth], [Synthetic (Zero-Shot)], [$0.9347$], [$0.9400$], [Robust Transfer ($Delta = -0.06$)],
     [ADSynth], [ADSynth (5-Fold CV)], [$1.0000 plus.minus 0.0000$], [$1.0000 plus.minus 0.0000$], [Baseline Reference],
     [Synthetic], [Synthetic (5-Fold CV)], [$0.9986 plus.minus 0.0029$], [$0.9986 plus.minus 0.0029$], [Baseline Reference],
@@ -59,9 +67,9 @@ We conducted bidirectional domain adaptation experiments between our synthetic b
 
 
 *Discussion of Transfer Dynamics:*
-As reported in @tab:transfer_matrix, CertGraph trained exclusively on synthetic topologies and evaluated zero-shot on ADSynth tiered topologies achieved a flawless *1.0000 Macro-F1 and 1.0000 Accuracy*. In the reverse direction, training on ADSynth and testing on synthetic topologies achieved a robust Macro-F1 of $0.9347$.
+As reported in @tab:transfer_matrix, CertGraph trained exclusively on synthetic topologies and evaluated zero-shot on ADSynth tiered topologies achieved a Macro-F1 of $bold(1.0000)$ and Accuracy of $bold(1.0000)$. In the reverse direction, training on ADSynth and testing on synthetic topologies achieved a Macro-F1 of $0.9347$.
 
-This result confirms that CertGraph does not memorize superficial topological density or specific node counts. Instead, the relation-specific graph attention mechanism successfully learns invariant relational principles of certificate privilege escalation (e.g., verifying that an inbound enrollment path links an unprivileged principal to an enrollment-enabled template with administrative client authentication capabilities) that remain structurally invariant across fundamentally distinct network architectures.
+This bidirectional transfer confirms that CertGraph does not overfit to specific node counts or uniform group densities. However, as analyzed in Chapters @ch:audit and @ch:evaluation, this transfer performance must be interpreted in light of the model's reliance on intrinsic template flags ($x_("Template")$): because the template configuration schema remains identical across synthetic and ADSynth graphs, the GNN's preserved template features allow it to maintain high classification fidelity across diverse background identity topologies.
 
 == Systematic Sensitivity and Robustness Analysis
 
@@ -86,8 +94,8 @@ To simulate incomplete BloodHound telemetry resulting from network collection dr
     table.header([*Edge Deletion*], [*Macro-F1*], [*Accuracy*], [*Retention*], [*Impact on Defense*]),
     [$0%$ (Complete Graph)], [$1.0000$], [$1.0000$], [$100.0%$], [Pristine Baseline],
     [$5%$ Edge Deletion], [$0.9941$], [$0.9950$], [$99.4%$], [Negligible Impact],
-    [$10%$ Edge Deletion], [$0.9882$], [$0.9900$], [$98.8%$], [Highly Robust],
-    [$20%$ Edge Deletion], [$0.9754$], [$0.9775$], [$97.5%$], [Robust],
+    [$10%$ Edge Deletion], [$0.9882$], [$0.9900$], [$98.8%$], [High Retention],
+    [$20%$ Edge Deletion], [$0.9754$], [$0.9775$], [$97.5%$], [Moderate Retention],
     [$30%$ Edge Deletion], [$0.9637$], [$0.9650$], [$96.4%$], [Minor Degradation],
     [$50%$ Edge Deletion], [$0.9120$], [$0.9150$], [$91.2%$], [Retains $>91%$ F1],
   )
@@ -96,14 +104,13 @@ To simulate incomplete BloodHound telemetry resulting from network collection dr
 ) <tab:edge_perturbation>
 
 
-As documented in @tab:edge_perturbation and @fig:robustness_fig, CertGraph demonstrates remarkable structural resilience:
+As documented in @tab:edge_perturbation and @fig:robustness_fig, CertGraph demonstrates notable resilience to missing edges:
 
-+ When $10%$ of edges are dropped, Macro-F1 remains exceptional at $0.9882$.
++ When $10%$ of edges are dropped, Macro-F1 remains high at $0.9882$.
 + When nearly a third ($30%$) of all authorization relationships are missing, CertGraph maintains over $96.3%$ Macro-F1.
-+ Even under catastrophic $50%$ edge removal, CertGraph retains over $91.2%$ classification performance.
++ Even under $50%$ edge removal, CertGraph retains $91.2%$ classification performance.
 
 
-This fault tolerance occurs because multi-head attention aggregates structural context across redundant paths in enterprise group hierarchies: if one intermediate `MemberOf` link is uncollected, alternative delegation and nested group links allow the model to preserve latent representations.
 
 === Configuration Feature Noise Perturbation
 
@@ -117,7 +124,14 @@ Conversely, we evaluated model sensitivity to attribute corruption by randomly f
 
 
 
-The rapid degradation observed under feature corruption provides vital scientific confirmation: it proves that CertGraph genuinely relies on local configuration semantics in conjunction with graph topology. Unlike purely topological models that ignore node attributes, CertGraph tightly couples configuration flags with reachability context.
+*Critical Analysis of Perturbation Asymmetry:*
+The stark contrast between topological resilience (dropping $50%$ of edges causes only an $8.8%$ drop in F1) and attribute sensitivity (flipping just $5%$ of template flags causes a $15.9%$ drop in F1) provides crucial empirical corroboration of the shortcut learning phenomenon identified in @ch:audit:
+
++ Because synthetic benchmark distributions under-specified negative templates with dangerous configuration flags, the neural network learned to place heavy predictive weight on intrinsic template features $x_("Template")$.
++ When graph edges are deleted, @thm:representation_preservation's non-vanishing gradient bounds ensure that the template's intrinsic configuration representation remains preserved through Layer~1 skip connections, allowing the model to classify templates based on their flags even with degraded graph topology.
++ However, when configuration flags are flipped, this primary decision pathway is corrupted, resulting in rapid performance degradation. This empirical finding reinforces the necessity of the neuro-symbolic hybrid architecture presented in @ch:neuro_symbolic, which combines neural feature learning with strict symbolic path verification.
+
+
 
 === Sample Efficiency and Learning Convergence
 
@@ -130,15 +144,15 @@ We evaluated how rapidly CertGraph converges as a function of the number of trai
 + 320 domains: Macro-F1 = $bold(1.0000)$
 
 
-The model crosses the $0.98$ F1 threshold with fewer than 100 training domains, demonstrating high sample efficiency. This establishes the practical viability of deploying CertGraph in enterprise environments without requiring millions of labeled training graphs.
+The model crosses the $0.98$ F1 threshold with approximately 80 training domains, demonstrating favorable sample efficiency. This establishes the practical viability of deploying CertGraph in enterprise environments without requiring millions of labeled training graphs.
 
 == Computational Complexity and Scalability Benchmarking
 
-To verify that CertGraph can operate within operational enterprise constraints (standard analysts' workstations with $< 4$GB RAM allocations), we benchmarked model inference latency, throughput, and memory consumption across enterprise graph scales ranging from 100 to 10,000 nodes ($approx 765,000$ directed edges).
+To verify that CertGraph can operate within operational enterprise constraints (standard analysts' workstations with limited memory allocations), we benchmarked model inference latency, throughput, and memory consumption across enterprise graph scales ranging from 100 to 10,000 nodes ($approx 765,000$ directed edges).
 
 #figure(
   image("figures/scalability_metrics.png", width: 90%),
-  caption: [Scalability benchmarks showing inference latency scaling linearly with graph volume while Resident Set Size (RSS) process memory remains flat and bounded.],
+  caption: [Scalability benchmarks showing empirical inference latency scaling sub-linearly with graph volume while Resident Set Size (RSS) process memory remains flat and bounded.],
 ) <fig:scalability_fig>
 
 
@@ -162,17 +176,17 @@ To verify that CertGraph can operate within operational enterprise constraints (
 
 === Scalability Insights and Profiling
 
-*Strictly Linear Sub-Second Latency:*
-As documented in @tab:scalability_table, CertGraph's forward inference latency scales strictly linearly $cal(O)(|V| + |E|)$. On a massive enterprise graph comprising 10,000 nodes and over 760,000 directed edges, CertGraph completes full forward inference across all published templates in just *342.99 ms* ($0.34$ seconds). In contrast, exhaustive BloodHound BFS path traversal on graphs of this magnitude regularly exceeds 45 seconds or times out entirely due to cyclic group expansion.
+*Sub-Second Empirical Latency:*
+As documented in @tab:scalability_table, CertGraph's forward inference latency scales near-linearly with graph volume. On a large enterprise graph comprising 10,000 nodes and over 760,000 directed edges, CertGraph completes forward inference across all published templates in *342.99 ms* ($0.34$ seconds). In contrast, exhaustive authorization BFS path traversal that evaluates all possible principal-template combinations on graphs of this magnitude can require tens of seconds due to combinatorial group expansion.
 
-*Flat, Bounded Memory Footprint:*
-Throughout the entire scaling benchmark, process Resident Set Size (RSS) memory remained strictly flat and bounded at *894.64 MB*. PyTorch Geometric's sparse message-passing kernels evaluate edge reductions without materializing dense adjacency tensors. This guarantees that CertGraph can execute seamlessly within lightweight background monitoring daemons on enterprise security appliances.
+*Process Memory Baseline:*
+Throughout the scaling benchmark, process Resident Set Size (RSS) memory remained constant at *894.64 MB*. This figure reflects the baseline memory allocation of the Python runtime, PyTorch core libraries, and CUDA driver initialization. Because PyTorch Geometric's sparse message-passing kernels evaluate edge reductions without materializing dense adjacency tensors, intermediate message allocations are accommodated within this initialized buffer without triggering additional heap allocations. This confirms that CertGraph can execute within background monitoring daemons on commodity security appliances.
 
 === Large-Scale Multi-Forest Partitioning Strategies
 
-For multi-national enterprise conglomerates containing over 100,000 users and computers, monolithic graph loading into GPU memory can exceed VRAM limits. For such mega-forests, CertGraph integrates seamlessly with mini-batch graph sampling algorithms:
+For multi-national enterprise conglomerates containing over 100,000 users and computers, monolithic graph loading into GPU memory can exceed VRAM limits. For such large-scale directories, CertGraph integrates with standard graph sampling techniques:
 
-+ *Target-Centric Subgraph Extraction:* Rather than loading the entire corporate directory, the system extracts the $k$-hop directed backward authorization subgraphs rooted at each published certificate template ($k=2$). Because template subgraphs average fewer than 500 nodes, inference is distributed across parallel CPU threads.
-+ *GraphSAINT / Cluster-GCN Partitioning:* For forest-wide link analysis, directory objects are partitioned into tightly connected administrative clusters using METIS partitioning, allowing mini-batch training and inference across distributed cluster nodes with bounded memory consumption.
++ *Target-Centric Subgraph Extraction:* Rather than loading the entire corporate directory, the system extracts the $k$-hop directed backward authorization subgraphs rooted at each published certificate template ($k=2$). Because template subgraphs average fewer than 500 nodes, inference can be distributed across parallel CPU threads.
++ *GraphSAINT / Cluster-GCN Partitioning:* For forest-wide link analysis, directory objects can be partitioned into tightly connected administrative clusters using METIS partitioning, allowing mini-batch training and inference across distributed cluster nodes with bounded memory consumption.
 
 

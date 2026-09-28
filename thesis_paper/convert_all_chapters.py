@@ -403,39 +403,30 @@ def convert_latex_to_typst(tex):
 
     tex = re.sub(r'\\begin\{figure\*?\}.*?\\end\{figure\*?\}', rep_fig, tex, flags=re.DOTALL)
 
-    # Headings
-    tex = re.sub(r'\\chapter\*?\{([^}]+)\}', r'= \1\n', tex)
-    tex = re.sub(r'\\section\*?(?:\[[^\]]*\])?\{([^}]+)\}', r'== \1\n', tex)
-    tex = re.sub(r'\\subsection\*?(?:\[[^\]]*\])?\{([^}]+)\}', r'=== \1\n', tex)
-    tex = re.sub(r'\\subsubsection\*?(?:\[[^\]]*\])?\{([^}]+)\}', r'==== \1\n', tex)
+    # Headings with optional immediate label
+    def rep_heading(level_prefix):
+        def handler(m):
+            title = m.group(1).strip()
+            lab = m.group(2)
+            if lab:
+                return f"{level_prefix} {title} <{lab}>\n"
+            return f"{level_prefix} {title}\n"
+        return handler
+
+    tex = re.sub(r'\\chapter\*?\{([^}]+)\}(?:\s*\\label\{([^}]+)\})?', rep_heading("="), tex)
+    tex = re.sub(r'\\section\*?(?:\[[^\]]*\])?\{([^}]+)\}(?:\s*\\label\{([^}]+)\})?', rep_heading("=="), tex)
+    tex = re.sub(r'\\subsection\*?(?:\[[^\]]*\])?\{([^}]+)\}(?:\s*\\label\{([^}]+)\})?', rep_heading("==="), tex)
+    tex = re.sub(r'\\subsubsection\*?(?:\[[^\]]*\])?\{([^}]+)\}(?:\s*\\label\{([^}]+)\})?', rep_heading("===="), tex)
     tex = re.sub(r'\\paragraph\*?\{([^}]+)\}', r'*\1*', tex)
 
-    # Labels and refs
-    tex = re.sub(r'(?:Figure|Table|Section|Chapter|Equation|Theorem|Corollary|Lemma|Algorithm)[\s~]+\\ref\{([^}]+)\}', r'@\1', tex)
-    tex = re.sub(r'\\autoref\{([^}]+)\}', r'@\1', tex)
-    tex = re.sub(r'\\label\{([^}]+)\}', r'<\1>', tex)
-    tex = re.sub(r'\\ref\{([^}]+)\}', r'@\1', tex)
-
-    # Citations: \cite{k1, k2} -> @k1 @k2
-    def replace_cite(m):
-        keys = [k.strip() for k in m.group(1).split(',')]
-        return ' '.join(f'@{k}' for k in keys if k)
-    tex = re.sub(r'\\cite\{([^}]+)\}', replace_cite, tex)
-    tex = re.sub(r'~@', ' @', tex)
-    tex = re.sub(r'(@[a-zA-Z0-9_:]+)---', r'\1 --- ', tex)
-    tex = re.sub(r'(@[a-zA-Z0-9_:]+)--', r'\1 -- ', tex)
-
-    # Theorems, Corollaries, Lemmas, Propositions
+    # Theorems, Corollaries, Lemmas, Propositions (process BEFORE converting general \label)
     def rep_thm(m):
         env = m.group(1)
         opt = m.group(2) or ""
         body = m.group(3).strip()
-        lab_m = re.search(r'(?:\\label\{([^}]+)\}|<([a-zA-Z0-9_:-]+)>)', body)
-        label = ""
-        if lab_m:
-            label = lab_m.group(1) or lab_m.group(2) or ""
-            body = body[:lab_m.start()] + body[lab_m.end():]
-        body = body.strip()
+        labs = re.findall(r'\\label\{([^}]+)\}', body)
+        label = labs[0] if labs else ""
+        body = re.sub(r'\\label\{[^}]+\}', '', body).strip()
         title = f"{env.capitalize()} {opt}".strip()
         body = convert_latex_math_to_typst(body)
         lbl_str = f" <{label}>" if label else ""
@@ -448,6 +439,21 @@ def convert_latex_to_typst(tex):
         body = convert_latex_math_to_typst(body)
         return f'\n_Proof._ {body} #h(1fr) $square$\n'
     tex = re.sub(r'\\begin\{proof\}(.*?)\\end\{proof\}', rep_prf, tex, flags=re.DOTALL)
+
+    # Labels and refs
+    tex = re.sub(r'(?:Figure|Table|Section|Chapter|Equation|Theorem|Corollary|Lemma|Algorithm)[\s~]+\\ref\{([^}]+)\}', r'@\1', tex)
+    tex = re.sub(r'\\autoref\{([^}]+)\}', r'@\1', tex)
+    tex = re.sub(r'\\ref\{([^}]+)\}', r'@\1', tex)
+    tex = re.sub(r'\\label\{([^}]+)\}', r'<\1>', tex)
+
+    # Citations: \cite{k1, k2} -> @k1 @k2
+    def replace_cite(m):
+        keys = [k.strip() for k in m.group(1).split(',')]
+        return ' '.join(f'@{k}' for k in keys if k)
+    tex = re.sub(r'\\cite\{([^}]+)\}', replace_cite, tex)
+    tex = re.sub(r'~@', ' @', tex)
+    tex = re.sub(r'(@[a-zA-Z0-9_:]+)---', r'\1 --- ', tex)
+    tex = re.sub(r'(@[a-zA-Z0-9_:]+)--', r'\1 -- ', tex)
 
     # Algorithms
     def rep_alg(m):
@@ -666,10 +672,10 @@ if __name__ == "__main__":
     c2 = re.sub(r'\\label\{proof:theorem2\}', '', c2)
 
     app_content = "= Formal Mathematical Proofs <app:proofs>\n\n"
-    app_content += "== Proof of Theorem 1: Representation Collapse in Asymmetric Relational Message Passing <proof:theorem1>\n\n"
+    app_content += "== Proof of Theorem 1: Intrinsic Attribute Preservation and Non-Vanishing Gradient Bounds <proof:theorem1>\n\n"
     app_content += convert_latex_to_typst(c1).strip()
     app_content += "\n\n#pagebreak()\n\n"
-    app_content += "== Proof of Theorem 2: Computational Complexity of Optimal Active Directory Edge Blocking <proof:theorem2>\n\n"
+    app_content += "== Proof of Theorem 2: NP-Hardness of Multi-Principal Access Interdiction in Enterprise Identity Graphs <proof:theorem2>\n\n"
     app_content += convert_latex_to_typst(c2).strip()
 
     with open("typst_chapters/app_proofs.typ", "w") as f:

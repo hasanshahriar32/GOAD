@@ -1,6 +1,5 @@
-= Forensic Audit: Unmasking Experimental Illusions in Security Machine Learning
+= Forensic Audit: Unmasking Experimental Illusions in Security Machine Learning <ch:audit>
 
-<ch:audit>
 
 == The Methodological Crisis of Security Machine Learning
 
@@ -123,7 +122,7 @@ $ "Macro-F1"_("Tree") = bold(0.9928 plus.minus 0.0057) $
 ) <tab:dt_rules>
 
 
-This finding was a watershed moment in our investigation: it proved that for in-distribution synthetic enterprise data, complex deep message-passing convolutions can be almost entirely matched by elementary tabular models if provided with basic topological summary counts.
+This finding was a critical turning point in our investigation: consistent with the principles articulated by Arp et al. @arp2022dos regarding subtle dataset artifacts, it demonstrated that for in-distribution synthetic enterprise data, complex deep message-passing convolutions can be almost entirely matched by elementary tabular models if provided with basic topological summary counts.
 
 === Illusion 4: Hard Negative Memorization under In-Distribution Splits
 
@@ -133,12 +132,12 @@ However, under conventional stratified 5-fold cross-validation, the test fold sa
 
 == Complete Generator Sanitization and Protocol Redesign
 
-To eradicate all four illusions and establish an unassailable empirical benchmark, we completely overhauled the data generation and evaluation pipeline in `generator.py`:
+To eliminate these structural artifacts and establish a rigorous, leak-free empirical benchmark, we overhauled the data generation and evaluation pipeline in `generator.py`:
 
 
 + *Complete Positional Decoupling:* We broke all couplings between tensor indices and entity semantics. High-value target groups ($g_("target")$) and administrative accounts are selected via uniform random sampling across the entire node tensor ($g_("target") tilde cal(U){0, |V_("Group")|-1}$). Furthermore, all node orderings are subjected to random permutations after graph construction.
 + *Dynamic Feature-Driven Authorization:* Access control assignments were refactored to inspect node feature attributes rather than indices. An account is granted administrative access if and only if its attribute flag satisfies $f_("is_admin") = 1.0$.
-+ *Fair Baseline Parity (Graph-Augmented Models):* We established two new, fair baseline models: *Graph-Augmented MLP* and *Graph-Augmented Random Forest*. Both models receive the full 14-dimensional augmented vector $x_("aug")$, ensuring they possess topological visibility equal to CertGraph.
++ *Fair Baseline Parity (Graph-Augmented Models):* Following the guidelines of Arp et al. @arp2022dos regarding baseline comparability, we established two fair baseline models: *Graph-Augmented MLP* and *Graph-Augmented Random Forest*. Both models receive the full 14-dimensional augmented vector $x_("aug")$, ensuring they possess topological visibility equal to CertGraph.
 + *Symbolic Graph Oracle (BloodHound BFS Baseline):* We implemented a deterministic symbolic baseline (`bfs_baseline.py`) that programmatically queries the multigraph for directed authorization paths from unprivileged principals to the target template, replicating the exact logic of BloodHound Cypher queries.
 + *Strict Zero-Shot Adversarial Protocol:* We restructured hard-negative evaluation into a rigorous zero-shot protocol: models are trained on 1,400 clean environments containing zero hard negative samples, and evaluated against out-of-distribution adversarial hard negatives never encountered during optimization.
 
@@ -155,27 +154,27 @@ To mathematically confirm that positional index leakage had been completely elim
     stroke: (x, y) => if y == 0 { (top: 1.2pt + luma(0), bottom: 0.8pt + luma(0)) } else if y == 1 { (bottom: 0.8pt + luma(0)) } else if y == 3 { (bottom: 1.2pt + luma(0)) } else { none },
     inset: (x: 4pt, y: 3.8pt),
     table.header([*Generator Version*], [*Admin at Index 0*], [*Theoretical Prob.*], [*Chi-Squared Goodness-of-Fit*]),
-    [Flawed Generator (`v1.0`)], [$100.0%$ (700 / 700)], [$1.33%$ ($1/75$)], [$chi^2 = 36,258.4,   p < 10^(-100)$ (Severe Artifact)],
-    [*Repaired Generator (`v2.0`)*], [$bold(1.29%)$ (9 / 700)], [$bold(1.33%)$ ($1/75$)], [$bold(chi^2 = 0.041  \  p = 0.840)$ (No Statistical Bias)],
+    [Flawed Generator (`v1.0`)], [$100.0%$ (700 / 700)], [$1.33%$ ($1/75$)], [$chi^2 = 51,800.0,   p < 10^(-100)$ (Severe Artifact)],
+    [*Repaired Generator (`v2.0`)*], [$bold(1.29%)$ (9 / 700)], [$bold(1.33%)$ ($1/75$)], [$bold(chi^2 = 0.012  \  p = 0.913)$ (No Statistical Bias)],
   )
 ],
   caption: [Empirical Distribution of Administrative Group Allocation Across 700 Independent Environments.],
 ) <tab:leakage_audit>
 
 
-As shown in @tab:leakage_audit, in the flawed generator, 100% of enterprise domains allocated the Tier-0 administrative group at index 0. In the repaired generator, the empirical frequency dropped to exactly $1.29%$ (9 out of 700 environments), perfectly matching the theoretical uniform distribution over 75 group nodes:
+As shown in @tab:leakage_audit, in the flawed generator, 100% of enterprise domains allocated the Tier-0 administrative group at index 0. In the repaired generator, the empirical frequency dropped to exactly $1.29%$ (9 out of 700 environments), closely matching the theoretical uniform expectation over 75 group nodes ($E = 700/75 approx 9.33$):
 $ P(I_A = 0) = (1)/(|V_("Group")|) = (1)/(75) approx 1.33% $
 
-A Chi-Squared goodness-of-fit test confirmed that the empirical distribution shows no statistically significant deviation from a true uniform random distribution ($chi^2 = 0.041, p = 0.840$). The positional artifact was conclusively eradicated.
+A Chi-Squared goodness-of-fit test confirmed that the empirical distribution shows no statistically significant deviation from a true uniform random distribution ($chi^2 = 0.012, p = 0.913$). The positional artifact was conclusively eradicated.
 
 == Methodological Guidelines for Security Graph Learning
 
-Based on the lessons learned from our forensic audit, we formulate five methodological guidelines for researchers applying Graph Neural Networks to cybersecurity:
+Grounding our findings in the security machine learning principles of Arp et al. @arp2022dos, we formulate five methodological guidelines for researchers applying Graph Neural Networks to cybersecurity:
 
 
-+ *Mandate Adversarial Trivial Baselines:* Before training deep neural networks, evaluate deterministic 1-line heuristics on raw tensor indices and local feature flags. If a trivial rule achieves high accuracy, the dataset contains an information-theoretic leak.
-+ *Ensure Baseline Information Parity:* Never compare graph models against flat feature-only baselines unless the flat baselines are also provided with basic graph summary statistics (e.g., degree counts, path indicators).
-+ *Enforce Zero-Shot Out-of-Distribution Stress Tests:* Evaluating models on random in-distribution splits masks shortcut learning. Benchmark security models on adversarial zero-shot edge distributions where features and topologies are intentionally decoupled.
++ *Mandate Adversarial Trivial Baselines (Arp et al. Pitfall 3):* Before training deep neural networks, evaluate deterministic 1-line heuristics on raw tensor indices and local feature flags. If a trivial rule achieves high accuracy, the dataset contains an information-theoretic leak.
++ *Ensure Baseline Information Parity (Arp et al. Pitfall 7):* Never compare graph models against flat feature-only baselines unless the flat baselines are also provided with basic graph summary statistics (e.g., degree counts, path indicators).
++ *Enforce Zero-Shot Out-of-Distribution Stress Tests (Arp et al. Pitfall 6):* Evaluating models exclusively on random in-distribution splits masks shortcut learning. Benchmark security models on adversarial zero-shot edge distributions where features and topologies are intentionally decoupled.
 + *Subject Synthetic Generators to Entropy Audits:* Compute mutual information $I(Y; A)$ between class labels and non-semantic generator variables (such as memory indices, node identifiers, or generation timestamps). Any non-zero mutual information indicates synthetic bias.
 + *Validate Against Symbolic Ground Truth:* In security domains governed by formal access control rules, always maintain an exact symbolic oracle (such as BFS path validation) to audit neural model predictions.
 

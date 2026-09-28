@@ -1,14 +1,11 @@
-= Literature Review and Domain Background
+= Literature Review and Domain Background <ch:background>
 
-<ch:background>
 
 == Evolution of Identity-Based Lateral Movement in Enterprise Networks
 
-For nearly three decades, enterprise information security architectures were predicated on the assumption of a defensible physical and logical perimeter. Organizations invested heavily in hardening network boundaries using stateful firewalls, intrusion detection and prevention systems (IDS/IPS), virtual private networks (VPNs), and demilitarized zones (DMZs). In this traditional fortress-and-moat doctrine, network traffic originating within the internal intranet was implicitly categorized as trusted, whereas external packets were subjected to rigorous perimeter inspection.
+Enterprise computing relies on centralized directory services to manage authentication, authorization, and cryptographic trust across distributed systems. In Windows enterprise networks, the core identity backbone is provided by Microsoft Active Directory Domain Services (AD DS) and its associated cryptographic public-key subsystem, Active Directory Certificate Services (ADCS). As modern organizations adopt Zero Trust principles and cloud-hybrid architectures, the primary operational focus of enterprise defense has shifted from perimeter firewall boundaries to the internal identity and access management fabric.
 
-The widespread adoption of cloud-native computing, remote and hybrid work models, bring-your-own-device (BYOD) policies, and software-as-a-service (SaaS) platforms has effectively obliterated this logical boundary. Advanced Persistent Threat (APT) actors, nation-state adversaries, and professionalized ransomware cartels routinely bypass perimeter defenses through spear-phishing campaigns, supply-chain compromises, edge device vulnerabilities, or credential theft. Once an initial foothold is established on a single compromised workstation within an internal corporate network, the perimeter provides zero defensive efficacy.
-
-Once an adversary achieves code execution on any machine in an internal corporate network, enterprise defense shifts entirely to combating *Lateral Movement*---the techniques adversaries use to extend access across systems, servers, and security principals to locate and compromise high-value assets.
+Once an adversary achieves initial code execution on any internal endpoint (e.g., through credential stuffing, phishing, or vulnerable edge services), enterprise defense shifts entirely to combating *Lateral Movement*---the techniques adversaries use to navigate across systems, accounts, and directory objects to compromise authoritative Tier-0 administrative assets.
 
 === Historical Precedents: Memory-Based Credential Abuse
 
@@ -21,15 +18,15 @@ Historically, identity lateral movement within Windows enterprise environments r
 
 
 
-With the widespread deployment of Microsoft Credential Guard, Remote Credential Guard, Virtualization-Based Security (VBS), and Protected Process Light (PPL) in modern Windows operating systems, raw LSASS memory dumping has become substantially more difficult, triggering aggressive Endpoint Detection and Response (EDR) behavioral telemetry. Consequently, sophisticated adversaries have shifted their primary attack vector from host memory exploitation to *architectural access-control abuse* and *Active Directory Certificate Services (ADCS)*.
+With the widespread deployment of Microsoft Credential Guard, Remote Credential Guard, Virtualization-Based Security (VBS), and Protected Process Light (PPL) in modern Windows operating systems, raw LSASS memory dumping has become substantially more difficult, triggering aggressive Endpoint Detection and Response (EDR) behavioral telemetry. Consequently, sophisticated adversaries have shifted their primary attack vectors from host memory exploitation to *architectural access-control abuse* and *Active Directory Certificate Services (ADCS)*.
 
 == Graph-Theoretic Modeling of Active Directory Security
 
-Active Directory Domain Services (AD DS) is fundamentally a massive, distributed, multi-relational graph database. In 2016, the release of *BloodHound* by Robbins, Schroeder, and Morreale @robbins2017bloodhound transformed enterprise offensive and defensive security by formalizing Active Directory permissions as a directed identity attack graph.
+Active Directory Domain Services (AD DS) is fundamentally a massive, distributed, multi-relational graph database. In 2016, the release of *BloodHound* by Andy Robbins, Will Schroeder, and Rohan Vazarkar @robbins2017bloodhound transformed enterprise offensive and defensive security by formalizing Active Directory permissions as a directed identity attack graph.
 
 === Prior Attack Graph Literature
 
-The concept of modeling security vulnerabilities as attack graphs dates back to foundational work by Phillips and Swiler (1998) and Sheyner et al. (2002) @sheyner2002automated, who represented computer network state transitions as directed graphs to analyze multi-step vulnerability chaining. However, early attack graph models suffered from severe combinatorial state explosion when applied to realistic enterprise networks, as they attempted to model low-level host vulnerabilities, network service versions, and system exploit states simultaneously.
+The concept of modeling security vulnerabilities as attack graphs dates back to foundational work by Phillips and Swiler (1998) @phillips1998graph and Sheyner et al. (2002) @sheyner2002automated, who represented computer network state transitions as directed graphs to analyze multi-step vulnerability chaining. Logic-based attack graph tools such as MulVAL (Ou et al., 2005) @ou2005mulval later automated attack path synthesis using Datalog rules to model multi-host vulnerability dependencies. However, early attack graph models suffered from severe combinatorial state explosion when applied to realistic enterprise networks, as they attempted to model low-level host vulnerabilities, network service versions, and system exploit states simultaneously.
 
 BloodHound resolved this scalability dilemma by decoupling host-level software vulnerabilities from *identity authorization topology*. In BloodHound's formulation, vertices represent directory security principals (Users, Computers, Groups, Organizational Units, Domains), while edges represent discrete administrative access rights granted via Discretionary Access Control Lists (DACLs) or network session dependencies:
 
@@ -40,19 +37,19 @@ BloodHound resolved this scalability dilemma by decoupling host-level software v
 
 
 
-=== Limitations of Deterministic Graph Traversal
+=== Capabilities and Limitations of Deterministic Graph Traversal
 
 While BloodHound and related graph databases (Neo4j) allow security analysts to execute Cypher queries (such as shortest path queries from `Domain Users` to `Domain Admins`), deterministic graph traversal exhibits acute limitations in modern enterprise environments:
 
-+ *Computational Intractability on Dense Enterprise Graphs:* Large multi-forest enterprises routinely contain over 100,000 security principals and tens of millions of access control entries. Exhaustive multi-hop traversal suffers from exponential branching factors, causing path-finding queries to time out or exhaust server memory.
++ *Computational Intractability on Dense Enterprise Graphs:* Large multi-forest enterprises routinely contain over 100,000 security principals and tens of millions of access control entries. While single-source shortest path is polynomial $O(|V| + |E|)$, exhaustive multi-source path enumeration and all-pairs reachability queries suffer from exponential branching factors, causing path-finding queries to time out or exhaust server memory.
 + *Absence of Contextual Probabilistic Risk Scoring:* Deterministic graph traversal treats every valid edge as equally likely to be traversed. It cannot incorporate operational context, such as whether a workstation is actively monitored by an EDR agent, whether a service account has been dormant, or whether an attack step requires complex operational prerequisites.
-+ *Brittleness to Un-modeled Attack Vectors:* BloodHound relies on handcrafted edge collectors (SharpHound). If an organization deploys a novel authentication protocol or certificate configuration that has not been explicitly codified into the BloodHound Cypher schema, the attack path is completely invisible.
++ *Heuristic Coverage and Schema Updates:* Traditional graph collectors require explicit rule definitions. While modern releases of BloodHound (v5.4.0+, 2024) natively support core ADCS attack edges (including ESC1, ESC3, ESC4, ESC6, ESC9, ESC10, and ESC13), and tools such as Certipy @alldritt2023certipy cover ESC1--ESC17, both utilities evaluate access rules via deterministic logic without inductive learning or continuous blast-radius ranking.
 
 
 
 == Graph Representation Learning in Security
 
-To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated *Graph Representation Learning* and *Graph Neural Networks (GNNs)* for cybersecurity applications.
+To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated *Graph Representation Learning* and *Graph Neural Networks (GNNs)* for cybersecurity applications @goel2025gnn @guo2023scalable.
 
 === The Message-Passing Neural Network (MPNN) Framework
 
@@ -78,7 +75,13 @@ To handle heterogeneous structures, specialized architectures have been proposed
 
 
 
-In this thesis, we build upon the principles of Heterogeneous Graph Attention Networks to engineer *CertGraph*, introducing relation-specific multi-head attention alongside crucial additive residual skip-connections necessary to survive asymmetric enterprise identity topologies.
+=== Game Theory and Machine Learning Pitfalls in Cybersecurity
+
+Applying graph learning and game theory to cybersecurity involves distinct theoretical and empirical challenges. In enterprise defense, Stackelberg security games (Kiekintveld et al., 2009) @kiekintveld2009computing and scalable edge-blocking formulations in Active Directory graphs (Guo et al., AAAI 2023) @guo2023scalable demonstrate that computing optimal defensive mitigations under operational constraints is NP-hard. Furthermore, Goel et al. (2025) @goel2025gnn established the efficacy of GNNs in modeling multi-hop Active Directory lateral movement and edge-blocking defense.
+
+Concurrently, empirical security machine learning is subject to severe methodological pitfalls, as formalized by Arp et al. (USENIX Security 2022) @arp2022dos, Sommer & Paxson (IEEE S&P 2010) @sommer2010outside, and Pendlebury et al. (USENIX Security 2019) @pendlebury2019tesseract. These pitfalls include sampling bias, synthetic generator artifacts, lab-only evaluation lacking ecological validity, and inappropriate baseline comparisons. Moreover, as networks grow deeper, preserving raw node attributes requires residual skip connections (GCNII, Chen et al., ICML 2020) @chen2020simple to prevent over-smoothing and gradient decay.
+
+In this thesis, we build upon the principles of Heterogeneous Graph Attention Networks to engineer *CertGraph*, introducing relation-specific multi-head attention alongside crucial additive residual skip-connections necessary to preserve configuration attributes across asymmetric enterprise identity topologies.
 
 == Active Directory Architecture and Cryptographic Primitives
 
@@ -178,12 +181,12 @@ SpecterOps and subsequent security researchers categorized common ADCS misconfig
     [ESC7], [Insecure CA Permissions], [`ManageCA` or `ManageCertificates` rights on CA object], [Overrides CA settings, approves unprivileged requests],
     [ESC8], [HTTP Enrollment Relay], [NTLM authentication enabled on Web Enrollment HTTP endpoints], [Coerced NTLM relay from DC to obtain DC certificate],
     [ESC9], [Missing Security Ext.], [`CT_FLAG_NO_SECURITY_EXTENSION` enabled on template], [UPN spoofing bypasses strong mapping without PAC check],
-    [ESC10], [Weak Certificate Mapping], [`altSecurityIdentities` weak registry keys on Domain Controllers], [Account takeover via unverified X.509 mapping syntax],
-    [ESC11], [Insecure RPC Interface], [RPC enrollment endpoint lacking packet privacy / signing], [Relays NTLM to RPC enrollment interface MS-ICPR],
-    [ESC12], [Vulnerable Hardware Key], [CA administrator key stored in vulnerable smart card / token], [Direct exfiltration of CA root signing keys],
+    [ESC10], [Weak Certificate Mapping], [Weak UPN/DNS mapping registry keys on Domain Controllers (pre-KB5014754)], [Account takeover via unverified X.509 mapping syntax],
+    [ESC11], [Insecure RPC Interface], [RPC enrollment endpoint (MS-ICPR) lacking packet privacy (Heiniger 2023)], [Relays NTLM to RPC enrollment interface],
+    [ESC12], [CA Interface Relay Abuse], [ICertPassage / RPC enrollment interface abuse (Knobloch 2023)], [Coerced NTLM relay to CA RPC interface yielding rogue certificate],
     [ESC13], [Issuance Policy Link], [`msPKI-Certificate-Policy` OID maps to Tier-0 security group], [Injects Tier-0 group SID into Kerberos PAC token],
-    [ESC14], [altSecurityIdentities Hijack], [Insecure write permissions over user `altSecurityIdentities`], [Links arbitrary victim certificates to attacker account],
-    [ESC15], [EKUwu (CVE-2024-49019)], [Schema Version 1 template allows custom CSR application policy], [Injects Client Authentication EKU into non-auth templates],
+    [ESC14], [altSecurityIdentities Hijack], [Insecure write permissions over user `altSecurityIdentities` attribute], [Links arbitrary victim certificates to attacker account],
+    [ESC15], [EKUwu (CVE-2024-49019)], [Schema Version 1 template allows custom CSR application policy (Bollinger 2024)], [Injects Client Authentication EKU into non-auth templates],
   )
 ],
   caption: [Comprehensive Comparative Taxonomy of ADCS Privilege Escalation Vectors (ESC1--ESC15).],

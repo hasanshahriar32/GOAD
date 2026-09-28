@@ -1,6 +1,5 @@
-= Formal Methodology and CertGraph Architecture
+= Formal Methodology and CertGraph Architecture <ch:methodology>
 
-<ch:methodology>
 
 == Mathematical Formalization of Enterprise Identity Multigraphs
 
@@ -252,38 +251,37 @@ To ensure complete scientific reproducibility, we formalize the core execution r
 ) <alg:certgraph_infer>
 
 
-== Theoretical Analysis: Representation Collapse in Directed Graphs
+== Theoretical Analysis: Intrinsic Attribute Preservation and Gradient Bounds <sec:theorem1_discussion>
 
-<sec:theorem1_discussion>
-A foundational theoretical contribution of this thesis is the formal proof that residual skip-connections are not merely an optimization heuristic in enterprise identity graphs, but a strict mathematical requirement.
+A foundational theoretical contribution of this thesis is the formal proof that parameterized residual skip-connections are mathematically indispensable in heterogeneous security graph neural networks to prevent intrinsic attribute erasure and representation decay.
 
 
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: (left: 3pt + rgb("#1e3a8a")), width: 100%)[
 #align(left)[
-    *Theorem Representation Collapse of Source-Only Entities.* \
-    In any directed heterogeneous graph $G = (V, E, cal(T)_V, cal(T)_E)$ where a subset of node types $cal(T)_("source") subset cal(T)_V$ possesses zero incoming edges ($d_("in")(v) = 0$ for all $v in V$ with $tau(v) in cal(T)_("source")$), an $L$-layer heterogeneous message-passing neural network lacking residual skip-connections collapses the hidden representations of all source-only nodes to the zero vector:
-$ h_v^((l)) = bold(0),   forall v " with " tau(v) in cal(T)_("source"), forall l >= 1 $
+    *Theorem Intrinsic Attribute Preservation and Gradient Lower Bounds.* \
+    Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous multigraph. Consider an $L$-layer heterogeneous message-passing neural network where layer $l in {1, dots, L}$ computes hidden representations:
 
-Furthermore, the gradient of the objective loss function $cal(L)$ with respect to the input feature vector $x_v$ vanishes identically:
-$ (diff cal(L))/(diff x_v) = bold(0) $
++ *Intrinsic Feature Erasure without Skip Connections:* Under pure relational aggregation without skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ the hidden representation $h_v^((1))$ is a function exclusively of adjacent incoming neighbor states. Consequently, for any node $v$ (including certificate templates $t in V_("Template")$), the gradient of the immediate hidden state with respect to its own initial configuration vector $x_v$ vanishes: $ (diff h_v^((1)))/(diff x_v) = bold(0) in bb(R)^(d_1 times d_0) $ causing complete erasure of intrinsic configuration attributes from the primary state representation. For source-only nodes where $d_("in")(v) = 0$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
++ *Guaranteed Gradient Lower Bound via Residual Skips:* Introducing parameterized residual skip connections $tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1))$ guarantees that the Jacobian of the representation with respect to the initial input features satisfies: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ where $sigma_(min)(W_("skip")^((k))) > 0$ is the minimum singular value of $W_("skip")^((k))$, establishing a strictly positive lower bound that prevents attribute decay across message-passing hops.
+
 
   ]
   ],
   caption: none,
   kind: "theorem",
   supplement: [Theorem],
-) <thm:representation_collapse>
+) <thm:representation_preservation>
 
 
-_Proof Outline._ The full, rigorous mathematical proof is provided in Appendix @proof:theorem1. Because $d_("in")(v) = 0$, the set of incoming neighbors $cal(N)_r(v) = emptyset$ for all canonical relations $r$. By definition of graph aggregation operators, message aggregation over an empty set returns the zero vector identity $bold(0)$. Without a skip projection $W_("skip") h_v^((l-1))$, the node state update simplifies to $h_v^((l)) = sigma(bold(0)) = bold(0)$. By application of the multi-variable chain rule across successive layers, the gradient $(diff cal(L))/(diff x_v)$ factors through $(diff h_v^((1)))/(diff x_v) = bold(0)$, causing input feature sensitivities to vanish identically.
+_Proof Outline._ The full mathematical derivation is provided in Appendix @proof:theorem1. Without skip connections or self-loops, $h_v^((1))$ aggregates only incoming messages from external neighbors $cal(N)(v)$, discarding the node's own feature tensor $x_v$. In certificate templates, this erases the 10 binary configuration flags governing PKI issuance. With residual skip projections following the GCNII framework (Chen et al., 2020) @chen2020simple, the direct linear skip path guarantees full-rank propagation of $x_v$ to the final classification head.
 
 
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: (left: 3pt + rgb("#1e3a8a")), width: 100%)[
 #align(left)[
-    *Corollary Security Blindness Corollary.* \
-    In Active Directory graphs, user and workstation accounts frequently exhibit pure source topology in administrative authorization subgraphs (i.e., they possess outgoing permissions to groups and templates, but no directory objects hold incoming access rights over them). Omitting skip connections mathematically guarantees that the neural network becomes completely blind to whether an enroller account is a privileged administrator ($f_("is_admin") = 1$) or an unprivileged guest ($f_("is_admin") = 0$).
+    *Corollary Security Attribute Preservation Corollary.* \
+    In Active Directory Certificate Services, a certificate template's exploitability depends fundamentally on its intrinsic configuration attributes (such as `ENROLLEE_SUPPLIES_SUBJECT` and Client Authentication EKUs). Omitting residual skip connections isolates these flags from the node's immediate layer representations, leading to severe representation decay and empirical performance collapse.
   ]
   ],
   caption: none,

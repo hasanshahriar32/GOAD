@@ -46,7 +46,7 @@ Training Epochs & $100$ & Early stopping invoked if validation loss plateaus for
 \end{table}
 
 \section{In-Distribution 5-Fold Cross-Validation}
-We benchmarked CertGraph against six baseline classifiers across stratified 5-fold cross-validation on the 700 enterprise environments. Statistical significance against CertGraph was evaluated using two-tailed paired $t$-tests across the 5 validation folds.
+We benchmarked CertGraph against six baseline classifiers across stratified 5-fold cross-validation on the 700 enterprise environments. As noted by Nadeau and Bengio (2003)~\cite{nadeau2003inference}, standard paired $t$-tests over overlapping cross-validation folds violate sample independence assumptions and can underestimate variance. We report both standard paired $t$-test values and corrected repeated CV statistics across the validation folds.
 
 \begin{table}[ht]
 \centering
@@ -111,14 +111,15 @@ Table~\ref{tab:per_class} reports the detailed per-class precision, recall, and 
 \end{tabular}
 \end{table}
 
-\paragraph{Critical Analysis of Findings:}
+\paragraph{Critical Analysis of In-Distribution Findings:}
 \begin{enumerate}
-    \item \textbf{Decisive Superiority Over Signatures and Flat ML:} CertGraph outperforms industry-standard signature heuristics (Certipy) by $+28.2\%$ in Macro-F1 ($0.9986$ vs $0.7791, p < 10^{-4}$) and flat ML by $+16.1\%$ ($0.9986$ vs $0.8600, p < 10^{-4}$). The signature tool suffers because it cannot evaluate whether enrollment paths exist, generating numerous false positives.
-    \item \textbf{Statistical Equivalence to Graph-Augmented MLP:} The two-tailed paired $t$-test between CertGraph and Graph-Augmented MLP yields $p = 0.6213$, confirming that on in-distribution synthetic data, there is no statistically significant difference between a multi-layer GNN and a flat MLP provided with 4 scalar topological summary counts.
-    \item \textbf{High Precision Across All Attack Vectors:} Out of 700 evaluation domains, CertGraph incurred only a single false positive (misclassifying a subtle ESC4 DACL-delegation variant as ESC2) and a single false negative, maintaining $>0.99$ precision and recall across every class.
+    \item \textbf{Decisive Superiority Over Static Signatures and Flat ML:} CertGraph outperforms industry signature heuristics (Certipy) by $+28.2\%$ in Macro-F1 ($0.9986$ vs $0.7791$) and flat ML by $+16.1\%$ ($0.9986$ vs $0.8600$). The signature tool suffers because it inspects template flags in isolation without evaluating authorization path connectivity, generating frequent false positives.
+    \item \textbf{Statistical Equivalence to Graph-Augmented MLP and Benchmark Saturation:} The comparison between CertGraph and Graph-Augmented MLP yields $p = 0.6213$, confirming that on in-distribution synthetic data, there is no statistically significant difference between a multi-layer GNN and a flat MLP provided with four topological summary counts. Furthermore, the headline score of $0.9986 \pm 0.0029$ corresponds to exactly one misclassified template out of 700 ($699/700 = 0.99857$). A 7-node decision tree recovers $0.9928$ (representing approximately 5 errors out of 700), and the single-head attention ablation achieves $1.0000$. Because ground-truth labels in synthetic generators are generated from access-control rules, in-distribution cross-validation primarily evaluates rule recovery on synthesized data rather than generalized security reasoning, necessitating the out-of-distribution hard-negative evaluation in Section~\ref{sec:hard_negatives}.
+    \item \textbf{High Precision Across Core Attack Vectors:} Out of 700 evaluation domains, CertGraph incurred only a single false positive (misclassifying a subtle ESC4 DACL-delegation variant as ESC2) and a single false negative, maintaining $>0.99$ precision and recall across all evaluated classes.
 \end{enumerate}
 
 \section{Systematic Architectural Ablation Studies}
+\label{sec:ablation_results}
 To isolate the contribution of each architectural component within CertGraph, we executed controlled ablation experiments across four variants under identical 5-fold cross-validation splits.
 
 \begin{table}[ht]
@@ -141,16 +142,17 @@ No Graph Context (Features Only) & $0.8600 \pm 0.0130$ & $-0.1386$ & $2.62 \time
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/ablation_comparison.png}
-    \caption{Ablation study comparison highlighting the catastrophic performance collapse when residual skip connections are disabled.}
+    \caption{Ablation study comparison highlighting the performance collapse when residual skip connections are disabled.}
     \label{fig:ablation_fig}
 \end{figure}
 
 \paragraph{Empirical Confirmation of Theorem 1:}
-The most striking result of the ablation suite is the consequence of removing residual skip connections ($W_{\text{skip}} = 0$). In standard undirected graph benchmarks (e.g., Cora, Citeseer), omitting skip connections typically causes a minor degradation of $2-5\%$. In sharp contrast, on Active Directory identity graphs, removing skip connections triggers a \textbf{catastrophic collapse in Macro-F1 from $0.9986$ to $0.4768$} ($p = 1.31 \times 10^{-6}$, representing a $>52\%$ absolute drop).
+The most striking result of the ablation suite is the consequence of removing residual skip connections ($W_{\text{skip}} = 0$). In standard undirected graph benchmarks (e.g., Cora, Citeseer), omitting skip connections typically causes a minor degradation of $2-5\%$. In sharp contrast, on Active Directory identity graphs, removing skip connections triggers a \textbf{severe collapse in Macro-F1 from $0.9986$ to $0.4768$} ($p = 1.31 \times 10^{-6}$, representing a $>52\%$ absolute drop).
 
-This empirical collapse directly confirms Theorem~\ref{thm:representation_collapse}: because user and computer accounts act as pure source nodes ($d_{\text{in}} = 0$) in administrative access graphs, message passing without skip connections sets their hidden representations to $\mathbf{0}$ after Layer 1. The network loses all access to source identity features, rendering it incapable of discerning whether an incoming enrollment edge originates from a high-privilege administrator or an unprivileged user.
+This empirical collapse directly confirms Theorem~\ref{thm:representation_preservation}: without residual skip connections, a certificate template node aggregates messages exclusively from its incoming neighbors during Layer 1, completely discarding its own initial 10-dimensional configuration feature vector $x_{\text{Template}}$ ($\partial h_t^{(1)} / \partial x_t = \mathbf{0}$). Furthermore, low-in-degree principals suffer representation decay across successive message-passing hops. The network loses direct sensitivity to critical configuration flags (such as \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} and Client Authentication EKUs), destroying its ability to differentiate dangerous templates from secure ones. Parameterized skip connections preserve initial attributes and maintain non-vanishing gradient bounds, preventing representation collapse.
 
 \section{The Zero-Shot Adversarial Hard Negative Benchmark}
+\label{sec:hard_negatives}
 While in-distribution cross-validation demonstrated near-perfect metrics for both CertGraph and Graph-Augmented MLP, the critical scientific question remained: \textit{Did the neural models learn to reason about topological graph reachability, or did they merely exploit feature-level statistical shortcuts?}
 
 To answer this question, we established an out-of-distribution \textbf{Zero-Shot Adversarial Hard Negative Benchmark}:
@@ -162,19 +164,19 @@ To answer this question, we established an out-of-distribution \textbf{Zero-Shot
 \begin{table}[ht]
 \centering
 \small
-\caption{Zero-Shot Adversarial Hard Negative Benchmark Results (Evaluated on 63 Test Hard Negatives).}
+\caption{Zero-Shot Adversarial Hard Negative Benchmark Results ($n = 63$ Test Environments).}
 \label{tab:hn_results}
-\begin{tabularx}{\textwidth}{p{4.2cm} c c X}
+\begin{tabularx}{\textwidth}{p{4.0cm} c c c X}
 \toprule
-\textbf{Model Architecture} & \textbf{Safe Count} & \textbf{Accuracy} & \textbf{Observed Behavioral Failure Mode} \\
+\textbf{Model Architecture} & \textbf{Safe Count} & \textbf{Accuracy} & \textbf{95\% Wilson CI} & \textbf{Observed Behavioral Failure Mode} \\
 \midrule
-\textbf{BloodHound BFS (Symbolic)} & $\mathbf{53 / 63}$ & $\mathbf{84.13\%}$ & \textbf{Deductively verifies path absence} \\
-Graph-Augmented MLP & $18 / 63$ & $28.57\%$ & Weak path count conditioning \\
-\textbf{CertGraph (Hetero-GAT)} & $\mathbf{1 / 63}$ & $\mathbf{1.59\%}$ & \textbf{Catastrophic Shortcut Collapse} \\
-Flat MLP (Features Only) & $0 / 63$ & $0.00\%$ & Fooled by template flags \\
-Flat RF (Features Only) & $0 / 63$ & $0.00\%$ & Fooled by template flags \\
-Graph-Augmented RF & $0 / 63$ & $0.00\%$ & Tree split prioritized local flags \\
-Rule-Based (Certipy Heuristic) & $0 / 63$ & $0.00\%$ & Static signature false positive \\
+\textbf{BloodHound BFS (Symbolic)} & $\mathbf{53 / 63}$ & $\mathbf{84.13\%}$ & $[73.1\%, 91.2\%]$ & \textbf{Verifies path absence via search} \\
+Graph-Augmented MLP & $18 / 63$ & $28.57\%$ & $[18.8\%, 40.8\%]$ & Weak topological count conditioning \\
+\textbf{CertGraph (Hetero-GAT)} & $\mathbf{1 / 63}$ & $\mathbf{1.59\%}$ & $[0.3\%, 8.5\%]$ & \textbf{Shortcut Collapse on Template Flags} \\
+Flat MLP (Features Only) & $0 / 63$ & $0.00\%$ & $[0.0\%, 5.7\%]$ & Fooled by template flags \\
+Flat RF (Features Only) & $0 / 63$ & $0.00\%$ & $[0.0\%, 5.7\%]$ & Fooled by template flags \\
+Graph-Augmented RF & $0 / 63$ & $0.00\%$ & $[0.0\%, 5.7\%]$ & Tree split prioritized local flags \\
+Rule-Based (Certipy Heuristic) & $0 / 63$ & $0.00\%$ & $[0.0\%, 5.7\%]$ & Static signature false positive \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -182,18 +184,18 @@ Rule-Based (Certipy Heuristic) & $0 / 63$ & $0.00\%$ & Static signature false po
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/hard_negatives_comparison.png}
-    \caption{Zero-shot adversarial evaluation demonstrating the catastrophic collapse of neural models due to shortcut learning compared to symbolic BFS path traversal.}
+    \caption{Zero-shot adversarial evaluation demonstrating the collapse of pure neural models due to shortcut learning compared to symbolic BFS path traversal.}
     \label{fig:hn_fig}
 \end{figure}
 
-\subsection{Theoretical Post-Mortem of Neural Shortcut Collapse}
-The results in Table~\ref{tab:hn_results} represent a landmark empirical finding:
+\subsection{Theoretical Post-Mortem: Under-Specification and Shortcut Collapse}
+The empirical results in Table~\ref{tab:hn_results} establish crucial insights into the limits of pure deep learning on security graphs:
 \begin{enumerate}
-    \item \textbf{The Total Failure of Neural GNNs:} Despite achieving $0.9986$ F1 in-distribution, CertGraph correctly classified only \textbf{1 out of 63} adversarial hard negatives, collapsing to \textbf{1.59\% accuracy}. All flat models and signature heuristics collapsed to \textbf{0.00\% accuracy}.
-    \item \textbf{The Decisive Superiority of Symbolic Path Traversal:} In stark contrast, the deterministic symbolic graph oracle (BloodHound BFS) correctly resolved \textbf{84.13\%} ($53/63$) of the adversarial environments, deductively verifying that no unprivileged authorization path reached the template.
+    \item \textbf{Failure of Pure Neural Models on Hard Negatives:} Despite achieving $0.9986$ F1 in-distribution, CertGraph correctly classified only \textbf{1 out of 63} adversarial hard negatives, collapsing to \textbf{1.59\% accuracy} (95\% Wilson score interval: $[0.3\%, 8.5\%]$). All flat feature models collapsed to \textbf{0.00\% accuracy} ($[0.0\%, 5.7\%]$).
+    \item \textbf{Performance and Limitations of the Symbolic Graph Baseline:} In contrast, the symbolic baseline (BloodHound BFS) correctly resolved \textbf{84.13\%} ($53/63$, 95\% Wilson CI: $[73.1\%, 91.2\%]$) of the adversarial environments. While exact path-reachability would achieve 100\% if labels depended solely on reachability, the simplified BFS baseline evaluated primary containment and enrollment edges without evaluating fine-grained Discretionary Access Control List (DACL) permission masks (e.g., `GenericAll` vs write rights on parent containers vs explicit deny ACEs), leading to 10 discrepancies where full access evaluation is required.
+    \item \textbf{Under-Specification and Shortcut Convergence:} The underlying driver of neural collapse is the well-known machine learning challenge of \textbf{under-specification} (Arp et al., 2022~\cite{arp2022dos}; Geirhos et al., 2020~\cite{geirhos2020shortcut}). In the standard training set of 1,400 environments, templates configured with dangerous flags possessed a valid authorization path 100\% of the time. Consequently, the two decision rules---``flags $\implies$ vulnerable'' and ``path $\implies$ vulnerable''---fit the training loss with equal empirical precision. Because inspecting local template flags ($x_{\text{Template}}$) requires a simple single-layer linear projection, whereas verifying multi-hop reachability requires coordinating high-order message-passing convolutions, gradient descent naturally converges to the simpler flag-based shortcut.
+    \item \textbf{Reconciliation with Enterprise Testbeds:} This failure underscores that pure neural models cannot guarantee soundness when evaluated on out-of-distribution counterfactual topologies. As demonstrated in Chapter~\ref{ch:case_study} and formalized in Chapter~\ref{ch:neuro_symbolic}, enterprise false-positive suppression on hardened templates is achieved by deploying CertGraph within the **Two-Tier Neuro-Symbolic Hybrid Architecture**, where fast neural screening is verified by targeted symbolic path deduction.
 \end{enumerate}
-
-This divergence occurs because neural networks optimize loss functions by identifying the most accessible high-variance statistical correlations in training distributions. Verifying multi-hop reachability requires coordinating high-order tensor conjunctions across multiple layers, whereas inspecting local template flags ($x_{\text{Template}}$) requires a simple single-layer linear combination. Because training data rarely contains disconnected vulnerable flags, the GNN converges to using local flags as a predictive shortcut. When confronted with adversarial out-of-distribution environments where flags and topologies are decoupled, pure neural models fail catastrophically.
 
 \section{Attention Weight Explainability and Graph Attribution}
 To analyze what CertGraph learns internally, we inspected the learned multi-head attention weights $\alpha_{vu}^{(k, r)}$ across the 2-hop computational subgraph of evaluated templates.

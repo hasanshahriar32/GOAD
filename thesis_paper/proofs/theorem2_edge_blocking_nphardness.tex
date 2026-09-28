@@ -1,82 +1,87 @@
-\section[Proof of Theorem 2: NP-Hardness of Edge-Severing]{Proof of Theorem 2: NP-Hardness of Minimal-Capacity Active Directory Edge-Severing}
+\section[Proof of Theorem 2: NP-Hardness of Multi-Principal Access Interdiction]{Proof of Theorem 2: NP-Hardness of Multi-Principal Access Interdiction in Enterprise Identity Graphs}
 \label{proof:theorem2}
 
-\begin{theorem}[NP-Hardness of Optimal Attack Path Severing]
-Let $G = (V, E)$ be a directed graph representing an Active Directory domain, where $V$ represents security principals and assets, and $E$ represents authorization and administrative edges. Let $c: E \to \mathbb{R}^+$ assign operational disruption costs (capacities) to edges, representing the cost of revoking an access right. 
+\begin{theorem}[NP-Hardness of Multi-Principal Access Interdiction]
+Let $G = (V, E)$ be a directed multigraph representing an Active Directory domain, where $V$ represents security principals and directory objects, and $E$ represents directed authorization, delegation, and administrative permissions. Let $c: E \to \mathbb{R}^+$ assign operational disruption costs to edges, representing the business friction of revoking a specific privilege.
 
-Let $S \subset V$ denote the set of compromised or low-privileged attacker source identities ($|S| \ge 2$), and let $T \subset V$ denote the set of high-value administrative terminal targets (e.g., Domain Admins, Enterprise Admins, Domain Controllers).
+Let $\mathcal{P}_{\text{forbidden}} = \{(s_1, t_1), (s_2, t_2), \dots, (s_k, t_k)\}$ denote a set of $k \ge 3$ forbidden source-target compromise pairs (e.g., specific unprivileged footholds and their respective target administrative assets across distinct trust or tier boundaries) that must be severed.
 
-The \textbf{Active Directory Edge-Severing Defense Problem (ADESDP)} asks: given an operational disruption budget $K \in \mathbb{R}^+$, does there exist a subset of edges $E_{\text{cut}} \subseteq E$ such that:
+The \textbf{Multi-Principal Access Interdiction (MPAI)} problem asks: given an operational disruption budget $K \in \mathbb{R}^+$, does there exist an edge interdiction subset $E_{\text{cut}} \subseteq E$ such that:
 \begin{enumerate}
-    \item Total operational cost is bounded:
+    \item Total operational revocation cost is bounded:
     \begin{equation}
     \sum_{e \in E_{\text{cut}}} c(e) \le K
     \end{equation}
-    \item Every directed path from every source $s \in S$ to every target $t \in T$ is severed:
+    \item All forbidden directed compromise paths are severed:
     \begin{equation}
-    \forall s \in S, \forall t \in T, \quad \text{Path}(s \rightsquigarrow t) \text{ does not exist in } G' = (V, E \setminus E_{\text{cut}})
+    \forall (s_i, t_i) \in \mathcal{P}_{\text{forbidden}}, \quad \text{Path}(s_i \rightsquigarrow t_i) \text{ does not exist in } G' = (V, E \setminus E_{\text{cut}})
     \end{equation}
 \end{enumerate}
-The ADESDP is NP-complete. Consequently, finding the optimal edge-severing defense strategy that minimizes operational business impact is NP-hard.
+The MPAI problem is NP-complete for $k \ge 3$. Consequently, finding the optimal edge-severing defense strategy that minimizes operational disruption while neutralizing multiple independent lateral compromise paths is NP-hard.
 \end{theorem}
 
 \begin{proof}
-We prove NP-completeness by showing that:
+We prove NP-completeness by establishing:
 \begin{enumerate}
-    \item $\text{ADESDP} \in \text{NP}$, and
-    \item The known NP-complete problem \textbf{Directed Multi-way Cut} polynomially reduces to ADESDP:
+    \item $\text{MPAI} \in \text{NP}$, and
+    \item A polynomial-time reduction from the classical NP-complete \textbf{Directed Multiway Cut} problem~\cite{garg1994multiway,dahlstrm2000multiway} to MPAI:
     \begin{equation}
-    \text{Directed Multi-way Cut} \le_p \text{ADESDP}
+    \text{Directed Multiway Cut} \le_p \text{MPAI}
     \end{equation}
 \end{enumerate}
 
 \paragraph{Part 1: Membership in NP.}
-Given a candidate edge set $E_{\text{cut}} \subseteq E$:
+Given a candidate edge subset $E_{\text{cut}} \subseteq E$:
 \begin{enumerate}
-    \item We compute the sum of edge costs $\sum_{e \in E_{\text{cut}}} c(e)$ in $O(|E_{\text{cut}}|)$ time and verify if it is $\le K$.
-    \item We construct the residual graph $G' = (V, E \setminus E_{\text{cut}})$ in $O(|V| + |E|)$ time.
-    \item For each pair $(s, t) \in S \times T$, we run Breadth-First Search (BFS) or Depth-First Search (DFS) on $G'$ to verify that $t$ is unreachable from $s$. This requires $O(|S| \cdot (|V| + |E|))$ time.
+    \item We compute the total operational revocation cost $\sum_{e \in E_{\text{cut}}} c(e)$ in $\mathcal{O}(|E_{\text{cut}}|)$ time and verify whether $\sum_{e \in E_{\text{cut}}} c(e) \le K$.
+    \item We construct the residual graph $G' = (V, E \setminus E_{\text{cut}})$ in $\mathcal{O}(|V| + |E|)$ time.
+    \item For each of the $k$ forbidden pairs $(s_i, t_i) \in \mathcal{P}_{\text{forbidden}}$, we execute Breadth-First Search (BFS) starting from $s_i$ in $G'$ to verify that $t_i$ is unreachable. This requires $\mathcal{O}(k \cdot (|V| + |E|))$ time.
 \end{enumerate}
-Because all verification steps complete in deterministic polynomial time with respect to the input size, $\text{ADESDP} \in \text{NP}$.
+Because all verification steps complete in deterministic polynomial time with respect to the graph size, $\text{MPAI} \in \text{NP}$.
 
-\paragraph{Part 2: Polynomial-Time Reduction from Directed Multi-way Cut.}
-Recall the definition of the \textbf{Directed Multi-way Cut} problem, proven NP-complete by Dahlhaus et al.~\cite{dahlstrm2000multiway}:
+\paragraph{Part 2: Polynomial-Time Reduction from Directed Multiway Cut.}
+Recall the definition of the \textbf{Directed Multiway Cut} problem, proven NP-complete by Garg, Vazirani, and Yannakakis~\cite{garg1994multiway}:
 \begin{quote}
-\textbf{Directed Multi-way Cut:} Given a directed graph $H = (V_H, E_H)$ with edge weights $w: E_H \to \mathbb{R}^+$, a subset of terminal vertices $X = \{x_1, x_2, \dots, x_k\} \subseteq V_H$ ($k \ge 3$), and a cost threshold $W$, does there exist an edge subset $C \subseteq E_H$ with $\sum_{e \in C} w(e) \le W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i \neq j$) in $H' = (V_H, E_H \setminus C)$?
+\textbf{Directed Multiway Cut:} Given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H \to \mathbb{R}^+$, a subset of $k \ge 3$ distinct terminal vertices $X = \{x_1, x_2, \dots, x_k\} \subseteq V_H$, and a cost threshold $W$, does there exist an edge subset $C \subseteq E_H$ with $\sum_{e \in C} w(e) \le W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i \neq j$) in the residual graph $H' = (V_H, E_H \setminus C)$?
 \end{quote}
 
-Given an arbitrary instance $\langle H, w, X, W \rangle$ of the Directed Multi-way Cut problem with $k \ge 3$ terminals, we construct an instance $\langle G = (V, E), c, S, T, K \rangle$ of ADESDP in polynomial time:
+Given an arbitrary instance $\langle H = (V_H, E_H), w, X = \{x_1, \dots, x_k\}, W \rangle$ of the Directed Multiway Cut problem ($k \ge 3$), we construct an instance $\langle G = (V, E), c, \mathcal{P}_{\text{forbidden}}, K \rangle$ of MPAI in polynomial time:
 
 \begin{enumerate}
-    \item \textbf{Vertex Construction:} For each terminal $x_i \in X$ ($i = 1, \dots, k$), create two distinct nodes in $G$: a source node $s_i$ and a target node $t_i$. For all non-terminal vertices $v \in V_H \setminus X$, include $v \in V$. Thus:
+    \item \textbf{Vertex Construction:} For each terminal $x_i \in X$, create two distinct nodes in $G$: an attacker source principal $s_i$ and a high-value target asset $t_i$. For all non-terminal vertices $v \in V_H \setminus X$, include $v \in V$. Thus:
     \begin{equation}
     V = (V_H \setminus X) \cup \{s_1, \dots, s_k\} \cup \{t_1, \dots, t_k\}
     \end{equation}
-    Set the attacker source set as $S = \{s_1, \dots, s_k\}$ and the administrative target set as $T = \{t_1, \dots, t_k\}$.
 
     \item \textbf{Edge and Cost Construction:}
     \begin{enumerate}
-        \item For every original directed edge $(u, v) \in E_H$:
+        \item For every original edge $(u, v) \in E_H$:
         \begin{enumerate}
-            \item If $u \notin X$ and $v \notin X$, add $(u, v)$ to $E$ with cost $c(u, v) = w(u, v)$.
-            \item If $u = x_i \in X$ and $v \notin X$, add $(s_i, v)$ to $E$ with cost $c(s_i, v) = w(x_i, v)$.
-            \item If $u \notin X$ and $v = x_j \in X$, add $(u, t_j)$ to $E$ with cost $c(u, t_j) = w(u, x_j)$.
-            \item If $u = x_i \in X$ and $v = x_j \in X$ ($i \neq j$), add $(s_i, t_j)$ to $E$ with cost $c(s_i, t_j) = w(x_i, x_j)$.
+            \item If $u \notin X$ and $v \notin X$, add $(u, v) \in E$ with cost $c(u, v) = w(u, v)$.
+            \item If $u = x_i \in X$ and $v \notin X$, add $(s_i, v) \in E$ with cost $c(s_i, v) = w(x_i, v)$.
+            \item If $u \notin X$ and $v = x_j \in X$, add $(u, t_j) \in E$ with cost $c(u, t_j) = w(u, x_j)$.
+            \item If $u = x_i \in X$ and $v = x_j \in X$ ($i \neq j$), add $(s_i, t_j) \in E$ with cost $c(s_i, t_j) = w(x_i, x_j)$.
         \end{enumerate}
-        \item For each $i \in \{1, \dots, k\}$, add a zero-cost directed enforcement edge $(t_i, s_i)$ with cost $c(t_i, s_i) = \infty$ (or $W + 1$). This ensures that reaching terminal $t_i$ allows reaching all outgoing paths from $s_i$, faithfully reproducing the transitivity of terminal $x_i$ in $H$.
-        \item Ensure that self-reachability $s_i \rightsquigarrow t_i$ does not represent an inter-terminal path by adding an independent dummy terminal set if necessary, or simply setting the target requirement to: disconnect all pairs $(s_i, t_j)$ for $i \neq j$. By introducing an auxiliary collector vertex $T^*$ for each $s_i$ connected to all $t_j$ ($j \neq i$) with capacity $\infty$, we map this directly into the bipartite source-target formulation.
+        \item For each terminal index $i \in \{1, \dots, k\}$, add a directed continuation edge $(t_i, s_i)$ with infinite capacity $c(t_i, s_i) = \infty$ (or $W + 1$). This enforces that reaching target $t_i$ allows traversing any path leaving source $s_i$, preserving the full reachability topology of vertex $x_i$ in $H$.
     \end{enumerate}
 
-    \item \textbf{Cost Threshold:} Set $K = W$.
+    \item \textbf{Forbidden Pair Definition:} Set the forbidden compromise pair set to all distinct terminal combinations:
+    \begin{equation}
+    \mathcal{P}_{\text{forbidden}} = \{(s_i, t_j) \mid 1 \le i, j \le k, \, i \neq j\}
+    \end{equation}
+    Here $|\mathcal{P}_{\text{forbidden}}| = k(k-1) \ge 6$ for $k \ge 3$.
+
+    \item \textbf{Disruption Budget:} Set $K = W$.
 \end{enumerate}
 
-The construction introduces at most $2|V_H|$ vertices and $|E_H| + k$ edges, which is computable in $O(|V_H| + |E_H|)$ time.
+The reduction generates $|V| = |V_H| + k$ vertices and $|E| = |E_H| + k$ edges, requiring $\mathcal{O}(|V_H| + |E_H|)$ time.
 
 \paragraph{Equivalence of Solutions:}
 \begin{enumerate}
-    \item $(\Rightarrow)$ Suppose there exists a cut $C \subseteq E_H$ in $H$ with $\sum_{e \in C} w(e) \le W$ that disconnects all terminal pairs $x_i \rightsquigarrow x_j$ ($i \neq j$). Let $E_{\text{cut}}$ be the corresponding set of edges in $G$. Since no path existed between $x_i$ and $x_j$ in $H \setminus C$, no directed path can exist between $s_i$ and $t_j$ in $G \setminus E_{\text{cut}}$. The infinite-capacity edges $(t_i, s_i)$ are never cut, and $\sum_{e \in E_{\text{cut}}} c(e) = \sum_{e \in C} w(e) \le W = K$.
-    \item $(\Leftarrow)$ Conversely, suppose there exists an edge cut $E_{\text{cut}} \subseteq E$ in $G$ with cost $\le K = W$ severing all $s_i \rightsquigarrow t_j$ paths ($i \neq j$). None of the infinite-cost edges $(t_i, s_i)$ can belong to $E_{\text{cut}}$ because $K < \infty$. Therefore, $E_{\text{cut}}$ corresponds strictly to a subset of original edges $C \subseteq E_H$ with $\sum_{e \in C} w(e) \le W$ that eliminates all paths between distinct terminals in $H$.
+    \item $(\Rightarrow)$ Suppose there exists a valid Directed Multiway Cut $C \subseteq E_H$ in $H$ with $\sum_{e \in C} w(e) \le W$ that disconnects all pairs $x_i \rightsquigarrow x_j$ for $i \neq j$. Let $E_{\text{cut}} \subseteq E$ be the identical set of edges in $G$. Since $C$ contains no infinite-cost edges, $\sum_{e \in E_{\text{cut}}} c(e) = \sum_{e \in C} w(e) \le W = K$. Furthermore, because no path connects $x_i$ to $x_j$ in $H \setminus C$, no path can connect $s_i$ to $t_j$ in $G \setminus E_{\text{cut}}$. Hence, all pairs in $\mathcal{P}_{\text{forbidden}}$ are severed.
+
+    \item $(\Leftarrow)$ Conversely, suppose there exists an edge cut $E_{\text{cut}} \subseteq E$ in $G$ with cost $\sum_{e \in E_{\text{cut}}} c(e) \le K = W$ severing all paths for every pair $(s_i, t_j) \in \mathcal{P}_{\text{forbidden}}$ ($i \neq j$). Because $K < \infty$, $E_{\text{cut}}$ cannot contain any infinite-capacity continuation edge $(t_i, s_i)$. Thus, $E_{\text{cut}}$ corresponds directly to a valid edge subset $C \subseteq E_H$ in $H$. If there existed a directed path from $x_i$ to $x_j$ ($i \neq j$) in $H \setminus C$, the identical sequence of edges would form a directed path from $s_i$ to $t_j$ in $G \setminus E_{\text{cut}}$, contradicting the assumption that $(s_i, t_j)$ is severed. Therefore, $C$ separates all terminal pairs in $H$ with cost $\le W$.
 \end{enumerate}
 
-This proves that ADESDP is NP-complete. The optimization version---finding the minimal disruption edge set---is therefore NP-hard.
+This establishes that MPAI is NP-complete for $k \ge 3$. The optimization problem of finding the minimal-disruption edge-severing set is therefore NP-hard.
 \end{proof}

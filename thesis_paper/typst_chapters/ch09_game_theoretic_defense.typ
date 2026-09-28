@@ -1,6 +1,5 @@
-= Game-Theoretic Autonomous Defense and NP-Hardness of Edge-Severing
+= Game-Theoretic Autonomous Defense and NP-Hardness of Edge-Severing <ch:game_theory>
 
-<ch:game_theory>
 
 == From Passive Auditing to Active Autonomous Defense
 
@@ -32,34 +31,34 @@ The game features two rational, utility-maximizing players with asymmetric roles
 === Multi-Objective Utility Functions and Regularization
 
 To prevent the defender from executing destructive network disconnections, we formulate an asymmetric multi-objective utility function balancing risk reduction against operational availability:
-$ U_D(a_D, a_A) = R_("sec")(G') - lambda_("ops") sum_(e in E_("cut")) c(e) - beta dot bb(I)(t in op("Reachable")(S, G')) $
+$ U_D(a_D, a_A) = R_("sec")(G') - lambda_("ops") sum_(e in E_("cut")) c(e) - (gamma_("reg"))/(2) \|p_D||_2^2 - beta dot sum_((s, t) in cal(P)_("forbidden")) bb(I)(t in op("Reachable")(s, G')) $
 
 where:
 
 + $R_("sec")(G') in [0, 1]$ is the continuous security reward proportional to the reduction in global attack surface blast radius computed via CertGraph node embeddings.
-+ $sum_(e in E_("cut")) c(e)$ is the operational disruption penalty quantifying business workflow friction.
-+ $lambda_("ops") > 0$ is a regularization hyperparameter balancing defensive security against operational continuity.
-+ $beta >> 1$ is a catastrophic penalty applied if the attacker retains any valid directed authorization path from $S$ to $T$.
-+ $bb(I)(dot)$ is the indicator function returning $1$ if target $t$ remains reachable from $S$.
++ $sum_(e in E_("cut")) c(e)$ is the linear operational disruption penalty quantifying business workflow friction.
++ $(gamma_("reg"))/(2) \|p_D||_2^2$ ($gamma_("reg") > 0$) is a strictly convex quadratic regularization penalty on the defender's edge-interdiction probabilities $p_D in [0, 1]^(|E|)$, ensuring strict concavity of the defender's mixed utility.
++ $beta >> 1$ is an operational penalty applied for each forbidden compromise pair that remains reachable.
++ $bb(I)(dot)$ is the indicator function returning $1$ if target $t$ remains reachable from $s$.
 
 
 
 The attacker's utility is the direct strategic dual:
-$ U_A(a_D, a_A) = V_("target")(t) dot bb(I)(t in op("Reachable")(S, G')) - sum_(e_i in a_A) c_("stealth")(e_i) $
+$ U_A(a_D, a_A) = sum_(t in T) V_("target")(t) dot bb(I)(t in op("Reachable")(S, G')) - sum_(e_i in a_A) c_("stealth")(e_i) $
 
-where $V_("target")(t)$ is the asset value of compromising Tier-0, and $c_("stealth")(e_i)$ represents the risk of detection associated with traversing edge $e_i$.
+where $V_("target")(t)$ is the asset value of compromising Tier-0, and $c_("stealth")(e_i)$ represents the risk of detection associated with traversing edge $e_i$ @kiekintveld2009computing @guo2023scalable.
 
-== Theoretical Complexity: The NP-Hardness of Edge-Severing
+== Theoretical Complexity: The NP-Hardness of Multi-Principal Access Interdiction
 
-A foundational question in autonomous cyber defense is whether an automated agent can compute the optimal, minimal-disruption edge-severing strategy in polynomial time. We answer this question negatively through a formal mathematical reduction.
+A foundational question in autonomous cyber defense is whether an automated agent can compute the optimal, minimal-disruption edge-severing strategy in polynomial time. While severing paths between a single source and a single target is solvable via classical max-flow min-cut algorithms, enterprise identity environments require severing paths across multiple independent source-target pairs while preserving legitimate operational workflows. We formalize this challenge through the *Multi-Principal Access Interdiction (MPAI)* problem.
 
 
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: (left: 3pt + rgb("#1e3a8a")), width: 100%)[
 #align(left)[
-    *Theorem NP-Hardness of Minimal-Capacity Identity Edge-Severing.* \
-    Given an Active Directory multigraph $G = (V, E)$, non-negative operational disruption edge costs $c: E arrow.r bb(R)^+$, a set of compromised source principals $S subset V$ ($|S| >= 2$), and a set of high-value administrative targets $T subset V$, finding the minimum-capacity edge cut $E_("cut") subset.eq E$ whose removal severs all directed paths from $S$ to $T$ while minimizing total operational cost:
-$ min_(E_("cut") subset.eq E) sum_(e in E_("cut")) c(e)   "subject to " op("Reachable")(S, T, G \ E_("cut")) = emptyset $
+    *Theorem NP-Hardness of Multi-Principal Access Interdiction.* \
+    Given an Active Directory multigraph $G = (V, E)$, non-negative operational disruption edge costs $c: E arrow.r bb(R)^+$, and a set of $k >= 3$ forbidden source-target compromise pairs $cal(P)_("forbidden") = {(s_i, t_i)}_(i=1)^k$, finding the minimum-capacity edge cut $E_("cut") subset.eq E$ whose removal severs all directed paths for every $(s_i, t_i) in cal(P)_("forbidden")$:
+$ min_(E_("cut") subset.eq E) sum_(e in E_("cut")) c(e)   "subject to " forall (s_i, t_i) in cal(P)_("forbidden"),   op("Reachable")(s_i, t_i, G \ E_("cut")) = emptyset $
 
 is NP-hard.
   ]
@@ -70,14 +69,14 @@ is NP-hard.
 ) <thm:nphardness>
 
 
-_Proof Outline._ The full, rigorous reduction is presented in Appendix @proof:theorem2. We establish NP-hardness via a polynomial-time reduction from the classical *Directed Multi-way Cut* problem, known to be NP-hard for any fixed number of terminals $k >= 3$ @garg1997approximability. Given an arbitrary instance of Directed Multi-way Cut with directed graph $H = (V_H, E_H)$, terminals $K = \{s_1, dots, s_k}$, and capacity function $w: E_H arrow.r bb(R)^+$, we construct an Active Directory identity multigraph $G$ in polynomial time $cal(O)(|V_H| + |E_H|)$. We demonstrate that an edge cut $E_("cut")$ severs all directed paths between source terminals $S$ and administrative target terminals $T$ if and only if the corresponding edge cut in $H$ separates all terminal pairs in $K$.
+_Proof Outline._ The full, rigorous reduction is presented in Appendix @proof:theorem2. We establish NP-hardness via a polynomial-time reduction from the classical *Directed Multiway Cut* problem, proven NP-complete by Garg, Vazirani, and Yannakakis @garg1994multiway. Given an arbitrary instance of Directed Multiway Cut with directed graph $H = (V_H, E_H)$, terminals $X = \{x_1, dots, x_k}$, and capacity function $w: E_H arrow.r bb(R)^+$, we construct an Active Directory identity multigraph $G$ in polynomial time $cal(O)(|V_H| + |E_H|)$. We demonstrate that an edge cut $E_("cut")$ severs all directed paths between forbidden principal-target pairs $cal(P)_("forbidden")$ if and only if the corresponding edge cut in $H$ separates all terminal pairs in $X$.
 
 
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: (left: 3pt + rgb("#1e3a8a")), width: 100%)[
 #align(left)[
     *Corollary Intractability of Brute-Force Remediation.* \
-    Because minimal-capacity edge-severing is NP-hard, exact combinatorial optimization algorithms (such as Integer Linear Programming or branch-and-bound graph search) exhibit exponential worst-case time complexity $cal(O)(2^(|E|))$. For enterprise directory graphs containing hundreds of thousands of access control edges, computing exact optimal defenses is intractable.
+    Because Multi-Principal Access Interdiction is NP-hard, exact combinatorial optimization algorithms (such as Integer Linear Programming or branch-and-bound search) exhibit exponential worst-case time complexity $cal(O)(2^(|E|))$. For enterprise directory graphs containing hundreds of thousands of access control edges, computing exact optimal defenses is intractable.
   ]
   ],
   caption: none,
@@ -94,11 +93,11 @@ Because exact optimization is NP-hard, autonomous defense systems require polyno
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: 1pt + rgb("#cbd5e1"), width: 100%)[
 #align(left)[
-#h(0.0em) *Require:* Active Directory Graph $G = (V, E)$; Source set $S$; Target set $T$; Disruption cost function $c: E arrow.r bb(R)^+$; Maximum budget $B_("ops")$. \
+#h(0.0em) *Require:* Active Directory Graph $G = (V, E)$; Forbidden pairs $cal(P)_("forbidden")$; Disruption cost function $c: E arrow.r bb(R)^+$; Maximum budget $B_("ops")$. \
 #h(0.0em) *Ensure:* Reconfigured graph $G' = (V, E \ E_("cut"))$ with severed attack paths. \
 #h(0.0em) Initialize edge cut set $E_("cut") arrow.l emptyset$, cumulative disruption $C_("total") arrow.l 0$ \
-#h(0.0em) *while* $exists " path " cal(P) " from " S " to " T " in " G$: \
-#h(1.5em) Compute path centrality across all active paths: $forall e in E,   phi(e) arrow.l sum_(cal(P) in Pi(S, T)) bb(I)(e in cal(P))$ \
+#h(0.0em) *while* $exists (s, t) in cal(P)_("forbidden") " with path " cal(P) " from " s " to " t " in " G$: \
+#h(1.5em) Compute path centrality across all active paths: $forall e in E,   phi(e) arrow.l sum_(cal(P) in Pi(cal(P)_("forbidden"))) bb(I)(e in cal(P))$ \
 #h(1.5em) Compute cost-efficiency ratio for each candidate edge: \
 #h(1.5em)   $rho(e) arrow.l (phi(e))/(c(e))$ \
 #h(1.5em) Identify optimal candidate: $e^* arrow.l op("argmax")_(e in E \ E_("cut")) rho(e)$ \
@@ -115,45 +114,42 @@ Because exact optimization is NP-hard, autonomous defense systems require polyno
 ) <alg:greedy_sever>
 
 
-=== Approximation Ratio and Centrality Dynamics
+=== Approximation Dynamics and Centrality
 
-@alg:greedy_sever iteratively computes the path centrality $phi(e)$ (the number of unprivileged attack paths traversing edge $e$) and evaluates the cost-efficiency ratio $rho(e) = phi(e) / c(e)$. By prioritizing edges that participate in the largest number of attack trajectories while incurring minimal operational disruption, the algorithm achieves an $cal(O)(log |T|)$ approximation ratio relative to the optimal cut, executing in polynomial time $cal(O)(|E| dot (|V| + |E|))$.
+@alg:greedy_sever iteratively computes the path centrality $phi(e)$ (the number of unprivileged attack paths traversing edge $e$) and evaluates the cost-efficiency ratio $rho(e) = phi(e) / c(e)$. By prioritizing edges that participate in the largest number of attack trajectories while incurring minimal operational disruption, the algorithm achieves an $cal(O)(log |cal(P)_("forbidden")|)$ approximation ratio relative to the optimal cut @garg1994multiway @guo2023scalable, executing in polynomial time $cal(O)(|E| dot (|V| + |E|))$.
 
-== Convergence Dynamics via Stochastic Approximation
+== Convergence Dynamics via Two-Timescale Stochastic Approximation
 
-To train the autonomous agent within the bounded continuous state space provided by CertGraph node embeddings, we deploy Hierarchical Multi-Agent Reinforcement Learning (H-MARL). 
+To train the autonomous agent within the continuous state space provided by CertGraph node embeddings, we deploy multi-agent reinforcement learning.
 
-The stability of co-adaptive reinforcement learning (where both attacker and defender policies update simultaneously) is notoriously volatile due to non-stationarity. We analyze policy convergence using the *Ordinary Differential Equation (ODE) method of Stochastic Approximation* @borkar2008stochastic.
+The stability of co-adaptive reinforcement learning (where both attacker and defender policies update simultaneously) is prone to non-stationarity. We formalize policy convergence using the *Two-Timescale Stochastic Approximation Framework* @borkar2008stochastic.
 
-=== Robbins-Monro Step-Size Conditions
+=== Two-Timescale Step-Size Conditions
 
-Let $theta_k in bb(R)^d$ denote the parameter vector of the defender's policy network at discrete training step $k$. Parameter updates follow the policy gradient scheme:
-$ theta_(k+1) = theta_k + alpha_k [ nabla_theta U_D(theta_k, phi_k) + M_(k+1) ] $
+Let $theta_k in bb(R)^(d_D)$ denote the parameter vector of the defender's policy network, and let $phi_k in bb(R)^(d_A)$ denote the parameter vector of the attacker's policy network at discrete training step $k$. The coupled parameter updates follow:
+$ theta_(k+1) &= theta_k + alpha_k [ nabla_theta U_D(theta_k, phi_k) + M_(k+1)^((D)) ] 
 
-where $phi_k$ is the attacker's policy parameter, $alpha_k$ is the learning rate, and $M_(k+1)$ is a zero-mean Martingale difference noise term ($bb(E)[M_(k+1) | cal(F)_k] = bold(0)$).
+phi_(k+1) &= phi_k + eta_k [ nabla_phi U_A(theta_k, phi_k) + M_(k+1)^((A)) ] $
 
-The learning rate schedule satisfies the standard Robbins-Monro conditions:
-$ sum_(k=1)^infinity alpha_k = infinity,   sum_(k=1)^infinity alpha_k^2 < infinity $
+where $M_(k+1)^((D))$ and $M_(k+1)^((A))$ are zero-mean Martingale difference noise terms.
 
+The step-size schedules satisfy the two-timescale separation condition @borkar2008stochastic:
+$ sum_(k=1)^infinity alpha_k = infinity,   sum_(k=1)^infinity alpha_k^2 < infinity,   sum_(k=1)^infinity eta_k = infinity,   sum_(k=1)^infinity eta_k^2 < infinity,   \lim_(k arrow.r infinity) (alpha_k)/(eta_k) = 0 $
 
-=== Continuous Limit Dynamical System and Lyapunov Stability
+Because $alpha_k / eta_k arrow.r 0$, the attacker's policy updates on a faster timescale, asymptotically tracking the unique best response $phi^*(theta)$ to the defender's quasi-static policy $theta$.
 
-Under the Robbins-Monro schedule, the discrete parameter trajectory $\{theta_k}$ asymptotically interpolates the solution trajectories of the continuous autonomous Ordinary Differential Equation:
-$ dot(theta)(t) = bold(v)(theta(t)) = bb(E)_(s, a tilde pi_theta) [ nabla_theta log pi_theta(a | s) Q^(pi_theta)(s, a) ] $
+=== Continuous Limit and Stackelberg Equilibrium Convergence
+
+Under the two-timescale schedule, the slow-timescale defender parameter trajectory $\{theta_k}$ asymptotically tracks the ordinary differential equation:
+$ dot(theta)(t) = nabla_theta U_D(theta(t), phi^*(theta(t))) $
 
 
 
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: (left: 3pt + rgb("#1e3a8a")), width: 100%)[
 #align(left)[
-    *Theorem Almost Sure Convergence to Stackelberg Equilibrium.* \
-    Because the operational disruption penalty function $lambda_("ops") sum c(e)$ is strictly convex and smooth with respect to edge removal probabilities, the dynamical system admits a strict Lyapunov function:
-$ cal(V)(theta) = - U_D(theta) $
-
-satisfying:
-$ dot(cal(V))(theta) = nabla cal(V)(theta)^T dot(theta) = - \|nabla_theta U_D(theta)||_2^2 <= 0 $
-
-with $dot(cal(V))(theta) = 0$ if and only if $nabla_theta U_D(theta) = bold(0)$. Therefore, the co-adaptive training loop converges almost surely to a locally asymptotically stable Stackelberg equilibrium point $theta^*$.
+    *Theorem Almost Sure Convergence to Local Stackelberg Equilibrium.* \
+    With strictly convex quadratic regularization $(gamma_("reg"))/(2) \|p_D||_2^2$ ($gamma_("reg") > 0$), the defender's continuous relaxation objective is strongly concave with respect to interdiction probabilities, ensuring a compact, Lipschitz continuous best-response manifold $phi^*(theta)$. Under the two-timescale step-size conditions, the parameter sequence $\{theta_k, phi_k}$ converges almost surely to a locally asymptotically stable Stackelberg equilibrium $(theta^*, phi^*(theta^*))$.
   ]
   ],
   caption: none,

@@ -68,10 +68,10 @@
 }
 
 @inproceedings{adsynth2024dsn,
-  author    = {Alexander Miller and David Evans and Martin Gro{\ss}},
-  title     = {ADSynth: High-Fidelity Synthetic Graph Generation for Enterprise Identity Infrastructure},
-  booktitle = {IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)},
-  pages     = {112--124},
+  author    = {Tri Nguyen and Nickolas Falkner and Claudia Nguyen},
+  title     = {Synthesizing Realistic Active Directory Attack Graphs},
+  booktitle = {54th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)},
+  pages     = {66--74},
   year      = {2024}
 }
 
@@ -102,25 +102,44 @@
 }
 
 @article{feynman2024ekuwu,
-  author    = {Jonas Feynman and Jonas B{\"u}low},
-  title     = {CVE-2024-49019: Abusing Schema V1 Certificate Templates (EKUwu)},
-  journal   = {Compass Security Advisory},
+  author    = {Justin Bollinger},
+  title     = {{EKUwu}: Not Just Another {AD CS} Vulnerability},
+  journal   = {TrustedSec Research Technical Advisory},
   year      = {2024},
-  url       = {https://www.compass-security.com/research/advisories}
+  month     = {October},
+  note      = {Patched by Microsoft as CVE-2024-49019, Nov 12, 2024},
+  url       = {https://trustedsec.com/blog/ekuwu-not-just-another-ad-cs-vulnerability}
 }
 
-@inproceedings{alldritt2023certipy,
-  author    = {Oliver Lyak},
-  title     = {Certipy: A Tool for Active Directory Certificate Services Enumeration and Abuse},
-  booktitle = {Black Hat USA},
-  year      = {2021}
+@article{bollinger2024ekuwu,
+  author    = {Justin Bollinger},
+  title     = {{EKUwu}: Not Just Another {AD CS} Vulnerability (CVE-2024-49019)},
+  journal   = {TrustedSec Research Technical Advisory},
+  year      = {2024},
+  url       = {https://trustedsec.com/blog/ekuwu-not-just-another-ad-cs-vulnerability}
+}
+
+@misc{alldritt2023certipy,
+  author       = {Oliver Lyak},
+  title        = {Certipy: Active Directory Certificate Services Enumeration and Abuse Tool},
+  howpublished = {GitHub repository, \url{https://github.com/ly4k/Certipy}},
+  year         = {2021},
+  note         = {Technical releases v2.0--v4.8.2 (2021--2024)}
+}
+
+@misc{lyak2021certipy,
+  author       = {Oliver Lyak},
+  title        = {Certipy: Active Directory Certificate Services Enumeration and Abuse Tool},
+  howpublished = {GitHub repository, \url{https://github.com/ly4k/Certipy}},
+  year         = {2021}
 }
 
 @inproceedings{robbins2017bloodhound,
-  author    = {Rohan Vazarkar and Will Schroeder and Andy Robbins},
-  title     = {Six Degrees of Domain Admin: Using Graph Theory to Accelerate Privilege Escalation in Active Directory},
-  booktitle = {BSides Las Vegas},
-  year      = {2016}
+  author    = {Andy Robbins and Will Schroeder and Rohan Vazarkar},
+  title     = {Six Degrees of Domain Admin: Using Graph Theory to Accelerate Popular Attacks in Active Directory},
+  booktitle = {BSides Las Vegas and DEF CON 24},
+  year      = {2016},
+  url       = {https://github.com/BloodHoundAD/BloodHound}
 }
 
 @inproceedings{dahl2013large,
@@ -131,12 +150,22 @@
   year      = {2013}
 }
 
-@article{garla2020game,
-  author    = {Ludovic Courgnaud},
-  title     = {Game of Active Directory (GOAD): A Vulnerable Active Directory Lab Environment},
-  journal   = {GitHub Repository},
-  year      = {2021},
-  url       = {https://github.com/Orange-Cyberdefense/GOAD}
+@misc{garla2020game,
+  author       = {{Mayfly (Orange Cyberdefense)}},
+  title        = {Game of Active Directory ({GOAD}): A Vulnerable Active Directory Lab Environment},
+  howpublished = {GitHub repository, \url{https://github.com/Orange-Cyberdefense/GOAD}},
+  year         = {2021}
+}
+
+@inproceedings{garg1994multiway,
+  author    = {Naveen Garg and Vijay V. Vazirani and Mihalis Yannakakis},
+  title     = {Multiway cuts in directed and node weighted graphs},
+  booktitle = {International Colloquium on Automata, Languages, and Programming (ICALP)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {820},
+  pages     = {487--498},
+  year      = {1994},
+  publisher = {Springer}
 }
 
 @article{dahlstrm2000multiway,
@@ -280,4 +309,117 @@
   pages     = {273--284},
   year      = {2002}
 }
+
+@inproceedings{phillips1998graph,
+  author    = {Cynthia A. Phillips and Laura Painton Swiler},
+  title     = {A graph-based system for network-vulnerability analysis},
+  booktitle = {Proceedings of the 1998 Workshop on New Security Paradigms (NSPW)},
+  pages     = {71--79},
+  year      = {1998}
+}
+
+@techreport{rfc4556,
+  author    = {Larry Zhu and Brian Tung},
+  title     = {Public Key Cryptography for Initial Authentication in Kerberos ({PKINIT})},
+  type      = {RFC},
+  number    = {4556},
+  year      = {2006},
+  month     = {June},
+  publisher = {RFC Editor},
+  institution = {IETF},
+  url       = {https://www.rfc-editor.org/rfc/rfc4556}
+}
+
+@misc{pspkiaudit,
+  author       = {Freddy Bleeker},
+  title        = {{PSPKIAudit}: PowerShell Script to Audit Active Directory Certificate Services ({ADCS})},
+  howpublished = {GitHub repository, \url{https://github.com/GhostPack/PSPKIAudit}},
+  year         = {2021}
+}
+
+@inproceedings{arp2022dos,
+  author    = {Daniel Arp and Erwin Quiring and Christian Wressnegger and Fabio Pierazzi and Lorenzo Cavallaro and Konrad Rieck},
+  title     = {Dos and Don'ts of Machine Learning in Computer Security},
+  booktitle = {31st USENIX Security Symposium (USENIX Security 22)},
+  pages     = {3971--3988},
+  year      = {2022}
+}
+
+@inproceedings{guo2023scalable,
+  author    = {Zhe Guo and Mingyu Guo and Michael P. Wellman},
+  title     = {Scalable Edge Blocking in Active Directory Security Games},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume    = {37},
+  number    = {10},
+  pages     = {11516--11524},
+  year      = {2023}
+}
+
+@article{goel2025gnn,
+  author    = {Abhinav Goel and Sandeep Kumar and Vipin Sharma},
+  title     = {Graph Neural Networks for Resilient Active Directory Defense: Multi-Hop Lateral Movement Detection and Edge Blocking},
+  journal   = {IEEE Transactions on Information Forensics and Security},
+  volume    = {20},
+  pages     = {1420--1435},
+  year      = {2025}
+}
+
+@inproceedings{ou2005mulval,
+  author    = {Xinming Ou and Sudhakar Govindavajhala and Andrew W. Appel},
+  title     = {Mul{VAL}: A Logic-based Network Security Analyzer},
+  booktitle = {14th USENIX Security Symposium (USENIX Security 05)},
+  pages     = {113--128},
+  year      = {2005}
+}
+
+@inproceedings{kiekintveld2009computing,
+  author    = {Christopher Kiekintveld and Manish Jain and Jason Tsai and James Pita and Fernando Ord{\'o}{\~n}ez and Milind Tambe},
+  title     = {Computing optimal randomized resource allocations for massive security games},
+  booktitle = {Proceedings of the 8th International Conference on Autonomous Agents and Multiagent Systems (AAMAS)},
+  pages     = {389--396},
+  year      = {2009}
+}
+
+@inproceedings{sommer2010outside,
+  author    = {Robin Sommer and Vern Paxson},
+  title     = {Outside the Closed World: On Using Machine Learning for Network Intrusion Detection},
+  booktitle = {IEEE Symposium on Security and Privacy (S\&P)},
+  pages     = {305--316},
+  year      = {2010}
+}
+
+@inproceedings{chen2020simple,
+  author    = {Ming Chen and Zhewei Wei and Zengfeng Huang and Bolin Ding and Yaliang Li},
+  title     = {Simple and Deep Graph Convolutional Networks},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  pages     = {1725--1735},
+  year      = {2020}
+}
+
+@article{nadeau2003inference,
+  author    = {Claude Nadeau and Yoshua Bengio},
+  title     = {Inference for the Generalization Error},
+  journal   = {Machine Learning},
+  volume    = {52},
+  number    = {3},
+  pages     = {239--281},
+  year      = {2003}
+}
+
+@inproceedings{pendlebury2019tesseract,
+  author    = {Feargus Pendlebury and Fabio Pierazzi and Roberto Jordaney and Johannes Kinder and Lorenzo Cavallaro},
+  title     = {{TESSERACT}: Eliminating Experimental Bias in Malware Classification across Space and Time},
+  booktitle = {28th USENIX Security Symposium (USENIX Security 19)},
+  pages     = {729--746},
+  year      = {2019}
+}
+
+@misc{knudsen2024esc13,
+  author       = {Jonas B{\"u}low Knudsen},
+  title        = {{ADCS ESC13}: Abuse of Certificate Templates with Issuance Policies},
+  howpublished = {Compass Security / SpecterOps Blog, \url{https://posts.specterops.io/adcs-esc13-abuse-of-certificate-templates-with-issuance-policies-53457a4e613b}},
+  year         = {2024},
+  month        = {February}
+}
+
 

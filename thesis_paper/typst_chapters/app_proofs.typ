@@ -1,24 +1,15 @@
 = Formal Mathematical Proofs <app:proofs>
 
-== Proof of Theorem 1: Representation Collapse in Asymmetric Relational Message Passing <proof:theorem1>
+== Proof of Theorem 1: Intrinsic Attribute Preservation and Non-Vanishing Gradient Bounds <proof:theorem1>
 
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: (left: 3pt + rgb("#1e3a8a")), width: 100%)[
 #align(left)[
-    *Theorem Representation Collapse in Directed Heterogeneous Convolutions.* \
-    Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous graph where $tau: V arrow.r cal(T)_V$ assigns node types. Let $cal(T)_("source") subset cal(T)_V$ denote the set of source-only node types satisfying:
-$ forall v in V " such that " tau(v) in cal(T)_("source"),   cal(N)_("in")(v) = \{u in V | (u, v) in E} = emptyset $
+    *Theorem Intrinsic Attribute Preservation and Gradient Lower Bounds.* \
+    Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous multigraph with node type mapping $tau: V arrow.r cal(T)_V$. Let each node $v in V$ have an initial feature vector $x_v = h_v^((0)) in bb(R)^(d_0)$. Consider an $L$-layer heterogeneous message-passing neural network where layer $l in {1, dots, L}$ computes hidden representations:
 
-Consider an $L$-layer heterogeneous message-passing neural network where layer $l in {1, dots, L}$ computes representations via relation-specific neighborhood aggregation without residual skip-connections:
-$ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $
-
-where $cal(R)_("in")(tau(v))$ is the set of relation types terminating at node type $tau(v)$, $plus.circle.big$ is a permutation-invariant aggregation operator with the empty-set identity $plus.circle.big(emptyset) = bold(0)$, $alpha_(v u)^((l))$ are attention weights, and $sigma$ is an activation function satisfying $sigma(bold(0)) = bold(0)$ (e.g., ReLU, LeakyReLU, ELU, Tanh).
-
-Then:
-
-+ For any source node $v in V$ with $tau(v) in cal(T)_("source")$ and any layer $l >= 1$: $ h_v^((l)) = bold(0) $
-+ The gradient of the loss $cal(L)$ with respect to the input features $x_v = h_v^((0))$ vanishes identically: $ (diff cal(L))/(diff x_v) = bold(0) $
-+ If additive residual skip connections of the form: $ tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1)) $ are introduced, where $W_("skip")^((l))$ is a parameterized projection matrix, then $h_v^((l))$ retains an injective transformation of the input features: $ tilde(h)_v^((l)) = ( product_(k=1)^l W_("skip")^((k)) ) x_v != bold(0) $ and the gradient $(diff cal(L))/(diff x_v)$ remains non-zero.
++ *Intrinsic Feature Erasure in Relational Neighborhood Aggregation:* Under pure relational neighborhood aggregation without self-loops or skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ where $cal(N)_r(v) = \{u in V | (u, r, v) in E}$ denotes incoming neighbors under relation $r$, the layer-1 hidden state $h_v^((1))$ is conditionally independent of $x_v$ given $cal(N)(v)$. Consequently: $ (diff h_v^((1)))/(diff x_v) = bold(0) in bb(R)^(d_1 times d_0) $ Moreover, for any source-only node $v$ satisfying $cal(N)_("in")(v) = emptyset$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
++ *Guaranteed Gradient Lower Bound via Parameterized Residual Skips:* When parameterized residual skip connections are introduced: $ tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1)) $ where $W_("skip")^((l)) in bb(R)^(d_l times d_(l-1))$ has minimum singular value $sigma_(min)(W_("skip")^((l))) > 0$, the Jacobian of the representation with respect to the initial input features satisfies: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ guaranteeing that input feature sensitivity does not vanish across message-passing layers.
 
 
   ]
@@ -30,70 +21,65 @@ Then:
 
 
 
-_Proof._ We prove each statement sequentially.
+_Proof._ We establish the proof in three parts: intrinsic feature erasure, gradient lower bounds under residual skip connections, and the specific application to identity multigraphs.
 
-*Part 1: Collapse of Hidden Representations.*
-Let $v in V$ be a node belonging to a source-only type $tau(v) in cal(T)_("source")$. By definition of source-only types in the directed graph $G$, the in-degree of $v$ is zero:
-$ d_("in")(v) = |cal(N)_("in")(v)| = 0 $
+*Part 1: Intrinsic Feature Erasure under Pure Neighborhood Aggregation.*
+Let $v in V$ be an arbitrary node in $G$ with initial feature vector $x_v = h_v^((0)) in bb(R)^(d_0)$. Under the standard heterogeneous relational convolution layer:
+$ h_v^((1)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((1)) W_r^((1)) h_u^((0)) ) $
 
-Consequently, for every relation type $r = (s, "rel", tau(v)) in cal(T)_E$, the relation-specific incoming neighborhood is empty:
-$ cal(N)_r(v) = \{u in V | (u, v) in E_r} = emptyset $
+Observe that the argument of $sigma(dot)$ is a linear combination of neighbor states $\{h_u^((0)) | u in cal(N)_r(v), r in cal(R)_("in")(tau(v))}$. In an access control multigraph lacking explicit self-loop relations on template nodes:
+$ v not in cal(N)_r(v),   forall r in cal(R)_("in")(tau(v)) $
 
-Now consider the layer update formula for $h_v^((1))$:
-$ h_v^((1)) &= sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in emptyset) alpha_(v u)^((1)) W_r^((1)) h_u^((0)) ) $
+Differentiating $h_v^((1))$ with respect to $x_v = h_v^((0))$:
+$ (diff h_v^((1)))/(diff x_v) = sigma'(dot) dot sum_(r in cal(R)_("in")(tau(v))) sum_(u in cal(N)_r(v)) alpha_(v u)^((1)) W_r^((1)) (diff h_u^((0)))/(diff h_v^((0))) $
 
-By the standard definition of graph aggregation operators (Sum, Mean, Max in PyTorch Geometric and DGL), aggregation over an empty set returns the zero vector identity:
-$ plus.circle.big_(u in emptyset) (dot) = bold(0) in bb(R)^(d_("out")) $
+Because distinct nodes have disjoint representations ($diff h_u^((0)) / diff h_v^((0)) = bold(0)$ for all $u != v$), every term in the summation evaluates to zero:
+$ (diff h_v^((1)))/(diff x_v) = bold(0) in bb(R)^(d_1 times d_0) $
 
-Therefore, the finite sum of empty aggregations across all incoming relations is:
-$ sum_(r in cal(R)_("in")(tau(v))) bold(0) = bold(0) $
+Thus, at layer 1, the node's updated embedding $h_v^((1))$ is completely independent of its initial feature vector $x_v$. In certificate templates ($t in V_("Template")$), this means that the 10 binary configuration flags $x_("Template")$ (which govern whether the template allows enrollee-supplied SANs, requires manager approval, or specifies client authentication EKUs) are completely discarded from $h_t^((1))$. 
 
-Applying the activation function $sigma$ where $sigma(bold(0)) = bold(0)$:
-$ h_v^((1)) = sigma(bold(0)) = bold(0) $
+Furthermore, if $v$ is a source-only entity satisfying $d_("in")(v) = 0$ (such as user accounts possessing outgoing enrollment rights but no incoming delegations), then $cal(N)_r(v) = emptyset$ for all $r$. By the identity of aggregation over an empty set ($plus.circle.big(emptyset) = bold(0)$) and $sigma(bold(0)) = bold(0)$, we obtain $h_v^((l)) = bold(0)$ for all $l >= 1$.
 
-By mathematical induction, assume $h_v^((l-1)) = bold(0)$ for $l >= 2$. At layer $l$, the incoming neighborhood remains $cal(N)_r(v) = emptyset$. Hence:
-$ h_v^((l)) = sigma ( sum_r plus.circle.big_(u in emptyset) (dot) ) = sigma(bold(0)) = bold(0) $
-
-This establishes Part 1: every source-only node's embedding collapses to the zero vector at all hidden layers $l >= 1$.
-
-*Part 2: Gradient Vanishing.*
-Consider the scalar training loss $cal(L)(Y, hat(Y))$. By the multivariate chain rule, the gradient of $cal(L)$ with respect to the input feature vector $x_v = h_v^((0))$ is:
-$ (diff cal(L))/(diff x_v) = sum_(w in V) (diff cal(L))/(diff h_w^((1))) (diff h_w^((1)))/(diff h_v^((0))) $
-
-For any target node $w != v$, $h_w^((1))$ depends on $h_v^((0))$ if and only if $v in cal(N)_("in")(w)$. However, for $w = v$, we have established that $h_v^((1)) = bold(0)$ independently of $h_v^((0))$ because the mapping is constant zero. Therefore:
-$ (diff h_v^((1)))/(diff h_v^((0))) = bold(0) in bb(R)^(d_1 times d_0) $
-
-Furthermore, if a downstream node $w$ aggregates messages from $v$, the message is weighted by $W_r^((1)) h_v^((0))$. But in a directed graph where $v$ never updates its state, for any layer $l >= 2$:
-$ (diff h_w^((l)))/(diff h_v^((l-1))) = (diff h_w^((l)))/(diff bold(0)) $
-
-If the prediction head is placed directly on $v$ or on paths where $v$'s intermediate features are discarded, all sensitivity to $x_v$ is lost. Specifically, if $v$'s own identity or credentials determine path exploitability, the model cannot distinguish between a privileged administrative user and an unprivileged guest user because $h_("admin")^((l)) = h_("guest")^((l)) = bold(0)$.
-
-*Part 3: Restoration via Residual Skip Connections.*
-Now consider the update with additive residual skip connections:
+*Part 2: Gradient Lower Bounds via Parameterized Residual Skips.*
+Now consider the layer formulation equipped with parameterized additive residual skip connections:
 $ tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1)) $
 
-Substituting $h_v^((l)) = bold(0)$ for $v in cal(T)_("source")$:
-$ tilde(h)_v^((1)) &= bold(0) + W_("skip")^((1)) x_v = W_("skip")^((1)) x_v 
+where $tilde(h)_v^((0)) = x_v$ and $W_("skip")^((l)) in bb(R)^(d_l times d_(l-1))$. Unrolling the recurrence from layer $L$ to layer $0$:
+$ tilde(h)_v^((L)) = ( product_(k=1)^L W_("skip")^((k)) ) x_v + sum_(l=1)^L ( product_(k=l+1)^L W_("skip")^((k)) ) h_v^((l)) $
 
-tilde(h)_v^((2)) &= bold(0) + W_("skip")^((2)) tilde(h)_v^((1)) = W_("skip")^((2)) W_("skip")^((1)) x_v $
+where by convention $product_(k=L+1)^L W_("skip")^((k)) = I_(d_L)$. 
 
-By induction, at layer $L$:
-$ tilde(h)_v^((L)) = ( product_(k=1)^L W_("skip")^((k)) ) x_v $
+Taking the Jacobian of $tilde(h)_v^((L))$ with respect to $x_v$:
+$ (diff tilde(h)_v^((L)))/(diff x_v) = product_(k=1)^L W_("skip")^((k)) + cal(J)_("graph")(v) $
 
-Assuming full-rank initialization of $W_("skip")^((k))$, the product matrix $cal(M) = product_(k=1)^L W_("skip")^((k))$ satisfies $op("rank")(cal(M)) = min(d_L, d_0)$. Thus, $tilde(h)_v^((L)) != bold(0)$ for any non-zero input $x_v != bold(0)$. 
+where $cal(J)_("graph")(v) = sum_(l=1)^L ( product_(k=l+1)^L W_("skip")^((k)) ) (diff h_v^((l)))/(diff x_v)$ represents the indirect gradient flowing through cyclical graph paths (e.g., $v arrow.r u arrow.r v$).
 
-The gradient with respect to $x_v$ through the skip path is:
-$ (diff tilde(h)_v^((L)))/(diff x_v) = product_(k=1)^L W_("skip")^((k)) != bold(0) $
+By the reverse triangle inequality for operator norms:
+$ || (diff tilde(h)_v^((L)))/(diff x_v) || >= || product_(k=1)^L W_("skip")^((k)) || - \|cal(J)_("graph")(v)|| $
 
-which preserves gradient backpropagation throughout training. #h(1fr) $square$
+For the direct skip path, the minimum singular value of the matrix product satisfies:
+$ sigma_(min) ( product_(k=1)^L W_("skip")^((k)) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) $
+
+Assuming full-rank initialization with $sigma_(min)(W_("skip")^((k))) > 0$ for all $k in {1, dots, L}$ (as standard in linear projection layers initialized via Xavier or He uniform initialization), the skip connection establishes a guaranteed, non-vanishing path preserving initial attributes. Following the analytical framework of GCNII (Chen et al., 2020) @chen2020simple, this prevents over-smoothing and feature decay, ensuring that:
+$ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $
+
+
+*Part 3: Implication for Active Directory Certificate Template Classification.*
+In Active Directory Certificate Services, certificate template classification is a joint decision requiring both:
+
++ Intrinsic configuration flags $x_t in bb(R)^(10)$ (e.g., whether `CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT` and Client Authentication EKUs are enabled).
++ Topological reachability from unprivileged principals ($exists u in V_("low-priv") arrow.squiggly t$).
+
+
+Without residual skip connections ($W_("skip") = 0$), $h_t^((1))$ completely erases $x_t$. While $x_t$ can theoretically influence $h_t^((2))$ through 2-hop cycles ($t arrow.r u arrow.r t$), this signal is severely diluted by attention normalization across all adjacent principals and relations. Consequently, the network loses direct access to the template's configuration flags, explaining the empirical collapse from Macro-F1 = $0.9986$ to $0.4768$ observed in @sec:ablation_results. Parameterized residual skip connections guarantee that the 10 binary flags are directly retained in the final node embedding, preserving classification efficacy. #h(1fr) $square$
 
 
 
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: (left: 3pt + rgb("#1e3a8a")), width: 100%)[
 #align(left)[
-    *Corollary Necessity in Active Directory Graphs.* \
-    In Active Directory graphs $G_("AD")$, node types $"User"$ and $"Computer"$ frequently act as pure sources in the authorization subgraph (possessing outgoing edges such as $"MemberOf"$, $"Enroll"$, $"GenericAll"$, but zero incoming administrative delegation edges). Therefore, any GNN architecture omitting residual skip connections is mathematically guaranteed to destroy the identity feature embeddings of all low-privileged and administrative user accounts after layer 1.
+    *Corollary Necessity in Active Directory Identity Graphs.* \
+    In enterprise identity graphs, where certificate templates rely heavily on intrinsic configuration attributes and user principals frequently act as low in-degree sources in administrative authorization subgraphs, parameterized residual skip connections are mathematically required to prevent feature decay and gradient vanishing across multi-hop relational convolutions.
   ]
   ],
   caption: none,
@@ -103,23 +89,23 @@ which preserves gradient backpropagation throughout training. #h(1fr) $square$
 
 #pagebreak()
 
-== Proof of Theorem 2: Computational Complexity of Optimal Active Directory Edge Blocking <proof:theorem2>
+== Proof of Theorem 2: NP-Hardness of Multi-Principal Access Interdiction in Enterprise Identity Graphs <proof:theorem2>
 
 #figure(
   block(fill: rgb("#f8fafc"), inset: 1.2em, radius: 4pt, stroke: (left: 3pt + rgb("#1e3a8a")), width: 100%)[
 #align(left)[
-    *Theorem NP-Hardness of Optimal Attack Path Severing.* \
-    Let $G = (V, E)$ be a directed graph representing an Active Directory domain, where $V$ represents security principals and assets, and $E$ represents authorization and administrative edges. Let $c: E arrow.r bb(R)^+$ assign operational disruption costs (capacities) to edges, representing the cost of revoking an access right. 
+    *Theorem NP-Hardness of Multi-Principal Access Interdiction.* \
+    Let $G = (V, E)$ be a directed multigraph representing an Active Directory domain, where $V$ represents security principals and directory objects, and $E$ represents directed authorization, delegation, and administrative permissions. Let $c: E arrow.r bb(R)^+$ assign operational disruption costs to edges, representing the business friction of revoking a specific privilege.
 
-Let $S subset V$ denote the set of compromised or low-privileged attacker source identities ($|S| >= 2$), and let $T subset V$ denote the set of high-value administrative terminal targets (e.g., Domain Admins, Enterprise Admins, Domain Controllers).
+Let $cal(P)_("forbidden") = {(s_1, t_1), (s_2, t_2), dots, (s_k, t_k)}$ denote a set of $k >= 3$ forbidden source-target compromise pairs (e.g., specific unprivileged footholds and their respective target administrative assets across distinct trust or tier boundaries) that must be severed.
 
-The *Active Directory Edge-Severing Defense Problem (ADESDP)* asks: given an operational disruption budget $K in bb(R)^+$, does there exist a subset of edges $E_("cut") subset.eq E$ such that:
+The *Multi-Principal Access Interdiction (MPAI)* problem asks: given an operational disruption budget $K in bb(R)^+$, does there exist an edge interdiction subset $E_("cut") subset.eq E$ such that:
 
-+ Total operational cost is bounded: $ sum_(e in E_("cut")) c(e) <= K $
-+ Every directed path from every source $s in S$ to every target $t in T$ is severed: $ forall s in S, forall t in T, "Path"(s arrow.squiggly t) " does not exist in " G' = (V, E \ E_("cut")) $
++ Total operational revocation cost is bounded: $ sum_(e in E_("cut")) c(e) <= K $
++ All forbidden directed compromise paths are severed: $ forall (s_i, t_i) in cal(P)_("forbidden"), "Path"(s_i arrow.squiggly t_i) " does not exist in " G' = (V, E \ E_("cut")) $
 
 
-The ADESDP is NP-complete. Consequently, finding the optimal edge-severing defense strategy that minimizes operational business impact is NP-hard.
+The MPAI problem is NP-complete for $k >= 3$. Consequently, finding the optimal edge-severing defense strategy that minimizes operational disruption while neutralizing multiple independent lateral compromise paths is NP-hard.
   ]
   ],
   caption: none,
@@ -129,52 +115,52 @@ The ADESDP is NP-complete. Consequently, finding the optimal edge-severing defen
 
 
 
-_Proof._ We prove NP-completeness by showing that:
+_Proof._ We prove NP-completeness by establishing:
 
-+ $"ADESDP" in "NP"$, and
-+ The known NP-complete problem *Directed Multi-way Cut* polynomially reduces to ADESDP: $ "Directed Multi-way Cut" <=_p "ADESDP" $
++ $"MPAI" in "NP"$, and
++ A polynomial-time reduction from the classical NP-complete *Directed Multiway Cut* problem @garg1994multiway @dahlstrm2000multiway to MPAI: $ "Directed Multiway Cut" <=_p "MPAI" $
 
 
 
 *Part 1: Membership in NP.*
-Given a candidate edge set $E_("cut") subset.eq E$:
+Given a candidate edge subset $E_("cut") subset.eq E$:
 
-+ We compute the sum of edge costs $sum_(e in E_("cut")) c(e)$ in $O(|E_("cut")|)$ time and verify if it is $<= K$.
-+ We construct the residual graph $G' = (V, E \ E_("cut"))$ in $O(|V| + |E|)$ time.
-+ For each pair $(s, t) in S times T$, we run Breadth-First Search (BFS) or Depth-First Search (DFS) on $G'$ to verify that $t$ is unreachable from $s$. This requires $O(|S| dot (|V| + |E|))$ time.
++ We compute the total operational revocation cost $sum_(e in E_("cut")) c(e)$ in $cal(O)(|E_("cut")|)$ time and verify whether $sum_(e in E_("cut")) c(e) <= K$.
++ We construct the residual graph $G' = (V, E \ E_("cut"))$ in $cal(O)(|V| + |E|)$ time.
++ For each of the $k$ forbidden pairs $(s_i, t_i) in cal(P)_("forbidden")$, we execute Breadth-First Search (BFS) starting from $s_i$ in $G'$ to verify that $t_i$ is unreachable. This requires $cal(O)(k dot (|V| + |E|))$ time.
 
 
-Because all verification steps complete in deterministic polynomial time with respect to the input size, $"ADESDP" in "NP"$.
+Because all verification steps complete in deterministic polynomial time with respect to the graph size, $"MPAI" in "NP"$.
 
-*Part 2: Polynomial-Time Reduction from Directed Multi-way Cut.*
-Recall the definition of the *Directed Multi-way Cut* problem, proven NP-complete by Dahlhaus et al. @dahlstrm2000multiway:
+*Part 2: Polynomial-Time Reduction from Directed Multiway Cut.*
+Recall the definition of the *Directed Multiway Cut* problem, proven NP-complete by Garg, Vazirani, and Yannakakis @garg1994multiway:
 \begin{quote}
-*Directed Multi-way Cut:* Given a directed graph $H = (V_H, E_H)$ with edge weights $w: E_H arrow.r bb(R)^+$, a subset of terminal vertices $X = \{x_1, x_2, dots, x_k} subset.eq V_H$ ($k >= 3$), and a cost threshold $W$, does there exist an edge subset $C subset.eq E_H$ with $sum_(e in C) w(e) <= W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i != j$) in $H' = (V_H, E_H \ C)$?
+*Directed Multiway Cut:* Given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H arrow.r bb(R)^+$, a subset of $k >= 3$ distinct terminal vertices $X = \{x_1, x_2, dots, x_k} subset.eq V_H$, and a cost threshold $W$, does there exist an edge subset $C subset.eq E_H$ with $sum_(e in C) w(e) <= W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i != j$) in the residual graph $H' = (V_H, E_H \ C)$?
 \end{quote}
 
-Given an arbitrary instance $angle.l H, w, X, W angle.r$ of the Directed Multi-way Cut problem with $k >= 3$ terminals, we construct an instance $angle.l G = (V, E), c, S, T, K angle.r$ of ADESDP in polynomial time:
+Given an arbitrary instance $angle.l H = (V_H, E_H), w, X = \{x_1, dots, x_k}, W angle.r$ of the Directed Multiway Cut problem ($k >= 3$), we construct an instance $angle.l G = (V, E), c, cal(P)_("forbidden"), K angle.r$ of MPAI in polynomial time:
 
 
-+ *Vertex Construction:* For each terminal $x_i in X$ ($i = 1, dots, k$), create two distinct nodes in $G$: a source node $s_i$ and a target node $t_i$. For all non-terminal vertices $v in V_H \ X$, include $v in V$. Thus: $ V = (V_H \ X) union \{s_1, dots, s_k} union \{t_1, dots, t_k} $ Set the attacker source set as $S = \{s_1, dots, s_k}$ and the administrative target set as $T = \{t_1, dots, t_k}$.
++ *Vertex Construction:* For each terminal $x_i in X$, create two distinct nodes in $G$: an attacker source principal $s_i$ and a high-value target asset $t_i$. For all non-terminal vertices $v in V_H \ X$, include $v in V$. Thus: $ V = (V_H \ X) union \{s_1, dots, s_k} union \{t_1, dots, t_k} $
 + *Edge and Cost Construction:*
-  + For every original directed edge $(u, v) in E_H$:
-  + If $u not in X$ and $v not in X$, add $(u, v)$ to $E$ with cost $c(u, v) = w(u, v)$.
-  + If $u = x_i in X$ and $v not in X$, add $(s_i, v)$ to $E$ with cost $c(s_i, v) = w(x_i, v)$.
-  + If $u not in X$ and $v = x_j in X$, add $(u, t_j)$ to $E$ with cost $c(u, t_j) = w(u, x_j)$.
-  + If $u = x_i in X$ and $v = x_j in X$ ($i != j$), add $(s_i, t_j)$ to $E$ with cost $c(s_i, t_j) = w(x_i, x_j)$.
-  + For each $i in {1, dots, k}$, add a zero-cost directed enforcement edge $(t_i, s_i)$ with cost $c(t_i, s_i) = infinity$ (or $W + 1$). This ensures that reaching terminal $t_i$ allows reaching all outgoing paths from $s_i$, faithfully reproducing the transitivity of terminal $x_i$ in $H$.
-  + Ensure that self-reachability $s_i arrow.squiggly t_i$ does not represent an inter-terminal path by adding an independent dummy terminal set if necessary, or simply setting the target requirement to: disconnect all pairs $(s_i, t_j)$ for $i != j$. By introducing an auxiliary collector vertex $T^*$ for each $s_i$ connected to all $t_j$ ($j != i$) with capacity $infinity$, we map this directly into the bipartite source-target formulation.
-+ *Cost Threshold:* Set $K = W$.
+  + For every original edge $(u, v) in E_H$:
+  + If $u not in X$ and $v not in X$, add $(u, v) in E$ with cost $c(u, v) = w(u, v)$.
+  + If $u = x_i in X$ and $v not in X$, add $(s_i, v) in E$ with cost $c(s_i, v) = w(x_i, v)$.
+  + If $u not in X$ and $v = x_j in X$, add $(u, t_j) in E$ with cost $c(u, t_j) = w(u, x_j)$.
+  + If $u = x_i in X$ and $v = x_j in X$ ($i != j$), add $(s_i, t_j) in E$ with cost $c(s_i, t_j) = w(x_i, x_j)$.
+  + For each terminal index $i in {1, dots, k}$, add a directed continuation edge $(t_i, s_i)$ with infinite capacity $c(t_i, s_i) = infinity$ (or $W + 1$). This enforces that reaching target $t_i$ allows traversing any path leaving source $s_i$, preserving the full reachability topology of vertex $x_i$ in $H$.
++ *Forbidden Pair Definition:* Set the forbidden compromise pair set to all distinct terminal combinations: $ cal(P)_("forbidden") = {(s_i, t_j) | 1 <= i, j <= k, i != j} $ Here $|cal(P)_("forbidden")| = k(k-1) >= 6$ for $k >= 3$.
++ *Disruption Budget:* Set $K = W$.
 
 
 
-The construction introduces at most $2|V_H|$ vertices and $|E_H| + k$ edges, which is computable in $O(|V_H| + |E_H|)$ time.
+The reduction generates $|V| = |V_H| + k$ vertices and $|E| = |E_H| + k$ edges, requiring $cal(O)(|V_H| + |E_H|)$ time.
 
 *Equivalence of Solutions:*
 
-+ $(=>)$ Suppose there exists a cut $C subset.eq E_H$ in $H$ with $sum_(e in C) w(e) <= W$ that disconnects all terminal pairs $x_i arrow.squiggly x_j$ ($i != j$). Let $E_("cut")$ be the corresponding set of edges in $G$. Since no path existed between $x_i$ and $x_j$ in $H \ C$, no directed path can exist between $s_i$ and $t_j$ in $G \ E_("cut")$. The infinite-capacity edges $(t_i, s_i)$ are never cut, and $sum_(e in E_("cut")) c(e) = sum_(e in C) w(e) <= W = K$.
-+ $(arrow.l.double)$ Conversely, suppose there exists an edge cut $E_("cut") subset.eq E$ in $G$ with cost $<= K = W$ severing all $s_i arrow.squiggly t_j$ paths ($i != j$). None of the infinite-cost edges $(t_i, s_i)$ can belong to $E_("cut")$ because $K < infinity$. Therefore, $E_("cut")$ corresponds strictly to a subset of original edges $C subset.eq E_H$ with $sum_(e in C) w(e) <= W$ that eliminates all paths between distinct terminals in $H$.
++ $(=>)$ Suppose there exists a valid Directed Multiway Cut $C subset.eq E_H$ in $H$ with $sum_(e in C) w(e) <= W$ that disconnects all pairs $x_i arrow.squiggly x_j$ for $i != j$. Let $E_("cut") subset.eq E$ be the identical set of edges in $G$. Since $C$ contains no infinite-cost edges, $sum_(e in E_("cut")) c(e) = sum_(e in C) w(e) <= W = K$. Furthermore, because no path connects $x_i$ to $x_j$ in $H \ C$, no path can connect $s_i$ to $t_j$ in $G \ E_("cut")$. Hence, all pairs in $cal(P)_("forbidden")$ are severed.
++ $(arrow.l.double)$ Conversely, suppose there exists an edge cut $E_("cut") subset.eq E$ in $G$ with cost $sum_(e in E_("cut")) c(e) <= K = W$ severing all paths for every pair $(s_i, t_j) in cal(P)_("forbidden")$ ($i != j$). Because $K < infinity$, $E_("cut")$ cannot contain any infinite-capacity continuation edge $(t_i, s_i)$. Thus, $E_("cut")$ corresponds directly to a valid edge subset $C subset.eq E_H$ in $H$. If there existed a directed path from $x_i$ to $x_j$ ($i != j$) in $H \ C$, the identical sequence of edges would form a directed path from $s_i$ to $t_j$ in $G \ E_("cut")$, contradicting the assumption that $(s_i, t_j)$ is severed. Therefore, $C$ separates all terminal pairs in $H$ with cost $<= W$.
 
 
 
-This proves that ADESDP is NP-complete. The optimization version---finding the minimal disruption edge set---is therefore NP-hard. #h(1fr) $square$
+This establishes that MPAI is NP-complete for $k >= 3$. The optimization problem of finding the minimal-disruption edge-severing set is therefore NP-hard. #h(1fr) $square$

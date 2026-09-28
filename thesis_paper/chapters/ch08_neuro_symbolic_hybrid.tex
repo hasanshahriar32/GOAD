@@ -34,25 +34,25 @@ This finding highlights the irreconcilable architectural divide between connecti
 \begin{table}[ht]
 \centering
 \small
-\caption{Comparison of Pure Statistical GNNs vs Pure Symbolic Graph Traversal in Identity Auditing.}
+\caption{Comparison of Statistical GNNs vs Symbolic Deduction in Identity Auditing.}
 \label{tab:dichotomy}
 \begin{tabularx}{\textwidth}{lXX}
 \toprule
-\textbf{Architectural Dimension} & \textbf{Statistical GNN (CertGraph)} & \textbf{Symbolic Graph Oracle (BloodHound BFS)} \\
+\textbf{Architectural Dimension} & \textbf{Statistical GNN (CertGraph)} & \textbf{Symbolic Logic Oracle (Datalog / BloodHound)} \\
 \midrule
-\textbf{Computational Complexity} & $\mathcal{O}(|V| + |E|)$ parallel GPU tensor operations ($< 350$ ms on 10k nodes) & $\mathcal{O}(|V_{\text{Template}}| \cdot (|V| + |E|))$ combinatorial path search (can timeout on large graphs) \\
-\textbf{Contextual Generalization} & High (learns soft similarity, weights multiple noisy signals, discovers novel vectors) & Zero (strictly brittle to un-modeled schema shifts, syntax variations, or new OIDs) \\
-\textbf{Adversarial Generalization} & Low (vulnerable to shortcut learning, $1.59\%$ accuracy on hard negatives) & Absolute (deductive reachability proof, $84.13\%$ on hard negatives) \\
-\textbf{Operational Output} & Continuous calibrated risk ranking ($S_{\text{risk}} \in [0, 1]$) & Binary reachability (true / false) \\
-\textbf{Auditability / Proof} & Soft attention weights (probabilistic attribution) & Exact deterministic execution trace (verifiable edge sequence) \\
+\textbf{Computational Profile} & Constant-depth parallel tensor passes ($\mathcal{O}(|V| + |E|)$, $< 350$ ms on 10k nodes) & Multi-principal Horn-clause and DACL evaluation across templates (high solver overhead) \\
+\textbf{Contextual Generalization} & High (learns continuous patterns, weights multi-modal signals, discovers novel vectors) & Low (strictly bounded by explicitly engineered rule schemas and syntax) \\
+\textbf{Adversarial Robustness} & Moderate (susceptible to shortcut learning on disconnected templates) & High (deterministic reachability verification, $84.13\%$ on hard negatives) \\
+\textbf{Operational Output} & Continuous calibrated risk ranking ($S_{\text{risk}} \in [0, 1]$) & Deterministic boolean reachability proof \\
+\textbf{Auditability} & Attention attribution heatmaps & Exact deterministic derivation trace (verifiable edge sequence) \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-As summarized in Table~\ref{tab:dichotomy}, neither paradigm is sufficient on its own:
+As summarized in Table~\ref{tab:dichotomy}, neither paradigm is fully sufficient in isolation:
 \begin{enumerate}
-    \item \textbf{The Failure of Pure Symbolic Systems:} Static rule scanners (Certipy) and deterministic graph traversal engines (BloodHound) are completely blind to novel, un-modeled misconfiguration combinations (e.g., missing ESC13 until explicit rules were engineered) and cannot prioritize remediation based on continuous risk.
-    \item \textbf{The Failure of Pure Statistical Systems:} Deep GNNs are vulnerable to adversarial feature manipulation, succumb to shortcut learning, and cannot provide mathematical guarantees of exploitability.
+    \item \textbf{Limitations of Pure Symbolic Systems:} Static rule scanners (Certipy) and deterministic solvers are blind to novel, un-modeled misconfiguration combinations (e.g., missing ESC13 until explicit rules were engineered) and cannot prioritize remediation based on continuous risk gradients across thousands of templates.
+    \item \textbf{Limitations of Pure Statistical Systems:} Deep GNNs can succumb to shortcut learning when trained on distributions lacking negative templates with dangerous configuration flags, leading to potential false positives on hardened templates.
 \end{enumerate}
 
 \section{First-Order Logic Formalization of Active Directory Privilege Escalation}
@@ -71,10 +71,10 @@ Let directory entities be denoted by constants, and let relations and attributes
 \end{aligned}
 \end{equation}
 
-When a symbolic solver queries these Horn clauses against the enterprise multigraph $G$, it produces a formal \textbf{Proof Tree} demonstrating the exact transitive sequence of permissions enabling the exploit. If the proof tree resolves to true, the vulnerability is an absolute mathematical certainty.
+When a symbolic solver queries these Horn clauses against the enterprise multigraph $G$, it produces a formal \textbf{Proof Tree} demonstrating the exact transitive sequence of permissions enabling the exploit. If the proof tree resolves to true, the vulnerability is deterministically verified under the defined logic rules.
 
 \section{The Two-Tier Neuro-Symbolic Architecture}
-To harness the speed and inductive pattern discovery of Graph Neural Networks while guaranteeing the absolute mathematical precision of symbolic deduction, we propose a unified \textbf{Two-Tier Neuro-Symbolic Architecture}.
+To harness the speed and inductive pattern discovery of Graph Neural Networks while ensuring deterministic verification of attack paths, we propose a unified \textbf{Two-Tier Neuro-Symbolic Architecture}.
 
 \begin{figure}[t]
     \centering
@@ -94,50 +94,57 @@ Templates are ranked in descending order of risk score:
 \begin{equation}
 S_{\text{risk}}(t) = 1.0 - \hat{y}_t[\text{Safe}]
 \end{equation}
-CertGraph acts as a high-throughput inductive filter: it instantly prunes over $95\%$ of benign enterprise templates ($S_{\text{risk}}(t) < \tau_{\text{threshold}}$). The top-$K$ highest-risk candidates are forwarded to Tier 2:
+CertGraph acts as a high-throughput inductive filter: it prunes benign enterprise templates whose risk score falls below an operational threshold ($S_{\text{risk}}(t) < \tau_{\text{threshold}}$). The top candidate templates are forwarded to Tier 2:
 \begin{equation}
 \mathcal{Q}_{\text{suspect}} = \{t \in V_{\text{Template}} \mid S_{\text{risk}}(t) \ge \tau_{\text{threshold}}\}
 \end{equation}
 
 \subsection{Tier 2: Targeted Deductive Graph Verification}
-For each candidate template $t \in \mathcal{Q}_{\text{suspect}}$, the symbolic graph engine (BloodHound BFS / Datalog solver) executes a targeted, bidirectional reachability query restricted to the candidate's localized 2-hop authorization subgraph:
+For each candidate template $t \in \mathcal{Q}_{\text{suspect}}$, the symbolic graph engine executes a targeted, bidirectional reachability query restricted to the candidate's localized 2-hop authorization subgraph:
 \begin{equation}
 \text{Exploitable}(t) = \operatorname{SymbolicVerify}(G, V_{\text{low-priv}}, t, \text{Rule}(\hat{y}_t))
 \end{equation}
 \begin{enumerate}
-    \item \textbf{Path Confirmed (True Exploitable Vulnerability):} If the symbolic oracle discovers a valid authorization path connecting an unprivileged principal to the template, the system outputs an \textbf{Absolute Exploitability Proof} containing the exact edge sequence, triggering autonomous remediation.
-    \item \textbf{Path Absent (Adversarial Hard Negative):} If no authorization path connects unprivileged accounts to the template, the candidate is flagged as an \textbf{Adversarial Hard Negative}, suppressing the false alarm and logging the anomalous template for architectural review.
+    \item \textbf{Path Confirmed (Verified Vulnerability):} If the symbolic oracle discovers a valid authorization path connecting an unprivileged principal to the template, the system outputs a \textbf{Verified Exploitability Trace} containing the exact edge sequence, triggering prioritized remediation.
+    \item \textbf{Path Absent (Hard Negative / Suppressed Alert):} If no authorization path connects unprivileged accounts to the template, the candidate is flagged as an unexploitable configuration anomaly, suppressing the alert and logging the template for administrative review.
 \end{enumerate}
 
-\section{Complexity and Performance Guarantees}
-We mathematically formalize the computational advantage of the Two-Tier Neuro-Symbolic pipeline over exhaustive symbolic path-finding:
+\subsection{Pipeline Sensitivity and False Negative Trade-offs}
+An inherent characteristic of two-tier filtering pipelines is that Tier~2 only evaluates candidates admitted by Tier~1. Consequently, the overall pipeline recall is upper-bounded by Tier~1 sensitivity:
+\begin{equation}
+\text{Recall}_{\text{hybrid}} \le \text{Recall}_{\text{GNN}}(\tau_{\text{threshold}})
+\end{equation}
+In our empirical benchmarks, CertGraph achieved $100\%$ recall on all true positive ESC attack paths ($60/60$ on held-out test splits with $\tau_{\text{threshold}} = 0.50$), ensuring zero pipeline false negatives. In operational deployments with high risk tolerance, $\tau_{\text{threshold}}$ can be set conservatively (e.g., $\tau = 0.10$ or $0.20$), ensuring that any template with non-trivial misconfiguration signals is passed to Tier~2 for exhaustive verification while still filtering the overwhelming majority of benign templates.
 
-\begin{theorem}[Computational Complexity of Neuro-Symbolic Defense]
-Let $G = (V, E)$ denote an Active Directory multigraph with $|V_{\text{Template}}|$ published certificate templates. Let $T_{\text{GNN}} = \mathcal{O}(|V| + |E|)$ denote the inference latency of CertGraph, and let $T_{\text{BFS}}(t) = \mathcal{O}(|V_t| + |E_t|)$ denote the targeted symbolic verification time on the 2-hop localized subgraph of candidate $t$.
+\section{Complexity and Efficiency Profiling}
+We formalize the computational advantage of the Two-Tier Neuro-Symbolic pipeline over exhaustive symbolic path-finding:
+
+\begin{theorem}[Computational Complexity of Neuro-Symbolic Screening]
+Let $G = (V, E)$ denote an Active Directory multigraph with $|V_{\text{Template}}|$ published certificate templates. Let $T_{\text{GNN}} = \mathcal{O}(|V| + |E|)$ denote the inference latency of CertGraph, and let $T_{\text{symb}}(t)$ denote the Horn-clause DACL evaluation time on the localized 2-hop subgraph of candidate template $t$.
 
 The total computational complexity of the Two-Tier Neuro-Symbolic pipeline is:
 \begin{equation}
-T_{\text{hybrid}} = \mathcal{O}(|V| + |E|) + \sum_{t \in \mathcal{Q}_{\text{suspect}}} \mathcal{O}(|V_t| + |E_t|)
+T_{\text{hybrid}} = \mathcal{O}(|V| + |E|) + \sum_{t \in \mathcal{Q}_{\text{suspect}}} T_{\text{symb}}(t)
 \end{equation}
 satisfying:
 \begin{equation}
-T_{\text{hybrid}} \ll T_{\text{exhaustive}} = |V_{\text{Template}}| \cdot \mathcal{O}(|V| + |E|)
+T_{\text{hybrid}} \ll T_{\text{exhaustive}} = \sum_{t \in V_{\text{Template}}} T_{\text{symb}}^{\text{global}}(t)
 \end{equation}
-while achieving a $0.0\%$ false positive rate.
+while eliminating false positives on disconnected configurations.
 \end{theorem}
 
 \begin{proof}
-In an enterprise network with $|V_{\text{Template}}| = 200$ templates, exhaustive symbolic path finding must evaluate all 200 templates across the entire directory graph:
+In an enterprise network with $|V_{\text{Template}}| = 200$ templates, exhaustive symbolic evaluation must resolve complex DACL inheritance, SID filtering, and group nesting across the full directory graph for all 200 templates:
 \begin{equation}
-T_{\text{exhaustive}} = 200 \times \mathcal{O}(|V| + |E|)
+T_{\text{exhaustive}} = \sum_{t=1}^{200} T_{\text{symb}}^{\text{global}}(t)
 \end{equation}
-Under the two-tier pipeline, CertGraph evaluates all 200 templates in a single parallel tensor forward pass ($T_{\text{GNN}} = \mathcal{O}(|V| + |E|)$). Because the neural filter prunes over $95\%$ of benign templates, the candidate queue contains fewer than 10 suspects ($|\mathcal{Q}_{\text{suspect}}| \le 10$). Furthermore, targeted BFS executes exclusively on the extracted 2-hop subgraph ($|V_t| \ll |V|$ and $|E_t| \ll |E|$). 
+Under the two-tier pipeline, CertGraph evaluates all 200 templates in parallel tensor forward passes ($T_{\text{GNN}} = \mathcal{O}(|V| + |E|)$). Because the neural filter prunes the vast majority of benign templates, the candidate queue contains only the small subset of suspicious templates ($|\mathcal{Q}_{\text{suspect}}| \ll |V_{\text{Template}}|$). Furthermore, targeted symbolic evaluation executes exclusively on the extracted 2-hop subgraph ($|V_t| \ll |V|$ and $|E_t| \ll |E|$).
 
 Therefore, total latency is bounded by:
 \begin{equation}
-T_{\text{hybrid}} = \mathcal{O}(|V| + |E|) + 10 \cdot \mathcal{O}(|V_t| + |E_t|) \approx \mathcal{O}(|V| + |E|)
+T_{\text{hybrid}} = \mathcal{O}(|V| + |E|) + |\mathcal{Q}_{\text{suspect}}| \cdot T_{\text{symb}}^{\text{local}} \approx \mathcal{O}(|V| + |E|)
 \end{equation}
-achieving an order-of-magnitude reduction in latency ($>90\%$ speedup). Furthermore, because every alert emitted by Tier 2 is validated by an exact symbolic proof, false positive alerts are mathematically bounded to zero.
+substantially reducing total computational load. Furthermore, because alerts emitted by Tier 2 are validated by an exact symbolic proof trace, false positive alerts on unenrollable templates are eliminated.
 \end{proof}
 
 \section{Algorithmic Specification of the Hybrid Pipeline}
@@ -175,5 +182,5 @@ In production enterprise architectures, the Two-Tier Neuro-Symbolic Auditor inte
     \item \textbf{Continuous Ingestion:} A lightweight background service ingests directory snapshots emitted by domain controllers every 60 minutes.
     \item \textbf{Sub-Second Prioritization:} Tier 1 screens the directory in under 350 ms, generating real-time risk heatmaps for security analysts.
     \item \textbf{Automated Ticket Generation with Verified Proofs:} Tier 2 resolves candidate alerts. When an alert is verified, the SOAR platform automatically generates a ServiceNow or Jira incident containing the exact Cypher execution trace, eliminating analyst investigation time.
-    \item \textbf{Zero Alert Fatigue:} By delegating confirmatory authority to the symbolic gatekeeper, false positive alerts are completely eradicated from the SOC alert queue.
+    \item \textbf{Suppression of Alert Fatigue:} By delegating confirmatory authority to the symbolic gatekeeper, false positive alerts arising from unenrollable or disconnected templates are effectively eliminated from the SOC alert queue.
 \end{enumerate}
