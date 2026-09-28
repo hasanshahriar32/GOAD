@@ -115,7 +115,7 @@ We further solemnly declare that:
 #grid(
   columns: (1fr, 1fr),
   [
-    *Date:* September, 2026 \
+    *Date:* October, 2026 \
     *Place:* HSTU, Dinajpur
   ],
   [
@@ -168,7 +168,7 @@ Finally, we owe an immeasurable debt of gratitude to our parents and families fo
   columns: (1fr, 1fr),
   [
     *HSTU, Dinajpur* \
-    *September, 2026*
+    *October, 2026*
   ],
   [
     *Student ID: 2002126* \
