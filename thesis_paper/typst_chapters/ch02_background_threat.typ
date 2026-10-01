@@ -49,7 +49,7 @@ While BloodHound and related graph databases (Neo4j) allow security analysts to 
 
 == Graph Representation Learning in Security
 
-To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated *Graph Representation Learning* and *Graph Neural Networks (GNNs)* for cybersecurity applications @goel2025gnn @guo2023scalable.
+To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated *Graph Representation Learning* and *Graph Neural Networks (GNNs)* for cybersecurity applications @goel2025coevolutionary @guo2023scalable.
 
 === The Message-Passing Neural Network (MPNN) Framework
 
@@ -77,7 +77,9 @@ To handle heterogeneous structures, specialized architectures have been proposed
 
 === Game Theory and Machine Learning Pitfalls in Cybersecurity
 
-Applying graph learning and game theory to cybersecurity involves distinct theoretical and empirical challenges. In enterprise defense, Stackelberg security games (Kiekintveld et al., 2009) @kiekintveld2009computing and scalable edge-blocking formulations in Active Directory graphs (Guo et al., AAAI 2023) @guo2023scalable demonstrate that computing optimal defensive mitigations under operational constraints is NP-hard. Furthermore, Goel et al. (2025) @goel2025gnn established the efficacy of GNNs in modeling multi-hop Active Directory lateral movement and edge-blocking defense.
+Applying machine learning and game theory to enterprise cybersecurity introduces distinct structural and combinatorial constraints. In active defense, Stackelberg security games (Kiekintveld et al., 2009) @kiekintveld2009computing provide a principled foundation for allocating defensive countermeasures against worst-case adversaries. On enterprise attack graphs, Guo et al. (AAAI 2023) @guo2023scalable investigated scalable edge-blocking algorithms by exploiting graph treewidth and parameterizing non-splitting paths to minimize an attacker's reachability to Domain Admin under operational budget constraints. Expanding upon this game-theoretic interdiction formulation, Goel et al. (2025) @goel2025coevolutionary introduced a co-evolutionary defense framework pairing Graph Neural Network-approximated dynamic programming (GNNDP) with evolutionary diversity optimization over parameterized attack graphs, demonstrating that neural approximations can scale defensive search against adaptive multi-hop attackers.
+
+Crucially, while these foundational studies address combinatorial edge interdiction and path reachability over generic host-compromise attack graphs, they do not model the cryptographic configuration semantics of Active Directory Certificate Services (ADCS), nor do they tackle inductive multi-class vulnerability detection or examine shortcut learning under distribution shifts. CertGraph addresses this unaddressed domain by formalizing enterprise PKI as a typed heterogeneous multigraph, jointly evaluating relational attention over certificate template configurations and multi-hop enrollment paths.
 
 Concurrently, empirical security machine learning is subject to severe methodological pitfalls, as formalized by Arp et al. (USENIX Security 2022) @arp2022dos, Sommer & Paxson (IEEE S&P 2010) @sommer2010outside, and Pendlebury et al. (USENIX Security 2019) @pendlebury2019tesseract. These pitfalls include sampling bias, synthetic generator artifacts, lab-only evaluation lacking ecological validity, and inappropriate baseline comparisons. Moreover, as networks grow deeper, preserving raw node attributes requires residual skip connections (GCNII, Chen et al., ICML 2020) @chen2020simple to prevent over-smoothing and gradient decay.
 

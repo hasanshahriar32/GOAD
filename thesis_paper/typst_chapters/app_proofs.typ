@@ -118,7 +118,7 @@ The MPAI problem is NP-complete for $k >= 3$. Consequently, finding the optimal 
 _Proof._ We prove NP-completeness by establishing:
 
 + $"MPAI" in "NP"$, and
-+ A polynomial-time reduction from the classical NP-complete *Directed Multiway Cut* problem @garg1994multiway @dahlstrm2000multiway to MPAI: $ "Directed Multiway Cut" <=_p "MPAI" $
++ A polynomial-time reduction from the classical NP-complete *Directed Multiway Cut* problem @garg1994multiway to MPAI: $ "Directed Multiway Cut" <=_p "MPAI" $
 
 
 
@@ -133,10 +133,10 @@ Given a candidate edge subset $E_("cut") subset.eq E$:
 Because all verification steps complete in deterministic polynomial time with respect to the graph size, $"MPAI" in "NP"$.
 
 *Part 2: Polynomial-Time Reduction from Directed Multiway Cut.*
-Recall the definition of the *Directed Multiway Cut* problem, proven NP-complete by Garg, Vazirani, and Yannakakis @garg1994multiway:
-\begin{quote}
+While the classical Multiterminal Cut problem on undirected graphs was proven NP-complete for $k >= 3$ by Dahlhaus et al. (1994) @dahlstrm2000multiway (and polynomial-time solvable for $k=2$ via standard min-cut algorithms), enterprise identity attack graphs are directed and asymmetric. We therefore base our reduction on the *Directed Multiway Cut* problem, which was proven NP-complete even for $k >= 2$ by Garg, Vazirani, and Yannakakis (1994) @garg1994multiway:
+#quote[
 *Directed Multiway Cut:* Given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H arrow.r bb(R)^+$, a subset of $k >= 3$ distinct terminal vertices $X = \{x_1, x_2, dots, x_k} subset.eq V_H$, and a cost threshold $W$, does there exist an edge subset $C subset.eq E_H$ with $sum_(e in C) w(e) <= W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i != j$) in the residual graph $H' = (V_H, E_H \ C)$?
-\end{quote}
+]
 
 Given an arbitrary instance $angle.l H = (V_H, E_H), w, X = \{x_1, dots, x_k}, W angle.r$ of the Directed Multiway Cut problem ($k >= 3$), we construct an instance $angle.l G = (V, E), c, cal(P)_("forbidden"), K angle.r$ of MPAI in polynomial time:
 

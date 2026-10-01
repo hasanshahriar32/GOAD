@@ -24,7 +24,7 @@ The MPAI problem is NP-complete for $k \ge 3$. Consequently, finding the optimal
 We prove NP-completeness by establishing:
 \begin{enumerate}
     \item $\text{MPAI} \in \text{NP}$, and
-    \item A polynomial-time reduction from the classical NP-complete \textbf{Directed Multiway Cut} problem~\cite{garg1994multiway,dahlstrm2000multiway} to MPAI:
+    \item A polynomial-time reduction from the classical NP-complete \textbf{Directed Multiway Cut} problem~\cite{garg1994multiway} to MPAI:
     \begin{equation}
     \text{Directed Multiway Cut} \le_p \text{MPAI}
     \end{equation}
@@ -40,7 +40,7 @@ Given a candidate edge subset $E_{\text{cut}} \subseteq E$:
 Because all verification steps complete in deterministic polynomial time with respect to the graph size, $\text{MPAI} \in \text{NP}$.
 
 \paragraph{Part 2: Polynomial-Time Reduction from Directed Multiway Cut.}
-Recall the definition of the \textbf{Directed Multiway Cut} problem, proven NP-complete by Garg, Vazirani, and Yannakakis~\cite{garg1994multiway}:
+While the classical Multiterminal Cut problem on undirected graphs was proven NP-complete for $k \ge 3$ by Dahlhaus et al. (1994)~\cite{dahlstrm2000multiway} (and polynomial-time solvable for $k=2$ via standard min-cut algorithms), enterprise identity attack graphs are directed and asymmetric. We therefore base our reduction on the \textbf{Directed Multiway Cut} problem, which was proven NP-complete even for $k \ge 2$ by Garg, Vazirani, and Yannakakis (1994)~\cite{garg1994multiway}:
 \begin{quote}
 \textbf{Directed Multiway Cut:} Given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H \to \mathbb{R}^+$, a subset of $k \ge 3$ distinct terminal vertices $X = \{x_1, x_2, \dots, x_k\} \subseteq V_H$, and a cost threshold $W$, does there exist an edge subset $C \subseteq E_H$ with $\sum_{e \in C} w(e) \le W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i \neq j$) in the residual graph $H' = (V_H, E_H \setminus C)$?
 \end{quote}

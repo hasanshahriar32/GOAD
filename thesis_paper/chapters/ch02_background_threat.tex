@@ -40,7 +40,7 @@ While BloodHound and related graph databases (Neo4j) allow security analysts to 
 \end{enumerate}
 
 \section{Graph Representation Learning in Security}
-To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated \textbf{Graph Representation Learning} and \textbf{Graph Neural Networks (GNNs)} for cybersecurity applications~\cite{goel2025gnn,guo2023scalable}.
+To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated \textbf{Graph Representation Learning} and \textbf{Graph Neural Networks (GNNs)} for cybersecurity applications~\cite{goel2025coevolutionary,guo2023scalable}.
 
 \subsection{The Message-Passing Neural Network (MPNN) Framework}
 Gilmer et al.~\cite{gilmer2017neural} unified modern graph deep learning architectures under the Message-Passing Neural Network (MPNN) framework. For a graph $G = (V, E)$ with node feature vectors $x_v \in \mathbb{R}^d$, an MPNN layer computes updated node representations $h_v^{(l)}$ through three core computational phases:
@@ -76,7 +76,7 @@ To handle heterogeneous structures, specialized architectures have been proposed
 \end{enumerate}
 
 \subsection{Game Theory and Machine Learning Pitfalls in Cybersecurity}
-Applying machine learning and game theory to cybersecurity introduces distinct structural constraints. In enterprise defense, Stackelberg security games (Kiekintveld et al., 2009)~\cite{kiekintveld2009computing} and edge-blocking formulations on Active Directory graphs (Guo et al., 2023)~\cite{guo2023scalable} show that computing minimal disruption mitigations under business constraints is NP-hard. Goel et al. (2025)~\cite{goel2025gnn} recently demonstrated the utility of GNNs in modeling multi-hop Active Directory lateral movement and edge-blocking strategies.
+Applying machine learning and game theory to enterprise cybersecurity introduces distinct structural and combinatorial constraints. In active defense, Stackelberg security games (Kiekintveld et al., 2009)~\cite{kiekintveld2009computing} provide a principled foundation for allocating defensive countermeasures against worst-case adversaries. On enterprise attack graphs, Guo et al. (2023)~\cite{guo2023scalable} investigated scalable edge-blocking algorithms by exploiting graph treewidth and parameterizing non-splitting paths to minimize attacker reachability to Domain Admin under operational budget constraints. Expanding upon this game-theoretic interdiction formulation, Goel et al. (2025)~\cite{goel2025coevolutionary} introduced a co-evolutionary defense framework pairing Graph Neural Network-approximated dynamic programming (GNNDP) with evolutionary diversity optimization over parameterized attack graphs, demonstrating that neural approximations can scale defensive search against adaptive multi-hop attackers. Crucially, while these foundational studies address combinatorial edge interdiction and path reachability over generic host-compromise attack graphs, they do not model the cryptographic configuration semantics of Active Directory Certificate Services (ADCS), nor do they tackle inductive multi-class vulnerability detection or examine shortcut learning under distribution shifts. CertGraph bridges this gap by formalizing enterprise PKI as a typed heterogeneous multigraph, jointly evaluating relational attention over certificate template configurations and multi-hop enrollment paths.
 
 At the same time, empirical security machine learning remains vulnerable to experimental pitfalls, as formalized by Arp et al. (2022)~\cite{arp2022dos}, Sommer \& Paxson (2010)~\cite{sommer2010outside}, and Pendlebury et al. (2019)~\cite{pendlebury2019tesseract}. These include sampling bias, synthetic generator artifacts, lab-only evaluations lacking operational realism, and unfair baseline feature representations. Additionally, as graph networks grow deeper, preserving raw node attributes requires residual skip-connections (GCNII, Chen et al., 2020)~\cite{chen2020simple} to prevent over-smoothing and gradient decay.
 
@@ -186,7 +186,7 @@ ESC15 & EKUwu (CVE-2024-49019) & Schema Version 1 template allows custom CSR app
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/esc13_attack_path_diagram.png}
+    \includegraphics[width=0.60\textwidth]{figures/esc13_attack_path_diagram.png}
     \caption{Two-hop ESC13 privilege escalation attack path, showing the chain from an unprivileged user through enrollment permissions and issuance policy OID linkage to high-value domain administrative group tokens.}
     \label{fig:esc13_path}
 \end{figure}
@@ -205,5 +205,5 @@ To establish rigorous scientific boundaries, we define our threat model followin
 \begin{enumerate}
     \item \textbf{Auditing Scope:} The defender possesses read-only administrative auditing telemetry over the Active Directory forest, capable of extracting object attributes and DACL relationships via automated collection pipelines.
     \item \textbf{Remediation Constraints:} The defender must autonomously or semi-autonomously identify and neutralize exploitable attack paths. Crucially, the defender operates under a \textbf{business availability constraint}: defensive mitigations (such as revoking template enrollment rights or deleting groups) must not disrupt legitimate enterprise operations.
-    \item \textbf{Computational Budget:} The detection architecture must execute efficiently on commodity security operations infrastructure (e.g., standard analysts' workstations with bounded RAM budgets), precluding the deployment of cumbersome full-OS virtual machine simulations for static auditing.
+    \item \textbf{Computational Budget:} The detection architecture must execute efficiently on commodity security operations infrastructure (e.g., standard analysts' workstations with bounded RAM budgets), avoiding cumbersome full-OS virtual machine simulations for static auditing.
 \end{enumerate}
