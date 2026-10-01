@@ -41,7 +41,7 @@ The fundamental vulnerability uncovered by Schroeder and Christensen lies in the
 SpecterOps formalized these structural misconfiguration patterns into an expanding taxonomy of \textbf{Escalation Vectors (ESC1 through ESC8)}. In the ensuing years, independent researchers discovered additional novel vectors, extending the taxonomy beyond ESC15:
 \begin{enumerate}
     \item \textbf{ESC9 and ESC10 (2022):} Documented by Schroeder and Christensen, exploiting weak certificate mappings and certificate extension stripping in environments lacking the KB5014754 security update.
-    \item \textbf{ESC11 and ESC12 (2023):} Discovered respectively by Sylvain Heiniger and Hans-Joachim Knobloch, abusing unauthenticated RPC enrollment interfaces (MS-ICPR / \texttt{ICertPassage}) lacking packet privacy and CA relay primitives.
+    \item \textbf{ESC11 and ESC12 (2023):} ESC11 (Heiniger, 2023) abuses unauthenticated RPC enrollment interfaces (MS-ICPR / \texttt{ICertPassage}) lacking packet privacy via coerced NTLM relay; ESC12 (Knobloch, 2023) exploits cleartext session keys and driver weaknesses in CA hardware security modules (YubiHSM) to extract signing keys without physical tamper alarms.
     \item \textbf{ESC13 (Feb 2024):} Disclosed by Adam Burford and documented by Jonas B{\"u}low Knudsen~\cite{knudsen2024esc13}, exploiting Issuance Policy Object Identifiers (OIDs) mapped directly to high-value security groups.
     \item \textbf{ESC14 and ESC15 (2024):} ESC14 exploits \texttt{altSecurityIdentities} mapping attribute hijacking; ESC15 (CVE-2024-49019, ``EKUwu'', discovered by Justin Bollinger of TrustedSec) abuses legacy Schema Version 1 template CSR application policy injections~\cite{feynman2024ekuwu}.
 \end{enumerate}

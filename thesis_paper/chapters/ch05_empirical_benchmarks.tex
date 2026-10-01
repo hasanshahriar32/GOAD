@@ -46,24 +46,31 @@ Training Epochs & $100$ & Early stopping invoked if validation loss plateaus for
 \end{table}
 
 \section{In-Distribution 5-Fold Cross-Validation}
-We benchmarked CertGraph against six baseline classifiers across stratified 5-fold cross-validation on the 700 enterprise environments. As noted by Nadeau and Bengio (2003)~\cite{nadeau2003inference}, standard paired $t$-tests over overlapping cross-validation folds violate sample independence assumptions and can underestimate variance. We report both standard paired $t$-test values and corrected repeated CV statistics across the validation folds.
+We benchmarked CertGraph against six baseline classifiers across stratified 5-fold cross-validation on the 700 enterprise environments. When conducting $K$-fold cross-validation, the training sets across folds overlap significantly (each pair of training sets shares $\frac{K-2}{K-1}$ of the data), violating the independent sample assumption of the standard Student's $t$-test. As proved by Nadeau and Bengio (2003)~\cite{nadeau2003inference}, this training-set overlap causes the standard $t$-test to underestimate variance, yielding inflated Type-I error rates. To provide rigorous statistical hypothesis testing, we report both standard paired $t$-test $p$-values ($p_{\text{std}}$) and corrected repeated cross-validation statistics ($p_{\text{corr}}$) based on the Nadeau-Bengio variance estimator:
+\begin{equation}
+\hat{\sigma}^2_{\text{corr}} = \left( \frac{1}{K} + \frac{n_2}{n_1} \right) \hat{S}^2
+\end{equation}
+where $n_2$ denotes the test fold size and $n_1$ denotes the training fold size. Under our 5-fold cross-validation scheme ($K=5$, $n_2/n_1 = 0.20/0.80 = 0.25$), the standard error is scaled by $\sqrt{1/K + n_2/n_1} / \sqrt{1/K} = \sqrt{0.45 / 0.20} = \sqrt{2.25} = 1.50$, yielding the conservative corrected test statistic:
+\begin{equation}
+t_{\text{corr}} = \frac{t_{\text{std}}}{1.50}, \quad \text{with } \nu = K - 1 = 4 \text{ degrees of freedom.}
+\end{equation}
 
 \begin{table}[ht]
 \centering
 \small
-\caption{5-Fold Cross-Validation Performance Across 7 Evaluated Models on 700 Enterprise Domains.}
+\caption{5-Fold Cross-Validation Performance Across 7 Evaluated Models on 700 Enterprise Domains (Reporting Standard and Nadeau-Bengio Corrected $p$-values vs CertGraph).}
 \label{tab:cv_results}
 \begin{tabularx}{\textwidth}{p{3.8cm} c c c X}
 \toprule
-\textbf{Model Architecture} & \textbf{Macro-F1} & \textbf{Accuracy} & \textbf{Input Type} & \textbf{$p$-value vs CertGraph} \\
+\textbf{Model Architecture} & \textbf{Macro-F1} & \textbf{Accuracy} & \textbf{Std $p$-val} & \textbf{Corr $p$-val (NB)} \\
 \midrule
-\textbf{CertGraph (Hetero-GAT)} & $\mathbf{0.9986 \pm 0.0029}$ & $\mathbf{0.9986 \pm 0.0029}$ & Relational Graph & Reference \\
-Graph-Augmented MLP & $0.9971 \pm 0.0035$ & $0.9971 \pm 0.0035$ & $\mathbb{R}^{14}$ & $0.6213$ (Not Sig.) \\
-Graph-Augmented RF & $0.9871 \pm 0.0084$ & $0.9871 \pm 0.0084$ & $\mathbb{R}^{14}$ & $0.0780$ (Marginal) \\
-BloodHound BFS (Symbolic) & $0.9082 \pm 0.0229$ & $0.9100 \pm 0.0215$ & Symbolic & $1.64 \times 10^{-3}$ ($p < 0.01$) \\
-Flat MLP (Features Only) & $0.8600 \pm 0.0130$ & $0.8643 \pm 0.0118$ & $\mathbb{R}^{10}$ & $2.62 \times 10^{-5}$ ($p < 10^{-4}$) \\
-Flat RF (Features Only) & $0.8384 \pm 0.0057$ & $0.8443 \pm 0.0051$ & $\mathbb{R}^{10}$ & $1.32 \times 10^{-6}$ ($p < 10^{-5}$) \\
-Rule-Based (Certipy Heuristic) & $0.7791 \pm 0.0247$ & $0.8143 \pm 0.0205$ & Fixed Rules & $6.33 \times 10^{-5}$ ($p < 10^{-4}$) \\
+\textbf{CertGraph (Hetero-GAT)} & $\mathbf{0.9986 \pm 0.0029}$ & $\mathbf{0.9986 \pm 0.0029}$ & Reference & Reference \\
+Graph-Augmented MLP & $0.9971 \pm 0.0035$ & $0.9971 \pm 0.0035$ & $0.6213$ & $0.7396$ (Not Sig.) \\
+Graph-Augmented RF & $0.9871 \pm 0.0084$ & $0.9871 \pm 0.0084$ & $0.0780$ & $0.1913$ (Not Sig.) \\
+BloodHound BFS (Symbolic) & $0.9082 \pm 0.0229$ & $0.9100 \pm 0.0215$ & $1.64 \times 10^{-3}$ & $7.28 \times 10^{-3}$ ($p < 0.01$) \\
+Flat MLP (Features Only) & $0.8600 \pm 0.0130$ & $0.8643 \pm 0.0118$ & $2.62 \times 10^{-5}$ & $1.30 \times 10^{-4}$ ($p < 10^{-3}$) \\
+Flat RF (Features Only) & $0.8384 \pm 0.0057$ & $0.8443 \pm 0.0051$ & $1.32 \times 10^{-6}$ & $6.66 \times 10^{-6}$ ($p < 10^{-5}$) \\
+Rule-Based (Certipy Heuristic) & $0.7791 \pm 0.0247$ & $0.8143 \pm 0.0205$ & $6.33 \times 10^{-5}$ & $3.12 \times 10^{-4}$ ($p < 10^{-3}$) \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -114,7 +121,7 @@ Table~\ref{tab:per_class} reports the detailed per-class precision, recall, and 
 \paragraph{Critical Analysis of In-Distribution Findings:}
 \begin{enumerate}
     \item \textbf{Decisive Superiority Over Static Signatures and Flat ML:} CertGraph outperforms industry signature heuristics (Certipy) by $+28.2\%$ in Macro-F1 ($0.9986$ vs $0.7791$) and flat ML by $+16.1\%$ ($0.9986$ vs $0.8600$). The signature tool suffers because it inspects template flags in isolation without evaluating authorization path connectivity, generating frequent false positives.
-    \item \textbf{Statistical Equivalence to Graph-Augmented MLP and Benchmark Saturation:} The comparison between CertGraph and Graph-Augmented MLP yields $p = 0.6213$, confirming that on in-distribution synthetic data, there is no statistically significant difference between a multi-layer GNN and a flat MLP provided with four topological summary counts. Furthermore, the headline score of $0.9986 \pm 0.0029$ corresponds to exactly one misclassified template out of 700 ($699/700 = 0.99857$). A 7-node decision tree recovers $0.9928$ (representing approximately 5 errors out of 700), and the single-head attention ablation achieves $1.0000$. Because ground-truth labels in synthetic generators are generated from access-control rules, in-distribution cross-validation primarily evaluates rule recovery on synthesized data rather than generalized security reasoning, necessitating the out-of-distribution hard-negative evaluation in Section~\ref{sec:hard_negatives}.
+    \item \textbf{Statistical Equivalence to Graph-Augmented MLP and Benchmark Saturation:} The comparison between CertGraph and Graph-Augmented MLP yields standard $p = 0.6213$ and Nadeau-Bengio corrected $p = 0.7396$, confirming that on in-distribution synthetic data, there is no statistically significant difference between a multi-layer GNN and a flat MLP provided with four topological summary counts. Furthermore, the headline score of $0.9986 \pm 0.0029$ corresponds to exactly one misclassified template out of 700 ($699/700 = 0.99857$). A 7-node decision tree recovers $0.9928$ (representing approximately 5 errors out of 700), and the single-head attention ablation achieves $1.0000$. Because ground-truth labels in synthetic generators are generated from access-control rules, in-distribution cross-validation primarily evaluates rule recovery on synthesized data rather than generalized security reasoning, necessitating the out-of-distribution hard-negative evaluation in Section~\ref{sec:hard_negatives}.
     \item \textbf{High Precision Across Core Attack Vectors:} Out of 700 evaluation domains, CertGraph incurred only a single false positive (misclassifying a subtle ESC4 DACL-delegation variant as ESC2) and a single false negative, maintaining $>0.99$ precision and recall across all evaluated classes.
 \end{enumerate}
 
@@ -125,16 +132,16 @@ To isolate the contribution of each architectural component within CertGraph, we
 \begin{table}[ht]
 \centering
 \small
-\caption{Systematic Architectural Ablation Study of CertGraph Components.}
+\caption{Systematic Architectural Ablation Study of CertGraph Components (Reporting Standard and Nadeau-Bengio Corrected $p$-values vs Full CertGraph).}
 \label{tab:ablation_results}
-\begin{tabularx}{\textwidth}{p{4.6cm} c c X}
+\begin{tabularx}{\textwidth}{p{4.2cm} c c c X}
 \toprule
-\textbf{Architecture Variant} & \textbf{Macro-F1} & \textbf{$\Delta$ vs Full} & \textbf{$p$-value (Paired $t$-test)} \\
+\textbf{Architecture Variant} & \textbf{Macro-F1} & \textbf{$\Delta$ vs Full} & \textbf{Std $p$-val} & \textbf{Corr $p$-val (NB)} \\
 \midrule
-\textbf{Full CertGraph (Hetero-GAT)} & $\mathbf{0.9986 \pm 0.0029}$ & --- & Reference \\
-Single-Head Attention ($K = 1$) & $1.0000 \pm 0.0000$ & $+0.0014$ & $0.3739$ (Not Significant) \\
-No Graph Context (Features Only) & $0.8600 \pm 0.0130$ & $-0.1386$ & $2.62 \times 10^{-5}$ ($p < 10^{-4}$) \\
-\textbf{No Skip Connections ($W_{\text{skip}} = 0$)} & $\mathbf{0.4768 \pm 0.0532}$ & $\mathbf{-0.5218}$ & $\mathbf{1.31 \times 10^{-6}}$ ($p < 10^{-5}$) \\
+\textbf{Full CertGraph (Hetero-GAT)} & $\mathbf{0.9986 \pm 0.0029}$ & --- & Reference & Reference \\
+Single-Head Attention ($K = 1$) & $1.0000 \pm 0.0000$ & $+0.0014$ & $0.3739$ & $0.5415$ (Not Sig.) \\
+No Graph Context (Features Only) & $0.8600 \pm 0.0130$ & $-0.1386$ & $2.62 \times 10^{-5}$ & $1.30 \times 10^{-4}$ ($p < 10^{-3}$) \\
+\textbf{No Skip Connections ($W_{\text{skip}} = 0$)} & $\mathbf{0.4768 \pm 0.0532}$ & $\mathbf{-0.5218}$ & $\mathbf{1.31 \times 10^{-6}}$ & $\mathbf{6.61 \times 10^{-6}}$ ($p < 10^{-5}$) \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -147,7 +154,7 @@ No Graph Context (Features Only) & $0.8600 \pm 0.0130$ & $-0.1386$ & $2.62 \time
 \end{figure}
 
 \paragraph{Empirical Confirmation of Theorem 1:}
-The most striking result of the ablation suite is the consequence of removing residual skip connections ($W_{\text{skip}} = 0$). In standard undirected graph benchmarks (e.g., Cora, Citeseer), omitting skip connections typically causes a minor degradation of $2-5\%$. In sharp contrast, on Active Directory identity graphs, removing skip connections triggers a \textbf{severe collapse in Macro-F1 from $0.9986$ to $0.4768$} ($p = 1.31 \times 10^{-6}$, representing a $>52\%$ absolute drop).
+The most striking result of the ablation suite is the consequence of removing residual skip connections ($W_{\text{skip}} = 0$). In standard undirected graph benchmarks (e.g., Cora, Citeseer), omitting skip connections typically causes a minor degradation of $2-5\%$. In sharp contrast, on Active Directory identity graphs, removing skip connections triggers a \textbf{severe collapse in Macro-F1 from $0.9986$ to $0.4768$} (standard $p = 1.31 \times 10^{-6}$, Nadeau-Bengio corrected $p = 6.61 \times 10^{-6}$, representing a $>52\%$ absolute drop).
 
 This empirical collapse directly confirms Theorem~\ref{thm:representation_preservation}: without residual skip connections, a certificate template node aggregates messages exclusively from its incoming neighbors during Layer 1, completely discarding its own initial 10-dimensional configuration feature vector $x_{\text{Template}}$ ($\partial h_t^{(1)} / \partial x_t = \mathbf{0}$). Furthermore, low-in-degree principals suffer representation decay across successive message-passing hops. The network loses direct sensitivity to critical configuration flags (such as \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} and Client Authentication EKUs), destroying its ability to differentiate dangerous templates from secure ones. Parameterized skip connections preserve initial attributes and maintain non-vanishing gradient bounds, preventing representation collapse.
 

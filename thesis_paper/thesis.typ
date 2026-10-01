@@ -22,9 +22,9 @@
       stroke: none,
       inset: (x: 8pt, y: 3pt),
       align: (left, left),
-      [*Student ID: 2002126*], [Level: 4, Semester: I],
-      [*Student ID: 2002138*], [Level: 4, Semester: I],
-      [*Student ID: 2102151*], [Level: 4, Semester: I],
+      [*Student ID: 2002126*], [Level: 4, Semester: II],
+      [*Student ID: 2002138*], [Level: 4, Semester: II],
+      [*Student ID: 2102151*], [Level: 4, Semester: II],
     )
   ]
   

@@ -2,9 +2,9 @@
 \label{ch:background}
 
 \section{Evolution of Identity-Based Lateral Movement in Enterprise Networks}
-Enterprise computing relies on centralized directory services to manage authentication, authorization, and cryptographic trust across distributed systems. In Windows enterprise networks, the core identity backbone is provided by Microsoft Active Directory Domain Services (AD DS) and its associated cryptographic public-key subsystem, Active Directory Certificate Services (ADCS). As modern organizations adopt Zero Trust principles and cloud-hybrid architectures, the primary operational focus of enterprise defense has shifted from perimeter firewall boundaries to the internal identity and access management fabric.
+Windows enterprise environments rely on Active Directory Domain Services (AD DS) and Active Directory Certificate Services (ADCS) to orchestrate authentication, authorization, and cryptographic identity. As organizations adopted hybrid-cloud infrastructure and zero-trust policies, the boundary of interest in security engineering moved from boundary firewalls to internal identity fabrics.
 
-Once an adversary achieves initial code execution on any internal endpoint (e.g., through credential stuffing, phishing, or vulnerable edge services), enterprise defense shifts entirely to combating \textbf{Lateral Movement}---the techniques adversaries use to navigate across systems, accounts, and directory objects to compromise authoritative Tier-0 administrative assets.
+When an attacker establishes an initial foothold on a standard workstation—via credential stuffing, phishing, or vulnerable services—the defensive objective centers on containing \textbf{Lateral Movement}. Attackers traverse interconnected accounts, groups, and directory objects to acquire Tier-0 administrative tokens (such as Domain Admins or Enterprise Admins).
 
 \subsection{Historical Precedents: Memory-Based Credential Abuse}
 Historically, identity lateral movement within Windows enterprise environments relied on memory-based credential dumping and protocol replay attacks:
@@ -76,11 +76,11 @@ To handle heterogeneous structures, specialized architectures have been proposed
 \end{enumerate}
 
 \subsection{Game Theory and Machine Learning Pitfalls in Cybersecurity}
-Applying graph learning and game theory to cybersecurity involves distinct theoretical and empirical challenges. In enterprise defense, Stackelberg security games (Kiekintveld et al., 2009)~\cite{kiekintveld2009computing} and scalable edge-blocking formulations in Active Directory graphs (Guo et al., AAAI 2023)~\cite{guo2023scalable} demonstrate that computing optimal defensive mitigations under operational constraints is NP-hard. Furthermore, Goel et al. (2025)~\cite{goel2025gnn} established the efficacy of GNNs in modeling multi-hop Active Directory lateral movement and edge-blocking defense.
+Applying machine learning and game theory to cybersecurity introduces distinct structural constraints. In enterprise defense, Stackelberg security games (Kiekintveld et al., 2009)~\cite{kiekintveld2009computing} and edge-blocking formulations on Active Directory graphs (Guo et al., 2023)~\cite{guo2023scalable} show that computing minimal disruption mitigations under business constraints is NP-hard. Goel et al. (2025)~\cite{goel2025gnn} recently demonstrated the utility of GNNs in modeling multi-hop Active Directory lateral movement and edge-blocking strategies.
 
-Concurrently, empirical security machine learning is subject to severe methodological pitfalls, as formalized by Arp et al. (USENIX Security 2022)~\cite{arp2022dos}, Sommer \& Paxson (IEEE S\&P 2010)~\cite{sommer2010outside}, and Pendlebury et al. (USENIX Security 2019)~\cite{pendlebury2019tesseract}. These pitfalls include sampling bias, synthetic generator artifacts, lab-only evaluation lacking ecological validity, and inappropriate baseline comparisons. Moreover, as networks grow deeper, preserving raw node attributes requires residual skip connections (GCNII, Chen et al., ICML 2020)~\cite{chen2020simple} to prevent over-smoothing and gradient decay.
+At the same time, empirical security machine learning remains vulnerable to experimental pitfalls, as formalized by Arp et al. (2022)~\cite{arp2022dos}, Sommer \& Paxson (2010)~\cite{sommer2010outside}, and Pendlebury et al. (2019)~\cite{pendlebury2019tesseract}. These include sampling bias, synthetic generator artifacts, lab-only evaluations lacking operational realism, and unfair baseline feature representations. Additionally, as graph networks grow deeper, preserving raw node attributes requires residual skip-connections (GCNII, Chen et al., 2020)~\cite{chen2020simple} to prevent over-smoothing and gradient decay.
 
-In this thesis, we build upon the principles of Heterogeneous Graph Attention Networks to engineer \textbf{CertGraph}, introducing relation-specific multi-head attention alongside crucial additive residual skip-connections necessary to preserve configuration attributes across asymmetric enterprise identity topologies.
+In this thesis, we build on Heterogeneous Graph Attention Networks to construct \textbf{CertGraph}, adding relation-specific multi-head attention alongside additive residual skip-connections to preserve configuration attributes across directed identity topologies.
 
 \section{Active Directory Architecture and Cryptographic Primitives}
 To establish the technical foundation for our attack graph formulation, we examine the core internal mechanisms of Active Directory.
@@ -175,8 +175,8 @@ ESC7 & Insecure CA Permissions & \texttt{ManageCA} or \texttt{ManageCertificates
 ESC8 & HTTP Enrollment Relay & NTLM authentication enabled on Web Enrollment HTTP endpoints & Coerced NTLM relay from DC to obtain DC certificate \\
 ESC9 & Missing Security Ext. & \texttt{CT\_FLAG\_NO\_SECURITY\_EXTENSION} enabled on template & UPN spoofing bypasses strong mapping without PAC check \\
 ESC10 & Weak Certificate Mapping & Weak UPN/DNS mapping registry keys on Domain Controllers (pre-KB5014754) & Account takeover via unverified X.509 mapping syntax \\
-ESC11 & Insecure RPC Interface & RPC enrollment endpoint (MS-ICPR) lacking packet privacy (Heiniger 2023) & Relays NTLM to RPC enrollment interface \\
-ESC12 & CA Interface Relay Abuse & ICertPassage / RPC enrollment interface abuse (Knobloch 2023) & Coerced NTLM relay to CA RPC interface yielding rogue certificate \\
+ESC11 & Insecure RPC Interface & RPC enrollment endpoint (MS-ICPR) lacking packet privacy (Heiniger 2023) & Coerced NTLM relay to CA RPC interface yielding rogue certificate \\
+ESC12 & Shellcode / YubiHSM Key Extraction & Cleartext session keys or driver flaw in CA hardware security module (Knobloch 2023) & Unprivileged access to CA host enables extracting private key material without audit logs \\
 ESC13 & Issuance Policy Link & \texttt{msPKI-Certificate-Policy} OID maps to Tier-0 security group & Injects Tier-0 group SID into Kerberos PAC token \\
 ESC14 & altSecurityIdentities Hijack & Insecure write permissions over user \texttt{altSecurityIdentities} attribute & Links arbitrary victim certificates to attacker account \\
 ESC15 & EKUwu (CVE-2024-49019) & Schema Version 1 template allows custom CSR application policy (Bollinger 2024) & Injects Client Authentication EKU into non-auth templates \\
