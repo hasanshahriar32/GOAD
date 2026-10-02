@@ -210,7 +210,7 @@ In contrast, the included vectors (*ESC1, ESC2, ESC3, ESC4, ESC9, ESC13*) repres
 
 
 #figure(
-  image("figures/esc13_attack_path_diagram.png", width: 90%),
+  image("figures/esc13_attack_path_diagram.png", width: 100%),
   caption: [Two-hop ESC13 privilege escalation attack path, showing the chain from an unprivileged user through enrollment permissions and issuance policy OID linkage to high-value domain administrative group tokens.],
 ) <fig:esc13_path>
 
