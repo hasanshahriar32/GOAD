@@ -58,10 +58,12 @@ t_{\text{corr}} = \frac{t_{\text{std}}}{1.50}, \quad \text{with } \nu = K - 1 = 
 \begin{table}[ht]
 \centering
 \small
-\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{1.2}
 \caption{5-Fold Cross-Validation Performance Across 7 Evaluated Models on 700 Enterprise Domains (Reporting Standard and Nadeau-Bengio Corrected $p$-values vs CertGraph).}
 \label{tab:cv_results}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l c c c c c}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l c c c c c}
 \toprule
 \textbf{Model Architecture} & \textbf{Macro-F1} & \textbf{Accuracy} & \textbf{Std $p$-val} & \textbf{Corr $p$-val} & \textbf{Significance} \\
 \midrule
@@ -73,7 +75,8 @@ Flat MLP (Features Only) & $0.8600 \pm 0.0130$ & $0.8643 \pm 0.0118$ & $2.62 \ti
 Flat RF (Features Only) & $0.8384 \pm 0.0057$ & $0.8443 \pm 0.0051$ & $1.32 \times 10^{-6}$ & $6.66 \times 10^{-6}$ & $p < 10^{-5}$ \\
 Rule-Based (Certipy Heuristic) & $0.7791 \pm 0.0247$ & $0.8143 \pm 0.0205$ & $6.33 \times 10^{-5}$ & $3.12 \times 10^{-4}$ & $p < 10^{-3}$ \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 \begin{figure}[t]
@@ -148,10 +151,12 @@ Under heavy class imbalance, traditional Accuracy is dominated by the majority c
 \begin{table}[ht]
 \centering
 \small
-\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{1.2}
 \caption{Model Performance and Calibration Under Realistic Enterprise Class Imbalance (96.0\% Safe Base Rate, $N = 2{,}000$ Templates).}
 \label{tab:imbalanced_results}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l c c c c c c}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l c c c c c c}
 \toprule
 \textbf{Model Architecture} & \textbf{PR-AUC} & \textbf{Macro-F1} & \textbf{Precision} & \textbf{Recall} & \textbf{ECE} & \textbf{Brier Score} \\
 \midrule
@@ -163,7 +168,8 @@ Flat MLP (Features Only) & $0.8240$ & $0.8125$ & $0.7950$ & $0.8310$ & $0.0915$ 
 Flat RF (Features Only) & $0.7985$ & $0.7850$ & $0.7620$ & $0.8100$ & $0.1140$ & $0.0785$ \\
 Rule-Based (Certipy Heuristic) & $0.7250$ & $0.7180$ & $0.6840$ & $0.7560$ & --- & $0.1120$ \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 As shown in Table~\ref{tab:imbalanced_results}, CertGraph maintains remarkable stability under extreme base-rate skew, achieving $\text{PR-AUC} = 0.9982$ and $\text{Macro-F1} = 0.9941$. Crucially, CertGraph achieves an Expected Calibration Error of only $\mathbf{0.0142}$ and a Brier Score of $\mathbf{0.0031}$, confirming that the predicted Softmax probabilities correspond directly to true empirical exploitability likelihoods. In sharp contrast, flat feature models suffer significant calibration degradation ($\text{ECE} > 0.09$, Precision dropping to $0.7950$), generating frequent false alarms that overwhelm security operations teams when benign samples heavily dominate the prior.
@@ -175,10 +181,12 @@ To isolate the contribution of each architectural component within CertGraph, we
 \begin{table}[ht]
 \centering
 \small
-\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{1.2}
 \caption{Systematic Architectural Ablation Study of CertGraph Components (Reporting Standard and Nadeau-Bengio Corrected $p$-values vs Full CertGraph).}
 \label{tab:ablation_results}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l c c c c c}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l c c c c c}
 \toprule
 \textbf{Architecture Variant} & \textbf{Macro-F1} & \textbf{$\Delta$ vs Full} & \textbf{Std $p$-val} & \textbf{Corr $p$-val} & \textbf{Significance} \\
 \midrule
@@ -187,7 +195,8 @@ Single-Head Attention ($K = 1$) & $1.0000 \pm 0.0000$ & $+0.0014$ & $0.3739$ & $
 No Graph Context (Features Only) & $0.8600 \pm 0.0130$ & $-0.1386$ & $2.62 \times 10^{-5}$ & $1.30 \times 10^{-4}$ & $p < 10^{-3}$ \\
 \textbf{No Skip Connections ($W_{\text{skip}} = 0$)} & $\mathbf{0.4768 \pm 0.0532}$ & $\mathbf{-0.5218}$ & $\mathbf{1.31 \times 10^{-6}}$ & $\mathbf{6.61 \times 10^{-6}}$ & $\bm{p < 10^{-5}}$ \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 \begin{figure}[t]
