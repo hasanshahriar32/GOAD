@@ -124,24 +124,30 @@ def main():
 
     im = ax.imshow(mean_feats, cmap="YlOrRd", aspect="auto", vmin=0, vmax=1)
     ax.set_xticks(range(TEMPLATE_FEATURE_DIM))
-    ax.set_xticklabels(TEMPLATE_FEATURE_NAMES, rotation=45, ha="right", fontsize=9)
+    ax.set_xticklabels(TEMPLATE_FEATURE_NAMES, rotation=40, ha="right", fontsize=12, fontweight="bold")
     ax.set_yticks(range(NUM_CLASSES))
-    ax.set_yticklabels(ESC_CLASSES, fontsize=11)
+    ax.set_yticklabels(ESC_CLASSES, fontsize=12.5, fontweight="bold")
 
-    # Annotate cells
+    # Annotate cells with bold, large text
     for i in range(NUM_CLASSES):
         for j in range(TEMPLATE_FEATURE_DIM):
             val = mean_feats[i, j]
             color = "white" if val > 0.5 else "black"
-            ax.text(j, i, f"{val:.2f}", ha="center", va="center", color=color, fontsize=8)
+            ax.text(j, i, f"{val:.2f}", ha="center", va="center", color=color, fontsize=11.5, fontweight="bold")
 
-    plt.colorbar(im, ax=ax, label="Mean Feature Value")
-    ax.set_title("Template Feature Distribution by ESC Class", fontsize=14, fontweight="bold", pad=15)
+    cbar = plt.colorbar(im, ax=ax)
+    cbar.set_label("Mean Feature Value", fontsize=12.5, fontweight="bold", labelpad=10)
+    cbar.ax.tick_params(labelsize=11)
+    ax.set_title("Template Feature Distribution by ESC Class", fontsize=15, fontweight="bold", pad=15)
     plt.tight_layout()
     heatmap_path = os.path.join(RESULTS_DIR, "feature_heatmap.png")
-    plt.savefig(heatmap_path, dpi=150, bbox_inches="tight")
+    plt.savefig(heatmap_path, dpi=300, bbox_inches="tight")
+    # Also save directly to thesis_paper figures directory
+    paper_heatmap_path = "/home/hs32/Desktop/GOAD/thesis_paper/figures/feature_heatmap.png"
+    plt.savefig(paper_heatmap_path, dpi=300, bbox_inches="tight")
     plt.close()
     print(f"  Saved: {heatmap_path}")
+    print(f"  Saved: {paper_heatmap_path}")
 
     # ── 5. Label Leakage Audit ──
     print("\n[5/5] Label leakage audit — can topology alone reveal the label?")

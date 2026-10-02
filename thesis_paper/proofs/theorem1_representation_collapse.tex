@@ -21,7 +21,11 @@ Let $G = (V, E, \mathcal{T}_V, \mathcal{T}_E)$ be a directed heterogeneous multi
     \end{equation}
     where $W_{\text{skip}}^{(l)} \in \mathbb{R}^{d_l \times d_{l-1}}$ has minimum singular value $\sigma_{\min}(W_{\text{skip}}^{(l)}) > 0$, the Jacobian of the representation with respect to the initial input features satisfies:
     \begin{equation}
-    \left\| \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right\| \ge \prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) > 0
+    \sigma_{\min} \left( \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right) \ge \prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|
+    \end{equation}
+    where $\|\mathcal{J}_{\text{graph}}(v)\| \le L_\sigma^L \alpha_{\max} \prod_{l=1}^L \|W^{(l)}\|$ bounds the cyclical feedback gradient. When $G$ contains no self-directed cycles of length $\le L$ involving $v$, $\mathcal{J}_{\text{graph}}(v) = \mathbf{0}$, yielding the exact lower bound $\prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) > 0$. Under the spectral condition $\prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) > \|\mathcal{J}_{\text{graph}}(v)\|$, input feature sensitivity is strictly preserved:
+    \begin{equation}
+    \left\| \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right\| \ge \prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\| > 0
     \end{equation}
     guaranteeing that input feature sensitivity does not vanish across message-passing layers.
 \end{enumerate}
@@ -68,18 +72,39 @@ Taking the Jacobian of $\tilde{h}_v^{(L)}$ with respect to $x_v$:
 \end{equation}
 where $\mathcal{J}_{\text{graph}}(v) = \sum_{l=1}^L \left( \prod_{k=l+1}^L W_{\text{skip}}^{(k)} \right) \frac{\partial h_v^{(l)}}{\partial x_v}$ represents the indirect gradient flowing through cyclical graph paths (e.g., $v \to u \to v$).
 
-By the reverse triangle inequality for operator norms:
+By Weyl's perturbation inequality for singular values (Horn \& Johnson, 2012):
 \begin{equation}
-\left\| \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right\| \ge \left\| \prod_{k=1}^L W_{\text{skip}}^{(k)} \right\| - \|\mathcal{J}_{\text{graph}}(v)\|
+\sigma_{\min} \left( \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right) \ge \sigma_{\min} \left( \prod_{k=1}^L W_{\text{skip}}^{(k)} \right) - \|\mathcal{J}_{\text{graph}}(v)\|
 \end{equation}
-For the direct skip path, the minimum singular value of the matrix product satisfies:
+Applying the sub-multiplicative property of singular values:
 \begin{equation}
 \sigma_{\min} \left( \prod_{k=1}^L W_{\text{skip}}^{(k)} \right) \ge \prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)})
 \end{equation}
-Assuming full-rank initialization with $\sigma_{\min}(W_{\text{skip}}^{(k)}) > 0$ for all $k \in \{1, \dots, L\}$ (as standard in linear projection layers initialized via Xavier or He uniform initialization), the skip connection establishes a guaranteed, non-vanishing path preserving initial attributes. Following the analytical framework of GCNII (Chen et al., 2020)~\cite{chen2020simple}, this prevents over-smoothing and feature decay, ensuring that:
+
+Now, we explicitly bound the operator norm $\|\mathcal{J}_{\text{graph}}(v)\|$. At layer 1, since there are no self-loops ($v \notin \mathcal{N}(v)$), $\frac{\partial h_v^{(1)}}{\partial x_v} = \mathbf{0}$. For $L = 2$, applying the chain rule to the second aggregation layer yields:
 \begin{equation}
-\left\| \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right\| \ge \prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) > 0
+\frac{\partial h_v^{(2)}}{\partial x_v} = \sum_{r \in \mathcal{R}_{\text{in}}} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(2)} \sigma'\left(z_v^{(2)}\right) W_r^{(2)} \frac{\partial \tilde{h}_u^{(1)}}{\partial x_v}
 \end{equation}
+Expanding $\frac{\partial \tilde{h}_u^{(1)}}{\partial x_v} = \frac{\partial h_u^{(1)}}{\partial x_v} + W_{\text{skip}}^{(1)} \frac{\partial x_u}{\partial x_v}$: since $u \neq v$, $\frac{\partial x_u}{\partial x_v} = \mathbf{0}$, and $\frac{\partial h_u^{(1)}}{\partial x_v} = \sum_{r' \in \mathcal{R}_{\text{in}}} \sum_{w \in \mathcal{N}_{r'}(u)} \alpha_{uw}^{(1)} \sigma'\left(z_u^{(1)}\right) W_{r'}^{(1)} \frac{\partial x_w}{\partial x_v}$. The term $\frac{\partial x_w}{\partial x_v}$ is non-zero ($I_{d_0}$) if and only if $w = v$, corresponding to a 2-hop directed cycle $v \to u \to v$.
+
+We therefore distinguish two topological regimes:
+\begin{enumerate}
+    \item \textbf{Acyclic Receptive Field ($\nexists 2$-cycle $v \rightsquigarrow u \rightsquigarrow v$):} In standard Active Directory permission DAGs (where user accounts possess forward enrollment rights into templates, but certificate templates do not hold outgoing access-control rights over users), no 2-hop cycles terminate back at $v$. Consequently, $\frac{\partial h_u^{(1)}}{\partial x_v} = \mathbf{0}$ for all $u \in \mathcal{N}(v)$, establishing:
+    \begin{equation}
+    \mathcal{J}_{\text{graph}}(v) = \mathbf{0} \implies \left\| \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right\| \ge \prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) > 0
+    \end{equation}
+    The lower bound holds with exact equality.
+    \item \textbf{Cyclical Graphs ($\exists 2$-cycle $v \to u \to v$):} By the sub-multiplicativity of induced operator norms and the Lipschitz continuity of the activation function ($\|\sigma'\| \le L_\sigma = 1$ for ELU/ReLU):
+    \begin{align}
+    \|\mathcal{J}_{\text{graph}}(v)\| &\le L_\sigma^2 \sum_{u \in \mathcal{N}(v)} \alpha_{vu}^{(2)} \alpha_{uv}^{(1)} \|W^{(2)}\| \|W^{(1)}\| \\
+    &\le L_\sigma^2 \left( \max_{u \in \mathcal{N}(v)} \alpha_{uv}^{(1)} \right) \|W^{(2)}\| \|W^{(1)}\| \sum_{u \in \mathcal{N}(v)} \alpha_{vu}^{(2)} \\
+    &= \alpha_{\max}^{(1)} \|W^{(2)}\| \|W^{(1)}\|
+    \end{align}
+    where $\alpha_{\max}^{(1)} = \max_{u \in \mathcal{N}(v)} \alpha_{uv}^{(1)} \le 1$. Under standard spectral scaling or weight regularization where the skip connection singular values satisfy $\prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) > \alpha_{\max}^{(1)} \prod_{l=1}^L \|W^{(l)}\|$, we strictly establish:
+    \begin{equation}
+    \left\| \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right\| \ge \sigma_{\min} \left( \frac{\partial \tilde{h}_v^{(L)}}{\partial x_v} \right) \ge \prod_{k=1}^L \sigma_{\min}(W_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\| > 0
+    \end{equation}
+\end{enumerate}
 
 \paragraph{Part 3: Implication for Active Directory Certificate Template Classification.}
 In Active Directory Certificate Services, certificate template classification is a joint decision requiring both:

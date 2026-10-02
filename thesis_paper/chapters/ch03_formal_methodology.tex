@@ -111,7 +111,7 @@ CertGraph implements an inductive Heterogeneous Graph Attention Network (Hetero-
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.98\textwidth]{figures/certgraph_architecture_diagram.png}
+    \includegraphics[width=\textwidth]{figures/certgraph_architecture_diagram.png}
     \caption{CertGraph end-to-end Hetero-GAT pipeline, detailing input feature encoding, multi-head relational attention layers, additive residual skip-connections, and the multi-class template classification head.}
     \label{fig:certgraph_arch}
 \end{figure}
@@ -162,12 +162,21 @@ h_v^{(l)} &= \operatorname{Dropout} \left( \operatorname{LayerNorm} \left( \bar{
 \end{align}
 
 \subsection{Multi-Class Vulnerability Classification Head}
-CertGraph stacks $L = 2$ heterogeneous graph attention layers. A 2-hop receptive field is mathematically sufficient to resolve all standard ADCS escalation paths:
+CertGraph stacks $L = 2$ heterogeneous graph attention layers. A 2-hop receptive field over the materialized graph is mathematically sufficient to resolve all canonical ADCS escalation paths:
 \begin{enumerate}
     \item $\text{User} \xrightarrow{\text{MemberOf}} \text{Group} \xrightarrow{\text{Enroll}} \text{Template}$ (2 hops).
     \item $\text{User} \xrightarrow{\text{Enroll}} \text{Template} \xrightarrow{\text{LinksPolicy}} \text{Group}$ (2 hops).
     \item $\text{User} \xrightarrow{\text{WriteDacl}} \text{Template} \xrightarrow{\text{PublishedTo}} \text{CA}$ (2 hops).
 \end{enumerate}
+
+\paragraph{Transitive Closure of Group Nesting Hierarchy:}
+A critical architectural consideration in Active Directory security graphs is the handling of deeply nested group hierarchies ($\text{User} \xrightarrow{\text{MemberOf}} \text{Group}_1 \xrightarrow{\text{MemberOf}} \dots \xrightarrow{\text{MemberOf}} \text{Group}_k$). If group relationships were maintained purely as local 1-hop edges, an $L = 2$ layer GNN would be strictly limited to evaluating 2-hop paths, failing to detect privilege escalation for users whose enrollment rights derive from groups nested at depth $k > 1$. 
+
+To address this without increasing network depth (which would induce severe over-smoothing and gradient attenuation across sparse security graphs), CertGraph pre-expands all nested group memberships via \textbf{transitive closure materialization} during graph extraction. Following the operational semantics of the Windows Security subsystem (specifically, the Local Security Authority's evaluation of the \texttt{tokenGroups} attribute) and production graph auditing tools (such as BloodHound), our ingestion pipeline computes the reflexive transitive closure of all \texttt{MemberOf} relations prior to model ingestion:
+\begin{equation}
+E_{\text{MemberOf}}^* = \{(u, \text{MemberOf}, g) \mid \exists \text{ path } u \xrightarrow{\text{MemberOf}^+} g \text{ in } G\}
+\end{equation}
+By replacing raw nested edges with their transitive closure $E_{\text{MemberOf}}^*$, every effective group membership is collapsed into a direct 1-hop relation between the user and all ancestor groups. Consequently, $L = 2$ layers provide a comprehensive receptive field: Hop 1 resolves effective principal permissions and transitive group memberships, while Hop 2 captures template enrollment, issuance policy mapping, and CA publication edges. If transitive closure is omitted, path detection is strictly bounded by the network depth $L = 2$.
 
 Following the second message-passing layer, we isolate the final latent representation of the target certificate template $h_t^{(L)} \in \mathbb{R}^{64}$. This embedding is forwarded to a two-layer Multi-Layer Perceptron (MLP) classification head:
 \begin{align}

@@ -107,7 +107,7 @@ The augmented relational set $tilde(cal(T))_E = cal(T)_E union cal(T)_E^(-1)$ co
 CertGraph implements an inductive Heterogeneous Graph Attention Network (Hetero-GAT). Unlike homogeneous GNNs that collapse entity distinctions into a single latent space, CertGraph maintains type-specific linear projections and relation-specific multi-head attention mechanisms.
 
 #figure(
-  image("figures/certgraph_architecture_diagram.png", width: 90%),
+  image("figures/certgraph_architecture_diagram.png", width: 100%),
   caption: [CertGraph end-to-end Hetero-GAT pipeline, detailing input feature encoding, multi-head relational attention layers, additive residual skip-connections, and the multi-class template classification head.],
 ) <fig:certgraph_arch>
 
@@ -156,11 +156,18 @@ h_v^((l)) &= op("Dropout") ( op("LayerNorm") ( macron(h)_v^((l)) ), p = 0.2 ) $
 
 === Multi-Class Vulnerability Classification Head
 
-CertGraph stacks $L = 2$ heterogeneous graph attention layers. A 2-hop receptive field is mathematically sufficient to resolve all standard ADCS escalation paths:
+CertGraph stacks $L = 2$ heterogeneous graph attention layers. A 2-hop receptive field over the materialized graph is mathematically sufficient to resolve all canonical ADCS escalation paths:
 
 + $"User" limits(arrow.r)^("MemberOf)" "Group" limits(arrow.r)^("Enroll)" "Template"$ (2 hops).
 + $"User" limits(arrow.r)^("Enroll)" "Template" limits(arrow.r)^("LinksPolicy)" "Group"$ (2 hops).
 + $"User" limits(arrow.r)^("WriteDacl)" "Template" limits(arrow.r)^("PublishedTo)" "CA"$ (2 hops).
+
+*Transitive Closure of Group Nesting Hierarchy:*
+A critical architectural consideration in Active Directory security graphs is the handling of deeply nested group hierarchies ($"User" limits(arrow.r)^("MemberOf") "Group"_1 limits(arrow.r)^("MemberOf") dots limits(arrow.r)^("MemberOf") "Group"_k$). If group relationships were maintained purely as local 1-hop edges, an $L = 2$ layer GNN would be strictly limited to evaluating 2-hop paths, failing to detect privilege escalation for users whose enrollment rights derive from groups nested at depth $k > 1$.
+
+To address this without increasing network depth (which would induce severe over-smoothing and gradient attenuation across sparse security graphs), CertGraph pre-expands all nested group memberships via *transitive closure materialization* during graph extraction. Following the operational semantics of the Windows Security subsystem (specifically, the Local Security Authority's evaluation of the `tokenGroups` attribute) and production graph auditing tools (such as BloodHound), our ingestion pipeline computes the reflexive transitive closure of all `MemberOf` relations prior to model ingestion:
+$ E_("MemberOf")^* = {(u, "MemberOf", g) mid(|) exists " path " u limits(arrow.r)^("MemberOf"^+) g " in " G} $
+By replacing raw nested edges with their transitive closure $E_("MemberOf")^*$, every effective group membership is collapsed into a direct 1-hop relation between the user and all ancestor groups. Consequently, $L = 2$ layers provide a comprehensive receptive field: Hop 1 resolves effective principal permissions and transitive group memberships, while Hop 2 captures template enrollment, issuance policy mapping, and CA publication edges. If transitive closure is omitted, path detection is strictly bounded by the network depth $L = 2$.
 
 
 
@@ -263,7 +270,7 @@ A foundational theoretical contribution of this thesis is the formal proof that 
     Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous multigraph. Consider an $L$-layer heterogeneous message-passing neural network where layer $l in {1, dots, L}$ computes hidden representations:
 
 + *Intrinsic Feature Erasure without Skip Connections:* Under pure relational aggregation without skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ the hidden representation $h_v^((1))$ is a function exclusively of adjacent incoming neighbor states. Consequently, for any node $v$ (including certificate templates $t in V_("Template")$), the gradient of the immediate hidden state with respect to its own initial configuration vector $x_v$ vanishes: $ (diff h_v^((1)))/(diff x_v) = bold(0) in bb(R)^(d_1 times d_0) $ causing complete erasure of intrinsic configuration attributes from the primary state representation. For source-only nodes where $d_("in")(v) = 0$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
-+ *Guaranteed Gradient Lower Bound via Residual Skips:* Introducing parameterized residual skip connections $tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1))$ guarantees that the Jacobian of the representation with respect to the initial input features satisfies: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ where $sigma_(min)(W_("skip")^((k))) > 0$ is the minimum singular value of $W_("skip")^((k))$, establishing a strictly positive lower bound that prevents attribute decay across message-passing hops.
++ *Guaranteed Gradient Lower Bound via Residual Skips:* Introducing parameterized residual skip connections $tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1))$ guarantees that the Jacobian of the representation with respect to the initial input features satisfies: $ sigma_(min) ( (diff tilde(h)_v^((L)))/(diff x_v) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - ||cal(J)_("graph")(v)|| > 0 $ where $||cal(J)_("graph")(v)|| <= L_sigma^L alpha_(max) product_(l=1)^L ||W^((l))||$ bounds cyclical feedback gradients. When the receptive field contains no self-directed cycles of length $<= L$, $cal(J)_("graph")(v) = bold(0)$, yielding the exact lower bound $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0$, preventing attribute decay across message-passing hops.
 
 
   ]

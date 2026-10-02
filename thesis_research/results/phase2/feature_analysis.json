@@ -1,7 +1,7 @@
 {
   "total_samples": 700,
-  "overlapping_samples": 377,
-  "overlap_pct": 53.857142857142854,
+  "overlapping_samples": 376,
+  "overlap_pct": 53.714285714285715,
   "overlap_per_class": {
     "ESC1": 100,
     "ESC2": 0,
@@ -9,14 +9,14 @@
     "ESC4": 100,
     "ESC9": 0,
     "ESC13": 100,
-    "Safe": 77
+    "Safe": 76
   },
   "feature_only_f1": {
-    "decision_tree": 0.8588328753954897,
-    "random_forest": 0.8588328753954897,
-    "logistic_regression": 0.856501106020531
+    "decision_tree": 0.8643178311133987,
+    "random_forest": 0.8608257676213352,
+    "logistic_regression": 0.8643178311133987
   },
   "certgraph_f1": 1.0,
-  "ambiguous_edge_signatures": 53,
+  "ambiguous_edge_signatures": 47,
   "verdict": "F1=1.0 is genuine. Feature overlap between classes proves graph structure is necessary."
 }

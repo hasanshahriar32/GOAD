@@ -12,6 +12,7 @@ import numpy as np
 def main():
     research_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
     results_dir = os.path.join(research_root, "results", "phase2")
+    paper_fig_dir = "/home/hs32/Desktop/GOAD/thesis_paper/figures"
     json_path = os.path.join(results_dir, "tool_comparison_results.json")
     
     if not os.path.exists(json_path):
@@ -25,41 +26,66 @@ def main():
     datasets = list(results.keys())  # ["Synthetic", "ADSynth (Realistic)"]
     tools = ["Certipy", "BloodHound", "CertGraph"]
     
-    # Color palette
+    # Modern publication color palette
     colors = {
-        "Certipy": "#d9534f",      # Red-ish
-        "BloodHound": "#f0ad4e",   # Orange-ish
-        "CertGraph": "#5cb85c"     # Green-ish
+        "Certipy": "#dc2626",      # Vibrant red
+        "BloodHound": "#d97706",   # Amber / Orange
+        "CertGraph": "#1d4ed8"     # Deep primary blue
     }
     
-    # Plot 1: F1-Scores
-    fig, ax = plt.subplots(figsize=(8, 5))
+    plt.style.use('default')
+    plt.rcParams.update({
+        'figure.facecolor': '#ffffff',
+        'axes.facecolor': '#ffffff',
+        'savefig.facecolor': '#ffffff',
+        'text.color': '#111827',
+        'axes.labelcolor': '#1f2937',
+        'xtick.color': '#374151',
+        'ytick.color': '#374151',
+        'font.family': 'sans-serif',
+        'font.size': 11.5,
+        'axes.edgecolor': '#9ca3af',
+        'axes.linewidth': 1.1,
+    })
+
+    # Plot: F1-Scores - Wider canvas & large typography
+    fig, ax = plt.subplots(figsize=(11.0, 5.6), dpi=300)
     x = np.arange(len(datasets))
-    width = 0.25
+    width = 0.24
 
     for i, tool in enumerate(tools):
         f1_scores = [results[ds][tool]["macro_f1"] for ds in datasets]
-        ax.bar(x + i*width, f1_scores, width, label=tool, color=colors[tool], edgecolor="black", alpha=0.85)
+        ax.bar(x + i*width, f1_scores, width, label=tool, color=colors[tool],
+               edgecolor="#1f2937", linewidth=1.2, alpha=0.9)
 
-    ax.set_ylabel("Macro F1-Score", fontsize=12, fontweight="bold")
-    ax.set_title("Vulnerability Classification Performance (F1-Score)", fontsize=13, fontweight="bold", pad=15)
+    ax.set_ylabel("Macro F1-Score", fontsize=13, fontweight="bold", labelpad=10)
+    ax.set_title("Vulnerability Classification Performance Across Tools and Domain Topologies",
+                 fontsize=14, fontweight="bold", pad=16)
     ax.set_xticks(x + width)
-    ax.set_xticklabels(datasets, fontsize=11, fontweight="bold")
-    ax.set_ylim(0.5, 1.05)
-    ax.grid(axis="y", linestyle="--", alpha=0.7)
-    ax.legend(loc="lower left", fontsize=10)
+    ax.set_xticklabels(datasets, fontsize=12.5, fontweight="bold")
+    ax.set_ylim(0.48, 1.12)
+    ax.tick_params(axis='both', which='major', labelsize=11.5)
+    ax.grid(axis="y", linestyle="--", alpha=0.6, color="#e5e7eb")
+    ax.set_axisbelow(True)
+    ax.legend(loc="lower left", fontsize=11.5, frameon=True, facecolor="#ffffff", edgecolor="#d1d5db")
 
     # Annotate bars
     for i, tool in enumerate(tools):
         f1_scores = [results[ds][tool]["macro_f1"] for ds in datasets]
         for idx, score in enumerate(f1_scores):
-            ax.text(idx + i*width, score + 0.01, f"{score:.3f}", ha="center", va="bottom", fontsize=9, fontweight="bold")
+            ax.text(idx + i*width, score + 0.015, f"{score:.3f}",
+                    ha="center", va="bottom", fontsize=11.5, fontweight="bold", color="#111827")
 
     plt.tight_layout()
-    chart_path = os.path.join(results_dir, "tool_comparison_f1.png")
-    plt.savefig(chart_path, dpi=300)
+    chart_paths = [
+        os.path.join(results_dir, "tool_comparison_f1.png"),
+        os.path.join(paper_fig_dir, "tool_comparison_f1.png")
+    ]
+    for cp in chart_paths:
+        os.makedirs(os.path.dirname(cp), exist_ok=True)
+        plt.savefig(cp, dpi=300, bbox_inches='tight')
+        print(f"[✓] Saved comparison chart to: {cp}")
     plt.close()
-    print(f"[✓] Saved comparison chart to: {chart_path}")
 
 if __name__ == "__main__":
     main()

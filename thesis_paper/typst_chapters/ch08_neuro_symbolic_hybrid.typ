@@ -84,7 +84,7 @@ When a symbolic solver queries these Horn clauses against the enterprise multigr
 To harness the speed and inductive pattern discovery of Graph Neural Networks while ensuring deterministic verification of attack paths, we propose a unified *Two-Tier Neuro-Symbolic Architecture*.
 
 #figure(
-  image("figures/neuro_symbolic_pipeline.png", width: 90%),
+  image("figures/neuro_symbolic_pipeline.png", width: 100%),
   caption: [The Two-Tier Neuro-Symbolic Architecture, pairing fast CertGraph GNN screening for risk prioritization with deterministic BloodHound BFS path verification.],
 ) <fig:neuro_pipeline>
 

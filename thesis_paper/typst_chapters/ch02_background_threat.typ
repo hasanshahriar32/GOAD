@@ -146,7 +146,7 @@ Every Active Directory object is protected by a *Security Descriptor* containing
 Active Directory Certificate Services (ADCS) is an integrated Windows role that allows an organization to construct an internal Public Key Infrastructure (PKI). ADCS comprises several core architectural components:
 
 #figure(
-  image("figures/adcs_attack_graph_schema.png", width: 90%),
+  image("figures/adcs_attack_graph_schema.png", width: 100%),
   caption: [Heterogeneous Active Directory Certificate Services (ADCS) Graph Schema, illustrating relations between security principals (Users, Computers, Groups), Certificate Templates, and Enterprise Certificate Authorities.],
 ) <fig:adcs_schema>
 
@@ -185,7 +185,7 @@ SpecterOps and subsequent security researchers categorized common ADCS misconfig
     [ESC9], [Missing Security Ext.], [`CT_FLAG_NO_SECURITY_EXTENSION` enabled on template], [UPN spoofing bypasses strong mapping without PAC check],
     [ESC10], [Weak Certificate Mapping], [Weak UPN/DNS mapping registry keys on Domain Controllers (pre-KB5014754)], [Account takeover via unverified X.509 mapping syntax],
     [ESC11], [Insecure RPC Interface], [RPC enrollment endpoint (MS-ICPR) lacking packet privacy (Heiniger 2023)], [Relays NTLM to RPC enrollment interface],
-    [ESC12], [CA Interface Relay Abuse], [ICertPassage / RPC enrollment interface abuse (Knobloch 2023)], [Coerced NTLM relay to CA RPC interface yielding rogue certificate],
+    [ESC12], [Shellcode / YubiHSM Key Extraction], [Cleartext session keys or driver flaw in CA hardware security module (Knobloch 2023)], [Unprivileged access to CA host enables extracting private key material without audit logs],
     [ESC13], [Issuance Policy Link], [`msPKI-Certificate-Policy` OID maps to Tier-0 security group], [Injects Tier-0 group SID into Kerberos PAC token],
     [ESC14], [altSecurityIdentities Hijack], [Insecure write permissions over user `altSecurityIdentities` attribute], [Links arbitrary victim certificates to attacker account],
     [ESC15], [EKUwu (CVE-2024-49019)], [Schema Version 1 template allows custom CSR application policy (Bollinger 2024)], [Injects Client Authentication EKU into non-auth templates],
@@ -193,6 +193,20 @@ SpecterOps and subsequent security researchers categorized common ADCS misconfig
 ],
   caption: [Comprehensive Comparative Taxonomy of ADCS Privilege Escalation Vectors (ESC1--ESC15).],
 ) <tab:esc_taxonomy>
+
+== Target Space Scoping: Inclusion and Exclusion Rationale <sec:esc_scoping>
+
+While @tab:esc_taxonomy enumerates all 15 historically documented escalation classes, our machine-learning auditing target space is intentionally scoped to 7 mutually exclusive primary classes:
+$ cal(C) = {"Safe", "ESC1", "ESC2", "ESC3", "ESC4", "ESC9", "ESC13"} $
+
+To ensure methodological clarity, we explicitly detail the operational and architectural rationale governing the exclusion of the remaining nine vectors:
++ *Template-Centric Access Topology vs. CA-Level Misconfigurations (ESC5, ESC6, ESC7):* CertGraph is formulated to evaluate discretionary authorization paths terminating at individual certificate template nodes ($t in V_("Template")$). In contrast, ESC5, ESC6, and ESC7 represent server-wide Certification Authority or container-level misconfigurations. ESC6 represents a single registry toggle (`EDITF_ATTRIBUTE_SUBJECTALTNAME2`) applied to the CA service itself, while ESC5 and ESC7 involve DACL permissions over the CA directory object or PKI enrollment services container (`CN=Public Key Services`). These are trivially audited via direct LDAP attribute inspection and do not require multi-hop relational path reasoning over template subgraphs.
++ *Network Protocol Relay vs. Directory Graph Topology (ESC8, ESC11):* ESC8 (HTTP Web Enrollment relay) and ESC11 (MS-ICPR RPC interface coercion) are transient network protocol-level relay attacks. Their exploitability is dictated by runtime network configurations (e.g., whether NTLM authentication is enabled on IIS endpoints, whether RPC packet privacy is enforced, and network perimeter reachability). Because they do not depend on Active Directory identity graph topology or template issuance policies, they reside outside the scope of static identity graph auditing.
++ *Host-Level Registry Configurations and Endpoint Hardware (ESC10, ESC12):* ESC10 involves legacy registry mapping keys on Domain Controllers (pre-KB5014754 certificate-to-account mapping modes), which is a host-level operating system configuration rather than a directory graph relation. Similarly, ESC12 represents physical or driver-level hardware security module key extraction (e.g., cleartext session keys in YubiHSM memory), which is an endpoint hardware vulnerability with zero directory graph representation.
++ *User-Object DACL Hijacking vs. Certificate Issuance (ESC14):* ESC14 represents arbitrary write permissions over a target victim's `altSecurityIdentities` attribute. While this allows account takeover by mapping a rogue certificate, it is structurally identical to standard Active Directory object hijacking (e.g., `GenericAll` over a user account) rather than an ADCS template issuance flaw.
++ *Endpoint CSR Parser Vulnerabilities (ESC15 / CVE-2024-49019):* ESC15 (EKUwu) is an implementation-specific parser vulnerability in legacy Schema Version 1 templates that allows custom application policies to be embedded within client-side CSRs. Because it represents a client-side parser bug rather than an architectural access-control permission path, it is addressed by software patch KB5034127 rather than graph reachability analysis.
+
+In contrast, the included vectors (*ESC1, ESC2, ESC3, ESC4, ESC9, ESC13*) represent the complete canonical suite of _template-centric, authorization-driven privilege escalation vectors_ whose discovery fundamentally demands resolving the joint interaction between multi-hop identity graph paths and certificate template configuration flags.
 
 
 #figure(

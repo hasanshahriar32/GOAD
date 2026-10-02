@@ -25,7 +25,7 @@ As illustrated in Figure~\ref{fig:goad_topology}, the multi-forest architecture 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.92\textwidth]{figures/goad_forest_topology.png}
+    \includegraphics[width=\textwidth]{figures/goad_forest_topology.png}
     \caption{Architecture and trust relationship schema of the Game of Active Directory (GOAD) multi-forest lab environment, detailing domain controllers, member servers (including the ADCS Certificate Authority hosted on \texttt{SRV03 - braavos}), and cross-forest authentication links.}
     \label{fig:goad_topology}
 \end{figure}
@@ -100,12 +100,12 @@ In scenario \texttt{HN\_ESC1}, a template was configured with the dangerous flag
 
 The full complexity of transitive compromise chains across GOAD is visualized in Figure~\ref{fig:goad_paths}. From unprivileged workstations and compromised user credentials, adversaries execute multi-stage attacks chaining Kerberoasting, NTLM relaying, and ADCS misconfigurations (ESC1, ESC2, ESC3, ESC6, ESC8) to cross domain trusts and compromise root enterprise domain controllers.
 
-\begin{figure}[ht]
+\begin{sidewaysfigure}
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/goad_attack_paths.png}
+    \includegraphics[width=0.92\textheight]{figures/goad_attack_paths.png}
     \caption{End-to-end multi-hop compromise and privilege escalation attack graph across the GOAD domain infrastructure, illustrating how unprivileged foothold credentials traverse ADCS certificate misconfigurations (ESC1--ESC8), Kerberos delegations, and inter-domain trusts to achieve enterprise domain dominance.}
     \label{fig:goad_paths}
-\end{figure}
+\end{sidewaysfigure}
 
 \section{Temporal Validation Across Independent Collection Dates}
 A major challenge in machine learning evaluations is sensitivity to temporal environmental drift and collection artifacts. In operational enterprise environments, Active Directory graphs mutate continuously as users log on, temporary sessions expire, and security groups are modified.

@@ -494,7 +494,7 @@ def parse_latex_tables(tex_path, global_table_counter):
         caption = cap_m.group(1) if cap_m else "Table"
         
         # Extract between toprule and (bottomrule or end tabular)
-        body_m = re.search(r"\\toprule(.*?)(?:\\bottomrule|\\end\{(?:tabular|tabularx)\})", raw, re.DOTALL)
+        body_m = re.search(r"\\toprule(.*?)(?:\\bottomrule|\\end\{(?:tabular|tabularx|tabular\*)\})", raw, re.DOTALL)
         if not body_m:
             return ""
             
@@ -549,6 +549,8 @@ def parse_latex_tables(tex_path, global_table_counter):
         return f"\n\n\\par \\textbf{{[[[{table_id}]]]}} \\par\n\n"
 
     new_content = re.sub(r"\\begin\{table\}(?:\[[^\]]*\])?(.*?)\\end\{table\}", replacer, content, flags=re.DOTALL)
+    new_content = re.sub(r"\\begin\{sidewaysfigure\}(?:\[[^\]]*\])?", r"\\begin{figure}[ht]", new_content)
+    new_content = re.sub(r"\\end\{sidewaysfigure\}", r"\\end{figure}", new_content)
     return new_content, tables, global_table_counter
 
 def main():
