@@ -22,6 +22,15 @@
 \emergencystretch=2.5em
 \hfuzz=1pt
 
+% Float placement parameters (prevents deferred figures from queuing up at chapter ends)
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.80}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.70}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+
 % Graphics & Colors
 \RequirePackage{graphicx}
 \RequirePackage{rotating}

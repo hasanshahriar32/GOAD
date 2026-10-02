@@ -79,16 +79,16 @@ Rule-Based (Certipy Heuristic) & $0.7791 \pm 0.0247$ & $0.8143 \pm 0.0205$ & $6.
 }
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.78\textwidth}
+    \begin{subfigure}[b]{0.68\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/confusion_matrix.png}
         \caption{CertGraph 7-Class Confusion Matrix.}
         \label{fig:conf_matrix}
     \end{subfigure}
-    \vspace{0.35cm}
-    \begin{subfigure}[b]{0.92\textwidth}
+    \vspace{0.25cm}
+    \begin{subfigure}[b]{0.86\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/gnn_baselines_comparison.png}
         \caption{GNN Family Comparison.}
@@ -199,7 +199,7 @@ No Graph Context (Features Only) & $0.8600 \pm 0.0130$ & $-0.1386$ & $2.62 \time
 }
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.92\textwidth]{figures/ablation_comparison.png}
     \caption{Ablation study comparison highlighting the performance collapse when residual skip connections are disabled.}
@@ -242,7 +242,7 @@ Rule-Based (Certipy Heuristic) & $0 / 63$ & $0.00\%$ & $[0.0\%, 5.7\%]$ & Static
 \end{tabularx}
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.92\textwidth]{figures/hard_negatives_comparison.png}
     \caption{Zero-shot adversarial evaluation demonstrating the collapse of pure neural models due to shortcut learning compared to symbolic BFS path traversal.}
@@ -261,7 +261,7 @@ The empirical results in Table~\ref{tab:hn_results} establish crucial insights i
 \section{Attention Weight Explainability and Graph Attribution}
 To analyze what CertGraph learns internally, we inspected the learned multi-head attention weights $\alpha_{vu}^{(k, r)}$ across the 2-hop computational subgraph of evaluated templates.
 
-\begin{figure}[t]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=0.95\textwidth]{figures/attention_explainability.png}
     \caption{Localized 2-hop attention weight attribution for an ESC13 template, showing concentrated attention along the valid enrollment and issuance policy path.}
