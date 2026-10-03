@@ -277,17 +277,17 @@ These findings motivate a *Two-Tier Neuro-Symbolic Architecture* that pairs fast
 #set heading(numbering: "1.1")
 
 // HSTU Thesis Heading Specifications
-// Chapter Title (Level 1): 16pt, Bold, Centered
+// Chapter Title (Level 1): 16pt, Bold, Flush Left, Title Case
 #show heading.where(level: 1): it => block(width: 100%)[
-  #set align(center)
+  #set align(left)
   #set text(size: 16pt, weight: "bold")
-  #v(0.8cm)
+  #v(12pt)
   #if it.numbering != none [
     Chapter #counter(heading).display() \
-    #v(0.3cm)
+    #v(6pt)
   ]
   #it.body
-  #v(0.6cm)
+  #v(18pt)
 ]
 
 // Heading 1 / Main Section (Level 2): 14pt, Bold, Flush left
@@ -370,15 +370,15 @@ These findings motivate a *Two-Tier Neuro-Symbolic Architecture* that pairs fast
 #counter(heading).update(0)
 #set heading(numbering: "A.1")
 #show heading.where(level: 1): it => block(width: 100%)[
-  #set align(center)
+  #set align(left)
   #set text(size: 16pt, weight: "bold")
-  #v(0.8cm)
+  #v(12pt)
   #if it.numbering != none [
     Appendix #counter(heading).display() \
-    #v(0.3cm)
+    #v(6pt)
   ]
   #it.body
-  #v(0.6cm)
+  #v(18pt)
 ]
 
 #include "typst_chapters/app_proofs.typ"

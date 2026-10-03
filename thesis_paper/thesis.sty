@@ -79,21 +79,21 @@
 % Headings Formatting (HSTU Thesis Specification)
 \RequirePackage{titlesec}
 
-% Chapter Title: 16pt, Bold, Centered, Title Case
+% Chapter Title: 16pt, Bold, Flush Left, Title Case
 \titleformat{\chapter}[display]
-  {\normalfont\fontsize{16pt}{20pt}\bfseries\centering}
-  {\fontsize{16pt}{20pt}\bfseries\MakeUppercase{\chaptertitlename}\ \thechapter}
-  {10pt}
+  {\normalfont\fontsize{16pt}{20pt}\bfseries\raggedright}
+  {\chaptertitlename\ \thechapter}
+  {6pt}
   {\fontsize{16pt}{20pt}\bfseries}
 
 \titleformat{name=\chapter,numberless}[block]
-  {\normalfont\fontsize{16pt}{20pt}\bfseries\centering}
+  {\normalfont\fontsize{16pt}{20pt}\bfseries\raggedright}
   {}
   {0pt}
   {\fontsize{16pt}{20pt}\bfseries}
 
-\titlespacing*{\chapter}{0pt}{10pt}{22pt}
-\titlespacing*{name=\chapter,numberless}{0pt}{10pt}{22pt}
+\titlespacing*{\chapter}{0pt}{12pt}{18pt}
+\titlespacing*{name=\chapter,numberless}{0pt}{12pt}{18pt}
 
 % Heading 1 (Main Section): 14pt, Bold, Flush left, Title Case
 \titleformat{\section}
