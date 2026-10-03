@@ -11,7 +11,7 @@ The empirical results established across Chapters~\ref{ch:evaluation} and~\ref{c
 This divergence exposes a foundational vulnerability in pure statistical deep learning: \textit{Why do Graph Attention Networks---possessing multi-layer message-passing capabilities---fail so comprehensively to verify graph reachability when evaluated out-of-distribution?}
 
 \subsection{Theoretical Root Cause: The Path-Feature Trade-off}
-The failure of pure GNNs on adversarial identity graphs is rooted in the machine learning phenomenon of \textbf{Shortcut Learning}~\cite{geirhos2020shortcut}. Deep neural networks trained via gradient descent inherently converge toward the simplest, most computationally accessible statistical correlations present in the training distribution that minimize empirical risk.
+The failure of pure GNNs on adversarial identity graphs is rooted in the machine learning phenomenon of \textbf{Shortcut Learning} and spurious correlations~\cite{geirhos2020shortcut,ye2026cleverhans,bell2024pragmatic}. Deep neural networks trained via gradient descent inherently converge toward the simplest, most computationally accessible statistical correlations present in the training distribution that minimize empirical risk.
 
 In Active Directory graphs, verifying whether an exploitable attack path exists requires the neural network to evaluate a multi-hop reachability conjunction:
 \begin{equation}

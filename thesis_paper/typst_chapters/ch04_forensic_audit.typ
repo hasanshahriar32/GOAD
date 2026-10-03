@@ -3,7 +3,7 @@
 
 == The Methodological Crisis of Security Machine Learning
 
-Applied machine learning in computer security is uniquely susceptible to methodological pitfalls and experimental artifacts. In conventional computer vision and natural language processing domains, models learn from human-perceptible patterns (such as textures, shapes, and syntax). In contrast, cybersecurity datasets---particularly those representing enterprise network graphs and identity topologies---consist of high-dimensional, abstract relational structures where human intuition cannot easily detect subtle distribution shifts or hidden correlations.
+Applied machine learning in computer security is uniquely susceptible to methodological pitfalls and experimental artifacts. In conventional computer vision and natural language processing domains, models learn from human-perceptible patterns (such as textures, shapes, and syntax). In contrast, cybersecurity datasets---particularly those representing enterprise network graphs and identity topologies---consist of high-dimensional, abstract relational structures where human intuition cannot easily detect subtle distribution shifts or hidden correlations. This vulnerability directly mirrors the pervasive Clever Hans" effect surveyed by Ye et al. (2026) @ye2026cleverhans and Geirhos et al. (2020) @geirhos2020shortcut, where machine learning models achieve superficial benchmark success by exploiting non-causal statistical artifacts rather than valid domain concepts.
 
 A pervasive pathology in modern security ML literature is the phenomenon of too good to be true" empirical results. When an experimental pipeline produces near-perfect classification metrics (e.g., Macro-F1 $= 1.0000$), researchers are confronted with a critical methodological dilemma:
 
@@ -92,7 +92,7 @@ $ x_("aug") = [x_("Template")  ||  c_1, c_2, c_3, c_4]^T in bb(R)^(14) $
 
 
 #figure(
-  image("figures/feature_heatmap.png", width: 100%),
+  image("figures/feature_heatmap.png", width: 90%),
   caption: [Correlation and separability heatmap of template configuration flags and augmented topological features across ESC vulnerability classes.],
 ) <fig:feature_heatmap>
 
@@ -169,7 +169,7 @@ A Chi-Squared goodness-of-fit test confirmed that the empirical distribution sho
 
 == Methodological Guidelines for Security Graph Learning
 
-Grounding our findings in the security machine learning principles of Arp et al. @arp2022dos, we formulate five methodological guidelines for researchers applying Graph Neural Networks to cybersecurity:
+Interpreted through the pragmatic frames of spurious correlations formalized by Bell and Wang (2024) @bell2024pragmatic, these empirical failures demonstrate that correlation desirability is governed by situated, functional requirements—specifically whether discovered patterns satisfy the pragmatic frames of _relevance_ to actual access control reachability and _generalizability_ under distribution shifts. Grounding our findings in these principles and the security machine learning pitfalls of Arp et al. @arp2022dos, we formulate five methodological guidelines for researchers applying Graph Neural Networks to cybersecurity:
 
 
 + *Mandate Adversarial Trivial Baselines (Arp et al. Pitfall 3):* Before training deep neural networks, evaluate deterministic 1-line heuristics on raw tensor indices and local feature flags. If a trivial rule achieves high accuracy, the dataset contains an information-theoretic leak.

@@ -9,7 +9,7 @@
     Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous multigraph with node type mapping $tau: V arrow.r cal(T)_V$. Let each node $v in V$ have an initial feature vector $x_v = h_v^((0)) in bb(R)^(d_0)$. Consider an $L$-layer heterogeneous message-passing neural network where layer $l in {1, dots, L}$ computes hidden representations:
 
 + *Intrinsic Feature Erasure in Relational Neighborhood Aggregation:* Under pure relational neighborhood aggregation without self-loops or skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ where $cal(N)_r(v) = \{u in V | (u, r, v) in E}$ denotes incoming neighbors under relation $r$, the layer-1 hidden state $h_v^((1))$ is conditionally independent of $x_v$ given $cal(N)(v)$. Consequently: $ (diff h_v^((1)))/(diff x_v) = bold(0) in bb(R)^(d_1 times d_0) $ Moreover, for any source-only node $v$ satisfying $cal(N)_("in")(v) = emptyset$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
-+ *Guaranteed Gradient Lower Bound via Parameterized Residual Skips:* When parameterized residual skip connections are introduced: $ tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1)) $ where $W_("skip")^((l)) in bb(R)^(d_l times d_(l-1))$ has minimum singular value $sigma_(min)(W_("skip")^((l))) > 0$, the Jacobian of the representation with respect to the initial input features satisfies: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ guaranteeing that input feature sensitivity does not vanish across message-passing layers.
++ *Guaranteed Gradient Lower Bound via Parameterized Residual Skips:* When parameterized residual skip connections are introduced: $ tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1)) $ where $W_("skip")^((l)) in bb(R)^(d_l times d_(l-1))$ has minimum singular value $sigma_(min)(W_("skip")^((l))) > 0$, the Jacobian of the representation with respect to the initial input features satisfies: $ sigma_(min) ( (diff tilde(h)_v^((L)))/(diff x_v) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| $ where $\|cal(J)_("graph")(v)|| <= L_sigma^L alpha_(max) product_(l=1)^L \|W^((l))||$ bounds the cyclical feedback gradient. When $G$ contains no self-directed cycles of length $<= L$ involving $v$, $cal(J)_("graph")(v) = bold(0)$, yielding the exact lower bound $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0$. Under the spectral condition $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > \|cal(J)_("graph")(v)||$, input feature sensitivity is strictly preserved: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| > 0 $ guaranteeing that input feature sensitivity does not vanish across message-passing layers.
 
 
   ]
@@ -54,14 +54,23 @@ $ (diff tilde(h)_v^((L)))/(diff x_v) = product_(k=1)^L W_("skip")^((k)) + cal(J)
 
 where $cal(J)_("graph")(v) = sum_(l=1)^L ( product_(k=l+1)^L W_("skip")^((k)) ) (diff h_v^((l)))/(diff x_v)$ represents the indirect gradient flowing through cyclical graph paths (e.g., $v arrow.r u arrow.r v$).
 
-By the reverse triangle inequality for operator norms:
-$ || (diff tilde(h)_v^((L)))/(diff x_v) || >= || product_(k=1)^L W_("skip")^((k)) || - \|cal(J)_("graph")(v)|| $
+By Weyl's perturbation inequality for singular values (Horn & Johnson, 2012):
+$ sigma_(min) ( (diff tilde(h)_v^((L)))/(diff x_v) ) >= sigma_(min) ( product_(k=1)^L W_("skip")^((k)) ) - \|cal(J)_("graph")(v)|| $
 
-For the direct skip path, the minimum singular value of the matrix product satisfies:
+Applying the sub-multiplicative property of singular values:
 $ sigma_(min) ( product_(k=1)^L W_("skip")^((k)) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) $
 
-Assuming full-rank initialization with $sigma_(min)(W_("skip")^((k))) > 0$ for all $k in {1, dots, L}$ (as standard in linear projection layers initialized via Xavier or He uniform initialization), the skip connection establishes a guaranteed, non-vanishing path preserving initial attributes. Following the analytical framework of GCNII (Chen et al., 2020) @chen2020simple, this prevents over-smoothing and feature decay, ensuring that:
-$ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $
+
+Now, we explicitly bound the operator norm $\|cal(J)_("graph")(v)||$. At layer 1, since there are no self-loops ($v not in cal(N)(v)$), $(diff h_v^((1)))/(diff x_v) = bold(0)$. For $L = 2$, applying the chain rule to the second aggregation layer yields:
+$ (diff h_v^((2)))/(diff x_v) = sum_(r in cal(R)_("in")) sum_(u in cal(N)_r(v)) alpha_(v u)^((2)) sigma'(z_v^((2))) W_r^((2)) (diff tilde(h)_u^((1)))/(diff x_v) $
+
+Expanding $(diff tilde(h)_u^((1)))/(diff x_v) = (diff h_u^((1)))/(diff x_v) + W_("skip")^((1)) (diff x_u)/(diff x_v)$: since $u != v$, $(diff x_u)/(diff x_v) = bold(0)$, and $(diff h_u^((1)))/(diff x_v) = sum_(r' in cal(R)_("in")) sum_(w in cal(N)_(r')(u)) alpha_(uw)^((1)) sigma'(z_u^((1))) W_(r')^((1)) (diff x_w)/(diff x_v)$. The term $(diff x_w)/(diff x_v)$ is non-zero ($I_(d_0)$) if and only if $w = v$, corresponding to a 2-hop directed cycle $v arrow.r u arrow.r v$.
+
+We therefore distinguish two topological regimes:
+
++ *Acyclic Receptive Field ($\nexists 2$-cycle $v arrow.squiggly u arrow.squiggly v$):* In standard Active Directory permission DAGs (where user accounts possess forward enrollment rights into templates, but certificate templates do not hold outgoing access-control rights over users), no 2-hop cycles terminate back at $v$. Consequently, $(diff h_u^((1)))/(diff x_v) = bold(0)$ for all $u in cal(N)(v)$, establishing: $ cal(J)_("graph")(v) = bold(0) => || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ The lower bound holds with exact equality.
++ *Cyclical Graphs ($exists 2$-cycle $v arrow.r u arrow.r v$):* By the sub-multiplicativity of induced operator norms and the Lipschitz continuity of the activation function ($\|sigma'|| <= L_sigma = 1$ for ELU/ReLU): $ \|cal(J)_("graph")(v)|| &<= L_sigma^2 sum_(u in cal(N)(v)) alpha_(v u)^((2)) alpha_(u v)^((1)) \|W^((2))|| \|W^((1))|| &<= L_sigma^2 ( max_(u in cal(N)(v)) alpha_(u v)^((1)) ) \|W^((2))|| \|W^((1))|| sum_(u in cal(N)(v)) alpha_(v u)^((2)) &= alpha_(max)^((1)) \|W^((2))|| \|W^((1))|| $ where $alpha_(max)^((1)) = max_(u in cal(N)(v)) alpha_(u v)^((1)) <= 1$. Under standard spectral scaling or weight regularization where the skip connection singular values satisfy $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > alpha_(max)^((1)) product_(l=1)^L \|W^((l))||$, we strictly establish: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= sigma_(min) ( (diff tilde(h)_v^((L)))/(diff x_v) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| > 0 $
+
 
 
 *Part 3: Implication for Active Directory Certificate Template Classification.*
@@ -133,10 +142,10 @@ Given a candidate edge subset $E_("cut") subset.eq E$:
 Because all verification steps complete in deterministic polynomial time with respect to the graph size, $"MPAI" in "NP"$.
 
 *Part 2: Polynomial-Time Reduction from Directed Multiway Cut.*
-While the classical Multiterminal Cut problem on undirected graphs was proven NP-complete for $k >= 3$ by Dahlhaus et al. (1994) @dahlstrm2000multiway (and polynomial-time solvable for $k=2$ via standard min-cut algorithms), enterprise identity attack graphs are directed and asymmetric. We therefore base our reduction on the *Directed Multiway Cut* problem, which was proven NP-complete even for $k >= 2$ by Garg, Vazirani, and Yannakakis (1994) @garg1994multiway:
-#quote[
+While the classical Multiterminal Cut problem on undirected graphs was proven NP-complete for $k >= 3$ by Dahlhaus et al. (1994) @dahlstrm2000multiway (and polynomial-time solvable for $k=2$ via standard min-cut algorithms), enterprise identity attack graphs are directed and asymmetric. We emphasize that while finding an edge cut severing all paths from a single source to a single target is polynomial-time solvable via standard $(S, T)$ min-cut, and prior Active Directory interdiction literature (Guo et al., 2022, 2023) @guo2022practical @guo2023scalable established the W[1]-hardness of single-target _shortest-path_ interdiction, @thm:nphardness proves that complete reachability interdiction across multiple forbidden terminal pairs is NP-hard. We base our reduction on the *Directed Multiway Cut* problem, which was proven NP-complete even for $k >= 2$ by Garg, Vazirani, and Yannakakis (1994) @garg1994multiway:
+\begin{quote}
 *Directed Multiway Cut:* Given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H arrow.r bb(R)^+$, a subset of $k >= 3$ distinct terminal vertices $X = \{x_1, x_2, dots, x_k} subset.eq V_H$, and a cost threshold $W$, does there exist an edge subset $C subset.eq E_H$ with $sum_(e in C) w(e) <= W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i != j$) in the residual graph $H' = (V_H, E_H \ C)$?
-]
+\end{quote}
 
 Given an arbitrary instance $angle.l H = (V_H, E_H), w, X = \{x_1, dots, x_k}, W angle.r$ of the Directed Multiway Cut problem ($k >= 3$), we construct an instance $angle.l G = (V, E), c, cal(P)_("forbidden"), K angle.r$ of MPAI in polynomial time:
 

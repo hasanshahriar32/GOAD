@@ -51,14 +51,19 @@ To guarantee absolute scientific reproducibility, global random seeds were deter
 
 == In-Distribution 5-Fold Cross-Validation
 
-We benchmarked CertGraph against six baseline classifiers across stratified 5-fold cross-validation on the 700 enterprise environments. As noted by Nadeau and Bengio (2003) @nadeau2003inference, standard paired $t$-tests over overlapping cross-validation folds violate sample independence assumptions and can underestimate variance. We report both standard paired $t$-test values and corrected repeated CV statistics across the validation folds.
+We benchmarked CertGraph against six baseline classifiers across stratified 5-fold cross-validation on the 700 enterprise environments. When conducting $K$-fold cross-validation, the training sets across folds overlap significantly (each pair of training sets shares $(K-2)/(K-1)$ of the data), violating the independent sample assumption of the standard Student's $t$-test. As proved by Nadeau and Bengio (2003) @nadeau2003inference, this training-set overlap causes the standard $t$-test to underestimate variance, yielding inflated Type-I error rates. To provide rigorous statistical hypothesis testing, we report both standard paired $t$-test $p$-values ($p_("std")$) and corrected repeated cross-validation statistics ($p_("corr")$) based on the Nadeau-Bengio variance estimator:
+$ hat(sigma)^2_("corr") = ( (1)/(K) + (n_2)/(n_1) ) hat(S)^2 $
+
+where $n_2$ denotes the test fold size and $n_1$ denotes the training fold size. Under our 5-fold cross-validation scheme ($K=5$, $n_2/n_1 = 0.20/0.80 = 0.25$), the standard error is scaled by $sqrt(1/K + n_2/n_1) / sqrt(1/K) = sqrt(0.45 / 0.20) = sqrt(2.25) = 1.50$, yielding the conservative corrected test statistic:
+$ t_("corr") = (t_("std"))/(1.50),   "with " nu = K - 1 = 4 " degrees of freedom." $
+
 
 #figure(
-  text(size: 9pt)[
+  text(size: 9.5pt)[
   #table(
-    columns: (1.8fr, 1.2fr, 1.2fr, 1fr, 1fr, 1fr),
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
     stroke: (x, y) => if y == 0 { (top: 1.2pt + luma(0), bottom: 0.8pt + luma(0)) } else if y == 1 { (bottom: 0.8pt + luma(0)) } else if y == 8 { (bottom: 1.2pt + luma(0)) } else { none },
-    inset: (x: 4pt, y: 4.2pt),
+    inset: (x: 4pt, y: 3.8pt),
     table.header([*Model Architecture*], [*Macro-F1*], [*Accuracy*], [*Std $p$-val*], [*Corr $p$-val*], [*Significance*]),
     [*CertGraph (Hetero-GAT)*], [$bold(0.9986 plus.minus 0.0029)$], [$bold(0.9986 plus.minus 0.0029)$], [---], [---], [_Reference_],
     [Graph-Augmented MLP], [$0.9971 plus.minus 0.0035$], [$0.9971 plus.minus 0.0035$], [$0.6213$], [$0.7396$], [Not Sig.],
@@ -74,13 +79,8 @@ We benchmarked CertGraph against six baseline classifiers across stratified 5-fo
 
 
 #figure(
-  grid(
-    columns: (1fr,),
-    gutter: 14pt,
-    image("figures/confusion_matrix.png", width: 80%),
-    image("figures/gnn_baselines_comparison.png", width: 95%),
-  ),
-  caption: [Empirical classification results: (top) Confusion matrix showing near-perfect diagonal alignment across 7 ESC classes; (bottom) Comparison of GNN architectures confirming the empirical superiority of heterogeneous modeling.],
+  image("figures/confusion_matrix.png", width: 90%),
+  caption: [CertGraph 7-Class Confusion Matrix.],
 ) <fig:conf_matrix>
 
 
@@ -112,25 +112,33 @@ We benchmarked CertGraph against six baseline classifiers across stratified 5-fo
 *Critical Analysis of In-Distribution Findings:*
 
 + *Decisive Superiority Over Static Signatures and Flat ML:* CertGraph outperforms industry signature heuristics (Certipy) by $+28.2%$ in Macro-F1 ($0.9986$ vs $0.7791$) and flat ML by $+16.1%$ ($0.9986$ vs $0.8600$). The signature tool suffers because it inspects template flags in isolation without evaluating authorization path connectivity, generating frequent false positives.
-+ *Statistical Equivalence to Graph-Augmented MLP and Benchmark Saturation:* The comparison between CertGraph and Graph-Augmented MLP yields $p = 0.6213$, confirming that on in-distribution synthetic data, there is no statistically significant difference between a multi-layer GNN and a flat MLP provided with four topological summary counts. Furthermore, the headline score of $0.9986 plus.minus 0.0029$ corresponds to exactly one misclassified template out of 700 ($699/700 = 0.99857$). A 7-node decision tree recovers $0.9928$ (representing approximately 5 errors out of 700), and the single-head attention ablation achieves $1.0000$. Because ground-truth labels in synthetic generators are generated from access-control rules, in-distribution cross-validation primarily evaluates rule recovery on synthesized data rather than generalized security reasoning, necessitating the out-of-distribution hard-negative evaluation in @sec:hard_negatives.
++ *Statistical Equivalence to Graph-Augmented MLP and Benchmark Saturation:* The comparison between CertGraph and Graph-Augmented MLP yields standard $p = 0.6213$ and Nadeau-Bengio corrected $p = 0.7396$, confirming that on in-distribution synthetic data, there is no statistically significant difference between a multi-layer GNN and a flat MLP provided with four topological summary counts. Furthermore, the headline score of $0.9986 plus.minus 0.0029$ corresponds to exactly one misclassified template out of 700 ($699/700 = 0.99857$). A 7-node decision tree recovers $0.9928$ (representing approximately 5 errors out of 700), and the single-head attention ablation achieves $1.0000$. Because ground-truth labels in synthetic generators are generated from access-control rules, in-distribution cross-validation primarily evaluates rule recovery on synthesized data rather than generalized security reasoning, necessitating the out-of-distribution hard-negative evaluation in @sec:hard_negatives.
 + *High Precision Across Core Attack Vectors:* Out of 700 evaluation domains, CertGraph incurred only a single false positive (misclassifying a subtle ESC4 DACL-delegation variant as ESC2) and a single false negative, maintaining $>0.99$ precision and recall across all evaluated classes.
-+ *Architectural Justification: Why GNNs Over CART Trees and Graph-Augmented MLPs:* While a 7-node CART decision tree ($0.9928$ F1) and a Graph-Augmented MLP ($0.9971$ F1) achieve competitive scores on synthetic rule recovery, the heterogeneous GNN architecture is indispensable for real-world enterprise deployment for four fundamental reasons:
-  - _Continuous Latent Embeddings for Downstream Reinforcement Learning:_ A CART tree outputs discrete, uncalibrated leaf partitions that cannot be differentiated or embedded. In contrast, CertGraph maps each template into a dense continuous manifold $h_t^((L)) in bb(R)^(64)$. As demonstrated in @ch:game_theory, these continuous embeddings directly serve as the state-space representation for our Stackelberg MARL defense agent ($pi_theta$) to optimize polynomial-time edge interdiction.
-  - _Inductive Topology vs. Brittle Manual Feature Counts:_ The Graph-Augmented MLP relies on four manually hand-crafted scalar features (e.g., incoming enroll degree, Tier-0 out-degree). If an adversary exploits subtle structural bypasses—such as intermediate organizational unit inheritance, Cross-Forest SID filtering exemptions, or complex group nesting—hand-crafted scalar features fail unless human engineers anticipate and manually program each vector. The GNN learns relational representations inductively directly from multigraph message passing.
-  - _Edge-Level Attention Attribution for SOC Triage:_ Decision trees only provide global attribute thresholds (e.g., `EnrollCount > 0`), offering zero visibility into _which_ specific identity principal or group delegation enables the exploit. CertGraph's learned relational attention coefficients $alpha_(v u)^((k, r))$ explicitly identify the authentic multi-hop authorization chain, providing actionable forensic explanations.
++ *Architectural Justification: Why GNNs Over CART Trees and Graph-Augmented MLPs:* While a 7-node CART decision tree ($0.9928$ F1) and a Graph-Augmented MLP ($0.9971$ F1) achieve competitive scores on synthetic rule recovery, the heterogeneous GNN architecture is indispensable for real-world enterprise deployment for four fundamental reasons: 
 
-== Evaluation Under Realistic Class Imbalance and Enterprise Base Rates <sec:class_imbalance>
+
+
+
+
+=== Evaluation Under Realistic Class Imbalance and Enterprise Base Rates <sec:class_imbalance>
 
 In production corporate directories, certificate template distributions are heavily right-skewed: the vast majority of active templates (> 95%) are configured safely, while true privilege escalation vulnerabilities represent rare anomalies. Evaluating models purely under balanced cross-validation can mask calibration errors and inflated false-alarm rates.
 
-To rigorously benchmark CertGraph under realistic operational conditions, we synthesized an enterprise-scale *Class-Imbalanced Evaluation Benchmark* comprising $N = 2,000$ evaluated templates across 200 directory forests, structured with an extreme *96.0% Safe Base Rate* ($1,920$ benign templates and $80$ vulnerable templates across the 6 attack classes).
+To rigorously benchmark CertGraph under realistic operational conditions, we synthesized an enterprise-scale *Class-Imbalanced Evaluation Benchmark* comprising $N = 2{,}000$ evaluated templates across 200 directory forests, structured with an extreme *96.0% Safe Base Rate*:
+
++ *Safe Templates:* $1{,}920$ benign templates ($96.0%$).
++ *Vulnerable Templates:* $80$ vulnerable templates ($4.0%$), distributed evenly across the 6 attack classes ($approx 13"--"14$ templates each for ESC1, ESC2, ESC3, ESC4, ESC9, and ESC13).
+
+
+
+Under heavy class imbalance, traditional Accuracy is dominated by the majority class and becomes uninformative. We therefore report Precision-Recall Area Under the Curve (*PR-AUC*), Macro-F1, Precision, Recall, *Expected Calibration Error (ECE)* across 10 probability bins, and the *Brier Score* ($(1)/(N) sum_(i=1)^N sum_(c=1)^C (p_(ic) - y_(ic))^2$):
 
 #figure(
-  text(size: 9pt)[
+  text(size: 9.5pt)[
   #table(
-    columns: (1.8fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
     stroke: (x, y) => if y == 0 { (top: 1.2pt + luma(0), bottom: 0.8pt + luma(0)) } else if y == 1 { (bottom: 0.8pt + luma(0)) } else if y == 8 { (bottom: 1.2pt + luma(0)) } else { none },
-    inset: (x: 4pt, y: 4.2pt),
+    inset: (x: 4pt, y: 3.8pt),
     table.header([*Model Architecture*], [*PR-AUC*], [*Macro-F1*], [*Precision*], [*Recall*], [*ECE*], [*Brier Score*]),
     [*CertGraph (Hetero-GAT)*], [$bold(0.9982)$], [$bold(0.9941)$], [$bold(0.9925)$], [$bold(0.9958)$], [$bold(0.0142)$], [$bold(0.0031)$],
     [Graph-Augmented MLP], [$0.9854$], [$0.9782$], [$0.9680$], [$0.9887$], [$0.0385$], [$0.0118$],
@@ -141,10 +149,11 @@ To rigorously benchmark CertGraph under realistic operational conditions, we syn
     [Rule-Based (Certipy Heuristic)], [$0.7250$], [$0.7180$], [$0.6840$], [$0.7560$], [---], [$0.1120$],
   )
 ],
-  caption: [Model Performance and Calibration Under Realistic Enterprise Class Imbalance (96.0% Safe Base Rate, $N = 2,000$ Templates).],
+  caption: [Model Performance and Calibration Under Realistic Enterprise Class Imbalance (96.0% Safe Base Rate, $N = 2{,}000$ Templates).],
 ) <tab:imbalanced_results>
 
-As shown in @tab:imbalanced_results, CertGraph maintains remarkable stability under extreme base-rate skew, achieving PR-AUC of $0.9982$ and Macro-F1 of $0.9941$, with an Expected Calibration Error (ECE) of only $0.0142$ and Brier Score of $0.0031$. Flat feature models suffer substantial calibration breakdown ($"ECE" > 0.09$, Precision dropping to $0.7950$).
+
+As shown in @tab:imbalanced_results, CertGraph maintains remarkable stability under extreme base-rate skew, achieving $"PR-AUC" = 0.9982$ and $"Macro-F1" = 0.9941$. Crucially, CertGraph achieves an Expected Calibration Error of only $bold(0.0142)$ and a Brier Score of $bold(0.0031)$, confirming that the predicted Softmax probabilities correspond directly to true empirical exploitability likelihoods. In sharp contrast, flat feature models suffer significant calibration degradation ($"ECE" > 0.09$, Precision dropping to $0.7950$), generating frequent false alarms that overwhelm security operations teams when benign samples heavily dominate the prior.
 
 == Systematic Architectural Ablation Studies <sec:ablation_results>
 
@@ -153,28 +162,28 @@ To isolate the contribution of each architectural component within CertGraph, we
 #figure(
   text(size: 9.5pt)[
   #table(
-    columns: (auto, 1.3fr, 2fr, 2fr),
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
     stroke: (x, y) => if y == 0 { (top: 1.2pt + luma(0), bottom: 0.8pt + luma(0)) } else if y == 1 { (bottom: 0.8pt + luma(0)) } else if y == 5 { (bottom: 1.2pt + luma(0)) } else { none },
     inset: (x: 4pt, y: 3.8pt),
-    table.header([*Architecture Variant*], [*Macro-F1*], [*$Delta$ vs Full*], [*$p$-value (Paired $t$-test)*]),
-    [*Full CertGraph (Hetero-GAT)*], [$bold(0.9986 plus.minus 0.0029)$], [---], [Reference],
-    [Single-Head Attention ($K = 1$)], [$1.0000 plus.minus 0.0000$], [$+0.0014$], [$0.3739$ (Not Significant)],
-    [No Graph Context (Features Only)], [$0.8600 plus.minus 0.0130$], [$-0.1386$], [$2.62 times 10^(-5)$ ($p < 10^(-4)$)],
-    [*No Skip Connections ($W_("skip") = 0$)*], [$bold(0.4768 plus.minus 0.0532)$], [$bold(-0.5218)$], [$bold(1.31 times 10^(-6))$ ($p < 10^(-5)$)],
+    table.header([*Architecture Variant*], [*Macro-F1*], [*$Delta$ vs Full*], [*Std $p$-val*], [*Corr $p$-val*], [*Significance*]),
+    [*Full CertGraph (Hetero-GAT)*], [$bold(0.9986 plus.minus 0.0029)$], [---], [---], [---], [_Reference_],
+    [Single-Head Attention ($K = 1$)], [$1.0000 plus.minus 0.0000$], [$+0.0014$], [$0.3739$], [$0.5415$], [Not Sig.],
+    [No Graph Context (Features Only)], [$0.8600 plus.minus 0.0130$], [$-0.1386$], [$2.62 times 10^(-5)$], [$1.30 times 10^(-4)$], [$p < 10^(-3)$],
+    [*No Skip Connections ($W_("skip") = 0$)*], [$bold(0.4768 plus.minus 0.0532)$], [$bold(-0.5218)$], [$bold(1.31 times 10^(-6))$], [$bold(6.61 times 10^(-6))$], [$bold(p < 10^(-5))$],
   )
 ],
-  caption: [Systematic Architectural Ablation Study of CertGraph Components.],
+  caption: [Systematic Architectural Ablation Study of CertGraph Components (Reporting Standard and Nadeau-Bengio Corrected $p$-values vs Full CertGraph).],
 ) <tab:ablation_results>
 
 
 #figure(
-  image("figures/ablation_comparison.png", width: 95%),
+  image("figures/ablation_comparison.png", width: 90%),
   caption: [Ablation study comparison highlighting the performance collapse when residual skip connections are disabled.],
 ) <fig:ablation_fig>
 
 
 *Empirical Confirmation of Theorem 1:*
-The most striking result of the ablation suite is the consequence of removing residual skip connections ($W_("skip") = 0$). In standard undirected graph benchmarks (e.g., Cora, Citeseer), omitting skip connections typically causes a minor degradation of $2-5%$. In sharp contrast, on Active Directory identity graphs, removing skip connections triggers a *severe collapse in Macro-F1 from $0.9986$ to $0.4768$* ($p = 1.31 times 10^(-6)$, representing a $>52%$ absolute drop).
+The most striking result of the ablation suite is the consequence of removing residual skip connections ($W_("skip") = 0$). In standard undirected graph benchmarks (e.g., Cora, Citeseer), omitting skip connections typically causes a minor degradation of $2-5%$. In sharp contrast, on Active Directory identity graphs, removing skip connections triggers a *severe collapse in Macro-F1 from $0.9986$ to $0.4768$* (standard $p = 1.31 times 10^(-6)$, Nadeau-Bengio corrected $p = 6.61 times 10^(-6)$, representing a $>52%$ absolute drop).
 
 This empirical collapse directly confirms @thm:representation_preservation: without residual skip connections, a certificate template node aggregates messages exclusively from its incoming neighbors during Layer 1, completely discarding its own initial 10-dimensional configuration feature vector $x_("Template")$ ($diff h_t^((1)) / diff x_t = bold(0)$). Furthermore, low-in-degree principals suffer representation decay across successive message-passing hops. The network loses direct sensitivity to critical configuration flags (such as `ENROLLEE_SUPPLIES_SUBJECT` and Client Authentication EKUs), destroying its ability to differentiate dangerous templates from secure ones. Parameterized skip connections preserve initial attributes and maintain non-vanishing gradient bounds, preventing representation collapse.
 
@@ -195,7 +204,7 @@ To answer this question, we established an out-of-distribution *Zero-Shot Advers
     columns: (1.5fr, 1fr, 1fr, 1fr, 2fr),
     stroke: (x, y) => if y == 0 { (top: 1.2pt + luma(0), bottom: 0.8pt + luma(0)) } else if y == 1 { (bottom: 0.8pt + luma(0)) } else if y == 8 { (bottom: 1.2pt + luma(0)) } else { none },
     inset: (x: 4pt, y: 3.8pt),
-    table.header([*Model Architecture*], [*Safe Count*], [*Accuracy*], [*95% Wilson CI*], [*Observed Behavioral Failure Mode*]),
+    table.header([*Model Architecture*], [*Safe Count*], [*Accuracy*], [*95% Wilson CI*], [*Observed Failure Mode*]),
     [*BloodHound BFS (Symbolic)*], [$bold(53 / 63)$], [$bold(84.13%)$], [$[73.1%, 91.2%]$], [*Verifies path absence via search*],
     [Graph-Augmented MLP], [$18 / 63$], [$28.57%$], [$[18.8%, 40.8%]$], [Weak topological count conditioning],
     [*CertGraph (Hetero-GAT)*], [$bold(1 / 63)$], [$bold(1.59%)$], [$[0.3%, 8.5%]$], [*Shortcut Collapse on Template Flags*],
@@ -210,7 +219,7 @@ To answer this question, we established an out-of-distribution *Zero-Shot Advers
 
 
 #figure(
-  image("figures/hard_negatives_comparison.png", width: 95%),
+  image("figures/hard_negatives_comparison.png", width: 90%),
   caption: [Zero-shot adversarial evaluation demonstrating the collapse of pure neural models due to shortcut learning compared to symbolic BFS path traversal.],
 ) <fig:hn_fig>
 
@@ -221,7 +230,7 @@ The empirical results in @tab:hn_results establish crucial insights into the lim
 
 + *Failure of Pure Neural Models on Hard Negatives:* Despite achieving $0.9986$ F1 in-distribution, CertGraph correctly classified only *1 out of 63* adversarial hard negatives, collapsing to *1.59% accuracy* (95% Wilson score interval: $[0.3%, 8.5%]$). All flat feature models collapsed to *0.00% accuracy* ($[0.0%, 5.7%]$).
 + *Performance and Limitations of the Symbolic Graph Baseline:* In contrast, the symbolic baseline (BloodHound BFS) correctly resolved *84.13%* ($53/63$, 95% Wilson CI: $[73.1%, 91.2%]$) of the adversarial environments. While exact path-reachability would achieve 100% if labels depended solely on reachability, the simplified BFS baseline evaluated primary containment and enrollment edges without evaluating fine-grained Discretionary Access Control List (DACL) permission masks (e.g., `GenericAll` vs write rights on parent containers vs explicit deny ACEs), leading to 10 discrepancies where full access evaluation is required.
-+ *Under-Specification and Shortcut Convergence:* The underlying driver of neural collapse is the well-known machine learning challenge of *under-specification* (Arp et al., 2022 @arp2022dos; Geirhos et al., 2020 @geirhos2020shortcut). In the standard training set of 1,400 environments, templates configured with dangerous flags possessed a valid authorization path 100% of the time. Consequently, the two decision rules---flags $=>$ vulnerable" and path $=>$ vulnerable"---fit the training loss with equal empirical precision. Because inspecting local template flags ($x_("Template")$) requires a simple single-layer linear projection, whereas verifying multi-hop reachability requires coordinating high-order message-passing convolutions, gradient descent naturally converges to the simpler flag-based shortcut.
++ *Under-Specification and Shortcut Convergence:* The underlying driver of neural collapse is the well-known machine learning challenge of *under-specification* and spurious shortcut learning (Arp et al., 2022 @arp2022dos; Geirhos et al., 2020 @geirhos2020shortcut; Ye et al., 2026 @ye2026cleverhans; Bell and Wang, 2024 @bell2024pragmatic). In the standard training set of 1,400 environments, templates configured with dangerous flags possessed a valid authorization path 100% of the time. Consequently, the two decision rules---flags $=>$ vulnerable" and path $=>$ vulnerable"---fit the training loss with equal empirical precision. Because inspecting local template flags ($x_("Template")$) requires a simple single-layer linear projection, whereas verifying multi-hop reachability requires coordinating high-order message-passing convolutions, gradient descent naturally converges to the simpler flag-based shortcut.
 + *Reconciliation with Enterprise Testbeds:* This failure underscores that pure neural models cannot guarantee soundness when evaluated on out-of-distribution counterfactual topologies. As demonstrated in @ch:case_study and formalized in @ch:neuro_symbolic, enterprise false-positive suppression on hardened templates is achieved by deploying CertGraph within the *Two-Tier Neuro-Symbolic Hybrid Architecture*, where fast neural screening is verified by targeted symbolic path deduction.
 
 
@@ -231,7 +240,7 @@ The empirical results in @tab:hn_results establish crucial insights into the lim
 To analyze what CertGraph learns internally, we inspected the learned multi-head attention weights $alpha_(v u)^((k, r))$ across the 2-hop computational subgraph of evaluated templates.
 
 #figure(
-  image("figures/attention_explainability.png", width: 95%),
+  image("figures/attention_explainability.png", width: 90%),
   caption: [Localized 2-hop attention weight attribution for an ESC13 template, showing concentrated attention along the valid enrollment and issuance policy path.],
 ) <fig:attention_exp>
 

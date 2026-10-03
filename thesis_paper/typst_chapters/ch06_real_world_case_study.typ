@@ -28,7 +28,7 @@ GOAD is an acclaimed, widely recognized vulnerable enterprise research environme
 As illustrated in @fig:goad_topology, the multi-forest architecture features interconnected parent, child, and external domains. Of critical operational relevance to this thesis, the Enterprise Certificate Authority (`ADCS - ESSOS-CA`) is hosted on member server `braavos` (`SRV03`), representing an authentic enterprise PKI target accessible via both LDAP enrollment and cross-domain authentication links.
 
 #figure(
-  image("figures/goad_forest_topology.png", width: 100%),
+  image("figures/goad_forest_topology.png", width: 90%),
   caption: [Architecture and trust relationship schema of the Game of Active Directory (GOAD) multi-forest lab environment, detailing domain controllers, member servers (including the ADCS Certificate Authority hosted on `SRV03 - braavos`), and cross-forest authentication links.],
 ) <fig:goad_topology>
 
@@ -108,11 +108,12 @@ In scenario `HN_ESC1`, a template was configured with the dangerous flag `CT_FLA
 
 The full complexity of transitive compromise chains across GOAD is visualized in @fig:goad_paths. From unprivileged workstations and compromised user credentials, adversaries execute multi-stage attacks chaining Kerberoasting, NTLM relaying, and ADCS misconfigurations (ESC1, ESC2, ESC3, ESC6, ESC8) to cross domain trusts and compromise root enterprise domain controllers.
 
-#figure(
-  image("figures/goad_attack_paths.png", width: 100%),
-  caption: [End-to-end multi-hop compromise and privilege escalation attack graph across the GOAD domain infrastructure, illustrating how unprivileged foothold credentials traverse ADCS certificate misconfigurations (ESC1--ESC8), Kerberos delegations, and inter-domain trusts to achieve enterprise domain dominance.],
-) <fig:goad_paths>
-
+\begin{sidewaysfigure}
+    \centering
+    \includegraphics[width=0.92\textheight]{figures/goad_attack_paths.png}
+    \caption{End-to-end multi-hop compromise and privilege escalation attack graph across the GOAD domain infrastructure, illustrating how unprivileged foothold credentials traverse ADCS certificate misconfigurations (ESC1--ESC8), Kerberos delegations, and inter-domain trusts to achieve enterprise domain dominance.}
+    <fig:goad_paths>
+\end{sidewaysfigure}
 
 == Temporal Validation Across Independent Collection Dates
 
@@ -126,15 +127,17 @@ To establish whether our models maintain stable representations over time, we co
 
 
 
-In our temporal testbed, 7 representative certificate template configurations were deployed in each of the 3 domains (`sevenkingdoms.local`, `north.sevenkingdoms.local`, and `essos.local`), representing 21 distinct template evaluations per snapshot date. Evaluated across the 3 independent collection dates, this generated $21 times 3 = 63$ temporal evaluation instances:
+In our temporal testbed, 7 representative certificate template configurations were deployed in each of the 3 domains (`sevenkingdoms.local`, `north.sevenkingdoms.local`, and `essos.local`), representing 21 unique domain-template configurations evaluated per snapshot date. Evaluated across the 3 audit dates, this generated $21 times 3 = 63$ temporal evaluation instances:
 
 + `sevenkingdoms.local`: $7 / 7$ test instances correctly classified across all 3 dates ($21 / 21$, $100.0%$).
 + `north.sevenkingdoms.local`: $7 / 7$ test instances correctly classified across all 3 dates ($21 / 21$, $100.0%$).
 + `essos.local`: $7 / 7$ test instances correctly classified across all 3 dates ($21 / 21$, $100.0%$).
-+ *Aggregate Temporal Accuracy (CertGraph-Hybrid):* $bold(63 / 63)$ test instances correctly classified ($bold(100.0%)$, 95% Wilson CI: $[0.942, 1.000]$).
++ *Aggregate Temporal Accuracy (CertGraph-Hybrid):* $bold(63 / 63)$ evaluation instances correctly classified ($bold(100.0%)$, 95% Wilson CI: $[0.942, 1.000]$).
 
 
-This multi-week temporal validation confirms that CertGraph-Hybrid's relational representations and path verification are invariant to transient session noise and background administrative churn.
+
+*Methodological Note on Sample Independence:*
+We emphasize a key methodological distinction regarding sample independence: these 63 evaluation instances do not represent 63 independent topological draws. Rather, they comprise 21 unique domain-template configurations (7 escalation vectors deployed across the 3 GOAD domains) evaluated longitudinally across 3 audit snapshots ($T_1, T_2, T_3$). This longitudinal experimental design is specifically intended to assess representation invariance and telemetry stability against background directory drift (e.g., dynamic logon sessions, group membership mutations, administrative churn, and host reboots) rather than claiming 63 degrees of topological freedom. This multi-week temporal validation confirms that CertGraph-Hybrid's relational representations and path verification remain stable despite transient session noise and background environmental changes.
 
 == External Community Benchmark Validation
 

@@ -66,7 +66,7 @@ As reported in Table~\ref{tab:transfer_matrix}, CertGraph trained exclusively on
 This bidirectional transfer confirms that CertGraph does not overfit to specific node counts or uniform group densities. However, as analyzed in Chapters~\ref{ch:audit} and~\ref{ch:evaluation}, this transfer performance must be interpreted in light of the model's reliance on intrinsic template flags ($x_{\text{Template}}$): because the template configuration schema remains identical across synthetic and ADSynth graphs, the GNN's preserved template features allow it to maintain high classification fidelity across diverse background identity topologies.
 
 \section{Systematic Sensitivity and Robustness Analysis}
-In real-world security operations, Active Directory telemetry is frequently degraded by collection timeouts, network packet loss, and missing access control entries. We subjected CertGraph to systematic perturbation stress tests evaluating edge deletions, configuration feature noise, and sample efficiency.
+In real-world security operations, Active Directory telemetry is frequently degraded by collection timeouts, network packet loss, and missing access control entries. Grounding our evaluation in the principled empirical framework of GNN structural and attribute robustness under perturbations formalized by Wu et al. (2025)~\cite{wu2025understanding}, we subjected CertGraph to systematic perturbation stress tests evaluating topological edge deletions, configuration feature noise, and sample efficiency scaling.
 
 \begin{figure}[t]
     \centering

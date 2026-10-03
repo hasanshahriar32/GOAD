@@ -3,9 +3,9 @@
 
 == Evolution of Identity-Based Lateral Movement in Enterprise Networks
 
-Enterprise computing relies on centralized directory services to manage authentication, authorization, and cryptographic trust across distributed systems. In Windows enterprise networks, the core identity backbone is provided by Microsoft Active Directory Domain Services (AD DS) and its associated cryptographic public-key subsystem, Active Directory Certificate Services (ADCS). As modern organizations adopt Zero Trust principles and cloud-hybrid architectures, the primary operational focus of enterprise defense has shifted from perimeter firewall boundaries to the internal identity and access management fabric.
+Windows enterprise environments rely on Active Directory Domain Services (AD DS) and Active Directory Certificate Services (ADCS) to orchestrate authentication, authorization, and cryptographic identity. As organizations adopted hybrid-cloud infrastructure and zero-trust policies, the boundary of interest in security engineering moved from boundary firewalls to internal identity fabrics.
 
-Once an adversary achieves initial code execution on any internal endpoint (e.g., through credential stuffing, phishing, or vulnerable edge services), enterprise defense shifts entirely to combating *Lateral Movement*---the techniques adversaries use to navigate across systems, accounts, and directory objects to compromise authoritative Tier-0 administrative assets.
+When an attacker establishes an initial foothold on a standard workstation—via credential stuffing, phishing, or vulnerable services—the defensive objective centers on containing *Lateral Movement*. Attackers traverse interconnected accounts, groups, and directory objects to acquire Tier-0 administrative tokens (such as Domain Admins or Enterprise Admins).
 
 === Historical Precedents: Memory-Based Credential Abuse
 
@@ -49,7 +49,7 @@ While BloodHound and related graph databases (Neo4j) allow security analysts to 
 
 == Graph Representation Learning in Security
 
-To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated *Graph Representation Learning* and *Graph Neural Networks (GNNs)* for cybersecurity applications @goel2025coevolutionary @guo2023scalable.
+To overcome the brittleness and combinatorial limitations of deterministic graph search, researchers have increasingly investigated *Graph Representation Learning* and *Graph Neural Networks (GNNs)* for cybersecurity applications, enterprise lateral movement detection, and identity graph defense @goel2025coevolutionary @king2023euler @guo2022practical @zhou2024lateral.
 
 === The Message-Passing Neural Network (MPNN) Framework
 
@@ -75,15 +75,26 @@ To handle heterogeneous structures, specialized architectures have been proposed
 
 
 
+=== GNNs for Lateral Movement Detection and Adversarial Robustness <sec:gnn_lateral_adversarial>
+
+Beyond static node classification, graph representation learning has been increasingly adapted to detect dynamic host-to-host pivots and authentication sequences in enterprise networks. King and Huang (2023) @king2023euler proposed *EULER*, a scalable framework decoupling spatial GNN message passing from temporal recurrent sequence encoding to detect lateral movement as anomalous link prediction over discrete temporal authentication graphs. More recently, Zhou et al. (2024) @zhou2024lateral developed *LMDetect*, constructing Heterogeneous Authentication Multigraphs (HAMG) to classify time-aware subgraphs extracted around authentication events. While these approaches demonstrate the efficacy of relational learning over authentication telemetry (e.g., Event ID 4624/4672 log streams), they operate primarily on temporal host interaction logs rather than the static cryptographic permission and PKI configuration fabric evaluated by CertGraph.
+
+Simultaneously, the theoretical attack surface of GNNs in adversarial settings has received rigorous formalization. As categorized in the adversarial robustness taxonomy by Günnemann (2022) @gunnemann2022adversarial, GNNs exhibit distinct vulnerabilities compared to standard deep models due to the non-independent and identically distributed (non-IID) nature of graph topologies. Attacks are broadly categorized by:
+
++ *Attacker Phase:* _Poisoning_ attacks (perturbing graph structure or attributes during training) versus _Evasion_ attacks (perturbing test instances at inference time).
++ *Perturbation Target:* _Structural perturbation_ (adversarial edge additions or deletions) versus _Node feature manipulation_ (corrupting entity attribute vectors).
++ *Adversarial Scope:* _Targeted_ attacks (inducing misclassification on a specific node or template) versus _Non-targeted_ degradation (reducing overall global accuracy).
+
+
+Understanding these formal attack surfaces is essential when designing identity defense models, as attackers who gain partial administrative control may intentionally manipulate directory permissions or inject decoy edges to mislead downstream graph classifiers.
+
 === Game Theory and Machine Learning Pitfalls in Cybersecurity
 
-Applying machine learning and game theory to enterprise cybersecurity introduces distinct structural and combinatorial constraints. In active defense, Stackelberg security games (Kiekintveld et al., 2009) @kiekintveld2009computing provide a principled foundation for allocating defensive countermeasures against worst-case adversaries. On enterprise attack graphs, Guo et al. (AAAI 2023) @guo2023scalable investigated scalable edge-blocking algorithms by exploiting graph treewidth and parameterizing non-splitting paths to minimize an attacker's reachability to Domain Admin under operational budget constraints. Expanding upon this game-theoretic interdiction formulation, Goel et al. (2025) @goel2025coevolutionary introduced a co-evolutionary defense framework pairing Graph Neural Network-approximated dynamic programming (GNNDP) with evolutionary diversity optimization over parameterized attack graphs, demonstrating that neural approximations can scale defensive search against adaptive multi-hop attackers.
+Applying machine learning and game theory to enterprise cybersecurity introduces distinct structural and combinatorial constraints. In active defense, Stackelberg security games (Kiekintveld et al., 2009) @kiekintveld2009computing provide a principled foundation for allocating defensive countermeasures against worst-case adversaries. On enterprise attack graphs, Guo et al. (2022) @guo2022practical established the parameterized W[1]-hardness of shortest-path interdiction, demonstrating that fixed-parameter tractable (FPT) tree decompositions and GCN heuristics can effectively identify critical edges on tree-like topologies. Subsequently, Guo et al. (2023) @guo2023scalable developed scalable edge-blocking algorithms by exploiting graph treewidth and parameterizing non-splitting paths to minimize attacker reachability to Domain Admin under operational budget constraints, while Zhang et al. (2023) @zhang2023scalable formulated a scalable double oracle framework restricting edge interdiction to active attack paths on graphs with up to 100,000 nodes. Expanding upon this game-theoretic interdiction foundation, Goel et al. (2024) @goel2024optimizing and Goel et al. (2025) @goel2025coevolutionary introduced co-adaptive reinforcement learning and neural dynamic programming frameworks, while Ngo (2026) @ngo2026practical unified combinatorial and deceptive defense optimization across temporal Active Directory attack graphs. Crucially, while these foundational studies address combinatorial edge interdiction and path reachability over generic host-compromise attack graphs, they do not model the cryptographic configuration semantics of Active Directory Certificate Services (ADCS), nor do they tackle inductive multi-class vulnerability detection or examine shortcut learning under distribution shifts. CertGraph bridges this gap by formalizing enterprise PKI as a typed heterogeneous multigraph, jointly evaluating relational attention over certificate template configurations and multi-hop enrollment paths.
 
-Crucially, while these foundational studies address combinatorial edge interdiction and path reachability over generic host-compromise attack graphs, they do not model the cryptographic configuration semantics of Active Directory Certificate Services (ADCS), nor do they tackle inductive multi-class vulnerability detection or examine shortcut learning under distribution shifts. CertGraph addresses this unaddressed domain by formalizing enterprise PKI as a typed heterogeneous multigraph, jointly evaluating relational attention over certificate template configurations and multi-hop enrollment paths.
+At the same time, empirical security machine learning remains vulnerable to experimental pitfalls, as formalized by Arp et al. (2022) @arp2022dos, Sommer & Paxson (2010) @sommer2010outside, and Pendlebury et al. (2019) @pendlebury2019tesseract. These include sampling bias, synthetic generator artifacts, lab-only evaluations lacking operational realism, and unfair baseline feature representations. Additionally, as graph networks grow deeper, preserving raw node attributes requires residual skip-connections (GCNII, Chen et al., 2020) @chen2020simple to prevent over-smoothing and gradient decay.
 
-Concurrently, empirical security machine learning is subject to severe methodological pitfalls, as formalized by Arp et al. (USENIX Security 2022) @arp2022dos, Sommer & Paxson (IEEE S&P 2010) @sommer2010outside, and Pendlebury et al. (USENIX Security 2019) @pendlebury2019tesseract. These pitfalls include sampling bias, synthetic generator artifacts, lab-only evaluation lacking ecological validity, and inappropriate baseline comparisons. Moreover, as networks grow deeper, preserving raw node attributes requires residual skip connections (GCNII, Chen et al., ICML 2020) @chen2020simple to prevent over-smoothing and gradient decay.
-
-In this thesis, we build upon the principles of Heterogeneous Graph Attention Networks to engineer *CertGraph*, introducing relation-specific multi-head attention alongside crucial additive residual skip-connections necessary to preserve configuration attributes across asymmetric enterprise identity topologies.
+In this thesis, we build on Heterogeneous Graph Attention Networks to construct *CertGraph*, adding relation-specific multi-head attention alongside additive residual skip-connections to preserve configuration attributes across directed identity topologies.
 
 == Active Directory Architecture and Cryptographic Primitives
 
@@ -146,7 +157,7 @@ Every Active Directory object is protected by a *Security Descriptor* containing
 Active Directory Certificate Services (ADCS) is an integrated Windows role that allows an organization to construct an internal Public Key Infrastructure (PKI). ADCS comprises several core architectural components:
 
 #figure(
-  image("figures/adcs_attack_graph_schema.png", width: 100%),
+  image("figures/adcs_attack_graph_schema.png", width: 90%),
   caption: [Heterogeneous Active Directory Certificate Services (ADCS) Graph Schema, illustrating relations between security principals (Users, Computers, Groups), Certificate Templates, and Enterprise Certificate Authorities.],
 ) <fig:adcs_schema>
 
@@ -184,7 +195,7 @@ SpecterOps and subsequent security researchers categorized common ADCS misconfig
     [ESC8], [HTTP Enrollment Relay], [NTLM authentication enabled on Web Enrollment HTTP endpoints], [Coerced NTLM relay from DC to obtain DC certificate],
     [ESC9], [Missing Security Ext.], [`CT_FLAG_NO_SECURITY_EXTENSION` enabled on template], [UPN spoofing bypasses strong mapping without PAC check],
     [ESC10], [Weak Certificate Mapping], [Weak UPN/DNS mapping registry keys on Domain Controllers (pre-KB5014754)], [Account takeover via unverified X.509 mapping syntax],
-    [ESC11], [Insecure RPC Interface], [RPC enrollment endpoint (MS-ICPR) lacking packet privacy (Heiniger 2023)], [Relays NTLM to RPC enrollment interface],
+    [ESC11], [Insecure RPC Interface], [RPC enrollment endpoint (MS-ICPR) lacking packet privacy (Heiniger 2023)], [Coerced NTLM relay to CA RPC interface yielding rogue certificate],
     [ESC12], [Shellcode / YubiHSM Key Extraction], [Cleartext session keys or driver flaw in CA hardware security module (Knobloch 2023)], [Unprivileged access to CA host enables extracting private key material without audit logs],
     [ESC13], [Issuance Policy Link], [`msPKI-Certificate-Policy` OID maps to Tier-0 security group], [Injects Tier-0 group SID into Kerberos PAC token],
     [ESC14], [altSecurityIdentities Hijack], [Insecure write permissions over user `altSecurityIdentities` attribute], [Links arbitrary victim certificates to attacker account],
@@ -194,23 +205,25 @@ SpecterOps and subsequent security researchers categorized common ADCS misconfig
   caption: [Comprehensive Comparative Taxonomy of ADCS Privilege Escalation Vectors (ESC1--ESC15).],
 ) <tab:esc_taxonomy>
 
-== Target Space Scoping: Inclusion and Exclusion Rationale <sec:esc_scoping>
+
+=== Target Space Scoping: Inclusion and Exclusion Rationale <sec:esc_scoping>
 
 While @tab:esc_taxonomy enumerates all 15 historically documented escalation classes, our machine-learning auditing target space is intentionally scoped to 7 mutually exclusive primary classes:
 $ cal(C) = {"Safe", "ESC1", "ESC2", "ESC3", "ESC4", "ESC9", "ESC13"} $
 
 To ensure methodological clarity, we explicitly detail the operational and architectural rationale governing the exclusion of the remaining nine vectors:
-+ *Template-Centric Access Topology vs. CA-Level Misconfigurations (ESC5, ESC6, ESC7):* CertGraph is formulated to evaluate discretionary authorization paths terminating at individual certificate template nodes ($t in V_("Template")$). In contrast, ESC5, ESC6, and ESC7 represent server-wide Certification Authority or container-level misconfigurations. ESC6 represents a single registry toggle (`EDITF_ATTRIBUTE_SUBJECTALTNAME2`) applied to the CA service itself, while ESC5 and ESC7 involve DACL permissions over the CA directory object or PKI enrollment services container (`CN=Public Key Services`). These are trivially audited via direct LDAP attribute inspection and do not require multi-hop relational path reasoning over template subgraphs.
-+ *Network Protocol Relay vs. Directory Graph Topology (ESC8, ESC11):* ESC8 (HTTP Web Enrollment relay) and ESC11 (MS-ICPR RPC interface coercion) are transient network protocol-level relay attacks. Their exploitability is dictated by runtime network configurations (e.g., whether NTLM authentication is enabled on IIS endpoints, whether RPC packet privacy is enforced, and network perimeter reachability). Because they do not depend on Active Directory identity graph topology or template issuance policies, they reside outside the scope of static identity graph auditing.
+
++ *Template-Centric Access Topology vs.\ CA-Level Misconfigurations (ESC5, ESC6, ESC7):* CertGraph is formulated to evaluate discretionary authorization paths terminating at individual certificate template nodes ($t in V_("Template")$). In contrast, ESC5, ESC6, and ESC7 represent server-wide Certification Authority or container-level misconfigurations. ESC6 represents a single registry toggle (`EDITF_ATTRIBUTE_SUBJECTALTNAME2`) applied to the CA service itself, while ESC5 and ESC7 involve DACL permissions over the CA directory object or PKI enrollment services container (`CN=Public Key Services`). These are trivially audited via direct LDAP attribute inspection and do not require multi-hop relational path reasoning over template subgraphs.
++ *Network Protocol Relay vs.\ Directory Graph Topology (ESC8, ESC11):* ESC8 (HTTP Web Enrollment relay) and ESC11 (MS-ICPR RPC interface coercion) are transient network protocol-level relay attacks. Their exploitability is dictated by runtime network configurations (e.g., whether NTLM authentication is enabled on IIS endpoints, whether RPC packet privacy is enforced, and network perimeter reachability). Because they do not depend on Active Directory identity graph topology or template issuance policies, they reside outside the scope of static identity graph auditing.
 + *Host-Level Registry Configurations and Endpoint Hardware (ESC10, ESC12):* ESC10 involves legacy registry mapping keys on Domain Controllers (pre-KB5014754 certificate-to-account mapping modes), which is a host-level operating system configuration rather than a directory graph relation. Similarly, ESC12 represents physical or driver-level hardware security module key extraction (e.g., cleartext session keys in YubiHSM memory), which is an endpoint hardware vulnerability with zero directory graph representation.
-+ *User-Object DACL Hijacking vs. Certificate Issuance (ESC14):* ESC14 represents arbitrary write permissions over a target victim's `altSecurityIdentities` attribute. While this allows account takeover by mapping a rogue certificate, it is structurally identical to standard Active Directory object hijacking (e.g., `GenericAll` over a user account) rather than an ADCS template issuance flaw.
++ *User-Object DACL Hijacking vs.\ Certificate Issuance (ESC14):* ESC14 represents arbitrary write permissions over a target victim's `altSecurityIdentities` attribute. While this allows account takeover by mapping a rogue certificate, it is structurally identical to standard Active Directory object hijacking (e.g., `GenericAll` over a user account) rather than an ADCS template issuance flaw.
 + *Endpoint CSR Parser Vulnerabilities (ESC15 / CVE-2024-49019):* ESC15 (EKUwu) is an implementation-specific parser vulnerability in legacy Schema Version 1 templates that allows custom application policies to be embedded within client-side CSRs. Because it represents a client-side parser bug rather than an architectural access-control permission path, it is addressed by software patch KB5034127 rather than graph reachability analysis.
+
 
 In contrast, the included vectors (*ESC1, ESC2, ESC3, ESC4, ESC9, ESC13*) represent the complete canonical suite of _template-centric, authorization-driven privilege escalation vectors_ whose discovery fundamentally demands resolving the joint interaction between multi-hop identity graph paths and certificate template configuration flags.
 
-
 #figure(
-  image("figures/esc13_attack_path_diagram.png", width: 100%),
+  image("figures/esc13_attack_path_diagram.png", width: 90%),
   caption: [Two-hop ESC13 privilege escalation attack path, showing the chain from an unprivileged user through enrollment permissions and issuance policy OID linkage to high-value domain administrative group tokens.],
 ) <fig:esc13_path>
 
@@ -233,6 +246,6 @@ To establish rigorous scientific boundaries, we define our threat model followin
 
 + *Auditing Scope:* The defender possesses read-only administrative auditing telemetry over the Active Directory forest, capable of extracting object attributes and DACL relationships via automated collection pipelines.
 + *Remediation Constraints:* The defender must autonomously or semi-autonomously identify and neutralize exploitable attack paths. Crucially, the defender operates under a *business availability constraint*: defensive mitigations (such as revoking template enrollment rights or deleting groups) must not disrupt legitimate enterprise operations.
-+ *Computational Budget:* The detection architecture must execute efficiently on commodity security operations infrastructure (e.g., standard analysts' workstations with bounded RAM budgets), precluding the deployment of cumbersome full-OS virtual machine simulations for static auditing.
++ *Computational Budget:* The detection architecture must execute efficiently on commodity security operations infrastructure (e.g., standard analysts' workstations with bounded RAM budgets), avoiding cumbersome full-OS virtual machine simulations for static auditing.
 
 
