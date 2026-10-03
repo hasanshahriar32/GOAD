@@ -36,18 +36,13 @@
   year      = {2017}
 }
 
-@inproceedings{jbeil2024measuring,
-  author    = {Marc Jbeil and Elias Bou-Harb},
-  title     = {Measuring and Mitigating Identity-based Lateral Movement in Active Directory},
-  booktitle = {IEEE Symposium on Security and Privacy (S\&P)},
-  year      = {2024}
-}
-
-@article{bowman2020privilege,
-  author    = {Billy Bowman and Christopher Craig and Craig H. Jenkins},
-  title     = {Detecting Lateral Movement in Active Directory with Graph Analysis},
-  journal   = {Research in Attacks, Intrusions, and Defenses (RAID)},
-  year      = {2020}
+@inproceedings{bowman2020detecting,
+  author    = {Benjamin Bowman and Craig Laprade and Yuede Ji and H. Howie Huang},
+  title     = {Detecting Lateral Movement in Enterprise Computer Networks with Unsupervised Graph {AI}},
+  booktitle = {Proceedings of the 23rd International Symposium on Research in Attacks, Intrusions and Defenses (RAID 2020)},
+  pages     = {257--268},
+  year      = {2020},
+  publisher = {USENIX Association}
 }
 
 @article{king2023euler,
@@ -59,16 +54,6 @@
   pages      = {32:1--32:36},
   year       = {2023},
   doi        = {10.1145/3588401}
-}
-
-@article{hardeningAD2024tops,
-  author    = {Lucas Dunlap and Michael Backes and Robert K. Temple},
-  title     = {Hardening Active Directory Identity Networks via Evolutionary Multi-Objective Optimization},
-  journal   = {ACM Transactions on Privacy and Security (TOPS)},
-  volume    = {27},
-  number    = {3},
-  pages     = {1--34},
-  year      = {2024}
 }
 
 @inproceedings{adsynth2024dsn,
@@ -90,11 +75,14 @@
 }
 
 @inproceedings{manzoor2016fast,
-  author    = {Emaad Manzoor and Sadegh M. Milajerdi and Leman Akoglu},
+  author    = {Emaad A. Manzoor and Sadegh M. Milajerdi and Leman Akoglu},
   title     = {Fast Memory-Efficient Anomaly Detection in Streaming Heterogeneous Graphs},
-  booktitle = {ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  booktitle = {Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  series    = {KDD '16},
   pages     = {1035--1044},
-  year      = {2016}
+  year      = {2016},
+  publisher = {Association for Computing Machinery},
+  doi       = {10.1145/2939672.2939744}
 }
 
 @inproceedings{ying2019gnnexplainer,
@@ -105,37 +93,21 @@
   year      = {2019}
 }
 
-@article{feynman2024ekuwu,
-  author    = {Justin Bollinger},
-  title     = {{EKUwu}: Not Just Another {AD CS} Vulnerability},
-  journal   = {TrustedSec Research Technical Advisory},
-  year      = {2024},
-  month     = {October},
-  note      = {Patched by Microsoft as CVE-2024-49019, Nov 12, 2024},
-  url       = {https://trustedsec.com/blog/ekuwu-not-just-another-ad-cs-vulnerability}
-}
-
-@article{bollinger2024ekuwu,
-  author    = {Justin Bollinger},
-  title     = {{EKUwu}: Not Just Another {AD CS} Vulnerability (CVE-2024-49019)},
-  journal   = {TrustedSec Research Technical Advisory},
-  year      = {2024},
-  url       = {https://trustedsec.com/blog/ekuwu-not-just-another-ad-cs-vulnerability}
-}
-
-@misc{alldritt2023certipy,
-  author       = {Oliver Lyak},
-  title        = {Certipy: Active Directory Certificate Services Enumeration and Abuse Tool},
-  howpublished = {GitHub repository, \url{https://github.com/ly4k/Certipy}},
-  year         = {2021},
-  note         = {Technical releases v2.0--v4.8.2 (2021--2024)}
+@misc{bollinger2024ekuwu,
+  author       = {Justin Bollinger},
+  title        = {{EKUwu}: Not just another {AD CS ESC}},
+  howpublished = {TrustedSec Blog, \url{https://trustedsec.com/blog/ekuwu-not-just-another-ad-cs-esc}},
+  year         = {2024},
+  month        = {October},
+  note         = {Patched by Microsoft as CVE-2024-49019, Nov 12, 2024}
 }
 
 @misc{lyak2021certipy,
   author       = {Oliver Lyak},
   title        = {Certipy: Active Directory Certificate Services Enumeration and Abuse Tool},
   howpublished = {GitHub repository, \url{https://github.com/ly4k/Certipy}},
-  year         = {2021}
+  year         = {2021},
+  note         = {Technical releases v2.0--v4.8.2 (2021--2024)}
 }
 
 @inproceedings{robbins2017bloodhound,
@@ -182,12 +154,6 @@
   year      = {1994}
 }
 
-@book{feyereisl2020stackelberg,
-  author    = {Jan Feyereisl and Viliam Lis{\'{y}} and Bo An and Milind Tambe},
-  title     = {Security Games: Game-Theoretic Frameworks for Security and Defense},
-  publisher = {Cambridge University Press},
-  year      = {2020}
-}
 
 @article{scarselli2008graph,
   author    = {Franco Scarselli and Marco Gori and Ah Chung Tsoi and Markus Hagenbuchner and Gabriele Monfardini},
@@ -239,13 +205,15 @@
   year      = {2016}
 }
 
-@article{marques2022neuro,
-  author    = {Artur d'Avila Garcez and Luis C. Lamb},
-  title     = {Neurosymbolic AI: The 3rd Wave},
+@article{garcez2023neurosymbolic,
+  author    = {Artur d'Avila Garcez and Lu{\'i}s C. Lamb},
+  title     = {Neurosymbolic {AI}: The 3rd Wave},
   journal   = {Artificial Intelligence Review},
   volume    = {56},
+  number    = {11},
   pages     = {12387--12406},
-  year      = {2023}
+  year      = {2023},
+  doi       = {10.1007/s10462-023-10448-w}
 }
 
 @article{borkar2008stochastic,
@@ -253,23 +221,6 @@
   title     = {Stochastic Approximation: A Dynamical Systems Viewpoint},
   journal   = {Cambridge University Press},
   year      = {2008}
-}
-
-@inproceedings{li2021adversarial,
-  author    = {Haoyang Li and Xingyu Lu and Xiang Nan and Qi Li},
-  title     = {Adversarial Attacks and Defenses on Graph Neural Networks: A Comprehensive Survey},
-  booktitle = {IEEE Transactions on Knowledge and Data Engineering},
-  year      = {2022}
-}
-
-@article{miller2021active,
-  author    = {Benjamin Miller and Alexander Kott and Eran Tromer},
-  title     = {Autonomous Cyber Defense: A Survey of Recent Advances},
-  journal   = {IEEE Transactions on Dependable and Secure Computing},
-  volume    = {19},
-  number    = {4},
-  pages     = {2451--2469},
-  year      = {2022}
 }
 
 @inproceedings{gilmer2017neural,
@@ -296,14 +247,15 @@
   year      = {2019}
 }
 
-@article{garg1997approximability,
+@article{garg1996approximate,
   author    = {Naveen Garg and Vijay V. Vazirani and Mihalis Yannakakis},
   title     = {Approximate max-flow min-(multi)cut theorems and their applications},
   journal   = {SIAM Journal on Computing},
   volume    = {25},
   number    = {2},
   pages     = {235--251},
-  year      = {1996}
+  year      = {1996},
+  doi       = {10.1137/S009753979324395X}
 }
 
 @inproceedings{sheyner2002automated,
