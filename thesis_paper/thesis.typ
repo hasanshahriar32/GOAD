@@ -276,6 +276,58 @@ These findings motivate a *Two-Tier Neuro-Symbolic Architecture* that pairs fast
 #counter(page).update(1)
 #set heading(numbering: "1.1")
 
+// HSTU Thesis Heading Specifications
+// Chapter Title (Level 1): 16pt, Bold, Centered
+#show heading.where(level: 1): it => block(width: 100%)[
+  #set align(center)
+  #set text(size: 16pt, weight: "bold")
+  #v(0.8cm)
+  #if it.numbering != none [
+    Chapter #counter(heading).display() \
+    #v(0.3cm)
+  ]
+  #it.body
+  #v(0.6cm)
+]
+
+// Heading 1 / Main Section (Level 2): 14pt, Bold, Flush left
+#show heading.where(level: 2): it => block(width: 100%)[
+  #set align(left)
+  #set text(size: 14pt, weight: "bold")
+  #v(16pt)
+  #if it.numbering != none [
+    #counter(heading).display()
+    #h(0.4em)
+  ]
+  #it.body
+  #v(8pt)
+]
+
+// Heading 2 / Sub-heading (Level 3): 12pt, Bold, Flush left
+#show heading.where(level: 3): it => block(width: 100%)[
+  #set align(left)
+  #set text(size: 12pt, weight: "bold")
+  #v(12pt)
+  #if it.numbering != none [
+    #counter(heading).display()
+    #h(0.4em)
+  ]
+  #it.body
+  #v(6pt)
+]
+
+// Heading 3 / Sub-sub-heading (Level 4): 12pt, Italic, Flush left
+#show heading.where(level: 4): it => block(width: 100%)[
+  #set align(left)
+  #set text(size: 12pt, weight: "regular", style: "italic")
+  #v(10pt)
+  #if it.numbering != none [
+    #counter(heading).display()
+    #h(0.4em)
+  ]
+  #it.body
+  #v(4pt)
+]
 
 // ═════════════════════════════════════════════════════════════
 // MAIN CHAPTERS
@@ -314,6 +366,20 @@ These findings motivate a *Two-Tier Neuro-Symbolic Architecture* that pairs fast
 // ═════════════════════════════════════════════════════════════
 // APPENDICES & BIBLIOGRAPHY
 // ═════════════════════════════════════════════════════════════
+
+#counter(heading).update(0)
+#set heading(numbering: "A.1")
+#show heading.where(level: 1): it => block(width: 100%)[
+  #set align(center)
+  #set text(size: 16pt, weight: "bold")
+  #v(0.8cm)
+  #if it.numbering != none [
+    Appendix #counter(heading).display() \
+    #v(0.3cm)
+  ]
+  #it.body
+  #v(0.6cm)
+]
 
 #include "typst_chapters/app_proofs.typ"
 #pagebreak()

@@ -76,6 +76,49 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
+% Headings Formatting (HSTU Thesis Specification)
+\RequirePackage{titlesec}
+
+% Chapter Title: 16pt, Bold, Centered, Title Case
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16pt}{20pt}\bfseries\centering}
+  {\fontsize{16pt}{20pt}\bfseries\MakeUppercase{\chaptertitlename}\ \thechapter}
+  {10pt}
+  {\fontsize{16pt}{20pt}\bfseries}
+
+\titleformat{name=\chapter,numberless}[block]
+  {\normalfont\fontsize{16pt}{20pt}\bfseries\centering}
+  {}
+  {0pt}
+  {\fontsize{16pt}{20pt}\bfseries}
+
+\titlespacing*{\chapter}{0pt}{10pt}{22pt}
+\titlespacing*{name=\chapter,numberless}{0pt}{10pt}{22pt}
+
+% Heading 1 (Main Section): 14pt, Bold, Flush left, Title Case
+\titleformat{\section}
+  {\normalfont\fontsize{14pt}{18pt}\bfseries}
+  {\thesection}
+  {1em}
+  {}
+\titlespacing*{\section}{0pt}{16pt}{8pt}
+
+% Heading 2 (Sub-heading): 12pt, Bold, Flush left, Title Case
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{15pt}\bfseries}
+  {\thesubsection}
+  {1em}
+  {}
+\titlespacing*{\subsection}{0pt}{12pt}{6pt}
+
+% Heading 3 (Sub-sub-heading): 12pt, Italic, Flush left, Title Case
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{12pt}{15pt}\itshape}
+  {\thesubsubsection}
+  {1em}
+  {}
+\titlespacing*{\subsubsection}{0pt}{10pt}{4pt}
+
 % Code listings & Algorithms
 \RequirePackage{listings}
 \RequirePackage{algorithm}
