@@ -152,6 +152,7 @@ def convert_latex_math_to_typst(math_str):
         (r'\sim', 'tilde'),
         (r'\approx', 'approx'),
         (r'\pm', 'plus.minus'),
+        (r'\dagger', 'dagger'),
         (r'\emptyset', 'emptyset'),
         (r'\mid', '|'),
         (r'\sum', 'sum'),
@@ -242,9 +243,17 @@ def extract_balanced_braces(s, start_idx):
                 return s[begin+1:i], i + 1
     return "", len(s)
 
+def extract_caption(text, default=""):
+    pos = text.find(r'\caption')
+    if pos != -1:
+        brace_pos = text.find('{', pos)
+        if brace_pos != -1:
+            cap, _ = extract_balanced_braces(text, brace_pos)
+            return cap
+    return default
+
 def convert_latex_table_to_typst(tab_tex):
-    cap_m = re.search(r'\\caption\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}', tab_tex)
-    caption = cap_m.group(1) if cap_m else "Table"
+    caption = extract_caption(tab_tex, "Table")
     lab_m = re.search(r'\\label\{([^}]+)\}', tab_tex)
     label = lab_m.group(1) if lab_m else None
 
@@ -252,6 +261,8 @@ def convert_latex_table_to_typst(tab_tex):
     caption = replace_macro_balanced(caption, 'textit', '_', '_')
     caption = replace_macro_balanced(caption, 'texttt', '`', '`')
     caption = caption.replace(r'\%', '%').replace(r'\_', '_').replace(r'\&', '&')
+    caption = re.sub(r'\\ref\{([^}]+)\}', r'@\1', caption)
+    caption = re.sub(r'\$(.*?)\$', lambda mm: '$' + convert_latex_math_to_typst(mm.group(1)) + '$', caption)
 
     # Find \begin{tabularx} or \begin{tabular}
     m_start = re.search(r'\\begin\{(tabularx|tabular)\}', tab_tex)
@@ -308,6 +319,8 @@ def convert_latex_table_to_typst(tab_tex):
             c = replace_macro_balanced(c, 'nolinkurl', '`', '`')
             c = re.sub(r'\\cite\{([^}]+)\}', r'@\1', c)
             c = replace_macro_balanced(c, 'mathbf', 'bold(', ')')
+            c = re.sub(r'\\textsuperscript\{([^}]+)\}', r'#super[\1]', c)
+            c = c.replace(r'\textdagger', '†').replace(r'\dagger', '†')
             c = c.replace(r'\allowbreak', '')
             c = re.sub(r'`\s*`', '', c)
             c = c.replace(r'\%', '%').replace(r'\&', '&').replace(r'\_', '_')
@@ -380,16 +393,16 @@ def convert_latex_to_typst(tex):
     def rep_fig(m):
         fig_body = m.group(0)
         img_m = re.search(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}', fig_body)
-        cap_m = re.search(r'\\caption\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}', fig_body)
+        caption = extract_caption(fig_body, "")
         lab_m = re.search(r'\\label\{([^}]+)\}', fig_body)
         img_path = img_m.group(1) if img_m else ""
-        caption = cap_m.group(1) if cap_m else ""
         label = lab_m.group(1) if lab_m else ""
 
         caption = replace_macro_balanced(caption, 'textbf', '*', '*')
         caption = replace_macro_balanced(caption, 'textit', '_', '_')
         caption = replace_macro_balanced(caption, 'texttt', '`', '`')
         caption = caption.replace(r'\%', '%').replace(r'\_', '_').replace(r'\&', '&')
+        caption = re.sub(r'\\ref\{([^}]+)\}', r'@\1', caption)
         caption = re.sub(r'\$(.*?)\$', lambda mm: '$' + convert_latex_math_to_typst(mm.group(1)) + '$', caption)
 
         img_rel = f"../{img_path}" if not img_path.startswith("..") else img_path
@@ -457,12 +470,18 @@ def convert_latex_to_typst(tex):
     # Algorithms
     def rep_alg(m):
         alg_body = m.group(0)
-        cap_m = re.search(r'\\caption\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}', alg_body)
-        caption = cap_m.group(1) if cap_m else "Algorithm"
+        caption = extract_caption(alg_body, "Algorithm")
         lab_m = re.search(r'(?:\\label\{([^}]+)\}|<([a-zA-Z0-9_:-]+)>)', alg_body)
         label = (lab_m.group(1) or lab_m.group(2)) if lab_m else ""
         if lab_m:
             alg_body = alg_body[:lab_m.start()] + alg_body[lab_m.end():]
+        
+        caption = replace_macro_balanced(caption, 'textbf', '*', '*')
+        caption = replace_macro_balanced(caption, 'textit', '_', '_')
+        caption = replace_macro_balanced(caption, 'texttt', '`', '`')
+        caption = caption.replace(r'\%', '%').replace(r'\_', '_').replace(r'\&', '&')
+        caption = re.sub(r'\\ref\{([^}]+)\}', r'@\1', caption)
+        caption = re.sub(r'\$(.*?)\$', lambda mm: '$' + convert_latex_math_to_typst(mm.group(1)) + '$', caption)
         
         alg_lines_m = re.search(r'\\begin\{algorithmic\}(?:\[\d+\])?(.*?)\\end\{algorithmic\}', alg_body, re.DOTALL)
         if alg_lines_m:
@@ -650,18 +669,18 @@ if __name__ == "__main__":
 
     for src, dst in chapters:
         print(f"Converting {src} -> {dst}...")
-        with open(src) as f:
+        with open(src, encoding="utf-8") as f:
             c = f.read()
         res = convert_latex_to_typst(c)
-        with open(dst, "w") as f:
+        with open(dst, "w", encoding="utf-8") as f:
             f.write(res)
 
     print("Converting proofs...")
     p1 = "proofs/theorem1_representation_collapse.tex"
     p2 = "proofs/theorem2_edge_blocking_nphardness.tex"
-    with open(p1) as f:
+    with open(p1, encoding="utf-8") as f:
         c1 = f.read()
-    with open(p2) as f:
+    with open(p2, encoding="utf-8") as f:
         c2 = f.read()
 
     # Strip redundant section tags from proof files since we create custom headings
@@ -677,6 +696,6 @@ if __name__ == "__main__":
     app_content += "== Proof of Theorem 2: NP-Hardness of Multi-Principal Access Interdiction in Enterprise Identity Graphs <proof:theorem2>\n\n"
     app_content += convert_latex_to_typst(c2).strip()
 
-    with open("typst_chapters/app_proofs.typ", "w") as f:
+    with open("typst_chapters/app_proofs.typ", "w", encoding="utf-8") as f:
         f.write(app_content)
     print("Done converting proofs.")

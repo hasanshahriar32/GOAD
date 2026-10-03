@@ -235,7 +235,7 @@ The empirical results in @tab:hn_results establish crucial insights into the lim
 
 
 
-== Attention Weight Explainability and Graph Attribution
+== Attention Weight Explainability and Graph Attribution <sec:attention_weights>
 
 To analyze what CertGraph learns internally, we inspected the learned multi-head attention weights $alpha_(v u)^((k, r))$ across the 2-hop computational subgraph of evaluated templates.
 

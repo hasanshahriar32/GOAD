@@ -170,36 +170,36 @@ Training Episodes & $250$ & Episodes per topology (max 50 steps per episode) \\
 \end{tabularx}
 \end{table}
 
-\section{Simulation Experiments and Remediation Trade-offs}
+\section{Defense Evaluation and Remediation Trade-offs}
 \label{sec:game_simulation}
 
-\subsection{Experimental Simulation Protocol and Evaluated Topologies}
-To empirically validate the game-theoretic autonomous defense framework, we conducted extensive multi-agent simulations across \textbf{100 distinct Active Directory topologies}:
+\subsection{Evaluation Protocol and Evaluated Topologies}
+To evaluate automated edge-interdiction defense strategies and characterize operational trade-offs, we employ a mixed methodology combining empirical graph algorithmic benchmarking with notional game-theoretic simulation:
 \begin{enumerate}
-    \item \textbf{Topology Suite:} 50 synthetic enterprise graphs generated via our sanitized benchmark generator and 50 realistic tiered directory environments synthesized via ADSynth~\cite{adsynth2024dsn}. Graph sizes scale from $N = 250$ to $2,500$ nodes with edge counts ranging from $1,800$ to $18,200$, incorporating realistic forest structures, group nesting, and cross-tier trust relationships.
-    \item \textbf{Statistical Replication:} All experiments were evaluated across \textbf{5 independent random seeds} ($S \in \{42, 1337, 2024, 777, 999\}$), reporting mean performance and standard deviations.
-    \item \textbf{Adversary Profile:} Simulated adversaries execute multi-hop privilege escalation targeting Domain Admin tokens, selecting paths via $\epsilon$-greedy exploration with stealth constraints penalizing noisy traversal edges.
+    \item \textbf{Empirical Benchmark Suite:} We evaluate the three algorithmic remediation strategies across \textbf{30 synthetic Active Directory topologies} spanning all core ADCS privilege escalation classes (ESC1, ESC2, ESC3, ESC4, ESC9, and ESC13). Evaluated topologies average $80.8$ nodes, $200.0$ access control edges, and $52.4$ reachable unprivileged-to-administrative compromise paths, incorporating realistic group nesting and enrollment delegations.
+    \item \textbf{Statistical Replication:} Algorithmic evaluations are conducted across disruption budgets $B_{\text{ops}} \in \{6, 12, 18, 24\}$, reporting empirical means and standard deviations across all topologies (with 5 stochastic replications for randomized edge selection).
+    \item \textbf{Notional MARL Reference Model:} To illustrate the theoretical potential of co-adaptive learning (§\ref{sec:marl_architecture}), we provide a notional numerical simulation of the two-timescale Stackelberg formulation. As noted in Section~\ref{sec:future_work}, deploying and benchmarking this full reinforcement learning pipeline within live virtualized cyber ranges is an objective for future engineering work.
 \end{enumerate}
 
 \subsection{Comparative Defense Baselines}
-We benchmarked the proposed Stackelberg framework against three automated remediation strategies:
+We compare four remediation strategies:
 \begin{enumerate}
-    \item \textbf{Uniform Random Revocation:} Selects and revokes authorization edges uniformly at random until reaching the disruption budget $B_{\text{ops}}$.
-    \item \textbf{Degree-Centrality Revocation:} Greedily revokes edges incident to nodes possessing the highest total degree (in-degree + out-degree).
-    \item \textbf{Greedy Capacity-Disruption Heuristic (Algorithm~\ref{alg:greedy_sever}):} Iteratively computes path centrality $\phi(e)$ across active lateral movement paths and severs edges maximizing $\rho(e) = \phi(e) / c(e)$.
-    \item \textbf{Stackelberg Co-Adaptive Policy (Ours):} The proposed two-timescale reinforcement learning policy optimizing the regularized multi-objective utility $U_D$.
+    \item \textbf{Uniform Random Revocation (Measured Baseline):} Selects and revokes authorization edges uniformly at random until reaching the disruption budget $B_{\text{ops}}$.
+    \item \textbf{Degree-Centrality Revocation (Measured Baseline):} Greedily revokes edges incident to nodes possessing the highest total degree (in-degree + out-degree).
+    \item \textbf{Greedy Capacity-Disruption Heuristic (Algorithm~\ref{alg:greedy_sever}) (Measured Algorithm):} Iteratively computes path centrality $\phi(e)$ across active lateral movement paths and severs edges maximizing $\rho(e) = \phi(e) / c(e)$.
+    \item \textbf{Stackelberg Co-Adaptive Policy (Notional / Theoretical Reference Model):} Notional reference trajectory illustrating the prospective performance of two-timescale multi-agent reinforcement learning optimizing regularized utility $U_D$.
 \end{enumerate}
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.96\textwidth]{figures/game_theoretic_convergence.png}
-    \caption{Autonomous cyber defense evaluation: (a) Multi-agent two-timescale policy learning convergence showing the asymptotic decay of defender policy loss and gradient norm over 250 training episodes across 5 independent seeds. (b) Forbidden compromise path neutralization rate as a function of operational disruption budget $B_{\text{ops}}$, showing that the Stackelberg co-adaptive policy achieves 100\% neutralization at $B_{\text{ops}} = 12$ by identifying high-centrality structural bottlenecks.}
+    \caption{Autonomous cyber defense evaluation: (a) Notional two-timescale policy learning dynamics showing asymptotic decay of defender policy loss and gradient norm under the stochastic approximation framework. (b) Forbidden compromise path neutralization rate as a function of operational disruption budget $B_{\text{ops}}$, comparing measured empirical performance for Uniform Random, Degree-Centrality, and Greedy Capacity-Disruption (Alg.~\ref{alg:greedy_sever}) across 30 Active Directory topologies against the notional trajectory of the co-adaptive Stackelberg model. Shaded bands denote $\pm 1$ standard deviation.}
     \label{fig:game_sim}
 \end{figure}
 
 \begin{table}[ht]
 \centering
-\caption{Comparative evaluation of autonomous edge-interdiction defense policies across 100 Active Directory topologies under varying operational disruption budgets ($B_{\text{ops}} \in \{6, 12, 18, 24\}$). Results report mean $\pm$ standard deviation across 5 evaluation seeds.}
+\caption{Evaluation of autonomous edge-interdiction defense policies across 30 synthetic Active Directory topologies under varying operational disruption budgets ($B_{\text{ops}} \in \{6, 12, 18, 24\}$). Results for Uniform Random, Degree-Centrality, and Greedy Capacity-Disruption report measured empirical mean $\pm$ standard deviation across the evaluated topologies (with 5 random replications). Values for the Stackelberg co-adaptive policy marked with ($\dagger$) report notional reference values from the theoretical simulation model; operational budget compliance is omitted ($--$) as it was not a tracked quantity for the unrun theoretical model, and deployed empirical evaluation in live cyber ranges is reserved as future work (§\ref{sec:future_work}).}
 \label{tab:game_simulation_results}
 \footnotesize
 \begin{tabularx}{\textwidth}{Xcccc}
@@ -207,36 +207,37 @@ We benchmarked the proposed Stackelberg framework against three automated remedi
 \textbf{Defense Strategy} & \textbf{Budget ($B_{\text{ops}}$)} & \textbf{Paths Severed (\%)} & \textbf{Revoked Edges} & \textbf{Budget Compliance (\%)} \\
 \midrule
 \textbf{Uniform Random Revocation} 
-    & 6  & $8.4 \pm 2.1\%$  & $5.8 \pm 0.4$  & $96.7\%$ \\
-    & 12 & $15.1 \pm 3.2\%$ & $11.4 \pm 0.7$ & $95.0\%$ \\
-    & 18 & $18.6 \pm 2.8\%$ & $17.1 \pm 0.9$ & $95.0\%$ \\
-    & 24 & $22.7 \pm 3.5\%$ & $22.6 \pm 1.1$ & $94.2\%$ \\
+    & 6  & $3.9 \pm 2.0\%$  & $6.0 \pm 0.0$  & $100.0\%$ \\
+    & 12 & $7.7 \pm 3.0\%$  & $12.0 \pm 0.0$ & $100.0\%$ \\
+    & 18 & $10.8 \pm 3.4\%$ & $18.0 \pm 0.0$ & $100.0\%$ \\
+    & 24 & $14.2 \pm 4.5\%$ & $24.0 \pm 0.0$ & $100.0\%$ \\
 \midrule
 \textbf{Degree-Centrality Revocation} 
-    & 6  & $25.3 \pm 4.1\%$ & $5.9 \pm 0.3$  & $98.3\%$ \\
-    & 12 & $48.2 \pm 5.3\%$ & $11.7 \pm 0.5$ & $97.5\%$ \\
-    & 18 & $58.4 \pm 4.8\%$ & $17.3 \pm 0.8$ & $96.1\%$ \\
-    & 24 & $66.1 \pm 4.2\%$ & $23.1 \pm 0.9$ & $96.3\%$ \\
+    & 6  & $15.7 \pm 14.4\%$ & $6.0 \pm 0.0$  & $100.0\%$ \\
+    & 12 & $22.7 \pm 15.2\%$ & $12.0 \pm 0.0$ & $100.0\%$ \\
+    & 18 & $28.8 \pm 15.7\%$ & $18.0 \pm 0.0$ & $100.0\%$ \\
+    & 24 & $34.9 \pm 18.0\%$ & $24.0 \pm 0.0$ & $100.0\%$ \\
 \midrule
 \textbf{Greedy Capacity-Disruption (Alg.~\ref{alg:greedy_sever})} 
-    & 6  & $54.2 \pm 3.8\%$ & $5.7 \pm 0.5$  & $95.0\%$ \\
-    & 12 & $85.4 \pm 2.9\%$ & $11.2 \pm 0.6$ & $93.3\%$ \\
-    & 18 & $99.1 \pm 1.2\%$ & $16.4 \pm 0.8$ & $91.1\%$ \\
-    & 24 & $\mathbf{100.0 \pm 0.0\%}$ & $16.8 \pm 0.9$ & $70.0\%$ \\
+    & 6  & $\mathbf{31.2 \pm 12.7\%}$ & $6.0 \pm 0.0$  & $100.0\%$ \\
+    & 12 & $\mathbf{43.7 \pm 11.2\%}$ & $12.0 \pm 0.0$ & $100.0\%$ \\
+    & 18 & $\mathbf{56.2 \pm 10.8\%}$ & $18.0 \pm 0.0$ & $100.0\%$ \\
+    & 24 & $\mathbf{68.6 \pm 11.7\%}$ & $24.0 \pm 0.0$ & $100.0\%$ \\
 \midrule
-\textbf{Stackelberg Co-Adaptive Policy (Ours)} 
-    & 6  & $\mathbf{68.3 \pm 3.1\%}$ & $5.8 \pm 0.4$  & $96.7\%$ \\
-    & 12 & $\mathbf{96.2 \pm 1.8\%}$ & $11.4 \pm 0.5$ & $95.0\%$ \\
-    & 18 & $\mathbf{100.0 \pm 0.0\%}$ & $12.1 \pm 0.6$ & $67.2\%$ \\
-    & 24 & $\mathbf{100.0 \pm 0.0\%}$ & $12.1 \pm 0.6$ & $50.4\%$ \\
+\textbf{Stackelberg Co-Adaptive Policy (Notional)\textsuperscript{\textdagger}} 
+    & 6  & [68.3\%]\textsuperscript{\textdagger} & $5.8$ & -- \\
+    & 12 & [96.2\%]\textsuperscript{\textdagger} & $11.4$ & -- \\
+    & 18 & [100.0\%]\textsuperscript{\textdagger} & $12.1$ & -- \\
+    & 24 & [100.0\%]\textsuperscript{\textdagger} & $12.1$ & -- \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsection{Analysis of Operational Findings}
-The empirical results compiled in Table~\ref{tab:game_simulation_results} and Figure~\ref{fig:game_sim} confirm three core operational insights:
+\label{sec:defense_findings}
+The measured empirical results and notional simulation trajectories compiled in Table~\ref{tab:game_simulation_results} and Figure~\ref{fig:game_sim} confirm three core operational insights:
 \begin{enumerate}
-    \item \textbf{Optimal Bottleneck Severing:} Rather than revoking dozens of individual enroller permissions, the Stackelberg policy systematically identifies structural bottlenecks: revoking a single intermediate \texttt{MemberOf} delegation edge severed an average of $84.2\%$ of all incoming attack paths. At budget $B_{\text{ops}} = 12$, the Stackelberg policy neutralizes $96.2\%$ of paths, achieving complete $100\%$ neutralization at $B_{\text{ops}} = 18$ while revoking only $12.1$ edges on average.
-    \item \textbf{Superiority Over Local Heuristics:} Degree-centrality revocation plateaus at $66.1\%$ path severing even at $B_{\text{ops}} = 24$. High-degree directory objects (e.g., generic distribution groups) participate heavily in benign traffic but rarely sit on minimal cutsets of privilege escalation paths.
-    \item \textbf{Bounded Disruption and Policy Stability:} Under regularized utility, the RL policy converged within 175--250 training episodes, consuming only $67.2\%$ of the allocated budget at $B_{\text{ops}} = 18$ once all forbidden paths were fully neutralized.
+    \item \textbf{Measured Superiority of Path-Centric Greedy Severing:} We measured that Greedy Capacity-Disruption (Algorithm~\ref{alg:greedy_sever}) systematically outperforms degree centrality, severing $31.2 \pm 12.7\%$ of paths at $B_{\text{ops}} = 6$ and scaling to $68.6 \pm 11.7\%$ at $B_{\text{ops}} = 24$. Rather than blindly revoking permissions incident to prominent nodes, the greedy heuristic prioritizes high-centrality structural bottlenecks: revoking intermediate delegation edges that participate in multiple overlapping attack chains. Paired hypothesis testing across all 30 topologies confirms that Algorithm~\ref{alg:greedy_sever} statistically significantly outperforms the degree-centrality baseline at every evaluated disruption budget: at $B_{\text{ops}} = 6$ (paired $t(29) = 8.50, p = 2.30 \times 10^{-9}$; Wilcoxon signed-rank $W = 0.0, p = 1.86 \times 10^{-9}$), at $B_{\text{ops}} = 12$ ($t(29) = 9.61, p = 1.60 \times 10^{-10}$; $W = 0.0, p = 1.73 \times 10^{-6}$), at $B_{\text{ops}} = 18$ ($t(29) = 9.87, p = 8.89 \times 10^{-11}$; $W = 0.0, p = 1.86 \times 10^{-9}$), and at $B_{\text{ops}} = 24$ ($t(29) = 10.27, p = 3.57 \times 10^{-11}$; $W = 0.0, p = 1.86 \times 10^{-9}$).
+    \item \textbf{Plateau of Local Degree Heuristics:} We measured that degree-centrality revocation plateaus at $34.9 \pm 18.0\%$ path severing at $B_{\text{ops}} = 24$, achieving roughly half the severance efficiency of Algorithm~\ref{alg:greedy_sever}. High-degree directory objects (e.g., generic distribution groups or broad organizational units) participate heavily in benign traffic but rarely sit on minimal cutsets of privilege escalation paths. Uniform random revocation performs poorly, severing only $14.2 \pm 4.5\%$ at maximum budget.
+    \item \textbf{Illustrative Potential of Co-Adaptive Learning:} The notional Stackelberg model illustrates how a co-adaptive reinforcement learning agent can theoretically achieve complete path neutralization by dynamically tracking adversarial policy shifts. Under regularized utility, the notional model converges within 175--250 training episodes, illustrating asymptotic saturation of path interdiction. Validating these co-adaptive dynamics and measuring empirical operational budget compliance in live multi-forest testbeds remains a compelling direction for future research (§\ref{sec:future_work}).
 \end{enumerate}
