@@ -28,7 +28,7 @@ GOAD is an acclaimed, widely recognized vulnerable enterprise research environme
 As illustrated in @fig:goad_topology, the multi-forest architecture features interconnected parent, child, and external domains. Of critical operational relevance to this thesis, the Enterprise Certificate Authority (`ADCS - ESSOS-CA`) is hosted on member server `braavos` (`SRV03`), representing an authentic enterprise PKI target accessible via both LDAP enrollment and cross-domain authentication links.
 
 #figure(
-  image("figures/goad_forest_topology.png", width: 90%),
+  image("../figures/goad_forest_topology.png", width: 90%),
   caption: [Architecture and trust relationship schema of the Game of Active Directory (GOAD) multi-forest lab environment, detailing domain controllers, member servers (including the ADCS Certificate Authority hosted on `SRV03 - braavos`), and cross-forest authentication links.],
 ) <fig:goad_topology>
 
@@ -108,12 +108,11 @@ In scenario `HN_ESC1`, a template was configured with the dangerous flag `CT_FLA
 
 The full complexity of transitive compromise chains across GOAD is visualized in @fig:goad_paths. From unprivileged workstations and compromised user credentials, adversaries execute multi-stage attacks chaining Kerberoasting, NTLM relaying, and ADCS misconfigurations (ESC1, ESC2, ESC3, ESC6, ESC8) to cross domain trusts and compromise root enterprise domain controllers.
 
-\begin{sidewaysfigure}
-    \centering
-    \includegraphics[width=0.92\textheight]{figures/goad_attack_paths.png}
-    \caption{End-to-end multi-hop compromise and privilege escalation attack graph across the GOAD domain infrastructure, illustrating how unprivileged foothold credentials traverse ADCS certificate misconfigurations (ESC1--ESC8), Kerberos delegations, and inter-domain trusts to achieve enterprise domain dominance.}
-    <fig:goad_paths>
-\end{sidewaysfigure}
+#figure(
+  image("../figures/goad_attack_paths.png", width: 90%),
+  caption: [End-to-end multi-hop compromise and privilege escalation attack graph across the GOAD domain infrastructure, illustrating how unprivileged foothold credentials traverse ADCS certificate misconfigurations (ESC1--ESC8), Kerberos delegations, and inter-domain trusts to achieve enterprise domain dominance.],
+) <fig:goad_paths>
+
 
 == Temporal Validation Across Independent Collection Dates
 

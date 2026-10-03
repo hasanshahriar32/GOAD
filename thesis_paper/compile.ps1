@@ -24,7 +24,8 @@ Write-Host "Directory: $(Get-Location)" -ForegroundColor Gray
 Write-Host "==========================================================" -ForegroundColor Cyan
 
 # 1. Search for Tectonic
-$Tectonic = (Get-Command tectonic -ErrorAction SilentlyContinue)?.Source
+$TectonicCmd = Get-Command tectonic -ErrorAction SilentlyContinue
+$Tectonic = if ($TectonicCmd) { $TectonicCmd.Source } else { $null }
 if (-not $Tectonic) {
     $TectonicCandidates = @(
         "$env:USERPROFILE\.cargo\bin\tectonic.exe",
@@ -38,7 +39,8 @@ if (-not $Tectonic) {
 }
 
 # 2. Search for Typst
-$Typst = (Get-Command typst -ErrorAction SilentlyContinue)?.Source
+$TypstCmd = Get-Command typst -ErrorAction SilentlyContinue
+$Typst = if ($TypstCmd) { $TypstCmd.Source } else { $null }
 if (-not $Typst) {
     $TypstCandidates = @(
         "$env:USERPROFILE\.cargo\bin\typst.exe",
@@ -51,8 +53,10 @@ if (-not $Typst) {
     }
 }
 
-$Latexmk = (Get-Command latexmk -ErrorAction SilentlyContinue)?.Source
-$PdfLatex = (Get-Command pdflatex -ErrorAction SilentlyContinue)?.Source
+$LatexmkCmd = Get-Command latexmk -ErrorAction SilentlyContinue
+$Latexmk = if ($LatexmkCmd) { $LatexmkCmd.Source } else { $null }
+$PdfLatexCmd = Get-Command pdflatex -ErrorAction SilentlyContinue
+$PdfLatex = if ($PdfLatexCmd) { $PdfLatexCmd.Source } else { $null }
 
 $BuildSuccess = $false
 

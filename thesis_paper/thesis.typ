@@ -1,6 +1,6 @@
 #set document(title: "CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense", author: ("2002126", "2002138", "2102151"))
 #set page(paper: "a4", margin: (left: 3.0cm, right: 2.5cm, top: 2.5cm, bottom: 2.5cm))
-#set text(font: ("Times New Roman", "Liberation Serif"), size: 12pt, lang: "en")
+#set text(font: "Times New Roman", size: 12pt, lang: "en")
 #set par(justify: true, leading: 0.8em, first-line-indent: 1.5em)
 
 // ─────────────────────────────────────────────────────────────

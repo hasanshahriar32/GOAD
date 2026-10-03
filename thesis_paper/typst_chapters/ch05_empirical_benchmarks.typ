@@ -79,7 +79,7 @@ $ t_("corr") = (t_("std"))/(1.50),   "with " nu = K - 1 = 4 " degrees of freedom
 
 
 #figure(
-  image("figures/confusion_matrix.png", width: 90%),
+  image("../figures/confusion_matrix.png", width: 90%),
   caption: [CertGraph 7-Class Confusion Matrix.],
 ) <fig:conf_matrix>
 
@@ -131,7 +131,7 @@ To rigorously benchmark CertGraph under realistic operational conditions, we syn
 
 
 
-Under heavy class imbalance, traditional Accuracy is dominated by the majority class and becomes uninformative. We therefore report Precision-Recall Area Under the Curve (*PR-AUC*), Macro-F1, Precision, Recall, *Expected Calibration Error (ECE)* across 10 probability bins, and the *Brier Score* ($(1)/(N) sum_(i=1)^N sum_(c=1)^C (p_(ic) - y_(ic))^2$):
+Under heavy class imbalance, traditional Accuracy is dominated by the majority class and becomes uninformative. We therefore report Precision-Recall Area Under the Curve (*PR-AUC*), Macro-F1, Precision, Recall, *Expected Calibration Error (ECE)* across 10 probability bins, and the *Brier Score* ($(1)/(N) sum_(i=1)^N sum_(c=1)^C (p_(i c) - y_(i c))^2$):
 
 #figure(
   text(size: 9.5pt)[
@@ -177,7 +177,7 @@ To isolate the contribution of each architectural component within CertGraph, we
 
 
 #figure(
-  image("figures/ablation_comparison.png", width: 90%),
+  image("../figures/ablation_comparison.png", width: 90%),
   caption: [Ablation study comparison highlighting the performance collapse when residual skip connections are disabled.],
 ) <fig:ablation_fig>
 
@@ -185,7 +185,7 @@ To isolate the contribution of each architectural component within CertGraph, we
 *Empirical Confirmation of Theorem 1:*
 The most striking result of the ablation suite is the consequence of removing residual skip connections ($W_("skip") = 0$). In standard undirected graph benchmarks (e.g., Cora, Citeseer), omitting skip connections typically causes a minor degradation of $2-5%$. In sharp contrast, on Active Directory identity graphs, removing skip connections triggers a *severe collapse in Macro-F1 from $0.9986$ to $0.4768$* (standard $p = 1.31 times 10^(-6)$, Nadeau-Bengio corrected $p = 6.61 times 10^(-6)$, representing a $>52%$ absolute drop).
 
-This empirical collapse directly confirms @thm:representation_preservation: without residual skip connections, a certificate template node aggregates messages exclusively from its incoming neighbors during Layer 1, completely discarding its own initial 10-dimensional configuration feature vector $x_("Template")$ ($diff h_t^((1)) / diff x_t = bold(0)$). Furthermore, low-in-degree principals suffer representation decay across successive message-passing hops. The network loses direct sensitivity to critical configuration flags (such as `ENROLLEE_SUPPLIES_SUBJECT` and Client Authentication EKUs), destroying its ability to differentiate dangerous templates from secure ones. Parameterized skip connections preserve initial attributes and maintain non-vanishing gradient bounds, preventing representation collapse.
+This empirical collapse directly confirms @thm:representation_preservation: without residual skip connections, a certificate template node aggregates messages exclusively from its incoming neighbors during Layer 1, completely discarding its own initial 10-dimensional configuration feature vector $x_("Template")$ ($partial h_t^((1)) / partial x_t = bold(0)$). Furthermore, low-in-degree principals suffer representation decay across successive message-passing hops. The network loses direct sensitivity to critical configuration flags (such as `ENROLLEE_SUPPLIES_SUBJECT` and Client Authentication EKUs), destroying its ability to differentiate dangerous templates from secure ones. Parameterized skip connections preserve initial attributes and maintain non-vanishing gradient bounds, preventing representation collapse.
 
 == The Zero-Shot Adversarial Hard Negative Benchmark <sec:hard_negatives>
 
@@ -219,7 +219,7 @@ To answer this question, we established an out-of-distribution *Zero-Shot Advers
 
 
 #figure(
-  image("figures/hard_negatives_comparison.png", width: 90%),
+  image("../figures/hard_negatives_comparison.png", width: 90%),
   caption: [Zero-shot adversarial evaluation demonstrating the collapse of pure neural models due to shortcut learning compared to symbolic BFS path traversal.],
 ) <fig:hn_fig>
 
@@ -240,7 +240,7 @@ The empirical results in @tab:hn_results establish crucial insights into the lim
 To analyze what CertGraph learns internally, we inspected the learned multi-head attention weights $alpha_(v u)^((k, r))$ across the 2-hop computational subgraph of evaluated templates.
 
 #figure(
-  image("figures/attention_explainability.png", width: 90%),
+  image("../figures/attention_explainability.png", width: 90%),
   caption: [Localized 2-hop attention weight attribution for an ESC13 template, showing concentrated attention along the valid enrollment and issuance policy path.],
 ) <fig:attention_exp>
 

@@ -156,13 +156,13 @@ def convert_latex_math_to_typst(math_str):
         (r'\mid', '|'),
         (r'\sum', 'sum'),
         (r'\prod', 'product'),
-        (r'\partial', 'diff'),
+        (r'\partial', 'partial'),
         (r'\nabla', 'nabla'),
         (r'\cup', 'union'),
-        (r'\cap', 'sect'),
+        (r'\cap', 'inter'),
         (r'\bigcup', 'union.big'),
         (r'\bigvee', 'or.big'),
-        (r'\bigoplus', 'plus.circle.big'),
+        (r'\bigoplus', 'plus.o'),
         (r'\wedge', 'and'),
         (r'\neg', 'not'),
         (r'\Delta', 'Delta'),
@@ -188,8 +188,8 @@ def convert_latex_math_to_typst(math_str):
         (r'\omega', 'omega'),
         (r'\rightsquigarrow', 'arrow.squiggly'),
         (r'\Leftarrow', 'arrow.l.double'),
-        (r'\langle', 'angle.l'),
-        (r'\rangle', 'angle.r'),
+        (r'\langle', 'chevron.l'),
+        (r'\rangle', 'chevron.r'),
         (r'\setminus', '\\'),
         (r'\log', 'log'),
         (r'\min', 'min'),
@@ -199,7 +199,7 @@ def convert_latex_math_to_typst(math_str):
         (r'\ll', '<<'),
         (r'\{', '{'),
         (r'\}', '}'),
-        (r'\_', '_'),
+        (r'\_', r'\_'),
         (r'\|', '||'),
         (r'\quad', ' '),
         (r'\qquad', '  '),
@@ -219,10 +219,8 @@ def convert_latex_math_to_typst(math_str):
             break
         s = new_s
 
-    # Fix variables like vu, vw in subscripts
-    s = re.sub(r'_\(vu\)', '_(v u)', s)
-    s = re.sub(r'_\(vw\)', '_(v w)', s)
-    s = re.sub(r'_\(uv\)', '_(u v)', s)
+    # Fix variables like vu, vw, ic in subscripts
+    s = re.sub(r'_\(([a-zA-Z])([a-zA-Z])\)', r'_(\1 \2)', s)
     s = re.sub(r'\\dot\{([^}]+)\}', r'dot(\1)', s)
     s = re.sub(r'\\bar\{([^}]+)\}', r'macron(\1)', s)
     s = re.sub(r'\\hat\{([^}]+)\}', r'hat(\1)', s)
@@ -394,14 +392,15 @@ def convert_latex_to_typst(tex):
         caption = caption.replace(r'\%', '%').replace(r'\_', '_').replace(r'\&', '&')
         caption = re.sub(r'\$(.*?)\$', lambda mm: '$' + convert_latex_math_to_typst(mm.group(1)) + '$', caption)
 
-        res = f'#figure(\n  image("{img_path}", width: 90%),\n  caption: [{caption}],\n)'
+        img_rel = f"../{img_path}" if not img_path.startswith("..") else img_path
+        res = f'#figure(\n  image("{img_rel}", width: 90%),\n  caption: [{caption}],\n)'
         if label:
             res += f' <{label}>\n'
         else:
             res += '\n'
         return res
 
-    tex = re.sub(r'\\begin\{figure\*?\}.*?\\end\{figure\*?\}', rep_fig, tex, flags=re.DOTALL)
+    tex = re.sub(r'\\begin\{(?:figure|sidewaysfigure)\*?\}.*?\\end\{(?:figure|sidewaysfigure)\*?\}', rep_fig, tex, flags=re.DOTALL)
 
     # Headings with optional immediate label
     def rep_heading(level_prefix):

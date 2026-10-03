@@ -40,7 +40,7 @@ Because native ADSynth synthesizes identity skeletons (users, computers, groups,
 
 
 #figure(
-  image("figures/tool_comparison_f1.png", width: 90%),
+  image("../figures/tool_comparison_f1.png", width: 90%),
   caption: [Comparative performance (CertGraph vs BloodHound vs Certipy) across synthetic and ADSynth realistic tiered enterprise topologies.],
 ) <fig:tool_comp>
 
@@ -76,7 +76,7 @@ This bidirectional transfer confirms that CertGraph does not overfit to specific
 In real-world security operations, Active Directory telemetry is frequently degraded by collection timeouts, network packet loss, and missing access control entries. Grounding our evaluation in the principled empirical framework of GNN structural and attribute robustness under perturbations formalized by Wu et al. (2025) @wu2025understanding, we subjected CertGraph to systematic perturbation stress tests evaluating topological edge deletions, configuration feature noise, and sample efficiency scaling.
 
 #figure(
-  image("figures/robustness_analysis.png", width: 90%),
+  image("../figures/robustness_analysis.png", width: 90%),
   caption: [GNN robustness evaluation under systematic edge deletions (collection gaps), configuration feature noise (attribute corruption), and training data efficiency scaling.],
 ) <fig:robustness_fig>
 
@@ -151,7 +151,7 @@ The model crosses the $0.98$ F1 threshold with approximately 80 training domains
 To verify that CertGraph can operate within operational enterprise constraints (standard analysts' workstations with limited memory allocations), we benchmarked model inference latency, throughput, and memory consumption across enterprise graph scales ranging from 100 to 10,000 nodes ($approx 765,000$ directed edges).
 
 #figure(
-  image("figures/scalability_metrics.png", width: 90%),
+  image("../figures/scalability_metrics.png", width: 90%),
   caption: [Scalability benchmarks showing empirical inference latency scaling near-linearly with edge volume, displaying a moderate hardware cache-boundary inflection at 10,000 nodes, while Resident Set Size (RSS) memory remains bounded.],
 ) <fig:scalability_fig>
 

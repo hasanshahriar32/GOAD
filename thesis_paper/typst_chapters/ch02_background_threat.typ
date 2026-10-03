@@ -56,7 +56,7 @@ To overcome the brittleness and combinatorial limitations of deterministic graph
 Gilmer et al. @gilmer2017neural unified modern graph deep learning architectures under the Message-Passing Neural Network (MPNN) framework. For a graph $G = (V, E)$ with node feature vectors $x_v in bb(R)^d$, an MPNN layer computes updated node representations $h_v^((l))$ through three core computational phases:
 
 + *Message Computation:* For each directed edge $(u, v) in E$, a message vector is computed: $ m_(v u)^((l)) = M_l ( h_v^((l-1)), h_u^((l-1)), e_(v u) ) $ where $M_l$ is a parameterized message function, and $e_(v u)$ represents edge features.
-+ *Message Aggregation:* Messages from all incoming neighbors in $cal(N)(v)$ are aggregated using a permutation-invariant aggregation operator $plus.circle.big$: $ macron(m)_v^((l)) = plus.circle.big_(u in cal(N)(v)) m_(v u)^((l)) $
++ *Message Aggregation:* Messages from all incoming neighbors in $cal(N)(v)$ are aggregated using a permutation-invariant aggregation operator $plus.o$: $ macron(m)_v^((l)) = plus.o_(u in cal(N)(v)) m_(v u)^((l)) $
 + *State Update:* The node's hidden representation is updated by combining its previous state with the aggregated message: $ h_v^((l)) = U_l ( h_v^((l-1)), macron(m)_v^((l)) ) $ where $U_l$ is a parameterized update function (e.g., a Multi-Layer Perceptron or gated recurrent unit).
 
 
@@ -157,7 +157,7 @@ Every Active Directory object is protected by a *Security Descriptor* containing
 Active Directory Certificate Services (ADCS) is an integrated Windows role that allows an organization to construct an internal Public Key Infrastructure (PKI). ADCS comprises several core architectural components:
 
 #figure(
-  image("figures/adcs_attack_graph_schema.png", width: 90%),
+  image("../figures/adcs_attack_graph_schema.png", width: 90%),
   caption: [Heterogeneous Active Directory Certificate Services (ADCS) Graph Schema, illustrating relations between security principals (Users, Computers, Groups), Certificate Templates, and Enterprise Certificate Authorities.],
 ) <fig:adcs_schema>
 
@@ -223,7 +223,7 @@ To ensure methodological clarity, we explicitly detail the operational and archi
 In contrast, the included vectors (*ESC1, ESC2, ESC3, ESC4, ESC9, ESC13*) represent the complete canonical suite of _template-centric, authorization-driven privilege escalation vectors_ whose discovery fundamentally demands resolving the joint interaction between multi-hop identity graph paths and certificate template configuration flags.
 
 #figure(
-  image("figures/esc13_attack_path_diagram.png", width: 90%),
+  image("../figures/esc13_attack_path_diagram.png", width: 90%),
   caption: [Two-hop ESC13 privilege escalation attack path, showing the chain from an unprivileged user through enrollment permissions and issuance policy OID linkage to high-value domain administrative group tokens.],
 ) <fig:esc13_path>
 

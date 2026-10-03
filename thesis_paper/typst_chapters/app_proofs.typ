@@ -8,8 +8,8 @@
     *Theorem Intrinsic Attribute Preservation and Gradient Lower Bounds.* \
     Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous multigraph with node type mapping $tau: V arrow.r cal(T)_V$. Let each node $v in V$ have an initial feature vector $x_v = h_v^((0)) in bb(R)^(d_0)$. Consider an $L$-layer heterogeneous message-passing neural network where layer $l in {1, dots, L}$ computes hidden representations:
 
-+ *Intrinsic Feature Erasure in Relational Neighborhood Aggregation:* Under pure relational neighborhood aggregation without self-loops or skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ where $cal(N)_r(v) = \{u in V | (u, r, v) in E}$ denotes incoming neighbors under relation $r$, the layer-1 hidden state $h_v^((1))$ is conditionally independent of $x_v$ given $cal(N)(v)$. Consequently: $ (diff h_v^((1)))/(diff x_v) = bold(0) in bb(R)^(d_1 times d_0) $ Moreover, for any source-only node $v$ satisfying $cal(N)_("in")(v) = emptyset$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
-+ *Guaranteed Gradient Lower Bound via Parameterized Residual Skips:* When parameterized residual skip connections are introduced: $ tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1)) $ where $W_("skip")^((l)) in bb(R)^(d_l times d_(l-1))$ has minimum singular value $sigma_(min)(W_("skip")^((l))) > 0$, the Jacobian of the representation with respect to the initial input features satisfies: $ sigma_(min) ( (diff tilde(h)_v^((L)))/(diff x_v) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| $ where $\|cal(J)_("graph")(v)|| <= L_sigma^L alpha_(max) product_(l=1)^L \|W^((l))||$ bounds the cyclical feedback gradient. When $G$ contains no self-directed cycles of length $<= L$ involving $v$, $cal(J)_("graph")(v) = bold(0)$, yielding the exact lower bound $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0$. Under the spectral condition $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > \|cal(J)_("graph")(v)||$, input feature sensitivity is strictly preserved: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| > 0 $ guaranteeing that input feature sensitivity does not vanish across message-passing layers.
++ *Intrinsic Feature Erasure in Relational Neighborhood Aggregation:* Under pure relational neighborhood aggregation without self-loops or skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.o_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ where $cal(N)_r(v) = \{u in V | (u, r, v) in E}$ denotes incoming neighbors under relation $r$, the layer-1 hidden state $h_v^((1))$ is conditionally independent of $x_v$ given $cal(N)(v)$. Consequently: $ (partial h_v^((1)))/(partial x_v) = bold(0) in bb(R)^(d_1 times d_0) $ Moreover, for any source-only node $v$ satisfying $cal(N)_("in")(v) = emptyset$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
++ *Guaranteed Gradient Lower Bound via Parameterized Residual Skips:* When parameterized residual skip connections are introduced: $ tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1)) $ where $W_("skip")^((l)) in bb(R)^(d_l times d_(l-1))$ has minimum singular value $sigma_(min)(W_("skip")^((l))) > 0$, the Jacobian of the representation with respect to the initial input features satisfies: $ sigma_(min) ( (partial tilde(h)_v^((L)))/(partial x_v) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| $ where $\|cal(J)_("graph")(v)|| <= L_sigma^L alpha_(max) product_(l=1)^L \|W^((l))||$ bounds the cyclical feedback gradient. When $G$ contains no self-directed cycles of length $<= L$ involving $v$, $cal(J)_("graph")(v) = bold(0)$, yielding the exact lower bound $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0$. Under the spectral condition $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > \|cal(J)_("graph")(v)||$, input feature sensitivity is strictly preserved: $ || (partial tilde(h)_v^((L)))/(partial x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| > 0 $ guaranteeing that input feature sensitivity does not vanish across message-passing layers.
 
 
   ]
@@ -25,20 +25,20 @@ _Proof._ We establish the proof in three parts: intrinsic feature erasure, gradi
 
 *Part 1: Intrinsic Feature Erasure under Pure Neighborhood Aggregation.*
 Let $v in V$ be an arbitrary node in $G$ with initial feature vector $x_v = h_v^((0)) in bb(R)^(d_0)$. Under the standard heterogeneous relational convolution layer:
-$ h_v^((1)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((1)) W_r^((1)) h_u^((0)) ) $
+$ h_v^((1)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.o_(u in cal(N)_r(v)) alpha_(v u)^((1)) W_r^((1)) h_u^((0)) ) $
 
 Observe that the argument of $sigma(dot)$ is a linear combination of neighbor states $\{h_u^((0)) | u in cal(N)_r(v), r in cal(R)_("in")(tau(v))}$. In an access control multigraph lacking explicit self-loop relations on template nodes:
 $ v not in cal(N)_r(v),   forall r in cal(R)_("in")(tau(v)) $
 
 Differentiating $h_v^((1))$ with respect to $x_v = h_v^((0))$:
-$ (diff h_v^((1)))/(diff x_v) = sigma'(dot) dot sum_(r in cal(R)_("in")(tau(v))) sum_(u in cal(N)_r(v)) alpha_(v u)^((1)) W_r^((1)) (diff h_u^((0)))/(diff h_v^((0))) $
+$ (partial h_v^((1)))/(partial x_v) = sigma'(dot) dot sum_(r in cal(R)_("in")(tau(v))) sum_(u in cal(N)_r(v)) alpha_(v u)^((1)) W_r^((1)) (partial h_u^((0)))/(partial h_v^((0))) $
 
-Because distinct nodes have disjoint representations ($diff h_u^((0)) / diff h_v^((0)) = bold(0)$ for all $u != v$), every term in the summation evaluates to zero:
-$ (diff h_v^((1)))/(diff x_v) = bold(0) in bb(R)^(d_1 times d_0) $
+Because distinct nodes have disjoint representations ($partial h_u^((0)) / partial h_v^((0)) = bold(0)$ for all $u != v$), every term in the summation evaluates to zero:
+$ (partial h_v^((1)))/(partial x_v) = bold(0) in bb(R)^(d_1 times d_0) $
 
 Thus, at layer 1, the node's updated embedding $h_v^((1))$ is completely independent of its initial feature vector $x_v$. In certificate templates ($t in V_("Template")$), this means that the 10 binary configuration flags $x_("Template")$ (which govern whether the template allows enrollee-supplied SANs, requires manager approval, or specifies client authentication EKUs) are completely discarded from $h_t^((1))$. 
 
-Furthermore, if $v$ is a source-only entity satisfying $d_("in")(v) = 0$ (such as user accounts possessing outgoing enrollment rights but no incoming delegations), then $cal(N)_r(v) = emptyset$ for all $r$. By the identity of aggregation over an empty set ($plus.circle.big(emptyset) = bold(0)$) and $sigma(bold(0)) = bold(0)$, we obtain $h_v^((l)) = bold(0)$ for all $l >= 1$.
+Furthermore, if $v$ is a source-only entity satisfying $d_("in")(v) = 0$ (such as user accounts possessing outgoing enrollment rights but no incoming delegations), then $cal(N)_r(v) = emptyset$ for all $r$. By the identity of aggregation over an empty set ($plus.o(emptyset) = bold(0)$) and $sigma(bold(0)) = bold(0)$, we obtain $h_v^((l)) = bold(0)$ for all $l >= 1$.
 
 *Part 2: Gradient Lower Bounds via Parameterized Residual Skips.*
 Now consider the layer formulation equipped with parameterized additive residual skip connections:
@@ -50,26 +50,26 @@ $ tilde(h)_v^((L)) = ( product_(k=1)^L W_("skip")^((k)) ) x_v + sum_(l=1)^L ( pr
 where by convention $product_(k=L+1)^L W_("skip")^((k)) = I_(d_L)$. 
 
 Taking the Jacobian of $tilde(h)_v^((L))$ with respect to $x_v$:
-$ (diff tilde(h)_v^((L)))/(diff x_v) = product_(k=1)^L W_("skip")^((k)) + cal(J)_("graph")(v) $
+$ (partial tilde(h)_v^((L)))/(partial x_v) = product_(k=1)^L W_("skip")^((k)) + cal(J)_("graph")(v) $
 
-where $cal(J)_("graph")(v) = sum_(l=1)^L ( product_(k=l+1)^L W_("skip")^((k)) ) (diff h_v^((l)))/(diff x_v)$ represents the indirect gradient flowing through cyclical graph paths (e.g., $v arrow.r u arrow.r v$).
+where $cal(J)_("graph")(v) = sum_(l=1)^L ( product_(k=l+1)^L W_("skip")^((k)) ) (partial h_v^((l)))/(partial x_v)$ represents the indirect gradient flowing through cyclical graph paths (e.g., $v arrow.r u arrow.r v$).
 
 By Weyl's perturbation inequality for singular values (Horn & Johnson, 2012):
-$ sigma_(min) ( (diff tilde(h)_v^((L)))/(diff x_v) ) >= sigma_(min) ( product_(k=1)^L W_("skip")^((k)) ) - \|cal(J)_("graph")(v)|| $
+$ sigma_(min) ( (partial tilde(h)_v^((L)))/(partial x_v) ) >= sigma_(min) ( product_(k=1)^L W_("skip")^((k)) ) - \|cal(J)_("graph")(v)|| $
 
 Applying the sub-multiplicative property of singular values:
 $ sigma_(min) ( product_(k=1)^L W_("skip")^((k)) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) $
 
 
-Now, we explicitly bound the operator norm $\|cal(J)_("graph")(v)||$. At layer 1, since there are no self-loops ($v not in cal(N)(v)$), $(diff h_v^((1)))/(diff x_v) = bold(0)$. For $L = 2$, applying the chain rule to the second aggregation layer yields:
-$ (diff h_v^((2)))/(diff x_v) = sum_(r in cal(R)_("in")) sum_(u in cal(N)_r(v)) alpha_(v u)^((2)) sigma'(z_v^((2))) W_r^((2)) (diff tilde(h)_u^((1)))/(diff x_v) $
+Now, we explicitly bound the operator norm $\|cal(J)_("graph")(v)||$. At layer 1, since there are no self-loops ($v not in cal(N)(v)$), $(partial h_v^((1)))/(partial x_v) = bold(0)$. For $L = 2$, applying the chain rule to the second aggregation layer yields:
+$ (partial h_v^((2)))/(partial x_v) = sum_(r in cal(R)_("in")) sum_(u in cal(N)_r(v)) alpha_(v u)^((2)) sigma'(z_v^((2))) W_r^((2)) (partial tilde(h)_u^((1)))/(partial x_v) $
 
-Expanding $(diff tilde(h)_u^((1)))/(diff x_v) = (diff h_u^((1)))/(diff x_v) + W_("skip")^((1)) (diff x_u)/(diff x_v)$: since $u != v$, $(diff x_u)/(diff x_v) = bold(0)$, and $(diff h_u^((1)))/(diff x_v) = sum_(r' in cal(R)_("in")) sum_(w in cal(N)_(r')(u)) alpha_(uw)^((1)) sigma'(z_u^((1))) W_(r')^((1)) (diff x_w)/(diff x_v)$. The term $(diff x_w)/(diff x_v)$ is non-zero ($I_(d_0)$) if and only if $w = v$, corresponding to a 2-hop directed cycle $v arrow.r u arrow.r v$.
+Expanding $(partial tilde(h)_u^((1)))/(partial x_v) = (partial h_u^((1)))/(partial x_v) + W_("skip")^((1)) (partial x_u)/(partial x_v)$: since $u != v$, $(partial x_u)/(partial x_v) = bold(0)$, and $(partial h_u^((1)))/(partial x_v) = sum_(r' in cal(R)_("in")) sum_(w in cal(N)_(r')(u)) alpha_(u w)^((1)) sigma'(z_u^((1))) W_(r')^((1)) (partial x_w)/(partial x_v)$. The term $(partial x_w)/(partial x_v)$ is non-zero ($I_(d_0)$) if and only if $w = v$, corresponding to a 2-hop directed cycle $v arrow.r u arrow.r v$.
 
 We therefore distinguish two topological regimes:
 
-+ *Acyclic Receptive Field ($\nexists 2$-cycle $v arrow.squiggly u arrow.squiggly v$):* In standard Active Directory permission DAGs (where user accounts possess forward enrollment rights into templates, but certificate templates do not hold outgoing access-control rights over users), no 2-hop cycles terminate back at $v$. Consequently, $(diff h_u^((1)))/(diff x_v) = bold(0)$ for all $u in cal(N)(v)$, establishing: $ cal(J)_("graph")(v) = bold(0) => || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ The lower bound holds with exact equality.
-+ *Cyclical Graphs ($exists 2$-cycle $v arrow.r u arrow.r v$):* By the sub-multiplicativity of induced operator norms and the Lipschitz continuity of the activation function ($\|sigma'|| <= L_sigma = 1$ for ELU/ReLU): $ \|cal(J)_("graph")(v)|| &<= L_sigma^2 sum_(u in cal(N)(v)) alpha_(v u)^((2)) alpha_(u v)^((1)) \|W^((2))|| \|W^((1))|| &<= L_sigma^2 ( max_(u in cal(N)(v)) alpha_(u v)^((1)) ) \|W^((2))|| \|W^((1))|| sum_(u in cal(N)(v)) alpha_(v u)^((2)) &= alpha_(max)^((1)) \|W^((2))|| \|W^((1))|| $ where $alpha_(max)^((1)) = max_(u in cal(N)(v)) alpha_(u v)^((1)) <= 1$. Under standard spectral scaling or weight regularization where the skip connection singular values satisfy $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > alpha_(max)^((1)) product_(l=1)^L \|W^((l))||$, we strictly establish: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= sigma_(min) ( (diff tilde(h)_v^((L)))/(diff x_v) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| > 0 $
++ *Acyclic Receptive Field ($\nexists 2$-cycle $v arrow.squiggly u arrow.squiggly v$):* In standard Active Directory permission DAGs (where user accounts possess forward enrollment rights into templates, but certificate templates do not hold outgoing access-control rights over users), no 2-hop cycles terminate back at $v$. Consequently, $(partial h_u^((1)))/(partial x_v) = bold(0)$ for all $u in cal(N)(v)$, establishing: $ cal(J)_("graph")(v) = bold(0) => || (partial tilde(h)_v^((L)))/(partial x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ The lower bound holds with exact equality.
++ *Cyclical Graphs ($exists 2$-cycle $v arrow.r u arrow.r v$):* By the sub-multiplicativity of induced operator norms and the Lipschitz continuity of the activation function ($\|sigma'|| <= L_sigma = 1$ for ELU/ReLU): $ \|cal(J)_("graph")(v)|| &<= L_sigma^2 sum_(u in cal(N)(v)) alpha_(v u)^((2)) alpha_(u v)^((1)) \|W^((2))|| \|W^((1))|| &<= L_sigma^2 ( max_(u in cal(N)(v)) alpha_(u v)^((1)) ) \|W^((2))|| \|W^((1))|| sum_(u in cal(N)(v)) alpha_(v u)^((2)) &= alpha_(max)^((1)) \|W^((2))|| \|W^((1))|| $ where $alpha_(max)^((1)) = max_(u in cal(N)(v)) alpha_(u v)^((1)) <= 1$. Under standard spectral scaling or weight regularization where the skip connection singular values satisfy $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > alpha_(max)^((1)) product_(l=1)^L \|W^((l))||$, we strictly establish: $ || (partial tilde(h)_v^((L)))/(partial x_v) || >= sigma_(min) ( (partial tilde(h)_v^((L)))/(partial x_v) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| > 0 $
 
 
 
@@ -147,7 +147,7 @@ While the classical Multiterminal Cut problem on undirected graphs was proven NP
 *Directed Multiway Cut:* Given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H arrow.r bb(R)^+$, a subset of $k >= 3$ distinct terminal vertices $X = \{x_1, x_2, dots, x_k} subset.eq V_H$, and a cost threshold $W$, does there exist an edge subset $C subset.eq E_H$ with $sum_(e in C) w(e) <= W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i != j$) in the residual graph $H' = (V_H, E_H \ C)$?
 \end{quote}
 
-Given an arbitrary instance $angle.l H = (V_H, E_H), w, X = \{x_1, dots, x_k}, W angle.r$ of the Directed Multiway Cut problem ($k >= 3$), we construct an instance $angle.l G = (V, E), c, cal(P)_("forbidden"), K angle.r$ of MPAI in polynomial time:
+Given an arbitrary instance $chevron.l H = (V_H, E_H), w, X = \{x_1, dots, x_k}, W chevron.r$ of the Directed Multiway Cut problem ($k >= 3$), we construct an instance $chevron.l G = (V, E), c, cal(P)_("forbidden"), K chevron.r$ of MPAI in polynomial time:
 
 
 + *Vertex Construction:* For each terminal $x_i in X$, create two distinct nodes in $G$: an attacker source principal $s_i$ and a high-value target asset $t_i$. For all non-terminal vertices $v in V_H \ X$, include $v in V$. Thus: $ V = (V_H \ X) union \{s_1, dots, s_k} union \{t_1, dots, t_k} $

@@ -92,7 +92,7 @@ $ x_("aug") = [x_("Template")  ||  c_1, c_2, c_3, c_4]^T in bb(R)^(14) $
 
 
 #figure(
-  image("figures/feature_heatmap.png", width: 90%),
+  image("../figures/feature_heatmap.png", width: 90%),
   caption: [Correlation and separability heatmap of template configuration flags and augmented topological features across ESC vulnerability classes.],
 ) <fig:feature_heatmap>
 

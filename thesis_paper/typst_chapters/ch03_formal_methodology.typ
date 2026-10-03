@@ -15,7 +15,7 @@ $ G = (V, E, cal(T)_V, cal(T)_E, phi_V, psi_E) $
 
 where:
 
-+ $V = union.big_(tau in cal(T)_V) V_tau$ is the finite set of all directory entities (vertices), partitioned into disjoint subsets by entity type, such that $V_(tau_1) sect V_(tau_2) = emptyset$ for all $tau_1 != tau_2$.
++ $V = union.big_(tau in cal(T)_V) V_tau$ is the finite set of all directory entities (vertices), partitioned into disjoint subsets by entity type, such that $V_(tau_1) inter V_(tau_2) = emptyset$ for all $tau_1 != tau_2$.
 + $E subset.eq V times cal(T)_E times V$ is the multiset of directed authorization, administrative, and enrollment relationships (edges). An edge $e = (u, r, v) in E$ indicates a directed relationship of relation type $r$ from source entity $u$ to target entity $v$.
 + $cal(T)_V = {"User", "Computer", "Group", "Template", "EnterpriseCA"}$ represents the discrete set of node entity types ($|cal(T)_V| = 5$).
 + $cal(T)_E = {"MemberOf"$, $"Enroll"$, $"GenericAll"$, $"WriteDacl"$, $"WriteOwner"$, $"PublishedTo"$, $"ManageCA"$, $"LinksPolicy"}$ represents the discrete set of canonical directed relation types ($|cal(T)_E| = 8$).
@@ -107,7 +107,7 @@ The augmented relational set $tilde(cal(T))_E = cal(T)_E union cal(T)_E^(-1)$ co
 CertGraph implements an inductive Heterogeneous Graph Attention Network (Hetero-GAT). Unlike homogeneous GNNs that collapse entity distinctions into a single latent space, CertGraph maintains type-specific linear projections and relation-specific multi-head attention mechanisms.
 
 #figure(
-  image("figures/certgraph_architecture_diagram.png", width: 90%),
+  image("../figures/certgraph_architecture_diagram.png", width: 90%),
   caption: [CertGraph end-to-end Hetero-GAT pipeline, detailing input feature encoding, multi-head relational attention layers, additive residual skip-connections, and the multi-class template classification head.],
 ) <fig:certgraph_arch>
 
@@ -270,8 +270,8 @@ A foundational theoretical contribution of this thesis is the formal proof that 
     *Theorem Intrinsic Attribute Preservation and Gradient Lower Bounds.* \
     Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous multigraph. Consider an $L$-layer heterogeneous message-passing neural network where layer $l in {1, dots, L}$ computes hidden representations:
 
-+ *Intrinsic Feature Erasure without Skip Connections:* Under pure relational aggregation without skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle.big_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ the hidden representation $h_v^((1))$ is a function exclusively of adjacent incoming neighbor states. Consequently, for any node $v$ (including certificate templates $t in V_("Template")$), the gradient of the immediate hidden state with respect to its own initial configuration vector $x_v$ vanishes: $ (diff h_v^((1)))/(diff x_v) = bold(0) in bb(R)^(d_1 times d_0) $ causing complete erasure of intrinsic configuration attributes from the primary state representation. For source-only nodes where $d_("in")(v) = 0$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
-+ *Guaranteed Gradient Lower Bound via Residual Skips:* Introducing parameterized residual skip connections $tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1))$ guarantees that the Jacobian of the representation with respect to the initial input features satisfies: $ || (diff tilde(h)_v^((L)))/(diff x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ where $sigma_(min)(W_("skip")^((k))) > 0$ is the minimum singular value of $W_("skip")^((k))$, establishing a strictly positive lower bound that prevents attribute decay across message-passing hops.
++ *Intrinsic Feature Erasure without Skip Connections:* Under pure relational aggregation without skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.o_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ the hidden representation $h_v^((1))$ is a function exclusively of adjacent incoming neighbor states. Consequently, for any node $v$ (including certificate templates $t in V_("Template")$), the gradient of the immediate hidden state with respect to its own initial configuration vector $x_v$ vanishes: $ (partial h_v^((1)))/(partial x_v) = bold(0) in bb(R)^(d_1 times d_0) $ causing complete erasure of intrinsic configuration attributes from the primary state representation. For source-only nodes where $d_("in")(v) = 0$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
++ *Guaranteed Gradient Lower Bound via Residual Skips:* Introducing parameterized residual skip connections $tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1))$ guarantees that the Jacobian of the representation with respect to the initial input features satisfies: $ || (partial tilde(h)_v^((L)))/(partial x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0 $ where $sigma_(min)(W_("skip")^((k))) > 0$ is the minimum singular value of $W_("skip")^((k))$, establishing a strictly positive lower bound that prevents attribute decay across message-passing hops.
 
 
   ]

@@ -224,7 +224,7 @@ We benchmarked the proposed Stackelberg framework against three automated remedi
 
 
 #figure(
-  image("figures/game_theoretic_convergence.png", width: 90%),
+  image("../figures/game_theoretic_convergence.png", width: 90%),
   caption: [],
 ) <fig:game_sim>
 
