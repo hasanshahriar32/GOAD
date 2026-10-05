@@ -28,7 +28,7 @@ GOAD is an acclaimed, widely recognized vulnerable enterprise research environme
 As illustrated in @fig:goad_topology, the multi-forest architecture features interconnected parent, child, and external domains. Of critical operational relevance to this thesis, the Enterprise Certificate Authority (`ADCS - ESSOS-CA`) is hosted on member server `braavos` (`SRV03`), representing an authentic enterprise PKI target accessible via both LDAP enrollment and cross-domain authentication links.
 
 #figure(
-  image("../figures/goad_forest_topology.png", width: 90%),
+  image("../figures/goad_forest_topology.png", width: 100%),
   caption: [Architecture and trust relationship schema of the Game of Active Directory (GOAD) multi-forest lab environment, detailing domain controllers, member servers (including the ADCS Certificate Authority hosted on `SRV03 - braavos`), and cross-forest authentication links.],
 ) <fig:goad_topology>
 

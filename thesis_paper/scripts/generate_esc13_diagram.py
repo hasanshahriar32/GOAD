@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 def generate_esc13_diagram(output_paths):
-    fig_w, fig_h = 16.0, 8.5
+    fig_w, fig_h = 13.8, 8.3
     fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=300)
     ax.set_xlim(0, fig_w)
     ax.set_ylim(0, fig_h)
@@ -21,28 +21,28 @@ def generate_esc13_diagram(output_paths):
     ax.set_facecolor('#ffffff')
 
     # Top Titles
-    ax.text(8.0, 8.12, 'Two-Hop ESC13 Privilege Escalation Attack Chain in Active Directory',
+    ax.text(6.9, 7.95, 'Two-Hop ESC13 Privilege Escalation Attack Chain in Active Directory',
             ha='center', va='center', fontsize=18.0, weight='bold', color='#0f172a')
-    ax.text(8.0, 7.72,
+    ax.text(6.9, 7.55,
             r'Transitive Path: Low-Priv Foothold $\longrightarrow$ Intermediate Group $\longrightarrow$ Certificate Template $\longrightarrow$ Issuance Policy OID $\longrightarrow$ Tier-0 Domain Admins',
-            ha='center', va='center', fontsize=11.6, color='#475569')
+            ha='center', va='center', fontsize=12.8, weight='bold', color='#475569')
 
     # 5 Nodes Configuration
-    card_w = 2.06
-    card_h = 2.65
-    y_center = 5.80
-    y_box = y_center - card_h / 2  # 4.475
+    card_w = 2.02
+    card_h = 2.70
+    y_center = 5.70
+    y_box = y_center - card_h / 2  # 4.35
 
     # Centers calculation:
-    # 5 cards of 2.06 = 10.30 width.
-    # Total span = 14.80.
-    # 4 gaps = (14.80 - 10.30) / 4 = 1.125 each.
-    # Margins: left = 0.60, right = 0.60.
-    c0 = 0.60 + card_w / 2                        # 1.63
-    c1 = c0 + card_w + 1.125                       # 4.815
-    c2 = c1 + card_w + 1.125                       # 8.00 (centered)
-    c3 = c2 + card_w + 1.125                       # 11.185
-    c4 = c3 + card_w + 1.125                       # 14.37
+    # 5 cards of 2.02 = 10.10 width.
+    # Total span = 12.80.
+    # 4 gaps = (12.80 - 10.10) / 4 = 0.675 each.
+    # Margins: left = 0.50, right = 0.50.
+    c0 = 0.50 + card_w / 2                        # 1.51
+    c1 = c0 + card_w + 0.675                       # 4.205
+    c2 = c1 + card_w + 0.675                       # 6.90 (exact center)
+    c3 = c2 + card_w + 0.675                       # 9.595
+    c4 = c3 + card_w + 0.675                       # 12.29
 
     nodes = [
         {
@@ -127,47 +127,47 @@ def generate_esc13_diagram(output_paths):
         ax.add_patch(card)
 
         # Top Badge
-        badge_w = card_w - 0.18
-        badge_h = 0.40
-        badge_y = y_box + card_h - 0.48
+        badge_w = card_w - 0.16
+        badge_h = 0.42
+        badge_y = y_box + card_h - 0.50
         badge = patches.FancyBboxPatch(
             (xc - badge_w/2, badge_y), badge_w, badge_h,
             boxstyle="round,pad=0.02,rounding_size=0.08",
-            facecolor=n['badge_bg'], edgecolor=n['border'], linewidth=1.0, zorder=3
+            facecolor=n['badge_bg'], edgecolor=n['border'], linewidth=1.1, zorder=3
         )
         ax.add_patch(badge)
         ax.text(xc, badge_y + badge_h/2, n['badge'],
-                ha='center', va='center', fontsize=9.8, weight='bold',
+                ha='center', va='center', fontsize=11.0, weight='bold',
                 color=n['badge_fg'], zorder=4)
 
         # Main Title
-        ax.text(xc, y_box + card_h - 0.88, n['title'],
-                ha='center', va='center', fontsize=13.8, weight='bold',
+        ax.text(xc, y_box + card_h - 0.92, n['title'],
+                ha='center', va='center', fontsize=15.5, weight='bold',
                 color='#0f172a', zorder=4)
 
         # Role / Description
-        ax.text(xc, y_box + card_h - 1.22, n['role'],
-                ha='center', va='center', fontsize=10.4,
+        ax.text(xc, y_box + card_h - 1.28, n['role'],
+                ha='center', va='center', fontsize=11.8, weight='bold',
                 color='#475569', zorder=4)
 
         # Code / LDAP Detail Box
         detail_w = card_w - 0.16
-        detail_h = 0.42
-        detail_y = y_box + 0.54
+        detail_h = 0.44
+        detail_y = y_box + 0.52
         detail_box = patches.FancyBboxPatch(
             (xc - detail_w/2, detail_y), detail_w, detail_h,
             boxstyle="round,pad=0.02,rounding_size=0.06",
-            facecolor='#ffffff', edgecolor='#cbd5e1', linewidth=1.1, zorder=3
+            facecolor='#ffffff', edgecolor='#cbd5e1', linewidth=1.2, zorder=3
         )
         ax.add_patch(detail_box)
-        code_font = 9.2 if len(n['code']) > 16 else 9.8
+        code_font = 11.2 if len(n['code']) > 16 else 11.8
         ax.text(xc, detail_y + detail_h/2, n['code'],
                 ha='center', va='center', fontsize=code_font, family='monospace', weight='bold',
                 color='#1e293b', zorder=4)
 
         # Sub-attribute
-        ax.text(xc, y_box + 0.26, n['sub'],
-                ha='center', va='center', fontsize=9.6, style='italic',
+        ax.text(xc, y_box + 0.24, n['sub'],
+                ha='center', va='center', fontsize=11.2, style='italic',
                 color='#64748b', zorder=4)
 
     # 4 Transition Edges
@@ -208,8 +208,8 @@ def generate_esc13_diagram(output_paths):
 
     for e in edges:
         i = e['idx']
-        xs = nodes[i]['x'] + card_w/2 + 0.08
-        xe = nodes[i+1]['x'] - card_w/2 - 0.08
+        xs = nodes[i]['x'] + card_w/2 + 0.04
+        xe = nodes[i+1]['x'] - card_w/2 - 0.04
         xm = (xs + xe) / 2
         y_arrow = y_center
 
@@ -217,42 +217,42 @@ def generate_esc13_diagram(output_paths):
         ax.annotate(
             '', xy=(xe, y_arrow), xytext=(xs, y_arrow),
             arrowprops=dict(
-                arrowstyle="-|>,head_width=0.48,head_length=0.70",
-                color=e['color'], lw=2.6
+                arrowstyle="-|>,head_width=0.45,head_length=0.65",
+                color=e['color'], lw=2.8
             ),
             zorder=5
         )
 
         # Step Pill above arrow
-        pill_w = 0.98
-        pill_h = 0.52
-        pill_y = y_arrow + 0.22
+        pill_w = 0.94
+        pill_h = 0.54
+        pill_y = y_arrow + 0.18
         pill = patches.FancyBboxPatch(
             (xm - pill_w/2, pill_y), pill_w, pill_h,
             boxstyle="round,pad=0.02,rounding_size=0.08",
-            facecolor='#ffffff', edgecolor=e['color'], linewidth=1.5, zorder=6
+            facecolor='#ffffff', edgecolor=e['color'], linewidth=1.6, zorder=6
         )
         ax.add_patch(pill)
         ax.text(xm, pill_y + pill_h*0.72, e['step_num'],
-                ha='center', va='center', fontsize=8.8, weight='bold',
+                ha='center', va='center', fontsize=10.5, weight='bold',
                 color='#64748b', zorder=7)
         ax.text(xm, pill_y + pill_h*0.28, e['step_name'],
-                ha='center', va='center', fontsize=10.2, weight='bold',
+                ha='center', va='center', fontsize=12.2, weight='bold',
                 color=e['color'], zorder=7)
 
         # Concise description below arrow
-        ax.text(xm, y_arrow - 0.32, e['desc_1'],
-                ha='center', va='center', fontsize=9.6, weight='bold',
+        ax.text(xm, y_arrow - 0.28, e['desc_1'],
+                ha='center', va='center', fontsize=11.8, weight='bold',
                 color='#1e293b', zorder=6)
-        ax.text(xm, y_arrow - 0.54, e['desc_2'],
-                ha='center', va='center', fontsize=8.8, style='italic',
+        ax.text(xm, y_arrow - 0.48, e['desc_2'],
+                ha='center', va='center', fontsize=10.8, style='italic',
                 color='#64748b', zorder=6)
 
     # Bottom Callout Container
-    callout_x = 0.60
-    callout_y = 0.32
-    callout_w = 14.80
-    callout_h = 3.65
+    callout_x = 0.50
+    callout_y = 0.20
+    callout_w = 12.80
+    callout_h = 3.75
 
     # Shadow
     callout_shadow = patches.FancyBboxPatch(
@@ -271,27 +271,27 @@ def generate_esc13_diagram(output_paths):
     ax.add_patch(callout_box)
 
     # Header Badge
-    badge_title_w = 5.80
+    badge_title_w = 6.40
     tag_box = patches.FancyBboxPatch(
-        (callout_x + 0.30, callout_y + callout_h - 0.42), badge_title_w, 0.36,
+        (callout_x + 0.30, callout_y + callout_h - 0.44), badge_title_w, 0.38,
         boxstyle="round,pad=0.02,rounding_size=0.06",
         facecolor='#1e293b', edgecolor='none', zorder=3
     )
     ax.add_patch(tag_box)
-    ax.text(callout_x + 0.30 + badge_title_w/2, callout_y + callout_h - 0.24,
+    ax.text(callout_x + 0.30 + badge_title_w/2, callout_y + callout_h - 0.25,
             'ATTACK CHAIN EXPLOITATION MECHANISM & RELATIONAL IMPACT',
-            ha='center', va='center', fontsize=10.2, weight='bold', color='#ffffff', zorder=4)
+            ha='center', va='center', fontsize=12.2, weight='bold', color='#ffffff', zorder=4)
 
     # 3 Structured Breakdown Columns
-    col_w = 4.58
-    col_gap = 0.33
-    col_y = callout_y + 0.18
-    col_h = 2.85
+    col_w = 3.90
+    col_gap = 0.25
+    col_y = callout_y + 0.16
+    col_h = 3.00
     col_top = col_y + col_h
 
     columns = [
         {
-            'x': callout_x + 0.20,
+            'x': callout_x + 0.25,
             'title': 'Phase 1: Transitive Foothold & DACL',
             'color': '#1d4ed8',
             'bullets': [
@@ -301,7 +301,7 @@ def generate_esc13_diagram(output_paths):
             ]
         },
         {
-            'x': callout_x + 0.20 + col_w + col_gap,
+            'x': callout_x + 0.25 + col_w + col_gap,
             'title': 'Phase 2: Relational Policy Linkage',
             'color': '#7e22ce',
             'bullets': [
@@ -311,7 +311,7 @@ def generate_esc13_diagram(output_paths):
             ]
         },
         {
-            'x': callout_x + 0.20 + (col_w + col_gap)*2,
+            'x': callout_x + 0.25 + (col_w + col_gap)*2,
             'title': 'Phase 3: Tier-0 Domain Dominance',
             'color': '#b91c1c',
             'bullets': [
@@ -333,24 +333,26 @@ def generate_esc13_diagram(output_paths):
         ax.add_patch(col_box)
 
         # Title
-        ax.text(cx + 0.20, col_top - 0.24, col['title'],
-                ha='left', va='center', fontsize=11.6, weight='bold',
+        ax.text(cx + 0.16, col_top - 0.24, col['title'],
+                ha='left', va='center', fontsize=13.5, weight='bold',
                 color=col['color'], zorder=4)
 
         # Divider line
-        ax.plot([cx + 0.20, cx + col_w - 0.20], [col_top - 0.42, col_top - 0.42],
-                color='#e2e8f0', lw=1.1, zorder=4)
+        ax.plot([cx + 0.16, cx + col_w - 0.16], [col_top - 0.44, col_top - 0.44],
+                color='#e2e8f0', lw=1.2, zorder=4)
 
         # Bullets
         cur_y = col_top - 0.58
         for tag, text in col['bullets']:
-            full_text = f"• {tag}: {text}"
-            wrapped = textwrap.fill(full_text, width=42)
-            ax.text(cx + 0.20, cur_y, wrapped,
-                    ha='left', va='top', fontsize=9.6, color='#1e293b',
+            ax.text(cx + 0.16, cur_y, f"• {tag}:",
+                    ha='left', va='top', fontsize=12.2, weight='bold', color='#0f172a', zorder=4)
+            cur_y -= 0.26
+            wrapped = textwrap.fill(text, width=38)
+            ax.text(cx + 0.32, cur_y, wrapped,
+                    ha='left', va='top', fontsize=11.6, color='#334155',
                     linespacing=1.25, zorder=4)
             n_lines = wrapped.count('\n') + 1
-            cur_y -= (n_lines * 0.19 + 0.14)
+            cur_y -= (n_lines * 0.22 + 0.18)
 
     plt.tight_layout()
     for p in output_paths:
@@ -365,3 +367,4 @@ if __name__ == '__main__':
         '/home/hs32/Desktop/GOAD/thesis_research/results/phase2/esc13_attack_path_diagram.png'
     ]
     generate_esc13_diagram(paths)
+

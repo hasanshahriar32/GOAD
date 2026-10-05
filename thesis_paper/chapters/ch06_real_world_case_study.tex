@@ -23,12 +23,12 @@ GOAD is an acclaimed, widely recognized vulnerable enterprise research environme
 
 As illustrated in Figure~\ref{fig:goad_topology}, the multi-forest architecture features interconnected parent, child, and external domains. Of critical operational relevance to this thesis, the Enterprise Certificate Authority (\texttt{ADCS - ESSOS-CA}) is hosted on member server \texttt{braavos} (\texttt{SRV03}), representing an authentic enterprise PKI target accessible via both LDAP enrollment and cross-domain authentication links.
 
-\begin{figure}[ht]
+\begin{sidewaysfigure}
     \centering
-    \includegraphics[width=\textwidth]{figures/goad_forest_topology.png}
+    \includegraphics[width=1.0\textheight,keepaspectratio]{figures/goad_forest_topology.png}
     \caption{Architecture and trust relationship schema of the Game of Active Directory (GOAD) multi-forest lab environment, detailing domain controllers, member servers (including the ADCS Certificate Authority hosted on \texttt{SRV03 - braavos}), and cross-forest authentication links.}
     \label{fig:goad_topology}
-\end{figure}
+\end{sidewaysfigure}
 
 \section{Data Ingestion, Extraction, and Schema Translation}
 To bridge live Windows domain controllers and our PyTorch Geometric deep learning pipeline, we engineered an automated data ingestion and schema translation engine implemented in \texttt{bloodhound\_parser.py}.
