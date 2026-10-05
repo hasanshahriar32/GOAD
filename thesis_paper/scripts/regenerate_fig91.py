@@ -25,7 +25,7 @@ def main():
         'axes.linewidth': 1.2,
     })
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12.8, 5.8), dpi=300)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.2, 5.2), dpi=300)
 
     # ─────────────────────────────────────────────────────────────
     # Subplot 1: Convergence
@@ -47,30 +47,30 @@ def main():
     grad_norm = 1.8 * np.exp(-episodes / 55) + 0.03 + 0.02 * np.random.randn(250) * np.exp(-episodes / 80)
     grad_norm_smooth = np.convolve(grad_norm, np.ones(5)/5, mode='same')
 
-    ax1.plot(episodes, def_loss_smooth, color='#1d4ed8', linewidth=3.4,
+    ax1.plot(episodes, def_loss_smooth, color='#1d4ed8', linewidth=3.6,
              label=r'Defender Loss $\mathcal{L}_D(\theta)$ (Slow $\alpha_k$)')
     ax1.fill_between(episodes, def_loss_smooth - def_loss_std, def_loss_smooth + def_loss_std,
                      color='#3b82f6', alpha=0.22)
 
-    ax1.plot(episodes, att_loss_smooth, color='#dc2626', linewidth=3.2, linestyle='--',
+    ax1.plot(episodes, att_loss_smooth, color='#dc2626', linewidth=3.4, linestyle='--',
              label=r'Attacker Policy Loss $\mathcal{L}_A(\phi)$ (Fast $\eta_k$)')
     ax1.fill_between(episodes, att_loss_smooth - att_loss_std, att_loss_smooth + att_loss_std,
                      color='#ef4444', alpha=0.18)
 
-    ax1.plot(episodes, grad_norm_smooth, color='#059669', linewidth=3.0, linestyle=':',
+    ax1.plot(episodes, grad_norm_smooth, color='#059669', linewidth=3.2, linestyle=':',
              label=r'Defender Gradient Norm $\|\nabla_\theta U_D\|$')
 
-    ax1.set_title('(a) Two-Timescale Policy Learning', fontsize=17.0, fontweight='bold', pad=14)
-    ax1.set_xlabel('Training Episodes', fontsize=15.5, fontweight='bold', labelpad=9)
-    ax1.set_ylabel('Empirical Policy Objective / Loss', fontsize=15.5, fontweight='bold', labelpad=9)
+    ax1.set_title('(a) Two-Timescale Policy Learning', fontsize=17.5, fontweight='bold', pad=14)
+    ax1.set_xlabel('Training Episodes', fontsize=16.0, fontweight='bold', labelpad=9)
+    ax1.set_ylabel('Empirical Policy Objective / Loss', fontsize=16.0, fontweight='bold', labelpad=9)
     ax1.set_xlim(0, 250)
     ax1.set_ylim(-0.05, 3.55)
-    ax1.tick_params(axis='both', which='major', labelsize=13.5)
+    ax1.tick_params(axis='both', which='major', labelsize=14.0)
     ax1.grid(True, linestyle='--', alpha=0.6, color='#e5e7eb')
-    ax1.legend(loc='upper right', frameon=True, facecolor='#ffffff', edgecolor='#d1d5db', fontsize=13.0)
-    ax1.axvline(x=175, color='#4b5563', linestyle='-.', alpha=0.8, linewidth=1.8)
+    ax1.legend(loc='upper right', frameon=True, facecolor='#ffffff', edgecolor='#d1d5db', fontsize=13.5)
+    ax1.axvline(x=175, color='#4b5563', linestyle='-.', alpha=0.8, linewidth=2.0)
     ax1.text(178, 2.15, 'Equilibrium\nStationarity\n(Ep. > 175)',
-             fontsize=13.0, fontweight='bold', color='#1f2937',
+             fontsize=13.5, fontweight='bold', color='#1f2937',
              bbox=dict(boxstyle='round,pad=0.35', facecolor='#f3f4f6', edgecolor='#9ca3af', lw=1.2))
 
     # ─────────────────────────────────────────────────────────────
@@ -83,31 +83,31 @@ def main():
     degree_cent = np.array([0, 8, 16, 25, 33, 41, 48, 54, 58, 62, 64, 66, 67])
     random_rev = np.array([0, 3, 5, 8, 10, 13, 15, 17, 18, 20, 21, 22, 23])
 
-    ax2.plot(budgets, stackelberg, marker='o', markersize=9.5, color='#1d4ed8', linewidth=3.6,
+    ax2.plot(budgets, stackelberg, marker='o', markersize=10.0, color='#1d4ed8', linewidth=3.8,
              label='Stackelberg Co-Adaptive Policy (Ours)')
-    ax2.plot(budgets, greedy_alg, marker='s', markersize=9.0, color='#059669', linewidth=3.0, linestyle='--',
+    ax2.plot(budgets, greedy_alg, marker='s', markersize=9.5, color='#059669', linewidth=3.2, linestyle='--',
              label='Greedy Capacity-Disruption (Alg. 1)')
-    ax2.plot(budgets, degree_cent, marker='^', markersize=9.0, color='#d97706', linewidth=3.0, linestyle='-.',
+    ax2.plot(budgets, degree_cent, marker='^', markersize=9.5, color='#d97706', linewidth=3.2, linestyle='-.',
              label='Degree-Centrality Edge Revocation')
-    ax2.plot(budgets, random_rev, marker='x', markersize=9.5, color='#6b7280', linewidth=2.8, linestyle=':',
+    ax2.plot(budgets, random_rev, marker='x', markersize=10.0, color='#6b7280', linewidth=3.0, linestyle=':',
              label='Uniform Random Edge Revocation')
 
     ax2.set_title(r'(b) Path Neutralization vs. Budget $B_{\mathrm{ops}}$',
-                  fontsize=17.0, fontweight='bold', pad=14)
+                  fontsize=17.5, fontweight='bold', pad=14)
     ax2.set_xlabel(r'Disruption Budget $B_{\mathrm{ops}}$ (Revocations)',
-                   fontsize=15.5, fontweight='bold', labelpad=9)
-    ax2.set_ylabel('Severed Forbidden Paths (%)', fontsize=15.5, fontweight='bold', labelpad=9)
+                   fontsize=16.0, fontweight='bold', labelpad=9)
+    ax2.set_ylabel('Severed Forbidden Paths (%)', fontsize=16.0, fontweight='bold', labelpad=9)
     ax2.set_xlim(0, 25)
     ax2.set_ylim(-2, 108)
-    ax2.tick_params(axis='both', which='major', labelsize=13.5)
+    ax2.tick_params(axis='both', which='major', labelsize=14.0)
     ax2.grid(True, linestyle='--', alpha=0.6, color='#e5e7eb')
-    ax2.legend(loc='lower right', frameon=True, facecolor='#ffffff', edgecolor='#d1d5db', fontsize=13.0)
+    ax2.legend(loc='lower right', frameon=True, facecolor='#ffffff', edgecolor='#d1d5db', fontsize=13.5)
 
     # Annotations with high visibility
-    ax2.axhline(y=100, color='#1d4ed8', linestyle=':', alpha=0.6, linewidth=1.5)
-    ax2.scatter([12], [100], color='#1d4ed8', s=140, zorder=5)
+    ax2.axhline(y=100, color='#1d4ed8', linestyle=':', alpha=0.6, linewidth=1.6)
+    ax2.scatter([12], [100], color='#1d4ed8', s=150, zorder=5)
     ax2.text(12.3, 89, '100% Neutralization\nat B_ops = 12',
-             fontsize=13.0, fontweight='bold', color='#1d4ed8',
+             fontsize=13.5, fontweight='bold', color='#1d4ed8',
              bbox=dict(boxstyle='round,pad=0.35', facecolor='#eff6ff', edgecolor='#bfdbfe', lw=1.2))
 
     plt.tight_layout()
