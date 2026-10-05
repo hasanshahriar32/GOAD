@@ -58,12 +58,9 @@ We further solemnly declare that:
 
 | | |
 |:-------------------------------------------|:-------------------------------------------|
-| **Date:** October, 2026 | ............................ |
-| **Place:** HSTU, Dinajpur | **Student ID: 2002126** <br> Level: 4, Semester: II |
-| | ............................ |
-| | **Student ID: 2002138** <br> Level: 4, Semester: II |
-| | ............................ |
-| | **Student ID: 2102151** <br> Level: 4, Semester: II |
+| **Date:** October, 2026 | **Student ID: 2002126** |
+| **Place:** HSTU, Dinajpur | **Student ID: 2002138** |
+| | **Student ID: 2102151** |
 | | Department of ECE, HSTU |
 
 # Dedication {.unnumbered .text-center}

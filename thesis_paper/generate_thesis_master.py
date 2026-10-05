@@ -191,9 +191,9 @@ def build_frontmatter(output_path):
     tbl_decl.autofit = False
     
     decl_data = [
-        ("Date: October, 2026", "........................................\nStudent ID: 2002126  Level: 4, Semester: II"),
-        ("Place: HSTU, Dinajpur", "........................................\nStudent ID: 2002138  Level: 4, Semester: II"),
-        ("", "........................................\nStudent ID: 2102151  Level: 4, Semester: II"),
+        ("Date: October, 2026", "Student ID: 2002126"),
+        ("Place: HSTU, Dinajpur", "Student ID: 2002138"),
+        ("", "Student ID: 2102151"),
         ("", "Department of ECE, HSTU")
     ]
     

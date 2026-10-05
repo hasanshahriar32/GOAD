@@ -129,7 +129,6 @@ We further solemnly declare that:
     *Place:* HSTU, Dinajpur
   ],
   [
-    .................................................... \
     *Student ID: 2002126* \
     *Student ID: 2002138* \
     *Student ID: 2102151* \
