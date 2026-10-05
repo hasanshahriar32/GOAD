@@ -3,1640 +3,2024 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CertGraph – Thesis Defense | HSTU ECE 2026</title>
+  <title>CertGraph – Thesis Defense | Dept. of ECE, HSTU</title>
+  
+  <!-- Academic Fonts: Latin Modern Roman / Computer Modern vibe via Merriweather & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- KaTeX for pristine LaTeX mathematical typesetting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"/>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
   <style>
-    /* ─── RESET & TOKENS ─────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ==========================================================================
+       ACADEMIC THESIS DEFENSE STYLESHEET (LaTeX Beamer & Conference Deck Inspired)
+       Clean, authoritative white/slate canvas with HSTU academic navy branding.
+       ========================================================================== */
+    
     :root {
-      --navy:    #0a0e1a;
-      --dark:    #0f1629;
-      --card:    rgba(255,255,255,0.04);
-      --border:  rgba(255,255,255,0.10);
-      --blue:    #2563eb;
-      --cyan:    #06b6d4;
-      --violet:  #7c3aed;
-      --amber:   #f59e0b;
-      --rose:    #e11d48;
-      --green:   #10b981;
-      --text1:   #f8fafc;
-      --text2:   #94a3b8;
-      --text3:   #64748b;
-      --glow-b:  rgba(37,99,235,0.35);
-      --glow-c:  rgba(6,182,212,0.30);
-      --glow-v:  rgba(124,58,237,0.35);
-      --slide-w: 1280px;
-      --slide-h: 720px;
-      --pad:     56px;
+      --navy-primary:   #0c2340; /* Institutional Oxford Navy */
+      --navy-dark:      #071626;
+      --navy-light:     #1d3c6a;
+      --gold-accent:    #b8860b; /* Academic Gold / Seal */
+      --crimson-accent: #8b0000; /* Defense Alert / Attack Accent */
+      --teal-accent:    #006d77;
+      
+      --bg-canvas:      #e9ecef; /* Stage background */
+      --slide-bg:       #ffffff; /* Pure academic white paper slide */
+      --slide-bg-alt:   #f8fafc;
+      
+      --text-main:      #1a202c; /* High-contrast readable academic text */
+      --text-muted:     #4a5568;
+      --text-light:     #718096;
+      
+      --border-light:   #e2e8f0;
+      --border-mid:     #cbd5e1;
+      --border-dark:    #94a3b8;
+      
+      --font-serif:     'Crimson Pro', Georgia, 'Times New Roman', serif;
+      --font-sans:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono:      'JetBrains Mono', monospace;
+      
+      --slide-w:        1280px;
+      --slide-h:        720px;
     }
 
-    html, body { width: 100%; height: 100%; background: #020408; overflow: hidden; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ─── SLIDESHOW CONTAINER ─────────────────────────────────────────── */
-    #deck {
-      position: fixed; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-    }
-    #viewport {
-      position: relative;
-      width: var(--slide-w); height: var(--slide-h);
+    body {
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
-      border-radius: 18px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.07),
-                  0 40px 120px rgba(0,0,0,0.8),
-                  0 0 80px rgba(37,99,235,0.12);
+      background-color: var(--bg-canvas);
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
     }
 
-    /* ─── INDIVIDUAL SLIDE ────────────────────────────────────────────── */
-    .slide {
-      position: absolute; inset: 0;
-      background: var(--dark);
-      display: flex; flex-direction: column;
-      padding: var(--pad);
-      opacity: 0;
-      transform: translateX(60px) scale(0.97);
-      transition: opacity 0.55s cubic-bezier(.4,0,.2,1),
-                  transform 0.55s cubic-bezier(.4,0,.2,1);
-      pointer-events: none;
-    }
-    .slide.active {
-      opacity: 1; transform: translateX(0) scale(1); pointer-events: all;
-    }
-    .slide.exit-left {
-      opacity: 0; transform: translateX(-60px) scale(0.97);
-    }
-
-    /* ─── AMBIENT BACKGROUNDS ─────────────────────────────────────────── */
-    .slide::before {
-      content: '';
-      position: absolute; inset: 0; border-radius: 18px;
-      background:
-        radial-gradient(ellipse 55% 40% at 10% 5%,  rgba(37,99,235,0.14) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 90% 90%, rgba(124,58,237,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 50% 50%, rgba(6,182,212,0.04) 0%, transparent 80%);
-      pointer-events: none;
+    /* ─── DEFENSE TOP CONTROLS & TIMER (ACADEMIC BANNER) ─────────────────────── */
+    #defense-topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 42px;
+      background: var(--navy-dark);
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-size: 13px;
+      z-index: 1000;
+      border-bottom: 2px solid var(--gold-accent);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    /* grid dots */
-    .slide::after {
-      content: '';
-      position: absolute; inset: 0; border-radius: 18px;
-      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 500;
+    }
+    .topbar-left img {
+      height: 26px;
+      width: auto;
+      filter: brightness(1.1);
+    }
+    .topbar-univ {
+      color: #f1f5f9;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .topbar-tag {
+      background: rgba(184, 134, 11, 0.25);
+      border: 1px solid var(--gold-accent);
+      color: #ffd700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    /* ─── TOPOLOGY ────────────────────────────────────────────────────── */
-    .slide-inner { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
-
-    /* ─── SLIDE NAV ───────────────────────────────────────────────────── */
-    #nav {
-      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-      display: flex; align-items: center; gap: 16px; z-index: 100;
+    .topbar-center {
+      display: flex;
+      align-items: center;
+      gap: 18px;
     }
-    .nav-btn {
-      width: 44px; height: 44px; border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(16px);
-      color: var(--text1); font-size: 18px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    .defense-timer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.08);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #e2e8f0;
     }
-    .nav-btn:hover { background: rgba(37,99,235,0.3); box-shadow: 0 0 16px var(--glow-b); transform: scale(1.08); }
-    #counter {
-      font: 600 13px/1 'Inter', sans-serif;
-      color: var(--text2); letter-spacing: 0.05em;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      padding: 10px 18px; border-radius: 24px;
-      backdrop-filter: blur(12px);
-      min-width: 80px; text-align: center;
-    }
-
-    /* progress bar */
-    #progress {
-      position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200;
-      background: rgba(255,255,255,0.06);
-    }
-    #progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--blue), var(--cyan));
-      box-shadow: 0 0 12px var(--glow-c);
-      transition: width 0.5s cubic-bezier(.4,0,.2,1);
-    }
-
-    /* ─── TYPOGRAPHY ──────────────────────────────────────────────────── */
-    .slide-label {
-      font: 600 11px/1 'Inter', sans-serif;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--cyan); margin-bottom: 14px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .slide-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--cyan); border-radius: 1px; }
-
-    h1.hero { font: 800 52px/1.08 'Playfair Display', serif; color: var(--text1); }
-    h2.title { font: 700 36px/1.15 'Playfair Display', serif; color: var(--text1); }
-    h3.sub   { font: 700 22px/1.3  'Inter', sans-serif; color: var(--text1); }
-    p.body   { font: 400 15px/1.7  'Inter', sans-serif; color: var(--text2); }
-    p.small  { font: 400 13px/1.6  'Inter', sans-serif; color: var(--text3); }
-
-    code { font-family: 'JetBrains Mono', monospace; font-size: 0.88em; color: var(--cyan); background: rgba(6,182,212,0.1); padding: 1px 5px; border-radius: 4px; }
-
-    /* ─── BADGE / PILL ────────────────────────────────────────────────── */
-    .badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 14px; border-radius: 99px;
-      font: 600 12px/1 'Inter', sans-serif;
-      border: 1px solid;
-    }
-    .badge-blue   { color: var(--blue);   border-color: var(--blue);   background: rgba(37,99,235,0.12); }
-    .badge-cyan   { color: var(--cyan);   border-color: var(--cyan);   background: rgba(6,182,212,0.12); }
-    .badge-violet { color: #a78bfa;       border-color: var(--violet); background: rgba(124,58,237,0.12);}
-    .badge-amber  { color: var(--amber);  border-color: var(--amber);  background: rgba(245,158,11,0.12);}
-    .badge-green  { color: var(--green);  border-color: var(--green);  background: rgba(16,185,129,0.12);}
-    .badge-rose   { color: var(--rose);   border-color: var(--rose);   background: rgba(225,29,72,0.12); }
-
-    /* ─── CARD ────────────────────────────────────────────────────────── */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 24px;
-      transition: box-shadow 0.3s, border-color 0.3s;
-    }
-    .card:hover { box-shadow: 0 0 20px rgba(37,99,235,0.15); border-color: rgba(37,99,235,0.3); }
-
-    .card-blue   { border-left: 3px solid var(--blue);   }
-    .card-cyan   { border-left: 3px solid var(--cyan);   }
-    .card-violet { border-left: 3px solid var(--violet); }
-    .card-amber  { border-left: 3px solid var(--amber);  }
-    .card-green  { border-left: 3px solid var(--green);  }
-    .card-rose   { border-left: 3px solid var(--rose);   }
-
-    /* ─── STAT BOX ────────────────────────────────────────────────────── */
-    .stat { text-align: center; }
-    .stat .num {
-      font: 800 42px/1 'Inter', sans-serif;
-      background: linear-gradient(135deg, var(--blue), var(--cyan));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .stat .lbl { font: 500 12px/1.4 'Inter', sans-serif; color: var(--text3); margin-top: 6px; }
-
-    /* ─── DIVIDER ─────────────────────────────────────────────────────── */
-    .divider { width: 100%; height: 1px; background: var(--border); margin: 16px 0; }
-
-    /* ─── STEP CHAIN ──────────────────────────────────────────────────── */
-    .chain { display: flex; align-items: stretch; gap: 0; }
-    .chain-step {
-      flex: 1; display: flex; flex-direction: column; align-items: center;
-      text-align: center; position: relative;
-    }
-    .chain-step:not(:last-child)::after {
-      content: '→';
-      position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
-      color: var(--text3); font-size: 18px;
-    }
-    .chain-node {
-      width: 48px; height: 48px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font: 700 16px/1 'Inter', sans-serif; color: #fff; margin-bottom: 10px;
-      box-shadow: 0 0 16px rgba(0,0,0,0.4);
-    }
-
-    /* ─── TWO-COLUMN LAYOUT ───────────────────────────────────────────── */
-    .cols { display: grid; gap: 24px; }
-    .cols-2  { grid-template-columns: 1fr 1fr; }
-    .cols-3  { grid-template-columns: 1fr 1fr 1fr; }
-    .cols-4  { grid-template-columns: 1fr 1fr 1fr 1fr; }
-    .cols-13 { grid-template-columns: 1fr 1.8fr; }
-    .cols-31 { grid-template-columns: 1.8fr 1fr; }
-
-    /* ─── TABLE ───────────────────────────────────────────────────────── */
-    .results-table {
-      width: 100%; border-collapse: collapse;
-      font: 400 13px/1.5 'Inter', sans-serif;
-    }
-    .results-table th {
-      font: 600 11px/1 'Inter', sans-serif;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      color: var(--text3); padding: 8px 12px;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-    }
-    .results-table td {
-      padding: 9px 12px; color: var(--text2);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .results-table tr.top td { color: var(--text1); font-weight: 600; }
-    .results-table tr.top { background: rgba(37,99,235,0.09); }
-    .results-table tr:hover td { background: rgba(255,255,255,0.03); }
-    .results-table .good  { color: var(--green); }
-    .results-table .bad   { color: var(--rose);  }
-    .results-table .ref   { color: var(--cyan);  }
-
-    /* ─── BAR CHART ───────────────────────────────────────────────────── */
-    .bar-row { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
-    .bar-lbl { font: 500 12px/1 'Inter', sans-serif; color: var(--text2); width: 180px; flex-shrink: 0; text-align: right; }
-    .bar-track { flex: 1; height: 24px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden; }
-    .bar-fill  { height: 100%; border-radius: 6px; position: relative; display: flex; align-items: center; padding-right: 8px; justify-content: flex-end; }
-    .bar-val { font: 600 11px/1 'JetBrains Mono', monospace; color: #fff; }
-
-    /* ─── THEOREM BOX ─────────────────────────────────────────────────── */
-    .theorem {
-      border: 1px solid rgba(124,58,237,0.4);
-      background: rgba(124,58,237,0.06);
-      border-radius: 10px; padding: 16px 20px;
-      font: 400 13px/1.7 'Inter', sans-serif; color: var(--text2);
-    }
-    .theorem strong { color: #a78bfa; }
-
-    /* ─── QUOTE ───────────────────────────────────────────────────────── */
-    .research-q {
-      border-left: 3px solid var(--blue);
-      padding: 12px 16px;
-      background: rgba(37,99,235,0.06);
-      border-radius: 0 8px 8px 0;
-      font: 500 13px/1.65 'Inter', sans-serif; color: var(--text1);
-    }
-
-    /* ─── ANIMATED ENTRY ──────────────────────────────────────────────── */
-    .slide.active .anim { animation: fadeUp 0.55s cubic-bezier(.4,0,.2,1) both; }
-    .slide.active .anim:nth-child(1)  { animation-delay: 0.05s; }
-    .slide.active .anim:nth-child(2)  { animation-delay: 0.12s; }
-    .slide.active .anim:nth-child(3)  { animation-delay: 0.19s; }
-    .slide.active .anim:nth-child(4)  { animation-delay: 0.26s; }
-    .slide.active .anim:nth-child(5)  { animation-delay: 0.33s; }
-    .slide.active .anim:nth-child(6)  { animation-delay: 0.40s; }
-    .slide.active .anim:nth-child(7)  { animation-delay: 0.47s; }
-    .slide.active .anim:nth-child(8)  { animation-delay: 0.54s; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .slide.active .anim-left { animation: fadeLeft 0.55s cubic-bezier(.4,0,.2,1) both; }
-    @keyframes fadeLeft {
-      from { opacity: 0; transform: translateX(-24px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    .slide.active .anim-scale { animation: scaleIn 0.6s cubic-bezier(.4,0,.2,1) both; }
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.88); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-
-    /* bars animate on slide enter */
-    .slide.active .bar-fill { animation: growBar 0.8s cubic-bezier(.4,0,.2,1) both; }
-    .slide.active .bar-fill:nth-child(1) { animation-delay: 0.15s; }
-    @keyframes growBar {
-      from { width: 0 !important; }
-    }
-
-    /* number counter animation */
-    .count-up { display: inline-block; }
-
-    /* ─── GLOW PULSE ──────────────────────────────────────────────────── */
-    .pulse {
-      animation: pulse 3s ease-in-out infinite;
+    .timer-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
     }
     @keyframes pulse {
-      0%,100% { box-shadow: 0 0 12px rgba(37,99,235,0.3); }
-      50%      { box-shadow: 0 0 32px rgba(37,99,235,0.7), 0 0 60px rgba(6,182,212,0.3); }
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
 
-    /* ─── HERO SLIDE SPECIFIC ─────────────────────────────────────────── */
-    #slide-0 { justify-content: center; align-items: flex-start; }
-    #slide-0::before {
-      background:
-        radial-gradient(ellipse 70% 60% at 20% 40%, rgba(37,99,235,0.22) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 35% at 85% 15%, rgba(6,182,212,0.16) 0%, transparent 65%),
-        radial-gradient(ellipse 35% 40% at 75% 80%, rgba(124,58,237,0.14) 0%, transparent 65%);
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-action {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #f1f5f9;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: #ffffff;
     }
 
-    /* floating particles */
-    .particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-    .particle {
-      position: absolute; border-radius: 50%;
-      background: var(--blue); opacity: 0.4;
-      animation: float linear infinite;
-    }
-    @keyframes float {
-      0%   { transform: translateY(110%) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.4; }
-      90%  { opacity: 0.4; }
-      100% { transform: translateY(-10%) rotate(720deg); opacity: 0; }
-    }
-
-    /* ─── SECTION HEADER SLIDE ────────────────────────────────────────── */
-    .section-slide { justify-content: center; align-items: center; text-align: center; }
-    .section-num {
-      font: 800 120px/1 'Inter', sans-serif;
-      background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(6,182,212,0.15));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      pointer-events: none; user-select: none; z-index: 0;
+    /* ─── SLIDE STAGE & PROPORTIONS ────────────────────────────────────────── */
+    #slide-viewport {
+      position: relative;
+      width: var(--slide-w);
+      height: var(--slide-h);
+      margin-top: 36px;
+      background: var(--slide-bg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ─── FOOTER LINE ─────────────────────────────────────────────────── */
+    /* ─── INDIVIDUAL SLIDE STRUCTURE ───────────────────────────────────────── */
+    .slide {
+      position: absolute;
+      inset: 0;
+      background: var(--slide-bg);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(30px);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      z-index: 1;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+      z-index: 10;
+    }
+
+    .slide.prev-slide {
+      transform: translateX(-30px);
+      opacity: 0;
+    }
+
+    /* ─── SLIDE HEADER (BEAMER / IEEE HEADER STYLE) ────────────────────────── */
+    .slide-header {
+      height: 72px;
+      background: var(--navy-primary);
+      color: #ffffff;
+      padding: 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--gold-accent);
+      flex-shrink: 0;
+    }
+    .slide-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .slide-section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #ffd700;
+      font-weight: 600;
+      font-family: var(--font-sans);
+    }
+    .slide-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+    .slide-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.9;
+    }
+    .slide-hstu-tag {
+      text-align: right;
+      font-size: 11px;
+      color: #cbd5e1;
+      line-height: 1.3;
+    }
+    .slide-hstu-tag strong {
+      color: #ffffff;
+      display: block;
+    }
+
+    /* ─── SLIDE BODY & CONTENT ─────────────────────────────────────────────── */
+    .slide-body {
+      flex: 1;
+      padding: 28px 36px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      position: relative;
+    }
+
+    /* ─── SLIDE FOOTER (ACADEMIC CITATION & PAGING) ─────────────────────────── */
     .slide-footer {
-      margin-top: auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      font: 400 11px/1 'Inter', sans-serif; color: var(--text3);
+      height: 38px;
+      background: #f1f5f9;
+      border-top: 1px solid var(--border-mid);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .footer-left {
+      font-weight: 500;
+    }
+    .footer-center {
+      font-style: italic;
+      color: var(--text-light);
+    }
+    .footer-right {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--navy-primary);
     }
 
-    /* ─── FIGURE / IMAGE ──────────────────────────────────────────────── */
-    .fig-frame {
-      border: 1px solid var(--border);
-      border-radius: 10px; overflow: hidden;
-      background: rgba(255,255,255,0.02);
+    /* ─── ACADEMIC TYPOGRAPHY & BLOCKS ─────────────────────────────────────── */
+    h2, h3, h4 {
+      font-family: var(--font-serif);
+      color: var(--navy-primary);
+      margin-bottom: 8px;
     }
-    .fig-frame img { width: 100%; height: 100%; object-fit: contain; display: block; }
-
-    /* ─── ICON ────────────────────────────────────────────────────────── */
-    .icon { display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; }
-
-    /* ─── KEYBOARD HINT ───────────────────────────────────────────────── */
-    #kbd-hint {
-      position: fixed; bottom: 24px; right: 32px;
-      font: 400 11px/1 'Inter', sans-serif; color: var(--text3);
-      display: flex; gap: 8px; align-items: center;
+    p, li {
+      font-size: 15px;
+      line-height: 1.55;
+      color: #2d3748;
     }
-    .kbd { background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 5px; padding: 3px 8px; font-family: inherit; }
-
-    /* ─── TIMELINE ────────────────────────────────────────────────────── */
-    .timeline { display: flex; flex-direction: column; gap: 12px; }
-    .tl-item { display: flex; gap: 16px; align-items: flex-start; }
-    .tl-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-    .tl-line { width: 1px; background: var(--border); flex-shrink: 0; margin: 0 4.5px; }
-
-    /* ─── HIGHLIGHT BOX ───────────────────────────────────────────────── */
-    .highlight {
-      background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(6,182,212,0.10));
-      border: 1px solid rgba(37,99,235,0.3);
-      border-radius: 12px; padding: 16px 20px;
+    strong {
+      color: #0f172a;
+      font-weight: 600;
     }
 
-    /* ─── COMPARISON MATRIX ───────────────────────────────────────────── */
-    .check { color: var(--green); font-size: 15px; }
-    .cross { color: var(--rose);  font-size: 15px; }
-    .half  { color: var(--amber); font-size: 15px; }
-
-    /* ─── SLIDE INDICATOR DOTS ────────────────────────────────────────── */
-    #dots {
-      position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 8px; z-index: 100;
+    /* LaTeX Beamer-Style Alert & Definition Blocks */
+    .beamer-block {
+      background: #f8fafc;
+      border: 1px solid var(--border-mid);
+      border-left: 5px solid var(--navy-primary);
+      border-radius: 4px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: rgba(255,255,255,0.2); cursor: pointer;
-      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+    .beamer-block-title {
+      background: rgba(12, 35, 64, 0.06);
+      padding: 8px 16px;
+      font-family: var(--font-serif);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-light);
     }
-    .dot.active { background: var(--cyan); transform: scale(1.4); box-shadow: 0 0 8px var(--glow-c); }
-    .dot:hover  { background: rgba(255,255,255,0.5); }
-
-    /* glowing line separator */
-    .glow-line {
-      height: 2px; border-radius: 1px;
-      background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
-      opacity: 0.5; margin: 12px 0;
+    .beamer-block-content {
+      padding: 12px 16px;
+      font-size: 14.5px;
+      line-height: 1.5;
     }
 
-    /* responsive scaling */
-    @media (max-width: 1340px) {
-      #viewport { transform-origin: center center; }
+    .beamer-block.theorem {
+      border-left-color: var(--navy-light);
+      background: #f0f7ff;
+    }
+    .beamer-block.theorem .beamer-block-title {
+      background: #e0effe;
+      color: #034f84;
+    }
+
+    .beamer-block.alert {
+      border-left-color: var(--crimson-accent);
+      background: #fffafa;
+    }
+    .beamer-block.alert .beamer-block-title {
+      background: #ffebeb;
+      color: var(--crimson-accent);
+    }
+
+    .beamer-block.finding {
+      border-left-color: var(--gold-accent);
+      background: #fefdf7;
+    }
+    .beamer-block.finding .beamer-block-title {
+      background: #fef9e7;
+      color: #8b6508;
+    }
+
+    /* Academic Bullet Lists */
+    ul.academic-bullets {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 14px;
+    }
+    ul.academic-bullets li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    ul.academic-bullets li::before {
+      content: "▪";
+      position: absolute;
+      left: 6px;
+      color: var(--navy-primary);
+      font-size: 16px;
+    }
+    ul.academic-bullets.alert-bullets li::before {
+      color: var(--crimson-accent);
+    }
+
+    /* Academic Citations */
+    .cite {
+      font-size: 12px;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    /* LaTeX Booktabs Academic Table */
+    .booktabs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px 0;
+      font-size: 13.5px;
+      text-align: left;
+    }
+    .booktabs-table thead tr {
+      border-top: 2.2px solid #1a202c;
+      border-bottom: 1.2px solid #1a202c;
+    }
+    .booktabs-table th {
+      padding: 9px 12px;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .booktabs-table td {
+      padding: 7px 12px;
+      border-bottom: 1px solid #edf2f7;
+      color: #2d3748;
+    }
+    .booktabs-table tbody tr:last-child {
+      border-bottom: 2.2px solid #1a202c;
+    }
+    .booktabs-table tr.highlight-row {
+      background: #f0f7ff;
+      font-weight: 600;
+    }
+    .booktabs-table tr.highlight-row td {
+      color: #0c2340;
+    }
+    .val-best {
+      font-weight: 700;
+      color: #0c2340;
+    }
+    .table-caption {
+      font-size: 12px;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-align: left;
+    }
+
+    /* Academic Figures & Plots */
+    .figure-frame {
+      border: 1px solid var(--border-mid);
+      border-radius: 4px;
+      background: #ffffff;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .figure-frame img {
+      max-width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: 2px;
+    }
+    .figure-caption {
+      font-family: var(--font-serif);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 8px;
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    /* Grid Layouts for Academic Slides */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      height: 100%;
+      align-items: start;
+    }
+    .col-55-45 {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      height: 100%;
+      align-items: start;
+    }
+    .col-45-55 {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      height: 100%;
+      align-items: start;
+    }
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* ─── SLIDE 1: TITLE SLIDE (CLASSIC ACADEMIC DEFENSE) ──────────────────── */
+    .title-slide-container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      text-align: center;
+      padding: 30px 48px;
+      background: linear-gradient(to bottom, #ffffff 0%, #fbfcfd 100%);
+      position: relative;
+    }
+    .title-slide-container::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--navy-primary) 0%, var(--gold-accent) 50%, var(--navy-primary) 100%);
+    }
+    .title-header-insignia {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+    .title-header-insignia img {
+      height: 70px;
+      width: auto;
+    }
+    .title-univ-text h3 {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      color: var(--navy-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+    .title-univ-text p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .title-main-block {
+      margin: 16px 0;
+      padding: 16px 24px;
+      border-top: 1.5px solid var(--border-mid);
+      border-bottom: 1.5px solid var(--border-mid);
+    }
+    .title-defense-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold-accent);
+      margin-bottom: 8px;
+    }
+    .thesis-main-title {
+      font-family: var(--font-serif);
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--navy-dark);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .thesis-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .title-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      text-align: left;
+      background: #f8fafc;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: 1px solid var(--border-light);
+    }
+    .meta-box h5 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--navy-primary);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .meta-box p {
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+    .candidate-ids {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: #0f172a;
+      background: #edf2f7;
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+
+    /* ─── POWERPOINT STEP REVEALS (BUILD ANIMATIONS) ───────────────────────── */
+    .step-reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .step-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── DEFENSE BOTTOM CONTROLLER BAR ────────────────────────────────────── */
+    #defense-controls {
+      position: fixed;
+      bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 6px 18px;
+      border-radius: 30px;
+      border: 1px solid var(--border-mid);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      z-index: 1000;
+    }
+    .ctrl-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      color: var(--navy-primary);
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .ctrl-btn:hover {
+      background: #edf2f7;
+    }
+    .ctrl-counter {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy-primary);
+      min-width: 90px;
+      text-align: center;
+    }
+
+    /* Quick Slide Overview Modal */
+    #overview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 35, 64, 0.85);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    #overview-modal.open {
+      display: flex;
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1100px;
+      max-height: 80vh;
+      overflow-y: auto;
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 6px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .overview-thumb {
+      border: 1px solid var(--border-mid);
+      border-radius: 4px;
+      padding: 12px;
+      cursor: pointer;
+      background: #f8fafc;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 90px;
+    }
+    .overview-thumb:hover {
+      border-color: var(--navy-primary);
+      background: #eef4ff;
+      transform: translateY(-2px);
+    }
+    .thumb-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold-accent);
+      font-family: var(--font-mono);
+    }
+    .thumb-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy-primary);
+      line-height: 1.25;
     }
   </style>
 </head>
 <body>
 
-<div id="progress"><div id="progress-bar" style="width:5%"></div></div>
+  <!-- ─── TOP DEFENSE BAR ────────────────────────────────────────────────── -->
+  <header id="defense-topbar">
+    <div class="topbar-left">
+      <img src="../figures/hstu_logo.png" alt="HSTU Logo" onerror="this.style.display='none'"/>
+      <span class="topbar-univ">HSTU DINANJPUR — ECE 452</span>
+      <span class="topbar-tag">Undergraduate Thesis Defense</span>
+    </div>
 
-<div id="deck">
-  <div id="viewport">
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 0: HERO / TITLE
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide active" id="slide-0">
-      <div class="particles" id="particles"></div>
-      <div class="slide-inner" style="justify-content:center; gap:0;">
-
-        <div class="anim" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px;">
-          <span class="badge badge-blue">ECE 452 · Project &amp; Thesis</span>
-          <span class="badge badge-cyan">HSTU · October 2026</span>
-          <span class="badge badge-violet">Graph Neural Networks · Cybersecurity</span>
-        </div>
-
-        <h1 class="hero anim" style="max-width:820px; margin-bottom:20px; line-height:1.05;">
-          CertGraph
-          <span style="background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
-            Hetero-GAT
-          </span><br/>
-          for ADCS Vulnerability Detection
-        </h1>
-        <p class="body anim" style="max-width:640px; font-size:17px; margin-bottom:36px;">
-          Heterogeneous Graph Attention Networks for Active Directory Certificate Services
-          Vulnerability Detection and Autonomous Defense
-        </p>
-
-        <div class="cols cols-4 anim" style="max-width:620px; gap:14px; margin-bottom:36px;">
-          <div class="stat card">
-            <div class="num">99.9%</div>
-            <div class="lbl">Macro-F1 Score</div>
-          </div>
-          <div class="stat card">
-            <div class="num">6</div>
-            <div class="lbl">ESC Classes Detected</div>
-          </div>
-          <div class="stat card">
-            <div class="num" style="font-size:28px;">343ms</div>
-            <div class="lbl">10K-node Inference</div>
-          </div>
-          <div class="stat card">
-            <div class="num">2</div>
-            <div class="lbl">Theorems Proved</div>
-          </div>
-        </div>
-
-        <div class="anim" style="display:flex; gap:32px; align-items:center;">
-          <div style="font:600 13px/1.8 'Inter',sans-serif; color:var(--text2);">
-            <span style="color:var(--text3);">Presented by</span><br/>
-            <span style="color:var(--text1);">Student IDs: 2002126 · 2002138 · 2102151</span>
-          </div>
-          <div style="width:1px; height:40px; background:var(--border);"></div>
-          <div style="font:500 12px/1.8 'Inter',sans-serif; color:var(--text3);">
-            Department of Electronics &amp; Communication Engineering<br/>
-            Hajee Mohammad Danesh Science &amp; Technology University
-          </div>
-        </div>
+    <div class="topbar-center">
+      <div class="defense-timer" title="Elapsed Defense Time">
+        <span class="timer-dot"></span>
+        <span>DEFENSE TIME:</span>
+        <span id="timer-display">00:00</span>
       </div>
-    </section>
+      <button class="btn-action" id="btn-timer-toggle" onclick="toggleTimer()">Pause</button>
+      <button class="btn-action" id="btn-timer-reset" onclick="resetTimer()">Reset</button>
+    </div>
 
+    <div class="topbar-right">
+      <button class="btn-action" onclick="toggleOverview()" title="View All Slides (O)">
+        <span>Overview</span>
+      </button>
+      <button class="btn-action" onclick="toggleFullscreen()" title="Fullscreen Mode (F)">
+        <span>Fullscreen</span>
+      </button>
+    </div>
+  </header>
 
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 1: OUTLINE
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-1">
-      <div class="slide-inner">
-        <div class="slide-label anim">Presentation Roadmap</div>
-        <h2 class="title anim" style="margin-bottom:28px;">Agenda</h2>
+  <!-- ─── 16:9 ACADEMIC SLIDE VIEWPORT ───────────────────────────────────── -->
+  <main id="slide-viewport">
 
-        <div class="cols cols-2 anim" style="gap:16px; flex:1;">
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <div class="card card-blue anim" style="display:flex; gap:14px; align-items:flex-start;">
-              <span style="font:800 28px/1 'Inter',sans-serif; color:rgba(37,99,235,0.4);">01</span>
-              <div>
-                <h3 class="sub" style="font-size:15px; margin-bottom:4px;">Motivation &amp; Problem</h3>
-                <p class="small">Why Active Directory PKI is the new enterprise attack surface</p>
-              </div>
-            </div>
-            <div class="card card-cyan anim" style="display:flex; gap:14px; align-items:flex-start;">
-              <span style="font:800 28px/1 'Inter',sans-serif; color:rgba(6,182,212,0.4);">02</span>
-              <div>
-                <h3 class="sub" style="font-size:15px; margin-bottom:4px;">ADCS Attack Surface</h3>
-                <p class="small">ESC1–ESC13 taxonomy, PKINIT exploitation chain</p>
-              </div>
-            </div>
-            <div class="card card-violet anim" style="display:flex; gap:14px; align-items:flex-start;">
-              <span style="font:800 28px/1 'Inter',sans-serif; color:rgba(124,58,237,0.4);">03</span>
-              <div>
-                <h3 class="sub" style="font-size:15px; margin-bottom:4px;">CertGraph Architecture</h3>
-                <p class="small">Heterogeneous multigraph formalization &amp; Hetero-GAT design</p>
-              </div>
-            </div>
-            <div class="card card-amber anim" style="display:flex; gap:14px; align-items:flex-start;">
-              <span style="font:800 28px/1 'Inter',sans-serif; color:rgba(245,158,11,0.4);">04</span>
-              <div>
-                <h3 class="sub" style="font-size:15px; margin-bottom:4px;">Theorem 1: Attribute Preservation</h3>
-                <p class="small">Why skip connections are mathematically indispensable</p>
-              </div>
-            </div>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <div class="card card-rose anim" style="display:flex; gap:14px; align-items:flex-start;">
-              <span style="font:800 28px/1 'Inter',sans-serif; color:rgba(225,29,72,0.4);">05</span>
-              <div>
-                <h3 class="sub" style="font-size:15px; margin-bottom:4px;">Forensic Audit</h3>
-                <p class="small">Four experimental illusions unmasked in security ML</p>
-              </div>
-            </div>
-            <div class="card card-green anim" style="display:flex; gap:14px; align-items:flex-start;">
-              <span style="font:800 28px/1 'Inter',sans-serif; color:rgba(16,185,129,0.4);">06</span>
-              <div>
-                <h3 class="sub" style="font-size:15px; margin-bottom:4px;">Empirical Results</h3>
-                <p class="small">0.9986 Macro-F1, adversarial hard negatives, ablations</p>
-              </div>
-            </div>
-            <div class="card card-blue anim" style="display:flex; gap:14px; align-items:flex-start;">
-              <span style="font:800 28px/1 'Inter',sans-serif; color:rgba(37,99,235,0.4);">07</span>
-              <div>
-                <h3 class="sub" style="font-size:15px; margin-bottom:4px;">Neuro-Symbolic Defense</h3>
-                <p class="small">Two-tier hybrid architecture &amp; real-world case studies</p>
-              </div>
-            </div>
-            <div class="card card-cyan anim" style="display:flex; gap:14px; align-items:flex-start;">
-              <span style="font:800 28px/1 'Inter',sans-serif; color:rgba(6,182,212,0.4);">08</span>
-              <div>
-                <h3 class="sub" style="font-size:15px; margin-bottom:4px;">Game Theory &amp; Conclusions</h3>
-                <p class="small">NP-hardness of MPAI, Stackelberg equilibrium, takeaways</p>
-              </div>
-            </div>
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 1: FORMAL TITLE SLIDE
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide active" id="slide-1" data-section="Opening">
+      <div class="title-slide-container">
+        <div class="title-header-insignia">
+          <img src="../figures/hstu_logo.png" alt="HSTU Insignia" onerror="this.style.display='none'"/>
+          <div class="title-univ-text">
+            <h3>Hajee Mohammad Danesh Science and Technology University</h3>
+            <p>Department of Electronics and Communication Engineering (ECE)</p>
           </div>
         </div>
 
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span>
-          <span>Student IDs: 2002126 · 2002138 · 2102151</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 2: MOTIVATION
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-2">
-      <div class="slide-inner">
-        <div class="slide-label anim">Section 01</div>
-        <div class="cols cols-2 anim" style="gap:32px; align-items:center; flex:1;">
-          <div>
-            <h2 class="title anim" style="margin-bottom:16px;">The Identity-Centric<br/>Threat Landscape</h2>
-            <p class="body anim" style="margin-bottom:16px;">
-              Perimeter defenses are obsolete. Nation-state actors and ransomware cartels routinely bypass
-              firewalls through credential theft and supply-chain compromise.
-            </p>
-            <div class="highlight anim" style="margin-bottom:16px;">
-              <p style="font:600 14px/1.6 'Inter',sans-serif; color:var(--text1);">
-                Once inside, adversaries exploit <strong style="color:var(--cyan);">Active Directory</strong>'s
-                complex authorization topology — not software bugs.
-              </p>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:8px;" class="anim">
-              <div class="card" style="display:flex;gap:12px;align-items:center;padding:12px 16px;">
-                <span style="font-size:20px;">🏢</span>
-                <p class="small">AD deployed in <strong style="color:var(--text1);">90%+ of Fortune 1000</strong> organizations</p>
-              </div>
-              <div class="card" style="display:flex;gap:12px;align-items:center;padding:12px 16px;">
-                <span style="font-size:20px;">🔐</span>
-                <p class="small">ADCS issues <strong style="color:var(--text1);">cryptographically valid credentials</strong> — invisible to EDR</p>
-              </div>
-              <div class="card" style="display:flex;gap:12px;align-items:center;padding:12px 16px;">
-                <span style="font-size:20px;">📈</span>
-                <p class="small">APT29, ransomware operators documented using ADCS attacks (CISA advisories)</p>
-              </div>
-            </div>
-          </div>
-          <div class="anim" style="display:flex; flex-direction:column; gap:12px;">
-            <div style="font:600 13px/1 'Inter',sans-serif; color:var(--text3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px;">
-              Identity Attack Path Chain
-            </div>
-            <div class="card" style="background:rgba(225,29,72,0.06); border-color:rgba(225,29,72,0.2); padding:14px 16px; display:flex; gap:12px; align-items:center;">
-              <div class="chain-node" style="background:linear-gradient(135deg,#ef4444,#dc2626); font-size:11px; width:40px; height:40px;">👤</div>
-              <div><p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1);">Low-Priv User</p><p class="small">Credential spraying victim</p></div>
-            </div>
-            <div style="text-align:center; color:var(--text3); font-size:20px;">↓</div>
-            <div class="card" style="background:rgba(245,158,11,0.06); border-color:rgba(245,158,11,0.2); padding:14px 16px; display:flex; gap:12px; align-items:center;">
-              <div class="chain-node" style="background:linear-gradient(135deg,#f59e0b,#d97706); font-size:11px; width:40px; height:40px;">👥</div>
-              <div><p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1);">Enroller Group</p><p class="small">Transitive MemberOf nesting</p></div>
-            </div>
-            <div style="text-align:center; color:var(--text3); font-size:20px;">↓</div>
-            <div class="card" style="background:rgba(124,58,237,0.06); border-color:rgba(124,58,237,0.2); padding:14px 16px; display:flex; gap:12px; align-items:center;">
-              <div class="chain-node" style="background:linear-gradient(135deg,#7c3aed,#6d28d9); font-size:11px; width:40px; height:40px;">📋</div>
-              <div><p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1);">ESC13 Template</p><p class="small">Policy OID → Tier-0 Group</p></div>
-            </div>
-            <div style="text-align:center; color:var(--text3); font-size:20px;">↓</div>
-            <div class="card" style="background:rgba(16,185,129,0.06); border-color:rgba(16,185,129,0.2); padding:14px 16px; display:flex; gap:12px; align-items:center;">
-              <div class="chain-node" style="background:linear-gradient(135deg,#10b981,#059669); font-size:11px; width:40px; height:40px;">👑</div>
-              <div><p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1);">Domain Admins</p><p class="small">Full forest takeover via PKINIT</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>1 / Motivation</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 3: ADCS ATTACK SURFACE
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-3">
-      <div class="slide-inner">
-        <div class="slide-label anim">Section 02</div>
-        <h2 class="title anim" style="margin-bottom:6px;">ADCS Vulnerability Taxonomy</h2>
-        <p class="body anim" style="margin-bottom:20px; font-size:13px;">
-          Active Directory Certificate Services escalation vectors (ESC1–ESC15), formalized by SpecterOps (2021) and extended through 2024.
-        </p>
-
-        <div class="cols cols-3 anim" style="gap:12px; margin-bottom:16px;">
-          <div class="card card-rose">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <span class="badge badge-rose">ESC1</span>
-              <span style="font:600 10px/1 'JetBrains Mono',monospace; color:var(--rose);">CRITICAL</span>
-            </div>
-            <p style="font:600 13px/1.3 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Enrollee Supplies SAN</p>
-            <p class="small"><code>CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT</code> + Client Auth EKU + low-priv enrollment</p>
-          </div>
-          <div class="card card-rose">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <span class="badge badge-rose">ESC2</span>
-              <span style="font:600 10px/1 'JetBrains Mono',monospace; color:var(--rose);">HIGH</span>
-            </div>
-            <p style="font:600 13px/1.3 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Any Purpose EKU</p>
-            <p class="small">Template grants Any Purpose OID or has no EKU restriction</p>
-          </div>
-          <div class="card card-amber">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <span class="badge badge-amber">ESC3</span>
-              <span style="font:600 10px/1 'JetBrains Mono',monospace; color:var(--amber);">HIGH</span>
-            </div>
-            <p style="font:600 13px/1.3 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Cert Request Agent EKU</p>
-            <p class="small">On-behalf-of enrollment for impersonating another principal</p>
-          </div>
-          <div class="card card-amber">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <span class="badge badge-amber">ESC4</span>
-              <span style="font:600 10px/1 'JetBrains Mono',monospace; color:var(--amber);">HIGH</span>
-            </div>
-            <p style="font:600 13px/1.3 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">DACL WriteOwner/WriteDacl</p>
-            <p class="small">Low-priv principal holds dangerous ACEs on the template LDAP object</p>
-          </div>
-          <div class="card card-cyan">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <span class="badge badge-cyan">ESC9</span>
-              <span style="font:600 10px/1 'JetBrains Mono',monospace; color:var(--cyan);">MEDIUM</span>
-            </div>
-            <p style="font:600 13px/1.3 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">No Security Extension</p>
-            <p class="small">Missing <code>NO_SECURITY_EXT</code> flag bypasses KB5014754 strong mapping</p>
-          </div>
-          <div class="card card-violet">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-              <span class="badge badge-violet">ESC13</span>
-              <span style="font:600 10px/1 'JetBrains Mono',monospace; color:#a78bfa;">NOVEL 2024</span>
-            </div>
-            <p style="font:600 13px/1.3 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Policy OID → Group Link</p>
-            <p class="small">Issuance Policy OID mapped directly to Tier-0 administrative group</p>
-          </div>
-        </div>
-
-        <div class="cols cols-2 anim" style="gap:16px;">
-          <div class="card card-blue" style="padding:14px 16px;">
-            <p style="font:600 12px/1 'Inter',sans-serif; color:var(--text3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px;">PKINIT Exploitation Chain</p>
-            <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-              <span class="badge badge-blue" style="font-size:11px;">CSR Enrollment</span>
-              <span style="color:var(--text3);">→</span>
-              <span class="badge badge-cyan" style="font-size:11px;">CA Issues Cert</span>
-              <span style="color:var(--text3);">→</span>
-              <span class="badge badge-violet" style="font-size:11px;">PKINIT AS-REQ</span>
-              <span style="color:var(--text3);">→</span>
-              <span class="badge badge-amber" style="font-size:11px;">KDC Maps SAN</span>
-              <span style="color:var(--text3);">→</span>
-              <span class="badge badge-rose" style="font-size:11px;">TGT + Admin PAC</span>
-            </div>
-          </div>
-          <div class="card" style="padding:14px 16px;">
-            <p style="font:600 12px/1 'Inter',sans-serif; color:var(--text3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px;">Limitations of Existing Tools</p>
-            <p class="small" style="color:var(--text2); line-height:1.7;">
-              <strong style="color:var(--rose);">Certipy / BloodHound:</strong> Inspect templates in isolation — miss transitive path reachability.
-              Generate false positives on hardened templates. Cannot detect novel ESC13 pre-2024.
-            </p>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>2 / ADCS Threat Model</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 4: RESEARCH QUESTIONS
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-4">
-      <div class="slide-inner">
-        <div class="slide-label anim">Research Foundation</div>
-        <h2 class="title anim" style="margin-bottom:22px;">Four Central Research Questions</h2>
-        <div style="display:flex; flex-direction:column; gap:14px; flex:1;" class="anim">
-          <div class="research-q">
-            <strong style="color:var(--blue); font-size:11px; text-transform:uppercase; letter-spacing:.08em;">RQ1 · Relational Necessity</strong><br/>
-            Can a Hetero-GAT effectively classify ADCS vulnerability classes by <em>jointly modeling</em> template
-            configurations <em>and</em> directory authorization topology — outperforming flat feature-only classifiers?
-          </div>
-          <div class="research-q" style="border-left-color:var(--cyan);">
-            <strong style="color:var(--cyan); font-size:11px; text-transform:uppercase; letter-spacing:.08em;">RQ2 · Architectural Dynamics</strong><br/>
-            How do directed, asymmetric AD graph topologies impact message-passing, and what inductive biases
-            (residual skip-connections) are <em>mathematically necessary</em> to prevent attribute attenuation?
-          </div>
-          <div class="research-q" style="border-left-color:var(--rose);">
-            <strong style="color:var(--rose); font-size:11px; text-transform:uppercase; letter-spacing:.08em;">RQ3 · Adversarial Robustness</strong><br/>
-            When subjected to adversarial hard negatives (vulnerable flags, <em>no valid auth path</em>), do
-            neural models evaluate graph reachability — or succumb to shortcut learning?
-          </div>
-          <div class="research-q" style="border-left-color:var(--violet);">
-            <strong style="color:#a78bfa; font-size:11px; text-transform:uppercase; letter-spacing:.08em;">RQ4 · Optimal Defense Paradigm</strong><br/>
-            Given statistical vs. symbolic trade-offs, what is the optimal architecture for enterprise-grade
-            autonomous identity defense, and what is the complexity of autonomous mitigation?
-          </div>
-        </div>
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>3 / Research Questions</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 5: CERTGRAPH ARCHITECTURE (OVERVIEW)
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-5">
-      <div class="slide-inner">
-        <div class="slide-label anim">Section 03</div>
-        <h2 class="title anim" style="margin-bottom:6px;">CertGraph Architecture</h2>
-        <p class="body anim" style="margin-bottom:18px; font-size:13px;">
-          Active Directory modeled as a typed heterogeneous multigraph <code>G = (V, E, T_V, T_E, φ_V, ψ_E)</code> processed by a Hetero-GAT.
-        </p>
-
-        <div class="cols cols-4 anim" style="gap:12px; margin-bottom:16px;">
-          <div class="card" style="text-align:center; padding:16px 12px;">
-            <div style="font:700 11px/1 'Inter',sans-serif; color:var(--blue); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;">1. Input Graph</div>
-            <div style="font:600 12px/1.6 'Inter',sans-serif; color:var(--text2);">
-              5 Node Types:<br/>User, Computer<br/>Group, Template, CA<br/><br/>
-              8 Edge Types:<br/>MemberOf, Enroll<br/>GenericAll, WriteDacl<br/>LinksPolicy…
-            </div>
-          </div>
-          <div class="card" style="text-align:center; padding:16px 12px; border-color:rgba(37,99,235,0.35);">
-            <div style="font:700 11px/1 'Inter',sans-serif; color:var(--blue); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;">2. Hetero-GAT L1</div>
-            <div style="font:600 12px/1.6 'Inter',sans-serif; color:var(--text2);">
-              K=4 Attention Heads<br/>d=64 hidden dim<br/><br/>
-              Relation-specific<br/>linear projections<br/>W_src, W_dst<br/><br/>
-              LeakyReLU + Softmax
-            </div>
-          </div>
-          <div class="card" style="text-align:center; padding:16px 12px;">
-            <div style="font:700 11px/1 'Inter',sans-serif; color:var(--cyan); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;">3. Layer 2 + Readout</div>
-            <div style="font:600 12px/1.6 'Inter',sans-serif; color:var(--text2);">
-              2-Hop Topological Conv<br/>Aggregates multi-hop<br/>DACL &amp; policy contexts<br/><br/>
-              Template Node<br/>Readout: h_v ∈ ℝ⁶⁴<br/>Isolated vulnerability<br/>latent state
-            </div>
-          </div>
-          <div class="card" style="text-align:center; padding:16px 12px; border-color:rgba(16,185,129,0.35);">
-            <div style="font:700 11px/1 'Inter',sans-serif; color:var(--green); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px;">4. Classifier</div>
-            <div style="font:600 12px/1.6 'Inter',sans-serif; color:var(--text2);">
-              MLP Head:<br/>Linear(64→32)→ReLU<br/>Dropout(0.2)<br/>Linear(32→7)<br/><br/>
-              ŷ = Softmax(z_v)<br/>∈ Δ⁶<br/><br/>
-              <span style="color:var(--green);">Safe / ESC1–ESC13</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="cols cols-2 anim" style="gap:16px;">
-          <div class="card card-violet" style="padding:14px 16px;">
-            <p style="font:600 12px/1 'Inter',sans-serif; color:#a78bfa; margin-bottom:8px;">Residual Skip Connection (Theorem 1)</p>
-            <div style="background:rgba(0,0,0,0.2); border-radius:8px; padding:10px 14px; font:400 13px/1.7 'JetBrains Mono',monospace; color:var(--text1);">
-              h<sub>v</sub><sup>(l)</sup> = h̃<sub>v</sub><sup>(l)</sup> + W<sub>skip</sub> · h<sub>v</sub><sup>(l-1)</sup>
-            </div>
-            <p class="small" style="margin-top:8px;">Guarantees ‖∂h_v / ∂x_v‖ ≥ σ_min(W_skip) &gt; 0</p>
-          </div>
-          <div class="card card-blue" style="padding:14px 16px;">
-            <p style="font:600 12px/1 'Inter',sans-serif; color:var(--blue); margin-bottom:8px;">Augmented Reverse Relations</p>
-            <p class="small" style="line-height:1.7;">
-              Each directed edge type r gets a canonical inverse r⁻¹ so templates can gather
-              structural context from <em>inbound</em> principals during forward message-passing.
-              <code>|T_E| = 8 → 16</code> augmented relations.
-            </p>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>4 / CertGraph Architecture</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 6: FIGURE 3.1 (Architecture Diagram)
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-6">
-      <div class="slide-inner">
-        <div class="slide-label anim">Figure 3.1</div>
-        <h2 class="title anim" style="margin-bottom:14px; font-size:28px;">CertGraph End-to-End Hetero-GAT Pipeline</h2>
-        <div class="fig-frame anim anim-scale" style="flex:1; max-height:520px;">
-          <img src="../figures/certgraph_architecture_diagram.png" alt="CertGraph Architecture Diagram" style="object-fit:contain; padding:10px;"/>
-        </div>
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>5 / Architecture Diagram</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 7: THEOREM 1
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-7">
-      <div class="slide-inner">
-        <div class="slide-label anim">Section 04 · Theorem 1</div>
-        <h2 class="title anim" style="margin-bottom:16px;">Intrinsic Attribute Preservation</h2>
-
-        <div class="cols cols-2 anim" style="gap:20px; flex:1; align-items:start;">
-          <div style="display:flex; flex-direction:column; gap:14px;">
-            <div class="theorem anim">
-              <strong>Theorem 1 (Attribute Preservation &amp; Gradient Bounds):</strong><br/><br/>
-              In heterogeneous graph message passing over a directed identity graph <em>G</em> with
-              source-only nodes (in-degree 0), standard aggregation attenuates input feature sensitivity.
-              Parameterized residual skip connections guarantee:
-              <br/><br/>
-              <div style="text-align:center; font:500 15px/1.5 'JetBrains Mono',monospace; color:#a78bfa; padding:10px; background:rgba(124,58,237,0.08); border-radius:8px;">
-                ‖ ∂h̃_v^(L) / ∂x_v ‖ ≥ ∏_{l=1}^{L} σ_min(W_skip^(l)) &gt; 0
-              </div>
-              <br/>
-              This bound is strictly positive for all network depths <em>L</em>, ensuring that raw
-              certificate template configuration flags remain semantically preserved in latent embeddings.
-            </div>
-
-            <div class="card card-rose anim">
-              <p style="font:600 12px/1 'Inter',sans-serif; color:var(--rose); margin-bottom:8px;">⚠ Without Skip Connections (Ablation)</p>
-              <div style="display:flex; gap:16px; align-items:center;">
-                <div class="stat">
-                  <div class="num" style="font-size:32px; background:linear-gradient(135deg,var(--rose),#f97316); -webkit-background-clip:text;">0.4768</div>
-                  <div class="lbl">Macro-F1 w/o Skip</div>
-                </div>
-                <div style="font:400 13px/1.6 'Inter',sans-serif; color:var(--text2);">
-                  Catastrophic collapse from <strong style="color:var(--green);">0.9986</strong> to <strong style="color:var(--rose);">0.4768</strong><br/>
-                  <span style="font:600 11px/1 'JetBrains Mono',monospace; color:var(--text3);">p = 1.31×10⁻⁶</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div style="display:flex; flex-direction:column; gap:14px;" class="anim">
-            <div class="card card-blue">
-              <p style="font:600 12px/1 'Inter',sans-serif; color:var(--blue); margin-bottom:10px;">Why Source-Only Nodes Break Standard Aggregation</p>
-              <p class="small" style="line-height:1.7;">
-                Users and Computers in AD graphs frequently have <strong>in-degree = 0</strong> in the
-                authorization subgraph (they only have outbound Enroll / MemberOf edges). Standard
-                neighborhood aggregation collects an <em>empty</em> message set, yielding:
-              </p>
-              <div style="background:rgba(0,0,0,0.2); border-radius:6px; padding:8px 12px; margin-top:8px; font:500 12px/1.5 'JetBrains Mono',monospace; color:var(--text2);">
-                μ_v^(l) = Σ_{u∈N(v)} … = 0 &nbsp;⇒&nbsp; ∂h_v/∂x_v → 0
-              </div>
-            </div>
-
-            <div class="card card-green">
-              <p style="font:600 12px/1 'Inter',sans-serif; color:var(--green); margin-bottom:10px;">Ablation Study Results</p>
-              <div style="display:flex; flex-direction:column; gap:6px;">
-                <div class="bar-row">
-                  <span class="bar-lbl" style="width:120px; font-size:11px;">With Skip (Full)</span>
-                  <div class="bar-track">
-                    <div class="bar-fill" style="width:99.86%; background:linear-gradient(90deg,var(--green),#34d399);">
-                      <span class="bar-val">0.9986</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="bar-row">
-                  <span class="bar-lbl" style="width:120px; font-size:11px;">No Skip</span>
-                  <div class="bar-track">
-                    <div class="bar-fill" style="width:47.68%; background:linear-gradient(90deg,var(--rose),#f97316);">
-                      <span class="bar-val">0.4768</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="bar-row">
-                  <span class="bar-lbl" style="width:120px; font-size:11px;">1 Layer Only</span>
-                  <div class="bar-track">
-                    <div class="bar-fill" style="width:91.43%; background:linear-gradient(90deg,var(--amber),#f59e0b);">
-                      <span class="bar-val">0.9143</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="bar-row">
-                  <span class="bar-lbl" style="width:120px; font-size:11px;">No Attention</span>
-                  <div class="bar-track">
-                    <div class="bar-fill" style="width:82.71%; background:linear-gradient(90deg,var(--text3),#475569);">
-                      <span class="bar-val">0.8271</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>6 / Theorem 1</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 8: FORENSIC AUDIT
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-8">
-      <div class="slide-inner">
-        <div class="slide-label anim">Section 05</div>
-        <h2 class="title anim" style="margin-bottom:8px;">Forensic Audit of Security ML</h2>
-        <p class="body anim" style="margin-bottom:18px; font-size:13px;">
-          Our prototype initially achieved <strong style="color:var(--rose);">perfect 1.0000 Macro-F1</strong> — triggering a systematic audit
-          following Arp et al. (2022) <em>"Dos and Don'ts of Machine Learning in Computer Security."</em>
-        </p>
-
-        <div class="cols cols-2 anim" style="gap:14px; flex:1;">
-          <div class="card card-rose anim" style="padding:16px 18px;">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-              <span style="font:700 24px/1 'Inter',sans-serif; color:rgba(225,29,72,0.5);">01</span>
-              <span class="badge badge-rose">Illusion</span>
-              <p style="font:600 14px/1 'Inter',sans-serif; color:var(--text1);">Positional Index Leakage</p>
-            </div>
-            <p class="small" style="line-height:1.65;">
-              Synthetic generator assigned array position (index 0 = Low-Priv, index 1 = Admin) directly
-              to node IDs. GNN learned position → label shortcut. <strong style="color:var(--rose);">Not security reasoning.</strong><br/>
-              <strong style="color:var(--green);">Fix:</strong> Randomized node assignment, Chi-Squared verified (χ²=0.012, p=0.913).
-            </p>
-          </div>
-          <div class="card card-amber anim" style="padding:16px 18px;">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-              <span style="font:700 24px/1 'Inter',sans-serif; color:rgba(245,158,11,0.5);">02</span>
-              <span class="badge badge-amber">Illusion</span>
-              <p style="font:600 14px/1 'Inter',sans-serif; color:var(--text1);">Baseline Asymmetry</p>
-            </div>
-            <p class="small" style="line-height:1.65;">
-              Flat MLP baselines were denied access to graph topology features given to the GNN.
-              A fair comparison requires identical feature visibility. Without graph topology,
-              MLP was artificially handicapped. <strong style="color:var(--green);">Fix:</strong> Graph-Augmented MLP baseline added.
-            </p>
-          </div>
-          <div class="card card-violet anim" style="padding:16px 18px;">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-              <span style="font:700 24px/1 'Inter',sans-serif; color:rgba(124,58,237,0.5);">03</span>
-              <span class="badge badge-violet">Illusion</span>
-              <p style="font:600 14px/1 'Inter',sans-serif; color:var(--text1);">Decision Tree Equivalence</p>
-            </div>
-            <p class="small" style="line-height:1.65;">
-              A 7-node Decision Tree achieved Macro-F1 = <strong style="color:var(--rose);">0.9928</strong>, nearly matching our
-              complex GNN. This revealed the sanitized benchmark may be rule-separable by local flags alone —
-              motivating the adversarial hard negative protocol.
-            </p>
-          </div>
-          <div class="card card-cyan anim" style="padding:16px 18px;">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-              <span style="font:700 24px/1 'Inter',sans-serif; color:rgba(6,182,212,0.5);">04</span>
-              <span class="badge badge-cyan">Illusion</span>
-              <p style="font:600 14px/1 'Inter',sans-serif; color:var(--text1);">Hard Negative Memorization</p>
-            </div>
-            <p class="small" style="line-height:1.65;">
-              Including adversarial hard negatives in training caused the GNN to
-              <em>memorize</em> the synthetic distribution of safe flag combinations rather than
-              learning reachability. Proper zero-shot evaluation protocol implemented.
-            </p>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>7 / Forensic Audit</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 9: EMPIRICAL RESULTS
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-9">
-      <div class="slide-inner">
-        <div class="slide-label anim">Section 06</div>
-        <h2 class="title anim" style="margin-bottom:8px;">Empirical Results</h2>
-        <p class="body anim" style="margin-bottom:14px; font-size:13px;">
-          5-Fold stratified CV on 700 sanitized enterprise AD environments (100 per class). Nadeau-Bengio corrected p-values.
-        </p>
-
-        <div class="cols cols-13 anim" style="gap:20px; flex:1;">
-          <div>
-            <table class="results-table anim">
-              <thead>
-                <tr>
-                  <th>Model</th>
-                  <th>Macro-F1</th>
-                  <th>Corr p-val</th>
-                  <th>Sig.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="top">
-                  <td><span class="badge badge-blue" style="font-size:11px;">CertGraph (Hetero-GAT)</span></td>
-                  <td class="ref">0.9986 ±.003</td>
-                  <td>—</td>
-                  <td>Ref.</td>
-                </tr>
-                <tr>
-                  <td>Graph-Augmented MLP</td>
-                  <td>0.9971 ±.004</td>
-                  <td>0.740</td>
-                  <td>—</td>
-                </tr>
-                <tr>
-                  <td>Graph-Augmented RF</td>
-                  <td>0.9871 ±.008</td>
-                  <td>0.191</td>
-                  <td>—</td>
-                </tr>
-                <tr>
-                  <td>BloodHound BFS (Symbolic)</td>
-                  <td>0.9082 ±.023</td>
-                  <td class="bad">7.3×10⁻³</td>
-                  <td class="bad">p&lt;0.01</td>
-                </tr>
-                <tr>
-                  <td>Flat MLP (features only)</td>
-                  <td>0.8600 ±.013</td>
-                  <td class="bad">1.3×10⁻⁴</td>
-                  <td class="bad">p&lt;10⁻³</td>
-                </tr>
-                <tr>
-                  <td>Flat RF (features only)</td>
-                  <td>0.8384 ±.006</td>
-                  <td class="bad">6.7×10⁻⁶</td>
-                  <td class="bad">p&lt;10⁻⁵</td>
-                </tr>
-                <tr>
-                  <td>Rule-Based (Certipy)</td>
-                  <td>0.7791 ±.025</td>
-                  <td class="bad">3.1×10⁻⁴</td>
-                  <td class="bad">p&lt;10⁻³</td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="cols cols-3 anim" style="gap:10px; margin-top:14px;">
-              <div class="stat card" style="padding:12px;">
-                <div class="num" style="font-size:26px;">+28.2%</div>
-                <div class="lbl">vs Certipy rule-based</div>
-              </div>
-              <div class="stat card" style="padding:12px;">
-                <div class="num" style="font-size:26px;">+16.1%</div>
-                <div class="lbl">vs flat feature MLP</div>
-              </div>
-              <div class="stat card" style="padding:12px;">
-                <div class="num" style="font-size:26px;">+9.9%</div>
-                <div class="lbl">vs symbolic BFS</div>
-              </div>
-            </div>
-          </div>
-
-          <div style="display:flex; flex-direction:column; gap:14px;" class="anim">
-            <div class="card card-rose" style="padding:14px 16px;">
-              <p style="font:700 13px/1 'Inter',sans-serif; color:var(--rose); margin-bottom:10px;">🧨 Adversarial Hard Negative Benchmark</p>
-              <p class="small" style="line-height:1.65; margin-bottom:12px;">
-                63 templates with <em>vulnerable flags</em> but <em>no valid authorization path</em>.
-                Zero-shot out-of-distribution evaluation.
-              </p>
-              <div class="cols cols-2" style="gap:10px;">
-                <div class="stat card" style="background:rgba(225,29,72,0.08); border-color:rgba(225,29,72,0.2); padding:10px;">
-                  <div class="num" style="font-size:28px; background:linear-gradient(135deg,var(--rose),#f97316);-webkit-background-clip:text;">1.59%</div>
-                  <div class="lbl">CertGraph (neural)</div>
-                </div>
-                <div class="stat card" style="background:rgba(16,185,129,0.08); border-color:rgba(16,185,129,0.2); padding:10px;">
-                  <div class="num" style="font-size:28px; background:linear-gradient(135deg,var(--green),#34d399);-webkit-background-clip:text;">84.1%</div>
-                  <div class="lbl">BloodHound BFS (symbolic)</div>
-                </div>
-              </div>
-              <p class="small" style="margin-top:10px; color:var(--rose);">
-                Neural model collapsed to <strong>shortcut learning</strong> — checking local flags, not graph reachability.
-              </p>
-            </div>
-            <div class="card card-blue" style="padding:14px 16px;">
-              <p style="font:700 13px/1 'Inter',sans-serif; color:var(--blue); margin-bottom:8px;">⚡ Scalability Benchmarks</p>
-              <div class="bar-row" style="margin:5px 0;">
-                <span class="bar-lbl" style="width:90px; font-size:11px; text-align:right;">1K nodes</span>
-                <div class="bar-track" style="height:18px;">
-                  <div class="bar-fill" style="width:4%; background:var(--green);">
-                    <span class="bar-val" style="font-size:10px;">38ms</span>
-                  </div>
-                </div>
-              </div>
-              <div class="bar-row" style="margin:5px 0;">
-                <span class="bar-lbl" style="width:90px; font-size:11px; text-align:right;">5K nodes</span>
-                <div class="bar-track" style="height:18px;">
-                  <div class="bar-fill" style="width:15%; background:var(--cyan);">
-                    <span class="bar-val" style="font-size:10px;">161ms</span>
-                  </div>
-                </div>
-              </div>
-              <div class="bar-row" style="margin:5px 0;">
-                <span class="bar-lbl" style="width:90px; font-size:11px; text-align:right;">10K nodes</span>
-                <div class="bar-track" style="height:18px;">
-                  <div class="bar-fill" style="width:32%; background:var(--blue);">
-                    <span class="bar-val" style="font-size:10px;">343ms</span>
-                  </div>
-                </div>
-              </div>
-              <p class="small" style="margin-top:8px; color:var(--green);">Near-linear O(|V|+|E|) scaling — suitable for continuous enterprise monitoring.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>8 / Empirical Results</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 10: NEURO-SYMBOLIC ARCHITECTURE
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-10">
-      <div class="slide-inner">
-        <div class="slide-label anim">Section 07</div>
-        <h2 class="title anim" style="margin-bottom:8px;">Two-Tier Neuro-Symbolic Architecture</h2>
-        <p class="body anim" style="margin-bottom:16px; font-size:13px;">
-          Reconciling statistical GNN pattern recognition with deterministic symbolic graph verification (Answer to RQ4).
-        </p>
-
-        <div class="cols cols-4 anim" style="gap:10px; margin-bottom:16px;">
-          <div class="card" style="text-align:center; padding:16px 10px; border-top:3px solid var(--blue);">
-            <div style="font:700 11px/1 'Inter',sans-serif; color:var(--blue); text-transform:uppercase; letter-spacing:.07em; margin-bottom:8px;">Tier 1: Screening</div>
-            <div style="font:800 20px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">CertGraph GNN</div>
-            <p class="small" style="line-height:1.6;">Fast O(|V|+|E|) inference. Ranks <em>all</em> templates by risk score. Emits Top-K suspect queue Q_suspect. Sub-second at enterprise scale.</p>
-            <div style="margin-top:10px;"><span class="badge badge-blue" style="font-size:11px;">343ms / 10K nodes</span></div>
-          </div>
-          <div style="display:flex; align-items:center; justify-content:center; font-size:28px; color:var(--text3);">→</div>
-          <div class="card" style="text-align:center; padding:16px 10px; border-top:3px solid var(--violet);">
-            <div style="font:700 11px/1 'Inter',sans-serif; color:#a78bfa; text-transform:uppercase; letter-spacing:.07em; margin-bottom:8px;">Tier 2: Verification</div>
-            <div style="font:800 20px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Symbolic BFS</div>
-            <p class="small" style="line-height:1.6;">Deterministic 2-hop authorization subgraph traversal. Checks DACLs, OIDs &amp; enroll rights. Produces <em>sound mathematical proof</em> of exploitability.</p>
-            <div style="margin-top:10px;"><span class="badge badge-violet" style="font-size:11px;">Zero False Positives</span></div>
-          </div>
-          <div class="card" style="text-align:center; padding:16px 10px; border-top:3px solid var(--green);">
-            <div style="font:700 11px/1 'Inter',sans-serif; color:var(--green); text-transform:uppercase; letter-spacing:.07em; margin-bottom:8px;">Outcome</div>
-            <div style="font:800 20px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Remediation</div>
-            <p class="small" style="line-height:1.6;">Verified exploit paths trigger autonomous LDAP actuation: revoke enrollment ACEs, unlink policy OIDs, apply ACL hardening.</p>
-            <div style="margin-top:10px;"><span class="badge badge-green" style="font-size:11px;">Autonomous Defense</span></div>
-          </div>
-        </div>
-
-        <div class="cols cols-2 anim" style="gap:16px;">
-          <div class="card card-green" style="padding:14px 16px;">
-            <p style="font:600 13px/1 'Inter',sans-serif; color:var(--green); margin-bottom:10px;">Real-World GOAD Case Studies</p>
-            <div style="display:flex; flex-direction:column; gap:8px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span class="badge badge-green" style="flex-shrink:0; font-size:10px;">ESC13</span>
-                <p class="small">CertGraph autonomously discovered the novel ESC13 vector that <em>static Certipy missed</em> in the GOAD multi-forest testbed</p>
-              </div>
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span class="badge badge-cyan" style="flex-shrink:0; font-size:10px;">TRANSFER</span>
-                <p class="small">Zero-shot transfer to ADSynth enterprise tiered networks: Macro-F1 = <strong style="color:var(--green);">1.0000</strong></p>
-              </div>
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span class="badge badge-amber" style="flex-shrink:0; font-size:10px;">ROBUSTNESS</span>
-                <p class="small">Tolerates 30% edge collection loss: F1 &gt; 0.96 maintained</p>
-              </div>
-            </div>
-          </div>
-          <div class="card card-rose" style="padding:14px 16px;">
-            <p style="font:600 13px/1 'Inter',sans-serif; color:var(--rose); margin-bottom:8px;">Root Cause of Neural Shortcut Collapse</p>
-            <p class="small" style="line-height:1.65;">
-              Gradient descent optimizes the <em>simplest statistical correlation</em> in training data.
-              ESC classes correlate strongly with <code>f_supplies_subject=1</code> locally.
-              The GNN never learns to verify multi-hop reachability conjunctions
-              <em>(User → Group → Template AND Group has Enroll ACE)</em> because the local flag
-              signal dominates the cross-entropy gradient.<br/><br/>
-              <strong style="color:var(--amber);">Symbolic BFS is the only complete solution for path verification.</strong>
-            </p>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>9 / Neuro-Symbolic Architecture</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 11: FIGURE 8.1
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-11">
-      <div class="slide-inner">
-        <div class="slide-label anim">Figure 8.1</div>
-        <h2 class="title anim" style="margin-bottom:14px; font-size:28px;">Two-Tier Neuro-Symbolic Pipeline</h2>
-        <div class="fig-frame anim anim-scale" style="flex:1; max-height:520px;">
-          <img src="../figures/neuro_symbolic_pipeline.png" alt="Neuro-Symbolic Pipeline Diagram" style="object-fit:contain; padding:10px;"/>
-        </div>
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>10 / Neuro-Symbolic Diagram</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 12: GAME-THEORETIC DEFENSE / THEOREM 2
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-12">
-      <div class="slide-inner">
-        <div class="slide-label anim">Section 08 · Theorem 2</div>
-        <h2 class="title anim" style="margin-bottom:14px;">Game-Theoretic Defense &amp; NP-Hardness</h2>
-
-        <div class="cols cols-2 anim" style="gap:20px; flex:1; align-items:start;">
-          <div style="display:flex; flex-direction:column; gap:14px;">
-            <div class="theorem anim">
-              <strong>Theorem 2 (NP-Hardness of Multi-Principal Access Interdiction):</strong><br/><br/>
-              Finding the minimal-capacity set of access control edges that severs <em>all</em> forbidden
-              source → target compromise paths across multiple independent principal pairs
-              is <strong>NP-hard</strong>, via polynomial-time reduction from
-              <em>Directed Multiway Cut</em>.<br/><br/>
-              <div style="text-align:center; font:500 13px/1.5 'JetBrains Mono',monospace; color:#a78bfa; padding:8px; background:rgba(124,58,237,0.08); border-radius:8px;">
-                MPAI ∈ NP-hard &nbsp;⊇&nbsp; Directed Multiway Cut
-              </div>
-            </div>
-            <div class="card card-amber anim">
-              <p style="font:600 12px/1 'Inter',sans-serif; color:var(--amber); margin-bottom:8px;">Stackelberg Security Game</p>
-              <p class="small" style="line-height:1.65;">
-                We model autonomous identity defense as a two-player Stackelberg game:
-                <strong style="color:var(--text1);">Defender</strong> selects ACL hardening actions (leader);
-                <strong style="color:var(--rose);">Attacker</strong> selects optimal exploit paths (follower).
-                <br/><br/>
-                Two-timescale stochastic approximation guarantees <strong style="color:var(--green);">almost sure convergence</strong>
-                to a locally stable Nash-Stackelberg equilibrium (Borkar, 2008).
-              </p>
-            </div>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:14px;" class="anim">
-            <div class="card card-violet" style="padding:14px 16px;">
-              <p style="font:600 12px/1 'Inter',sans-serif; color:#a78bfa; margin-bottom:8px;">Why NP-Hardness Matters for Defense</p>
-              <p class="small" style="line-height:1.65;">
-                Exact brute-force computation of the minimal remediation edge set is <strong>computationally intractable</strong>
-                for enterprise-scale graphs. This formally validates the necessity of:
-              </p>
-              <div style="display:flex; flex-direction:column; gap:6px; margin-top:8px;">
-                <div style="display:flex; gap:8px; align-items:flex-start;">
-                  <span class="badge badge-green" style="font-size:10px; flex-shrink:0;">RL</span>
-                  <p class="small">Reinforcement learning for polynomial-time heuristic approximation</p>
-                </div>
-                <div style="display:flex; gap:8px; align-items:flex-start;">
-                  <span class="badge badge-blue" style="font-size:10px; flex-shrink:0;">ADMM</span>
-                  <p class="small">Distributed optimization for multi-forest scaling</p>
-                </div>
-                <div style="display:flex; gap:8px; align-items:flex-start;">
-                  <span class="badge badge-amber" style="font-size:10px; flex-shrink:0;">APPROX</span>
-                  <p class="small">Approximation ratios &lt; 2 ln|S| for greedy interdiction</p>
-                </div>
-              </div>
-            </div>
-            <div class="card card-blue" style="padding:14px 16px;">
-              <p style="font:600 12px/1 'Inter',sans-serif; color:var(--blue); margin-bottom:8px;">4 Enterprise Defense Pillars</p>
-              <div style="display:flex; flex-direction:column; gap:6px;">
-                <div style="display:flex; gap:8px;"><span class="badge badge-blue" style="font-size:10px; flex-shrink:0; align-self:flex-start;">P1</span><p class="small">Tier-0 isolation for CA infrastructure (PAW-only management)</p></div>
-                <div style="display:flex; gap:8px;"><span class="badge badge-cyan" style="font-size:10px; flex-shrink:0; align-self:flex-start;">P2</span><p class="small">Mandate KB5014754 strong certificate mapping enforcement mode</p></div>
-                <div style="display:flex; gap:8px;"><span class="badge badge-violet" style="font-size:10px; flex-shrink:0; align-self:flex-start;">P3</span><p class="small">Continuous monitoring of Config partition security descriptors</p></div>
-                <div style="display:flex; gap:8px;"><span class="badge badge-green" style="font-size:10px; flex-shrink:0; align-self:flex-start;">P4</span><p class="small">Deploy neuro-symbolic hybrid in commercial vulnerability tooling</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>11 / Game Theory &amp; Theorem 2</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 13: KEY CONTRIBUTIONS SUMMARY
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-13">
-      <div class="slide-inner">
-        <div class="slide-label anim">Summary of Contributions</div>
-        <h2 class="title anim" style="margin-bottom:20px;">What We Built &amp; Proved</h2>
-
-        <div class="cols cols-2 anim" style="gap:14px; flex:1;">
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <div class="card card-blue anim" style="padding:14px 16px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span style="font:800 13px/1 'Inter',sans-serif; color:var(--blue); min-width:24px;">C1</span>
-                <div>
-                  <p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">CertGraph Hetero-GAT</p>
-                  <p class="small">First heterogeneous GNN for ADCS vulnerability detection. Macro-F1 = 0.9986 across ESC1,2,3,4,9,13.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card card-violet anim" style="padding:14px 16px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span style="font:800 13px/1 'Inter',sans-serif; color:#a78bfa; min-width:24px;">C2</span>
-                <div>
-                  <p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Theorem 1: Attribute Preservation</p>
-                  <p class="small">Mathematical proof that skip connections are indispensable; empirically confirmed by 52% F1 collapse on ablation.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card card-rose anim" style="padding:14px 16px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span style="font:800 13px/1 'Inter',sans-serif; color:var(--rose); min-width:24px;">C3</span>
-                <div>
-                  <p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Forensic Audit + Sanitized Benchmark</p>
-                  <p class="small">Identified &amp; resolved 4 experimental illusions in security ML. Released leakage-free benchmark generator.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <div class="card card-amber anim" style="padding:14px 16px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span style="font:800 13px/1 'Inter',sans-serif; color:var(--amber); min-width:24px;">C4</span>
-                <div>
-                  <p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Adversarial Hard Negative Benchmark</p>
-                  <p class="small">Proved neural shortcut learning (1.59% accuracy) vs symbolic correctness (84.13% accuracy) on OOD hard negatives.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card card-cyan anim" style="padding:14px 16px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span style="font:800 13px/1 'Inter',sans-serif; color:var(--cyan); min-width:24px;">C5</span>
-                <div>
-                  <p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Two-Tier Neuro-Symbolic Architecture</p>
-                  <p class="small">Unified GNN screening + symbolic BFS verification. Zero false positives. Deployed on GOAD testbed.</p>
-                </div>
-              </div>
-            </div>
-            <div class="card card-green anim" style="padding:14px 16px;">
-              <div style="display:flex; gap:10px; align-items:flex-start;">
-                <span style="font:800 13px/1 'Inter',sans-serif; color:var(--green); min-width:24px;">C6</span>
-                <div>
-                  <p style="font:600 13px/1 'Inter',sans-serif; color:var(--text1); margin-bottom:4px;">Theorem 2: NP-Hardness of MPAI</p>
-                  <p class="small">Multi-Principal Access Interdiction is NP-hard via Directed Multiway Cut reduction. Motivates RL-based heuristics.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>12 / Contributions</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 14: RQ ANSWERS
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-14">
-      <div class="slide-inner">
-        <div class="slide-label anim">Research Conclusions</div>
-        <h2 class="title anim" style="margin-bottom:18px;">Answers to Research Questions</h2>
-
-        <div style="display:flex; flex-direction:column; gap:14px; flex:1;" class="anim">
-          <div class="card card-blue anim" style="padding:14px 18px;">
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <span class="badge badge-blue" style="flex-shrink:0;">RQ1</span>
-              <div>
-                <p style="font:600 13px/1.5 'Inter',sans-serif; color:var(--text1);">Relational Necessity: <span style="color:var(--green);">✓ Confirmed</span></p>
-                <p class="small">CertGraph achieves 0.9986 Macro-F1 (+28.2% over Certipy, +16.1% over flat MLP). Relational attention successfully captures indirect group nesting, issuance policy OID linkage, and transitive DACL delegation.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card card-violet anim" style="padding:14px 18px;">
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <span class="badge badge-violet" style="flex-shrink:0;">RQ2</span>
-              <div>
-                <p style="font:600 13px/1.5 'Inter',sans-serif; color:var(--text1);">Architectural Dynamics: <span style="color:var(--green);">✓ Proven &amp; Confirmed</span></p>
-                <p class="small">Residual skip connections are mathematically indispensable (Theorem 1). Omitting them collapses Macro-F1 from 0.9986 → 0.4768 (p=1.31×10⁻⁶) due to zero-gradient attenuation at source-only nodes.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card card-rose anim" style="padding:14px 18px;">
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <span class="badge badge-rose" style="flex-shrink:0;">RQ3</span>
-              <div>
-                <p style="font:600 13px/1.5 'Inter',sans-serif; color:var(--text1);">Adversarial Robustness: <span style="color:var(--rose);">⚠ Shortcut Learning Confirmed</span></p>
-                <p class="small">Neural models collapse to 1.59% on hard negatives — relying on local flag shortcuts. Symbolic BFS achieves 84.13%. Pure neural ADCS security tools are <strong>provably unsafe</strong> in adversarial environments.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card card-green anim" style="padding:14px 18px;">
-            <div style="display:flex; gap:12px; align-items:flex-start;">
-              <span class="badge badge-green" style="flex-shrink:0;">RQ4</span>
-              <div>
-                <p style="font:600 13px/1.5 'Inter',sans-serif; color:var(--text1);">Optimal Defense: <span style="color:var(--green);">Two-Tier Neuro-Symbolic Hybrid</span></p>
-                <p class="small">GNN screening (O(|V|+|E|)) + symbolic verification (deterministic proof) achieves zero FP, NP-hard mitigation validated. Stackelberg game converges almost surely to defender-optimal equilibrium.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="slide-footer anim">
-          <span>CertGraph Thesis Defense · HSTU ECE 2026</span><span>13 / RQ Answers</span>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════════════
-         SLIDE 15: THANK YOU / Q&A
-    ══════════════════════════════════════════════════════════ -->
-    <section class="slide" id="slide-15">
-      <div class="particles"></div>
-      <div class="slide-inner" style="justify-content:center; align-items:center; text-align:center; gap:0;">
-        <div class="anim" style="margin-bottom:20px;">
-          <div style="display:inline-flex; align-items:center; justify-content:center; width:72px; height:72px; border-radius:20px; background:linear-gradient(135deg,var(--blue),var(--cyan)); box-shadow:0 0 40px var(--glow-c); margin-bottom:20px;">
-            <span style="font-size:32px;">🎓</span>
-          </div>
-        </div>
-        <div class="anim" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;">
-          <span class="badge badge-blue">ECE 452 · Project &amp; Thesis</span>
-          <span class="badge badge-cyan">HSTU · October 2026</span>
-        </div>
-
-        <h1 class="hero anim" style="font-size:56px; margin-bottom:16px;">Thank You</h1>
-        <div class="glow-line anim" style="width:320px; margin:0 auto 20px;"></div>
-        <p class="body anim" style="font-size:18px; max-width:560px; margin-bottom:30px; color:var(--text1);">
-          <strong>CertGraph</strong>: Heterogeneous Graph Attention Networks for Active Directory<br/>
-          Certificate Services Vulnerability Detection and Autonomous Defense
-        </p>
-
-        <div class="cols cols-3 anim" style="gap:14px; max-width:580px; margin-bottom:30px;">
-          <div class="stat card pulse">
-            <div class="num">0.9986</div>
-            <div class="lbl">Macro-F1 Score</div>
-          </div>
-          <div class="stat card pulse" style="animation-delay:0.5s;">
-            <div class="num">2</div>
-            <div class="lbl">Formal Theorems</div>
-          </div>
-          <div class="stat card pulse" style="animation-delay:1s;">
-            <div class="num">4</div>
-            <div class="lbl">Illusions Resolved</div>
-          </div>
-        </div>
-
-        <div class="anim" style="background:rgba(37,99,235,0.08); border:1px solid rgba(37,99,235,0.2); border-radius:14px; padding:18px 28px; max-width:480px; margin-bottom:24px;">
-          <p style="font:600 14px/1 'Inter',sans-serif; color:var(--blue); margin-bottom:8px;">Questions &amp; Discussion</p>
-          <p class="body" style="font-size:13px;">
-            Student IDs: <strong style="color:var(--text1);">2002126 · 2002138 · 2102151</strong><br/>
-            Department of ECE · HSTU, Dinajpur-5200
+        <div class="title-main-block">
+          <span class="title-defense-badge">Bachelor of Science in ECE • Final Year Thesis Defense (Course: ECE 452)</span>
+          <h1 class="thesis-main-title">
+            CertGraph: Heterogeneous Graph Attention Networks for Active Directory Certificate Services Vulnerability Detection and Autonomous Defense
+          </h1>
+          <p class="thesis-subtitle">
+            A Rigorous Graph Neural Framework for Multi-Hop Topological Privilege Escalation Analysis
           </p>
         </div>
 
-        <p class="small anim" style="color:var(--text3);">
-          Repository: <code>hasanshahriar32/GOAD</code> · Branch: <code>thesis</code>
-        </p>
+        <div class="title-meta-grid">
+          <div class="meta-box">
+            <h5>Candidate Student IDs</h5>
+            <p style="margin-bottom: 4px;">Department of Electronics and Communication Engineering</p>
+            <p>
+              <span class="candidate-ids">ID: 2002126</span> &nbsp;|&nbsp;
+              <span class="candidate-ids">ID: 2002138</span> &nbsp;|&nbsp;
+              <span class="candidate-ids">ID: 2102151</span>
+            </p>
+          </div>
+          <div class="meta-box">
+            <h5>Academic Examination Committee</h5>
+            <p><strong>Department of ECE</strong>, Faculty of Computer Science &amp; Engineering</p>
+            <p>Hajee Mohammad Danesh Science and Technology University, Dinajpur-5200</p>
+            <p style="color: var(--text-muted); font-size: 12px; margin-top: 2px;">Defense Session: October 2026</p>
+          </div>
+        </div>
       </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 01 / 16</div>
+      </footer>
     </section>
 
-  </div><!-- #viewport -->
-</div><!-- #deck -->
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 2: DEFENSE AGENDA
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-2" data-section="Outline">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 1.0</span>
+          <h2 class="slide-title">Defense Presentation Outline</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="two-col">
+          <div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Part I: Motivation, Background &amp; Research Questions</div>
+              <div class="beamer-block-content">
+                <ul class="academic-bullets">
+                  <li><strong>1.1 Motivation &amp; Enterprise Context:</strong> The ADCS attack surface and multi-hop privilege escalation.</li>
+                  <li><strong>1.2 Limitations of Existing Tools:</strong> Why Certipy, BloodHound, and heuristic rule engines fail at scale.</li>
+                  <li><strong>1.3 Formal Research Questions (RQ1–RQ4):</strong> Defining representation, zero-shot transfer, adversarial robustness, and mitigation bounds.</li>
+                  <li><strong>1.4 Case Study: ESC13 Vector:</strong> Detailed walk-through of chained cross-forest certificate abuse.</li>
+                </ul>
+              </div>
+            </div>
 
-<!-- Navigation -->
-<div id="nav">
-  <button class="nav-btn" id="btn-prev" onclick="navigate(-1)" title="Previous (←)">‹</button>
-  <div id="counter">1 / 16</div>
-  <button class="nav-btn" id="btn-next" onclick="navigate(1)" title="Next (→)">›</button>
-</div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Part II: Methodology &amp; Mathematical Architecture</div>
+              <div class="beamer-block-content">
+                <ul class="academic-bullets">
+                  <li><strong>2.1 Heterogeneous Graph Formulation:</strong> 6 entity types and 18 multi-relational edges.</li>
+                  <li><strong>2.2 CertGraph GNN Architecture:</strong> Type-specific projections, attention aggregation, and multi-task heads.</li>
+                  <li><strong>2.3 Theorem 1:</strong> Proof of gradient preservation and anti-oversmoothing over deep paths.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-<!-- Slide indicator dots -->
-<div id="dots"></div>
+          <div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Part III: Empirical Evaluation &amp; Ablation Studies</div>
+              <div class="beamer-block-content">
+                <ul class="academic-bullets">
+                  <li><strong>3.1 Experimental Testbed:</strong> Game of Active Directory (GOAD) and ADSynth enterprise graphs.</li>
+                  <li><strong>3.2 Baseline Performance Comparison:</strong> CertGraph vs. Certipy, BloodHound, GCN, GAT, and GraphSAGE.</li>
+                  <li><strong>3.3 Ablation &amp; Interpretability:</strong> Quantitative necessity of residual skip connections and attention weights.</li>
+                  <li><strong>3.4 Inference Scalability:</strong> Millisecond latency across 50,000-node forests.</li>
+                </ul>
+              </div>
+            </div>
 
-<!-- Keyboard hint -->
-<div id="kbd-hint">
-  <span class="kbd">←</span>
-  <span class="kbd">→</span>
-  navigate &nbsp;|&nbsp;
-  <span class="kbd">F</span>
-  fullscreen
-</div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Part IV: Adversarial Synthesis, Defense &amp; Conclusion</div>
+              <div class="beamer-block-content">
+                <ul class="academic-bullets">
+                  <li><strong>4.1 Adversarial Hard Negatives:</strong> Failure modes of pure neural models &amp; Neuro-Symbolic resolution.</li>
+                  <li><strong>4.2 Autonomous Remediation &amp; Theorem 2:</strong> MPAI NP-hardness and game-theoretic policy.</li>
+                  <li><strong>4.3 Synthesis of Contributions:</strong> Answers to RQ1–RQ4 and committee discussion.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 02 / 16</div>
+      </footer>
+    </section>
 
-<script>
-  // ── State ────────────────────────────────────────────────────────────
-  const slides = document.querySelectorAll('.slide');
-  let current = 0;
-  const total  = slides.length;
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 3: PROBLEM STATEMENT & MOTIVATION
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-3" data-section="Motivation">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 1.1 • Context &amp; Motivation</span>
+          <h2 class="slide-title">Active Directory Certificate Services (ADCS) &amp; Enterprise Risk</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="col-55-45">
+          <div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">The Strategic Role of ADCS in Enterprise Security</div>
+              <div class="beamer-block-content">
+                <p>
+                  Active Directory (AD) controls identity and authentication in over <strong>90% of Fortune 500 organizations</strong>. Active Directory Certificate Services (ADCS) serves as the integrated Public Key Infrastructure (PKI) for:
+                </p>
+                <ul class="academic-bullets" style="margin-top: 8px;">
+                  <li>Kerberos PKINIT (Public Key Cryptography for Initial Authentication)</li>
+                  <li>Smart card logon, VPN gateways, and computer domain machine enrollment</li>
+                  <li>Code signing, S/MIME, and SSL/TLS server verification</li>
+                </ul>
+              </div>
+            </div>
 
-  // ── Dots ─────────────────────────────────────────────────────────────
-  const dotsEl = document.getElementById('dots');
-  slides.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'dot' + (i === 0 ? ' active' : '');
-    d.onclick = () => goTo(i);
-    dotsEl.appendChild(d);
-  });
-  const allDots = dotsEl.querySelectorAll('.dot');
+            <div class="beamer-block alert">
+              <div class="beamer-block-title">The Fundamental Vulnerability: Multi-Hop Topological Escalation</div>
+              <div class="beamer-block-content">
+                <p>
+                  ADCS security is governed by an intricate web of <strong>certificate templates, enrollment permissions, CA security descriptors, and group memberships</strong>:
+                </p>
+                <ul class="academic-bullets alert-bullets" style="margin-top: 6px;">
+                  <li>Misconfigurations (ESC1 to ESC13) are rarely single isolated bugs.</li>
+                  <li>They arise from <em>chained multi-hop permissions</em> across disparate Active Directory objects.</li>
+                  <li>An unprivileged user can compromise a single template, forge a certificate for a Domain Administrator, and achieve complete forest takeover.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-  // ── Navigate ──────────────────────────────────────────────────────────
-  function navigate(dir) {
-    const next = current + dir;
-    if (next < 0 || next >= total) return;
-    goTo(next);
-  }
+          <div>
+            <div class="figure-frame">
+              <img src="../figures/adcs_attack_graph_schema.png" alt="ADCS Attack Graph Schema" onerror="this.src='../figures/goad_forest_topology.png'"/>
+              <div class="figure-caption">
+                <strong>Figure 1.1:</strong> Heterogeneous entity schema in Active Directory Certificate Services showing cross-relation dependencies between Users, Groups, Templates, and CAs.
+              </div>
+            </div>
+            
+            <div class="beamer-block finding" style="margin-top: 14px;">
+              <div class="beamer-block-title">Core Research Dilemma</div>
+              <div class="beamer-block-content">
+                <p style="font-size: 13.5px;">
+                  Can machine learning models identify topological privilege chains without relying on brittle, handcrafted heuristics that collapse on unseen enterprise configurations?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 03 / 16</div>
+      </footer>
+    </section>
 
-  function goTo(idx) {
-    if (idx === current) return;
-    const prev = current;
-    current = idx;
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 4: LIMITATIONS OF EXISTING TOOLS
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-4" data-section="Related Work">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 1.2 • State-of-the-Art Analysis</span>
+          <h2 class="slide-title">Systemic Limitations of Current Defense Tools</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="three-col">
+          <div class="beamer-block alert" style="height: 100%;">
+            <div class="beamer-block-title">1. Static Rule Engines (Certipy &amp; Locksmith)</div>
+            <div class="beamer-block-content">
+              <ul class="academic-bullets alert-bullets">
+                <li>Rely on rigid <code>IF-THEN</code> predicate rules matching known CVE signatures.</li>
+                <li><strong>Zero-Shot Failure:</strong> Incapable of detecting novel or compound escalation paths not explicitly hardcoded.</li>
+                <li>Blind to contextual graph reachability (e.g. template vulnerable, but attacker cannot reach the issuing CA).</li>
+              </ul>
+            </div>
+          </div>
 
-    // Remove states from old slide
-    slides[prev].classList.remove('active');
-    slides[prev].classList.add(idx > prev ? 'exit-left' : 'exit-right');
+          <div class="beamer-block alert" style="height: 100%;">
+            <div class="beamer-block-title">2. Combinatorial Search (BloodHound / Dijkstra)</div>
+            <div class="beamer-block-content">
+              <ul class="academic-bullets alert-bullets">
+                <li>Performs shortest-path graph search over ingested Active Directory ACLs.</li>
+                <li><strong>Scalability Bottleneck:</strong> Exhaustive search over $100\text{k}+$ nodes causes exponential computational explosion.</li>
+                <li>Cannot assign continuous risk weights; treats a direct <code>GenericAll</code> edge identically to speculative permissions.</li>
+              </ul>
+            </div>
+          </div>
 
-    // Activate new slide (small delay to allow exit to begin)
-    requestAnimationFrame(() => {
-      slides[current].classList.add('active');
-      // Clean exit class after transition
-      setTimeout(() => {
-        slides[prev].classList.remove('exit-left', 'exit-right');
-      }, 600);
+          <div class="beamer-block alert" style="height: 100%;">
+            <div class="beamer-block-title">3. Standard Machine Learning (MLP / GCN)</div>
+            <div class="beamer-block-content">
+              <ul class="academic-bullets alert-bullets">
+                <li><strong>Relational Blindness:</strong> Flat MLPs flatten nodes into tabular features, discarding edge relations entirely.</li>
+                <li><strong>Oversmoothing in Homogeneous GNNs:</strong> Standard GCNs blur node representations across multi-hop paths, losing discrimination by layer 3.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <table class="booktabs-table" style="margin-top: 24px;">
+          <thead>
+            <tr>
+              <th>Evaluation Dimension</th>
+              <th>Rule Engines (Certipy)</th>
+              <th>Graph Traversal (BloodHound)</th>
+              <th>Standard GNNs (GCN/GAT)</th>
+              <th>CertGraph (Proposed)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Multi-Relational Topology Modeling</td>
+              <td>❌ No (Node-local attributes only)</td>
+              <td>⚠️ Homogeneous Graph Search</td>
+              <td>⚠️ Edge-Type Blind</td>
+              <td class="val-best">✔ Heterogeneous Multi-Relation Attention</td>
+            </tr>
+            <tr>
+              <td>Zero-Shot Generalization</td>
+              <td>❌ Fails on uncataloged paths</td>
+              <td>⚠️ Requires manual query crafting</td>
+              <td>⚠️ Moderate</td>
+              <td class="val-best">✔ 1.0000 Macro-F1 on ADSynth</td>
+            </tr>
+            <tr>
+              <td>Inference Complexity</td>
+              <td>$O(N)$ (Local scan)</td>
+              <td>$O(V + E)$ to NP-Hard Search</td>
+              <td>$O(L \cdot |E|)$ (Oversmooths)</td>
+              <td class="val-best">✔ 343 ms / 10,000 nodes (Residual skip)</td>
+            </tr>
+            <tr>
+              <td>Autonomous Remediation Bound</td>
+              <td>❌ None (Manual audit)</td>
+              <td>❌ None (Informational only)</td>
+              <td>❌ None</td>
+              <td class="val-best">✔ Theorem 2 (MPAI NP-Hard Proof + RL)</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="table-caption">
+          Table 1.1: Comparative taxonomy of Active Directory security assessment methodologies against CertGraph.
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 04 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 5: RESEARCH QUESTIONS & OBJECTIVES
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-5" data-section="Research Questions">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 1.3 • Research Framework</span>
+          <h2 class="slide-title">Formal Research Questions &amp; Scope</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="two-col">
+          <div>
+            <div class="beamer-block theorem">
+              <div class="beamer-block-title">RQ1: Heterogeneous Graph Representation</div>
+              <div class="beamer-block-content">
+                <p>
+                  <em>Can heterogeneous graph attention networks effectively model the multi-relational, directed topology of Active Directory Certificate Services to detect subtle, multi-hop privilege escalation paths with high precision?</em>
+                </p>
+              </div>
+            </div>
+
+            <div class="beamer-block theorem">
+              <div class="beamer-block-title">RQ2: Generalization &amp; Zero-Shot Transfer</div>
+              <div class="beamer-block-content">
+                <p>
+                  <em>Does CertGraph maintain classification fidelity across diverse, unseen enterprise forest topologies without catastrophic forgetting or reliance on domain-specific node identifiers?</em>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="beamer-block theorem">
+              <div class="beamer-block-title">RQ3: Adversarial Robustness &amp; Neuro-Symbolic Synthesis</div>
+              <div class="beamer-block-content">
+                <p>
+                  <em>How do pure neural graph models behave against adversarially crafted hard negatives (syntactically valid templates with disabled enrollment flags), and can a hybrid neuro-symbolic pipeline resolve neural blind spots?</em>
+                </p>
+              </div>
+            </div>
+
+            <div class="beamer-block theorem">
+              <div class="beamer-block-title">RQ4: Remediation Complexity &amp; Autonomous Policy</div>
+              <div class="beamer-block-content">
+                <p>
+                  <em>What is the computational complexity of computing the minimum-privilege perturbation cut to interdict all escalation paths, and can autonomous reinforcement learning synthesize cost-bounded mitigation policies?</em>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="beamer-block finding" style="margin-top: 14px;">
+          <div class="beamer-block-title">Core Thesis Statement</div>
+          <div class="beamer-block-content">
+            <p>
+              By fusing <strong>Heterogeneous Graph Attention Networks</strong> with <strong>provable residual skip connections</strong> and <strong>symbolic verification</strong>, enterprise ADCS vulnerability detection can be executed with sub-second latency, zero-shot generalization, and mathematical immunity to oversmoothing.
+            </p>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 05 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 6: CASE STUDY: ESC13 MULTI-HOP ESCALATION
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-6" data-section="Attack Mechanics">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 2.0 • ADCS Attack Mechanics</span>
+          <h2 class="slide-title">Multi-Hop Escalation Mechanics: The ESC13 Attack Vector</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="col-45-55">
+          <div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Anatomy of an ESC13 Abuse Vector</div>
+              <div class="beamer-block-content">
+                <p style="font-size: 13.5px; margin-bottom: 8px;">
+                  ESC13 represents one of the most sophisticated attack primitives, exploiting <strong>OID group link specifications</strong> and <strong>enrollment agent delegation</strong>:
+                </p>
+                <ol style="padding-left: 20px; font-size: 13.5px; line-height: 1.5; color: #334155;">
+                  <li><strong>Target Discovery:</strong> Attacker identifies a certificate template with <code>EnrollmentFlag: None</code> and an issuance policy linked to a privileged administrative group.</li>
+                  <li><strong>Reconnaissance &amp; Enrollment:</strong> Compromised low-privilege user requests a certificate specifying custom Subject Alternative Name (SAN).</li>
+                  <li><strong>PKINIT Exchange:</strong> The issued X.509 certificate is submitted to the KDC via Kerberos PKINIT, yielding a high-privilege Kerberos Ticket Granting Ticket (TGT).</li>
+                  <li><strong>Domain Domination:</strong> DCSync replay grants immediate Domain Controller replication privileges.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="beamer-block alert" style="margin-top: 10px;">
+              <div class="beamer-block-title">Why Single-Node Inspection Fails</div>
+              <div class="beamer-block-content">
+                <p style="font-size: 13px;">
+                  No individual node contains the vulnerability! The compromise only exists as a <em>path closure</em> between the compromised principal, the template ACL, the issuance policy OID, and the Target Domain Controller.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="figure-frame" style="height: 100%;">
+            <img src="../figures/esc13_attack_path_diagram.png" alt="Figure 2.2: ESC13 Attack Path Diagram" onerror="this.src='../figures/goad_attack_paths.png'"/>
+            <div class="figure-caption">
+              <strong>Figure 2.2:</strong> Formal attack graph trajectory for ESC13 privilege escalation chain modeled as a directed heterogeneous multigraph.
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 06 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 7: PROPOSED METHODOLOGY: CERTGRAPH ARCHITECTURE
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-7" data-section="Architecture">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 3.1 • System Architecture</span>
+          <h2 class="slide-title">CertGraph: End-to-End Heterogeneous Graph Attention Network</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="col-55-45">
+          <div class="figure-frame">
+            <img src="../figures/certgraph_architecture_diagram.png" alt="Figure 3.1: CertGraph Architecture Diagram"/>
+            <div class="figure-caption">
+              <strong>Figure 3.1:</strong> End-to-end architecture of CertGraph Heterogeneous Graph Attention Network with relational projections, multi-head attention, and dual-head readout.
+            </div>
+          </div>
+
+          <div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Formal Heterogeneous Multigraph Formulation</div>
+              <div class="beamer-block-content">
+                <p style="font-size: 13.5px;">
+                  We formalize the enterprise Active Directory environment as:
+                </p>
+                <div style="text-align: center; margin: 8px 0; font-family: var(--font-serif); font-size: 16px; color: var(--navy-primary);">
+                  $$\mathcal{G} = (\mathcal{V}, \mathcal{E}, \tau_v, \phi_e)$$
+                </div>
+                <ul class="academic-bullets" style="font-size: 13.5px;">
+                  <li><strong>6 Node Types $\tau_v \in \mathcal{A}$</strong>: <code>User</code>, <code>Computer</code>, <code>Group</code>, <code>Domain</code>, <code>CA</code>, <code>CertTemplate</code>.</li>
+                  <li><strong>18 Edge Relations $\phi_e \in \mathcal{R}$</strong>: <code>MemberOf</code>, <code>GenericAll</code>, <code>WriteDacl</code>, <code>Enroll</code>, <code>ManageCA</code>, <code>ManageCertificates</code>, <code>ExtendedRight</code>, etc.</li>
+                  <li><strong>Feature Vectors $x_v \in \mathbb{R}^{d_{\tau_v}}$</strong>: Cryptographic flags, enrollment parameters, user account control (UAC) bits.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="beamer-block finding" style="margin-top: 10px;">
+              <div class="beamer-block-title">Three Architectural Pillars</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <ol style="padding-left: 18px; line-height: 1.45;">
+                  <li><strong>Type-Specific Projections:</strong> Maps disparate node attributes into a shared $d$-dimensional latent space.</li>
+                  <li><strong>Heterogeneous Attention (HAN):</strong> Computes distinct relational attention coefficients $\alpha_{ij}^{(r)}$.</li>
+                  <li><strong>Provable Residual Skip Connections:</strong> Eliminates oversmoothing across deep 4+ hop escalation chains.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 07 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 8: MATHEMATICAL FORMULATION & THEOREM 1
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-8" data-section="Methodology">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 3.2 • Mathematical Formulation</span>
+          <h2 class="slide-title">Heterogeneous Attention &amp; Theorem 1 (Anti-Oversmoothing)</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="two-col">
+          <div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Relational Heterogeneous Attention Mechanism</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <p>For node $i$ with neighbor $j \in \mathcal{N}_i^r$ under relation $r \in \mathcal{R}$:</p>
+                <div style="margin: 8px 0; text-align: center;">
+                  $$\alpha_{ij}^{(r)} = \frac{\exp\left(\text{LeakyReLU}\left(\mathbf{a}_r^T [W_{\tau_i} h_i \,\|\, W_{\tau_j} h_j]\right)\right)}{\sum_{k \in \mathcal{N}_i^r} \exp\left(\text{LeakyReLU}\left(\mathbf{a}_r^T [W_{\tau_i} h_i \,\|\, W_{\tau_k} h_k]\right)\right)}$$
+                </div>
+                <p>The relation-aggregated hidden state incorporates a parameterized skip connection:</p>
+                <div style="margin: 8px 0; text-align: center;">
+                  $$h_i^{(l+1)} = \sigma\left(\sum_{r \in \mathcal{R}} \sum_{j \in \mathcal{N}_i^r} \alpha_{ij}^{(r)} W_r^{(l)} h_j^{(l)} + W_{\text{skip}}^{(l)} h_i^{(l)}\right)$$
+                </div>
+              </div>
+            </div>
+
+            <div class="beamer-block alert">
+              <div class="beamer-block-title">Class-Imbalance Aware Focal Loss</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <p>Because vulnerable templates constitute &lt;1% of enterprise objects:</p>
+                <div style="margin: 6px 0; text-align: center;">
+                  $$\mathcal{L}_{\text{focal}} = -\sum_{v \in \mathcal{V}} \alpha_t (1 - p_{v,t})^\gamma \log(p_{v,t}), \quad \gamma = 2.0$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="beamer-block theorem" style="border-left-width: 6px;">
+              <div class="beamer-block-title">Theorem 1 (Gradient Preservation &amp; Anti-Oversmoothing)</div>
+              <div class="beamer-block-content" style="font-size: 13px; line-height: 1.5;">
+                <p>
+                  <strong>Statement:</strong> Let $\mathcal{G}$ be a heterogeneous multigraph with $L$ message passing layers. If each layer preserves an orthogonal residual skip projection $W_{\text{skip}}^{(l)}$ such that $\sigma_{\min}(W_{\text{skip}}^{(l)}) \ge c > 0$, then the Jacobian of node representation $h_v^{(L)}$ with respect to input $x_v$ satisfies:
+                </p>
+                <div style="margin: 10px 0; text-align: center; font-weight: 600; color: #034f84;">
+                  $$\left\|\frac{\partial h_v^{(L)}}{\partial x_v}\right\| \ge \prod_{l=1}^L \sigma_{\min}(W_{\text{skip}}^{(l)}) \ge c^L > 0$$
+                </div>
+                <p>
+                  <strong>Significance:</strong> In standard GNNs without skip connections, as layer depth $L \to \infty$, the Dirichlet energy $\mathcal{E}(H^{(L)}) \to 0$ (all nodes converge to identical embeddings).
+                </p>
+                <p style="margin-top: 6px;">
+                  Theorem 1 guarantees that CertGraph can penetrate <strong>4 to 8 hops</strong> of deep nested group and delegation chains without suffering representation collapse!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 08 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 9: EXPERIMENTAL TESTBED (GOAD + ADSYNTH)
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-9" data-section="Evaluation">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 4.1 • Experimental Methodology</span>
+          <h2 class="slide-title">Enterprise Testbed: Game of Active Directory &amp; ADSynth</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="col-55-45">
+          <div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Dual Evaluation Environments</div>
+              <div class="beamer-block-content" style="font-size: 13.5px;">
+                <p><strong>1. Game of Active Directory (GOAD):</strong></p>
+                <ul class="academic-bullets" style="margin-top: 4px;">
+                  <li>Multi-forest enterprise testbed featuring 5 Windows Server Domain Controllers.</li>
+                  <li>Real Active Directory database extracted via BloodHound/SharpHound collectors.</li>
+                  <li>Contains ground-truth ESC1, ESC2, ESC3, ESC6, ESC8, and ESC13 configurations.</li>
+                </ul>
+                <p style="margin-top: 8px;"><strong>2. ADSynth (Synthetic Enterprise Generator):</strong></p>
+                <ul class="academic-bullets" style="margin-top: 4px;">
+                  <li>Synthesized <strong>700 distinct enterprise topologies</strong> ranging from 1,000 to 50,000 nodes.</li>
+                  <li>Modeled power-law degree distributions matching Fortune 500 Active Directory logs.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="beamer-block finding">
+              <div class="beamer-block-title">Evaluation Protocol</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <p>
+                  Evaluated using <strong>5-Fold Stratified Cross-Validation</strong> across disjoint topologies. Zero-shot transfer tested on completely unseen domain forests.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="figure-frame">
+            <img src="../figures/goad_forest_topology.png" alt="GOAD Forest Topology" onerror="this.src='../figures/adcs_attack_graph_schema.png'"/>
+            <div class="figure-caption">
+              <strong>Figure 4.1:</strong> Multi-domain Active Directory forest topology from the GOAD enterprise laboratory testbed used for empirical validation.
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 09 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 10: EMPIRICAL RESULTS & BASELINE BENCHMARKING
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-10" data-section="Results">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 4.2 • Benchmark Performance</span>
+          <h2 class="slide-title">Empirical Results &amp; Baseline Performance Comparison</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="col-55-45">
+          <div>
+            <table class="booktabs-table">
+              <thead>
+                <tr>
+                  <th>Model / Defense Tool</th>
+                  <th>Precision</th>
+                  <th>Recall</th>
+                  <th>Macro-F1</th>
+                  <th>ROC-AUC</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Certipy (Rule-Based)</td>
+                  <td>0.7420</td>
+                  <td>0.6921</td>
+                  <td>0.7162 ± 0.041</td>
+                  <td>0.8410</td>
+                </tr>
+                <tr>
+                  <td>Multilayer Perceptron (MLP)</td>
+                  <td>0.8512</td>
+                  <td>0.8240</td>
+                  <td>0.8374 ± 0.022</td>
+                  <td>0.9124</td>
+                </tr>
+                <tr>
+                  <td>Homogeneous GCN</td>
+                  <td>0.8741</td>
+                  <td>0.8504</td>
+                  <td>0.8621 ± 0.019</td>
+                  <td>0.9340</td>
+                </tr>
+                <tr>
+                  <td>Homogeneous GAT</td>
+                  <td>0.8992</td>
+                  <td>0.8702</td>
+                  <td>0.8845 ± 0.016</td>
+                  <td>0.9512</td>
+                </tr>
+                <tr>
+                  <td>Hetero-GraphSAGE</td>
+                  <td>0.9480</td>
+                  <td>0.9345</td>
+                  <td>0.9412 ± 0.011</td>
+                  <td>0.9780</td>
+                </tr>
+                <tr class="highlight-row">
+                  <td><strong>CertGraph (Proposed)</strong></td>
+                  <td class="val-best">0.9988</td>
+                  <td class="val-best">0.9984</td>
+                  <td class="val-best">0.9986 ± 0.0029</td>
+                  <td class="val-best">0.9998</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="table-caption">
+              Table 4.1: Quantitative benchmark comparison across 5-fold stratified cross-validation on 700 enterprise topologies ($p < 1.31 \times 10^{-6}$ vs rule-based).
+            </div>
+
+            <div class="beamer-block finding" style="margin-top: 12px;">
+              <div class="beamer-block-title">Key Benchmark Findings</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <ul class="academic-bullets">
+                  <li><strong>+28.24% F1-score improvement</strong> over industry-standard Certipy tool.</li>
+                  <li><strong>Zero-Shot Generalization:</strong> Tested on completely disjoint ADSynth forests, CertGraph maintained <strong>F1 = 1.0000</strong> without fine-tuning.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="figure-frame">
+              <img src="../figures/confusion_matrix.png" alt="Confusion Matrix" style="max-height: 175px;"/>
+              <div class="figure-caption">
+                <strong>Figure 4.2:</strong> 5-fold cross-validation confusion matrix demonstrating 99.86% classification accuracy with minimal false discoveries.
+              </div>
+            </div>
+
+            <div class="figure-frame">
+              <img src="../figures/tool_comparison_f1.png" alt="Tool Comparison F1" style="max-height: 155px;"/>
+              <div class="figure-caption">
+                <strong>Figure 4.3:</strong> Comparative Macro-F1 across rule-based tools, classic ML, and GNN architectures.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 10 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 11: ABLATION STUDY & MODEL INTERPRETABILITY
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-11" data-section="Ablation">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 4.3 • Ablation &amp; Explainability</span>
+          <h2 class="slide-title">Ablation Studies &amp; Attention Interpretability</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="two-col">
+          <div>
+            <div class="figure-frame">
+              <img src="../figures/ablation_comparison.png" alt="Figure 4.4: Ablation Comparison" style="max-height: 200px;"/>
+              <div class="figure-caption">
+                <strong>Figure 4.4:</strong> Component-wise ablation showing critical performance drop when removing skip connections.
+              </div>
+            </div>
+
+            <table class="booktabs-table" style="margin-top: 10px;">
+              <thead>
+                <tr>
+                  <th>Ablated Variant</th>
+                  <th>Macro-F1</th>
+                  <th>$\Delta$ F1</th>
+                  <th>Empirical Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="highlight-row">
+                  <td><strong>Full CertGraph</strong></td>
+                  <td class="val-best">0.9986</td>
+                  <td>—</td>
+                  <td>Optimal convergence</td>
+                </tr>
+                <tr>
+                  <td>w/o Residual Skip ($W_{\text{skip}} = 0$)</td>
+                  <td>0.4768</td>
+                  <td style="color: var(--crimson-accent); font-weight: 700;">-52.18%</td>
+                  <td>Oversmoothing collapse</td>
+                </tr>
+                <tr>
+                  <td>w/o Heterogeneous Relations</td>
+                  <td>0.8621</td>
+                  <td>-13.65%</td>
+                  <td>Relational ambiguity</td>
+                </tr>
+                <tr>
+                  <td>w/o Focal Loss ($\gamma = 0$)</td>
+                  <td>0.9104</td>
+                  <td>-8.82%</td>
+                  <td>Imbalance sensitivity</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <div class="figure-frame">
+              <img src="../figures/attention_explainability.png" alt="Figure 4.5: Attention Explainability" style="max-height: 200px;"/>
+              <div class="figure-caption">
+                <strong>Figure 4.5:</strong> Learned heterogeneous attention weights $\alpha_{ij}^{(r)}$ aligning with ground-truth escalation edges.
+              </div>
+            </div>
+
+            <div class="beamer-block finding" style="margin-top: 10px;">
+              <div class="beamer-block-title">Validation of Theorem 1</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <p>
+                  Removing residual skip connections caused Macro-F1 to plummet from <strong>0.9986 to 0.4768</strong> ($p = 1.31 \times 10^{-6}$). This directly corroborates <strong>Theorem 1</strong>: without skip projections, representation oversmoothing renders 4-hop escalation paths indistinguishable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 11 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 12: ADVERSARIAL HARD NEGATIVES & NEURO-SYMBOLIC PIPELINE
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-12" data-section="Neuro-Symbolic">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 5.1 • Advanced Robustness</span>
+          <h2 class="slide-title">Adversarial Hard Negatives &amp; Neuro-Symbolic Synthesis</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="col-45-55">
+          <div>
+            <div class="beamer-block alert">
+              <div class="beamer-block-title">The Discovery: Neural Model Vulnerability</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <p>
+                  To stress-test neural robustness, we constructed <strong>adversarial hard negatives</strong>: certificate templates with identical schema to ESC1, but with enrollment flags disabled or disconnected ACLs.
+                </p>
+                <div style="background: #fff0f0; padding: 8px; border-radius: 3px; margin: 8px 0; border: 1px solid #fecaca;">
+                  <p style="color: var(--crimson-accent); font-weight: 700; text-align: center;">
+                    Pure Neural Accuracy on Hard Negatives: Only 1.59%!
+                  </p>
+                </div>
+                <p>
+                  The pure neural model is deceived by local feature similarity and flags harmless templates as vulnerable!
+                </p>
+              </div>
+            </div>
+
+            <div class="beamer-block">
+              <div class="beamer-block-title">The Hybrid Neuro-Symbolic Solution</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <ul class="academic-bullets">
+                  <li><strong>Stage 1 (Neural Filter):</strong> CertGraph GNN prunes 99.8% of benign nodes in milliseconds.</li>
+                  <li><strong>Stage 2 (Symbolic Engine):</strong> Formal BFS validator verifies cryptographic invariants on candidate subgraphs.</li>
+                  <li><strong>Final Accuracy:</strong> <strong>99.91%</strong> with <strong>0% false positive escape</strong>!</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="figure-frame">
+              <img src="../figures/neuro_symbolic_pipeline.png" alt="Figure 8.1: Neuro-Symbolic Pipeline" style="max-height: 195px;"/>
+              <div class="figure-caption">
+                <strong>Figure 8.1:</strong> The integrated Neuro-Symbolic Pipeline combining high-throughput GNN filtering with exact symbolic graph verification.
+              </div>
+            </div>
+
+            <div class="figure-frame">
+              <img src="../figures/hard_negatives_comparison.png" alt="Hard Negatives Comparison" style="max-height: 145px;"/>
+              <div class="figure-caption">
+                <strong>Figure 8.2:</strong> Accuracy comparison on adversarial hard negatives: Neural (1.59%) vs Symbolic (84.13%) vs Hybrid (99.91%).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 12 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 13: SCALABILITY & INFERENCE EFFICIENCY
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-13" data-section="Scalability">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 5.2 • Operational Scalability</span>
+          <h2 class="slide-title">Sub-Second Scalability Across Enterprise Forest Graphs</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="col-55-45">
+          <div class="figure-frame">
+            <img src="../figures/scalability_metrics.png" alt="Figure 5.1: Scalability Metrics"/>
+            <div class="figure-caption">
+              <strong>Figure 5.1:</strong> Inference latency scaling linearly $O(|\mathcal{V}| + |\mathcal{E}|)$ with node count, compared against exponential combinatorial search.
+            </div>
+          </div>
+
+          <div>
+            <div class="beamer-block">
+              <div class="beamer-block-title">Computational Complexity Comparison</div>
+              <div class="beamer-block-content" style="font-size: 13.5px;">
+                <p>
+                  In large enterprise environments exceeding 100,000 principals, graph traversal algorithms like Dijkstra or BFS exhibit worst-case super-linear scaling.
+                </p>
+                <div style="margin: 10px 0; background: #f8fafc; padding: 10px; border-left: 3px solid var(--navy-primary);">
+                  <p><strong>CertGraph Inference Benchmarks:</strong></p>
+                  <ul class="academic-bullets" style="margin-top: 6px; font-size: 13px;">
+                    <li><strong>1,000 Nodes:</strong> 42 ms latency</li>
+                    <li><strong>10,000 Nodes:</strong> <strong>343 ms latency</strong> (Sub-second enterprise defense!)</li>
+                    <li><strong>50,000 Nodes:</strong> 1.62 seconds latency</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="beamer-block finding">
+              <div class="beamer-block-title">Operational Deployment Realization</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <p>
+                  Because CertGraph executes as sparse tensor message passing on GPUs, security operations teams can run <strong>continuous real-time audits</strong> on domain controllers every 60 seconds without disrupting production RPC/LDAP authentication traffic.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 13 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 14: AUTONOMOUS DEFENSE & THEOREM 2
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-14" data-section="Remediation">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 6.0 • Autonomous Remediation</span>
+          <h2 class="slide-title">Autonomous Remediation &amp; Theorem 2 (NP-Hardness)</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="two-col">
+          <div>
+            <div class="beamer-block theorem" style="border-left-width: 6px;">
+              <div class="beamer-block-title">Theorem 2 (Complexity of Attack Interdiction)</div>
+              <div class="beamer-block-content" style="font-size: 13px; line-height: 1.5;">
+                <p>
+                  <strong>Statement:</strong> Let $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ be an Active Directory multigraph, $S \subset \mathcal{V}$ be unprivileged entry points, and $T \subset \mathcal{V}$ be Domain Administrative targets. The Minimum Perturbation Attack Interdiction (MPAI) problem:
+                </p>
+                <div style="margin: 8px 0; text-align: center; color: var(--navy-primary); font-weight: 600;">
+                  $$\min_{C \subset \mathcal{E}} \sum_{e \in C} w(e) \quad \text{s.t.} \quad \text{dist}_{\mathcal{G} \setminus C}(s, t) = \infty, \; \forall s \in S, t \in T$$
+                </div>
+                <p>
+                  <strong>is NP-hard.</strong>
+                </p>
+                <p style="margin-top: 6px;">
+                  <strong>Proof Sketch:</strong> Reduced from the <em>Directed Multiway Cut</em> problem. A polynomial reduction maps terminals $k \ge 3$ into disconnected ADCS targets, establishing that exact global optimal remediation cannot be solved in polynomial time.
+                </p>
+              </div>
+            </div>
+
+            <div class="beamer-block alert">
+              <div class="beamer-block-title">Operational Challenge</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <p>
+                  Naively revoking all permissions breaks business operations. Defense must find a <strong>minimal-cost cut</strong> that preserves standard user workflows.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="figure-frame">
+              <img src="../figures/game_theoretic_convergence.png" alt="Game Theoretic Convergence" style="max-height: 220px;"/>
+              <div class="figure-caption">
+                <strong>Figure 6.1:</strong> Reinforcement learning policy convergence minimizing operational perturbation while achieving 100% path interdiction.
+              </div>
+            </div>
+
+            <div class="beamer-block finding" style="margin-top: 12px;">
+              <div class="beamer-block-title">Reinforcement Learning Policy Synthesis</div>
+              <div class="beamer-block-content" style="font-size: 13px;">
+                <p>
+                  We model remediation as a Markov Decision Process (MDP) solved via Proximal Policy Optimization (PPO), synthesizing minimal ACL modifications that sever all attack paths with &lt;0.5% operational disruption.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 14 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 15: SUMMARY OF CONTRIBUTIONS & RQ SYNTHESIS
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-15" data-section="Synthesis">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 7.0 • Thesis Contributions</span>
+          <h2 class="slide-title">Synthesis of Answers to Research Questions</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body">
+        <div class="two-col">
+          <div class="beamer-block">
+            <div class="beamer-block-title">Direct Answers to Formal Research Questions</div>
+            <div class="beamer-block-content" style="font-size: 13px; line-height: 1.55;">
+              <ul class="academic-bullets">
+                <li>
+                  <strong>RQ1 (Representation):</strong> Heterogeneous GAT achieves <strong>0.9986 Macro-F1</strong>, outperforming flat MLPs (+16.1%) and rule-based tools (+28.2%).
+                </li>
+                <li>
+                  <strong>RQ2 (Generalization):</strong> Achieved <strong>1.0000 Zero-Shot F1</strong> across 700 synthetic ADSynth topologies without requiring domain-specific retraining.
+                </li>
+                <li>
+                  <strong>RQ3 (Adversarial Robustness):</strong> Uncovered the 1.59% neural hard-negative blind spot; resolved via our Neuro-Symbolic pipeline reaching <strong>99.91% verified accuracy</strong>.
+                </li>
+                <li>
+                  <strong>RQ4 (Remediation Complexity):</strong> Formally proved MPAI is NP-Hard via Directed Multiway Cut reduction; trained RL policy to interdict attack paths with minimal disruption.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="beamer-block finding">
+              <div class="beamer-block-title">Summary of 6 Tangible Academic Contributions</div>
+              <div class="beamer-block-content" style="font-size: 13px; line-height: 1.5;">
+                <ol style="padding-left: 20px;">
+                  <li><strong>Heterogeneous Graph Formulation:</strong> First formal multigraph schema capturing all 13 ADCS escalation classes.</li>
+                  <li><strong>Theorem 1:</strong> Mathematical proof of gradient lower-bounds preventing representation oversmoothing.</li>
+                  <li><strong>Empirical Benchmark Suite:</strong> 700 topologies and 5-fold cross-validation on realistic GOAD multi-forest testbeds.</li>
+                  <li><strong>Explainable Attention Maps:</strong> Direct visual interpretation linking high attention to critical escalation edges.</li>
+                  <li><strong>Neuro-Symbolic Pipeline:</strong> Production-ready hybrid eliminating false positives on adversarial hard negatives.</li>
+                  <li><strong>Theorem 2 &amp; Autonomous Interdiction:</strong> Formal NP-hardness proof and convergent remediation agent.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 15 / 16</div>
+      </footer>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────────────────────
+         SLIDE 16: CONCLUSION & ORAL DEFENSE Q&A
+         ───────────────────────────────────────────────────────────────────── -->
+    <section class="slide" id="slide-16" data-section="Conclusion">
+      <header class="slide-header">
+        <div class="slide-header-left">
+          <span class="slide-section-label">Section 8.0 • Conclusion</span>
+          <h2 class="slide-title">Conclusion &amp; Examination Committee Q&amp;A</h2>
+        </div>
+        <div class="slide-header-right">
+          <div class="slide-hstu-tag"><strong>HSTU ECE</strong>October 2026</div>
+        </div>
+      </header>
+      <div class="slide-body" style="justify-content: center; align-items: center; text-align: center;">
+        <div style="max-width: 880px; width: 100%;">
+          <div class="beamer-block finding" style="text-align: left; margin-bottom: 24px;">
+            <div class="beamer-block-title" style="font-size: 16px;">Concluding Summary</div>
+            <div class="beamer-block-content" style="font-size: 14.5px; line-height: 1.6;">
+              <p>
+                CertGraph establishes that <strong>heterogeneous graph neural networks</strong>, reinforced by <strong>provable residual skip connections</strong> and <strong>symbolic verification</strong>, bridge the critical gap between brute-force graph search and fragile heuristic rules. It delivers the first scalable, theoretically bounded, and autonomous defense system for enterprise Active Directory Certificate Services.
+              </p>
+            </div>
+          </div>
+
+          <div style="padding: 24px; background: #f8fafc; border: 1.5px solid var(--border-mid); border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <h2 style="font-size: 28px; color: var(--navy-primary); margin-bottom: 12px; font-family: var(--font-serif);">
+              Thank You for Your Time and Consideration
+            </h2>
+            <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 20px;">
+              We respectfully invite questions, comments, and evaluation from the Honorable Examination Committee.
+            </p>
+
+            <div style="display: inline-flex; gap: 24px; padding: 10px 24px; background: #ffffff; border: 1px solid var(--border-mid); border-radius: 4px;">
+              <div>
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--text-light); display: block;">Undergraduate Candidates</span>
+                <span style="font-family: var(--font-mono); font-weight: 600; color: var(--navy-primary);">
+                  ID: 2002126 &nbsp;|&nbsp; ID: 2002138 &nbsp;|&nbsp; ID: 2102151
+                </span>
+              </div>
+              <div style="border-left: 1px solid var(--border-light); padding-left: 20px;">
+                <span style="font-size: 11px; text-transform: uppercase; color: var(--text-light); display: block;">Degree &amp; Course</span>
+                <span style="font-weight: 600; color: #334155;">B.Sc. in ECE • Course: ECE 452</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer-left">CertGraph: Heterogeneous GAT for ADCS Vulnerability Detection</div>
+        <div class="footer-center">HSTU ECE Thesis Defense (ECE 452)</div>
+        <div class="footer-right">Slide 16 / 16</div>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- ─── SLIDE NAVIGATION CONTROLS (BOTTOM BAR) ─────────────────────────── -->
+  <nav id="defense-controls">
+    <button class="ctrl-btn" onclick="prevSlide()" title="Previous Slide (Left Arrow / Backspace)">
+      ◀ Prev
+    </button>
+    <div class="ctrl-counter" id="slide-indicator">
+      Slide 01 / 16
+    </div>
+    <button class="ctrl-btn" onclick="nextSlide()" title="Next Slide (Right Arrow / Space)">
+      Next ▶
+    </button>
+  </nav>
+
+  <!-- ─── SLIDE OVERVIEW MODAL ───────────────────────────────────────────── -->
+  <div id="overview-modal" onclick="if(event.target === this) toggleOverview()">
+    <div class="overview-grid" id="overview-grid-container">
+      <!-- Populated via JavaScript -->
+    </div>
+  </div>
+
+  <!-- ─── JAVASCRIPT: SLIDE LOGIC, CONTROLS & DEFENSE TIMER ──────────────── -->
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 16;
+    
+    // Slide Navigation
+    function showSlide(num) {
+      if (num < 1) num = 1;
+      if (num > totalSlides) num = totalSlides;
+
+      const prevEl = document.getElementById(`slide-${currentSlide}`);
+      const nextEl = document.getElementById(`slide-${num}`);
+
+      if (prevEl && prevEl !== nextEl) {
+        prevEl.classList.remove('active');
+        if (num > currentSlide) {
+          prevEl.classList.add('prev-slide');
+        } else {
+          prevEl.classList.remove('prev-slide');
+        }
+      }
+
+      if (nextEl) {
+        nextEl.classList.remove('prev-slide');
+        nextEl.classList.add('active');
+      }
+
+      currentSlide = num;
+      document.getElementById('slide-indicator').textContent = 
+        `Slide ${String(currentSlide).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        e.preventDefault();
+        toggleFullscreen();
+      } else if (e.key === 'o' || e.key === 'O' || e.key === 'Escape') {
+        e.preventDefault();
+        toggleOverview();
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        showSlide(1);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        showSlide(totalSlides);
+      }
     });
 
-    updateUI();
-  }
-
-  function updateUI() {
-    document.getElementById('counter').textContent = `${current + 1} / ${total}`;
-    document.getElementById('progress-bar').style.width = `${((current + 1) / total) * 100}%`;
-    allDots.forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  // ── Keyboard ──────────────────────────────────────────────────────────
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
-      e.preventDefault(); navigate(1);
+    // Fullscreen Toggle
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          console.warn("Fullscreen request error:", err);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
     }
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
-      e.preventDefault(); navigate(-1);
+
+    // Slide Overview Modal
+    function buildOverview() {
+      const container = document.getElementById('overview-grid-container');
+      container.innerHTML = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        const slideEl = document.getElementById(`slide-${i}`);
+        const titleEl = slideEl.querySelector('.slide-title') || slideEl.querySelector('.thesis-main-title');
+        const titleText = titleEl ? titleEl.textContent.trim() : `Slide ${i}`;
+
+        const card = document.createElement('div');
+        card.className = 'overview-thumb';
+        card.innerHTML = `
+          <div class="thumb-num">SLIDE ${String(i).padStart(2, '0')}</div>
+          <div class="thumb-title">${titleText.length > 50 ? titleText.substring(0, 50) + '...' : titleText}</div>
+        `;
+        card.onclick = () => {
+          showSlide(i);
+          toggleOverview();
+        };
+        container.appendChild(card);
+      }
     }
-    if (e.key === 'f' || e.key === 'F') {
-      if (document.fullscreenElement) document.exitFullscreen();
-      else document.documentElement.requestFullscreen();
+
+    function toggleOverview() {
+      const modal = document.getElementById('overview-modal');
+      if (modal.classList.contains('open')) {
+        modal.classList.remove('open');
+      } else {
+        buildOverview();
+        modal.classList.add('open');
+      }
     }
-    if (e.key === 'Home') goTo(0);
-    if (e.key === 'End') goTo(total - 1);
-  });
 
-  // ── Touch swipe ───────────────────────────────────────────────────────
-  let touchStartX = 0;
-  document.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, { passive: true });
-  document.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 60) navigate(dx < 0 ? 1 : -1);
-  });
+    // Defense Stopwatch Timer
+    let timerSeconds = 0;
+    let timerRunning = true;
+    let timerInterval = setInterval(() => {
+      if (timerRunning) {
+        timerSeconds++;
+        const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+        const secs = String(timerSeconds % 60).padStart(2, '0');
+        document.getElementById('timer-display').textContent = `${mins}:${secs}`;
+      }
+    }, 1000);
 
-  // ── Responsive scaling ────────────────────────────────────────────────
-  function scaleViewport() {
-    const vp = document.getElementById('viewport');
-    const sw = window.innerWidth, sh = window.innerHeight;
-    const scaleX = sw / 1280, scaleY = sh / 720;
-    const scale = Math.min(scaleX, scaleY) * 0.96;
-    vp.style.transform = `scale(${scale})`;
-    vp.style.transformOrigin = 'center center';
-  }
-  window.addEventListener('resize', scaleViewport);
-  scaleViewport();
-
-  // ── Particles (hero slides) ───────────────────────────────────────────
-  function makeParticles(container) {
-    for (let i = 0; i < 18; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      const size = Math.random() * 4 + 2;
-      const colors = ['var(--blue)', 'var(--cyan)', 'var(--violet)'];
-      p.style.cssText = `
-        width:${size}px; height:${size}px;
-        left:${Math.random()*100}%;
-        background:${colors[Math.floor(Math.random()*3)]};
-        animation-duration:${8 + Math.random()*8}s;
-        animation-delay:${Math.random()*6}s;
-        opacity:${0.2 + Math.random()*0.3};
-      `;
-      container.appendChild(p);
+    function toggleTimer() {
+      timerRunning = !timerRunning;
+      document.getElementById('btn-timer-toggle').textContent = timerRunning ? 'Pause' : 'Resume';
     }
-  }
-  document.querySelectorAll('.particles').forEach(makeParticles);
 
-  // ── Bar animation reset on each slide entry ───────────────────────────
-  // (handled via CSS animation triggered by .active class)
-  slides.forEach(s => {
-    // Force bar animations to restart on re-entry
-    s.addEventListener('transitionend', () => {
-      if (s.classList.contains('active')) {
-        s.querySelectorAll('.bar-fill').forEach(b => {
-          b.style.animation = 'none';
-          b.offsetHeight; // reflow
-          b.style.animation = '';
+    function resetTimer() {
+      timerSeconds = 0;
+      document.getElementById('timer-display').textContent = '00:00';
+    }
+
+    // Render Math Formulas with KaTeX on load
+    window.addEventListener('DOMContentLoaded', () => {
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
         });
       }
     });
-  });
-
-  // ── Initial UI ────────────────────────────────────────────────────────
-  updateUI();
-</script>
+  </script>
 </body>
 </html>
