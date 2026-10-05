@@ -8,7 +8,7 @@
     *Theorem Intrinsic Attribute Preservation and Gradient Lower Bounds.* \
     Let $G = (V, E, cal(T)_V, cal(T)_E)$ be a directed heterogeneous multigraph with node type mapping $tau: V arrow.r cal(T)_V$. Let each node $v in V$ have an initial feature vector $x_v = h_v^((0)) in bb(R)^(d_0)$. Consider an $L$-layer heterogeneous message-passing neural network where layer $l in {1, dots, L}$ computes hidden representations:
 
-+ *Intrinsic Feature Erasure in Relational Neighborhood Aggregation:* Under pure relational neighborhood aggregation without self-loops or skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.o_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ where $cal(N)_r(v) = \{u in V | (u, r, v) in E}$ denotes incoming neighbors under relation $r$, the layer-1 hidden state $h_v^((1))$ is conditionally independent of $x_v$ given $cal(N)(v)$. Consequently: $ (partial h_v^((1)))/(partial x_v) = bold(0) in bb(R)^(d_1 times d_0) $ Moreover, for any source-only node $v$ satisfying $cal(N)_("in")(v) = emptyset$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
++ *Intrinsic Feature Erasure in Relational Neighborhood Aggregation:* Under pure relational neighborhood aggregation without self-loops or skip connections: $ h_v^((l)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle_(u in cal(N)_r(v)) alpha_(v u)^((l)) W_r^((l)) h_u^((l-1)) ) $ where $cal(N)_r(v) = \{u in V | (u, r, v) in E}$ denotes incoming neighbors under relation $r$, the layer-1 hidden state $h_v^((1))$ is conditionally independent of $x_v$ given $cal(N)(v)$. Consequently: $ (partial h_v^((1)))/(partial x_v) = bold(0) in bb(R)^(d_1 times d_0) $ Moreover, for any source-only node $v$ satisfying $cal(N)_("in")(v) = emptyset$, $h_v^((l)) = bold(0)$ for all $l >= 1$.
 + *Guaranteed Gradient Lower Bound via Parameterized Residual Skips:* When parameterized residual skip connections are introduced: $ tilde(h)_v^((l)) = h_v^((l)) + W_("skip")^((l)) tilde(h)_v^((l-1)) $ where $W_("skip")^((l)) in bb(R)^(d_l times d_(l-1))$ has minimum singular value $sigma_(min)(W_("skip")^((l))) > 0$, the Jacobian of the representation with respect to the initial input features satisfies: $ sigma_(min) ( (partial tilde(h)_v^((L)))/(partial x_v) ) >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| $ where $\|cal(J)_("graph")(v)|| <= L_sigma^L alpha_(max) product_(l=1)^L \|W^((l))||$ bounds the cyclical feedback gradient. When $G$ contains no self-directed cycles of length $<= L$ involving $v$, $cal(J)_("graph")(v) = bold(0)$, yielding the exact lower bound $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > 0$. Under the spectral condition $product_(k=1)^L sigma_(min)(W_("skip")^((k))) > \|cal(J)_("graph")(v)||$, input feature sensitivity is strictly preserved: $ || (partial tilde(h)_v^((L)))/(partial x_v) || >= product_(k=1)^L sigma_(min)(W_("skip")^((k))) - \|cal(J)_("graph")(v)|| > 0 $ guaranteeing that input feature sensitivity does not vanish across message-passing layers.
 
 
@@ -25,7 +25,7 @@ _Proof._ We establish the proof in three parts: intrinsic feature erasure, gradi
 
 *Part 1: Intrinsic Feature Erasure under Pure Neighborhood Aggregation.*
 Let $v in V$ be an arbitrary node in $G$ with initial feature vector $x_v = h_v^((0)) in bb(R)^(d_0)$. Under the standard heterogeneous relational convolution layer:
-$ h_v^((1)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.o_(u in cal(N)_r(v)) alpha_(v u)^((1)) W_r^((1)) h_u^((0)) ) $
+$ h_v^((1)) = sigma ( sum_(r in cal(R)_("in")(tau(v))) plus.circle_(u in cal(N)_r(v)) alpha_(v u)^((1)) W_r^((1)) h_u^((0)) ) $
 
 Observe that the argument of $sigma(dot)$ is a linear combination of neighbor states $\{h_u^((0)) | u in cal(N)_r(v), r in cal(R)_("in")(tau(v))}$. In an access control multigraph lacking explicit self-loop relations on template nodes:
 $ v not in cal(N)_r(v),   forall r in cal(R)_("in")(tau(v)) $
@@ -38,7 +38,7 @@ $ (partial h_v^((1)))/(partial x_v) = bold(0) in bb(R)^(d_1 times d_0) $
 
 Thus, at layer 1, the node's updated embedding $h_v^((1))$ is completely independent of its initial feature vector $x_v$. In certificate templates ($t in V_("Template")$), this means that the 10 binary configuration flags $x_("Template")$ (which govern whether the template allows enrollee-supplied SANs, requires manager approval, or specifies client authentication EKUs) are completely discarded from $h_t^((1))$. 
 
-Furthermore, if $v$ is a source-only entity satisfying $d_("in")(v) = 0$ (such as user accounts possessing outgoing enrollment rights but no incoming delegations), then $cal(N)_r(v) = emptyset$ for all $r$. By the identity of aggregation over an empty set ($plus.o(emptyset) = bold(0)$) and $sigma(bold(0)) = bold(0)$, we obtain $h_v^((l)) = bold(0)$ for all $l >= 1$.
+Furthermore, if $v$ is a source-only entity satisfying $d_("in")(v) = 0$ (such as user accounts possessing outgoing enrollment rights but no incoming delegations), then $cal(N)_r(v) = emptyset$ for all $r$. By the identity of aggregation over an empty set ($plus.circle(emptyset) = bold(0)$) and $sigma(bold(0)) = bold(0)$, we obtain $h_v^((l)) = bold(0)$ for all $l >= 1$.
 
 *Part 2: Gradient Lower Bounds via Parameterized Residual Skips.*
 Now consider the layer formulation equipped with parameterized additive residual skip connections:
@@ -147,7 +147,7 @@ While the classical Multiterminal Cut problem on undirected graphs was proven NP
 *Directed Multiway Cut:* Given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H arrow.r bb(R)^+$, a subset of $k >= 3$ distinct terminal vertices $X = \{x_1, x_2, dots, x_k} subset.eq V_H$, and a cost threshold $W$, does there exist an edge subset $C subset.eq E_H$ with $sum_(e in C) w(e) <= W$ such that no directed path connects any terminal $x_i$ to any other terminal $x_j$ ($i != j$) in the residual graph $H' = (V_H, E_H \ C)$?
 \end{quote}
 
-Given an arbitrary instance $chevron.l H = (V_H, E_H), w, X = \{x_1, dots, x_k}, W chevron.r$ of the Directed Multiway Cut problem ($k >= 3$), we construct an instance $chevron.l G = (V, E), c, cal(P)_("forbidden"), K chevron.r$ of MPAI in polynomial time:
+Given an arbitrary instance $angle.l H = (V_H, E_H), w, X = \{x_1, dots, x_k}, W angle.r$ of the Directed Multiway Cut problem ($k >= 3$), we construct an instance $angle.l G = (V, E), c, cal(P)_("forbidden"), K angle.r$ of MPAI in polynomial time:
 
 
 + *Vertex Construction:* For each terminal $x_i in X$, create two distinct nodes in $G$: an attacker source principal $s_i$ and a high-value target asset $t_i$. For all non-terminal vertices $v in V_H \ X$, include $v in V$. Thus: $ V = (V_H \ X) union \{s_1, dots, s_k} union \{t_1, dots, t_k} $

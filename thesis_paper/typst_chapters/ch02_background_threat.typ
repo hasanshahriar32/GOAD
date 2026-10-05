@@ -56,7 +56,7 @@ To overcome the brittleness and combinatorial limitations of deterministic graph
 Gilmer et al. @gilmer2017neural unified modern graph deep learning architectures under the Message-Passing Neural Network (MPNN) framework. For a graph $G = (V, E)$ with node feature vectors $x_v in bb(R)^d$, an MPNN layer computes updated node representations $h_v^((l))$ through three core computational phases:
 
 + *Message Computation:* For each directed edge $(u, v) in E$, a message vector is computed: $ m_(v u)^((l)) = M_l ( h_v^((l-1)), h_u^((l-1)), e_(v u) ) $ where $M_l$ is a parameterized message function, and $e_(v u)$ represents edge features.
-+ *Message Aggregation:* Messages from all incoming neighbors in $cal(N)(v)$ are aggregated using a permutation-invariant aggregation operator $plus.o$: $ macron(m)_v^((l)) = plus.o_(u in cal(N)(v)) m_(v u)^((l)) $
++ *Message Aggregation:* Messages from all incoming neighbors in $cal(N)(v)$ are aggregated using a permutation-invariant aggregation operator $plus.circle$: $ macron(m)_v^((l)) = plus.circle_(u in cal(N)(v)) m_(v u)^((l)) $
 + *State Update:* The node's hidden representation is updated by combining its previous state with the aggregated message: $ h_v^((l)) = U_l ( h_v^((l-1)), macron(m)_v^((l)) ) $ where $U_l$ is a parameterized update function (e.g., a Multi-Layer Perceptron or gated recurrent unit).
 
 

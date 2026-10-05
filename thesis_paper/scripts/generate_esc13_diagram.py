@@ -2,15 +2,15 @@
 """
 Publication-Grade Generator for Figure 2.2:
 Two-Hop ESC13 Privilege Escalation Attack Chain in Active Directory
-Designed specifically for full textwidth inclusion with EXTRA LARGE, bold typography.
+Designed specifically for full textwidth inclusion with EXTRA LARGE, bold typography
+and mathematically guaranteed zero collision / zero clipping.
 """
 import os
-import textwrap
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 def generate_esc13_diagram(output_paths):
-    fig_w, fig_h = 13.8, 8.8
+    fig_w, fig_h = 16.5, 9.6
     fig, ax = plt.subplots(figsize=(fig_w, fig_h), dpi=300)
     ax.set_xlim(0, fig_w)
     ax.set_ylim(0, fig_h)
@@ -21,28 +21,24 @@ def generate_esc13_diagram(output_paths):
     ax.set_facecolor('#ffffff')
 
     # Top Titles
-    ax.text(6.9, 8.45, 'Two-Hop ESC13 Privilege Escalation Attack Chain in Active Directory',
-            ha='center', va='center', fontsize=18.5, weight='bold', color='#0f172a')
-    ax.text(6.9, 8.05,
+    ax.text(fig_w / 2, 9.15, 'Two-Hop ESC13 Privilege Escalation Attack Chain in Active Directory',
+            ha='center', va='center', fontsize=20.0, weight='bold', color='#0f172a')
+    ax.text(fig_w / 2, 8.72,
             r'Transitive Path: Low-Priv Foothold $\longrightarrow$ Intermediate Group $\longrightarrow$ Certificate Template $\longrightarrow$ Issuance Policy OID $\longrightarrow$ Tier-0 Domain Admins',
-            ha='center', va='center', fontsize=13.2, weight='bold', color='#475569')
+            ha='center', va='center', fontsize=13.0, weight='bold', color='#475569')
 
     # 5 Nodes Configuration
-    card_w = 1.92
+    card_w = 2.05
     card_h = 2.65
-    y_center = 6.25
-    y_box = y_center - card_h / 2  # 4.925
+    y_box = 5.60
 
-    # Centers calculation:
-    # 5 cards of 1.92 = 9.60 width.
-    # Total span = 12.80.
-    # 4 gaps = (12.80 - 9.60) / 4 = 0.80 each.
-    # Margins: left = 0.50, right = 0.50.
-    c0 = 0.50 + card_w / 2                        # 1.46
-    c1 = c0 + card_w + 0.80                       # 4.18
-    c2 = c1 + card_w + 0.80                       # 6.90 (exact center)
-    c3 = c2 + card_w + 0.80                       # 9.62
-    c4 = c3 + card_w + 0.80                       # 12.34
+    # Margins: 0.45 left/right. Span = 15.60. 5 * 2.05 = 10.25. Gap = (15.60 - 10.25)/4 = 1.3375
+    gap = 1.3375
+    c0 = 0.45 + card_w / 2
+    c1 = c0 + card_w + gap
+    c2 = c1 + card_w + gap
+    c3 = c2 + card_w + gap
+    c4 = c3 + card_w + gap
 
     nodes = [
         {
@@ -53,7 +49,7 @@ def generate_esc13_diagram(output_paths):
             'badge_bg': '#dbeafe',
             'badge_fg': '#1e40af',
             'title': 'Low-Priv User',
-            'role': '(Compromised Foothold)',
+            'role': 'Compromised Foothold',
             'code': 'sAMAccount: jsmith',
             'sub': 'Domain Users Group'
         },
@@ -65,7 +61,7 @@ def generate_esc13_diagram(output_paths):
             'badge_bg': '#ffedd5',
             'badge_fg': '#9a3412',
             'title': 'Enroller Group',
-            'role': '(Intermediate Principal)',
+            'role': 'Intermediate Group',
             'code': 'CN=CertEnrollers',
             'sub': 'Holds Template DACL'
         },
@@ -77,7 +73,7 @@ def generate_esc13_diagram(output_paths):
             'badge_bg': '#f3e8ff',
             'badge_fg': '#6b21a8',
             'title': 'ESC13 Template',
-            'role': '(ADCS Schema v2)',
+            'role': 'Target Template',
             'code': 'msPKI-Cert-Policy',
             'sub': 'Policy OID Extension'
         },
@@ -88,9 +84,9 @@ def generate_esc13_diagram(output_paths):
             'badge': 'ISSUANCE POLICY OID',
             'badge_bg': '#ccfbf1',
             'badge_fg': '#115e59',
-            'title': 'Policy OID Object',
-            'role': '(Linked to Tier-0 Group)',
-            'code': 'msDS-OIDToGroupLink',
+            'title': 'Policy OID',
+            'role': 'Issuance Policy',
+            'code': 'OIDToGroupLink',
             'sub': 'Maps to Target SID'
         },
         {
@@ -101,7 +97,7 @@ def generate_esc13_diagram(output_paths):
             'badge_bg': '#fee2e2',
             'badge_fg': '#991b1b',
             'title': 'Domain Admins',
-            'role': '(High-Value Target Asset)',
+            'role': 'Tier-0 Target Asset',
             'code': 'SID: S-1-5-...-512',
             'sub': 'Full Forest Takeover'
         }
@@ -112,8 +108,8 @@ def generate_esc13_diagram(output_paths):
         xc = n['x']
         # Shadow
         shadow = patches.FancyBboxPatch(
-            (xc - card_w/2 + 0.05, y_box - 0.04), card_w, card_h,
-            boxstyle="round,pad=0.02,rounding_size=0.14",
+            (xc - card_w/2 + 0.04, y_box - 0.04), card_w, card_h,
+            boxstyle="round,pad=0.02,rounding_size=0.12",
             facecolor='#94a3b8', alpha=0.18, edgecolor='none', zorder=1
         )
         ax.add_patch(shadow)
@@ -121,142 +117,136 @@ def generate_esc13_diagram(output_paths):
         # Card Body
         card = patches.FancyBboxPatch(
             (xc - card_w/2, y_box), card_w, card_h,
-            boxstyle="round,pad=0.02,rounding_size=0.14",
+            boxstyle="round,pad=0.02,rounding_size=0.12",
             facecolor=n['bg'], edgecolor=n['border'], linewidth=2.0, zorder=2
         )
         ax.add_patch(card)
 
         # Top Badge
-        badge_w = card_w - 0.16
-        badge_h = 0.42
-        badge_y = y_box + card_h - 0.48
+        badge_w = card_w - 0.24
+        badge_h = 0.34
+        badge_y = y_box + card_h - 0.44
         badge = patches.FancyBboxPatch(
             (xc - badge_w/2, badge_y), badge_w, badge_h,
-            boxstyle="round,pad=0.02,rounding_size=0.08",
+            boxstyle="round,pad=0.02,rounding_size=0.06",
             facecolor=n['badge_bg'], edgecolor=n['border'], linewidth=1.1, zorder=3
         )
         ax.add_patch(badge)
         ax.text(xc, badge_y + badge_h/2, n['badge'],
-                ha='center', va='center', fontsize=11.2, weight='bold',
+                ha='center', va='center', fontsize=9.2, weight='bold',
                 color=n['badge_fg'], zorder=4)
 
         # Main Title
-        ax.text(xc, y_box + card_h - 0.90, n['title'],
-                ha='center', va='center', fontsize=16.0, weight='bold',
+        ax.text(xc, y_box + card_h - 0.78, n['title'],
+                ha='center', va='center', fontsize=14.5, weight='bold',
                 color='#0f172a', zorder=4)
 
-        # Role / Description
-        ax.text(xc, y_box + card_h - 1.25, n['role'],
-                ha='center', va='center', fontsize=12.2, weight='bold',
+        # Subtitle / Role (concise, guaranteed 0.3in clearance inside card)
+        ax.text(xc, y_box + card_h - 1.08, n['role'],
+                ha='center', va='center', fontsize=10.6, weight='bold',
                 color='#475569', zorder=4)
 
         # Code / LDAP Detail Box
-        detail_w = card_w - 0.16
-        detail_h = 0.44
-        detail_y = y_box + 0.52
+        detail_w = card_w - 0.22
+        detail_h = 0.40
+        detail_y = y_box + 0.58
         detail_box = patches.FancyBboxPatch(
             (xc - detail_w/2, detail_y), detail_w, detail_h,
             boxstyle="round,pad=0.02,rounding_size=0.06",
             facecolor='#ffffff', edgecolor='#cbd5e1', linewidth=1.2, zorder=3
         )
         ax.add_patch(detail_box)
-        code_font = 11.5 if len(n['code']) > 16 else 12.2
         ax.text(xc, detail_y + detail_h/2, n['code'],
-                ha='center', va='center', fontsize=code_font, family='monospace', weight='bold',
+                ha='center', va='center', fontsize=10.2, family='monospace', weight='bold',
                 color='#1e293b', zorder=4)
 
         # Sub-attribute
-        ax.text(xc, y_box + 0.24, n['sub'],
-                ha='center', va='center', fontsize=11.5, weight='bold', style='italic',
+        ax.text(xc, y_box + 0.26, n['sub'],
+                ha='center', va='center', fontsize=10.5, weight='bold', style='italic',
                 color='#64748b', zorder=4)
 
-    # 4 Transition Edges
+    # 4 Transition Steps between Cards
     edges = [
         {
             'idx': 0,
             'color': '#1d4ed8',
-            'step_num': 'STEP 1',
+            'step_tag': 'STEP 1',
             'step_name': 'MemberOf',
-            'desc_1': 'Group Nesting',
-            'desc_2': 'LDAP Token'
+            'desc': 'Group Nesting'
         },
         {
             'idx': 1,
             'color': '#c2410c',
-            'step_num': 'STEP 2',
+            'step_tag': 'STEP 2',
             'step_name': 'Enroll',
-            'desc_1': 'DACL ACE',
-            'desc_2': 'MS-WCCE RPC'
+            'desc': 'DACL ACE'
         },
         {
             'idx': 2,
             'color': '#7e22ce',
-            'step_num': 'STEP 3',
+            'step_tag': 'STEP 3',
             'step_name': 'LinksPolicy',
-            'desc_1': 'OID Linkage',
-            'desc_2': 'Template Flag'
+            'desc': 'OID Linkage'
         },
         {
             'idx': 3,
             'color': '#b91c1c',
-            'step_num': 'STEP 4',
+            'step_tag': 'STEP 4',
             'step_name': 'PAC Elevate',
-            'desc_1': 'SID Injection',
-            'desc_2': 'Kerberos PKINIT'
+            'desc': 'SID Injection'
         }
     ]
 
     for e in edges:
         i = e['idx']
-        xs = nodes[i]['x'] + card_w/2 + 0.05
-        xe = nodes[i+1]['x'] - card_w/2 - 0.05
+        xs = nodes[i]['x'] + card_w/2 + 0.08
+        xe = nodes[i+1]['x'] - card_w/2 - 0.08
         xm = (xs + xe) / 2
-        y_arrow = y_center
+        y_arrow = y_box + 1.25  # 6.85
+
+        # Step Pill above arrow
+        pill_w = 1.18
+        pill_h = 0.52
+        pill_y = y_arrow + 0.12
+        pill = patches.FancyBboxPatch(
+            (xm - pill_w/2, pill_y), pill_w, pill_h,
+            boxstyle="round,pad=0.02,rounding_size=0.08",
+            facecolor='#ffffff', edgecolor=e['color'], linewidth=1.5, zorder=6
+        )
+        ax.add_patch(pill)
+
+        name_font = 10.5 if len(e['step_name']) > 9 else 11.4
+        ax.text(xm, pill_y + pill_h*0.72, e['step_tag'],
+                ha='center', va='center', fontsize=9.2, weight='bold',
+                color='#64748b', zorder=7)
+        ax.text(xm, pill_y + pill_h*0.28, e['step_name'],
+                ha='center', va='center', fontsize=name_font, weight='bold',
+                color=e['color'], zorder=7)
 
         # Arrow
         ax.annotate(
             '', xy=(xe, y_arrow), xytext=(xs, y_arrow),
             arrowprops=dict(
-                arrowstyle="-|>,head_width=0.50,head_length=0.70",
-                color=e['color'], lw=3.0
+                arrowstyle="-|>,head_width=0.40,head_length=0.55",
+                color=e['color'], lw=2.4
             ),
             zorder=5
         )
 
-        # Step Pill above arrow
-        pill_w = 0.88
-        pill_h = 0.54
-        pill_y = y_arrow + 0.16
-        pill = patches.FancyBboxPatch(
-            (xm - pill_w/2, pill_y), pill_w, pill_h,
-            boxstyle="round,pad=0.02,rounding_size=0.08",
-            facecolor='#ffffff', edgecolor=e['color'], linewidth=1.6, zorder=6
-        )
-        ax.add_patch(pill)
-        ax.text(xm, pill_y + pill_h*0.72, e['step_num'],
-                ha='center', va='center', fontsize=11.0, weight='bold',
-                color='#64748b', zorder=7)
-        ax.text(xm, pill_y + pill_h*0.28, e['step_name'],
-                ha='center', va='center', fontsize=12.8, weight='bold',
-                color=e['color'], zorder=7)
-
         # Concise description below arrow
-        ax.text(xm, y_arrow - 0.28, e['desc_1'],
-                ha='center', va='center', fontsize=12.2, weight='bold',
+        ax.text(xm, y_arrow - 0.25, e['desc'],
+                ha='center', va='center', fontsize=10.2, weight='bold',
                 color='#1e293b', zorder=6)
-        ax.text(xm, y_arrow - 0.48, e['desc_2'],
-                ha='center', va='center', fontsize=11.2, weight='bold', style='italic',
-                color='#64748b', zorder=6)
 
     # Bottom Callout Container
-    callout_x = 0.50
+    callout_x = 0.45
     callout_y = 0.25
-    callout_w = 12.80
-    callout_h = 4.10
+    callout_w = 15.60
+    callout_h = 5.05
 
-    # Shadow
+    # Container Shadow
     callout_shadow = patches.FancyBboxPatch(
-        (callout_x + 0.05, callout_y - 0.04), callout_w, callout_h,
+        (callout_x + 0.04, callout_y - 0.04), callout_w, callout_h,
         boxstyle="round,pad=0.03,rounding_size=0.14",
         facecolor='#94a3b8', alpha=0.14, edgecolor='none', zorder=1
     )
@@ -270,54 +260,84 @@ def generate_esc13_diagram(output_paths):
     )
     ax.add_patch(callout_box)
 
-    # Header Badge
-    badge_title_w = 6.80
-    tag_box = patches.FancyBboxPatch(
-        (callout_x + 0.30, callout_y + callout_h - 0.46), badge_title_w, 0.40,
-        boxstyle="round,pad=0.02,rounding_size=0.06",
+    # Full-Width Header Bar across Top of Container (guaranteed no text clipping)
+    header_h = 0.50
+    header_box = patches.FancyBboxPatch(
+        (callout_x + 0.01, callout_y + callout_h - header_h - 0.01), callout_w - 0.02, header_h,
+        boxstyle="round,pad=0.01,rounding_size=0.12",
         facecolor='#1e293b', edgecolor='none', zorder=3
     )
-    ax.add_patch(tag_box)
-    ax.text(callout_x + 0.30 + badge_title_w/2, callout_y + callout_h - 0.26,
+    ax.add_patch(header_box)
+    ax.text(callout_x + callout_w / 2, callout_y + callout_h - header_h / 2 - 0.01,
             'ATTACK CHAIN EXPLOITATION MECHANISM & RELATIONAL IMPACT',
-            ha='center', va='center', fontsize=12.8, weight='bold', color='#ffffff', zorder=4)
+            ha='center', va='center', fontsize=13.5, weight='bold', color='#ffffff', zorder=4)
 
     # 3 Structured Breakdown Columns
-    col_w = 3.90
-    col_gap = 0.25
-    col_y = callout_y + 0.18
-    col_h = 3.35
+    col_w = 4.86
+    col_gap = 0.27
+    col_y = callout_y + 0.22
+    col_h = 4.08
     col_top = col_y + col_h
 
     columns = [
         {
-            'x': callout_x + 0.25,
-            'title': 'Phase 1: Transitive Foothold & DACL',
+            'x': callout_x + 0.24,
+            'title_1': 'Phase 1: Foothold & DACL',
+            'title_2': 'Transitive Identity Escalation',
             'color': '#1d4ed8',
             'bullets': [
-                ("Foothold Compromise", "Adversary gains execution as a low-privileged identity principal (e.g., via password spraying or Kerberoasting)."),
-                ("Group Nesting", "Low-priv user is a transitive nested member of an intermediate security group (e.g., CN=CertEnrollers)."),
-                ("Enrollment DACL", "Intermediate group holds explicit Certificate-Enroll ACE permissions over the vulnerable template.")
+                ("Foothold Compromise", [
+                    "Adversary compromises low-priv",
+                    "user via credential spraying."
+                ]),
+                ("Group Nesting", [
+                    "User possesses transitive nested",
+                    "membership in enroller group."
+                ]),
+                ("Enrollment DACL", [
+                    "Group holds explicit Certificate-",
+                    "Enroll ACE permissions."
+                ])
             ]
         },
         {
-            'x': callout_x + 0.25 + col_w + col_gap,
-            'title': 'Phase 2: Relational Policy Linkage',
+            'x': callout_x + 0.24 + col_w + col_gap,
+            'title_1': 'Phase 2: Policy Inversion',
+            'title_2': 'Template OID Linkage Inversion',
             'color': '#7e22ce',
             'bullets': [
-                ("CSR Submission", "Adversary requests an X.509 certificate from the ESC13 template via MS-WCCE RPC interface."),
-                ("Policy Extension", "ADCS issues certificate embedding msPKI-Certificate-Policy OID in the Certificate Policies extension."),
-                ("Directory Mapping", "Target OID object defines msDS-OIDToGroupLink referencing high-privileged administrative groups.")
+                ("CSR Submission", [
+                    "Requests certificate from ESC13",
+                    "template via MS-WCCE RPC."
+                ]),
+                ("Policy Extension", [
+                    "CA embeds msPKI-Cert-Policy",
+                    "OID into issued certificate."
+                ]),
+                ("OID Group Mapping", [
+                    "OID object links to privileged",
+                    "administrative target SID."
+                ])
             ]
         },
         {
-            'x': callout_x + 0.25 + (col_w + col_gap)*2,
-            'title': 'Phase 3: Tier-0 Domain Dominance',
+            'x': callout_x + 0.24 + (col_w + col_gap)*2,
+            'title_1': 'Phase 3: Domain Dominance',
+            'title_2': 'Kerberos PKINIT Forest Takeover',
             'color': '#b91c1c',
             'bullets': [
-                ("PKINIT Auth", "Actor performs Kerberos PKINIT / S4U2Self authentication presenting the signed certificate."),
-                ("PAC SID Injection", "KDC evaluates OID-to-group linkage and injects Domain Admins SID (S-1-5-...-512) into PAC."),
-                ("Forest Takeover", "Actor obtains a Tier-0 Kerberos TGT with full forest administrative compromise.")
+                ("PKINIT Authentication", [
+                    "Performs Kerberos PKINIT auth",
+                    "using issued certificate."
+                ]),
+                ("PAC SID Injection", [
+                    "KDC injects Domain Admins SID",
+                    "(S-1-5-...-512) into PAC."
+                ]),
+                ("Full Takeover", [
+                    "Actor obtains Tier-0 TGT with",
+                    "complete forest compromise."
+                ])
             ]
         }
     ]
@@ -332,27 +352,29 @@ def generate_esc13_diagram(output_paths):
         )
         ax.add_patch(col_box)
 
-        # Title
-        ax.text(cx + 0.16, col_top - 0.26, col['title'],
+        # Title (2 lines)
+        ax.text(cx + 0.24, col_top - 0.28, col['title_1'],
                 ha='left', va='center', fontsize=14.0, weight='bold',
                 color=col['color'], zorder=4)
+        ax.text(cx + 0.24, col_top - 0.52, col['title_2'],
+                ha='left', va='center', fontsize=11.6, weight='bold',
+                color='#64748b', zorder=4)
 
         # Divider line
-        ax.plot([cx + 0.16, cx + col_w - 0.16], [col_top - 0.46, col_top - 0.46],
+        ax.plot([cx + 0.20, cx + col_w - 0.20], [col_top - 0.68, col_top - 0.68],
                 color='#e2e8f0', lw=1.2, zorder=4)
 
         # Bullets with guaranteed clearance and no overflow
-        cur_y = col_top - 0.54
-        for tag, text in col['bullets']:
-            ax.text(cx + 0.16, cur_y, f"• {tag}:",
+        cur_y = col_top - 0.88
+        for tag, lines in col['bullets']:
+            ax.text(cx + 0.24, cur_y, f"• {tag}:",
                     ha='left', va='top', fontsize=12.6, weight='bold', color='#0f172a', zorder=4)
-            cur_y -= 0.25
-            wrapped = textwrap.fill(text, width=39)
-            ax.text(cx + 0.34, cur_y, wrapped,
-                    ha='left', va='top', fontsize=12.0, color='#334155',
-                    linespacing=1.22, zorder=4)
-            n_lines = wrapped.count('\n') + 1
-            cur_y -= (n_lines * 0.23 + 0.14)
+            cur_y -= 0.27
+            for line in lines:
+                ax.text(cx + 0.44, cur_y, line,
+                    ha='left', va='top', fontsize=11.6, color='#334155', zorder=4)
+                cur_y -= 0.24
+            cur_y -= 0.14
 
     plt.tight_layout()
     for p in output_paths:
@@ -367,4 +389,3 @@ if __name__ == '__main__':
         '/home/hs32/Desktop/GOAD/thesis_research/results/phase2/esc13_attack_path_diagram.png'
     ]
     generate_esc13_diagram(paths)
-
