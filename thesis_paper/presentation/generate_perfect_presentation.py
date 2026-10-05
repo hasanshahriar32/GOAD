@@ -19,7 +19,7 @@ OLD_PPTX = os.path.join(WORKSPACE, "presentation/old.pptx")
 OUTPUT_PPTX = os.path.join(WORKSPACE, "presentation/certgraph_thesis_defense.pptx")
 OUTPUT_PPTX_CONV = os.path.join(WORKSPACE, "certgraph_thesis_defense.pptx")
 THEME_DIR = os.path.join(WORKSPACE, "presentation/theme")
-FIGURES_DIR = os.path.join(WORKSPACE, "figures")
+FIGURES_DIR = os.path.join(WORKSPACE, "presentation/figures_presentation")
 
 # Assets
 BG_TEXTURE = os.path.join(THEME_DIR, "bg_landscape.jpg")
