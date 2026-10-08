@@ -109,7 +109,10 @@ def add_bullets(tf, items, font_size=21, space_after=10, bold_prefix=True):
     """Helper to populate bullet points into a text frame with clean styling."""
     tf.word_wrap = True
     for i, item in enumerate(items):
-        p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+        if i == 0 and len(tf.paragraphs) == 1 and not tf.paragraphs[0].text.strip():
+            p = tf.paragraphs[0]
+        else:
+            p = tf.add_paragraph()
         p.space_after = Pt(space_after)
         
         # Check if item has a bold lead-in prefix (e.g. "Phase 1: Description")
@@ -169,8 +172,15 @@ def build_presentation():
     for sh in s1.shapes:
         if sh.has_text_frame:
             t = sh.text_frame.text.strip()
-            if "DECENTRALIZED PRIVACY-PRESERVING" in t or "CERTGRAPH:" in t:
-                sh.text_frame.text = "CERTGRAPH: HETEROGENEOUS GRAPH ATTENTION NETWORKS FOR ACTIVE DIRECTORY CERTIFICATE SERVICES VULNERABILITY DETECTION AND AUTONOMOUS DEFENSE"
+            if "BLOCKCHAIN" in t.upper() or "FEDERATED" in t.upper() or "DECENTRALIZED" in t.upper() or "CERTGRAPH" in t.upper() or "HISTOPATHOLOGICAL" in t.upper():
+                sh.top = Inches(1.05)
+                sh.height = Inches(2.30)
+                sh.text_frame.word_wrap = True
+                sh.text_frame.text = (
+                    "CertGraph: Heterogeneous Graph Attention Networks\n"
+                    "for Active Directory Certificate Services Vulnerability\n"
+                    "Detection and Autonomous Defense"
+                )
                 for p in sh.text_frame.paragraphs:
                     p.alignment = PP_ALIGN.CENTER
                     p.font.name = FONT_FAMILY
@@ -229,18 +239,18 @@ def build_presentation():
     tb_prob = s2.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(7.8), Inches(6.4))
     tf_prob = tb_prob.text_frame
     p_lead = tf_prob.paragraphs[0]
-    p_lead.text = "Active Directory Certificate Services (ADCS) manages enterprise PKI in 90%+ Fortune 500 networks, but multi-hop permission misconfigurations enable unprivileged attackers to compromise entire domains."
+    p_lead.text = "Active Directory Certificate Services (ADCS) manages enterprise PKI in 90%+ Fortune 500 networks. However, exploitability requires both misconfiguration and effective access — vulnerabilities exist as multi-hop authorization paths."
     p_lead.font.name = FONT_FAMILY
-    p_lead.font.size = Pt(24)
+    p_lead.font.size = Pt(22)
     p_lead.font.bold = True
     p_lead.font.color.rgb = BLACK
     p_lead.space_after = Pt(14)
     
     add_bullets(tf_prob, [
-        "• Complex privilege escalation chains spanning 4 to 8 hops (ESC1–ESC13).",
-        "• Benign certificate templates weaponized via SAN / UPN spoofing.",
-        "• Catastrophic Domain Controller compromise granting instant DCSync replication."
-    ], font_size=22, space_after=12, bold_prefix=False)
+        "• Multi-Hop Escalation Chains: Relational permission graphs spanning 4 to 8 hops (ESC1–ESC13).",
+        "• Weaponized Identity Spoofing: Unprivileged accounts abuse Subject Alternative Names (SAN / UPN).",
+        "• Forest-Wide Domination: DCSync replication grants immediate Domain Controller compromise."
+    ], font_size=21, space_after=12, bold_prefix=True)
     
     # Right Column - The Solution & Research Gap
     create_badge(s2, Inches(10.2), Inches(2.4), Inches(8.5), Inches(0.65), "The Solution", os.path.join(THEME_DIR, "image9.png"))
@@ -369,9 +379,9 @@ def build_presentation():
     tb_sota_bullets = s4.shapes.add_textbox(Inches(1.3), Inches(7.4), Inches(8.5), Inches(2.2))
     tf_sb = tb_sota_bullets.text_frame
     add_bullets(tf_sb, [
-        "• Certipy Rule Engine: 0.7162 Macro-F1 (fails zero-shot on unseen paths).",
-        "• BloodHound Traversal: 0.8621 Macro-F1 (suffers severe combinatorial latency).",
-        "• CertGraph (Ours): 0.9986 Macro-F1 (+28.24% improvement, p < 1.31e-6)."
+        "• Certipy Rule Engine: 0.7791 Macro-F1 (fails zero-shot on unseen paths).",
+        "• Symbolic BFS Traversal: 0.9082 Macro-F1 (suffers severe combinatorial latency).",
+        "• CertGraph (Ours): 0.9986 Macro-F1 (+28.24% improvement over heuristic baselines)."
     ], font_size=20, space_after=8, bold_prefix=True)
     
     # Right Column: Research Gap & Innovations
@@ -665,7 +675,7 @@ def build_presentation():
     # Callout text below table
     tb_sig = s10.shapes.add_textbox(Inches(1.3), Inches(7.8), Inches(9.2), Inches(1.8))
     p_sig = tb_sig.text_frame.paragraphs[0]
-    p_sig.text = "Significance: CertGraph outperforms rule-based tools by +28.24% (p < 1.31e-6) and achieves 100% Zero-Shot F1 across unseen enterprise topologies."
+    p_sig.text = "Significance: CertGraph achieves 0.9986 Macro-F1 across 700 topologies and 0.9941 on imbalanced 96% Safe templates (PR-AUC: 0.9982), outperforming rule heuristics by +28.24% (p < 1.31e-6)."
     p_sig.font.name = FONT_FAMILY
     p_sig.font.size = Pt(21)
     p_sig.font.bold = True
@@ -739,17 +749,17 @@ def build_presentation():
     tb_sc = s12.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.2), Inches(2.3))
     tf_sc = tb_sc.text_frame
     add_bullets(tf_sc, [
-        "• Adversarial Hard Negatives: Templates with identical ESC1 attributes, but disabled enrollment flags or disconnected ACLs.",
-        "• Critical Vulnerability: Pure Neural GNN accuracy drops to only 1.59%! The network is tricked by local syntactic similarity."
+        "• Adversarial Hard Negatives: Dangerous template flags paired with admin-only DACLs (ground-truth Safe).",
+        "• Neural Shortcut Collapse: Pure GNN accuracy drops to 1.59% (1/63)! The network is tricked by local syntactic similarity."
     ], font_size=20, space_after=10, bold_prefix=True)
     
     create_badge(s12, Inches(1.3), Inches(5.6), Inches(8.2), Inches(0.65), "Two-Tier Neuro-Symbolic Solution")
     tb_tt = s12.shapes.add_textbox(Inches(1.3), Inches(6.4), Inches(8.2), Inches(3.4))
     tf_tt = tb_tt.text_frame
     add_bullets(tf_tt, [
-        "• Tier 1 (Neural Filter): Fast GNN screening prunes 99.8% of benign nodes in milliseconds.",
+        "• Tier 1 (Neural Filter): Fast GNN screening prunes 99.8% of benign candidates in milliseconds.",
         "• Tier 2 (Symbolic Engine): Formal BFS validator verifies cryptographic reachability on candidate subgraphs.",
-        "• Outcome: 99.91% verified accuracy with 0% false positive escape!"
+        "• Outcome: 99.91% verified accuracy, 0% false alarm escape, and 128 ms latency at threshold 0.50."
     ], font_size=20, space_after=10, bold_prefix=True)
     
     # Right Column: Pipeline Diagram + Bar Chart
@@ -784,8 +794,8 @@ def build_presentation():
     tb_thm2 = s13.shapes.add_textbox(Inches(1.3), Inches(6.7), Inches(8.2), Inches(3.1))
     tf_thm2 = tb_thm2.text_frame
     add_bullets(tf_thm2, [
-        "• Theorem Statement:\nThe Minimum Perturbation Attack Interdiction (MPAI) problem in ADCS multigraphs is NP-hard (reduced from Directed Multiway Cut).",
-        "• Autonomous Remediation:\nSolved via PPO reinforcement learning, achieving 100% path interdiction with <0.5% operational disruption."
+        "• Theorem 2 Statement:\nThe Minimum Perturbation Attack Interdiction (MPAI) problem in ADCS multigraphs is NP-hard (reduced from Directed Multiway Cut).",
+        "• Budgeted Path Remediation:\nGreedy path-based interdiction severs 68.6% ± 11.7% of critical attack paths at budget B_ops = 24 with minimal operational disruption."
     ], font_size=20, space_after=10, bold_prefix=True)
     
     # Right Column: Scalability + PPO Dynamics Figures
