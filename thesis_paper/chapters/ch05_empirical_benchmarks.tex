@@ -81,25 +81,20 @@ Rule-Based (Certipy Heuristic) & $0.7791 \pm 0.0247$ & $0.8143 \pm 0.0205$ & $6.
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.68\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/confusion_matrix.png}
-        \caption{CertGraph 7-Class Confusion Matrix.}
-        \label{fig:conf_matrix}
-    \end{subfigure}
-    \vspace{0.25cm}
-    \begin{subfigure}[b]{0.86\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/gnn_baselines_comparison.png}
-        \caption{GNN Family Comparison.}
-        \label{fig:gnn_family}
-    \end{subfigure}
-    \caption{Empirical classification results: (a) Confusion matrix showing near-perfect diagonal alignment across 7 ESC classes; (b) Comparison of GNN architectures confirming the empirical superiority of heterogeneous modeling.}
-    \label{fig:empirical_eval}
+    \includegraphics[width=\textwidth]{figures/confusion_matrix.png}
+    \caption{CertGraph 7-Class Confusion Matrix showing near-perfect diagonal alignment across 7 evaluated ESC attack classes under 5-fold cross-validation.}
+    \label{fig:conf_matrix}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/gnn_baselines_comparison.png}
+    \caption{Macro-F1 and Accuracy baseline comparison across evaluated GNN architectures confirming the empirical superiority of heterogeneous graph modeling.}
+    \label{fig:gnn_family}
 \end{figure}
 
 \subsection{Per-Class Performance Dissection}
-Table~\ref{tab:per_class} reports the detailed per-class precision, recall, and F1 scores achieved by CertGraph across all 7 evaluation classes under 5-fold cross-validation:
+As illustrated in the confusion matrix of Figure~\ref{fig:conf_matrix}, CertGraph exhibits near-perfect diagonal concentration across all 7 evaluated attack vectors, while Figure~\ref{fig:gnn_family} demonstrates the performance advantage of heterogeneous modeling over homogeneous GNN alternatives. Table~\ref{tab:per_class} reports the detailed per-class precision, recall, and F1 scores achieved by CertGraph across all 7 evaluation classes under 5-fold cross-validation:
 
 \begin{table}[ht]
 \centering

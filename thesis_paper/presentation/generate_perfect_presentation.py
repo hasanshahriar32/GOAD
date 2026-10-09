@@ -13,6 +13,7 @@ from pptx.util import Inches, Pt
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.dml.color import RGBColor
+from pptx.oxml import parse_xml
 
 # Paths
 WORKSPACE = "/home/hs32/Desktop/GOAD/thesis_paper"
@@ -29,6 +30,7 @@ HSTU_LOGO = os.path.join(THEME_DIR, "image2.png")
 # Theme styling constants
 FONT_FAMILY = "Times New Roman"
 BLACK = RGBColor(0, 0, 0)
+WHITE = RGBColor(255, 255, 255)
 DARK_BLUE = RGBColor(16, 44, 87)
 GRAY_LINE = RGBColor(60, 60, 60)
 TABLE_HEADER_BG = RGBColor(230, 235, 245)
@@ -95,12 +97,12 @@ SPEAKER_NOTES = {
     8: (
         "Theorem 1: Formal feature-gradient preservation guarantee. By incorporating orthogonal residual skip projections "
         "with singular value sigma_min(W_skip) >= c > 0, the Jacobian satisfies ||dh_v^(L) / dx_v|| >= c^L > 0.\n\n"
-        "This mathematically proves the elimination of oversmoothing collapse (Dirichlet energy vanishing to 0) across 4 to 8 hop "
-        "privilege chains, ensuring initial template attributes remain discriminative.\n\n"
+        "This mathematically proves the elimination of oversmoothing collapse across 4 to 8 hop privilege chains, "
+        "ensuring initial template attributes remain discriminative.\n\n"
         "Primary source: supplied thesis.pdf, Thesis §3.5 and Appendix A.1."
     ),
     9: (
-        "Experimental Testbed: Evaluated on Game of Active Directory (GOAD), a realistic multi-forest enterprise lab with 5 Domain Controllers, "
+        "Experimental Testbed: Evaluated on Game of Active Directory (GOAD), a realistic multi-forest lab with 5 Domain Controllers, "
         "and ADSynth, generating 700 topologies (100 to 100,000 nodes).\n\n"
         "Evaluation Setup: Stratified 5-fold cross-validation with non-overlapping forest partitions and Nadeau-Bengio corrected paired tests. "
         "Dataset comprises 28,450 nodes and 142,890 multi-relational edges.\n\n"
@@ -153,31 +155,81 @@ SPEAKER_NOTES = {
 }
 
 def create_badge(slide, left, top, width, height, text, icon_path=None):
-    """Creates a rectangular badge with outline and optional icon, matching old.pptx."""
+    """Creates a compact rectangular badge with outline and optional icon, matching old.pptx."""
     shape = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
     shape.fill.background()
     shape.line.color.rgb = BLACK
     shape.line.width = Pt(1.5)
     
-    # Text
     tf = shape.text_frame
     tf.word_wrap = True
     tf.vertical_anchor = MSO_ANCHOR.MIDDLE
     p = tf.paragraphs[0]
     p.text = text
     p.font.name = FONT_FAMILY
-    p.font.size = Pt(22)
+    p.font.size = Pt(21)
     p.font.bold = True
     p.font.color.rgb = BLACK
     p.alignment = PP_ALIGN.CENTER
     
     if icon_path and os.path.exists(icon_path):
-        icon_size = height - Inches(0.16)
-        slide.shapes.add_picture(icon_path, left + Inches(0.12), top + Inches(0.08), width=icon_size, height=icon_size)
+        icon_size = height - Inches(0.18)
+        slide.shapes.add_picture(icon_path, left + Inches(0.12), top + Inches(0.09), width=icon_size, height=icon_size)
         p.alignment = PP_ALIGN.LEFT
-        tf.margin_left = icon_size + Inches(0.2)
+        tf.margin_left = icon_size + Inches(0.22)
         
     return shape
+
+def create_numbered_badge(slide, left, top, width, height, number_str, title_text):
+    """Creates a numbered badge box (solid black number square + text) matching old.pptx slide 13."""
+    # Outer box
+    outer = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+    outer.fill.background()
+    outer.line.color.rgb = BLACK
+    outer.line.width = Pt(1.5)
+    
+    # Square black box on left
+    sq_size = height
+    sq = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, sq_size, sq_size)
+    sq.fill.solid()
+    sq.fill.fore_color.rgb = BLACK
+    sq.line.color.rgb = BLACK
+    sq.line.width = Pt(1.5)
+    
+    # Text inside square
+    sq_tf = sq.text_frame
+    sq_tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    sq_p = sq_tf.paragraphs[0]
+    sq_p.text = str(number_str)
+    sq_p.font.name = FONT_FAMILY
+    sq_p.font.size = Pt(22)
+    sq_p.font.bold = True
+    sq_p.font.color.rgb = WHITE
+    sq_p.alignment = PP_ALIGN.CENTER
+    
+    # Label on right
+    tb = slide.shapes.add_textbox(left + sq_size + Inches(0.15), top, width - sq_size - Inches(0.2), height)
+    tb_tf = tb.text_frame
+    tb_tf.word_wrap = True
+    tb_tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    tp = tb_tf.paragraphs[0]
+    tp.text = title_text
+    tp.font.name = FONT_FAMILY
+    tp.font.size = Pt(22)
+    tp.font.bold = True
+    tp.font.color.rgb = BLACK
+    
+    return outer
+
+def set_cell_borders(cell, color="000000", width=25400):
+    """Adds formal black cell borders matching old.pptx slide 11."""
+    tcPr = cell._tc.get_or_add_tcPr()
+    for border in ['lnL', 'lnR', 'lnT', 'lnB']:
+        ln = parse_xml(
+            f'<a:{border} xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" '
+            f'w="{width}" cmpd="sng"><a:solidFill><a:srgbClr val="{color}"/></a:solidFill></a:{border}>'
+        )
+        tcPr.append(ln)
 
 def add_header_and_chrome(slide, page_num, title_text):
     """Adds the standard top-left HSTU logo, bold title, page number, and footer."""
@@ -222,8 +274,8 @@ def clear_slide_content(slide):
     for sh in shapes_to_remove:
         slide.shapes._spTree.remove(sh._element)
 
-def add_bullets(tf, items, font_size=21, space_after=10, bold_prefix=True):
-    """Helper to populate bullet points into a text frame with clean styling."""
+def add_bullets(tf, items, font_size=20, space_after=9, bold_prefix=True):
+    """Helper to populate formal numbered or labeled points with clean typography."""
     tf.word_wrap = True
     for i, item in enumerate(items):
         if i == 0 and len(tf.paragraphs) == 1 and not tf.paragraphs[0].text.strip():
@@ -232,7 +284,7 @@ def add_bullets(tf, items, font_size=21, space_after=10, bold_prefix=True):
             p = tf.add_paragraph()
         p.space_after = Pt(space_after)
         
-        # Check if item has a bold lead-in prefix (e.g. "Phase 1: Description")
+        # Check if item has a bold lead-in prefix (e.g. "Phase 1: Description" or "1. AD Graph Schema: ")
         if bold_prefix and ":" in item:
             prefix, rest = item.split(":", 1)
             r1 = p.add_run()
@@ -282,8 +334,6 @@ def build_presentation():
     prs = Presentation(OLD_PPTX)
     
     # Ensure presentation has 15 slides:
-    # old.pptx has 14 slides (0..13). Slide 13 is Thank You.
-    # Add 15th slide and insert it right before Thank You slide.
     if len(prs.slides) == 14:
         new_slide = prs.slides.add_slide(prs.slide_layouts[6])
         prs.slides._sldIdLst.insert(13, prs.slides._sldIdLst[14])
@@ -360,125 +410,115 @@ def build_presentation():
     add_header_and_chrome(s2, 2, "PROBLEM STATEMENT & SOLUTION")
     
     # Left Column - The Problem
-    create_badge(s2, Inches(1.3), Inches(2.4), Inches(7.8), Inches(0.65), "The Problem", os.path.join(THEME_DIR, "image7.png"))
-    tb_prob = s2.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(7.8), Inches(6.4))
+    create_badge(s2, Inches(1.3), Inches(2.3), Inches(4.8), Inches(0.65), "The Problem", os.path.join(THEME_DIR, "image7.png"))
+    tb_prob = s2.shapes.add_textbox(Inches(1.3), Inches(3.1), Inches(8.0), Inches(6.5))
     tf_prob = tb_prob.text_frame
     p_lead = tf_prob.paragraphs[0]
-    p_lead.text = "Active Directory Certificate Services (ADCS) manages enterprise PKI in 90%+ Fortune 500 networks. However, exploitability requires both misconfiguration and effective access — vulnerabilities exist as multi-hop authorization paths."
+    p_lead.text = "Active Directory Certificate Services (ADCS) manages PKI in over 90% of Fortune 500 enterprises. Attackers exploit multi-hop permission chains spanning 4–8 relational hops to escalate from standard users to full Domain Administrator."
     p_lead.font.name = FONT_FAMILY
-    p_lead.font.size = Pt(22)
+    p_lead.font.size = Pt(21)
     p_lead.font.bold = True
     p_lead.font.color.rgb = BLACK
     p_lead.space_after = Pt(14)
     
     add_bullets(tf_prob, [
-        "• Multi-Hop Escalation Chains: Relational permission graphs spanning 4 to 8 hops (ESC1–ESC13).",
-        "• Weaponized Identity Spoofing: Unprivileged accounts abuse Subject Alternative Names (SAN / UPN).",
-        "• Forest-Wide Domination: DCSync replication grants immediate Domain Controller compromise."
-    ], font_size=21, space_after=12, bold_prefix=True)
+        "1. Deep Escalation Chains: Privilege escalation paths span 4–8 relational hops across users, groups, templates, and CAs (ESC1–ESC13).",
+        "2. Identity Spoofing Risk: Low-privilege accounts forge administrative identities via Subject Alternative Name (SAN) abuse.",
+        "3. Enterprise Takeover: A single valid chain enables full Domain Controller replication (DCSync) and credential theft."
+    ], font_size=20, space_after=12, bold_prefix=True)
     
     # Right Column - The Solution & Research Gap
-    create_badge(s2, Inches(10.2), Inches(2.4), Inches(8.5), Inches(0.65), "The Solution", os.path.join(THEME_DIR, "image9.png"))
-    tb_sol = s2.shapes.add_textbox(Inches(10.2), Inches(3.2), Inches(8.5), Inches(2.6))
+    create_badge(s2, Inches(10.2), Inches(2.3), Inches(4.8), Inches(0.65), "Our Solution", os.path.join(THEME_DIR, "image9.png"))
+    tb_sol = s2.shapes.add_textbox(Inches(10.2), Inches(3.1), Inches(8.5), Inches(2.5))
     tf_sol = tb_sol.text_frame
     add_bullets(tf_sol, [
-        "1. Heterogeneous Graph Attention Networks (HAN) modeling multi-relational enterprise topologies.",
-        "2. Orthogonal residual skip connections preventing representation oversmoothing over deep paths.",
-        "3. Neuro-Symbolic synthesis guaranteeing 100% formal mathematical soundness."
-    ], font_size=21, space_after=10, bold_prefix=False)
+        "1. Graph Neural Modeling: We formalized AD as a typed multigraph and built the first GNN framework for ADCS vulnerability detection.",
+        "2. Deep-Path Retention: We designed orthogonal residual skip connections that preserve vulnerability signals across deep 4–8 hop chains.",
+        "3. Neuro-Symbolic Soundness: We coupled neural screening with symbolic verification to deliver zero false negatives with 128 ms latency."
+    ], font_size=20, space_after=8, bold_prefix=True)
     
-    create_badge(s2, Inches(10.2), Inches(6.0), Inches(8.5), Inches(0.65), "Research Gap", os.path.join(THEME_DIR, "image5.png"))
-    tb_gap = s2.shapes.add_textbox(Inches(10.2), Inches(6.8), Inches(8.5), Inches(2.8))
+    create_badge(s2, Inches(10.2), Inches(6.15), Inches(4.8), Inches(0.65), "Research Gap", os.path.join(THEME_DIR, "image5.png"))
+    tb_gap = s2.shapes.add_textbox(Inches(10.2), Inches(6.95), Inches(8.5), Inches(2.8))
     tf_gap = tb_gap.text_frame
     add_bullets(tf_gap, [
-        "1. Rule engines (Certipy) fail zero-shot on novel composite escalation paths.",
-        "2. Graph search (BloodHound) combinatorial state explosion on 100k+ enterprise nodes.",
-        "3. Complete lack of autonomous, disruption-bounded automated remediation mechanisms."
-    ], font_size=21, space_after=10, bold_prefix=False)
+        "1. Rule-Based Fragility: Signature tools (Certipy) rely on static checks, missing novel composite escalation paths.",
+        "2. Scalability Bottleneck: Graph search tools (BloodHound) suffer state explosion on large enterprise topologies exceeding 100k nodes.",
+        "3. Lack of Autonomous Defense: No existing framework provides automated, disruption-bounded remediation to sever discovered attack paths."
+    ], font_size=20, space_after=8, bold_prefix=True)
     apply_speaker_notes(s2, 2)
     print("Slide 2 configured.")
 
     # =========================================================================
-    # SLIDE 3: OBJECTIVES (index 2)
+    # SLIDE 3: OBJECTIVES (index 2) - Exactly matching old.pptx slide 3 style
     # =========================================================================
     s3 = prs.slides[2]
     clear_slide_content(s3)
     add_header_and_chrome(s3, 3, "OBJECTIVES")
     
-    # Top primary goal statement
-    tb_goal = s3.shapes.add_textbox(Inches(1.3), Inches(2.3), Inches(17.4), Inches(1.2))
-    tf_goal = tb_goal.text_frame
-    p_g = tf_goal.paragraphs[0]
-    p_g.text = "The primary goal is to resolve the conflict between combinatorial scalability and relational security in enterprise Active Directory by developing a mathematically bounded, real-time Heterogeneous Graph Neural Network framework."
-    p_g.font.name = FONT_FAMILY
-    p_g.font.size = Pt(24)
-    p_g.font.bold = True
-    p_g.font.color.rgb = BLACK
+    # 5 Objectives Top Visual Row (Circled numbers + Icons + Short Titles)
+    col_w = Inches(3.2)
+    col_gap = Inches(0.35)
     
-    # 5 Objective Cards
-    card_w = Inches(3.25)
-    gap = Inches(0.29)
-    card_top = Inches(3.7)
-    card_h = Inches(5.9)
-    
-    objectives_data = [
-        ("1", os.path.join(THEME_DIR, "image11.png"), "Relational Graph Modeling", 
-         "Model 5 entity types and 8 forward relations (16 bidirectional) spanning users, computers, groups, templates, and CAs with transitive closure."),
-        ("2", os.path.join(THEME_DIR, "image9.png"), "Gradient Preservation", 
-         "Mathematically prove Theorem 1 to eliminate representation oversmoothing across deep privilege chains."),
-        ("3", os.path.join(THEME_DIR, "image15.png"), "Zero-Shot Enterprise Transfer", 
-         "Achieve near-perfect generalization across 700 unseen synthetic and realistic forest topologies."),
-        ("4", os.path.join(THEME_DIR, "image22.png"), "Neuro-Symbolic Synthesis", 
-         "Eliminate pure neural shortcut collapse on adversarially crafted hard negatives (disabled enrollment flags)."),
-        ("5", os.path.join(THEME_DIR, "image26.png"), "Autonomous Mitigation", 
-         "Formulate Minimum Perturbation Attack Interdiction (MPAI), prove NP-hardness (Theorem 2), and deploy budgeted path remediation.")
+    top_objectives = [
+        ("①", os.path.join(THEME_DIR, "image11.png"), "Graph-Based AD Modeling"),
+        ("②", os.path.join(THEME_DIR, "image9.png"), "Deep-Path Retention"),
+        ("③", os.path.join(THEME_DIR, "image15.png"), "Topology Generalization"),
+        ("④", os.path.join(THEME_DIR, "image22.png"), "Neuro-Symbolic Verification"),
+        ("⑤", os.path.join(THEME_DIR, "image26.png"), "Automated Remediation")
     ]
     
-    for idx, (num, icon, heading, desc) in enumerate(objectives_data):
-        c_left = Inches(1.3) + idx * (card_w + gap)
+    for idx, (num_sym, icon, short_title) in enumerate(top_objectives):
+        c_left = Inches(1.3) + idx * (col_w + col_gap)
         
-        # Border box
-        box = s3.shapes.add_shape(MSO_SHAPE.RECTANGLE, c_left, card_top, card_w, card_h)
-        box.fill.background()
-        box.line.color.rgb = BLACK
-        box.line.width = Pt(1.5)
-        
-        # Number badge inside box at top
-        num_tb = s3.shapes.add_textbox(c_left, card_top + Inches(0.15), card_w, Inches(0.45))
-        np = num_tb.text_frame.paragraphs[0]
-        np.text = f"({num})"
+        # Circled Number Text
+        tb_num = s3.shapes.add_textbox(c_left, Inches(2.15), col_w, Inches(0.55))
+        np = tb_num.text_frame.paragraphs[0]
+        np.text = num_sym
         np.font.name = FONT_FAMILY
-        np.font.size = Pt(26)
+        np.font.size = Pt(28)
         np.font.bold = True
         np.alignment = PP_ALIGN.CENTER
         np.font.color.rgb = BLACK
         
-        # Icon
+        # Centered Icon
         if os.path.exists(icon):
-            s3.shapes.add_picture(icon, c_left + (card_w - Inches(1.1))/2, card_top + Inches(0.7), width=Inches(1.1), height=Inches(1.1))
+            icon_size = Inches(1.05)
+            icon_left = c_left + (col_w - icon_size) / 2
+            s3.shapes.add_picture(icon, icon_left, Inches(2.75), width=icon_size, height=icon_size)
             
-        # Heading
-        head_tb = s3.shapes.add_textbox(c_left + Inches(0.15), card_top + Inches(2.0), card_w - Inches(0.3), Inches(0.9))
-        head_tf = head_tb.text_frame
-        head_tf.word_wrap = True
-        hp = head_tf.paragraphs[0]
-        hp.text = heading
-        hp.font.name = FONT_FAMILY
-        hp.font.size = Pt(20)
-        hp.font.bold = True
-        hp.alignment = PP_ALIGN.CENTER
-        hp.font.color.rgb = BLACK
+        # Short Title Below Icon
+        tb_st = s3.shapes.add_textbox(c_left, Inches(3.90), col_w, Inches(0.70))
+        st_tf = tb_st.text_frame
+        st_tf.word_wrap = True
+        stp = st_tf.paragraphs[0]
+        stp.text = short_title
+        stp.font.name = FONT_FAMILY
+        stp.font.size = Pt(19)
+        stp.font.bold = True
+        stp.alignment = PP_ALIGN.CENTER
+        stp.font.color.rgb = BLACK
         
-        # Description
-        desc_tb = s3.shapes.add_textbox(c_left + Inches(0.15), card_top + Inches(3.0), card_w - Inches(0.3), Inches(2.7))
-        desc_tf = desc_tb.text_frame
-        desc_tf.word_wrap = True
-        dp = desc_tf.paragraphs[0]
-        dp.text = desc
-        dp.font.name = FONT_FAMILY
-        dp.font.size = Pt(19)
-        dp.alignment = PP_ALIGN.LEFT
-        dp.font.color.rgb = BLACK
+    # Primary Objective Statement
+    tb_goal = s3.shapes.add_textbox(Inches(1.3), Inches(4.80), Inches(17.4), Inches(1.15))
+    tf_goal = tb_goal.text_frame
+    tf_goal.word_wrap = True
+    p_g = tf_goal.paragraphs[0]
+    p_g.text = "Primary Objective: To develop a real-time graph AI and autonomous remediation framework for Active Directory Certificate Services (ADCS) that scales to enterprise networks without sacrificing detection accuracy."
+    p_g.font.name = FONT_FAMILY
+    p_g.font.size = Pt(23)
+    p_g.font.bold = True
+    p_g.font.color.rgb = BLACK
+    
+    # 5 Numbered Detailed Objectives
+    tb_obj_list = s3.shapes.add_textbox(Inches(1.3), Inches(6.05), Inches(17.4), Inches(3.7))
+    tf_ol = tb_obj_list.text_frame
+    add_bullets(tf_ol, [
+        "1. Heterogeneous Graph Formulation: Represent Active Directory entities, PKI relationships, and transitive group closures as a typed multigraph.",
+        "2. Deep Vulnerability Retention: Engineer a Relational GAT architecture with mathematically proven skip connections that retain features across 4–8 hops.",
+        "3. Zero-Shot Topology Transfer: Demonstrate robust generalization across 700 unseen enterprise topologies without retraining.",
+        "4. Two-Tier Verification Engine: Eliminate neural shortcut false positives by coupling fast GNN screening with formal symbolic reachability checks.",
+        "5. Budget-Constrained Remediation: Develop an automated interdiction algorithm to sever maximum attack paths under enterprise disruption bounds."
+    ], font_size=20, space_after=8, bold_prefix=True)
     apply_speaker_notes(s3, 3)
     print("Slide 3 configured.")
 
@@ -506,29 +546,29 @@ def build_presentation():
     tb_sota_bullets = s4.shapes.add_textbox(Inches(1.3), Inches(7.4), Inches(8.5), Inches(2.2))
     tf_sb = tb_sota_bullets.text_frame
     add_bullets(tf_sb, [
-        "• Certipy Heuristic Baseline: 0.7791 Macro-F1 (fails zero-shot on novel composite paths).",
-        "• Symbolic BFS Traversal: 0.9082 Macro-F1 (combinatorial latency explosion on large graphs).",
-        "• CertGraph (Ours): 0.9986 Macro-F1 (+28.2% relative gain over heuristics, p = 3.12e-4)."
+        "1. Heuristic Baseline (Certipy): 77.91% Macro-F1 — fails on novel composite escalation paths.",
+        "2. Symbolic Baseline (BFS): 90.82% Macro-F1 — accurate but suffers exponential search latency.",
+        "3. CertGraph (Our System): 99.86% Macro-F1 — +28.2% relative gain over heuristics (p = 3.12e-4)."
     ], font_size=20, space_after=8, bold_prefix=True)
     
-    # Right Column: Research Gap & Innovations
-    create_badge(s4, Inches(10.3), Inches(2.4), Inches(8.4), Inches(0.65), "Research Gap", os.path.join(THEME_DIR, "image7.png"))
-    tb_rg = s4.shapes.add_textbox(Inches(10.3), Inches(3.2), Inches(8.4), Inches(2.0))
+    # Right Column: Existing Limitations & Our Innovations
+    create_badge(s4, Inches(10.3), Inches(2.4), Inches(5.2), Inches(0.65), "Existing Limitations", os.path.join(THEME_DIR, "image7.png"))
+    tb_rg = s4.shapes.add_textbox(Inches(10.3), Inches(3.2), Inches(8.4), Inches(1.9))
     tf_rg = tb_rg.text_frame
     p_rg = tf_rg.paragraphs[0]
-    p_rg.text = "Existing enterprise tools rely on brittle syntactic regexes (Certipy) or unweighted graph traversal (BloodHound). They fail to identify multi-hop composite vulnerabilities and suffer state explosion on graphs with >100,000 entities."
+    p_rg.text = "Current industry tools rely on hardcoded signature checks (Certipy) or unguided shortest-path traversals (BloodHound). They cannot generalize to composite multi-hop vulnerabilities and fail to scale beyond 100,000 entities."
     p_rg.font.name = FONT_FAMILY
     p_rg.font.size = Pt(21)
     p_rg.font.color.rgb = BLACK
     
-    create_badge(s4, Inches(10.3), Inches(5.4), Inches(8.4), Inches(0.65), "Proposed Innovations", os.path.join(THEME_DIR, "image9.png"))
+    create_badge(s4, Inches(10.3), Inches(5.4), Inches(5.2), Inches(0.65), "Our Key Innovations", os.path.join(THEME_DIR, "image9.png"))
     tb_pi = s4.shapes.add_textbox(Inches(10.3), Inches(6.2), Inches(8.4), Inches(3.4))
     tf_pi = tb_pi.text_frame
     add_bullets(tf_pi, [
-        "• Heterogeneous Relational GAT: Multi-relational attention aggregation capturing subtle structural dependencies.",
-        "• Residual Skip Projections: Preserves gradient bounds ||dh_v / dx_v|| >= sigma_min(W_skip) > 0 to eliminate oversmoothing.",
-        "• Sub-Second Scalability: 343 ms inference on 10,000 nodes (12.4x faster than Dijkstra shortest-path)."
-    ], font_size=21, space_after=10, bold_prefix=True)
+        "1. Learned Relational Attention: Dynamically weights security-critical edges (DACLs, enrollment rights) over background relations.",
+        "2. Proven Gradient Retention: Guarantees feature persistence across deep permission paths via residual skip projections.",
+        "3. Sub-Second Real-Time Auditing: Completes enterprise-scale inference in 343 ms (12.4x faster than graph search)."
+    ], font_size=20, space_after=10, bold_prefix=True)
     apply_speaker_notes(s4, 4)
     print("Slide 4 configured.")
 
@@ -540,23 +580,23 @@ def build_presentation():
     add_header_and_chrome(s5, 5, "METHODOLOGICAL WORKFLOW")
     
     # Left Column: Research Framework & Phases
-    create_badge(s5, Inches(1.3), Inches(2.4), Inches(8.2), Inches(0.65), "Core Methodological Framework")
-    tb_mf = s5.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.2), Inches(1.6))
+    create_badge(s5, Inches(1.3), Inches(2.4), Inches(5.2), Inches(0.65), "Methodology Overview", os.path.join(THEME_DIR, "image11.png"))
+    tb_mf = s5.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.2), Inches(1.4))
     p_mf = tb_mf.text_frame.paragraphs[0]
-    p_mf.text = "Integrating Heterogeneous Graph Attention Networks with formal symbolic verification to enable real-time, zero-shot ADCS vulnerability detection."
+    p_mf.text = "We engineered an end-to-end framework combining heterogeneous graph neural screening with symbolic reachability verification and automated policy remediation."
     p_mf.font.name = FONT_FAMILY
     p_mf.font.size = Pt(21)
     p_mf.font.bold = True
     p_mf.font.color.rgb = BLACK
     
-    create_badge(s5, Inches(1.3), Inches(4.9), Inches(8.2), Inches(0.65), "3-Phase Execution Pipeline")
-    tb_phases = s5.shapes.add_textbox(Inches(1.3), Inches(5.7), Inches(8.2), Inches(4.0))
+    create_badge(s5, Inches(1.3), Inches(4.8), Inches(5.2), Inches(0.65), "3-Phase Execution Pipeline", os.path.join(THEME_DIR, "image15.png"))
+    tb_phases = s5.shapes.add_textbox(Inches(1.3), Inches(5.6), Inches(8.2), Inches(4.2))
     tf_ph = tb_phases.text_frame
     add_bullets(tf_ph, [
-        "• Phase 1: Multigraph Construction — Ingests LDAP, RPC, and BloodHound JSON into heterogeneous multigraph G = (V, E, tau_V, phi_E) with 5 node types and 8 relations (16 bidirectional). Transitive closure expands nested groups.",
-        "• Phase 2: Relational GNN Embedding — Type-specific linear projection, relational multi-head attention, and residual skip connections.",
-        "• Phase 3: Neuro-Symbolic Verification & Action — Fast GNN screening followed by symbolic soundness check and LDAP actuation."
-    ], font_size=21, space_after=12, bold_prefix=True)
+        "Phase 1 — Ingestion & Graph Construction: Ingests AD directory objects, extracts 5 entity classes and 8 relation types, and expands nested group memberships via transitive closure.",
+        "Phase 2 — Relational GNN Classification: Projects heterogeneous features into a 64-dim space and applies 2 Relational GAT layers to classify templates into 7 escalation categories.",
+        "Phase 3 — Hybrid Verification & Remediation: Filters suspect templates through a symbolic engine to eliminate false alarms, then outputs optimal ACL remediation actions."
+    ], font_size=20, space_after=12, bold_prefix=True)
     
     # Right Column: Metagraph Schema Figure
     fig_schema = os.path.join(FIGURES_DIR, "adcs_attack_graph_schema.png")
@@ -581,14 +621,14 @@ def build_presentation():
     add_header_and_chrome(s6, 6, "ADCS ATTACK MECHANICS: ESC13 CASE STUDY")
     
     # Left Column: Attack Progression & Insight
-    create_badge(s6, Inches(1.3), Inches(2.4), Inches(8.2), Inches(0.65), "Attack Chain Progression")
+    create_badge(s6, Inches(1.3), Inches(2.4), Inches(5.2), Inches(0.65), "ESC13 Attack Progression", os.path.join(THEME_DIR, "image7.png"))
     tb_att = s6.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.2), Inches(3.9))
     tf_att = tb_att.text_frame
     add_bullets(tf_att, [
-        "• Phase 1: Target Discovery — Attacker identifies certificate template with issuance policy OID linked to privileged administrative group.",
-        "• Phase 2: Enrollment Abuse — Low-privilege user enrolls and specifies Subject Alternative Name (SAN).",
-        "• Phase 3: PKINIT Exchange — Submits X.509 certificate to KDC via Kerberos PKINIT, obtaining high-privilege TGT.",
-        "• Phase 4: Domain Domination — DCSync replay grants immediate Domain Controller replication privileges."
+        "Step 1 — Target Discovery: Attacker discovers a certificate template linked to an issuance policy OID granting administrative rights.",
+        "Step 2 — Intermediate Enrollment: Low-privilege account enrolls via an intermediate security group with valid enrollment permissions.",
+        "Step 3 — PKINIT Authentication: The issued certificate is authenticated via Kerberos PKINIT, issuing a high-privilege Ticket Granting Ticket (TGT).",
+        "Step 4 — Enterprise Compromise: Attacker executes DCSync replication to extract all domain credentials."
     ], font_size=20, space_after=10, bold_prefix=True)
     
     # Callout Box
@@ -607,7 +647,7 @@ def build_presentation():
     p_co_head.space_after = Pt(6)
     
     p_co_body = tf_co.add_paragraph()
-    p_co_body.text = "The vulnerability exists solely as a multi-hop path closure across disparate objects. Every individual node and permission appears completely benign in isolation!"
+    p_co_body.text = "Vulnerabilities exist solely as multi-hop path closures across separate objects. Every permission appears benign in isolation. CertGraph captures these multi-hop relational chains that individual rule scanners miss."
     p_co_body.font.name = FONT_FAMILY
     p_co_body.font.size = Pt(20)
     p_co_body.font.color.rgb = BLACK
@@ -645,12 +685,12 @@ def build_presentation():
     card3_h = Inches(1.8)
     
     arch_cards = [
-        ("1. Input Multigraph & Projections", 
-         "5 entity types projected via type-specific weights W_tau into unified 64-dim space. Preprocessed with transitive group nesting closure."),
-        ("2. Relational Hetero-GAT Layers", 
-         "4 attention heads per relation. Residual skip connection h_v <- h_v + W_skip h_v directly preserves input gradients across deep hops."),
-        ("3. Readout & Classification Head", 
-         "Template node readout followed by MLP classifier predicting 7 classes (Safe, ESC1, ESC2, ESC3, ESC4, ESC9, ESC13).")
+        ("1. Heterogeneous Projections", 
+         "5 entity node types projected into unified 64-dim space. Transitive group closures resolved during preprocessing."),
+        ("2. Relational Attention & Skips", 
+         "4 attention heads per relation with orthogonal residual skip connections to preserve features across deep hops."),
+        ("3. Readout & Classification", 
+         "Template embeddings passed to a 2-layer MLP classifier predicting Safe and 6 escalation classes (ESC1–ESC13).")
     ]
     
     for idx, (title, text) in enumerate(arch_cards):
@@ -686,24 +726,23 @@ def build_presentation():
     add_header_and_chrome(s8, 8, "THEORETICAL FOUNDATION: THEOREM 1")
     
     # Left Column: Formulation
-    create_badge(s8, Inches(1.3), Inches(2.4), Inches(8.3), Inches(0.65), "Relational Attention Formulation")
+    create_badge(s8, Inches(1.3), Inches(2.4), Inches(5.5), Inches(0.65), "The Deep-Path Challenge", os.path.join(THEME_DIR, "image7.png"))
     tb_form = s8.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.3), Inches(6.5))
     tf_form = tb_form.text_frame
     add_bullets(tf_form, [
-        "• Attention Weight Formulation:\n  alpha_ij^(r) = Softmax_j( LeakyReLU( a_r^T [W_tau(i) h_i || W_tau(j) h_j] ) )",
-        "• Layer Update with Residual Skip Connection:\n  h_i^(l+1) = sigma( sum_r sum_j alpha_ij^(r) W_r^(l) h_j^(l) + W_skip^(l) h_i^(l) )",
-        "• Training Objective & Optimization:\n  Weighted Cross-Entropy with L2 regularization, AdamW (lr=0.001, decay=1e-4, dropout=0.2, cosine schedule).",
-        "• Relational Context: Allows dynamic reweighting between benign organizational structure (MemberOf) and critical attack primitives (WriteDacl, Enroll)."
+        "1. Multi-Hop Privilege Paths: ADCS escalation chains span 4 to 8 relational hops across users, groups, templates, and CAs.",
+        "2. The Oversmoothing Bottleneck: In standard GNNs, repeated message passing causes node representations to converge, erasing localized template attributes.",
+        "3. Failure of Classical GNNs: Without architectural preservation, deep models collapse, confusing vulnerable certificate templates with benign configurations."
     ], font_size=20, space_after=14, bold_prefix=True)
     
-    # Right Column: Theorem 1
-    create_badge(s8, Inches(10.2), Inches(2.4), Inches(8.5), Inches(0.65), "Theorem 1: Gradient Preservation Guarantee")
+    # Right Column: Theorem 1 — What It Means
+    create_badge(s8, Inches(10.2), Inches(2.4), Inches(5.5), Inches(0.65), "Our Architecture & Theorem 1", os.path.join(THEME_DIR, "image9.png"))
     tb_thm = s8.shapes.add_textbox(Inches(10.2), Inches(3.2), Inches(8.5), Inches(6.5))
     tf_thm = tb_thm.text_frame
     add_bullets(tf_thm, [
-        "• Theorem Statement:\nLet G be a heterogeneous multigraph with L message passing layers. If each layer preserves an orthogonal residual skip projection W_skip^(l) with sigma_min(W_skip^(l)) >= c > 0, then the Jacobian satisfies:\n\n    || dh_v^(L) / dx_v || >= prod_{l=1}^L sigma_min(W_skip^(l)) >= c^L > 0",
-        "• Elimination of Oversmoothing Collapse:\nIn standard GNNs as layer depth L -> inf, the Dirichlet energy E(H^(L)) -> 0, causing all node representations to become indistinguishable.",
-        "• Formal Guarantee:\nTheorem 1 mathematically proves that CertGraph preserves distinct structural identities across 4 to 8 hop ADCS delegation chains!"
+        "1. Architectural Intervention: We engineered orthogonal residual skip connections that preserve each node's initial feature identity across all layers.",
+        "2. Mathematical Proof (Theorem 1): We proved that the gradient magnitude remains strictly positive across all layers (||dh_v^(L) / dx_v|| >= c^L > 0), eliminating feature collapse.",
+        "3. Concrete Significance: Mathematically guarantees that initial template configuration flags remain discriminative even over 8-hop delegation chains, verified by our 99.86% Macro-F1."
     ], font_size=20, space_after=14, bold_prefix=True)
     apply_speaker_notes(s8, 8)
     print("Slide 8 configured.")
@@ -716,22 +755,22 @@ def build_presentation():
     add_header_and_chrome(s9, 9, "EXPERIMENTAL TESTBED (GOAD & ADSYNTH)")
     
     # Left Column: Dual Environments & Composition
-    create_badge(s9, Inches(1.3), Inches(2.4), Inches(8.5), Inches(0.65), "Dual Experimental Environments")
-    tb_env = s9.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.5), Inches(2.6))
+    create_badge(s9, Inches(1.3), Inches(2.4), Inches(5.2), Inches(0.65), "Dual Evaluation Testbeds", os.path.join(THEME_DIR, "image11.png"))
+    tb_env = s9.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.5), Inches(2.4))
     tf_env = tb_env.text_frame
     add_bullets(tf_env, [
-        "• Game of Active Directory (GOAD): Multi-forest enterprise environment with 5 Domain Controllers, nested OUs, and real-world Kerberos/ADCS attack primitives.",
-        "• ADSynth Synthetic Generator: Generates 700 enterprise topologies with 100 to 100,000 nodes for combinatorial scalability stress testing."
-    ], font_size=21, space_after=12, bold_prefix=True)
+        "1. GOAD Enterprise Cyber-Range: Realistic multi-forest Active Directory lab with 5 Domain Controllers, complex trusts, and live ADCS misconfigurations.",
+        "2. ADSynth Topology Generator: Synthesizes 700 diverse enterprise topologies (100 to 100,000 nodes) for rigorous scalability and stress testing."
+    ], font_size=20, space_after=10, bold_prefix=True)
     
-    create_badge(s9, Inches(1.3), Inches(6.0), Inches(8.5), Inches(0.65), "Dataset Composition & Validation")
-    tb_ds = s9.shapes.add_textbox(Inches(1.3), Inches(6.8), Inches(8.5), Inches(2.8))
+    create_badge(s9, Inches(1.3), Inches(5.8), Inches(5.2), Inches(0.65), "Dataset & Validation Protocol", os.path.join(THEME_DIR, "image15.png"))
+    tb_ds = s9.shapes.add_textbox(Inches(1.3), Inches(6.6), Inches(8.5), Inches(3.0))
     tf_ds = tb_ds.text_frame
     add_bullets(tf_ds, [
-        "• 28,450 total nodes across 5 entity classes.",
-        "• 142,890 multi-relational edges spanning DACLs, group nestings, and PKI.",
-        "• Stratified 5-fold cross-validation with non-overlapping forest partitions and Nadeau-Bengio corrected paired tests."
-    ], font_size=21, space_after=10, bold_prefix=True)
+        "1. Scale: 28,450 nodes and 142,890 multi-relational edges across 5 entity types.",
+        "2. Protocol: Stratified 5-fold cross-validation with non-overlapping forest splits.",
+        "3. Statistical Rigor: Evaluated using Nadeau-Bengio corrected paired t-tests to ensure valid significance."
+    ], font_size=20, space_after=10, bold_prefix=True)
     
     # Right Column: GOAD Forest Topology Figure
     fig_topo = os.path.join(FIGURES_DIR, "goad_forest_topology.png")
@@ -749,8 +788,8 @@ def build_presentation():
     tb_topo_sub = s9.shapes.add_textbox(Inches(10.3), Inches(8.0), Inches(8.4), Inches(1.5))
     tf_ts = tb_topo_sub.text_frame
     add_bullets(tf_ts, [
-        "• Authentic enterprise complexity: Multiple trust relationships, gMSA service accounts, and cross-domain PKI issuance policies."
-    ], font_size=20, space_after=6, bold_prefix=True)
+        "Captures cross-domain trust relationships, group Managed Service Accounts (gMSA), and cross-forest PKI issuance policies."
+    ], font_size=20, space_after=6, bold_prefix=False)
     apply_speaker_notes(s9, 9)
     print("Slide 9 configured.")
 
@@ -761,9 +800,9 @@ def build_presentation():
     clear_slide_content(s10)
     add_header_and_chrome(s10, 10, "RESULTS: BENCHMARK EVALUATION")
     
-    create_badge(s10, Inches(1.3), Inches(2.4), Inches(9.2), Inches(0.65), "Quantitative Performance Summary")
+    create_badge(s10, Inches(1.3), Inches(2.4), Inches(5.5), Inches(0.65), "Quantitative Performance Summary", os.path.join(THEME_DIR, "image26.png"))
     
-    # Table on Left
+    # Table on Left with Formal Black Cell Borders
     table_shape = s10.shapes.add_table(6, 4, Inches(1.3), Inches(3.2), Inches(9.2), Inches(4.3))
     table = table_shape.table
     table.columns[0].width = Inches(2.4)
@@ -785,6 +824,7 @@ def build_presentation():
         cell.text = h
         cell.fill.solid()
         cell.fill.fore_color.rgb = TABLE_HEADER_BG
+        set_cell_borders(cell)
         p = cell.text_frame.paragraphs[0]
         p.font.name = FONT_FAMILY
         p.font.size = Pt(20)
@@ -798,6 +838,7 @@ def build_presentation():
             cell.text = val
             cell.fill.solid()
             cell.fill.fore_color.rgb = TABLE_ALT_BG if r % 2 == 1 else RGBColor(255, 255, 255)
+            set_cell_borders(cell)
             p = cell.text_frame.paragraphs[0]
             p.font.name = FONT_FAMILY
             p.font.size = Pt(20)
@@ -808,7 +849,7 @@ def build_presentation():
     # Callout text below table
     tb_sig = s10.shapes.add_textbox(Inches(1.3), Inches(7.8), Inches(9.2), Inches(1.8))
     p_sig = tb_sig.text_frame.paragraphs[0]
-    p_sig.text = "Significance: CertGraph achieves 0.9986 Macro-F1 across 700 topologies (+21.95 F1 / +28.2% relative gain over heuristics, p = 3.12e-4). On imbalanced 96% Safe templates: Macro-F1 0.9941, PR-AUC 0.9982."
+    p_sig.text = "Key Result: CertGraph achieves 99.86% Macro-F1 across 700 topologies (+21.95 F1 / +28.2% relative gain over heuristics, p = 3.12e-4). Under authentic 96% Safe template imbalance, CertGraph maintains 99.41% Macro-F1 and 0.9982 PR-AUC."
     p_sig.font.name = FONT_FAMILY
     p_sig.font.size = Pt(21)
     p_sig.font.bold = True
@@ -861,14 +902,14 @@ def build_presentation():
     p_atc.alignment = PP_ALIGN.CENTER
     p_atc.font.color.rgb = BLACK
     
-    # Bottom Row: Analytical Takeaways
-    create_badge(s11, Inches(1.3), Inches(7.15), Inches(17.4), Inches(0.55), "Key Analytical Takeaways")
+    # Bottom Row: Key Findings
+    create_badge(s11, Inches(1.3), Inches(7.15), Inches(17.4), Inches(0.55), "Key Empirical Takeaways", os.path.join(THEME_DIR, "image9.png"))
     tb_ab_bullets = s11.shapes.add_textbox(Inches(1.3), Inches(7.8), Inches(17.4), Inches(2.0))
     tf_abb = tb_ab_bullets.text_frame
     add_bullets(tf_abb, [
-        "• Validation of Theorem 1: Removing residual skip connections drops Macro-F1 from 0.9986 to 0.4768 (-52.18% collapse, corrected p = 6.61e-6), proving that feature preservation prevents oversmoothing over deep paths.",
-        "• Single-Head vs. Multi-Head: Single-head attention achieves 1.0000 Macro-F1 (p = 0.5415), confirming that residual skip pathways, rather than attention head multiplicity, are the primary driver of performance.",
-        "• Attention Interpretability: High relational attention weights (alpha > 0.85) align precisely with ground-truth escalation edges (GenericAll, WriteDacl, Enroll), providing instant visual proof for security analysts."
+        "1. Residual Skip Connections are Vital: Removing skip pathways drops Macro-F1 from 99.86% to 47.68% (a 52.18% collapse), empirically validating Theorem 1.",
+        "2. Attention Multiplicity is Secondary: A single-head variant matches multi-head performance (100% vs 99.86%), proving residual feature retention drives the gains.",
+        "3. Inherent Path Explainability: Attention weights directly isolate attack edges (alpha > 0.85 on critical hops), providing security analysts with instant visual proof traces."
     ], font_size=20, space_after=8, bold_prefix=True)
     apply_speaker_notes(s11, 11)
     print("Slide 11 configured.")
@@ -881,21 +922,21 @@ def build_presentation():
     add_header_and_chrome(s12, 12, "NEURO-SYMBOLIC HYBRID VERIFICATION")
     
     # Left Column: Shortcut Collapse & Solution
-    create_badge(s12, Inches(1.3), Inches(2.4), Inches(8.2), Inches(0.65), "Neural Shortcut Collapse Discovery")
+    create_badge(s12, Inches(1.3), Inches(2.4), Inches(5.2), Inches(0.65), "Neural Shortcut Vulnerability", os.path.join(THEME_DIR, "image7.png"))
     tb_sc = s12.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.2), Inches(2.3))
     tf_sc = tb_sc.text_frame
     add_bullets(tf_sc, [
-        "• Adversarial Hard Negatives: Dangerous template flags paired with admin-only DACLs (ground-truth Safe across all 63 test environments).",
-        "• Neural Shortcut Collapse: Pure GNN accuracy drops to 1.59% (1/63)! The network learned a flag shortcut rather than verifying effective access."
+        "1. The Adversarial Testbed: We generated 63 hard-negative topologies featuring dangerous template flags paired with admin-only access controls (ground truth: Safe).",
+        "2. Neural Shortcut Collapse: The pure GNN classified only 1 of 63 correctly (1.59% accuracy) — revealing that pure neural models memorize local template flags without checking reachability."
     ], font_size=20, space_after=10, bold_prefix=True)
     
-    create_badge(s12, Inches(1.3), Inches(5.6), Inches(8.2), Inches(0.65), "Two-Tier Neuro-Symbolic Solution")
+    create_badge(s12, Inches(1.3), Inches(5.6), Inches(5.2), Inches(0.65), "Our Two-Tier Verification Engine", os.path.join(THEME_DIR, "image9.png"))
     tb_tt = s12.shapes.add_textbox(Inches(1.3), Inches(6.4), Inches(8.2), Inches(3.4))
     tf_tt = tb_tt.text_frame
     add_bullets(tf_tt, [
-        "• Tier 1 (Neural Screener): Risk threshold tau = 0.5 forwards 62/600 candidates (100% recall on true paths), filtering 89.7% of templates in 18.2 ms.",
-        "• Tier 2 (Symbolic Engine): Verifies effective rights & reachability in 110.6 ms, producing formal proof traces or suppressing false alarms.",
-        "• Outcome: 128.8 ms end-to-end latency, recovering 100% sound ground truth without unconstrained state explosion."
+        "Tier 1 — Neural Screener (18.2 ms): Flags 62 of 600 templates as potentially risky, filtering out 89.7% of safe templates while retaining 100% of true attack paths.",
+        "Tier 2 — Symbolic Verifier (110.6 ms): Traverses authorization graphs for flagged templates, generating mathematical proof traces and eliminating false alarms.",
+        "Combined System (128.8 ms): Achieves zero false negatives and zero false alarms — combining neural speed with symbolic soundness."
     ], font_size=20, space_after=10, bold_prefix=True)
     
     # Right Column: Pipeline Diagram + Bar Chart
@@ -917,22 +958,23 @@ def build_presentation():
     add_header_and_chrome(s13, 13, "SCALABILITY & AUTONOMOUS REMEDIATION")
     
     # Left Column: Scalability & Theorem 2
-    create_badge(s13, Inches(1.3), Inches(2.4), Inches(8.2), Inches(0.65), "Sub-Second Operational Scalability")
+    create_badge(s13, Inches(1.3), Inches(2.4), Inches(5.2), Inches(0.65), "Sub-Second Operational Scalability", os.path.join(THEME_DIR, "image15.png"))
     tb_scale = s13.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(8.2), Inches(2.6))
     tf_scale = tb_scale.text_frame
     add_bullets(tf_scale, [
-        "• 1,000 Nodes: 20 ms forward inference",
-        "• 5,000 Nodes: 112.5 ms forward inference",
-        "• 10,000 Nodes (765k edges): 343 ms forward inference (12.4x faster than Dijkstra)",
-        "• Scalable Auditing: Rapid continuous sweeps without disrupting production authentication traffic."
+        "1. 1,000-Node Topology: 20 ms forward inference time.",
+        "2. 5,000-Node Topology: 112.5 ms forward inference time.",
+        "3. 10,000-Node Topology (765k edges): 343 ms inference time — 12.4x faster than Dijkstra/BloodHound graph search.",
+        "4. Operational Benefit: Enables continuous real-time directory audits without impacting enterprise authentication traffic."
     ], font_size=20, space_after=8, bold_prefix=True)
     
-    create_badge(s13, Inches(1.3), Inches(5.9), Inches(8.2), Inches(0.65), "Theorem 2 (MPAI NP-Hardness) & Remediation")
+    create_badge(s13, Inches(1.3), Inches(5.9), Inches(5.2), Inches(0.65), "Automated Attack Path Interdiction", os.path.join(THEME_DIR, "image26.png"))
     tb_thm2 = s13.shapes.add_textbox(Inches(1.3), Inches(6.7), Inches(8.2), Inches(3.1))
     tf_thm2 = tb_thm2.text_frame
     add_bullets(tf_thm2, [
-        "• Theorem 2 Statement:\nThe Minimum Perturbation Attack Interdiction (MPAI) problem in ADCS multigraphs is NP-hard (reduced from Directed Multiway Cut).",
-        "• Budgeted Path Remediation:\nGreedy interdiction severs 68.6% ± 11.7% of critical attack paths at budget B_ops = 24 across 30 synthetic topologies (paired t(29) = 10.27, p = 3.57e-11 vs degree baseline)."
+        "1. Computational Proof (Theorem 2): We proved that finding the minimum set of permission revocations to sever all attack paths (MPAI) is NP-hard.",
+        "2. Greedy Interdiction Algorithm: We designed a disruption-bounded greedy algorithm that severs 68.6% of attack paths within a budget of 24 ACL operations.",
+        "3. Statistical Validation: Statistically outperforms degree-centrality baselines across 30 enterprise topologies (p = 3.57e-11)."
     ], font_size=20, space_after=10, bold_prefix=True)
     
     # Right Column: Scalability + PPO Dynamics Figures
@@ -947,7 +989,7 @@ def build_presentation():
     print("Slide 13 configured.")
 
     # =========================================================================
-    # SLIDE 14: CONCLUSION & CONTRIBUTIONS (index 13)
+    # SLIDE 14: CONCLUSION & CONTRIBUTIONS (index 13) - Matching old.pptx slide 13 style
     # =========================================================================
     s14 = prs.slides[13]
     clear_slide_content(s14)
@@ -955,37 +997,48 @@ def build_presentation():
     s14.shapes.add_picture(BG_TEXTURE, Inches(0), Inches(0), width=Inches(20), height=Inches(11.25))
     add_header_and_chrome(s14, 14, "CONCLUSION & CONTRIBUTIONS")
     
-    # Left Column: 6 Tangible Academic Contributions
-    create_badge(s14, Inches(1.3), Inches(2.4), Inches(9.2), Inches(0.65), "6 Tangible Academic Contributions")
-    tb_cont = s14.shapes.add_textbox(Inches(1.3), Inches(3.2), Inches(9.2), Inches(6.6))
+    # Top Lead-in Text
+    tb_lead14 = s14.shapes.add_textbox(Inches(1.3), Inches(2.15), Inches(17.4), Inches(0.65))
+    tf_l14 = tb_lead14.text_frame
+    p_l14 = tf_l14.paragraphs[0]
+    p_l14.text = "A unified graph AI and verification framework that resolves the conflict between rapid vulnerability screening and formal soundness."
+    p_l14.font.name = FONT_FAMILY
+    p_l14.font.size = Pt(21)
+    p_l14.font.bold = True
+    p_l14.font.color.rgb = BLACK
+    
+    # Left Column: [ 1 ] What We Contributed
+    create_numbered_badge(s14, Inches(1.3), Inches(2.9), Inches(4.8), Inches(0.65), "1", "What We Contributed")
+    tb_cont = s14.shapes.add_textbox(Inches(1.3), Inches(3.7), Inches(9.2), Inches(6.2))
     tf_cont = tb_cont.text_frame
     add_bullets(tf_cont, [
-        "1. Heterogeneous Multigraph Formalization: First formal multigraph schema (5 entity types, 8 relation types, transitive group closure) capturing all primary ADCS escalation classes.",
-        "2. Mathematical Bounds (Theorem 1): Proved gradient preservation lower bounds, mathematically guaranteeing feature persistence across multi-hop delegation chains.",
-        "3. Empirical Benchmark & Audit: 0.9986 Macro-F1 across 700 topologies; identified and corrected benchmark leakage following Arp et al. security ML guidelines.",
-        "4. Neural Shortcut Discovery: Uncovered that pure GNNs collapse to 1.59% accuracy on unseen hard negatives by learning flag-based shortcuts.",
-        "5. Two-Tier Neuro-Symbolic Engine: Combined sub-second GNN screening with formal symbolic verification (128.8 ms total latency, 100% recall at threshold 0.5).",
-        "6. Theorem 2 & Budgeted Remediation: Proved MPAI NP-hardness and demonstrated greedy interdiction severing 68.6% of attack paths under strict operational constraints."
-    ], font_size=19, space_after=12, bold_prefix=True)
+        "1. AD Graph Schema: Formalized the first heterogeneous graph representation covering 5 entity types and 6 primary ADCS escalation classes.",
+        "2. Deep-Path Retention Proof: Mathematically proved (Theorem 1) and implemented residual skips that preserve features over 4–8 hop chains.",
+        "3. Audited Enterprise Benchmark: Achieved 99.86% Macro-F1 across 700 topologies (+28.2% over heuristics), tested under 96% class imbalance.",
+        "4. Neural Shortcut Discovery: Uncovered that pure GNNs collapse to 1.59% accuracy on adversarial hard negatives due to flag memorization.",
+        "5. Two-Tier Verification Engine: Built a hybrid system combining 18 ms neural screening with 110 ms symbolic verification (zero false negatives).",
+        "6. Automated Remediation Algorithm: Proved MPAI NP-hardness (Theorem 2) and developed a greedy interdiction tool severing 68.6% of attack paths."
+    ], font_size=19, space_after=10, bold_prefix=True)
     
-    # Right Column: Future Directions & Milestones
-    create_badge(s14, Inches(11.0), Inches(2.4), Inches(7.7), Inches(0.65), "Limitations & Future Directions")
-    tb_fut = s14.shapes.add_textbox(Inches(11.0), Inches(3.2), Inches(7.7), Inches(3.0))
+    # Right Column: [ 2 ] Limitations & Future Work
+    create_numbered_badge(s14, Inches(11.0), Inches(2.9), Inches(4.8), Inches(0.65), "2", "Limitations & Future Work")
+    tb_fut = s14.shapes.add_textbox(Inches(11.0), Inches(3.7), Inches(7.7), Inches(2.8))
     tf_fut = tb_fut.text_frame
     add_bullets(tf_fut, [
-        "• Multi-label prediction and temporal graph evolution over long-lived AD forest topologies.",
-        "• Extension to cloud-hybrid Microsoft Entra ID (Azure AD) and cross-tenant sync mechanisms.",
-        "• In-situ cyber-range evaluation of live defense-policy execution and Honeypot certificate traps."
-    ], font_size=20, space_after=12, bold_prefix=True)
+        "1. Multi-label vulnerability classification for co-occurring ADCS escalation paths.",
+        "2. Support for cloud-hybrid identity fabrics (Microsoft Entra ID / Azure AD).",
+        "3. Real-time evaluation of automated remediation in live enterprise cyber-ranges."
+    ], font_size=20, space_after=10, bold_prefix=True)
     
-    create_badge(s14, Inches(11.0), Inches(6.4), Inches(7.7), Inches(0.65), "Project & Thesis Milestones")
-    tb_mil = s14.shapes.add_textbox(Inches(11.0), Inches(7.2), Inches(7.7), Inches(2.4))
+    # Right Column: [ 3 ] Project & Thesis Details
+    create_numbered_badge(s14, Inches(11.0), Inches(6.6), Inches(4.8), Inches(0.65), "3", "Project & Thesis Details")
+    tb_mil = s14.shapes.add_textbox(Inches(11.0), Inches(7.4), Inches(7.7), Inches(2.4))
     tf_mil = tb_mil.text_frame
     add_bullets(tf_mil, [
-        "• Course Code: ECE 452 (Project and Thesis)",
-        "• Department: Electronics & Communication Engineering (ECE)",
-        "• Institution: Hajee Mohammad Danesh Science and Technology University (HSTU)",
-        "• Defense Session: October 2026"
+        "Course: ECE 452 — Project and Thesis",
+        "Department: Electronics and Communication Engineering (ECE)",
+        "Institution: Hajee Mohammad Danesh Science and Technology University (HSTU)",
+        "Defense Session: October 2026"
     ], font_size=20, space_after=8, bold_prefix=True)
     apply_speaker_notes(s14, 14)
     print("Slide 14 configured.")

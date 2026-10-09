@@ -48,33 +48,33 @@ def main():
         'axes.linewidth': 1.1,
     })
 
-    # Plot: F1-Scores - Wider canvas & large typography
-    fig, ax = plt.subplots(figsize=(11.0, 5.6), dpi=300)
+    # Plot: F1-Scores - Extra Large Typography
+    fig, ax = plt.subplots(figsize=(9.2, 5.2), dpi=300)
     x = np.arange(len(datasets))
-    width = 0.24
+    width = 0.25
 
     for i, tool in enumerate(tools):
         f1_scores = [results[ds][tool]["macro_f1"] for ds in datasets]
         ax.bar(x + i*width, f1_scores, width, label=tool, color=colors[tool],
-               edgecolor="#1f2937", linewidth=1.2, alpha=0.9)
+               edgecolor="#1f2937", linewidth=1.3, alpha=0.92)
 
-    ax.set_ylabel("Macro F1-Score", fontsize=13, fontweight="bold", labelpad=10)
+    ax.set_ylabel("Macro F1-Score", fontsize=14.5, fontweight="bold", labelpad=12)
     ax.set_title("Vulnerability Classification Performance Across Tools and Domain Topologies",
-                 fontsize=14, fontweight="bold", pad=16)
+                 fontsize=15.5, fontweight="bold", pad=16)
     ax.set_xticks(x + width)
-    ax.set_xticklabels(datasets, fontsize=12.5, fontweight="bold")
-    ax.set_ylim(0.48, 1.12)
-    ax.tick_params(axis='both', which='major', labelsize=11.5)
+    ax.set_xticklabels(datasets, fontsize=13.5, fontweight="bold")
+    ax.set_ylim(0.48, 1.15)
+    ax.tick_params(axis='both', which='major', labelsize=12.5)
     ax.grid(axis="y", linestyle="--", alpha=0.6, color="#e5e7eb")
     ax.set_axisbelow(True)
-    ax.legend(loc="lower left", fontsize=11.5, frameon=True, facecolor="#ffffff", edgecolor="#d1d5db")
+    ax.legend(loc="lower left", fontsize=12.5, frameon=True, facecolor="#ffffff", edgecolor="#d1d5db")
 
     # Annotate bars
     for i, tool in enumerate(tools):
         f1_scores = [results[ds][tool]["macro_f1"] for ds in datasets]
         for idx, score in enumerate(f1_scores):
-            ax.text(idx + i*width, score + 0.015, f"{score:.3f}",
-                    ha="center", va="bottom", fontsize=11.5, fontweight="bold", color="#111827")
+            ax.text(idx + i*width, score + 0.018, f"{score:.3f}",
+                    ha="center", va="bottom", fontsize=12.5, fontweight="bold", color="#0f172a")
 
     plt.tight_layout()
     chart_paths = [
