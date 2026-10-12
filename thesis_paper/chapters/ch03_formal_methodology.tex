@@ -112,7 +112,7 @@ CertGraph implements an inductive Heterogeneous Graph Attention Network (Hetero-
 \begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{figures/certgraph_architecture_diagram.png}
-    \caption{CertGraph end-to-end Hetero-GAT pipeline, detailing input feature encoding, multi-head relational attention layers, additive residual skip-connections, and the multi-class template classification head.}
+    \caption{CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Graph across 5 entity node types, (2) Layer~1 relational multi-head attention (4 heads) with ELU, LayerNorm, and residual skip projections ($W_{\text{skip}}$), (3) Layer~2 aggregation and 64-dimensional template readout embedding, and (4) MLP classification head ($64 \to 32 \to 7$) predicting the 7 canonical vulnerability classes (Safe, ESC1, ESC2, ESC3, ESC4, ESC9, ESC13).}
     \label{fig:certgraph_arch}
 \end{figure}
 

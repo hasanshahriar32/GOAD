@@ -148,7 +148,7 @@ Active Directory Certificate Services (ADCS) is an integrated Windows role that 
 \begin{figure}[t]
     \centering
     \includegraphics[width=\textwidth]{figures/adcs_attack_graph_schema.png}
-    \caption{Heterogeneous Active Directory Certificate Services (ADCS) Graph Schema, illustrating relations between security principals (Users, Computers, Groups), Certificate Templates, and Enterprise Certificate Authorities.}
+    \caption{Heterogeneous Active Directory Certificate Services (ADCS) Graph Schema, formalizing the 5 canonical entity classes ($V_{\text{User}}, V_{\text{Comp}}, V_{\text{Group}}, V_{\text{Tmpl}}, V_{\text{CA}}$) and 16 canonical forward and reverse relations ($E_{\text{AD}}$ standard structural relations and $E_{\text{DACL}}$ administrative ACLs, including ESC13 issuance policy linkages).}
     \label{fig:adcs_schema}
 \end{figure}
 
@@ -212,12 +212,53 @@ To ensure methodological clarity, we explicitly detail the operational and archi
 \end{enumerate}
 In contrast, the included vectors (\textbf{ESC1, ESC2, ESC3, ESC4, ESC9, ESC13}) represent the complete canonical suite of \textit{template-centric, authorization-driven privilege escalation vectors} whose discovery fundamentally demands resolving the joint interaction between multi-hop identity graph paths and certificate template configuration flags.
 
+\section{The Multi-Hop Attack Challenge: ESC13 Diagnostic Case Study}
+\label{sec:esc13_case_study}
+The ESC13 vector, identified by SpecterOps~\cite{oliveau2024esc13}, serves as our primary diagnostic benchmark illustrating why conventional security tooling systematically fails on composite identity vulnerabilities. In traditional single-hop misconfigurations (such as ESC1), a single template attribute (e.g., \texttt{ENROLLEE\_SUPPLIES\_SUBJECT}) is inherently risky. In sharp contrast, ESC13 exploits a composite chain of individually benign administrative configurations that become catastrophic only upon topological path closure.
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figures/esc13_attack_path_diagram.png}
-    \caption{Two-hop ESC13 privilege escalation attack path, showing the chain from an unprivileged user through enrollment permissions and issuance policy OID linkage to high-value domain administrative group tokens.}
+    \caption{Two-hop ESC13 privilege escalation attack path and diagnostic benchmark, showing the 4-hop chain from an unprivileged identity principal through group nesting, enrollment permissions, and issuance policy OID linkage to Tier-0 administrative PAC elevation. The comparison highlights why flat heuristic scanners (Certipy) achieve 0\% detection and deterministic search (BloodHound) suffers state explosion, while CertGraph resolves the path closure in 343~ms.}
     \label{fig:esc13_path}
 \end{figure}
+
+As illustrated in Figure~\ref{fig:esc13_path}, an ESC13 exploit chain spans four distinct relational hops:
+\begin{enumerate}
+    \item \textbf{Hop 1: Principal Foothold via Group Nesting (\texttt{MemberOf}):} The low-privilege adversary ($u \in V_{\text{User}}$) belongs to an intermediate security group ($g \in V_{\text{Group}}$), either directly or via transitive group nesting:
+    \begin{equation}
+    (u, \text{MemberOf}^*, g) \in E_{\text{AD}}
+    \end{equation}
+    \item \textbf{Hop 2: Intermediate Certificate Enrollment (\texttt{Enroll}):} The intermediate group holds discretionary enrollment permissions over a certificate template ($t \in V_{\text{Tmpl}}$):
+    \begin{equation}
+    (g, \text{Enroll}, t) \in E_{\text{DACL}}
+    \end{equation}
+    Importantly, the template does not have \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} enabled and appears entirely benign to standard scanners.
+    \item \textbf{Hop 3: Issuance Policy OID Linkage (\texttt{LinksPolicy}):} The certificate template is linked to an issuance policy Object Identifier (OID) via the \texttt{msPKI-Certificate-Policy} attribute:
+    \begin{equation}
+    (t, \text{LinksPolicy}, o) \in E_{\text{DACL}}, \quad o \in V_{\text{OID}}
+    \end{equation}
+    \item \textbf{Hop 4: PAC Credential Elevation to Tier-0 Target (\texttt{PACElevate}):} Active Directory maps this issuance policy OID directly to a high-privilege domain security group (e.g., \texttt{Domain Admins} or \texttt{Enterprise Admins}) via issuance policy group linking:
+    \begin{equation}
+    (o, \text{PACElevate}, g_{\text{admin}}) \in E_{\text{AD}}, \quad g_{\text{admin}} \in V_{\text{Group}}^{\text{Tier-0}}
+    \end{equation}
+    When the adversary enrolls for the certificate and authenticates via Kerberos PKINIT, the Domain Controller's Key Distribution Center (KDC) injects the high-privilege group SID into the Kerberos Privilege Attribute Certificate (PAC) token, yielding instant domain dominance.
+\end{enumerate}
+
+\paragraph{The Path Closure Invariant and Tool Limitations:}
+Crucially, \textit{every individual permission in this chain is completely benign in isolation}:
+\begin{itemize}
+    \item The low-privilege user is merely a member of a regular business group.
+    \item The group's enrollment right on the template is a standard organizational workflow.
+    \item The template enforces strict enterprise subject naming and requires manager approval.
+    \item The issuance policy OID is an official enterprise PKI extension.
+\end{itemize}
+The threat exists \textbf{strictly as a multi-hop topological path closure}. This fundamental reality exposes the core limitations of existing auditing paradigms:
+\begin{itemize}
+    \item \textbf{Flat Heuristic Rule Scanners (Certipy~\cite{lyak2021certipy}):} Achieve \textbf{0\% detection} on ESC13 because they inspect LDAP objects in isolation. Because no individual attribute violates heuristic thresholds, rule-based scanners remain entirely blind to the cross-object OID linkage.
+    \item \textbf{Deterministic Graph Traversal (BloodHound~\cite{specterops2023bloodhound}):} While theoretically capable of finding the path via exhaustive graph traversal, unguided Breadth-First Search suffers severe \textbf{state explosion} on large enterprise directories ($>100\text{K}$ nodes), failing to terminate within real-time operational constraints.
+    \item \textbf{CertGraph Relational GNN (Ours):} Learns multi-hop relational path closures inductively. By propagating multi-hop context across relational attention layers with Theorem~\ref{thm:representation_preservation} skip connections, CertGraph detects the full composite chain in \textbf{343~ms}, providing sub-second discovery even on massive enterprise topologies.
+\end{itemize}
 
 \section{Formal Threat Model}
 To establish rigorous scientific boundaries, we define our threat model following standard enterprise security conventions:
