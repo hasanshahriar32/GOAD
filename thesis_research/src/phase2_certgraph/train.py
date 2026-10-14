@@ -5,7 +5,7 @@ certgraph_train.py — Training & Evaluation Pipeline for CertGraph
 Compares CertGraph against:
   - Feature-only baselines: Rule-based, MLP, Random Forest
   - Graph-Augmented baselines: Graph-Augmented MLP, Graph-Augmented RF
-  - Graph Traversal baseline: BloodHound BFS path checker
+  - Graph Traversal baseline: local direct-edge rule checker
 
 Outputs:
     - Per-fold and averaged metrics (Macro-F1, Accuracy, per-class P/R/F1)
@@ -345,7 +345,7 @@ def train_augmented_rf_fold(train_data, test_data) -> dict:
 
 
 def eval_bfs_baseline(test_data) -> dict:
-    """Evaluate BloodHound-style BFS path verification baseline."""
+    """Evaluate local direct-edge rules; this does not run BloodHound or BFS."""
     bfs = BloodHoundBFSBaseline()
     preds = bfs.predict(test_data)
     y_test = [CLASS_TO_IDX[ec] for _, ec, _ in test_data]
@@ -396,7 +396,7 @@ def main():
         "Random Forest",
         "Graph-Augmented MLP",
         "Graph-Augmented RF",
-        "BloodHound BFS",
+        "Local direct-edge rules",
     ]
 
     results = {m: defaultdict(list) for m in models_to_eval}
@@ -404,7 +404,6 @@ def main():
     results_labels = {m: [] for m in models_to_eval}
     all_histories = []
     best_model = None
-    best_f1 = 0
 
     for fold, (train_idx, test_idx) in enumerate(skf.split(indices, labels)):
         print(f"\n  ── Fold {fold+1}/{N_FOLDS} (train={len(train_idx)}, test={len(test_idx)}) ──")
@@ -420,8 +419,9 @@ def main():
         results_preds["CertGraph"].extend(cg_results["test_preds"])
         results_labels["CertGraph"].extend(cg_results["test_labels"])
         all_histories.append(cg_results["history"])
-        if cg_results["test_f1"] > best_f1:
-            best_f1 = cg_results["test_f1"]
+        # Preselect fold 1 for downstream use. Never select a checkpoint using
+        # held-out test scores. New publication runs use validation selection.
+        if best_model is None:
             best_model = cg_results["model"]
         print(f"    → F1: {cg_results['test_f1']:.4f} | Acc: {cg_results['test_acc']:.4f}")
 
@@ -465,13 +465,13 @@ def main():
         results_labels["Graph-Augmented RF"].extend(aug_rf_res["test_labels"])
         print(f"  [Graph-Augmented RF]     → F1: {aug_rf_res['test_f1']:.4f} | Acc: {aug_rf_res['test_acc']:.4f}")
 
-        # 7. BloodHound BFS
+        # 7. Local direct-edge rules
         bfs_res = eval_bfs_baseline(test_data)
-        results["BloodHound BFS"]["f1"].append(bfs_res["test_f1"])
-        results["BloodHound BFS"]["acc"].append(bfs_res["test_acc"])
-        results_preds["BloodHound BFS"].extend(bfs_res["test_preds"])
-        results_labels["BloodHound BFS"].extend(bfs_res["test_labels"])
-        print(f"  [BloodHound BFS]         → F1: {bfs_res['test_f1']:.4f} | Acc: {bfs_res['test_acc']:.4f}")
+        results["Local direct-edge rules"]["f1"].append(bfs_res["test_f1"])
+        results["Local direct-edge rules"]["acc"].append(bfs_res["test_acc"])
+        results_preds["Local direct-edge rules"].extend(bfs_res["test_preds"])
+        results_labels["Local direct-edge rules"].extend(bfs_res["test_labels"])
+        print(f"  [Local direct-edge rules]         → F1: {bfs_res['test_f1']:.4f} | Acc: {bfs_res['test_acc']:.4f}")
 
     # 3. Aggregate results & Statistical Significance
     from scipy.stats import ttest_rel

@@ -1,7 +1,7 @@
 """
 tool_comparison.py — Comparative Analysis against Heuristic and Query Engines
 =============================================================================
-Implements a Certipy-like configuration rule engine and a BloodHound-like
+Implements locally authored configuration rules and a local
 pathfinding query engine. Compares their detection performance (Precision, Recall,
 F1, Accuracy) against CertGraph on both synthetic and realistic tiered AD datasets.
 """
@@ -19,7 +19,7 @@ from model import CertGraph, RuleBaseline
 
 class BloodHoundQueryEngine:
     """
-    Simulates BloodHound Cypher path queries by running structural graph search.
+    Locally authored path rules. Does not invoke or reproduce BloodHound.
     Requires both template vulnerability configuration AND a valid reachability path
     from a low-privileged node to the target templates.
     """
@@ -160,12 +160,12 @@ def evaluate_tool(tool_name, dataset, model=None, bh_engine=None, rule_engine=No
                 logits = model(data.x_dict, data.edge_index_dict)
                 pred_idx = logits[target_idx].argmax().item()
                 preds.append(pred_idx)
-        elif tool_name == "Certipy":
+        elif tool_name == "Local flag rules":
             # Heuristic Rule engine
             feat_vector = data["Template"].x[target_idx].unsqueeze(0)
             pred_idx = rule_engine.predict(feat_vector)[0].item()
             preds.append(pred_idx)
-        elif tool_name == "BloodHound":
+        elif tool_name == "Local graph rules":
             # Path query engine
             pred_class = bh_engine.predict(data, target_idx)
             preds.append(classes_idx[pred_class])
@@ -188,7 +188,7 @@ def main():
 
     # 1. Load Datasets
     print("[*] Generating evaluation datasets (200 environments each)...")
-    synthetic_dataset = generate_dataset(num_envs=200, balanced=True, seed=100)
+    synthetic_dataset = generate_dataset(num_envs=200, balanced=True, seed=100, namespace="local-comparison-heldout-v2")
     adsynth_dataset = generate_adsynth_dataset(num_envs=200, balanced=True, seed=100)
 
     # 2. Load CertGraph
@@ -217,7 +217,7 @@ def main():
     rule_engine = RuleBaseline()
 
     # 4. Run evaluations
-    tools = ["Certipy", "BloodHound", "CertGraph"]
+    tools = ["Local flag rules", "Local graph rules", "CertGraph"]
     datasets = {"Synthetic": synthetic_dataset, "ADSynth (Realistic)": adsynth_dataset}
     
     results = {}
@@ -247,7 +247,7 @@ def main():
     out_md = os.path.join(results_dir, "tool_comparison_table.md")
     with open(out_md, "w") as f:
         f.write("# Tool Comparison Baseline Report\n\n")
-        f.write("Comparative results showing CertGraph (GNN) versus Heuristic Configuration Rules (Certipy-like) and Path Graph Queries (BloodHound-like):\n\n")
+        f.write("Historical local surrogate comparison. No Certipy or BloodHound executable is evaluated. Locally generated tiered graphs are not the upstream ADSynth dataset:\n\n")
         
         for ds_name, ds_res in results.items():
             f.write(f"### Dataset: {ds_name}\n\n")
@@ -258,10 +258,8 @@ def main():
                 f.write(f"| **{tool}** | {res['accuracy']:.4f} | {res['precision']:.4f} | {res['recall']:.4f} | {res['macro_f1']:.4f} |\n")
             f.write("\n")
             
-        f.write("### Analysis:\n")
-        f.write("1. **Certipy (Heuristic Rules)** achieves perfect recall but struggles with precision on realistic tiered topologies (ADSynth) because it lacks path reachability awareness, leading to false positives on blocked configurations.\n")
-        f.write("2. **BloodHound (Graph Path Queries)** resolves reachability but requires explicit logical path queries and fails to scale cleanly or represent complex soft probabilities.\n")
-        f.write("3. **CertGraph (GNN)** learns both configuration semantics and path reachability implicitly, maintaining high accuracy and F1 scores across both domains without requiring manual path specification.\n")
+        f.write("### Scope and provenance\n")
+        f.write("These scores compare local implementations on synthetic certificate configurations. They do not establish superiority over Certipy or BloodHound, enterprise detection performance, or graph-search scalability. See publication_validation for independently namespaced holdouts and prerequisite counterfactuals.\n")
 
     print(f"[✓] Saved Markdown Table: {out_md}")
 

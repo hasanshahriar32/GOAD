@@ -10,11 +10,13 @@ publication-grade Word document (.docx) with:
   - Classic academic booktabs tables (1.5pt top/bottom rules, no vertical lines)
   - Centered high-resolution vector figures scaled to text width
   - Formatted IEEE bibliography with hanging indents
-  - Auto-copied to /home/hs32/Desktop/manuscript.docx
+  - Optional Desktop copy with --copy-to-desktop
 =============================================================================
 """
 
 import os
+import argparse
+from pathlib import Path
 import re
 import shutil
 import subprocess
@@ -32,6 +34,12 @@ SCRATCH_DIR = "/tmp/manuscript_docx_build"
 def preprocess_latex_for_pandoc(src_path, dst_path):
     with open(src_path, "r", encoding="utf-8") as f:
         content = f.read()
+
+    # Resolve generated tables relative to the source, not the temporary cwd.
+    content = re.sub(r"\\input\{([^}]+)\}",
+                     lambda m: (Path(src_path).parent / m.group(1)).read_text(), content)
+
+    content = content.replace(r"\notag", "")
 
     # 1. Expand IEEEPARstart
     content = re.sub(r"\\IEEEPARstart\{([^}]+)\}\{([^}]+)\}", r"\1\2", content)
@@ -413,6 +421,9 @@ def post_process_manuscript(raw_docx_path, output_docx_path):
     print(f"[✓] Successfully saved styled docx: '{output_docx_path}'")
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--copy-to-desktop", action="store_true")
+    args = parser.parse_args()
     print("==================================================================")
     print("   COMPILING IEEE JOURNAL MANUSCRIPT DOCX (OFFICE MATH ML)        ")
     print("==================================================================")
@@ -430,12 +441,12 @@ def main():
 
     print("[Step 2/3] Compiling to Word with Pandoc (Pure OMML math)...")
     pandoc_cmd = [
-        "pandoc",
+        shutil.which("pandoc") or str(Path.home() / ".local/bin/pandoc"),
         preprocessed_tex,
         f"--resource-path={SCRATCH_DIR}:{SCRIPT_DIR}:{os.path.join(SCRIPT_DIR, 'figures')}",
         "--number-sections",
         "--citeproc",
-        f"--bibliography={os.path.join(SCRIPT_DIR, 'references.bib')}",
+        f"--bibliography={os.path.join(SCRIPT_DIR, 'validation_references.bib')}",
         f"--csl={os.path.join(SCRIPT_DIR, 'ieee.csl')}",
         "-o", raw_docx
     ]
@@ -443,16 +454,20 @@ def main():
     if res.returncode != 0:
         print(f"[-] Pandoc compilation error:\n{res.stderr}")
         sys.exit(1)
+    if res.stderr:
+        print(res.stderr)
     print(f"[✓] Pandoc compiled successfully: '{raw_docx}'")
 
     print("[Step 3/3] Styling docx with academic booktabs and journal typography...")
     post_process_manuscript(raw_docx, final_docx)
 
-    shutil.copyfile(final_docx, desktop_docx)
+    if args.copy_to_desktop:
+        shutil.copyfile(final_docx, desktop_docx)
     size_mb = os.path.getsize(final_docx) / (1024 * 1024)
     print("==================================================================")
     print(f" [✓] COMPLETED SUCCESSFULLY: '{final_docx}' ({size_mb:.2f} MB)")
-    print(f" [✓] COPIED TO DESKTOP: '{desktop_docx}'")
+    if args.copy_to_desktop:
+        print(f" [✓] COPIED TO DESKTOP: '{desktop_docx}'")
     print("==================================================================")
 
 if __name__ == "__main__":

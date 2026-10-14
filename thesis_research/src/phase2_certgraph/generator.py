@@ -23,6 +23,7 @@ ESC Classification Rules (from SpecterOps/Certipy research):
 import json
 import os
 import random
+import hashlib
 import numpy as np
 import torch
 from torch_geometric.data import HeteroData
@@ -512,6 +513,7 @@ def generate_dataset(
     balanced: bool = True,
     seed: int = 42,
     include_hard_negatives: bool = True,
+    namespace: str | None = None,
 ) -> list[tuple[HeteroData, str, int]]:
     """Generate a full labeled dataset of synthetic AD environments."""
     random.seed(seed)
@@ -533,7 +535,11 @@ def generate_dataset(
         for _ in range(count):
             data, target_idx = generate_environment(
                 esc_class=esc_class,
-                seed=seed + env_id,
+                # Keep the historical stream reproducible when namespace is None.
+                # New experiments MUST use split-specific namespaces; changing
+                # seed alone produces overlapping consecutive seed ranges.
+                seed=(seed + env_id if namespace is None else int.from_bytes(
+                    hashlib.sha256(f"{namespace}:{seed}:{esc_class}:{env_id}".encode()).digest()[:4], "big")),
                 include_hard_negatives=include_hard_negatives,
             )
             dataset.append((data, esc_class, target_idx))

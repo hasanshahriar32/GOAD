@@ -1,0 +1,29 @@
+{
+  "Certificate Authorities": "[!] Could not find any CAs",
+  "Certificate Templates": "[!] Could not find any certificate templates",
+  "Issuance Policies": {
+    "0": {
+      "Issuance Policy Name": "OID",
+      "Permissions": {
+        "Owner": "ESSOS.LOCAL\\Enterprise Admins",
+        "Access Rights": {
+          "32": [
+            "ESSOS.LOCAL\\Enterprise Admins",
+            "ESSOS.LOCAL\\Local System",
+            "ESSOS.LOCAL\\Domain Admins"
+          ],
+          "262144": [
+            "ESSOS.LOCAL\\Enterprise Admins",
+            "ESSOS.LOCAL\\Local System",
+            "ESSOS.LOCAL\\Domain Admins"
+          ],
+          "524288": [
+            "ESSOS.LOCAL\\Enterprise Admins",
+            "ESSOS.LOCAL\\Local System",
+            "ESSOS.LOCAL\\Domain Admins"
+          ]
+        }
+      }
+    }
+  }
+}

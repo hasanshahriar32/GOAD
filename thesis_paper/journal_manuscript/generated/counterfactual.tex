@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\caption{Paired prerequisite benchmark: accuracy (percent), mean $\pm$ sample standard deviation over three seeds. IID, long-path, and larger-graph sets each contain 150 families per seed; remote membership contains 100. The reference also defines the labels.}
+\label{tab:counterfactual}
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+Method & IID & Long paths & Larger graphs & Remote membership \\
+\midrule
+CertGraph & 89.56 $\pm$ 0.77 & 90.00 $\pm$ 0.00 & 89.67 $\pm$ 0.58 & 50.00 $\pm$ 0.00 \\
+Feature MLP & 65.00 $\pm$ 0.00 & 65.00 $\pm$ 0.00 & 65.00 $\pm$ 0.00 & 50.00 $\pm$ 0.00 \\
+Graph-count MLP & 95.00 $\pm$ 0.00 & 95.00 $\pm$ 0.00 & 67.56 $\pm$ 15.56 & 50.00 $\pm$ 0.00 \\
+Graph-count RF & 95.00 $\pm$ 0.00 & 95.00 $\pm$ 0.00 & 95.00 $\pm$ 0.00 & 50.00 $\pm$ 0.00 \\
+Symbolic reference & 100.00 $\pm$ 0.00 & 100.00 $\pm$ 0.00 & 100.00 $\pm$ 0.00 & 100.00 $\pm$ 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,33 @@
+{
+    "certsvc":  [
+
+                ],
+    "features":  [
+                     {
+                         "Name":  "ADCS-Cert-Authority",
+                         "Installed":  false
+                     },
+                     {
+                         "Name":  "ADCS-Enroll-Web-Pol",
+                         "Installed":  false
+                     },
+                     {
+                         "Name":  "ADCS-Enroll-Web-Svc",
+                         "Installed":  false
+                     },
+                     {
+                         "Name":  "ADCS-Web-Enrollment",
+                         "Installed":  false
+                     },
+                     {
+                         "Name":  "ADCS-Device-Enrollment",
+                         "Installed":  false
+                     },
+                     {
+                         "Name":  "ADCS-Online-Cert",
+                         "Installed":  false
+                     }
+                 ],
+    "domain":  "essos.local",
+    "computer":  "BRAAVOS"
+}

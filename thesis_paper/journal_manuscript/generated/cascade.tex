@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\caption{IID screening followed by exact checking within the abstraction. Corpus latency covers 300 graphs in memory. Values are mean $\pm$ sample standard deviation of per-seed medians; they are not deployment latency.}
+\label{tab:cascade}
+\footnotesize
+\begin{tabular}{lrrr}
+\toprule
+Screen & Recall (\%) & Checked (\%) & Time (ms) \\
+\midrule
+CertGraph & 100.00 $\pm$ 0.00 & 55.00 $\pm$ 0.00 & 407.31 $\pm$ 19.88 \\
+Feature MLP & 100.00 $\pm$ 0.00 & 85.00 $\pm$ 0.00 & 3.68 $\pm$ 1.14 \\
+Graph-count MLP & 100.00 $\pm$ 0.00 & 55.00 $\pm$ 0.00 & 5.15 $\pm$ 0.97 \\
+Graph-count RF & 99.78 $\pm$ 0.38 & 54.89 $\pm$ 0.19 & 52.02 $\pm$ 6.28 \\
+Reference only & 100.00 & 100.00 & 2.89 $\pm$ 0.94 \\
+Flags + reference & 100.00 & 85.00 & 3.64 $\pm$ 1.67 \\
+\bottomrule
+\end{tabular}
+\end{table*}

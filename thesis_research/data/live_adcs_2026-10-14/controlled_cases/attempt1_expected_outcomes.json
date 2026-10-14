@@ -1,0 +1,12 @@
+{
+  "recorded_before_provisioning_utc": "2026-10-14T08:02:59.776187+00:00",
+  "cases": {
+    "CGPubPositive": "issued",
+    "CGPubApproval": "pending",
+    "CGPubSignature": "denied_unsigned",
+    "CGPubDenied": "denied_template_acl",
+    "CGPubUnpublished": "unsupported_template",
+    "CGPubNoPolicy": "issued_without_policy"
+  },
+  "scope": "Enrollment outcomes only; not complete ESC13 exploitability labels."
+}

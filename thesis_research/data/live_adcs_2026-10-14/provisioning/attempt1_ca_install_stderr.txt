@@ -1,0 +1,8 @@
+Install-AdcsCertificationAuthority : CCertSrvSetup::InitializeDefaults: Access is denied. 0x80070005 (WIN32: 5 
+ERROR_ACCESS_DENIED)
+At line:12 char:10
++ $setup = Install-AdcsCertificationAuthority -Credential $PublicationC ...
++          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Install-AdcsCertificationAuthority], UnauthorizedAccessException
+    + FullyQualifiedErrorId : System.UnauthorizedAccessException,Microsoft.CertificateServices.Deployment.Commands.CA. 
+   InstallADCSCertificationAuthority

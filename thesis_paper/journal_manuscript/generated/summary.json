@@ -1,0 +1,196 @@
+{
+  "legacy": {
+    "mixed_training": {
+      "CertGraph": {
+        "macro_f1": 0.9971402833979153,
+        "hard_negative_specificity": 0.9761904761904763
+      },
+      "Feature MLP": {
+        "macro_f1": 0.8621169473523896,
+        "hard_negative_specificity": 0.0
+      },
+      "Graph-count MLP": {
+        "macro_f1": 0.998095047599998,
+        "hard_negative_specificity": 1.0
+      },
+      "Graph-count RF": {
+        "macro_f1": 0.999047523799999,
+        "hard_negative_specificity": 1.0
+      },
+      "Generator diagnostic": {
+        "macro_f1": 1.0,
+        "hard_negative_specificity": 1.0
+      }
+    },
+    "no_hn_training": {
+      "CertGraph": {
+        "macro_f1": 0.8781697770983286,
+        "hard_negative_specificity": 0.05163034431327115
+      },
+      "Feature MLP": {
+        "macro_f1": 0.8687626815062734,
+        "hard_negative_specificity": 0.0
+      },
+      "Graph-count MLP": {
+        "macro_f1": 0.8798677773571321,
+        "hard_negative_specificity": 0.05691056910569106
+      },
+      "Graph-count RF": {
+        "macro_f1": 0.8826598714081596,
+        "hard_negative_specificity": 0.07317073170731707
+      },
+      "Generator diagnostic": {
+        "macro_f1": 1.0,
+        "hard_negative_specificity": 1.0
+      }
+    }
+  },
+  "counterfactual": {
+    "iid": {
+      "CertGraph": {
+        "accuracy": 0.8955555555555555,
+        "pair_both_correct": 0.7911111111111112,
+        "recall": 1.0,
+        "specificity": 0.7911111111111112
+      },
+      "Feature MLP": {
+        "accuracy": 0.65,
+        "pair_both_correct": 0.3,
+        "recall": 1.0,
+        "specificity": 0.3
+      },
+      "Graph-count MLP": {
+        "accuracy": 0.9499999999999998,
+        "pair_both_correct": 0.9,
+        "recall": 1.0,
+        "specificity": 0.9
+      },
+      "Graph-count RF": {
+        "accuracy": 0.9499999999999998,
+        "pair_both_correct": 0.9,
+        "recall": 1.0,
+        "specificity": 0.9
+      },
+      "Symbolic reference": {
+        "accuracy": 1.0,
+        "pair_both_correct": 1.0,
+        "recall": 1.0,
+        "specificity": 1.0
+      }
+    },
+    "long_paths": {
+      "CertGraph": {
+        "accuracy": 0.9,
+        "pair_both_correct": 0.8000000000000002,
+        "recall": 1.0,
+        "specificity": 0.8000000000000002
+      },
+      "Feature MLP": {
+        "accuracy": 0.65,
+        "pair_both_correct": 0.3,
+        "recall": 1.0,
+        "specificity": 0.3
+      },
+      "Graph-count MLP": {
+        "accuracy": 0.9499999999999998,
+        "pair_both_correct": 0.9,
+        "recall": 1.0,
+        "specificity": 0.9
+      },
+      "Graph-count RF": {
+        "accuracy": 0.9499999999999998,
+        "pair_both_correct": 0.9,
+        "recall": 1.0,
+        "specificity": 0.9
+      },
+      "Symbolic reference": {
+        "accuracy": 1.0,
+        "pair_both_correct": 1.0,
+        "recall": 1.0,
+        "specificity": 1.0
+      }
+    },
+    "larger_graphs": {
+      "CertGraph": {
+        "accuracy": 0.8966666666666666,
+        "pair_both_correct": 0.7933333333333333,
+        "recall": 1.0,
+        "specificity": 0.7933333333333333
+      },
+      "Feature MLP": {
+        "accuracy": 0.65,
+        "pair_both_correct": 0.3,
+        "recall": 1.0,
+        "specificity": 0.3
+      },
+      "Graph-count MLP": {
+        "accuracy": 0.6755555555555555,
+        "pair_both_correct": 0.35111111111111115,
+        "recall": 0.38222222222222224,
+        "specificity": 0.9688888888888889
+      },
+      "Graph-count RF": {
+        "accuracy": 0.9499999999999998,
+        "pair_both_correct": 0.9,
+        "recall": 1.0,
+        "specificity": 0.9
+      },
+      "Symbolic reference": {
+        "accuracy": 1.0,
+        "pair_both_correct": 1.0,
+        "recall": 1.0,
+        "specificity": 1.0
+      }
+    },
+    "remote_membership": {
+      "CertGraph": {
+        "accuracy": 0.5,
+        "pair_both_correct": 0.0,
+        "recall": 1.0,
+        "specificity": 0.0
+      },
+      "Feature MLP": {
+        "accuracy": 0.5,
+        "pair_both_correct": 0.0,
+        "recall": 1.0,
+        "specificity": 0.0
+      },
+      "Graph-count MLP": {
+        "accuracy": 0.5,
+        "pair_both_correct": 0.0,
+        "recall": 1.0,
+        "specificity": 0.0
+      },
+      "Graph-count RF": {
+        "accuracy": 0.5,
+        "pair_both_correct": 0.0,
+        "recall": 1.0,
+        "specificity": 0.0
+      },
+      "Symbolic reference": {
+        "accuracy": 1.0,
+        "pair_both_correct": 1.0,
+        "recall": 1.0,
+        "specificity": 1.0
+      }
+    }
+  },
+  "iid_cascade": {
+    "CertGraph": {
+      "recall": 1.0,
+      "candidate_fraction": 0.55
+    },
+    "Feature MLP": {
+      "recall": 1.0,
+      "candidate_fraction": 0.85
+    },
+    "Graph-count MLP": {
+      "recall": 1.0,
+      "candidate_fraction": 0.55
+    },
+    "Graph-count RF": {
+      "recall": 0.9977777777777778,
+      "candidate_fraction": 0.5488888888888889
+    }
+  }
+}

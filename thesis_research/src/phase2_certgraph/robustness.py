@@ -98,7 +98,8 @@ def main():
 
     # Load test dataset
     print("[*] Generating test dataset for sensitivity analysis...")
-    test_dataset = generate_dataset(num_envs=200, balanced=True, seed=200)
+    test_dataset = generate_dataset(num_envs=200, balanced=True, seed=200,
+                                    namespace="robustness-heldout-v2")
 
     # Load GNN
     print("[*] Loading best GNN checkpoint...")

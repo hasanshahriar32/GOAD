@@ -1,0 +1,32 @@
+{
+  "collected_utc": "2026-10-14T07:47:31.997191+00:00",
+  "version": "Certipy v5.0.4 - by Oliver Lyak (ly4k)",
+  "command": [
+    "/tmp/certgraph-certipy5/bin/certipy",
+    "find",
+    "-u",
+    "vagrant@essos.local",
+    "-p",
+    "<environment>",
+    "-dc-ip",
+    "192.168.121.4",
+    "-ns",
+    "192.168.121.4",
+    "-ldap-scheme",
+    "ldap",
+    "-json",
+    "-text",
+    "-oids",
+    "-output",
+    "/home/hs32/Desktop/GOAD/thesis_research/data/live_adcs_2026-10-14/essos/certipy5/certipy",
+    "-timeout",
+    "15"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 3.39745021800627,
+  "scope": "Read-only actual Certipy enumeration; no exploitation or ground-truth claim.",
+  "outputs": {
+    "certipy_stderr.txt": "b1863643a3c7d52fc2aa5869579896337527cebd1b842aa3d0c44b0357d300bb",
+    "certipy_stdout.txt": "13674554579bd085ac99368ced0eb622e6725ad8ae51272016af72b0297741ce"
+  }
+}

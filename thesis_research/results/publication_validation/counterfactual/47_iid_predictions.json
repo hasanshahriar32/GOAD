@@ -1,0 +1,4202 @@
+[
+  {
+    "family": "cf-v1-iid:47:56",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 3.476923666312359e-05,
+      "Graph-count RF": 0.02,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:117",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9094386100769043,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:117",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07839417457580566,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 6.171542190713808e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:79",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.628839163458906e-05,
+      "Graph-count RF": 0.01,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:104",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9293330311775208,
+      "Graph-count RF": 0.9970138888888889,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:114",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0012983777560293674,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 1.531430461909622e-05,
+      "Graph-count RF": 0.009642857142857142,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:108",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00018331028695683926,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:32",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9108302593231201,
+      "Graph-count RF": 0.871504856254856,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:2",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:46",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 6.259214569581673e-05,
+      "Graph-count RF": 0.02,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:114",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9166691303253174,
+      "Graph-count RF": 0.9135500638207685,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:49",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.253397567779757e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:87",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07839417457580566,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 6.455747643485665e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:148",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9156481623649597,
+      "Graph-count RF": 0.8486945463601469,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:48",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.831216448219493e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:35",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00017259755986742675,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:72",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.93928203266114e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:72",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.926802396774292,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:5",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9143790006637573,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:135",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.836577656737063e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00017259755986742675,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:10",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9094386100769043,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:71",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9214781522750854,
+      "Graph-count RF": 0.8826326598238364,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:28",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.000328924972563982,
+      "Graph-count RF": 0.055,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:113",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.483962458034512e-06,
+      "Graph-count RF": 0.019,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:68",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:123",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.050619084388017654,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.276715900341514e-06,
+      "Graph-count RF": 0.017416666666666667,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:24",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9094386100769043,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:116",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9080273509025574,
+      "Graph-count RF": 0.8530345626595626,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:29",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.5831885320949368e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:14",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:67",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.925506055355072,
+      "Graph-count RF": 0.7912602426383384,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:146",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9031831622123718,
+      "Graph-count RF": 0.8999773539369129,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:61",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9080273509025574,
+      "Graph-count RF": 0.8530345626595626,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:8",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.0003416583640500903,
+      "Graph-count RF": 0.065,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:55",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:103",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:132",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.397530599613674e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:49",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9043295383453369,
+      "Graph-count RF": 0.823173279678697,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:136",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.925506055355072,
+      "Graph-count RF": 0.7912602426383384,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:94",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 6.625224159506615e-06,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:17",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 5.628578583127819e-05,
+      "Graph-count RF": 0.0036363636363636364,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:112",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.5255510738352314e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:45",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.836577656737063e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00016748177586123347,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:19",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.2054742910549976e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:16",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 5.887820589123294e-05,
+      "Graph-count RF": 0.009736842105263157,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:6",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 6.4226383074128535e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 2.5804505639825948e-05,
+      "Graph-count RF": 0.013166666666666667,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:119",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9108302593231201,
+      "Graph-count RF": 0.871504856254856,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:105",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.836577656737063e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00014849060971755534,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:145",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.922849714756012,
+      "Graph-count RF": 0.8548423929871292,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:125",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.836577656737063e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00015770069148857147,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:74",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.8769553899765015,
+      "Graph-count RF": 0.9801666666666666,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:103",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.3547030903282575e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:11",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:96",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.926802396774292,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:90",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9031831622123718,
+      "Graph-count RF": 0.8999773539369129,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:82",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4973505735397339,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.914546919579152e-05,
+      "Graph-count RF": 0.013999999999999999,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:41",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.889997124671936,
+      "Graph-count RF": 0.9152257107787287,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:95",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9020246267318726,
+      "Graph-count RF": 0.873645557620614,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:92",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4973505735397339,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.5913559258915484e-05,
+      "Graph-count RF": 0.01,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:97",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9166691303253174,
+      "Graph-count RF": 0.9135500638207685,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:144",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 1.2197142496006563e-05,
+      "Graph-count RF": 0.01,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:1",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.926802396774292,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:106",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.922849714756012,
+      "Graph-count RF": 0.8548423929871292,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:119",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.324948334513465e-05,
+      "Graph-count RF": 0.0034999999999999996,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:141",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.0001329904334852472,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:34",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 9.714442057884298e-06,
+      "Graph-count RF": 0.004166666666666667,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:39",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.915133535861969,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:78",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.0001981422828976065,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:35",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:113",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:34",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9120786190032959,
+      "Graph-count RF": 0.8794705621176208,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:118",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9120786190032959,
+      "Graph-count RF": 0.8794705621176208,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:68",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.5375445485115051,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.831216448219493e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:89",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.652154060138855e-05,
+      "Graph-count RF": 0.017045454545454544,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:59",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9120786190032959,
+      "Graph-count RF": 0.8794705621176208,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:0",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9020246267318726,
+      "Graph-count RF": 0.873645557620614,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:18",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.5375445485115051,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 8.664626511745155e-05,
+      "Graph-count RF": 0.01,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:83",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.918678343296051,
+      "Graph-count RF": 0.9265234495756185,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:84",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9132357239723206,
+      "Graph-count RF": 0.8744074050949051,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:58",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.5375445485115051,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00021501870651263744,
+      "Graph-count RF": 0.018586309523809522,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:133",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.390108354826225e-05,
+      "Graph-count RF": 0.004642857142857143,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:98",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.0002720316406339407,
+      "Graph-count RF": 0.00125,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:120",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:115",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9143790006637573,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:122",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.097445733146742e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:118",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00015761230315547436,
+      "Graph-count RF": 0.003125,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:43",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.4264389392337762e-05,
+      "Graph-count RF": 0.01,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:63",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.581504511705134e-05,
+      "Graph-count RF": 0.019074448942869995,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:102",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9199522733688354,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:109",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.922849714756012,
+      "Graph-count RF": 0.8548423929871292,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:99",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.915133535861969,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:39",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.3851181392965373e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:58",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:64",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9080273509025574,
+      "Graph-count RF": 0.8530345626595626,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:73",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.050619084388017654,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.1604242899920791e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:33",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:111",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9132357239723206,
+      "Graph-count RF": 0.8744074050949051,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:57",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 7.348636427195743e-05,
+      "Graph-count RF": 0.009666666666666667,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:81",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.915133535861969,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:99",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00019920137128792703,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.3851181392965373e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:1",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00016640903777442873,
+      "Graph-count RF": 0.03,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:3",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.1317945791233797e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:93",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9132357239723206,
+      "Graph-count RF": 0.8744074050949051,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:65",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9199522733688354,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:14",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 2.604481232992839e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:147",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 8.809156133793294e-05,
+      "Graph-count RF": 0.015,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:67",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07839417457580566,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 8.633499965071678e-05,
+      "Graph-count RF": 0.008090909090909091,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:139",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9020246267318726,
+      "Graph-count RF": 0.873645557620614,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:36",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9166691303253174,
+      "Graph-count RF": 0.9135500638207685,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:46",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9304934740066528,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:86",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.895883321762085,
+      "Graph-count RF": 0.8626206987456985,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:106",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 5.816233533550985e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:31",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00010128627764061093,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:48",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:145",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00019467109814286232,
+      "Graph-count RF": 0.0045000000000000005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:59",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00019920137128792703,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.3397405382420402e-05,
+      "Graph-count RF": 0.0035714285714285713,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:130",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:27",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9293330311775208,
+      "Graph-count RF": 0.9970138888888889,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:7",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9065964221954346,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:134",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 9.714442057884298e-06,
+      "Graph-count RF": 0.004166666666666667,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:61",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 7.37165828468278e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:79",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.926802396774292,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:38",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00015761230315547436,
+      "Graph-count RF": 0.003125,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:136",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 5.960288399364799e-05,
+      "Graph-count RF": 0.009090909090909092,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:122",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9143790006637573,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:109",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.560845339554362e-05,
+      "Graph-count RF": 0.009705882352941177,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:50",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9161600470542908,
+      "Graph-count RF": 0.9213978932648839,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:4",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:147",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.926802396774292,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:97",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 7.348636427195743e-05,
+      "Graph-count RF": 0.009666666666666667,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:96",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 6.4226383074128535e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 6.033654426573776e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:76",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:47",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9304934740066528,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:27",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.171263809548691e-05,
+      "Graph-count RF": 0.055,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:85",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00018890100182034075,
+      "Graph-count RF": 0.013999999999999999,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:131",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.679181675892323e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:32",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4973505735397339,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 2.8283124265726656e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:121",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9199522733688354,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:5",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.836577656737063e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00014408939750865102,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:38",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9120786190032959,
+      "Graph-count RF": 0.8794705621176208,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:94",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.905463695526123,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:9",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9080273509025574,
+      "Graph-count RF": 0.8530345626595626,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:37",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9156481623649597,
+      "Graph-count RF": 0.8486945463601469,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:131",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.915133535861969,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:110",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.889997124671936,
+      "Graph-count RF": 0.9152257107787287,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:135",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:63",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:69",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9166691303253174,
+      "Graph-count RF": 0.9135500638207685,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:3",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9120786190032959,
+      "Graph-count RF": 0.8794705621176208,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:25",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9293330311775208,
+      "Graph-count RF": 0.9970138888888889,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:142",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4973505735397339,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.155265949317254e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:15",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9214781522750854,
+      "Graph-count RF": 0.8826326598238364,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:77",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9065964221954346,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:142",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.915133535861969,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:90",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9031831622123718,
+      "Graph-count RF": 0.8999773539369129,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:60",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9080273509025574,
+      "Graph-count RF": 0.8530345626595626,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:52",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9094386100769043,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:133",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:137",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 8.809156133793294e-05,
+      "Graph-count RF": 0.015,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:126",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:88",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:42",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.397530599613674e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:12",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9179163575172424,
+      "Graph-count RF": 0.8949200086692835,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:104",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0012983777560293674,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 3.4165637771366164e-05,
+      "Graph-count RF": 0.04,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:74",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0012983777560293674,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 3.796412784140557e-06,
+      "Graph-count RF": 0.045,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:88",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.831216448219493e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:12",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.460946027189493e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:93",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.1604242899920791e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:76",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 6.4226383074128535e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 5.471112308441661e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:6",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.8836348652839661,
+      "Graph-count RF": 0.7643239191364191,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:41",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 5.0569913582876325e-05,
+      "Graph-count RF": 0.007738095238095238,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:24",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 8.346891263499856e-06,
+      "Graph-count RF": 0.01,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:2",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.796245437115431e-05,
+      "Graph-count RF": 0.014736842105263158,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:62",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4973505735397339,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.914546919579152e-05,
+      "Graph-count RF": 0.013999999999999999,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:52",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 2.6934447305393405e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:137",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.926802396774292,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:55",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00017259755986742675,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:56",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.905463695526123,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:127",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9293330311775208,
+      "Graph-count RF": 0.9970138888888889,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:54",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.926802396774292,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:66",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.922849714756012,
+      "Graph-count RF": 0.8548423929871292,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:66",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 5.816233533550985e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:45",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:87",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9120786190032959,
+      "Graph-count RF": 0.8794705621176208,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:73",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9132357239723206,
+      "Graph-count RF": 0.8744074050949051,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:69",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.4332542377815116e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:140",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:54",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 3.0311948648886755e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:84",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 1.0480092896614224e-05,
+      "Graph-count RF": 0.02287878787878788,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:91",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00012708932626992464,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:40",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.895883321762085,
+      "Graph-count RF": 0.8626206987456985,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:100",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.922849714756012,
+      "Graph-count RF": 0.8548423929871292,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:42",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:17",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9043295383453369,
+      "Graph-count RF": 0.823173279678697,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:126",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 5.887820589123294e-05,
+      "Graph-count RF": 0.009736842105263157,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:25",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00022627336147706956,
+      "Graph-count RF": 0.04,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:4",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 1.7823384041548707e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:13",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.889997124671936,
+      "Graph-count RF": 0.9152257107787287,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:40",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.895883321762085,
+      "Graph-count RF": 0.8626206987456985,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:82",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:107",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.918678343296051,
+      "Graph-count RF": 0.9265234495756185,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:149",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.1095336049038451e-05,
+      "Graph-count RF": 0.009000000000000001,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:44",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.932471513748169,
+      "Graph-count RF": 0.98,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:86",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 2.8099339033360593e-05,
+      "Graph-count RF": 0.01908333333333333,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:28",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.931489109992981,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:81",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.679181675892323e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:70",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.925506055355072,
+      "Graph-count RF": 0.7912602426383384,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:37",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 7.048020052025095e-05,
+      "Graph-count RF": 0.004666666666666667,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:53",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.895883321762085,
+      "Graph-count RF": 0.8626206987456985,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:15",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00018890100182034075,
+      "Graph-count RF": 0.013999999999999999,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:143",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9031831622123718,
+      "Graph-count RF": 0.8999773539369129,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:138",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9304934740066528,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:120",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:16",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:11",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00012145001528551802,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:9",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00019920137128792703,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.2958519619132858e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:21",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9214781522750854,
+      "Graph-count RF": 0.8826326598238364,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:125",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9161600470542908,
+      "Graph-count RF": 0.9213978932648839,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:21",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00013912028225604445,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:139",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00018188559624832124,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.1565090062504169e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:18",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.889997124671936,
+      "Graph-count RF": 0.9152257107787287,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:10",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9094386100769043,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:23",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9214781522750854,
+      "Graph-count RF": 0.8826326598238364,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:138",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00031666658469475806,
+      "Graph-count RF": 0.035,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:108",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9156481623649597,
+      "Graph-count RF": 0.8486945463601469,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:123",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.895883321762085,
+      "Graph-count RF": 0.8626206987456985,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:115",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.00014408939750865102,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:75",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.836577656737063e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.0001084498580894433,
+      "Graph-count RF": 0.02,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:20",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9199522733688354,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:8",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.932471513748169,
+      "Graph-count RF": 0.98,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:43",
+    "variant": "positive",
+    "mutation": "publication",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.918678343296051,
+      "Graph-count RF": 0.9265234495756185,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:13",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 8.854576662997715e-06,
+      "Graph-count RF": 0.01816118421052632,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:100",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.922849714756012,
+      "Graph-count RF": 0.8548423929871292,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:146",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.772933036496397e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 3.192976146237925e-05,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:47",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.357860835734755e-05,
+      "Graph-count RF": 0.065,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:70",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.925506055355072,
+      "Graph-count RF": 0.7912602426383384,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:80",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:30",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9161600470542908,
+      "Graph-count RF": 0.9213978932648839,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:77",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 5.91090829402674e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:51",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9080273509025574,
+      "Graph-count RF": 0.8530345626595626,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:111",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 8.839229849399999e-05,
+      "Graph-count RF": 0.0044444444444444444,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:75",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9065964221954346,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:0",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9020246267318726,
+      "Graph-count RF": 0.873645557620614,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:60",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9080273509025574,
+      "Graph-count RF": 0.8530345626595626,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:128",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4824201166629791,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.0001636777597013861,
+      "Graph-count RF": 0.008571428571428572,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:51",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 7.37165828468278e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:30",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9161600470542908,
+      "Graph-count RF": 0.9213978932648839,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:89",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9280780553817749,
+      "Graph-count RF": 0.7970477172036762,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:62",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:22",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 2.3262075046659447e-05,
+      "Graph-count RF": 0.015,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:92",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9199522733688354,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:36",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 6.4226383074128535e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 5.404591865953989e-05,
+      "Graph-count RF": 0.00475,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:132",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:71",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00013912028225604445,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:148",
+    "variant": "counterfactual",
+    "mutation": "privilege",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.5375445485115051,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.00018331028695683926,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:29",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:128",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9132357239723206,
+      "Graph-count RF": 0.8744074050949051,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:78",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9166691303253174,
+      "Graph-count RF": 0.9135500638207685,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:65",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 0.0001833022542996332,
+      "Graph-count RF": 0.005,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:129",
+    "variant": "counterfactual",
+    "mutation": "ca_trust",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.00019920137128792703,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.2958519619132858e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:53",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.276715900341514e-06,
+      "Graph-count RF": 0.017416666666666667,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:57",
+    "variant": "positive",
+    "mutation": "policy_link",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9166691303253174,
+      "Graph-count RF": 0.9135500638207685,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:20",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9199522733688354,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:144",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.915133535861969,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:7",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07839417457580566,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 5.91090829402674e-05,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:91",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.918678343296051,
+      "Graph-count RF": 0.9265234495756185,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:141",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 1,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9199522733688354,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:124",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9020246267318726,
+      "Graph-count RF": 0.873645557620614,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:64",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 7.73710689827567e-06,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:143",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.893898095469922e-06,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:85",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9214781522750854,
+      "Graph-count RF": 0.8826326598238364,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:124",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 5.312178927852074e-06,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:33",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.390108354826225e-05,
+      "Graph-count RF": 0.004642857142857143,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:19",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9031831622123718,
+      "Graph-count RF": 0.8999773539369129,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:101",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 5.539919948205352e-05,
+      "Graph-count RF": 0.004,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:80",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.91717529296875,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:50",
+    "variant": "positive",
+    "mutation": "membership",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9161600470542908,
+      "Graph-count RF": 0.9213978932648839,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:110",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.889997124671936,
+      "Graph-count RF": 0.9152257107787287,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:83",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.4264389392337762e-05,
+      "Graph-count RF": 0.01,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:129",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9080273509025574,
+      "Graph-count RF": 0.8530345626595626,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:134",
+    "variant": "positive",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9120786190032959,
+      "Graph-count RF": 0.8794705621176208,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:101",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:23",
+    "variant": "counterfactual",
+    "mutation": "publication",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.04575534164905548,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 1.5019719285191968e-05,
+      "Graph-count RF": 0.008611111111111111,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:112",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.918678343296051,
+      "Graph-count RF": 0.9265234495756185,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:121",
+    "variant": "counterfactual",
+    "mutation": "template_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.6137037873268127,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.0001329904334852472,
+      "Graph-count RF": 0.0,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:149",
+    "variant": "positive",
+    "mutation": "ca_trust",
+    "depth": 3,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:44",
+    "variant": "counterfactual",
+    "mutation": "authentication",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.0011609647190198302,
+      "Feature MLP": 6.175145244924352e-05,
+      "Graph-count MLP": 3.916215791832656e-05,
+      "Graph-count RF": 0.04,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:26",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 6.4226383074128535e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 5.887820589123294e-05,
+      "Graph-count RF": 0.009736842105263157,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:140",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 1,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:105",
+    "variant": "positive",
+    "mutation": "approval",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.915133535861969,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:107",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 7.806382200215012e-05,
+      "Graph-count RF": 0.01919871794871795,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:22",
+    "variant": "positive",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.905463695526123,
+      "Graph-count RF": 1.0,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:26",
+    "variant": "positive",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.8307198286056519,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9241885542869568,
+      "Graph-count RF": 0.9388265540411482,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:102",
+    "variant": "counterfactual",
+    "mutation": "ca_acl",
+    "depth": 2,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.4464387595653534,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 3.5913559258915484e-05,
+      "Graph-count RF": 0.01,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:130",
+    "variant": "counterfactual",
+    "mutation": "membership",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9003983736038208,
+      "Graph-count RF": 0.857610028860029,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:31",
+    "variant": "positive",
+    "mutation": "template_acl",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.9156481623649597,
+      "Graph-count RF": 0.8486945463601469,
+      "Symbolic reference": 1.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:95",
+    "variant": "counterfactual",
+    "mutation": "approval",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 5.04262652611942e-06,
+      "Feature MLP": 5.751185381086543e-05,
+      "Graph-count MLP": 8.659010200062767e-05,
+      "Graph-count RF": 0.008955882352941176,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:116",
+    "variant": "counterfactual",
+    "mutation": "signature",
+    "depth": 0,
+    "label": 0,
+    "scores": {
+      "CertGraph": 6.4226383074128535e-06,
+      "Feature MLP": 3.6465178709477186e-05,
+      "Graph-count MLP": 3.786129309446551e-05,
+      "Graph-count RF": 0.013545454545454545,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:127",
+    "variant": "counterfactual",
+    "mutation": "policy_link",
+    "depth": 3,
+    "label": 0,
+    "scores": {
+      "CertGraph": 0.07634840905666351,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 9.171263809548691e-05,
+      "Graph-count RF": 0.055,
+      "Symbolic reference": 0.0
+    }
+  },
+  {
+    "family": "cf-v1-iid:47:98",
+    "variant": "positive",
+    "mutation": "privilege",
+    "depth": 2,
+    "label": 1,
+    "scores": {
+      "CertGraph": 0.7939299941062927,
+      "Feature MLP": 0.5881309509277344,
+      "Graph-count MLP": 0.925506055355072,
+      "Graph-count RF": 0.7912602426383384,
+      "Symbolic reference": 1.0
+    }
+  }
+]

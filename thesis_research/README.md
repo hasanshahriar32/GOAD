@@ -1,5 +1,7 @@
 # Active Directory GNN Thesis Research
 
+> **2026-10-14 evidence revision:** Use [the publication validation suite](src/publication_validation/README.md) and the [revised journal manuscript](../thesis_paper/journal_manuscript/manuscript.pdf) for current claims. The historical phase 1/2 notebooks, thesis, figures, and saved results below have not all been revised. They include synthetic certificate injections, local surrogate tool comparisons, and unsupported interpretations identified in the [audit](../thesis_paper/reviews/2026-10-14/journal_readiness_review.md). They are retained as historical records, not independent enterprise validation.
+
 This repository contains GNN models for Active Directory Certificate Services (ADCS) ESC privilege escalation path detection. It is divided into two phases:
 
 - **Phase 1: HGAT ESC13 Analysis** — A Heterogeneous Graph Attention Network (HGAT) trained to detect the ESC13 attack path using link prediction (binary classification) on real BloodHound Active Directory graphs.

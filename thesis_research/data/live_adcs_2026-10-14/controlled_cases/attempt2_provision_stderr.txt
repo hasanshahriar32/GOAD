@@ -1,0 +1,8 @@
+New-ADObject : Access is denied
+At line:27 char:1
++ New-ADObject -Name CGPublicationPolicy -Type msPKI-Enterprise-Oid -Pa ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (cn=CGPublicatio...=essos,DC=local:String) [New-ADObject], Unauthorize 
+   dAccessException
+    + FullyQualifiedErrorId : ActiveDirectoryCmdlet:System.UnauthorizedAccessException,Microsoft.ActiveDirectory.Manag 
+   ement.Commands.NewADObject

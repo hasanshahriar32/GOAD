@@ -1,0 +1,2813 @@
+{
+  "scope": "Synthetic legacy-generator audit; local symbolic surrogates are not commercial tools.",
+  "config": {
+    "seeds": [
+      11,
+      29,
+      47
+    ],
+    "epochs": 80,
+    "train_n": 700,
+    "validation_n": 210,
+    "test_n": 350
+  },
+  "environment": {
+    "python": "3.11.11",
+    "torch": "2.12.0+cpu",
+    "pyg": "2.8.0",
+    "sklearn": "1.9.0",
+    "scipy": "1.17.1",
+    "platform": "Linux-6.18.55-1-lts-x86_64-with-glibc2.44",
+    "threads": 2,
+    "git_commit": "aa4aa8b4c2b198b7674145d13457c9aa79e3dbeb",
+    "source_sha256": {
+      "thesis_research/src/phase2_certgraph/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "thesis_research/src/phase2_certgraph/ablation.py": "183d03543eec75433fcc212015e733ba637812556550066a8c22c4c2ff9a6bb2",
+      "thesis_research/src/phase2_certgraph/adsynth_adapter.py": "cfc78a990019d8d1322c5933c9114907da5e448e3bc7e166bb5a3b92a9e2dbde",
+      "thesis_research/src/phase2_certgraph/bfs_baseline.py": "e3e57226153e6410ce5594b7a821bd04eeabd7da699d0399d478cee75b2502c8",
+      "thesis_research/src/phase2_certgraph/bloodhound_parser.py": "536d04f9fa2c929d53c6ae2ed607b3afa6f464a34d2e03bfbc5ca62d6b287944",
+      "thesis_research/src/phase2_certgraph/case_study.py": "dc39bea1253da2cf4a22bea0710fdd7535a687870150f44e3e62b074bfef173d",
+      "thesis_research/src/phase2_certgraph/community_eval.py": "fc420b8dbd7e7d32a75450a0d1d4a7bf2ff8e9a840549dc36b12c039b3e38c60",
+      "thesis_research/src/phase2_certgraph/defense_eval.py": "4f03ac09ced5ad1d90b98b236c50d12986a6ad49907c860b0d50f8c6e2a5e166",
+      "thesis_research/src/phase2_certgraph/explain.py": "8497f955000c8e3a5dd1d29e31fa534fb7d59b47bd9b55b01dabea82e869836f",
+      "thesis_research/src/phase2_certgraph/feature_analysis.py": "f9e8e892d878633a2176c2f341a5cb851c41810a823e2aac1847b9c82f368cb1",
+      "thesis_research/src/phase2_certgraph/fresh_data_eval.py": "b06823247217f6ee6a1dbb0c23f51c2bc963135af8231b463b0b53a0765c8fee",
+      "thesis_research/src/phase2_certgraph/generator.py": "ff3705568b8c67ed391fd83042eccbc76e936390c74fe22d7e8e44def3e1d0cd",
+      "thesis_research/src/phase2_certgraph/hard_negatives.py": "91a88454e146500f3f98c3f3959d6fb6b0a14ab0b3c87aecefc3f894905ca38b",
+      "thesis_research/src/phase2_certgraph/model.py": "c702578af48fca4fcbe8eda5d7d145744e0ef8d07277219d794a051e02484cc6",
+      "thesis_research/src/phase2_certgraph/plot_comparison.py": "fea51a96cd9a65d56ae2899bc8b4ab7adb88803f40bbdfe86d4d05387d22b274",
+      "thesis_research/src/phase2_certgraph/robustness.py": "f3b405c3120d6dafaae1b8e7a18aff273eb22434db86d081a271295c4e8c7202",
+      "thesis_research/src/phase2_certgraph/scale_test.py": "07d31aa36547f75bda0b060c7e496860e680cfe34e0588d3237abd761014094d",
+      "thesis_research/src/phase2_certgraph/tool_comparison.py": "028a8fe194659a08085a0697c753282cec257e8c5e383f29d62c6fc06420d1bd",
+      "thesis_research/src/phase2_certgraph/train.py": "86f161f7a88a147f6d0cd5cb4e47e2bbde24275d116d0c0ce7d432f2e665ce48",
+      "thesis_research/src/phase2_certgraph/train_gnn_baselines.py": "b61af3a3e0f33d2bf00280f1bb03a381977dc8c50a83cfdf00116a3baeddff0a",
+      "thesis_research/src/phase2_certgraph/transfer_eval.py": "c28759e0b7260831f97521e1faf04827205fbb0e7f368c88e85611ea313f5023",
+      "thesis_research/src/publication_validation/common.py": "57b462ad6f343daed0e74d4186e9a7f65c39315c980b6dc4ef93adb8a770f875",
+      "thesis_research/src/publication_validation/learning.py": "460d81bcd7ae18105779ee0c180fd8d7fbb4745d11ed813ccd22342c72e2771f",
+      "thesis_research/src/publication_validation/legacy_rules.py": "817569b1255ee1aafb0051605086725cd0f0bec30209c0c031783b7d935e9bef",
+      "thesis_research/src/publication_validation/run_legacy.py": "bdfe52a734a16aad45ebc439a36337422922f71b840491bdeaa0c89bdab8a519"
+    }
+  },
+  "runs": [
+    {
+      "seed": 11,
+      "condition": "mixed_training",
+      "split_check": {
+        "train": {
+          "samples": 700,
+          "unique_inputs": 700
+        },
+        "validation": {
+          "samples": 210,
+          "unique_inputs": 210
+        },
+        "test": {
+          "samples": 350,
+          "unique_inputs": 350
+        }
+      },
+      "selected_epoch": 21,
+      "models": {
+        "CertGraph": {
+          "n": 350,
+          "accuracy": 0.9914285714285714,
+          "macro_f1": 0.9914208501937457,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              47
+            ]
+          ],
+          "hard_negative_n": 42,
+          "hard_negative_specificity": 0.9285714285714286,
+          "single_pass_test_seconds": 0.34497589999227785
+        },
+        "Feature MLP": {
+          "n": 350,
+          "accuracy": 0.88,
+          "macro_f1": 0.8439775055582196,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              13,
+              0,
+              0,
+              16,
+              0,
+              13,
+              8
+            ]
+          ],
+          "hard_negative_n": 42,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.004239486006554216
+        },
+        "Graph-count MLP": {
+          "n": 350,
+          "accuracy": 0.9971428571428571,
+          "macro_f1": 0.9971425713999971,
+          "confusion_matrix": [
+            [
+              49,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 42,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.046243642005720176
+        },
+        "Graph-count RF": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 42,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.10794881300535053
+        },
+        "Generator diagnostic": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 42,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.05703317000006791
+        },
+        "Legacy direct-edge rules": {
+          "n": 350,
+          "accuracy": 0.9142857142857143,
+          "macro_f1": 0.9166127989657401,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              15,
+              35,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              15,
+              0,
+              0,
+              0,
+              35
+            ]
+          ],
+          "hard_negative_n": 42,
+          "hard_negative_specificity": 0.8095238095238095,
+          "single_pass_test_seconds": 0.04149201899417676
+        }
+      },
+      "seconds": 45.73846340698947
+    },
+    {
+      "seed": 11,
+      "condition": "no_hn_training",
+      "split_check": {
+        "train": {
+          "samples": 700,
+          "unique_inputs": 700
+        },
+        "validation": {
+          "samples": 210,
+          "unique_inputs": 210
+        },
+        "test": {
+          "samples": 350,
+          "unique_inputs": 350
+        }
+      },
+      "selected_epoch": 59,
+      "models": {
+        "CertGraph": {
+          "n": 350,
+          "accuracy": 0.9085714285714286,
+          "macro_f1": 0.8918067614914903,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              10,
+              0,
+              0,
+              7,
+              0,
+              15,
+              18
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 0.030303030303030304,
+          "single_pass_test_seconds": 0.5492999800044345
+        },
+        "Feature MLP": {
+          "n": 350,
+          "accuracy": 0.9057142857142857,
+          "macro_f1": 0.8874349627107578,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              10,
+              0,
+              0,
+              8,
+              0,
+              15,
+              17
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.0033580640010768548
+        },
+        "Graph-count MLP": {
+          "n": 350,
+          "accuracy": 0.9057142857142857,
+          "macro_f1": 0.8874349627107578,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              10,
+              0,
+              0,
+              8,
+              0,
+              15,
+              17
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.04327416500018444
+        },
+        "Graph-count RF": {
+          "n": 350,
+          "accuracy": 0.9057142857142857,
+          "macro_f1": 0.8874349627107578,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              10,
+              0,
+              0,
+              8,
+              0,
+              15,
+              17
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.1046651320066303
+        },
+        "Generator diagnostic": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.05110530600359198
+        },
+        "Legacy direct-edge rules": {
+          "n": 350,
+          "accuracy": 0.9485714285714286,
+          "macro_f1": 0.9493429658307078,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              13,
+              37,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              45
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.04666748599265702
+        }
+      },
+      "seconds": 86.71652115600591
+    },
+    {
+      "seed": 29,
+      "condition": "mixed_training",
+      "split_check": {
+        "train": {
+          "samples": 700,
+          "unique_inputs": 700
+        },
+        "validation": {
+          "samples": 210,
+          "unique_inputs": 210
+        },
+        "test": {
+          "samples": 350,
+          "unique_inputs": 350
+        }
+      },
+      "selected_epoch": 49,
+      "models": {
+        "CertGraph": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.3321447979978984
+        },
+        "Feature MLP": {
+          "n": 350,
+          "accuracy": 0.9057142857142857,
+          "macro_f1": 0.8871873770594453,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              11,
+              0,
+              0,
+              12,
+              0,
+              10,
+              17
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.0033847710001282394
+        },
+        "Graph-count MLP": {
+          "n": 350,
+          "accuracy": 0.9971428571428571,
+          "macro_f1": 0.9971425713999971,
+          "confusion_matrix": [
+            [
+              49,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.04305066500091925
+        },
+        "Graph-count RF": {
+          "n": 350,
+          "accuracy": 0.9971428571428571,
+          "macro_f1": 0.9971425713999971,
+          "confusion_matrix": [
+            [
+              49,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.08552190900081769
+        },
+        "Generator diagnostic": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.04509434801002499
+        },
+        "Legacy direct-edge rules": {
+          "n": 350,
+          "accuracy": 0.9057142857142857,
+          "macro_f1": 0.9077887286198763,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              19,
+              31,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              14,
+              0,
+              0,
+              0,
+              36
+            ]
+          ],
+          "hard_negative_n": 33,
+          "hard_negative_specificity": 0.8484848484848485,
+          "single_pass_test_seconds": 0.0388035240030149
+        }
+      },
+      "seconds": 74.74845138400269
+    },
+    {
+      "seed": 29,
+      "condition": "no_hn_training",
+      "split_check": {
+        "train": {
+          "samples": 700,
+          "unique_inputs": 700
+        },
+        "validation": {
+          "samples": 210,
+          "unique_inputs": 210
+        },
+        "test": {
+          "samples": 350,
+          "unique_inputs": 350
+        }
+      },
+      "selected_epoch": 59,
+      "models": {
+        "CertGraph": {
+          "n": 350,
+          "accuracy": 0.8971428571428571,
+          "macro_f1": 0.8736676672136351,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              13,
+              0,
+              1,
+              8,
+              0,
+              14,
+              14
+            ]
+          ],
+          "hard_negative_n": 37,
+          "hard_negative_specificity": 0.02702702702702703,
+          "single_pass_test_seconds": 0.35888244200032204
+        },
+        "Feature MLP": {
+          "n": 350,
+          "accuracy": 0.8942857142857142,
+          "macro_f1": 0.8691340080654074,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              13,
+              0,
+              0,
+              10,
+              0,
+              14,
+              13
+            ]
+          ],
+          "hard_negative_n": 37,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.003275791008491069
+        },
+        "Graph-count MLP": {
+          "n": 350,
+          "accuracy": 0.8942857142857142,
+          "macro_f1": 0.8691340080654074,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              13,
+              0,
+              0,
+              10,
+              0,
+              14,
+              13
+            ]
+          ],
+          "hard_negative_n": 37,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.0513398790062638
+        },
+        "Graph-count RF": {
+          "n": 350,
+          "accuracy": 0.8942857142857142,
+          "macro_f1": 0.8691340080654074,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              13,
+              0,
+              0,
+              10,
+              0,
+              14,
+              13
+            ]
+          ],
+          "hard_negative_n": 37,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.127864623995265
+        },
+        "Generator diagnostic": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 37,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.05494875200383831
+        },
+        "Legacy direct-edge rules": {
+          "n": 350,
+          "accuracy": 0.9428571428571428,
+          "macro_f1": 0.9444052469734654,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              11,
+              39,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              41
+            ]
+          ],
+          "hard_negative_n": 37,
+          "hard_negative_specificity": 0.8918918918918919,
+          "single_pass_test_seconds": 0.046909951997804455
+        }
+      },
+      "seconds": 93.29590464099601
+    },
+    {
+      "seed": 47,
+      "condition": "mixed_training",
+      "split_check": {
+        "train": {
+          "samples": 700,
+          "unique_inputs": 700
+        },
+        "validation": {
+          "samples": 210,
+          "unique_inputs": 210
+        },
+        "test": {
+          "samples": 350,
+          "unique_inputs": 350
+        }
+      },
+      "selected_epoch": 44,
+      "models": {
+        "CertGraph": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 40,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.4019052489893511
+        },
+        "Feature MLP": {
+          "n": 350,
+          "accuracy": 0.8857142857142857,
+          "macro_f1": 0.855185959439504,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              10,
+              0,
+              0,
+              21,
+              0,
+              9,
+              10
+            ]
+          ],
+          "hard_negative_n": 40,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.0033539110008860007
+        },
+        "Graph-count MLP": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 40,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.0624049939942779
+        },
+        "Graph-count RF": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 40,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.10308683299808763
+        },
+        "Generator diagnostic": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 40,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.05894412798807025
+        },
+        "Legacy direct-edge rules": {
+          "n": 350,
+          "accuracy": 0.9057142857142857,
+          "macro_f1": 0.9053127323804017,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              24,
+              26,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              41
+            ]
+          ],
+          "hard_negative_n": 40,
+          "hard_negative_specificity": 0.8,
+          "single_pass_test_seconds": 0.0474623609916307
+        }
+      },
+      "seconds": 76.51951004000148
+    },
+    {
+      "seed": 47,
+      "condition": "no_hn_training",
+      "split_check": {
+        "train": {
+          "samples": 700,
+          "unique_inputs": 700
+        },
+        "validation": {
+          "samples": 210,
+          "unique_inputs": 210
+        },
+        "test": {
+          "samples": 350,
+          "unique_inputs": 350
+        }
+      },
+      "selected_epoch": 58,
+      "models": {
+        "CertGraph": {
+          "n": 350,
+          "accuracy": 0.8942857142857142,
+          "macro_f1": 0.8690349025898604,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              15,
+              0,
+              0,
+              13,
+              1,
+              8,
+              13
+            ]
+          ],
+          "hard_negative_n": 41,
+          "hard_negative_specificity": 0.0975609756097561,
+          "single_pass_test_seconds": 0.4299577390047489
+        },
+        "Feature MLP": {
+          "n": 350,
+          "accuracy": 0.8828571428571429,
+          "macro_f1": 0.8497190737426551,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              15,
+              0,
+              0,
+              18,
+              0,
+              8,
+              9
+            ]
+          ],
+          "hard_negative_n": 41,
+          "hard_negative_specificity": 0.0,
+          "single_pass_test_seconds": 0.004710184002760798
+        },
+        "Graph-count MLP": {
+          "n": 350,
+          "accuracy": 0.9028571428571428,
+          "macro_f1": 0.8830343612952307,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              15,
+              0,
+              0,
+              11,
+              0,
+              8,
+              16
+            ]
+          ],
+          "hard_negative_n": 41,
+          "hard_negative_specificity": 0.17073170731707318,
+          "single_pass_test_seconds": 0.06036633699841332
+        },
+        "Graph-count RF": {
+          "n": 350,
+          "accuracy": 0.9085714285714286,
+          "macro_f1": 0.8914106434483134,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              15,
+              0,
+              2,
+              7,
+              0,
+              8,
+              18
+            ]
+          ],
+          "hard_negative_n": 41,
+          "hard_negative_specificity": 0.21951219512195122,
+          "single_pass_test_seconds": 0.11514010200335179
+        },
+        "Generator diagnostic": {
+          "n": 350,
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              50,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              50
+            ]
+          ],
+          "hard_negative_n": 41,
+          "hard_negative_specificity": 1.0,
+          "single_pass_test_seconds": 0.05402137500641402
+        },
+        "Legacy direct-edge rules": {
+          "n": 350,
+          "accuracy": 0.9342857142857143,
+          "macro_f1": 0.9359023333579691,
+          "confusion_matrix": [
+            [
+              50,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              50,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              50,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              14,
+              36,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              50,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              50,
+              0
+            ],
+            [
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              41
+            ]
+          ],
+          "hard_negative_n": 41,
+          "hard_negative_specificity": 0.8780487804878049,
+          "single_pass_test_seconds": 0.042037955005071126
+        }
+      },
+      "seconds": 95.1613314430142
+    }
+  ]
+}

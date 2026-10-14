@@ -1,0 +1,112 @@
+{
+  "utc": "2026-10-14T08:08:53.625445+00:00",
+  "operations": [
+    {
+      "action": "modify",
+      "dn": "CN=CGPublicationPolicy,CN=OID,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "result": {
+        "result": 0,
+        "description": "success",
+        "dn": "",
+        "message": "",
+        "referrals": null,
+        "type": "modifyResponse"
+      }
+    },
+    {
+      "action": "add",
+      "dn": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "result": {
+        "result": 0,
+        "description": "success",
+        "dn": "",
+        "message": "",
+        "referrals": null,
+        "type": "addResponse"
+      }
+    },
+    {
+      "action": "add",
+      "dn": "CN=CGPubApproval,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "result": {
+        "result": 0,
+        "description": "success",
+        "dn": "",
+        "message": "",
+        "referrals": null,
+        "type": "addResponse"
+      }
+    },
+    {
+      "action": "add",
+      "dn": "CN=CGPubSignature,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "result": {
+        "result": 0,
+        "description": "success",
+        "dn": "",
+        "message": "",
+        "referrals": null,
+        "type": "addResponse"
+      }
+    },
+    {
+      "action": "add",
+      "dn": "CN=CGPubDenied,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "result": {
+        "result": 0,
+        "description": "success",
+        "dn": "",
+        "message": "",
+        "referrals": null,
+        "type": "addResponse"
+      }
+    },
+    {
+      "action": "add",
+      "dn": "CN=CGPubUnpublished,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "result": {
+        "result": 0,
+        "description": "success",
+        "dn": "",
+        "message": "",
+        "referrals": null,
+        "type": "addResponse"
+      }
+    },
+    {
+      "action": "add",
+      "dn": "CN=CGPubNoPolicy,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "result": {
+        "result": 0,
+        "description": "success",
+        "dn": "",
+        "message": "",
+        "referrals": null,
+        "type": "addResponse"
+      }
+    },
+    {
+      "action": "modify",
+      "dn": "CN=CertGraph-Lab-CA,CN=Enrollment Services,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "result": {
+        "result": 0,
+        "description": "success",
+        "dn": "",
+        "message": "",
+        "referrals": null,
+        "type": "modifyResponse"
+      }
+    }
+  ],
+  "cleanup": [
+    {
+      "group": "Domain Admins",
+      "removal_status": 0
+    },
+    {
+      "group": "Enterprise Admins",
+      "removal_status": 0
+    }
+  ],
+  "source_sha256": "9e15e3801f7cbbaaa1c37bb277913e5798a8dd3314e007cf7dc5f6ec64a2c0ee"
+}

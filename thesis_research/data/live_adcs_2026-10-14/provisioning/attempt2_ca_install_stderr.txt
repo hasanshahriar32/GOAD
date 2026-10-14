@@ -1,0 +1,9 @@
+Install-AdcsCertificationAuthority : Active Directory Certificate Services setup failed with the following error:  A 
+value for the attribute was not in the acceptable range of values. 0x80072082 (WIN32: 8322 ERROR_DS_RANGE_CONSTRAINT)
+At line:4 char:1
++ Install-AdcsCertificationAuthority -CAType EnterpriseRootCA -CACommon ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Install-AdcsCertificationAuthority], CertificationAuthoritySetupEx 
+   ception
+    + FullyQualifiedErrorId : SetCAProperties,Microsoft.CertificateServices.Deployment.Commands.CA.InstallADCSCertific 
+   ationAuthority

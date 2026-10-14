@@ -1,0 +1,10 @@
+{
+  "before": [
+    "CN=Users,CN=Builtin,DC=essos,DC=local",
+    "CN=Administrators,CN=Builtin,DC=essos,DC=local"
+  ],
+  "temporary_groups": [
+    "Domain Admins",
+    "Enterprise Admins"
+  ]
+}
