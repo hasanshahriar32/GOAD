@@ -327,7 +327,7 @@ While the static heterogeneous multigraph $G = (V, E)$ defined in Section~\ref{c
 
 In real-world advanced persistent threats (APTs) and modern ADCS abuse, sophisticated adversaries perform \textbf{transient state mutations}: an attacker with write access modifies a certificate template flag (e.g., enabling \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} in ESC4) or swaps a user's \texttt{userPrincipalName} (ESC9/ESC10), submits a certificate request to the Certification Authority, obtains a forged high-privileged certificate, authenticates via Kerberos PKINIT, and subsequently rolls back the LDAP modification within seconds. When static audit tools (such as BloodHound, Certipy, or snapshot GNNs) inspect the directory after the rollback, the configuration appears completely benign, resulting in a total detection failure ($0\%$ recall).
 
-To bridge this critical security gap and overcome static scanner vulnerabilities, we formalize the \textbf{Cross-Layer Identity and PKI Provenance Graph (CIPG)}. CIPG elevates the static identity graph into a dynamic, multiplex temporal provenance graph fusing identity entitlements, directory modifications, cryptographic issuances, and authentication exchanges into a unified causal DAG.
+To bridge this critical security gap and overcome static scanner vulnerabilities, we formalize the \textbf{Cross-Layer Identity and PKI Provenance Graph (CIPG)}. While recent whole-network provenance analytics such as HADES~\cite{liu2026hades} and CPD~\cite{liu2026cpd} demonstrate the power of tracking host-to-host logon sessions for lateral movement investigation, they lack visibility into the internal cryptographic and template mutation plane of Active Directory. CIPG elevates the static identity graph into a dynamic, multiplex temporal provenance graph fusing identity entitlements, directory modifications, cryptographic issuances, and authentication exchanges into a unified causal DAG.
 
 \subsection{Formalization of the Multiplex Provenance Graph}
 \begin{definition}[Cross-Layer Identity \& PKI Provenance Graph]
@@ -502,7 +502,7 @@ where $\Delta t_{\text{delay}} = t_{\text{auth}} - t_2$. If $u_{\text{mut}} \neq
 
 \subsection{Meta-Node Provenance Routine Compression}
 \label{sec:provenance_compression}
-In production enterprise environments, raw provenance graphs suffer from state explosion caused by thousands of benign interactive logons, machine account authentications, and Kerberos TGS renewals (Event IDs 4624/4769). To maintain real-time graph traversal throughput, CIPG implements the \texttt{compress\_benign\_routines()} procedure based on Critical Taint Isolation and Equivalence Class Aggregation:
+In production enterprise environments, raw provenance graphs suffer from state explosion caused by thousands of benign interactive logons, machine account authentications, and Kerberos TGS renewals (Event IDs 4624/4769). Drawing inspiration from whole-network provenance aggregation and meta-node abstractions pioneered in HADES~\cite{liu2026hades} and CPD~\cite{liu2026cpd}, CIPG implements the \texttt{compress\_benign\_routines()} procedure based on Critical Taint Isolation and Equivalence Class Aggregation:
 
 \begin{definition}[Critical Taint State]
 Let $\tau: V \cup E \to \{0, 1\}$ denote the security taint function. An entity $x$ is marked tainted ($\tau(x) = 1$) if it participates in an unresolved invariant violation, an LDAP directory mutation $e_{\text{mut}} \in E_{\text{mut}}$, or an anomalous certificate enrollment within lookback window $W_{\text{taint}}$.
