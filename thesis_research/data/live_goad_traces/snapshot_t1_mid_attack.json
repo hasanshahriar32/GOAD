@@ -1,0 +1,403 @@
+[
+  {
+    "cn": "Administrator",
+    "msPKI_Certificate_Name_Flag": -1509949440,
+    "msPKI_Enrollment_Flag": 41,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.10.3.1",
+      "1.3.6.1.4.1.311.10.3.4",
+      "1.3.6.1.5.5.7.3.2",
+      "1.3.6.1.5.5.7.3.4"
+    ]
+  },
+  {
+    "cn": "CA",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": []
+  },
+  {
+    "cn": "CAExchange",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 1,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.21.5"
+    ]
+  },
+  {
+    "cn": "CEPEncryption",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.20.2.1"
+    ]
+  },
+  {
+    "cn": "CGPubApproval",
+    "msPKI_Certificate_Name_Flag": 33554432,
+    "msPKI_Enrollment_Flag": 2,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "CGPubDenied",
+    "msPKI_Certificate_Name_Flag": 33554432,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "CGPubNoPolicy",
+    "msPKI_Certificate_Name_Flag": 33554432,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "CGPubPositive",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "CGPubSignature",
+    "msPKI_Certificate_Name_Flag": 33554432,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 1,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "CGPubUnpublished",
+    "msPKI_Certificate_Name_Flag": 33554432,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "CTLSigning",
+    "msPKI_Certificate_Name_Flag": -2113929216,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.10.3.1"
+    ]
+  },
+  {
+    "cn": "ClientAuth",
+    "msPKI_Certificate_Name_Flag": -2113929216,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "CodeSigning",
+    "msPKI_Certificate_Name_Flag": -2113929216,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.3"
+    ]
+  },
+  {
+    "cn": "CrossCA",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 8,
+    "msPKI_RA_Signature": 1,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": []
+  },
+  {
+    "cn": "DirectoryEmailReplication",
+    "msPKI_Certificate_Name_Flag": 150994944,
+    "msPKI_Enrollment_Flag": 41,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.21.19"
+    ]
+  },
+  {
+    "cn": "DomainController",
+    "msPKI_Certificate_Name_Flag": 419430400,
+    "msPKI_Enrollment_Flag": 41,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.1",
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "DomainControllerAuthentication",
+    "msPKI_Certificate_Name_Flag": 134217728,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.20.2.2",
+      "1.3.6.1.5.5.7.3.1",
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "EFS",
+    "msPKI_Certificate_Name_Flag": -2113929216,
+    "msPKI_Enrollment_Flag": 41,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.10.3.4"
+    ]
+  },
+  {
+    "cn": "EFSRecovery",
+    "msPKI_Certificate_Name_Flag": -2113929216,
+    "msPKI_Enrollment_Flag": 33,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.10.3.4.1"
+    ]
+  },
+  {
+    "cn": "EnrollmentAgent",
+    "msPKI_Certificate_Name_Flag": -2113929216,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.20.2.1"
+    ]
+  },
+  {
+    "cn": "EnrollmentAgentOffline",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.20.2.1"
+    ]
+  },
+  {
+    "cn": "ExchangeUser",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 1,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.4"
+    ]
+  },
+  {
+    "cn": "ExchangeUserSignature",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.4"
+    ]
+  },
+  {
+    "cn": "IPSECIntermediateOffline",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.8.2.2"
+    ]
+  },
+  {
+    "cn": "IPSECIntermediateOnline",
+    "msPKI_Certificate_Name_Flag": 402653184,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.8.2.2"
+    ]
+  },
+  {
+    "cn": "KerberosAuthentication",
+    "msPKI_Certificate_Name_Flag": 138412032,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.20.2.2",
+      "1.3.6.1.5.2.3.5",
+      "1.3.6.1.5.5.7.3.1",
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "KeyRecoveryAgent",
+    "msPKI_Certificate_Name_Flag": -2113929216,
+    "msPKI_Enrollment_Flag": 39,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.21.6"
+    ]
+  },
+  {
+    "cn": "Machine",
+    "msPKI_Certificate_Name_Flag": 402653184,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.1",
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "MachineEnrollmentAgent",
+    "msPKI_Certificate_Name_Flag": 402653184,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.20.2.1"
+    ]
+  },
+  {
+    "cn": "OCSPResponseSigning",
+    "msPKI_Certificate_Name_Flag": 402653184,
+    "msPKI_Enrollment_Flag": 20480,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.9"
+    ]
+  },
+  {
+    "cn": "OfflineRouter",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "RASAndIASServer",
+    "msPKI_Certificate_Name_Flag": 1207959552,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.1",
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "SmartcardLogon",
+    "msPKI_Certificate_Name_Flag": -2113929216,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.20.2.2",
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  },
+  {
+    "cn": "SmartcardUser",
+    "msPKI_Certificate_Name_Flag": -1509949440,
+    "msPKI_Enrollment_Flag": 9,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.20.2.2",
+      "1.3.6.1.5.5.7.3.2",
+      "1.3.6.1.5.5.7.3.4"
+    ]
+  },
+  {
+    "cn": "SubCA",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": []
+  },
+  {
+    "cn": "User",
+    "msPKI_Certificate_Name_Flag": -1509949440,
+    "msPKI_Enrollment_Flag": 41,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.4.1.311.10.3.4",
+      "1.3.6.1.5.5.7.3.2",
+      "1.3.6.1.5.5.7.3.4"
+    ]
+  },
+  {
+    "cn": "UserSignature",
+    "msPKI_Certificate_Name_Flag": -1509949440,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2",
+      "1.3.6.1.5.5.7.3.4"
+    ]
+  },
+  {
+    "cn": "WebServer",
+    "msPKI_Certificate_Name_Flag": 1,
+    "msPKI_Enrollment_Flag": 0,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.1"
+    ]
+  },
+  {
+    "cn": "Workstation",
+    "msPKI_Certificate_Name_Flag": 134217728,
+    "msPKI_Enrollment_Flag": 32,
+    "msPKI_RA_Signature": 0,
+    "nTSecurityDescriptor_Dacl": "",
+    "pKIExtendedKeyUsage": [
+      "1.3.6.1.5.5.7.3.2"
+    ]
+  }
+]

@@ -346,7 +346,7 @@ def build_presentation():
     for sh in s1.shapes:
         if sh.has_text_frame:
             t = sh.text_frame.text.strip()
-            if "BLOCKCHAIN" in t.upper() or "FEDERATED" in t.upper() or "DECENTRALIZED" in t.upper() or "CERTGRAPH" in t.upper() or "HISTOPATHOLOGICAL" in t.upper():
+            if "BLOCKCHAIN" in t.upper() or "FEDERATED" in t.upper() or "DECENTRALIZED" in t.upper() or "CERTGRAPH" in t.upper() or "HISTOPATHOLOGICAL" in t.upper() or "PRIVACY-PRESERVING" in t.upper():
                 sh.top = Inches(1.05)
                 sh.height = Inches(2.30)
                 sh.text_frame.word_wrap = True

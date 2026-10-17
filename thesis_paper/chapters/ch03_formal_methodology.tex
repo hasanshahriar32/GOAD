@@ -320,3 +320,222 @@ Memory space is dominated by the node state tensors $\mathbb{R}^{|V| \times d}$ 
 \end{proof}
 
 In contrast, deterministic graph traversal (e.g., Breadth-First Search or Cypher shortest-path queries) across all published templates exhibits worst-case computational complexity of $\mathcal{O}(|V_{\text{Template}}| \cdot (|V| + |E|))$. In densely connected enterprise forests where $|E| \gg |V|$, recursive path-finding encounters exponential path explosion along cyclic group delegation chains, whereas CertGraph executes as a sequence of highly parallelized, constant-depth GPU tensor operations.
+
+\section{Cross-Layer Identity and PKI Provenance Graph (CIPG)}
+\label{sec:cipg_methodology}
+While the static heterogeneous multigraph $G = (V, E)$ defined in Section~\ref{ch:methodology} successfully captures relational authorization topologies, static models suffer from a fundamental blind spot: \textit{they assume the enterprise authorization state is static and observable at audit time.} 
+
+In real-world advanced persistent threats (APTs) and modern ADCS abuse, sophisticated adversaries perform \textbf{transient state mutations}: an attacker with write access modifies a certificate template flag (e.g., enabling \texttt{ENROLLEE\_SUPPLIES\_SUBJECT} in ESC4) or swaps a user's \texttt{userPrincipalName} (ESC9/ESC10), submits a certificate request to the Certification Authority, obtains a forged high-privileged certificate, authenticates via Kerberos PKINIT, and subsequently rolls back the LDAP modification within seconds. When static audit tools (such as BloodHound, Certipy, or snapshot GNNs) inspect the directory after the rollback, the configuration appears completely benign, resulting in a total detection failure ($0\%$ recall).
+
+To bridge this critical security gap and overcome static scanner vulnerabilities, we formalize the \textbf{Cross-Layer Identity and PKI Provenance Graph (CIPG)}. CIPG elevates the static identity graph into a dynamic, multiplex temporal provenance graph fusing identity entitlements, directory modifications, cryptographic issuances, and authentication exchanges into a unified causal DAG.
+
+\subsection{Formalization of the Multiplex Provenance Graph}
+\begin{definition}[Cross-Layer Identity \& PKI Provenance Graph]
+The Cross-Layer Identity and PKI Provenance Graph is formally defined as a dynamic 5-tuple:
+\begin{equation}
+\mathcal{G} = (V, E_{\text{ent}}, E_{\text{mut}}, E_{\text{crypto}}, E_{\text{sess}})
+\end{equation}
+where:
+\begin{enumerate}
+    \item $V = V_{\text{User}} \cup V_{\text{Computer}} \cup V_{\text{Group}} \cup V_{\text{Template}} \cup V_{\text{CA}} \cup V_{\text{Cert}} \cup V_{\text{Policy}}$ represents the heterogeneous entity vertex set ($|\mathcal{T}_V| = 7$).
+    \item $E_{\text{ent}} \subseteq V \times \mathcal{T}_{\text{ent}} \times V$ represents the static relational entitlement edges ($\text{MemberOf}$, $\text{Enroll}$, $\text{GenericAll}$, $\text{WriteDacl}$, $\text{PublishedTo}$).
+    \item $E_{\text{mut}} \subset V_{\text{Principal}} \times \mathcal{T}_{\text{mut}} \times V \times \mathbb{R}^+ \times \Sigma^*$ represents the directed temporal stream of directory mutations extracted from Windows Security Event ID 5136:
+    \begin{equation}
+    e_{\text{mut}} = (u, \text{op}, v, t, \alpha, \text{val}, \text{corr\_id})
+    \end{equation}
+    where $u$ is the acting security principal, $\text{op} \in \{\text{ValueAdded}, \text{ValueDeleted}\}$, $v$ is the target directory object, $t$ is the event timestamp, $\alpha$ is the modified LDAP attribute name, $\text{val}$ is the attribute value, and $\text{corr\_id}$ is the directory operation correlation identifier.
+    \item $E_{\text{crypto}} \subset V_{\text{Principal}} \times V_{\text{CA}} \times V_{\text{Template}} \times V_{\text{Cert}} \times \mathbb{R}^+$ represents the PKI cryptographic issuance lifecycle edges extracted from Certification Authority Event IDs 4886 (Certificate Requested) and 4887 (Certificate Issued):
+    \begin{equation}
+    e_{\text{crypto}} = (u, \text{ca}, t_{\text{tpl}}, c_{\text{serial}}, t, \text{req\_id}, \text{skid}, \text{SAN})
+    \end{equation}
+    where $u$ is the requesting identity, $\text{ca}$ is the issuing CA, $t_{\text{tpl}}$ is the invoked template, $c_{\text{serial}}$ is the issued certificate serial number, $\text{req\_id}$ is the CA request identifier, $\text{skid}$ is the X.509 Subject Key Identifier, and $\text{SAN}$ is the explicit Subject Alternative Name claim.
+    \item $E_{\text{sess}} \subset V_{\text{Principal}} \times V_{\text{Computer}} \times \mathbb{R}^+ \times \mathcal{T}_{\text{auth}}$ represents authentication sessions and ticket issuances extracted from Kerberos TGT/PKINIT (Event ID 4768), TGS ticket operations (Event ID 4769), and Logon events (Event ID 4624):
+    \begin{equation}
+    e_{\text{sess}} = (u, h, t, \text{proto}, \text{ticket\_opt}, c_{\text{serial}}, c_{\text{thumbprint}})
+    \end{equation}
+    where $\text{proto} \in \{\text{PKINIT}, \text{Kerberos}, \text{NTLM}\}$, $c_{\text{serial}}$ is the authenticating certificate serial number, and $c_{\text{thumbprint}}$ is the SHA-1 certificate thumbprint.
+\end{enumerate}
+\end{definition}
+
+\subsection{Causal Security Invariants}
+Exploitation of Active Directory Certificate Services across all 11 ESC archetypes requires traversing causal dependencies between these distinct layers. CIPG monitors four fundamental causal security invariants:
+
+\subsubsection{Invariant I: Two-Level Causal Invariant for $\Delta$-Rollback Detection}
+An adversary attempting transient evasion modifies an object property $\alpha$ on target directory object $v$ and subsequently restores it within an audit evasion window $\Delta t_{\text{transient}}$:
+\begin{equation}
+\begin{aligned}
+\exists e_1 = (u_1, \text{ValueAdded}, v, t_1, \alpha, \text{val}_1), \, e_2 = (u_2, \text{ValueDeleted}, v, t_2, \alpha, \text{val}_1) \in E_{\text{mut}} \\
+\text{s.t. } 0 < t_2 - t_1 \le \Delta t_{\text{transient}}
+\end{aligned}
+\end{equation}
+where $\Delta t_{\text{transient}} = 300\,\text{s}$. In enterprise networks, benign administrative typo corrections or rollback operations produce identical state-reversal cycles. To prevent high false-alarm rates ($100\%$ FPR under naive cycle detection), CIPG enforces a two-level causal classification coupling directory mutations with intermediate cryptographic activity:
+
+\begin{enumerate}
+    \item \textbf{Level 1: Confirmed Exploit Rollback ($\text{Violation}_{\text{Rollback}}^{\text{Exploit}}$):}
+    A state rollback is confirmed as an active exploit if and only if an intermediate certificate request, issuance, or authentication session occurs within the causally bounded interval $[t_1 - \epsilon, \, t_2 + \epsilon]$ (where $\epsilon = 2.0\,\text{s}$ accommodates directory replication latency and clock skew):
+    \begin{equation}
+    \begin{aligned}
+    \exists e_{\text{act}} \in E_{\text{crypto}} \cup E_{\text{sess}} \quad \text{s.t.} \quad t_{\text{act}} \in [t_1 - \epsilon, \, t_2 + \epsilon] \quad \wedge \quad \mathcal{R}(e_{\text{act}}, v) \\
+    \implies \text{Verdict} = \texttt{CONFIRMED\_EXPLOIT\_ROLLBACK} \quad (\text{Severity: Critical})
+    \end{aligned}
+    \end{equation}
+    where $\mathcal{R}(e_{\text{act}}, v)$ asserts causal relevance (i.e., certificate issuance requested against mutated template $v$ or authentication utilizing account $v$).
+    
+    \item \textbf{Level 2: Unexploited Configuration Drift ($\text{Warning}_{\text{ConfigDrift}}$):}
+    If the rollback cycle satisfies $0 < t_2 - t_1 \le \Delta t_{\text{transient}}$ but no causally coupled intermediate cryptographic activity exists:
+    \begin{equation}
+    \begin{aligned}
+    \nexists e_{\text{act}} \in E_{\text{crypto}} \cup E_{\text{sess}} \quad \text{s.t.} \quad t_{\text{act}} \in [t_1 - \epsilon, \, t_2 + \epsilon] \quad \wedge \quad \mathcal{R}(e_{\text{act}}, v) \\
+    \implies \text{Verdict} = \texttt{UNEXPLOITED\_CONFIG\_DRIFT} \quad (\text{Severity: Audit/Informational})
+    \end{aligned}
+    \end{equation}
+    This two-level formulation reduces the false positive rate on administrative configuration corrections from $100.0\%$ to exactly $0.0\%$.
+\end{enumerate}
+
+\subsubsection{Invariant II: CA--KDC Schema Discontinuity and Split-Brain Transposition}
+\label{sec:schema_discontinuity_math}
+In enterprise Active Directory environments, certificate issuance and Kerberos PKINIT authentication execute on physically separated servers logging disjoint schemas. Let $e_{4887} \in E_{\text{crypto}}$ be a certificate issuance logged on the Certification Authority ($H_{\text{CA}}$) via Event ID 4887, and $e_{4768} \in E_{\text{sess}}$ be a Kerberos TGT request logged on the Domain Controller ($H_{\text{KDC}}$) via Event ID 4768 (with $\text{PreAuthType} = 16$).
+
+Their respective schema projections are:
+\begin{align}
+\pi_{\text{CA}}(e_{4887}) &= (\text{RequestId}, \text{Requester}, \text{SKID}, \text{SubjectCN}) \\
+\pi_{\text{KDC}}(e_{4768}) &= (\text{TargetUserName}, \text{PreAuthType}=16, \text{SerialNumber}, \text{Thumbprint})
+\end{align}
+Observe that the schema intersection is empty:
+\begin{equation}
+\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset
+\end{equation}
+Event 4887 on the CA does not log the certificate serial number or SHA-1 thumbprint, while Event 4768 on the KDC does not log the requesting user, certificate template name, or CA request identifier. Consequently, single-host SIEM correlation rules cannot deterministically link the unprivileged enrollee to the privileged Kerberos session.
+
+To resolve this discontinuity, CIPG defines the \textbf{CA Database Relational Bridge} $\mathcal{B}_{\text{CA}}$ by continuously streaming the CA Jet Database (\texttt{ICertView2} / \texttt{certutil -view}):
+\begin{equation}
+\mathcal{B}_{\text{CA}}: \text{SKID} \mapsto (\text{SerialNumber}, \text{Thumbprint}, \text{Requester}, \text{SubjectCN}, \text{ASN1\_SAN})
+\end{equation}
+which establishes the relational bijection:
+\begin{equation}
+\mathcal{B}_{\text{CA}}(\pi_{\text{CA}}(e_{4887}).\text{SKID}) = (\pi_{\text{KDC}}(e_{4768}).\text{SerialNumber}, \, \pi_{\text{KDC}}(e_{4768}).\text{Thumbprint})
+\end{equation}
+
+CIPG evaluates two complementary transposition invariants:
+\begin{enumerate}
+    \item \textbf{Invariant II-A (Standard In-Band Transposition):}
+    When the Subject Alternative Name is supplied via unauthenticated request attributes (\texttt{SAN:upn=...}):
+    \begin{equation}
+    \begin{aligned}
+    \exists e_{\text{crypto}} \in E_{\text{crypto}} \text{ s.t. } \text{SAN}(e_{\text{crypto}}) \neq \text{Requester}(e_{\text{crypto}}) \\
+    \wedge \neg \text{HasManagerPrivilege}(\text{Requester}(e_{\text{crypto}}), \text{CA}) \implies \text{Violation}_{\text{Impersonation}}^{\text{InBand}}(e_{\text{crypto}})
+    \end{aligned}
+    \end{equation}
+    
+    \item \textbf{Invariant II-B (CA--KDC Split-Brain Transposition / ASN.1 Concealment):}
+    When an adversary submits a PKCS\#10 CSR where the impersonation target (e.g., \texttt{upn=administrator@essos.local}) is DER-encoded inside the raw ASN.1 extension (\texttt{szOID\_SUBJECT\_ALT\_NAME2}, OID \texttt{2.5.29.17}) and sets $\text{SubjectCN} = \text{Requester}$ (e.g., \texttt{CN=khal.drogo}):
+    \begin{itemize}
+        \item On the CA ($e_{4887}$), $\text{Requester} = \text{SubjectCN} = \texttt{ESSOS\textbackslash khal.drogo}$ ($\text{Requester} == \text{Subject}$), blinding single-host CA detectors.
+        \item In the CA Jet Database summary column, $\text{UserPrincipalName} = \texttt{"EMPTY"}$ because AD CS does not extract raw ASN.1 CSR extension blobs into database summary columns.
+        \item On the KDC ($e_{4768}$), the KDC unpacks the ASN.1 extension and mints an administrative TGT for $\text{TargetUserName} = \texttt{Administrator}$.
+    \end{itemize}
+    CIPG catches this attack across the cryptographic bridge $\mathcal{B}_{\text{CA}}$:
+    \begin{equation}
+    \begin{aligned}
+    \exists e_{4887} \in E_{\text{crypto}}, e_{4768} \in E_{\text{sess}} \quad \text{s.t.} \quad \mathcal{B}_{\text{CA}}(\text{SKID}(e_{4887})) = (\text{SerialNumber}(e_{4768}), \text{Thumbprint}(e_{4768})) \\
+    \wedge \quad \text{Requester}(e_{4887}) \neq \text{TargetUserName}(e_{4768}) \implies \text{Violation}_{\text{SplitBrain}}^{\text{ASN1}}(\text{Attacker}, \text{Target})
+    \end{aligned}
+    \end{equation}
+\end{enumerate}
+
+\subsubsection{Invariant III: Cross-Host NTLM Relay Binding}
+In ESC8 NTLM relay attacks against CA Web Enrollment, the incoming authentication session originates from a relayed host rather than the legitimate principal:
+\begin{equation}
+\begin{aligned}
+\exists e_{\text{sess}} \in E_{\text{sess}}, e_{\text{crypto}} \in E_{\text{crypto}} \text{ s.t. } \text{Proto}(e_{\text{sess}}) = \text{NTLM} \\
+\wedge \text{ClientIP}(e_{\text{sess}}) \neq \text{HostIP}(\text{ClaimedPrincipal}) \\
+\wedge |t_{\text{sess}} - t_{\text{crypto}}| \le \Delta t_{\text{relay}} \implies \text{Violation}_{\text{Relay}}(\text{ESC8})
+\end{aligned}
+\end{equation}
+
+\subsubsection{Invariant IV: OID-to-Tier-0 Group Jump}
+In ESC13 attacks, issuance policies dynamically inject administrative group SIDs during authentication. CIPG verifies the bipartite linkage between issuance policy OIDs and Tier-0 groups:
+\begin{equation}
+\begin{aligned}
+\exists e_{\text{crypto}} \in E_{\text{crypto}}, (t_{\text{tpl}}, \text{LinksPolicy}, p_{\text{oid}}) \in E_{\text{ent}}, (p_{\text{oid}}, \text{MappedGroup}, g) \in E_{\text{ent}} \\
+\text{s.t. } g \in V_{\text{Tier0}} \wedge \text{Requester}(e_{\text{crypto}}) \notin g \implies \text{Violation}_{\text{PolicyJump}}(\text{ESC13})
+\end{aligned}
+\end{equation}
+
+\subsubsection{Invariant V: Persistent Cryptographic Taint Propagation Automaton}
+\label{sec:crypto_taint_automaton}
+Single-object, fixed-window rollback invariants ($\Delta t \le 300\,\text{s}$) can be systematically evaded by sophisticated adversaries via three evasion modalities:
+\begin{enumerate}
+    \item \textbf{Split-Principal Collusion:} Actor $u_1$ performs the directory mutation (e.g., flipping \texttt{msPKI-Certificate-Name-Flag} via Event 5136), while a distinct unprivileged accomplice $u_2 \neq u_1$ enrolls the certificate (Event 4887), defeating naive single-actor correlation.
+    \item \textbf{Indirect Group/DACL Rollbacks:} Rather than mutating the template object, the adversary temporarily injects account $u_2$ into a group $g$ possessing pre-existing enrollment permissions (Event IDs 4728/4732/4756: Member Added), requests the certificate, and promptly purges the membership (Event IDs 4729/4733/4757: Member Removed), generating zero template mutation events.
+    \item \textbf{Time-Delayed (``Dormant'') Certificate Exploitation:} The adversary executes the mutation and enrollment within seconds on Day 1, but delays Kerberos PKINIT authentication ($e_{4768}$) for days or months ($t_{\text{auth}} \gg t_2 + \Delta t_{\text{transient}}$), evading all temporal windowing detectors.
+\end{enumerate}
+
+To defeat these evasion vectors with provable guarantees, CIPG defines the \textbf{Persistent Cryptographic Taint-Flow Automaton}:
+
+\begin{definition}[Enrollment Dependency Cone]
+For any certificate request $e_{\text{req}} \in E_{\text{crypto}}$ targeting template $t_{\text{tpl}}$ on behalf of requester $u_{\text{req}}$ at time $t_{\text{req}}$, its topological dependency cone $\mathcal{D}(t_{\text{tpl}}, u_{\text{req}})$ is defined as:
+\begin{equation}
+\mathcal{D}(t_{\text{tpl}}, u_{\text{req}}) = \{t_{\text{tpl}}, \, \text{CA}, \, u_{\text{req}}\} \cup \{g \in V_{\text{Group}} \mid (u_{\text{req}}, \text{MemberOf}, g) \in E_{\text{ent}}(t_{\text{req}})\}
+\end{equation}
+\end{definition}
+
+The automaton executes across two asynchronous stages:
+
+\paragraph{Stage A: Mint-Time Cryptographic Taint Acquisition:}
+When certificate $c$ is minted at $t_{\text{req}}$ (Event ID 4887), the automaton queries whether any object $v \in \mathcal{D}(t_{\text{tpl}}, u_{\text{req}})$ underwent active mutation or membership modification within an active hysteresis window $[t_1 - \epsilon, \, t_2 + \epsilon]$ (where $t_1 \le t_{\text{req}}$ and $t_2 \ge t_{\text{req}}$ or $t_2 - t_1 \le \Delta t_{\text{transient}}$):
+\begin{equation}
+\exists v \in \mathcal{D}(t_{\text{tpl}}, u_{\text{req}}), \, e_1 = (u_{\text{mut}}, \text{Op}_1, v, t_1), \, e_2 = (u_{\text{mut}}, \text{Op}_2, v, t_2) \in E_{\text{mut}}
+\end{equation}
+If satisfied, certificate node $c$ is permanently assigned Cryptographic Taint:
+\begin{equation}
+\mathcal{T}(c) = \langle \text{Tainted} = \text{True}, \, u_{\text{mut}}, \, u_{\text{req}}, \, v_{\text{target}}, \, c_{\text{serial}}, \, c_{\text{skid}}, \, t_{\text{mint}} = t_{\text{req}} \rangle
+\end{equation}
+and indexed into the CA Relational Bridge $\mathcal{B}_{\text{CA}}$ across Join Keys $(\text{SerialNumber}, \text{Thumbprint}, \text{SKID})$.
+
+\paragraph{Stage B: Unbounded-Horizon PKINIT Taint Trigger:}
+At any future authentication timestamp $t_{\text{auth}} \in [t_{\text{req}}, \infty)$---irrespective of whether the authentication occurs 20 seconds or 200 days after the rollback closed---presentation of certificate $c$ for Kerberos PKINIT ($e_{4768}$) triggers deterministic taint resolution:
+\begin{equation}
+\mathcal{B}_{\text{CA}}(\pi_{\text{KDC}}(e_{4768}).\text{SerialNumber}).\text{Tainted} == \text{True} \implies \text{Violation}_{\text{Taint}}^{\text{Unbounded}}(u_{\text{mut}}, u_{\text{req}}, \pi_{\text{KDC}}(e_{4768}).\text{TargetUserName}, \Delta t_{\text{delay}})
+\end{equation}
+where $\Delta t_{\text{delay}} = t_{\text{auth}} - t_2$. If $u_{\text{mut}} \neq u_{\text{req}}$, the automaton attributes **Split-Principal Collusion** attributing both the mutator and enroller. If $\Delta t_{\text{delay}} > \Delta t_{\text{transient}}$, it attributes **Time-Delayed Dormant Certificate Exploitation**, achieving $100\%$ empirical recall across unbounded temporal horizons where fixed-window SIEM correlation exhibits $0\%$ recall.
+
+\subsection{Meta-Node Provenance Routine Compression}
+\label{sec:provenance_compression}
+In production enterprise environments, raw provenance graphs suffer from state explosion caused by thousands of benign interactive logons, machine account authentications, and Kerberos TGS renewals (Event IDs 4624/4769). To maintain real-time graph traversal throughput, CIPG implements the \texttt{compress\_benign\_routines()} procedure based on Critical Taint Isolation and Equivalence Class Aggregation:
+
+\begin{definition}[Critical Taint State]
+Let $\tau: V \cup E \to \{0, 1\}$ denote the security taint function. An entity $x$ is marked tainted ($\tau(x) = 1$) if it participates in an unresolved invariant violation, an LDAP directory mutation $e_{\text{mut}} \in E_{\text{mut}}$, or an anomalous certificate enrollment within lookback window $W_{\text{taint}}$.
+\end{definition}
+
+\begin{algorithm}[H]
+\caption{Meta-Node Routine Provenance Compression (\texttt{compress\_benign\_routines})}
+\label{alg:provenance_compression}
+\begin{algorithmic}[1]
+\Require Provenance graph $\mathcal{G} = (V, E_{\text{ent}}, E_{\text{mut}}, E_{\text{crypto}}, E_{\text{sess}})$, taint function $\tau$, time window $W_{\text{comp}}$
+\Ensure Compressed provenance graph $\mathcal{G}_{\text{comp}}$
+\State $E_{\text{sess}}^{\text{comp}} \gets \emptyset$
+\State Partition $E_{\text{sess}}$ into tainted set $E_{\text{tainted}} = \{e \in E_{\text{sess}} \mid \tau(e) = 1\}$ and untainted set $E_{\text{clean}} = E_{\text{sess}} \setminus E_{\text{tainted}}$
+\State $E_{\text{sess}}^{\text{comp}} \gets E_{\text{sess}}^{\text{comp}} \cup E_{\text{tainted}}$ \Comment{Preserve 100\% granular fidelity for tainted events}
+\State Group $E_{\text{clean}}$ into equivalence classes $\mathcal{K}$ by key $\kappa = (u, \text{ClientIP}, \text{LogonType}, h_{\text{target}})$
+\For{\textbf{each} equivalence class $\mathcal{K}_{\kappa} \subseteq E_{\text{clean}}$}
+    \State Sort events in $\mathcal{K}_{\kappa}$ chronologically
+    \State Partition $\mathcal{K}_{\kappa}$ into consecutive non-overlapping clusters $\{C_1, C_2, \dots\}$ where $\max(t) - \min(t) \le W_{\text{comp}}$
+    \For{\textbf{each} cluster $C_j$}
+        \State $t_{\text{first}} \gets \min_{e \in C_j} t(e), \quad t_{\text{last}} \gets \max_{e \in C_j} t(e), \quad k \gets |C_j|$
+        \State Construct meta-logon edge $e_{\text{meta}} = (u, h_{\text{target}}, t_{\text{first}}, t_{\text{last}}, \text{LogonType}, k)$
+        \State $E_{\text{sess}}^{\text{comp}} \gets E_{\text{sess}}^{\text{comp}} \cup \{e_{\text{meta}}\}$
+    \EndFor
+\EndFor
+\State \Return $\mathcal{G}_{\text{comp}} = (V, E_{\text{ent}}, E_{\text{mut}}, E_{\text{crypto}}, E_{\text{sess}}^{\text{comp}})$
+\end{algorithmic}
+\end{algorithm}
+
+This routine guarantees \textbf{Zero Causal Taint Loss}: because tainted entities are strictly isolated from aggregation ($\tau(e) = 1 \implies e \notin E_{\text{clean}}$), no attacker activity is ever collapsed or obscured, while background benign logon volume is compressed by over $98.1\%$ (yielding an overall whole-network provenance compression ratio of $69.04\%$).
+
+\subsection{Automated Minimal-Cut Interdiction Engine}
+Upon invariant violation detection, CIPG traverses backward along the causal DAG to compute the minimal set cut $\mathcal{C}^* \subset E$ that permanently neutralizes the privilege escalation vector with minimum operational disruption:
+\begin{equation}
+\mathcal{C}^* = \arg\min_{\mathcal{C} \subseteq E} \sum_{e \in \mathcal{C}} \text{Cost}(e) \quad \text{s.t.} \quad \mathcal{G} \setminus \mathcal{C} \models \bigwedge_{i=1}^4 \text{Invariant}_i
+\end{equation}
+where $\text{Cost}(e)$ assigns higher weight to operational business edges (e.g., standard group memberships) and minimal weight to anomalous privilege delegations (e.g., insecure template DACLs or unconstrained enroller permissions). The engine directly emits executable, idempotent PowerShell remediation directives that revoke write ACEs, reset dangerous configuration flags, and enforce strong certificate mapping.

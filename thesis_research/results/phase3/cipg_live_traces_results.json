@@ -1,0 +1,117 @@
+{
+  "live_traces": [
+    {
+      "filename": "trace_esc4_rollback_full.xml",
+      "archetype": "ESC4 (Transient Rollback)",
+      "is_attack_ground_truth": true,
+      "counts": {
+        "event_5136": 2,
+        "event_ca_4886_4887": 2,
+        "event_pkinit_4768": 18,
+        "event_logon_4624_4769": 49,
+        "total_events": 71
+      },
+      "enriched_records": 2,
+      "attacks_detected": 3,
+      "drift_warnings": 0,
+      "detected_attack_classes": [
+        "ESC4",
+        "ESC1"
+      ],
+      "cipg_verdict": "CONFIRMED_EXPLOIT"
+    },
+    {
+      "filename": "trace_esc9_upn_swap_rollback.xml",
+      "archetype": "ESC9/10 (UPN Swap Rollback)",
+      "is_attack_ground_truth": true,
+      "counts": {
+        "event_5136": 9,
+        "event_ca_4886_4887": 2,
+        "event_pkinit_4768": 18,
+        "event_logon_4624_4769": 47,
+        "total_events": 76
+      },
+      "enriched_records": 2,
+      "attacks_detected": 4,
+      "drift_warnings": 2,
+      "detected_attack_classes": [
+        "ESC9/ESC10",
+        "ESC1"
+      ],
+      "cipg_verdict": "CONFIRMED_EXPLOIT"
+    },
+    {
+      "filename": "trace_esc6_ca_flag_abuse.xml",
+      "archetype": "ESC6 (CA Flag Abuse)",
+      "is_attack_ground_truth": true,
+      "counts": {
+        "event_5136": 0,
+        "event_ca_4886_4887": 2,
+        "event_pkinit_4768": 39,
+        "event_logon_4624_4769": 92,
+        "total_events": 133
+      },
+      "enriched_records": 2,
+      "attacks_detected": 2,
+      "drift_warnings": 0,
+      "detected_attack_classes": [
+        "ESC1"
+      ],
+      "cipg_verdict": "CONFIRMED_EXPLOIT"
+    },
+    {
+      "filename": "trace_asn1_san_concealment.xml",
+      "archetype": "ASN.1 SAN Concealment & Split-Brain",
+      "is_attack_ground_truth": true,
+      "counts": {
+        "event_5136": 4,
+        "event_ca_4886_4887": 2,
+        "event_pkinit_4768": 18,
+        "event_logon_4624_4769": 46,
+        "total_events": 70
+      },
+      "enriched_records": 2,
+      "attacks_detected": 6,
+      "drift_warnings": 0,
+      "detected_attack_classes": [
+        "ESC4",
+        "ASN1_SAN_Concealment"
+      ],
+      "cipg_verdict": "CONFIRMED_EXPLOIT"
+    },
+    {
+      "filename": "trace_benign_admin_typo_rollback.xml",
+      "archetype": "Benign Admin Typo Rollback",
+      "is_attack_ground_truth": false,
+      "counts": {
+        "event_5136": 2,
+        "event_ca_4886_4887": 0,
+        "event_pkinit_4768": 0,
+        "event_logon_4624_4769": 3,
+        "total_events": 5
+      },
+      "enriched_records": 0,
+      "attacks_detected": 0,
+      "drift_warnings": 1,
+      "detected_attack_classes": [],
+      "cipg_verdict": "UNEXPLOITED_CONFIG_DRIFT"
+    },
+    {
+      "filename": "trace_benign_normal_enrollment.xml",
+      "archetype": "Benign Normal Enrollment",
+      "is_attack_ground_truth": false,
+      "counts": {
+        "event_5136": 5,
+        "event_ca_4886_4887": 2,
+        "event_pkinit_4768": 18,
+        "event_logon_4624_4769": 46,
+        "total_events": 71
+      },
+      "enriched_records": 2,
+      "attacks_detected": 0,
+      "drift_warnings": 1,
+      "detected_attack_classes": [],
+      "cipg_verdict": "UNEXPLOITED_CONFIG_DRIFT"
+    }
+  ]
+}
