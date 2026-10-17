@@ -156,14 +156,14 @@ Under $B_{\text{ops}} = 24$, Static Greedy revokes an average of \textbf{10.8 ed
 \toprule
 \textbf{Graph Size ($N$ Nodes)} & \textbf{Graph Edges} & \textbf{Cone Nodes} & \textbf{Whole-Graph Min-Cut} & \textbf{CIPG Cone Min-Cut} & \textbf{Speedup Factor} \\
 \midrule
-$N = 100$ & 101 & 36 & 12.4 ms & 2.1 ms & $5.9\times$ \\
-$N = 500$ & 466 & 41 & 184.2 ms & 6.8 ms & $27.1\times$ \\
-$N = 1,000$ & 935 & 49 & 842.6 ms & 14.2 ms & $59.3\times$ \\
-$N = 2,500$ & 2,334 & 51 & 3,218.4 ms & 26.5 ms & $121.4\times$ \\
-$N = 5,000$ & 4,651 & 57 & 8,472.1 ms & 43.8 ms & $\mathbf{193.4\times}$ \\
+$N = 100$ & 105 & 63 & 3.2 ms & 3.1 ms & $1.0\times$ \\
+$N = 500$ & 468 & 97 & 41.4 ms & 3.8 ms & $11.0\times$ \\
+$N = 1,000$ & 936 & 96 & 138.3 ms & 5.0 ms & $27.5\times$ \\
+$N = 2,500$ & 2,328 & 74 & 822.7 ms & 1.8 ms & $448.2\times$ \\
+$N = 5,000$ & 4,659 & 66 & 4,164.5 ms & 1.7 ms & $\mathbf{2,438.1\times}$ \\
 \bottomrule
 \end{tabular*}
 \end{table}
 
 \paragraph{Scalability via Provenance-Cone Guidance:}
-As shown in Table~\ref{tab:scalability_bench}, evaluating whole-graph min-cuts at enterprise scale slows down from $12.4$~ms at $N=100$ to $8,472.1$~ms at $N=5,000$. By restricting the candidate cut search to CIPG's backward causal taint cone $\mathcal{D}(v)$ ($57$ nodes), the solver executes in \textbf{43.8 ms} at $N=5,000$—delivering a \textbf{$193.4\times$ speedup}.
+As shown in Table~\ref{tab:scalability_bench}, evaluating whole-graph min-cuts at enterprise scale slows down from $3.2$~ms at $N=100$ to $4,164.5$~ms at $N=5,000$ when evaluating 325 active low-privilege attacker entry points. By restricting the candidate cut search to CIPG's backward causal taint cone $\mathcal{D}(v)$ ($66$ nodes), the solver executes in \textbf{1.7 ms} at $N=5,000$—delivering a \textbf{$2,438.1\times$ speedup} and enabling real-time online re-interdiction during active multi-stage attacks.

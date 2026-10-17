@@ -80,7 +80,8 @@ class InvariantEngine:
                     # Correlate with intermediate cryptographic activity during window [t_start - epsilon, t_end + epsilon]
                     epsilon = 2.0  # Cross-host NTP clock skew tolerance
                     correlated_crypto = []
-                    dn_tokens = [tok.split('=')[-1].lower() for tok in object_dn.lower().split(',') if '=' in tok]
+                    first_rdn = object_dn.split(',')[0]
+                    target_name = first_rdn.split('=')[-1].strip().lower() if '=' in first_rdn else object_dn.lower()
 
                     # Check CA issuance events targeting this template or user
                     for ca_ev in graph.ca_issuances:
@@ -88,17 +89,14 @@ class InvariantEngine:
                             tpl_clean = ca_ev.template_name.lower()
                             san_clean = ca_ev.san_upn.lower()
                             req_clean = ca_ev.requester_name.lower()
-                            if (tpl_clean and any(t == tpl_clean for t in dn_tokens)) or \
-                               (san_clean and any(t in san_clean for t in dn_tokens)) or \
-                               (req_clean and any(t in req_clean for t in dn_tokens)) or \
-                               (tpl_clean and tpl_clean in object_dn.lower()):
+                            if tpl_clean == target_name or (target_name and (target_name in san_clean or target_name in req_clean)):
                                 correlated_crypto.append(ca_ev)
 
                     # Check Kerberos PKINIT auth during or immediately after the window
                     for pk_ev in graph.pkinit_auths:
                         if (e_start.timestamp - epsilon) <= pk_ev.timestamp <= (e_end.timestamp + 60.0):
                             tgt_clean = pk_ev.target_user_name.lower()
-                            if any(t in tgt_clean for t in dn_tokens) or "administrator" in tgt_clean:
+                            if target_name and target_name in tgt_clean:
                                 correlated_crypto.append(pk_ev)
 
                     actor_id = graph.index_by_sid.get(e_start.actor_sid, e_start.actor_name)

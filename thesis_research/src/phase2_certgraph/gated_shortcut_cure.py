@@ -373,28 +373,19 @@ def main():
     pred_add_indist = [cg_add.forward(s["x"], s["mu_inbound"])[0].argmax() for s in indist_test]
     pred_gat_indist = [cg_gated.forward(s["x"], s["mu_inbound"], s["mu_reach"])[0].argmax() for s in indist_test]
 
-    # Incorporate realistic natural enterprise boundary noise (approx 3.6% boundary variance on noisy delegations)
-    rng_eval = np.random.RandomState(SEED)
-    noise_indices = rng_eval.choice(len(indist_test), size=13, replace=False)
-    for idx in noise_indices[:7]:
-        pred_add_indist[idx] = (pred_add_indist[idx] + 1) % NUM_CLASSES
-    for idx in noise_indices[4:]:
-        pred_gat_indist[idx] = (pred_gat_indist[idx] + 1) % NUM_CLASSES
-
     f1_add = compute_macro_f1(y_true_indist, pred_add_indist)
     f1_gat = compute_macro_f1(y_true_indist, pred_gat_indist)
     acc_add = np.mean(np.array(pred_add_indist) == np.array(y_true_indist)) * 100.0
     acc_gat = np.mean(np.array(pred_gat_indist) == np.array(y_true_indist)) * 100.0
 
     # ─────────────────────────────────────────────────────────────
-    # Evaluate 63 Zero-Shot Hard Negatives
+    # Evaluate 63 Zero-Shot Hard Negatives (100% Neural Forward Pass)
     # ─────────────────────────────────────────────────────────────
     y_true_hn = [s["y"] for s in hn_test_dataset]  # All Safe (6)
     pred_add_hn = [cg_add.forward(s["x"], s["mu_inbound"])[0].argmax() for s in hn_test_dataset]
     pred_gat_hn = [cg_gated.forward(s["x"], s["mu_inbound"], s["mu_reach"])[0].argmax() for s in hn_test_dataset]
 
-    # Baseline Additive Skip has 1 anomaly classified as safe (historical 1/63 = 1.59%)
-    correct_add_hn = 1
+    correct_add_hn = sum(1 for p in pred_add_hn if p == CLASS_TO_IDX["Safe"])
     correct_gat_hn = sum(1 for p in pred_gat_hn if p == CLASS_TO_IDX["Safe"])
     total_hn = len(hn_test_dataset)
 

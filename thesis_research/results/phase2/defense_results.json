@@ -11,7 +11,7 @@
     "avg_nodes": 83.26666666666667,
     "avg_edges": 194.06666666666666,
     "avg_forbidden_paths": 92.5,
-    "timestamp": "2026-10-17 21:01:16",
+    "timestamp": "2026-10-18 00:03:06",
     "status": "100_percent_executed_empirical_pure_networkx"
   },
   "budgets": [
@@ -720,47 +720,52 @@
     "100": {
       "graph_nodes": 95,
       "graph_edges": 105,
-      "provenance_cone_nodes": 48,
-      "provenance_cone_edges": 54,
-      "whole_graph_solve_ms": 12.4,
-      "cipg_cone_solve_ms": 2.1,
-      "speedup_factor": 5.9
+      "provenance_cone_nodes": 63,
+      "provenance_cone_edges": 71,
+      "whole_graph_solve_ms": 3.15,
+      "cipg_cone_solve_ms": 3.07,
+      "speedup_factor": 1.0,
+      "active_attacker_entry_points": 6
     },
     "500": {
       "graph_nodes": 456,
       "graph_edges": 468,
-      "provenance_cone_nodes": 59,
-      "provenance_cone_edges": 59,
-      "whole_graph_solve_ms": 184.2,
-      "cipg_cone_solve_ms": 6.8,
-      "speedup_factor": 27.1
+      "provenance_cone_nodes": 97,
+      "provenance_cone_edges": 100,
+      "whole_graph_solve_ms": 41.38,
+      "cipg_cone_solve_ms": 3.77,
+      "speedup_factor": 11.0,
+      "active_attacker_entry_points": 32
     },
     "1000": {
       "graph_nodes": 911,
       "graph_edges": 936,
-      "provenance_cone_nodes": 48,
-      "provenance_cone_edges": 48,
-      "whole_graph_solve_ms": 842.6,
-      "cipg_cone_solve_ms": 14.2,
-      "speedup_factor": 59.3
+      "provenance_cone_nodes": 96,
+      "provenance_cone_edges": 98,
+      "whole_graph_solve_ms": 138.3,
+      "cipg_cone_solve_ms": 5.03,
+      "speedup_factor": 27.5,
+      "active_attacker_entry_points": 65
     },
     "2500": {
       "graph_nodes": 2276,
       "graph_edges": 2328,
       "provenance_cone_nodes": 74,
       "provenance_cone_edges": 73,
-      "whole_graph_solve_ms": 3218.4,
-      "cipg_cone_solve_ms": 26.5,
-      "speedup_factor": 121.4
+      "whole_graph_solve_ms": 822.66,
+      "cipg_cone_solve_ms": 1.84,
+      "speedup_factor": 448.2,
+      "active_attacker_entry_points": 162
     },
     "5000": {
       "graph_nodes": 4551,
       "graph_edges": 4659,
       "provenance_cone_nodes": 66,
       "provenance_cone_edges": 65,
-      "whole_graph_solve_ms": 8472.1,
-      "cipg_cone_solve_ms": 43.8,
-      "speedup_factor": 193.4
+      "whole_graph_solve_ms": 4164.47,
+      "cipg_cone_solve_ms": 1.71,
+      "speedup_factor": 2438.1,
+      "active_attacker_entry_points": 325
     }
   }
 }

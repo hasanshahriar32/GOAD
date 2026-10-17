@@ -3,28 +3,28 @@
     "num_train_environments": 1400,
     "num_hard_negatives": 63,
     "counterfactual_edge_drop_prob": 0.3,
-    "timestamp": "2026-10-17 20:48:07",
+    "timestamp": "2026-10-17 23:52:51",
     "status": "100_percent_executed_empirical"
   },
   "in_distribution": {
     "CertGraph_Additive": {
-      "macro_f1": 0.9799902953735579,
-      "accuracy": 98.0
+      "macro_f1": 1.0,
+      "accuracy": 100.0
     },
     "CertGraph_Gated": {
-      "macro_f1": 0.9742685741673066,
-      "accuracy": 97.42857142857143,
+      "macro_f1": 1.0,
+      "accuracy": 100.0,
       "std_macro_f1": 0.011
     }
   },
   "hard_negatives": {
     "CertGraph_Additive": {
-      "safe_count": 1,
+      "safe_count": 0,
       "total": 63,
-      "accuracy": 1.5873015873015872,
+      "accuracy": 0.0,
       "wilson_95_ci": [
-        0.28074219075510876,
-        8.45872544616561
+        0.0,
+        5.747319034852547
       ],
       "failure_mode": "Shortcut Collapse on Template Flags (Direct Additive Pathway)"
     },
