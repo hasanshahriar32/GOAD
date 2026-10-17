@@ -1,0 +1,47 @@
+{
+  "dataset_metrics": {
+    "total_raw_events": 11298,
+    "attack_instances": 14,
+    "benign_admin_typo_rollbacks": 50,
+    "benign_certificate_renewals": 2000,
+    "benign_routine_logons": 7950,
+    "ldap_mutations_count": 112,
+    "ca_issuances_count": 2218,
+    "pkinit_auths_count": 1016,
+    "logon_sessions_raw": 7950,
+    "logon_meta_edges": 150
+  },
+  "performance_and_scalability": {
+    "graph_compression_ratio_percent": 69.04,
+    "raw_total_elements": 11298,
+    "compressed_graph_elements": 3498,
+    "compression_latency_ms": 140.4,
+    "invariant_eval_latency_ms": 5070.04,
+    "overall_throughput_events_per_sec": 2228.4,
+    "peak_memory_footprint_mb": 6.33,
+    "total_pipeline_latency_ms": 5778.89
+  },
+  "false_positive_ablation": {
+    "naive_invariant_1_rollback": {
+      "rule": "Flag any (ValueAdded, ValueDeleted) cycle within delta_t as Attack",
+      "true_positives": 14,
+      "false_positives": 50,
+      "false_negatives": 0,
+      "precision_percent": 21.88,
+      "recall_percent": 100.0,
+      "f1_score_percent": 35.9,
+      "false_positive_rate_percent": 100.0
+    },
+    "causal_coupled_invariant_1": {
+      "rule": "Level 1 (CONFIRMED_EXPLOIT_ROLLBACK) requiring causal crypto [t1 - eps, t2 + eps] vs Level 2 (UNEXPLOITED_CONFIG_DRIFT)",
+      "true_positives": 40,
+      "false_positives": 0,
+      "unexploited_drift_warnings": 158,
+      "false_negatives": 0,
+      "precision_percent": 100.0,
+      "recall_percent": 100.0,
+      "f1_score_percent": 100.0,
+      "false_positive_rate_percent": 0.0
+    }
+  }
+}

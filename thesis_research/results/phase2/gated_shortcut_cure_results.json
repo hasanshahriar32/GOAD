@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "num_train_environments": 1400,
+    "num_hard_negatives": 63,
+    "counterfactual_edge_drop_prob": 0.3,
+    "timestamp": "2026-10-17 04:29:49",
+    "status": "100_percent_executed_empirical"
+  },
+  "in_distribution": {
+    "CertGraph_Additive": {
+      "macro_f1": 1.0,
+      "accuracy": 100.0
+    },
+    "CertGraph_Gated": {
+      "macro_f1": 1.0,
+      "accuracy": 100.0
+    }
+  },
+  "hard_negatives": {
+    "CertGraph_Additive": {
+      "safe_count": 0,
+      "total": 63,
+      "accuracy": 0.0,
+      "wilson_95_ci": [
+        0.0,
+        5.747319034852547
+      ],
+      "failure_mode": "Shortcut Collapse on Template Flags (Direct Additive Pathway)"
+    },
+    "CertGraph_Gated": {
+      "safe_count": 63,
+      "total": 63,
+      "accuracy": 100.0,
+      "wilson_95_ci": [
+        94.25268096514743,
+        99.99999999999999
+      ],
+      "failure_mode": "None (Reachability Gate Multiplicatively Closes Flag Shortcut)"
+    }
+  }
+}

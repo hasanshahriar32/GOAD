@@ -1,0 +1,137 @@
+{
+  "scenarios": [
+    {
+      "archetype": "ESC1 (Vulnerable Template)",
+      "is_attack": true,
+      "single_host_ca_4887": {
+        "alert": true,
+        "attribution": "khal.drogo",
+        "status": "DETECTED"
+      },
+      "single_host_kdc_4768": {
+        "alert": true,
+        "attribution": "None (No Requester Context)",
+        "status": "UNVERIFIABLE / ZERO ATTRIBUTION"
+      },
+      "cross_layer_cipg": {
+        "alert": true,
+        "attribution": "khal.drogo",
+        "status": "CONFIRMED EXPLOIT"
+      }
+    },
+    {
+      "archetype": "ESC4 (Transient Rollback)",
+      "is_attack": true,
+      "single_host_ca_4887": {
+        "alert": true,
+        "attribution": "khal.drogo",
+        "status": "DETECTED"
+      },
+      "single_host_kdc_4768": {
+        "alert": true,
+        "attribution": "None (No Requester Context)",
+        "status": "UNVERIFIABLE / ZERO ATTRIBUTION"
+      },
+      "cross_layer_cipg": {
+        "alert": true,
+        "attribution": "khal.drogo",
+        "status": "CONFIRMED EXPLOIT"
+      }
+    },
+    {
+      "archetype": "ESC6 (CA Flag Abuse)",
+      "is_attack": true,
+      "single_host_ca_4887": {
+        "alert": true,
+        "attribution": "khal.drogo",
+        "status": "DETECTED"
+      },
+      "single_host_kdc_4768": {
+        "alert": true,
+        "attribution": "None (No Requester Context)",
+        "status": "UNVERIFIABLE / ZERO ATTRIBUTION"
+      },
+      "cross_layer_cipg": {
+        "alert": true,
+        "attribution": "khal.drogo",
+        "status": "CONFIRMED EXPLOIT"
+      }
+    },
+    {
+      "archetype": "ESC9 (UPN Swap Rollback)",
+      "is_attack": true,
+      "single_host_ca_4887": {
+        "alert": false,
+        "attribution": "None (Missed)",
+        "status": "BLIND (0%)"
+      },
+      "single_host_kdc_4768": {
+        "alert": true,
+        "attribution": "None (No Requester Context)",
+        "status": "UNVERIFIABLE / ZERO ATTRIBUTION"
+      },
+      "cross_layer_cipg": {
+        "alert": true,
+        "attribution": "khal.drogo",
+        "status": "CONFIRMED EXPLOIT"
+      }
+    },
+    {
+      "archetype": "ASN.1 SAN Concealment",
+      "is_attack": true,
+      "single_host_ca_4887": {
+        "alert": false,
+        "attribution": "None (Missed)",
+        "status": "BLIND (0%)"
+      },
+      "single_host_kdc_4768": {
+        "alert": true,
+        "attribution": "None (No Requester Context)",
+        "status": "UNVERIFIABLE / ZERO ATTRIBUTION"
+      },
+      "cross_layer_cipg": {
+        "alert": true,
+        "attribution": "khal.drogo",
+        "status": "CONFIRMED EXPLOIT"
+      }
+    },
+    {
+      "archetype": "Benign Normal Enrollment",
+      "is_attack": false,
+      "single_host_ca_4887": {
+        "alert": false,
+        "attribution": "None (Missed)",
+        "status": "DETECTED"
+      },
+      "single_host_kdc_4768": {
+        "alert": false,
+        "attribution": "None (No Requester Context)",
+        "status": "BENIGN"
+      },
+      "cross_layer_cipg": {
+        "alert": false,
+        "attribution": "None (Benign)",
+        "status": "BENIGN (0% FPR)"
+      }
+    },
+    {
+      "archetype": "Benign Admin Typo Rollback",
+      "is_attack": false,
+      "single_host_ca_4887": {
+        "alert": false,
+        "attribution": "None (Missed)",
+        "status": "DETECTED"
+      },
+      "single_host_kdc_4768": {
+        "alert": false,
+        "attribution": "None (No Requester Context)",
+        "status": "BENIGN"
+      },
+      "cross_layer_cipg": {
+        "alert": false,
+        "attribution": "None (Benign)",
+        "status": "BENIGN (0% FPR)"
+      }
+    }
+  ]
+}

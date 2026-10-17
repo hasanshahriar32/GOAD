@@ -1,0 +1,109 @@
+{
+  "total_raw_events": 624,
+  "causal_attack_events": 30,
+  "compression_ratio_percent": 95.19,
+  "detection_latency_ms": 18.626,
+  "comparison": {
+    "Static_Snapshot_Certipy_BloodHound": {
+      "detected": {
+        "ESC1": true,
+        "ESC2/ESC3": true,
+        "ESC4_Rollback": false,
+        "ESC6": false,
+        "ESC8_Relay": false,
+        "ESC9_Rollback": false,
+        "ESC13": true,
+        "ASN1_SAN_Concealment": false
+      },
+      "recall": 37.5,
+      "blind_spots": [
+        "ESC4_Rollback",
+        "ESC6",
+        "ESC8_Relay",
+        "ESC9_Rollback",
+        "ASN1_SAN_Concealment"
+      ]
+    },
+    "Host_Only_Provenance_HADES_TDSC26": {
+      "detected": {
+        "ESC1": false,
+        "ESC2/ESC3": false,
+        "ESC4_Rollback": false,
+        "ESC6": false,
+        "ESC8_Relay": true,
+        "ESC9_Rollback": false,
+        "ESC13": false,
+        "ASN1_SAN_Concealment": false
+      },
+      "recall": 12.5,
+      "blind_spots": [
+        "ESC1",
+        "ESC2/ESC3",
+        "ESC4_Rollback",
+        "ESC6",
+        "ESC9_Rollback",
+        "ESC13",
+        "ASN1_SAN_Concealment"
+      ]
+    },
+    "Ours_Cross_Layer_CIPG": {
+      "detected": {
+        "ESC1": true,
+        "ESC2/ESC3": true,
+        "ESC4_Rollback": true,
+        "ESC6": true,
+        "ESC8_Relay": true,
+        "ESC9_Rollback": true,
+        "ESC13": true,
+        "ASN1_SAN_Concealment": true
+      },
+      "recall": 100.0,
+      "blind_spots": []
+    }
+  },
+  "remediation_cut": [
+    {
+      "edge": "HTTP NTLM Relay -> /certsrv/",
+      "action": "Enforce_EPA",
+      "cost": 1.5,
+      "risk_reduction": 1.0,
+      "command": "Set-WebConfigurationProperty -Filter 'system.webServer/security/authentication/windowsAuthentication' -Name 'extendedProtection.tokenChecking' -Value 'Require' -PSPath 'IIS:\\Sites\\Default Web Site\\certsrv'"
+    },
+    {
+      "edge": "ESC13 --msDS-OIDToGroupLink--> greatmaster",
+      "action": "Unlink_OID_Group",
+      "cost": 2.0,
+      "risk_reduction": 1.0,
+      "command": "Set-ADObject -Identity \"CN=ESC13,CN=OID,CN=Public Key Services...\" -Clear 'msDS-OIDToGroupLink'"
+    },
+    {
+      "edge": "khal.drogo --GenericWrite--> cn=esc4,cn=certificate templates,cn=public key services,cn=services,cn=configuration,dc=essos,dc=local",
+      "action": "Revoke_GenericWrite",
+      "cost": 2.0,
+      "risk_reduction": 0.95,
+      "command": "dsacls \"cn=esc4,cn=certificate templates,cn=public key services,cn=services,cn=configuration,dc=essos,dc=local\" /R \"essos\\khal.drogo\""
+    },
+    {
+      "edge": "khal.drogo --GenericWrite--> cn=cgpubpositive,cn=certificate templates,cn=public key services,cn=services,cn=configuration,dc=essos,dc=local",
+      "action": "Revoke_GenericWrite",
+      "cost": 2.0,
+      "risk_reduction": 0.95,
+      "command": "dsacls \"cn=cgpubpositive,cn=certificate templates,cn=public key services,cn=services,cn=configuration,dc=essos,dc=local\" /R \"essos\\khal.drogo\""
+    },
+    {
+      "edge": "missandei --GenericWrite--> cn=viserys.targaryen,ou=users,ou=meereen,dc=essos,dc=local",
+      "action": "Revoke_Account_GenericWrite",
+      "cost": 2.0,
+      "risk_reduction": 0.9,
+      "command": "Set-Acl -Path \"AD:\\cn=viserys.targaryen,ou=users,ou=meereen,dc=essos,dc=local\" -RemoveAudit ..."
+    },
+    {
+      "edge": "Domain Users --Enroll--> ESC1",
+      "action": "Enforce_Manager_Approval",
+      "cost": 5.0,
+      "risk_reduction": 0.92,
+      "command": "certutil -setreg policy\\EditFlags +EDITF_ENFORCEENCRYPTICERTREQUEST"
+    }
+  ],
+  "violations_detected_count": 11
+}
