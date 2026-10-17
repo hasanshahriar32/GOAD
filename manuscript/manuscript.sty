@@ -1,0 +1,110 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{manuscript}[2026/10/17 Standalone Academic 1-Column Manuscript Styling]
+
+% Page Geometry: 1.0 inch margins all around
+\RequirePackage[a4paper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in]{geometry}
+
+% Mathematics & Symbols
+\RequirePackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+
+% Typography & Spacing
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{newtxtext,newtxmath}
+\RequirePackage{microtype}
+\RequirePackage{setspace}
+\setstretch{1.15} % Standard readable single-column journal review spacing
+
+% Floating element control
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.80}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.70}
+
+% Graphics & Colors
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\graphicspath{{figures/}{../thesis_paper/figures/}}
+
+\definecolor{primaryblue}{RGB}{20, 60, 110}
+\definecolor{darkblue}{RGB}{10, 35, 75}
+\definecolor{accentred}{RGB}{160, 20, 35}
+\definecolor{accentgreen}{RGB}{20, 105, 50}
+\definecolor{codebg}{RGB}{248, 249, 250}
+\definecolor{grayborder}{RGB}{220, 224, 230}
+
+% Hyperlinks
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    citecolor=primaryblue,
+    urlcolor=accentred,
+    bookmarksnumbered=true,
+    pdfstartview={FitH}
+}
+\RequirePackage{xurl}
+\RequirePackage[htt]{hyphenat}
+\DeclareRobustCommand{\_}{\textunderscore\allowbreak}
+
+% Tables
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+\RequirePackage{makecell}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\captionsetup{font=small,labelfont=bf,margin=10pt}
+\setlength{\tabcolsep}{5pt}
+
+% Section Headings
+\RequirePackage{titlesec}
+\titleformat{\section}{\normalfont\large\bfseries\color{darkblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries\color{darkblue}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\itshape\color{darkblue}}{\thesubsubsection}{1em}{}
+
+% Algorithms & Code
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+\RequirePackage{listings}
+\lstset{
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{grayborder},
+    keywordstyle=\color{primaryblue}\bfseries,
+    commentstyle=\color{accentgreen}\itshape,
+    stringstyle=\color{accentred},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    tabsize=2
+}
+
+% Theorems & Formal Statements
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{invariant}{Invariant}[section]
+\newtheorem{remark}{Remark}[section]
+
+% Headers and Footers
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape CertGraph: Cryptographic Invariant Provenance \& Gated Multigraph Interdiction}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+% Bibliography styling
+\RequirePackage[numbers,sort&compress]{natbib}
+\bibliographystyle{IEEEtran}
+
+\endinput

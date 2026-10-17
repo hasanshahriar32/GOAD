@@ -1,0 +1,76 @@
+\section{CertGraph Static Architecture and Bilinear Gating}
+\label{sec:certgraph_arch}
+
+This section details the static detection layer of CertGraph, analyzes the theoretical failure of standard message passing on access control graphs, and introduces the Multiplicative Bilinear Reachability Gate to eliminate shortcut memorization.
+
+\subsection{Heterogeneous Graph Attention Network (HetGAT)}
+To model multi-typed security entities and non-uniform privilege relations, CertGraph employs a multi-relational graph attention network. Let $\mathbf{x}_v \in \mathbb{R}^{d_{\phi(v)}}$ denote the initial feature vector of entity $v \in \mathcal{V}$. Vertices are first projected into a shared hidden space of dimension $d$:
+\begin{equation}
+\mathbf{h}_v^{(0)} = \text{ReLU} \left( \mathbf{W}_{\phi(v)}^{(0)} \mathbf{x}_v + \mathbf{b}_{\phi(v)}^{(0)} \right)
+\end{equation}
+where $\mathbf{W}_{\phi(v)}^{(0)} \in \mathbb{R}^{d \times d_{\phi(v)}}$ is a type-specific linear projection matrix.
+
+At each layer $l \in \{1, \dots, L\}$, message passing aggregates relational representations across incoming edges $\mathcal{N}_r(v) = \{u \in \mathcal{V} \mid (u, v) \in \mathcal{E}, \psi(u, v) = r\}$:
+\begin{equation}
+\mathbf{h}_v^{(l)} = \sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(l)} \mathbf{W}_r^{(l)} \mathbf{h}_u^{(l-1)} \right)
+\end{equation}
+where $\mathbf{W}_r^{(l)} \in \mathbb{R}^{d \times d}$ is the relation-specific weight transformation for relation $r \in \mathcal{T}_E$, and $\sigma(\cdot)$ denotes the ELU activation function. The relational attention coefficient $\alpha_{vu}^{(l)}$ assigns dynamic importance to edge $(u, v)$ under relation $r$:
+\begin{equation}
+\alpha_{vu}^{(l)} = \frac{\exp \left( \text{LeakyReLU} \left( \mathbf{a}_r^{\top} [\mathbf{W}_r^{(l)} \mathbf{h}_v^{(l-1)} \,\|\, \mathbf{W}_r^{(l)} \mathbf{h}_u^{(l-1)}] \right) \right)}{\sum_{k \in \mathcal{N}_r(v)} \exp \left( \text{LeakyReLU} \left( \mathbf{a}_r^{\top} [\mathbf{W}_r^{(l)} \mathbf{h}_v^{(l-1)} \,\|\, \mathbf{W}_r^{(l)} \mathbf{h}_k^{(l-1)}] \right) \right)}
+\end{equation}
+where $\mathbf{a}_r \in \mathbb{R}^{2d}$ is the parameterized attention vector for relation $r$, and $\|$ denotes vector concatenation.
+
+\subsection{Theoretical Analysis: Representation Collapse and Gradient Bounds}
+A critical structural flaw in pure neighborhood aggregation on directed multigraphs is the erasure of intrinsic attributes for leaf and intermediate nodes.
+
+\begin{theorem}[Intrinsic Attribute Preservation and Gradient Lower Bounds]
+\label{thm:theorem1}
+Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterogeneous multigraph. Consider an $L$-layer GNN where layer $l$ computes representations according to pure relational neighborhood aggregation.
+\begin{enumerate}
+    \item \textbf{Intrinsic Feature Erasure:} If $\mathcal{G}$ contains no explicit self-loops on template nodes ($v \notin \mathcal{N}_r(v)$ for all $r$), the first-layer representation $\mathbf{h}_v^{(1)}$ is conditionally independent of initial features $\mathbf{x}_v$:
+    \begin{equation}
+    \frac{\partial \mathbf{h}_v^{(1)}}{\partial \mathbf{x}_v} = \mathbf{0} \in \mathbb{R}^{d \times d_{\phi(v)}}
+    \end{equation}
+    Furthermore, for any unprivileged source account $u$ with in-degree $d_{\text{in}}(u) = 0$, $\mathbf{h}_u^{(l)} = \mathbf{0}$ for all $l \ge 1$.
+    \item \textbf{Guaranteed Gradient Lower Bound via Residual Skips:} When parameterized residual skip connections are introduced ($\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$) with $\sigma_{\min}(\mathbf{W}_{\text{skip}}^{(l)}) > 0$, the Jacobian of the representation satisfies:
+    \begin{equation}
+    \sigma_{\min} \left( \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right) \ge \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|
+    \end{equation}
+    where $\|\mathcal{J}_{\text{graph}}(v)\| \le L_\sigma^L \alpha_{\max} \prod_{l=1}^L \|\mathbf{W}^{(l)}\|$ bounds the cyclical feedback gradient. When $\prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) > \|\mathcal{J}_{\text{graph}}(v)\|$, initial feature sensitivity is strictly preserved:
+    \begin{equation}
+    \left\| \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right\| > 0
+    \end{equation}
+\end{enumerate}
+\end{theorem}
+
+\subsection{Inductive Shortcut Collapse and the Multiplicative Gating Cure}
+While Theorem~\ref{thm:theorem1} guarantees non-vanishing gradient bounds via additive residual skips ($\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$), empirical testing reveals a profound secondary failure mode: \textit{inductive shortcut collapse}.
+
+\paragraph{The Shortcut Memorization Failure:}
+Because certificate template attributes (e.g., \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} $= 1$ and Client Authentication EKU $= 1$) are strongly correlated with positive escalation labels in synthetic training distributions, additive skip connections allow the network to bypass the multi-hop graph aggregation entirely. The MLP classification head learns an inductive shortcut:
+\begin{equation}
+\hat{y}_t = \text{MLP}(\tilde{\mathbf{h}}_t^{(L)}) \approx \text{MLP} \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \mathbf{h}_t^{(0)} \right)
+\end{equation}
+When the trained model is evaluated against \textbf{adversarial hard negatives}—templates that possess vulnerable attribute flags but reside in disconnected graph components or require mandatory manager approval—standard additive-skip GNNs memorize the flag pattern and classify them as vulnerable, collapsing to a dismal **$1.59\%$ accuracy ($1/63$)**.
+
+\paragraph{Multiplicative Bilinear Reachability Gating (\texttt{CertGraph-Gated}):}
+To eliminate shortcut memorization, we enforce that attribute signals cannot propagate to the output head unless gated by verified topological reachability from an authenticated principal. We formulate the \textbf{Multiplicative Bilinear Reachability Gate}:
+\begin{equation}
+\mathbf{g}_{uv}^{(l)} = \sigma \left( \mathbf{h}_u^{(l-1)\top} \mathbf{W}_g^{(l)} \mathbf{h}_v^{(l-1)} + b_g^{(l)} \right)
+\end{equation}
+where $\mathbf{W}_g^{(l)} \in \mathbb{R}^{d \times d}$ is a bilinear interaction tensor, $b_g^{(l)} \in \mathbb{R}$ is a scalar bias, and $\sigma(\cdot)$ is the sigmoid function mapping to $(0, 1)$.
+
+The gated message vector $\mathbf{m}_{vu}^{(l)}$ and state update are defined as:
+\begin{align}
+\mathbf{m}_{vu}^{(l)} &= \mathbf{g}_{uv}^{(l)} \odot \left( \mathbf{W}_r^{(l)} \mathbf{h}_u^{(l-1)} \right) \\
+\mathbf{h}_v^{(l)} &= \sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(l)} \mathbf{m}_{vu}^{(l)} \right) + \mathbf{g}_{vv}^{(l)} \odot \left( \mathbf{W}_{\text{skip}}^{(l)} \mathbf{h}_v^{(l-1)} \right)
+\end{align}
+where $\odot$ denotes the element-wise Hadamard product.
+
+\begin{proposition}[Mathematical Neutralization of Hard-Negative Shortcuts]
+Suppose template $v$ possesses vulnerable flags $\mathbf{x}_v$ but is disconnected from any unprivileged attacker principal $u$ ($p(u \rightsquigarrow v) = \emptyset$). Because no valid relational path propagates activation to $v$, the bilateral gate $\mathbf{g}_{uv} \to 0$. By multiplicative annihilation:
+\begin{equation}
+\lim_{\mathbf{g}_{uv} \to 0} \mathbf{m}_{vu}^{(l)} = \mathbf{0}
+\end{equation}
+Consequently, the network cannot output a positive vulnerability prediction based solely on isolated template flags. As demonstrated in Section~\ref{sec:evaluation}, \texttt{CertGraph-Gated} elevates hard-negative accuracy from $1.59\%$ to \textbf{$100.00\%$ ($63/63$)}.
+\end{proposition}

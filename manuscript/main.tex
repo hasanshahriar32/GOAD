@@ -1,0 +1,44 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{manuscript}
+
+\title{\textbf{\Large CertGraph: Cryptographic Invariant Provenance and Multiplicative Bilinear Gating for Active Directory Certificate Services Escalation Interdiction}}
+
+\author{
+    \textbf{Student ID: 2002126}\quad 
+    \textbf{Student ID: 2002138}\quad 
+    \textbf{Student ID: 2102151}\\[0.25cm]
+    \small Department of Electronics and Communication Engineering\\
+    \small Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur-5200, Bangladesh\\
+    \small \texttt{\{2002126, 2002138, 2102151\}@hstu.ac.bd}
+}
+
+\date{October 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Active Directory Certificate Services (ADCS) forms the identity and public-key infrastructure backbone of enterprise Windows ecosystems. Despite its ubiquity, misconfigurations in certificate templates and enrollment access control lists (ACLs) yield catastrophic privilege escalation paths, enabling unprivileged domain principals to forge cryptographic certificates and authenticate as arbitrary administrative accounts. Current defensive methodologies suffer from two fundamental systemic vulnerabilities: (1) \textit{Static Snapshot Blindness}, where temporal mutation-and-rollback attacks (e.g., ESC4, ESC9) leave the directory in a bit-identical state ($\text{SHA-256}(G_{t_0}) = \text{SHA-256}(G_{t_3})$), rendering static graph scanners 100\% blind to active post-rollback certificate abuse; and (2) \textit{GNN Shortcut Memorization}, where standard graph neural networks memorize template attribute flags and collapse to $1.59\%$ accuracy ($1/63$) under adversarial counterfactual hard negatives. Furthermore, audit log inspection reveals an unaddressed systems-security vulnerability: the \textit{PKCS\#10 ASN.1 Subject Alternative Name (SAN) Concealment and CA--KDC Schema Discontinuity} ($\pi_{\text{CA}} \cap \pi_{\text{KDC}} = \emptyset$), wherein certificate issuance and Kerberos PKINIT authentications share zero common event identifiers.
+
+To overcome these structural limitations, we introduce \textbf{CertGraph}, an integrated static-to-dynamic neuro-symbolic framework for ADCS escalation detection and autonomous interdiction. First, we formulate the \textbf{Multiplicative Bilinear Reachability Gate} ($\mathbf{g}_{uv} = \sigma(\mathbf{h}_u^\top \mathbf{W}_g \mathbf{h}_v)$), which strictly conditions neighborhood message-passing on topological path reachability and cures inductive shortcut collapse, achieving $100.00\%$ ($63/63$) classification accuracy on adversarial hard negatives. Second, we engineer the \textbf{Cryptographic Invariant Provenance Graph (CIPG)} powered by an asynchronous state-tracking automaton (Invariant~V) that bridges CA database records and KDC event streams across Subject Key Identifiers (SKID), certificate serials, and SHA-1 thumbprints. Invariant~V detects split-actor template mutations and 24-hour dormant certificate usage with $100\%$ recall, yields $0.0\%$ false-positive rate across benign administrative typo rollbacks, and delivers $69.04\%$ meta-node graph compression at $2,228.4$~events/sec. Finally, we formulate the \textbf{Disruption-Budgeted Stackelberg Remediation Game}, proving that Multi-Principal Access Interdiction (MPAI) is NP-complete via reduction from Directed Multiway Cut. Across 30 multi-forest enterprise topologies, our co-adaptive Stackelberg policy strictly outperforms greedy baselines under operational budget constraints ($p = 3.12 \times 10^{-5}$) and achieves $100.0\%$ attack-path neutralization while reducing administrative edge revocation disruption by $54.1\%$ (5.1 vs. 11.1 edges).
+\end{abstract}
+
+\vspace{0.5cm}
+\noindent\textbf{Keywords:} Active Directory Certificate Services (ADCS), Graph Neural Networks, Shortcut Memorization, Provenance Graphs, Cryptographic Invariants, Stackelberg Games, Access Control Interdiction.
+
+\vspace{0.8cm}
+
+\input{sections/01_introduction}
+\input{sections/02_threat_model_and_blindspots}
+\input{sections/03_certgraph_architecture}
+\input{sections/04_cipg_provenance_automaton}
+\input{sections/05_stackelberg_interdiction}
+\input{sections/06_empirical_evaluation}
+\input{sections/07_related_work_and_conclusion}
+
+\clearpage
+\bibliography{references}
+
+\end{document}

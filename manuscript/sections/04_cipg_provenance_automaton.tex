@@ -1,0 +1,94 @@
+\section{Cryptographic Invariant Provenance Graph (CIPG)}
+\label{sec:cipg_provenance}
+
+To overcome the static snapshot blind spot and the CA--KDC schema discontinuity identified in Section~\ref{sec:threat_model}, we design the \textbf{Cryptographic Invariant Provenance Graph (CIPG)}. CIPG dynamically ingests raw Windows security audit event streams and CA transactional records, maintaining an asynchronous, taint-tracking automaton that bridges disconnected protocol layers.
+
+\subsection{Multi-Source Provenance Ingestion and Entity Resolution}
+CIPG processes heterogeneous audit streams across three disjoint operational layers:
+\begin{enumerate}
+    \item \textbf{Directory Service Audit Events (NTDS):} Monitored via Windows Security Event ID 5136 (\textit{Directory Service Object Modified}). Captures granular LDAP mutations on certificate templates, user objects, and access control lists, recording the modifying principal, target object GUID, modified attribute (e.g., \texttt{nTDSDSOptions}, \texttt{pKIExtendedKeyUsage}, \texttt{msPKI-Certificate-Name-Flag}), and operation type (Value Added / Value Deleted).
+    \item \textbf{Certificate Authority Telemetry and CA DB Bridge:} Monitored via Event IDs 4886 (\textit{Certificate Request Received}) and 4887 (\textit{Certificate Issued}). To bridge the PKCS\#10 ASN.1 SAN concealment gap ($\pi_{\text{CA}} \cap \pi_{\text{KDC}} = \emptyset$), CIPG queries the local CA transactional database (\texttt{certutil -view -out RequestID,SerialNumber,SubjectKeyIdentifier,CertificateHash}) or the raw CA RPC interface. This populates a persistent cryptographic tuple:
+    \begin{equation}
+    \tau_{\text{crypto}} = \langle \text{RequestID}, \text{SKID}, \text{SerialNumber}, \text{Thumbprint}_{\text{SHA1}} \rangle
+    \end{equation}
+    \item \textbf{KDC Kerberos Pre-Authentication Events:} Monitored via Event ID 4768 (\textit{Kerberos Authentication Ticket Requested}). Identifies PKINIT authentication requests where \texttt{PreAuthType = 16}, extracting the authenticating client name, domain target, certificate issuer CA, \texttt{CertSerialNumber}, and \texttt{CertThumbprint}.
+\end{enumerate}
+
+\subsection{Formal Cryptographic Invariants}
+CIPG evaluates incoming event sequences against five formal behavioral and cryptographic invariants:
+
+\begin{definition}[Invariant I: Two-Level Causal Invariant]
+Let $e_{\text{mut}} \in \mathcal{E}_{\text{NTDS}}$ be a template ACL or attribute modification executed by principal $u_{\text{actor}}$, and let $e_{\text{req}} \in \mathcal{E}_{\text{CA}}$ be a certificate request submitted for template $t$. Invariant~I is satisfied if:
+\begin{equation}
+t(e_{\text{mut}}) < t(e_{\text{req}}) \quad \land \quad \text{TargetObject}(e_{\text{mut}}) = t \quad \land \quad \text{Requester}(e_{\text{req}}) \in \text{DelegatedPrincipals}(u_{\text{actor}})
+\end{equation}
+\end{definition}
+
+\begin{definition}[Invariant II: Temporal-Order Sequence Invariant]
+For any valid certificate lifecycle, the sequence of events must satisfy strict monotone temporal progression:
+\begin{equation}
+t(e_{\text{mut}}) \le t(e_{\text{req}}) \le t(e_{\text{iss}}) \le t(e_{\text{auth}})
+\end{equation}
+Any authentication $e_{\text{auth}}$ claiming issuance prior to $t(e_{\text{iss}})$ indicates out-of-order clock spoofing or unauthorized replay.
+\end{definition}
+
+\begin{definition}[Invariant III: Principal Identity Discrepancy]
+Let $\text{Requester}(e_{\text{req}})$ be the Windows security principal submitting the certificate enrollment request, and let $\text{TargetIdentity}(e_{\text{auth}})$ be the Kerberos client identity authenticating with the resulting certificate. An identity escalation violation occurs if:
+\begin{equation}
+\text{Requester}(e_{\text{req}}) \neq \text{TargetIdentity}(e_{\text{auth}}) \quad \land \quad \text{PrivilegeLevel}(\text{TargetIdentity}) > \text{PrivilegeLevel}(\text{Requester})
+\end{equation}
+\end{definition}
+
+\begin{definition}[Invariant IV: Rollback Reversal Detection]
+Let $e_{\text{mut}}$ be an attribute modification on template $t$ at time $t_1$ adding an insecure flag $\text{attr}_{\text{vuln}}$, and let $e_{\text{roll}}$ be a subsequent modification at $t_3$ deleting $\text{attr}_{\text{vuln}}$. A rollback violation is triggered if:
+\begin{equation}
+\Delta t = t_3 - t_1 \le \tau_{\text{window}} \quad \land \quad \exists e_{\text{iss}} \in \mathcal{E}_{\text{CA}} \text{ s.t. } t_1 \le t(e_{\text{iss}}) \le t_3
+\end{equation}
+where $\tau_{\text{window}}$ is the maximum temporal attack window (configured to 30 minutes in enterprise SOC policies).
+\end{definition}
+
+\subsection{Invariant V: Persistent Cryptographic Taint-Flow Automaton}
+While Invariants I--IV detect synchronous single-actor attacks, sophisticated adversaries can evade them via two evasive techniques: (i) \textbf{Split-Actor Collusion}, where Actor A mutates the template, Actor B requests the certificate, and Actor A rolls the template back; and (ii) \textbf{Dormant PKINIT Exploitation}, where the attacker delays Kerberos authentication by hours or days until the temporal correlation window $\tau_{\text{window}}$ has expired.
+
+To provide provable detection over unbounded time horizons, we formalize the \textbf{Persistent Cryptographic Taint-Flow Automaton (Invariant~V)}:
+
+\begin{algorithm}[H]
+\caption{CIPG Invariant V Cryptographic Taint-Flow Automaton}
+\label{alg:invariant5}
+\begin{algorithmic}[1]
+\Require Audit event stream $\mathcal{S} = \{e_1, e_2, \dots\}$, CA database bridge $\mathcal{B}_{\text{CA}}$, Taint Table $\mathcal{T}_{\text{taint}} \leftarrow \emptyset$
+\For{each incoming event $e \in \mathcal{S}$}
+    \If{$e.\text{EventID} == 5136$ (Attribute Mutation)}
+        \If{$e.\text{Attribute} \in \{\texttt{nTDSDSOptions}, \texttt{msPKI-Certificate-Name-Flag}, \texttt{pKIExtendedKeyUsage}\}$}
+            \State Register pending mutation: $\mathcal{M}[e.\text{ObjectGUID}] \leftarrow \langle e.\text{Actor}, e.\text{Time}, e.\text{Operation} \rangle$
+        \EndIf
+    \ElsIf{$e.\text{EventID} == 4887$ (Certificate Issued)}
+        \If{$\exists \text{ active mutation in } \mathcal{M} \text{ for template } e.\text{Template}$}
+            \State Query $\mathcal{B}_{\text{CA}}$ with $e.\text{RequestID}$ to retrieve $\langle \text{SKID}, \text{Serial}, \text{Thumbprint} \rangle$
+            \State $\mathcal{T}_{\text{taint}} \leftarrow \mathcal{T}_{\text{taint}} \cup \{\langle \text{SKID}, \text{Serial}, \text{Thumbprint}, e.\text{Requester}, \mathcal{M}.\text{Actor}, e.\text{Time} \rangle\}$
+            \State Mark certificate entity $v_{\text{cert}}$ as \textbf{CRYPTOGRAPHICALLY TAINTED}
+        \EndIf
+    \ElsIf{$e.\text{EventID} == 4768$ (Kerberos PKINIT Authentication)}
+        \If{$e.\text{PreAuthType} == 16$}
+            \State Look up $\langle e.\text{CertSerialNumber}, e.\text{CertThumbprint} \rangle$ in $\mathcal{T}_{\text{taint}}$
+            \If{match found with record $\tau \in \mathcal{T}_{\text{taint}}$}
+                \State \textbf{Trigger High-Severity Alert}: Invariant V Violation Detected!
+                \State Attributing Colluding Actors: Mutator = $\tau.\text{Actor}_{\text{mut}}$, Requester = $\tau.\text{Requester}$
+                \State Authenticated Target = $e.\text{TargetUserName}$, Latency = $e.\text{Time} - \tau.\text{Time}$
+                \State Dispatch Immediate Revocation via $\text{CRL} \cup \text{OCSP}$
+            \EndIf
+        \EndIf
+    \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Mathematical Guarantee of Invariant V:}
+Because the certificate serial number and SHA-1 thumbprint are mathematically bound to the private key and CA digital signature via RFC 5280~\cite{rfc5280}, an attacker cannot alter their certificate thumbprint or serial number without invalidating the cryptographic signature. Once a certificate is marked as tainted in $\mathcal{T}_{\text{taint}}$, Invariant~V maintains state permanently in memory until revocation, guaranteeing $100\%$ detection recall regardless of whether PKINIT occurs 15 seconds or 30 days after the initial rollback.
+
+\subsection{Graph Reduction and Meta-Node Compacting}
+In enterprise Active Directory environments processing tens of thousands of authentication events per second, naive provenance graphs suffer from exponential memory bloat. CIPG implements a lossless \textbf{Meta-Node Compacting} algorithm:
+\begin{equation}
+\mathcal{C}: (v_{\text{event}}^{(1)}, v_{\text{event}}^{(2)}, \dots, v_{\text{event}}^{(m)}) \mapsto \mathcal{V}_{\text{meta}}
+\end{equation}
+Whenever repetitive, non-mutating events share identical source principals, destination templates, and access control rights within a sliding window, CIPG collapses them into a single directed meta-edge annotated with frequency counters and temporal bounding intervals $[t_{\min}, t_{\max}]$. As quantified in Section~\ref{sec:evaluation}, this reduces graph storage overhead by \textbf{69.04\%} (compressing 11,290 raw events to 3,495 meta-nodes) while consuming only $6.33$~MB of memory at a sustained ingestion throughput of $2,228.4$~events/second.

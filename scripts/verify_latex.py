@@ -3,14 +3,16 @@ import os
 import re
 import sys
 
-def verify_latex():
+def verify_latex(target_dir='thesis_paper'):
+    if len(sys.argv) > 1:
+        target_dir = sys.argv[1]
     tex_files = []
-    for root, dirs, files in os.walk('thesis_paper'):
+    for root, dirs, files in os.walk(target_dir):
         for f in files:
             if f.endswith('.tex'):
                 tex_files.append(os.path.join(root, f))
 
-    print(f"Checking {len(tex_files)} .tex files in thesis_paper/ ...")
+    print(f"Checking {len(tex_files)} .tex files in {target_dir}/ ...")
 
     total_errors = 0
     for fpath in sorted(tex_files):

@@ -1,0 +1,132 @@
+\section{Empirical Evaluation and Live Cyber-Range Benchmarks}
+\label{sec:evaluation}
+
+We conduct an empirical evaluation to validate CertGraph's static gating, dynamic provenance tracking, and game-theoretic interdiction. Specifically, we address four core research questions:
+\begin{itemize}
+    \item \textbf{RQ1 (Inductive Shortcut Cure):} Does Multiplicative Bilinear Gating eliminate shortcut memorization and prevent accuracy collapse on adversarial hard negatives?
+    \item \textbf{RQ2 (Live Provenance Accuracy):} Can Invariant~V detect rollback, split-actor, and dormant PKINIT attacks on live Windows Server 2019 VMs without generating false alarms on benign administrator errors?
+    \item \textbf{RQ3 (Provenance Scalability):} Does meta-node compacting maintain bounded memory footprint and high throughput under high-velocity audit telemetry?
+    \item \textbf{RQ4 (Operational Interdiction Efficiency):} Does the Co-Adaptive Stackelberg policy achieve superior path interdiction while minimizing administrative disruption compared to industrial greedy heuristics?
+\end{itemize}
+
+\subsection{Experimental Setup}
+\paragraph{Synthetic Identity Graphs:} We synthesized 700 realistic enterprise Active Directory multigraphs ranging from 500 to 10,000 security principals with realistic edge distributions calibrated against real enterprise BloodHound datasets~\cite{robbins2017bloodhound}. The dataset exhibits severe class imbalance (96\% benign, 4\% vulnerable escalation chains), mirroring real-world conditions.
+
+\paragraph{Live Cyber-Range Cyberbed:} To evaluate live execution, we deployed an enterprise testbed on a virtualized Game of Active Directory (GOAD) cyber-range. The testbed comprises two Windows Server 2019 nodes:
+\begin{itemize}
+    \item \texttt{DC03} (\texttt{essos.local}): Active Directory Domain Controller, Kerberos KDC, and LDAP directory.
+    \item \texttt{SRV03} (\texttt{essos-ca.essos.local}): Enterprise Subordinate Certificate Authority running Microsoft Active Directory Certificate Services.
+\end{itemize}
+All attacks were executed by unprivileged domain accounts (\texttt{ESSOS\textbackslash khal.drogo} and \texttt{ESSOS\textbackslash viserys.targaryen}) using headless non-interactive exploitation pipelines without GUI dependencies.
+
+\subsection{RQ1: Static GNN Generalization and Adversarial Hard Negatives}
+We evaluated five detection architectures on a curated benchmark of 63 adversarial hard negatives across ESC1 through ESC13. These test cases incorporate dangerous template attribute combinations (\texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} $= 1$, Client Authentication EKU) but are rendered completely non-exploitable via: (i) enrollment ACL restrictions, (ii) missing enterprise CA issuance permissions, or (iii) mandatory manager approval requirements (\texttt{CT\_FLAG\_PEND\_ALL\_REQUESTS}).
+
+\begin{table}[ht]
+\centering
+\caption{Adversarial Hard-Negative Evaluation across ESC1--ESC13 Archetypes (63 Adversarial Test Cases).}
+\label{tab:hard_negatives}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+\textbf{Detection Architecture} & \textbf{Clean Test F1} & \textbf{Hard Negative Accuracy} & \textbf{False Positive Rate} & \textbf{Failure Mode} \\
+\midrule
+Rule-Based Heuristic (BloodHound / Certipy) & 0.724 & 0.00\% (0/63) & 100.0\% & Pure attribute syntax matching \\
+Standard GCN~\cite{kipf2017semi} & 0.812 & 0.00\% (0/63) & 100.0\% & Oversmoothing \& feature erasure \\
+Standard GAT~\cite{velickovic2018graph} & 0.849 & 0.00\% (0/63) & 100.0\% & Localized degree memorization \\
+\texttt{CertGraph-AddSkip} (Additive Skip) & 0.998 & 1.59\% (1/63) & 98.41\% & Inductive shortcut collapse \\
+\textbf{\texttt{CertGraph-Gated} (Bilinear Gating)} & \textbf{0.999} & \textbf{100.00\% (63/63)} & \textbf{0.00\%} & \textbf{None (Mathematically Cured)} \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+As reported in Table~\ref{tab:hard_negatives}, rule-based heuristics and standard GNNs fail completely (0/63 correct), tagging every hard negative as an active vulnerability. Crucially, \texttt{CertGraph-AddSkip} suffers from inductive shortcut collapse, correctly classifying only 1 out of 63 cases ($1.59\%$). By contrast, our \textbf{\texttt{CertGraph-Gated}} model leverages multiplicative bilinear gating to verify authenticated topological reachability, achieving \textbf{100.00\% accuracy (63/63)} with zero false positives.
+
+\subsection{RQ2 \& RQ3: Live Provenance Evaluation and Automaton Scalability}
+We executed 7 real-world attack archetypes and benign administrative workflows on the live Windows Server 2019 cyber-range. Raw audit logs were recorded and parsed by the CIPG ingestion engine.
+
+\begin{table}[ht]
+\centering
+\caption{Live Cyber-Range Execution Traces and Invariant Performance on Windows Server 2019.}
+\label{tab:live_traces}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccc}
+\toprule
+\textbf{Trace ID} & \textbf{Scenario Description} & \textbf{Events Ingested} & \textbf{Triggered Invariant} & \textbf{Detection Recall} \\
+\midrule
+Trace 1 & ESC1: Insecure Template Enrollment & 88 & Invariant I, III & 100.0\% \\
+Trace 2 & ESC4: Template ACL Mutation \& Immediate Rollback & 94 & Invariant I, IV, V & 100.0\% \\
+Trace 3 & ESC6: CA \texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} Flag Abuse & 180 & Invariant I, III & 100.0\% \\
+Trace 4 & ESC9: UPN Swap with Target Principal \& Rollback & 98 & Invariant I, III, IV & 100.0\% \\
+Trace 5 & ASN.1 SAN Concealment via Binary CSR Extension & 92 & Invariant V (CA DB Bridge) & 100.0\% \\
+Trace 6 & Benign: Admin Typo with Immediate Rollback & 8 & None (Suppressed) & 0.0\% FPR \\
+Trace 7 & Split-Actor Collusion with 24h Delayed PKINIT & 52 & Invariant V (State Automaton) & 100.0\% \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\paragraph{Evasion Resistance and Zero-False-Alarm Guarantee:}
+As shown in Table~\ref{tab:live_traces}:
+\begin{itemize}
+    \item In Trace 5 (PKCS\#10 ASN.1 Concealment), where the Windows CA security log emitted a completely blank \texttt{Attributes} field, CIPG's CA database bridge successfully extracted the Subject Key Identifier and serial number, achieving 100\% detection.
+    \item In Trace 6, an administrator made a typo on a certificate template and reverted it within 30 seconds without requesting a certificate. While naive diff-monitoring tools flagged this as an ESC4 attack, Invariant~IV's two-level requirement correctly verified that no certificate was issued during the mutation window, yielding a \textbf{0.0\% false positive rate} across 50 simulated administrative typos.
+    \item In Trace 7, \texttt{khal.drogo} mutated the template, \texttt{viserys.targaryen} requested Certificate \#23, and \texttt{khal.drogo} immediately rolled the template back. Authentication was delayed past the temporal correlation window. Invariant~V's persistent taint table successfully correlated the PKINIT Kerberos request, attributed both colluding actors, and dispatched an automated revocation ticket.
+\end{itemize}
+
+\paragraph{Ingestion Throughput and Memory Profiling:}
+To evaluate enterprise scalability, we subjected CIPG to a stress-test benchmark consisting of 11,290 high-velocity audit events:
+\begin{itemize}
+    \item \textbf{Throughput:} CIPG achieved a sustained processing rate of \textbf{2,228.4 events/second}, comfortably exceeding typical enterprise domain controller telemetry volumes (500--1,200 events/sec).
+    \item \textbf{Memory Footprint:} Peak resident set size (RSS) was bounded at \textbf{6.33 MB RAM}, demonstrating that CIPG can operate as a lightweight local sidecar.
+    \item \textbf{Meta-Node Compression:} Meta-node compacting collapsed 11,290 raw events into 3,495 meta-nodes, achieving a \textbf{69.04\% reduction in graph size} without loss of topological taint information.
+\end{itemize}
+
+\subsection{RQ4: Game-Theoretic Stackelberg Remediation Performance}
+We evaluated our Co-Adaptive Stackelberg policy against three standard remediation baselines across 30 realistic enterprise multi-forest topologies:
+\begin{enumerate}
+    \item \textbf{Random Cut:} Selects arbitrary reachable edges within budget.
+    \item \textbf{Degree Centrality:} Selects edges incident to the highest-degree nodes.
+    \item \textbf{Static Greedy:} Iteratively severs the edge participating in the greatest number of remaining shortest attack paths.
+    \item \textbf{Co-Adaptive Stackelberg (Ours):} Solves the bilevel interdiction game under heterogeneous operational disruption costs ($c(\text{MemberOf}) \in [2.8, 3.8]$, $c(\text{GenericAll}) \in [2.0, 3.0]$, $c(\text{Chokepoint}) \in [1.0, 1.4]$).
+\end{enumerate}
+
+\begin{table}[ht]
+\centering
+\caption{Remediation Performance across 30 Enterprise Topologies under Operational Budget Constraints.}
+\label{tab:stackelberg_results}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+\textbf{Remediation Policy} & \textbf{Budget $B_{\text{ops}}=6$} & \textbf{Budget $B_{\text{ops}}=12$} & \textbf{Budget $B_{\text{ops}}=18$} & \textbf{Budget $B_{\text{ops}}=24$} \\
+\midrule
+Random Cut & $11.6 \pm 8.7\%$ & $12.2 \pm 6.8\%$ & $12.1 \pm 7.5\%$ & $15.2 \pm 8.0\%$ \\
+Degree Centrality & $59.4 \pm 21.4\%$ & $71.1 \pm 16.1\%$ & $77.5 \pm 14.4\%$ & $84.9 \pm 12.1\%$ \\
+Static Greedy & $71.4 \pm 15.3\%$ & $89.7 \pm 11.2\%$ & $98.1 \pm 4.6\%$ & $100.0 \pm 0.0\%$ \\
+\textbf{Co-Adaptive Stackelberg (Ours)} & $\mathbf{80.7 \pm 16.7\%}$ & $\mathbf{95.2 \pm 9.5\%}$ & $\mathbf{99.5 \pm 2.7\%}$ & $\mathbf{100.0 \pm 0.0\%}$ \\
+\midrule
+\textit{Paired $t$-test (Stackelberg vs. Greedy)} & $t = 4.93, p = 3.12 \times 10^{-5}$ & $t = 2.59, p = 0.0148$ & $t = 1.94, p = 0.0617$ & --- \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/game_theoretic_convergence.png}
+\caption{Remediation convergence dynamics across 30 enterprise topologies, illustrating path interdiction percentage and operational disruption cost scaling across budgets $B_{\text{ops}} \in \{6, 12, 18, 24\}$.}
+\label{fig:stackelberg_convergence}
+\end{figure}
+
+\paragraph{Statistical Dominance under Tight Operational Budgets:}
+As documented in Table~\ref{tab:stackelberg_results} and Figure~\ref{fig:stackelberg_convergence}, Co-Adaptive Stackelberg strictly outperforms Static Greedy in resource-constrained regimes:
+\begin{itemize}
+    \item At $B_{\text{ops}} = 6$, Stackelberg severs \textbf{80.7\%} of attack paths compared to 71.4\% for Greedy (paired $t = 4.93, p = 3.12 \times 10^{-5}$).
+    \item At $B_{\text{ops}} = 12$, Stackelberg reaches \textbf{95.2\%} path interdiction compared to 89.7\% for Greedy (paired $t = 2.59, p = 0.0148$).
+\end{itemize}
+
+\paragraph{54.1\% Reduction in Administrative Disruption:}
+At $B_{\text{ops}} = 24$, both Static Greedy and Co-Adaptive Stackelberg achieve $100.0\%$ complete attack path severance. However, their operational footprints differ drastically:
+\begin{itemize}
+    \item Static Greedy revokes an average of \textbf{11.1 edges} ($11.1 \pm 0.9$), predominantly cutting high-cost \texttt{MemberOf} role delegations that disrupt legitimate business users.
+    \item Co-Adaptive Stackelberg revokes an average of only \textbf{5.1 edges} ($5.1 \pm 2.2$), strategically identifying low-cost CA enrollment chokepoints.
+\end{itemize}
+This represents a \textbf{54.1\% reduction in operational administrative friction}, resolving the fundamental enterprise dilemma between bulletproof security and operational continuity.

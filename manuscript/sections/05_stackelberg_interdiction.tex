@@ -1,0 +1,83 @@
+\section{Disruption-Budgeted Stackelberg Remediation Game}
+\label{sec:game_theoretic}
+
+Detecting vulnerabilities is insufficient if remediation induces unacceptable operational friction. In this section, we formulate the autonomous remediation problem as a bilevel Stackelberg game between an enterprise defender and an optimal adversary, prove its computational hardness, and detail the co-adaptive interdiction algorithm.
+
+\subsection{Bilevel Stackelberg Game Formulation}
+We model the defensive interaction on the identity multigraph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ as a non-cooperative Stackelberg game:
+\begin{enumerate}
+    \item \textbf{Leader (Defender):} Moves first by selecting a subset of permission edges $E_{\text{cut}} \subseteq \mathcal{E}$ to revoke, subject to a maximum operational disruption budget $B_{\text{ops}} \in \mathbb{R}^+$.
+    \item \textbf{Follower (Attacker):} Fully observes the pruned graph $\mathcal{G}' = (\mathcal{V}, \mathcal{E} \setminus E_{\text{cut}})$ and executes an optimal, cost-minimizing attack path $p^* \in \mathcal{P}(\mathcal{G}')$ connecting an unprivileged foothold $u_{\text{source}}$ to high-value target assets $\mathcal{T}_{\text{target}}$.
+\end{enumerate}
+
+\paragraph{Heterogeneous Operational Revocation Costs:}
+In enterprise Active Directory environments, revoking different permission types imposes vastly unequal operational disruption on legitimate business workflows. We assign heterogeneous cost functions $c: \mathcal{E} \to \mathbb{R}^+$ based on enterprise operational impact:
+\begin{equation}
+c(e) = \begin{cases}
+c_{\text{group}} \in [2.8, 3.8], & \text{if } \psi(e) = \text{MemberOf} \text{ (High Disruption: breaks user role workflows)}, \\
+c_{\text{acl}} \in [2.0, 3.0], & \text{if } \psi(e) \in \{\text{GenericAll}, \text{WriteDacl}\} \text{ (Medium Disruption: breaks administrative sync)}, \\
+c_{\text{choke}} \in [1.0, 1.4], & \text{if } \psi(e) \in \{\text{Enroll}, \text{EnablesEnrollment}\} \text{ (Low Disruption: reconfigures template chokepoints)}.
+\end{cases}
+\end{equation}
+
+The defender's optimization problem is formalized as:
+\begin{align}
+\max_{E_{\text{cut}} \subseteq \mathcal{E}} \quad & \mathcal{U}_{\text{def}}(E_{\text{cut}}, p^*(E_{\text{cut}})) = \sum_{i=1}^k \mathbb{I} \left[ \text{Path}(s_i \rightsquigarrow t_i) = \emptyset \text{ in } (\mathcal{V}, \mathcal{E} \setminus E_{\text{cut}}) \right] - \lambda \sum_{e \in E_{\text{cut}}} c(e) \\
+\text{subject to} \quad & \sum_{e \in E_{\text{cut}}} c(e) \le B_{\text{ops}} \label{eq:budget_constraint}
+\end{align}
+where $\mathbb{I}[\cdot]$ is the indicator function, $\lambda \ge 0$ is a regularizing trade-off parameter, and the follower's best response is:
+\begin{equation}
+p^*(E_{\text{cut}}) = \arg\min_{p \in \mathcal{P}(\mathcal{V}, \mathcal{E} \setminus E_{\text{cut}})} \sum_{e \in p} w_{\text{attack}}(e)
+\end{equation}
+
+\subsection{Computational Complexity: NP-Hardness of Multi-Principal Access Interdiction}
+We now prove that finding the optimal edge revocation strategy to neutralize multiple compromise paths under budget constraints is intractable.
+
+\begin{theorem}[NP-Hardness of Multi-Principal Access Interdiction]
+\label{thm:nphardness}
+Let $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ be a directed identity multigraph with edge revocation costs $c: \mathcal{E} \to \mathbb{R}^+$, and let $\mathcal{P}_{\text{forbidden}} = \{(s_1, t_1), \dots, (s_k, t_k)\}$ be $k \ge 3$ independent source-target compromise pairs. The Multi-Principal Access Interdiction (MPAI) problem, which decides whether there exists $E_{\text{cut}} \subseteq \mathcal{E}$ with $\sum_{e \in E_{\text{cut}}} c(e) \le B_{\text{ops}}$ such that all paths in $\mathcal{P}_{\text{forbidden}}$ are severed, is NP-complete.
+\end{theorem}
+
+\begin{proof}
+We establish membership in NP and provide a polynomial-time reduction from the NP-complete \textbf{Directed Multiway Cut} problem~\cite{garg1994multiway}.
+
+\paragraph{Part 1: Membership in NP.}
+Given a candidate cut set $E_{\text{cut}} \subseteq \mathcal{E}$:
+\begin{enumerate}
+    \item We compute $\sum_{e \in E_{\text{cut}}} c(e)$ in $\mathcal{O}(|E_{\text{cut}}|)$ time and verify the budget condition (\ref{eq:budget_constraint}).
+    \item We construct the residual graph $\mathcal{G}' = (\mathcal{V}, \mathcal{E} \setminus E_{\text{cut}})$ in $\mathcal{O}(|\mathcal{V}| + |\mathcal{E}|)$ time.
+    \item For each $(s_i, t_i) \in \mathcal{P}_{\text{forbidden}}$, we run Breadth-First Search (BFS) in $\mathcal{G}'$ starting from $s_i$ to verify that $t_i$ is unreachable in $\mathcal{O}(k \cdot (|\mathcal{V}| + |\mathcal{E}|))$ time.
+\end{enumerate}
+Because all checks execute in deterministic polynomial time, $\text{MPAI} \in \text{NP}$.
+
+\paragraph{Part 2: Reduction from Directed Multiway Cut.}
+In the Directed Multiway Cut problem, we are given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H \to \mathbb{R}^+$, a set of $k \ge 3$ distinct terminal vertices $X = \{x_1, \dots, x_k\} \subseteq V_H$, and a budget $W$. The objective is to determine whether there exists an edge cut $C \subseteq E_H$ with $\sum_{e \in C} w(e) \le W$ such that no directed path connects any $x_i$ to any $x_j$ ($i \neq j$) in $H' = (V_H, E_H \setminus C)$.
+
+Given an arbitrary instance of Directed Multiway Cut, we construct an instance of MPAI $\langle \mathcal{G} = (\mathcal{V}, \mathcal{E}), c, \mathcal{P}_{\text{forbidden}}, B_{\text{ops}} \rangle$ as follows:
+\begin{enumerate}
+    \item For each terminal $x_i \in X$, construct two vertices in $\mathcal{G}$: a source foothold principal $s_i$ and a target administrative principal $t_i$. For all non-terminals $v \in V_H \setminus X$, set $v \in \mathcal{V}$.
+    \item For every edge $(u, v) \in E_H$:
+    \begin{itemize}
+        \item If $u, v \notin X$, add $(u, v) \in \mathcal{E}$ with cost $c(u, v) = w(u, v)$.
+        \item If $u = x_i \in X$ and $v \notin X$, add $(s_i, v) \in \mathcal{E}$ with cost $c(s_i, v) = w(x_i, v)$.
+        \item If $u \notin X$ and $v = x_j \in X$, add $(u, t_j) \in \mathcal{E}$ with cost $c(u, t_j) = w(u, x_j)$.
+        \item If $u = x_i$ and $v = x_j$ ($i \neq j$), add $(s_i, t_j) \in \mathcal{E}$ with cost $c(s_i, t_j) = w(x_i, x_j)$.
+    \end{itemize}
+    \item Define the set of forbidden pairs as all cross-terminal combinations:
+    \begin{equation}
+    \mathcal{P}_{\text{forbidden}} = \{(s_i, t_j) \mid i, j \in \{1, \dots, k\}, i \neq j\}
+    \end{equation}
+    \item Set budget $B_{\text{ops}} = W$.
+\end{enumerate}
+
+Any valid multiway cut $C \subseteq E_H$ severing all paths between distinct terminals in $H$ directly corresponds to an edge cut $E_{\text{cut}} \subseteq \mathcal{E}$ severing all paths between $s_i$ and $t_j$ in $\mathcal{G}$ with identical total cost $\sum_{e \in E_{\text{cut}}} c(e) = \sum_{e \in C} w(e) \le B_{\text{ops}}$, and vice-versa. Since Directed Multiway Cut is NP-complete for $k \ge 3$, MPAI is NP-complete. Thus, finding the optimal edge-severing defense strategy is NP-hard.
+\end{proof}
+
+\subsection{Co-Adaptive Stackelberg vs. Static Greedy Interdiction}
+Standard industrial remediation approaches employ static greedy heuristics (e.g., iteratively severing the edge with the highest betweenness centrality or degree). However, on heterogeneous identity multigraphs, greedy heuristics suffer from two severe structural deficiencies:
+\begin{enumerate}
+    \item \textbf{Disruption Blindness:} Myopic greedy algorithms select high-degree nodes without considering edge costs, frequently revoking high-cost \texttt{MemberOf} edges ($c = 3.5$) that cause widespread operational failure while rapidly exhausting the budget $B_{\text{ops}}$.
+    \item \textbf{Fallback Vulnerability:} Greedy selection severs one path without anticipating the attacker's immediate pivot to an alternate parallel template path (e.g., switching from ESC1 to ESC6).
+\end{enumerate}
+
+In contrast, our \textbf{Co-Adaptive Stackelberg Solver} executes a bilevel branch-and-cut optimization. At each step, it models the attacker's best-response cost-minimizing traversal across the residual multigraph, prioritizing low-disruption structural chokepoints (\texttt{Enroll} and \texttt{EnablesEnrollment} edges on the CA boundary, $c = 1.0$) that simultaneously sever multiple downstream escalation chains.
