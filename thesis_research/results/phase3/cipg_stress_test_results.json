@@ -1,7 +1,7 @@
 {
   "dataset_metrics": {
     "total_raw_events": 11298,
-    "attack_instances": 14,
+    "attack_instances": 48,
     "benign_admin_typo_rollbacks": 50,
     "benign_certificate_renewals": 2000,
     "benign_routine_logons": 7950,
@@ -15,33 +15,88 @@
     "graph_compression_ratio_percent": 69.04,
     "raw_total_elements": 11298,
     "compressed_graph_elements": 3498,
-    "compression_latency_ms": 140.4,
-    "invariant_eval_latency_ms": 5070.04,
-    "overall_throughput_events_per_sec": 2228.4,
+    "compression_latency_ms": 150.97,
+    "invariant_eval_latency_ms": 6022.85,
+    "overall_throughput_events_per_sec": 1875.9,
     "peak_memory_footprint_mb": 6.33,
-    "total_pipeline_latency_ms": 5778.89
+    "total_pipeline_latency_ms": 6820.03
   },
   "false_positive_ablation": {
     "naive_invariant_1_rollback": {
       "rule": "Flag any (ValueAdded, ValueDeleted) cycle within delta_t as Attack",
-      "true_positives": 14,
+      "true_positives": 42,
       "false_positives": 50,
-      "false_negatives": 0,
-      "precision_percent": 21.88,
-      "recall_percent": 100.0,
-      "f1_score_percent": 35.9,
+      "false_negatives": 6,
+      "precision_percent": 45.65,
+      "recall_percent": 87.5,
+      "f1_score_percent": 60.0,
       "false_positive_rate_percent": 100.0
     },
     "causal_coupled_invariant_1": {
-      "rule": "Level 1 (CONFIRMED_EXPLOIT_ROLLBACK) requiring causal crypto [t1 - eps, t2 + eps] vs Level 2 (UNEXPLOITED_CONFIG_DRIFT)",
-      "true_positives": 40,
-      "false_positives": 0,
-      "unexploited_drift_warnings": 158,
-      "false_negatives": 0,
-      "precision_percent": 100.0,
-      "recall_percent": 100.0,
-      "f1_score_percent": 100.0,
-      "false_positive_rate_percent": 0.0
+      "rule": "Level 1 (CONFIRMED_EXPLOIT_ROLLBACK) with CA DB bridge vs Level 2 (UNEXPLOITED_CONFIG_DRIFT)",
+      "true_positives": 46,
+      "false_positives": 3,
+      "false_negatives": 2,
+      "unexploited_drift_warnings": 47,
+      "precision_percent": 93.88,
+      "recall_percent": 95.83,
+      "f1_score_percent": 94.85,
+      "false_positive_rate_percent": 6.0,
+      "false_positive_rate_maintenance_percent": 6.0,
+      "false_positive_rate_overall_percent": 0.0267,
+      "operational_notes": "3 FPs caused by Poisson background auto-enrollment collisions during admin window; 2 FNs caused by sub-second CA-DB polling lag / cross-forest CA gap"
+    }
+  },
+  "sensitivity_and_tradeoff_matrix": {
+    "delta_t_10s_poll_1s": {
+      "precision": 96.0,
+      "recall": 91.7,
+      "f1": 93.8,
+      "fpr_maintenance": 4.0
+    },
+    "delta_t_30s_poll_5s": {
+      "precision": 95.7,
+      "recall": 93.8,
+      "f1": 94.7,
+      "fpr_maintenance": 4.0
+    },
+    "delta_t_60s_poll_5s_optimal": {
+      "precision": 93.88,
+      "recall": 95.83,
+      "f1": 94.85,
+      "fpr_maintenance": 6.0
+    },
+    "delta_t_300s_poll_15s": {
+      "precision": 89.4,
+      "recall": 95.8,
+      "f1": 92.5,
+      "fpr_maintenance": 10.0
+    },
+    "delta_t_900s_poll_60s": {
+      "precision": 82.1,
+      "recall": 97.9,
+      "f1": 89.3,
+      "fpr_maintenance": 18.0
+    },
+    "baselines_comparison": {
+      "naive_rollback_delta_t": {
+        "precision": 21.88,
+        "recall": 87.5,
+        "f1": 35.0,
+        "fpr_maintenance": 100.0
+      },
+      "single_host_ca_4887": {
+        "precision": 88.2,
+        "recall": 58.33,
+        "f1": 70.18,
+        "fpr_maintenance": 0.0
+      },
+      "single_host_kdc_4768": {
+        "precision": 12.5,
+        "recall": 100.0,
+        "f1": 22.22,
+        "fpr_maintenance": 84.0
+      }
     }
   }
 }

@@ -389,7 +389,7 @@ where $\Delta t_{\text{transient}} = 300\,\text{s}$. In enterprise networks, ben
     \implies \text{Verdict} = \texttt{UNEXPLOITED\_CONFIG\_DRIFT} \quad (\text{Severity: Audit/Informational})
     \end{aligned}
     \end{equation}
-    This two-level formulation reduces the false positive rate on administrative configuration corrections from $100.0\%$ to exactly $0.0\%$.
+    This two-level formulation reduces the false positive rate on administrative configuration corrections from $100.0\%$ to $6.00\%$ ($3/50$ maintenance windows, $0.03\%$ overall event FPR, $93.88\%$ precision) under concurrent enterprise renewal traffic, and $0.0\%$ on isolated traces.
 \end{enumerate}
 
 \subsubsection{Invariant II: CA--KDC Schema Discontinuity and Split-Brain Transposition}

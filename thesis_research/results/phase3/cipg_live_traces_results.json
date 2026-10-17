@@ -12,11 +12,12 @@
         "total_events": 71
       },
       "enriched_records": 2,
-      "attacks_detected": 3,
+      "attacks_detected": 4,
       "drift_warnings": 0,
       "detected_attack_classes": [
-        "ESC4",
-        "ESC1"
+        "ESC1",
+        "Transient Hysteresis Exploitation",
+        "ESC4"
       ],
       "cipg_verdict": "CONFIRMED_EXPLOIT"
     },
@@ -35,8 +36,8 @@
       "attacks_detected": 4,
       "drift_warnings": 2,
       "detected_attack_classes": [
-        "ESC9/ESC10",
-        "ESC1"
+        "ESC1",
+        "ESC9/ESC10"
       ],
       "cipg_verdict": "CONFIRMED_EXPLOIT"
     },
@@ -71,9 +72,10 @@
         "total_events": 70
       },
       "enriched_records": 2,
-      "attacks_detected": 6,
+      "attacks_detected": 7,
       "drift_warnings": 0,
       "detected_attack_classes": [
+        "Transient Hysteresis Exploitation",
         "ESC4",
         "ASN1_SAN_Concealment"
       ],

@@ -1,8 +1,8 @@
 {
   "total_raw_events": 624,
-  "causal_attack_events": 30,
-  "compression_ratio_percent": 95.19,
-  "detection_latency_ms": 18.626,
+  "causal_attack_events": 42,
+  "compression_ratio_percent": 93.27,
+  "detection_latency_ms": 14.512,
   "comparison": {
     "Static_Snapshot_Certipy_BloodHound": {
       "detected": {
@@ -105,5 +105,5 @@
       "command": "certutil -setreg policy\\EditFlags +EDITF_ENFORCEENCRYPTICERTREQUEST"
     }
   ],
-  "violations_detected_count": 11
+  "violations_detected_count": 14
 }

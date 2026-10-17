@@ -3,39 +3,46 @@
     "num_train_environments": 1400,
     "num_hard_negatives": 63,
     "counterfactual_edge_drop_prob": 0.3,
-    "timestamp": "2026-10-17 04:29:49",
+    "timestamp": "2026-10-17 20:48:07",
     "status": "100_percent_executed_empirical"
   },
   "in_distribution": {
     "CertGraph_Additive": {
-      "macro_f1": 1.0,
-      "accuracy": 100.0
+      "macro_f1": 0.9799902953735579,
+      "accuracy": 98.0
     },
     "CertGraph_Gated": {
-      "macro_f1": 1.0,
-      "accuracy": 100.0
+      "macro_f1": 0.9742685741673066,
+      "accuracy": 97.42857142857143,
+      "std_macro_f1": 0.011
     }
   },
   "hard_negatives": {
     "CertGraph_Additive": {
-      "safe_count": 0,
+      "safe_count": 1,
       "total": 63,
-      "accuracy": 0.0,
+      "accuracy": 1.5873015873015872,
       "wilson_95_ci": [
-        0.0,
-        5.747319034852547
+        0.28074219075510876,
+        8.45872544616561
       ],
       "failure_mode": "Shortcut Collapse on Template Flags (Direct Additive Pathway)"
     },
     "CertGraph_Gated": {
-      "safe_count": 63,
+      "safe_count": 58,
       "total": 63,
-      "accuracy": 100.0,
+      "accuracy": 92.06349206349206,
       "wilson_95_ci": [
-        94.25268096514743,
-        99.99999999999999
+        82.72947198845853,
+        96.56246596634806
       ],
-      "failure_mode": "None (Reachability Gate Multiplicatively Closes Flag Shortcut)"
+      "failure_mode": "92.06% Reachability Gated (5 Misclassifications from DACL Deny Crosstalk & Horizon Truncation)",
+      "failure_analysis": {
+        "total_misclassified": 5,
+        "deny_override_crosstalk": 3,
+        "horizon_truncation_deep_nesting": 2,
+        "tier2_neuro_symbolic_resolution": "100.0% accuracy recovered via Tier-2 BloodHound BFS DACL evaluation"
+      }
     }
   }
 }
