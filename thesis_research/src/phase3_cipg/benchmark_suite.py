@@ -32,7 +32,63 @@ from .invariants import InvariantEngine
 from .interdiction import RootCauseInterdictionEngine
 from .event_parser import ProvenanceEventParser
 
+def apply_ca_db_polling_lag(base_graph: CrossLayerGraph, poll_interval_sec: float, watermark_sec: float = 1.5) -> CrossLayerGraph:
+
+    """
+    Simulates physical CA Jet Database polling lag (Delta_poll) and watermark buffering (Delta_watermark).
+    In a real Windows Server 2019 Active Directory deployment (such as SRV03 in GOAD):
+      - CA Event 4887 on SRV03 only contains the SubjectKeyIdentifier (SKID),
+      - Kerberos PKINIT Event 4768 on DC03 only contains cert_serial and cert_thumbprint.
+    The join keys (cert_serial, cert_thumbprint, asn1_san_upn) are only acquired after
+    the CA Jet Database periodic poll ('certutil -view' every Delta_poll seconds) executes.
+    If the attacker executes PKINIT at t_auth before the next CA DB polling tick + watermark,
+    the event remains un-enriched (cert_serial="" and cert_thumbprint=""), causing InvariantEngine
+    to organically miss the cross-host split-brain join!
+    """
+    g_polled = CrossLayerGraph()
+    g_polled.nodes = dict(base_graph.nodes)
+    g_polled.static_edges = list(base_graph.static_edges)
+    g_polled.index_by_dn = dict(base_graph.index_by_dn)
+    g_polled.index_by_sid = dict(base_graph.index_by_sid)
+
+    pkinit_times = {}
+    for pk in base_graph.pkinit_auths:
+        if pk.cert_serial:
+            pkinit_times[pk.cert_serial.lower()] = pk.timestamp
+
+    for ca_ev in base_graph.ca_issuances:
+        ca_copy = CAIssuanceEvent(**ca_ev.__dict__)
+        # For ASN.1 split-brain events (where SKID is present but serial requires CA DB poll enrichment):
+        if ca_copy.subject_key_identifier and ca_copy.cert_serial:
+            t_req = ca_copy.timestamp
+            t_auth = pkinit_times.get(ca_copy.cert_serial.lower(), t_req + 2.0)
+
+            # Polling tick occurred in [t_req, t_auth + watermark_sec] if:
+            if poll_interval_sec > 0:
+                latest_tick = int((t_auth + watermark_sec) // poll_interval_sec) * poll_interval_sec
+                poll_occurred = (latest_tick >= t_req)
+            else:
+                poll_occurred = True
+
+            if not poll_occurred:
+                ca_copy.cert_serial = ""
+                ca_copy.cert_thumbprint = ""
+                ca_copy.asn1_san_upn = ""
+        g_polled.add_ca_issuance(ca_copy)
+
+    for mut in base_graph.ldap_mutations:
+        g_polled.add_ldap_mutation(mut)
+    for pk in base_graph.pkinit_auths:
+        g_polled.add_pkinit_auth(pk)
+    for relay in base_graph.http_relays:
+        g_polled.add_http_relay(relay)
+    for log in base_graph.logon_sessions:
+        g_polled.add_logon_session(log)
+
+    return g_polled
+
 class CIPGBenchmarkSuite:
+
     """Executes the comparative evaluation across static, host-provenance, and cross-layer approaches."""
 
     def __init__(self):
@@ -623,11 +679,10 @@ class CIPGBenchmarkSuite:
         for rep in range(6):
             for sc in ["ESC1", "ESC2/ESC3", "ESC4", "ESC6", "ESC8", "ESC9", "ESC13", "ASN1"]:
                 att_idx = len(attacks_gt)
-                is_subsecond = (att_idx == 23)     # 1 subsecond automated attack
-                is_cross_forest = (att_idx == 41)  # 1 unmonitored cross-forest CA
                 t += 15.0
                 t_req = t
-                pkinit_delay = 0.2 if is_subsecond else (random.uniform(2.0, 12.0) if sc != "ESC4" else 3.0)
+                # Continuous seeded lognormal distribution for PKINIT authentication delay (0.15s to 45.0s)
+                pkinit_delay = float(np.clip(np.random.lognormal(mean=1.2, sigma=0.8), 0.15, 45.0))
                 t_auth = t_req + pkinit_delay
 
                 if sc == "ESC1":
@@ -638,8 +693,7 @@ class CIPGBenchmarkSuite:
                     ))
                     g.add_pkinit_auth(PKINITAuthEvent(
                         timestamp=t_auth, target_user_name="administrator", target_user_sid="S-1-5-21-ESSOS-500",
-                        cert_serial=f"serial_esc1_{att_idx}" if not is_cross_forest else "",
-                        cert_thumbprint=f"thumb_esc1_{att_idx}" if not is_cross_forest else "",
+                        cert_serial=f"serial_esc1_{att_idx}", cert_thumbprint=f"thumb_esc1_{att_idx}",
                         pre_auth_type=16, client_ip="192.168.56.100"
                     ))
                 elif sc == "ESC2/ESC3":
@@ -661,17 +715,18 @@ class CIPGBenchmarkSuite:
                     ))
                 elif sc == "ESC4":
                     esc4_dn = "CN=ESC4,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local"
+                    mut_dur = float(np.clip(random.uniform(2.0, 8.0), 1.0, 15.0))
                     g.add_ldap_mutation(LDAPMutationEvent(
                         timestamp=t_req, actor_name="khal.drogo", actor_sid="S-1-5-21-ESSOS-1001", object_dn=esc4_dn,
                         attribute_name="msPKI-Certificate-Name-Flag", op_type=MutationOpType.VALUE_ADDED, attribute_value="1"
                     ))
                     g.add_ca_issuance(CAIssuanceEvent(
-                        timestamp=t_req + 1.5, request_id=3000 + att_idx, requester_name="khal.drogo@essos.local",
+                        timestamp=t_req + 0.5 * mut_dur, request_id=3000 + att_idx, requester_name="khal.drogo@essos.local",
                         requester_sid="S-1-5-21-ESSOS-1001", template_name="ESC4", san_upn="administrator@essos.local",
                         cert_serial=f"serial_esc4_{att_idx}", cert_thumbprint=f"thumb_esc4_{att_idx}", client_ip="192.168.56.100"
                     ))
                     g.add_ldap_mutation(LDAPMutationEvent(
-                        timestamp=t_req + 3.0, actor_name="khal.drogo", actor_sid="S-1-5-21-ESSOS-1001", object_dn=esc4_dn,
+                        timestamp=t_req + mut_dur, actor_name="khal.drogo", actor_sid="S-1-5-21-ESSOS-1001", object_dn=esc4_dn,
                         attribute_name="msPKI-Certificate-Name-Flag", op_type=MutationOpType.VALUE_DELETED, attribute_value="1"
                     ))
                     g.add_pkinit_auth(PKINITAuthEvent(
@@ -707,18 +762,19 @@ class CIPGBenchmarkSuite:
                     ))
                 elif sc == "ESC9":
                     u_dn = "CN=viserys.targaryen,CN=Users,DC=essos,DC=local"
+                    mut_dur = float(np.clip(random.uniform(2.0, 8.0), 1.0, 15.0))
                     g.add_ldap_mutation(LDAPMutationEvent(
                         timestamp=t_req, actor_name="khal.drogo", actor_sid="S-1-5-21-ESSOS-1001", object_dn=u_dn,
                         attribute_name="userPrincipalName", op_type=MutationOpType.VALUE_ADDED,
                         attribute_value="administrator@essos.local"
                     ))
                     g.add_ca_issuance(CAIssuanceEvent(
-                        timestamp=t_req + 1.0, request_id=6000 + att_idx, requester_name="viserys.targaryen@essos.local",
+                        timestamp=t_req + 0.5 * mut_dur, request_id=6000 + att_idx, requester_name="viserys.targaryen@essos.local",
                         requester_sid="S-1-5-21-ESSOS-1002", template_name="User", san_upn="administrator@essos.local",
                         cert_serial=f"serial_esc9_{att_idx}", cert_thumbprint=f"thumb_esc9_{att_idx}", client_ip="192.168.56.100"
                     ))
                     g.add_ldap_mutation(LDAPMutationEvent(
-                        timestamp=t_req + 2.5, actor_name="khal.drogo", actor_sid="S-1-5-21-ESSOS-1001", object_dn=u_dn,
+                        timestamp=t_req + mut_dur, actor_name="khal.drogo", actor_sid="S-1-5-21-ESSOS-1001", object_dn=u_dn,
                         attribute_name="userPrincipalName", op_type=MutationOpType.VALUE_DELETED,
                         attribute_value="administrator@essos.local"
                     ))
@@ -743,22 +799,24 @@ class CIPGBenchmarkSuite:
                         timestamp=t_req, request_id=8000 + att_idx, requester_name="khal.drogo@essos.local",
                         requester_sid="S-1-5-21-ESSOS-1001", template_name="User", san_upn="khal.drogo@essos.local",
                         subject_key_identifier=f"skid_asn1_{att_idx}",
-                        cert_serial=f"serial_asn1_{att_idx}" if not is_subsecond else "",
-                        cert_thumbprint=f"thumb_asn1_{att_idx}" if not is_subsecond else "",
+                        cert_serial=f"serial_asn1_{att_idx}",
+                        cert_thumbprint=f"thumb_asn1_{att_idx}",
+                        asn1_san_upn="administrator@essos.local",
                         client_ip="192.168.56.100"
                     ))
                     g.add_pkinit_auth(PKINITAuthEvent(
                         timestamp=t_auth, target_user_name="administrator", target_user_sid="S-1-5-21-ESSOS-500",
                         cert_serial=f"serial_asn1_{att_idx}", cert_thumbprint=f"thumb_asn1_{att_idx}",
+                        subject_key_identifier=f"skid_asn1_{att_idx}",
                         pre_auth_type=16, client_ip="192.168.56.100"
                     ))
 
                 t = t_auth + 5.0
                 attacks_gt.append({
                     "id": att_idx, "type": sc, "t_req": t_req, "t_auth": t_auth,
-                    "is_subsecond": is_subsecond, "is_cross_forest": is_cross_forest,
                     "pkinit_delay": pkinit_delay
                 })
+
 
         # 2. Inject 50 Benign Admin Maintenance Windows
         print("[*] Injecting 50 benign admin maintenance windows across 15 templates (FP Control)...")
@@ -830,10 +888,11 @@ class CIPGBenchmarkSuite:
         compression_metrics = g.compress_benign_routines()
         compression_latency_ms = (time.perf_counter() - t_comp_start) * 1000.0
 
-        # 6. Invariant Evaluation Benchmark (delta_window_sec=60.0)
+        # 6. Invariant Evaluation Benchmark (delta_window_sec=60.0, apply default poll lag 5.0s)
+        g_polled_default = apply_ca_db_polling_lag(g, poll_interval_sec=5.0, watermark_sec=1.5)
         t_eval_start = time.perf_counter()
         engine_60 = InvariantEngine(delta_window_sec=60.0)
-        violations = engine_60.evaluate_all(g)
+        violations = engine_60.evaluate_all(g_polled_default)
         eval_latency_ms = (time.perf_counter() - t_eval_start) * 1000.0
 
         current_mem, peak_mem = tracemalloc.get_traced_memory()
@@ -844,15 +903,14 @@ class CIPGBenchmarkSuite:
         # 7. False-Positive Ablation: Causal-Coupled Invariant I vs. Naive Rollback
         total_attacks_ground_truth = len(attacks_gt)
 
-        # Determine Causal Invariant TP (evaluated over detected attacks excluding cross-forest/subsecond CA lag)
+        # Determine Causal Invariant TP (evaluated over detected attacks from genuine InvariantEngine output)
         detected_attacks = set()
         for v in violations:
             if not v.is_attack:
                 continue
             for att in attacks_gt:
                 if (att["t_req"] - 5.0) <= v.timestamp_start <= (att["t_auth"] + 5.0):
-                    if not att["is_cross_forest"] and not att["is_subsecond"]:
-                        detected_attacks.add(att["id"])
+                    detected_attacks.add(att["id"])
 
         causal_tp = len(detected_attacks)
         causal_fn = total_attacks_ground_truth - causal_tp
@@ -883,27 +941,30 @@ class CIPGBenchmarkSuite:
         naive_f1 = (2 * naive_precision * naive_recall) / (naive_precision + naive_recall)
         naive_fpr = 100.0
 
-        # 8. Organic Sensitivity & Trade-off Matrix across (Delta_t, Delta_poll)
+        # 8. Organic Sensitivity & Trade-off Matrix across (Delta_t, Delta_poll) via InvariantEngine
         matrix_results = {}
         for dt_val in [10.0, 30.0, 60.0, 300.0, 900.0]:
             for poll_val in [1.0, 5.0, 15.0, 60.0]:
-                cell_tp = 0
-                for att in attacks_gt:
-                    if att["is_cross_forest"]:
+                g_polled = apply_ca_db_polling_lag(g, poll_interval_sec=poll_val, watermark_sec=1.5)
+                engine_cell = InvariantEngine(delta_window_sec=dt_val)
+                v_cell = engine_cell.evaluate_all(g_polled)
+
+                detected_in_cell = set()
+                for v in v_cell:
+                    if not v.is_attack:
                         continue
-                    if att["is_subsecond"] and poll_val >= 2.0:
-                        continue
-                    if att["type"] in ("ESC4", "ESC9") and (att["t_auth"] - att["t_req"]) > dt_val:
-                        continue
-                    cell_tp += 1
+                    for att in attacks_gt:
+                        if (att["t_req"] - 5.0) <= v.timestamp_start <= (att["t_auth"] + 5.0):
+                            detected_in_cell.add(att["id"])
+
+                cell_tp = len(detected_in_cell)
                 cell_fn = total_attacks_ground_truth - cell_tp
 
                 cell_fp = 0
                 for w in maint_windows:
-                    w_effective = max(w["dur"], min(dt_val, 900.0))
                     hit = any(
-                        ren["tpl"] == w["tpl"] and (w["start"] - 2.0 <= ren["t"] <= w["start"] + w_effective + 2.0)
-                        for ren in renewals_list
+                        v.is_attack and (w["start"] - 2.0) <= v.timestamp_start <= (w["end"] + 2.0) and w["tpl"].lower() in v.root_cause_object.lower()
+                        for v in v_cell
                     )
                     if hit:
                         cell_fp += 1
@@ -917,6 +978,7 @@ class CIPGBenchmarkSuite:
                     "fpr_maintenance": fpr_val, "true_positives": cell_tp,
                     "false_positives": cell_fp, "false_negatives": cell_fn
                 }
+
 
         stress_report = {
             "dataset_metrics": {
@@ -964,8 +1026,9 @@ class CIPGBenchmarkSuite:
                     "false_positive_rate_percent": round(causal_fpr_maintenance, 2),
                     "false_positive_rate_maintenance_percent": round(causal_fpr_maintenance, 2),
                     "false_positive_rate_overall_percent": round(causal_fpr_overall_events, 4),
-                    "operational_notes": f"{causal_fp} FPs caused by Poisson background auto-enrollment collisions during admin window; {causal_fn} FNs caused by sub-second CA-DB polling lag / cross-forest CA gap"
+                    "operational_notes": f"{causal_fp} FPs caused by Poisson background auto-enrollment collisions during admin window; {causal_fn} FNs caused by CA-DB polling lag / temporal window truncation"
                 }
+
             },
             "sensitivity_and_tradeoff_matrix": matrix_results
         }

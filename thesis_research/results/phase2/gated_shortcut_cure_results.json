@@ -1,47 +1,84 @@
 {
   "metadata": {
-    "num_train_environments": 1400,
-    "num_hard_negatives": 63,
-    "counterfactual_edge_drop_prob": 0.3,
-    "timestamp": "2026-10-17 23:52:51",
-    "status": "100_percent_executed_empirical"
+    "execution_mode": "first_principles_clean_rewrite",
+    "model_type": "2_layer_matrix_gnn",
+    "in_distribution_train_size": 1400,
+    "in_distribution_val_size": 350,
+    "zero_shot_hn_size": 63,
+    "random_seed": 42,
+    "p_counterfactual_drop": 0.3
   },
-  "in_distribution": {
-    "CertGraph_Additive": {
-      "macro_f1": 1.0,
-      "accuracy": 100.0
+  "in_distribution_evaluation": {
+    "additive_baseline": {
+      "val_accuracy_percent": 100.0,
+      "macro_f1": 1.0
     },
-    "CertGraph_Gated": {
-      "macro_f1": 1.0,
-      "accuracy": 100.0,
-      "std_macro_f1": 0.011
+    "gated_proposed": {
+      "val_accuracy_percent": 100.0,
+      "macro_f1": 1.0
     }
   },
-  "hard_negatives": {
-    "CertGraph_Additive": {
-      "safe_count": 0,
-      "total": 63,
-      "accuracy": 0.0,
-      "wilson_95_ci": [
-        0.0,
-        5.747319034852547
-      ],
-      "failure_mode": "Shortcut Collapse on Template Flags (Direct Additive Pathway)"
+  "zero_shot_hard_negative_evaluation": {
+    "additive_baseline": {
+      "correct_count": 0,
+      "total_count": 63,
+      "accuracy_percent": 0.0,
+      "macro_f1": 0.0
     },
-    "CertGraph_Gated": {
-      "safe_count": 58,
-      "total": 63,
-      "accuracy": 92.06349206349206,
-      "wilson_95_ci": [
-        82.72947198845853,
-        96.56246596634806
-      ],
-      "failure_mode": "92.06% Reachability Gated (5 Misclassifications from DACL Deny Crosstalk & Horizon Truncation)",
-      "failure_analysis": {
-        "total_misclassified": 5,
-        "deny_override_crosstalk": 3,
-        "horizon_truncation_deep_nesting": 2,
-        "tier2_neuro_symbolic_resolution": "100.0% accuracy recovered via Tier-2 BloodHound BFS DACL evaluation"
+    "gated_proposed": {
+      "correct_count": 41,
+      "total_count": 63,
+      "accuracy_percent": 65.08,
+      "macro_f1": 0.1126
+    },
+    "category_breakdown": {
+      "admin_only_enrollment": {
+        "total": 18,
+        "additive_correct": 0,
+        "gated_correct": 18,
+        "gated_accuracy_percent": 100.0
+      },
+      "explicit_deny_override": {
+        "total": 10,
+        "additive_correct": 0,
+        "gated_correct": 10,
+        "gated_accuracy_percent": 100.0
+      },
+      "deep_horizon_nesting": {
+        "total": 10,
+        "additive_correct": 0,
+        "gated_correct": 10,
+        "gated_accuracy_percent": 100.0
+      },
+      "esc4_admin_only_write": {
+        "total": 8,
+        "additive_correct": 0,
+        "gated_correct": 0,
+        "gated_accuracy_percent": 0.0
+      },
+      "esc4_deny_write_override": {
+        "total": 4,
+        "additive_correct": 0,
+        "gated_correct": 0,
+        "gated_accuracy_percent": 0.0
+      },
+      "esc13_benign_group_link": {
+        "total": 7,
+        "additive_correct": 0,
+        "gated_correct": 0,
+        "gated_accuracy_percent": 0.0
+      },
+      "esc13_deep_group_link": {
+        "total": 3,
+        "additive_correct": 0,
+        "gated_correct": 0,
+        "gated_accuracy_percent": 0.0
+      },
+      "disabled_template": {
+        "total": 3,
+        "additive_correct": 0,
+        "gated_correct": 3,
+        "gated_accuracy_percent": 100.0
       }
     }
   }

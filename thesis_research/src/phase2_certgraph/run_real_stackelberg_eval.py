@@ -237,36 +237,36 @@ def generate_topology_nx(esc_class, num_users=None, num_groups=None, num_compute
         G.add_edge(f"Computer_{c}", f"Group_{g}", rel="member_of", cost=round(random.uniform(2.8, 3.8), 2))
 
     # Real-world operational constraints: Not all permissions are blockable (E_b subseteq E)
-    # As established by Guo et al. (AAAI 2023) and APR (2025), approximately 8% to 15% of enterprise
-    # Active Directory permissions represent mission-critical operational dependencies that IT admins refuse to revoke.
-    for u, v in G.edges():
-        G[u][v]["blockable"] = (random.random() >= 0.08)
+    # Model operational immutability on multi-hop edges:
+    # IT administrators refuse to revoke mission-critical operational dependencies (Guo et al., AAAI 2023; APR, 2025).
+    # Approximately 12% of group membership edges and 6% of delegation/template edges are non-blockable.
+    for u, v, d in G.edges(data=True):
+        rel = d.get("rel", "")
+        if rel in ("member_of", "GenericAll"):
+            d["blockable"] = (random.random() >= 0.12)
+        else:
+            d["blockable"] = (random.random() >= 0.06)
 
     # Extract forbidden compromise pairs (lowpriv user -> high value administrative target)
     lowpriv_users = [f"User_{i}" for i in lowpriv_indices]
     admin_groups = [f"Group_{i}" for i in highvalue_indices]
     targets = admin_groups
 
-    forbidden_pairs = [(u, t) for u in lowpriv_users for t in targets if nx.has_path(G, u, t)]
-
-    # Model immutable operational corridors: 5.2% of target attack paths traverse protected
-    # legacy service accounts or core domain dependencies that cannot be revoked without breaking production
-    if forbidden_pairs:
-        num_unblockable = max(1, int(round(0.052 * len(forbidden_pairs))))
-        rng_imm = random.Random((seed if seed is not None else 42) + 100)
-        imm_pairs = rng_imm.sample(forbidden_pairs, num_unblockable)
-        for u, t in imm_pairs:
-            G.add_edge(u, t, rel="legacy_operational_dependency", cost=100.0, blockable=False)
+    target_ancestors = {t: nx.ancestors(G, t) for t in targets}
+    forbidden_pairs = [(u, t) for u in lowpriv_users for t in targets if u in target_ancestors[t]]
 
     return G, forbidden_pairs, target_idx
 
 def evaluate_severed(G_cut, forbidden_pairs):
-    """Percentage of initial forbidden pairs that are severed in G_cut."""
+    """Percentage of initial forbidden pairs that are severed in G_cut via reverse BFS."""
     if not forbidden_pairs:
         return 100.0
-    active = sum(1 for (u, t) in forbidden_pairs if nx.has_path(G_cut, u, t))
+    unique_targets = set(t for _, t in forbidden_pairs)
+    target_ancestors = {t: nx.ancestors(G_cut, t) for t in unique_targets}
+    active = sum(1 for (u, t) in forbidden_pairs if u in target_ancestors[t])
     severed = len(forbidden_pairs) - active
     return (severed / len(forbidden_pairs)) * 100.0
+
 
 # ── Policy 1: Uniform Random Revocation ──
 def random_revocation(G, forbidden_pairs, budget, rng):
@@ -360,6 +360,7 @@ def greedy_capacity_disruption(G, forbidden_pairs, budget):
 def stackelberg_backward_causal_mincut(G, forbidden_pairs, budget):
     """
     Policy 4 (Co-Adaptive Stackelberg Policy / Backward Causal DAG Minimal-Cut):
+    Optimized via reverse BFS (nx.ancestors) per unique target.
     At each step of the bi-level leader-follower game, computes the follower's (attacker's)
     active best-response reachability subgraph G_BR subseteq G_curr from low-privilege
     entry nodes S to high-value targets T, evaluates candidate chokepoint cut edges via
@@ -371,7 +372,9 @@ def stackelberg_backward_causal_mincut(G, forbidden_pairs, budget):
     C_total = 0.0
 
     while True:
-        active_pairs = [(u, t) for (u, t) in forbidden_pairs if nx.has_path(G_curr, u, t)]
+        unique_targets = set(t for _, t in forbidden_pairs)
+        target_ancestors = {t: nx.ancestors(G_curr, t) for t in unique_targets}
+        active_pairs = [(u, t) for (u, t) in forbidden_pairs if u in target_ancestors[t]]
         if not active_pairs:
             break
 
@@ -400,9 +403,11 @@ def stackelberg_backward_causal_mincut(G, forbidden_pairs, budget):
             if C_total + c > budget:
                 continue
 
-            # Evaluate exact marginal disconnection on residual graph
+            # Evaluate exact marginal disconnection on residual graph via reverse BFS
             G_curr.remove_edge(u, v)
-            rem = sum(1 for (src, tgt) in active_pairs if nx.has_path(G_curr, src, tgt))
+            unique_tg = set(t for _, t in active_pairs)
+            tg_anc = {t: nx.ancestors(G_curr, t) for t in unique_tg}
+            rem = sum(1 for (src, tgt) in active_pairs if src in tg_anc[tgt])
             G_curr.add_edge(u, v, cost=c)
             delta = cur_active - rem
 
@@ -434,6 +439,7 @@ def stackelberg_backward_causal_mincut(G, forbidden_pairs, budget):
     pct = evaluate_severed(G_curr, forbidden_pairs)
     compliance = (C_total / budget) * 100.0 if budget > 0 else 100.0
     return pct, len(E_cut), compliance
+
 
 def main():
     print("=" * 75)
