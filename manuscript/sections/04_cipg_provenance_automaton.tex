@@ -14,6 +14,13 @@ CIPG processes heterogeneous audit streams across three disjoint operational lay
     \item \textbf{KDC Kerberos Pre-Authentication Events:} Monitored via Event ID 4768 (\textit{Kerberos Authentication Ticket Requested}). Identifies PKINIT authentication requests where \texttt{PreAuthType = 16}, extracting the authenticating client name, domain target, certificate issuer CA, \texttt{CertSerialNumber}, and \texttt{CertThumbprint}.
 \end{enumerate}
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/neuro_symbolic_pipeline.png}
+\caption{Two-tier neuro-symbolic architecture: Tier~1 inductive GNN screening filters benign templates ($O(|V|+|E|)$), while Tier~2 CIPG provenance auditing dynamically correlates temporal LDAP mutations (Event 5136), CA issuances (Event 4887), and Kerberos PKINIT authentications (Event 4768) via the continuous CA Jet Database bridge.}
+\label{fig:neuro_symbolic_pipeline}
+\end{figure}
+
 \subsection{Formal Cryptographic Invariants}
 CIPG evaluates incoming event sequences against five formal behavioral and cryptographic invariants:
 

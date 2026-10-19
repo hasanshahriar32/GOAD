@@ -20,6 +20,13 @@ where $\mathbf{W}_r^{(l)} \in \mathbb{R}^{d \times d}$ is the relation-specific 
 \end{equation}
 where $\mathbf{a}_r \in \mathbb{R}^{2d}$ is the parameterized attention vector for relation $r$, and $\|$ denotes vector concatenation.
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/certgraph_architecture_diagram.png}
+\caption{CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Graph across 5 entity node types, (2) Layer~1 relational multi-head attention with residual skip projections ($W_{\text{skip}}$), (3) Layer~2 aggregation and template readout embedding, and (4) Multiplicative Bilinear Reachability Gate ($\mathbf{g}_{uv}$) conditioning neighborhood aggregation on authenticated authorization paths.}
+\label{fig:certgraph_arch}
+\end{figure}
+
 \subsection{Theoretical Analysis: Representation Collapse and Gradient Bounds}
 A critical structural flaw in pure neighborhood aggregation on directed multigraphs is the erasure of intrinsic attributes for leaf and intermediate nodes.
 
@@ -51,7 +58,7 @@ Because certificate template attributes (e.g., \texttt{CT\_FLAG\_ENROLLEE\_SUPPL
 \begin{equation}
 \hat{y}_t = \text{MLP}(\tilde{\mathbf{h}}_t^{(L)}) \approx \text{MLP} \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \mathbf{h}_t^{(0)} \right)
 \end{equation}
-When the trained model is evaluated against \textbf{adversarial hard negatives}—templates that possess vulnerable attribute flags but reside in disconnected graph components or require mandatory manager approval—standard additive-skip GNNs memorize the flag pattern and classify them as vulnerable, collapsing to a dismal **$1.59\%$ accuracy ($1/63$)**.
+When the trained model is evaluated against \textbf{adversarial hard negatives}—templates that possess vulnerable attribute flags but reside in disconnected graph components or require mandatory manager approval—standard additive-skip GNNs memorize the flag pattern and classify them as vulnerable, collapsing to a dismal \textbf{$0.00\%$ accuracy ($0/63$)}.
 
 \paragraph{Multiplicative Bilinear Reachability Gating (\texttt{CertGraph-Gated}):}
 To eliminate shortcut memorization, we enforce that attribute signals cannot propagate to the output head unless gated by verified topological reachability from an authenticated principal. We formulate the \textbf{Multiplicative Bilinear Reachability Gate}:
