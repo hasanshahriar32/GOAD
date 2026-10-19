@@ -337,7 +337,7 @@ class CIPGBenchmarkSuite:
         g.add_pkinit_auth(PKINITAuthEvent(
             timestamp=t, target_user_name="administrator", target_user_sid="S-1-5-21-ESSOS-500",
             cert_serial="1d0000001048bb8f21b707aabd000000000010", cert_thumbprint="997af7159993d8b08f8196f6674b02d2ce3f9889",
-            subject_key_identifier="1896ab3cc0e5aa92c24557ab7250bd7e0fca2a49", pre_auth_type=16, client_ip="192.168.56.100"
+            subject_key_identifier="", pre_auth_type=16, client_ip="192.168.56.100"
         ))
         manifest["ASN1_SAN_Concealment"] = {"start": t_asn1_start, "end": t}
 
@@ -807,7 +807,7 @@ class CIPGBenchmarkSuite:
                     g.add_pkinit_auth(PKINITAuthEvent(
                         timestamp=t_auth, target_user_name="administrator", target_user_sid="S-1-5-21-ESSOS-500",
                         cert_serial=f"serial_asn1_{att_idx}", cert_thumbprint=f"thumb_asn1_{att_idx}",
-                        subject_key_identifier=f"skid_asn1_{att_idx}",
+                        subject_key_identifier="",
                         pre_auth_type=16, client_ip="192.168.56.100"
                     ))
 

@@ -85,22 +85,41 @@ Trace 7 & Split-Actor Collusion with 24h Delayed PKINIT & 52 & Invariant V (Stat
 \midrule
 Naive Snapshot Rollback Monitor & 19.35\% & 25.00\% & 21.82\% & 100.0\% (50/50) & 0.49\% \\
 Single-Host CA Monitor (Event 4887) & 88.24\% & 58.33\% & 70.16\% & 0.00\% (0/50) & 0.00\% \\
-\textbf{CIPG (Invariant V + CA DB Bridge)} & \textbf{92.31\%} & \textbf{100.00\%} & \textbf{96.00\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
+\textbf{CIPG ($\Delta_{\text{poll}}=5.0\text{s}$, default)} & \textbf{92.16\%} & \textbf{97.92\%} & \textbf{94.95\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
+\textbf{CIPG ($\Delta_{\text{poll}}=1.0\text{s}$, fast poll)} & \textbf{92.31\%} & \textbf{100.00\%} & \textbf{96.00\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{2D Sensitivity Matrix: Precision / Recall (\%) across Correlation Horizon ($\Delta t$) and CA Jet DB Polling Lag ($\Delta_{\text{poll}}$).}
+\label{tab:sensitivity_matrix}
+\small
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\toprule
+\textbf{Correlation Window ($\Delta t$)} & \textbf{$\Delta_{\text{poll}} = 1.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 5.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 15.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 60.0\text{s}$} \\
+\midrule
+$\Delta t = 10\text{s}$ ($0.0\%$ FPR) & 100.0\% / 100.0\% & 100.0\% / 97.92\% & 100.0\% / 89.58\% & 100.0\% / 89.58\% \\
+$\Delta t = 30\text{s}$ ($6.0\%$ FPR) & 94.12\% / 100.0\% & 94.00\% / 97.92\% & 93.48\% / 89.58\% & 93.48\% / 89.58\% \\
+$\Delta t = 60\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 91.49\% / 89.58\% & 91.49\% / 89.58\% \\
+$\Delta t = 300\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 91.49\% / 89.58\% & 91.49\% / 89.58\% \\
+$\Delta t = 900\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 91.49\% / 89.58\% & 91.49\% / 89.58\% \\
 \bottomrule
 \end{tabular*}
 \end{table}
 
 \paragraph{Enterprise Concurrency Mechanics and Sensitivity Trade-Offs:}
-As documented in Table~\ref{tab:cipg_stress}, on an enterprise stream with 2,000 background certificate renewals and 7,950 Kerberos authentications, CIPG achieves \textbf{92.31\% Precision, 100.00\% Recall, and 96.00\% F1-score}:
+As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matrix}, under strict Windows Server 2019 event schema fidelity ($\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset$), operational performance is governed by two orthogonal systems dimensions:
 \begin{itemize}
-    \item \textbf{Poisson Auto-Enrollment Collisions (4 False Positives):} During 50 simulated administrator maintenance windows ($\Delta t \in [10\text{s}, 45\text{s}]$), background \texttt{AutoEnroll} requests arrived concurrently inside the mutation window with probability $1 - e^{-\lambda \Delta t}$, triggering Invariant~I on benign certificates and yielding an honest $8.00\%$ maintenance window FPR ($0.0395\%$ overall event FPR). By comparison, naive rollback monitors generated 50/50 false alarms ($100\%$ FPR).
-    \item \textbf{Complete Cryptographic Invariant Coverage (0 False Negatives):} With temporal CA-DB polling enrichment and streaming watermark buffering ($\Delta_{\text{watermark}} = 1.5\text{s}$), all 48 injected multi-archetype attacks were successfully joined across the CA--KDC boundary, achieving $100.00\%$ recall.
+    \item \textbf{Correlation Horizon ($\Delta t$) vs. False Positives:} During 50 simulated administrator maintenance windows ($\Delta t \in [10\text{s}, 45\text{s}]$), background \texttt{AutoEnroll} requests arrived concurrently inside the mutation window with probability $1 - e^{-\lambda \Delta t}$. At $\Delta t = 10\text{s}$, zero collisions occur ($0.0\%$ FPR, $100.0\%$ precision). Widening $\Delta t$ to $30\text{s}$ admits 3 Poisson collisions ($6.0\%$ FPR). For $\Delta t \ge 60\text{s}$, false positives plateau at exactly 4 / 50 ($8.00\%$ maintenance window FPR, $0.0395\%$ overall event FPR, $92.16\%$ precision at $\Delta_{\text{poll}}=5\text{s}$ and $92.31\%$ at $\Delta_{\text{poll}}=1\text{s}$) because all 50 administrative maintenance windows conclude within $45\text{s} < 60\text{s}$. Naive rollback monitors generated 50/50 false alarms ($100\%$ FPR, $19.35\%$ precision).
+    \item \textbf{CA Database Polling Lag ($\Delta_{\text{poll}}$) vs. False Negatives:} Because KDC Event 4768 omits SubjectKeyIdentifier (SKID), linking Event 4887 to Event 4768 strictly requires CA Jet DB enrichment. When an attacker's PKINIT execution delay $\delta_{\text{pkinit}} \sim \text{LogNormal}(1.2, 0.8)$ executes before the next polling tick ($t_{\text{auth}} + \Delta_{\text{watermark}} < t_{\text{poll}}$), the join keys remain un-enriched at evaluation time, generating organic False Negatives. At $\Delta_{\text{poll}} = 1.0\text{s}$, CIPG achieves $100.00\%$ recall ($48/48$). At default $\Delta_{\text{poll}} = 5.0\text{s}$, CIPG achieves $97.92\%$ recall ($47/48$). At $\Delta_{\text{poll}} \in \{15\text{s}, 60\text{s}\}$, rapid attacks beat the polling cycle, resulting in $89.58\%$ recall ($43/48$).
 \end{itemize}
 
 \paragraph{Ingestion Throughput and Memory Profiling:}
 Under continuous streaming load:
 \begin{itemize}
-    \item \textbf{Throughput:} CIPG achieved a sustained processing rate of \textbf{11,834.7 events/second}, comfortably exceeding typical enterprise domain controller telemetry volumes (500--1,200 events/sec).
+    \item \textbf{Throughput:} CIPG achieved a sustained processing rate of \textbf{13,192.4 events/second} (evaluation latency: 771.81~ms), comfortably exceeding typical enterprise domain controller telemetry volumes (500--1,200 events/sec).
     \item \textbf{Memory Footprint:} Peak resident set size (RSS) was bounded at \textbf{6.91 MB RAM}, demonstrating that CIPG can operate as a lightweight local sidecar.
     \item \textbf{Meta-Node Compression:} Meta-node compacting collapsed 10,182 raw elements into 2,382 compressed elements, achieving a \textbf{76.61\% reduction in graph size} without loss of topological taint information.
 \end{itemize}

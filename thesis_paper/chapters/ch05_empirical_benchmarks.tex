@@ -592,7 +592,7 @@ Benign Admin Typo Rollback & BENIGN (0 Alerts) & BENIGN (0 Alerts) & \textbf{UNE
 \label{sec:fp_hardening_benchmark}
 To validate robustness under heavy background telemetry, we deployed CIPG against an enterprise stress test containing \textbf{10,182 raw provenance events}, comprising 48 multi-archetype attack injections, 50 benign administrator maintenance windows ($\Delta t \in [10\text{s}, 45\text{s}]$), 2,000 background certificate renewals, and 7,950 routine interactive logons.
 
-Table~\ref{tab:false_positive_ablation} compares naive $\Delta t$ cycle detection and single-host CA rules against our full CIPG Invariant V and CA Database Bridge pipeline.
+Table~\ref{tab:false_positive_ablation} compares naive $\Delta t$ cycle detection and single-host CA rules against our full CIPG Invariant V and CA Database Bridge pipeline under strict Windows Server 2019 event schema fidelity ($\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset$).
 
 \begin{table}[htbp]
 \centering
@@ -604,22 +604,40 @@ Table~\ref{tab:false_positive_ablation} compares naive $\Delta t$ cycle detectio
 \textbf{Metric} & \textbf{Naive Rollback ($\Delta t$ Cycle Only)} & \textbf{Single-Host CA (Event 4887)} & \textbf{CIPG (Invariant V + CA DB Bridge)} \\
 \midrule
 Detection Paradigm & Flag any $(\text{ValueAdded}, \text{ValueDeleted})$ & Rule match on CA issue event & Multi-source cryptographic invariant join \\
-True Positives (Attacks) & 12 / 48 & 28 / 48 & \textbf{48 / 48} \\
+True Positives (Attacks) & 12 / 48 & 28 / 48 & \textbf{47 / 48} ($\mathbf{48 / 48}$ at $\Delta_{\text{poll}}=1\text{s}$) \\
 False Positives (Admin Typos) & 50 / 50 (100.0\% false alarms) & 0 / 50 & \textbf{4 / 50} (Poisson renewals in window) \\
-False Negatives (Misses) & 36 / 48 (Misses delayed PKINIT) & 20 / 48 (Blind to ASN.1 \& ESC9) & \textbf{0 / 48} (Watermark buffering covers join) \\
-Precision & 19.35\% & 88.24\% & \textbf{92.31\%} \\
-Recall & 25.00\% & 58.33\% & \textbf{100.00\%} \\
-F1-Score & 21.82\% & 70.16\% & \textbf{96.00\%} \\
+False Negatives (Misses) & 36 / 48 (Misses delayed PKINIT) & 20 / 48 (Blind to ASN.1 \& ESC9) & \textbf{1 / 48} ($\mathbf{0 / 48}$ at $\Delta_{\text{poll}}=1\text{s}$) \\
+Precision & 19.35\% & 88.24\% & \textbf{92.16\%} (\textbf{92.31\%} at $\Delta_{\text{poll}}=1\text{s}$) \\
+Recall & 25.00\% & 58.33\% & \textbf{97.92\%} (\textbf{100.00\%} at $\Delta_{\text{poll}}=1\text{s}$) \\
+F1-Score & 21.82\% & 70.16\% & \textbf{94.95\%} (\textbf{96.00\%} at $\Delta_{\text{poll}}=1\text{s}$) \\
 \textbf{Maintenance Window FPR} & \textbf{100.00\%} & \textbf{0.00\%} & \textbf{8.00\%} (0.0395\% overall event FPR) \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
+\begin{table}[htbp]
+\centering
+\small
+\caption{2D Sensitivity Matrix: Precision / Recall (\%) across Correlation Horizon ($\Delta t$) and CA Jet DB Polling Lag ($\Delta_{\text{poll}}$).}
+\label{tab:sensitivity_tradeoff_matrix}
+\begin{tabularx}{\textwidth}{lXXXX}
+\toprule
+\textbf{Correlation Window ($\Delta t$)} & \textbf{$\Delta_{\text{poll}} = 1.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 5.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 15.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 60.0\text{s}$} \\
+\midrule
+$\Delta t = 10\text{s}$ ($0.0\%$ FPR) & 100.0\% / 100.0\% & 100.0\% / 97.92\% & 100.0\% / 89.58\% & 100.0\% / 89.58\% \\
+$\Delta t = 30\text{s}$ ($6.0\%$ FPR) & 94.12\% / 100.0\% & 94.00\% / 97.92\% & 93.48\% / 89.58\% & 93.48\% / 89.58\% \\
+$\Delta t = 60\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 91.49\% / 89.58\% & 91.49\% / 89.58\% \\
+$\Delta t = 300\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 91.49\% / 89.58\% & 91.49\% / 89.58\% \\
+$\Delta t = 900\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 91.49\% / 89.58\% & 91.49\% / 89.58\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \paragraph{Enterprise Concurrency Mechanics and Sensitivity Trade-Offs:}
-As documented in Table~\ref{tab:false_positive_ablation}, introducing realistic concurrency constraints replaces artificial 100\% metrics with authentic operational trade-offs:
+As documented in Table~\ref{tab:false_positive_ablation} and Table~\ref{tab:sensitivity_tradeoff_matrix}, enforcing strict protocol fidelity exposes two orthogonal systems trade-offs governed by underlying physical systems mechanics:
 \begin{enumerate}
-    \item \textbf{Poisson Auto-Enrollment Collisions (4 False Positives):} In an active enterprise domain ($2,000$ renewals/hr), when an administrator opens a maintenance window $[t_1, t_2]$ on a template, legitimate background machine/user \texttt{AutoEnroll} requests randomly land inside the window with probability $1 - e^{-\lambda \Delta t}$. Causal-Coupled Invariant~I flags these coincidental enrollments, generating 4 honest False Positives out of 50 maintenance windows ($8.00\%$ maintenance FPR, $0.0395\%$ overall event FPR, $92.31\%$ precision). By contrast, naive rollback monitors flag all 50 windows ($100\%$ FPR, $19.35\%$ precision).
-    \item \textbf{Complete Cryptographic Invariant Coverage (0 False Negatives):} Dynamic CA Jet DB polling with streaming watermark buffering ($\Delta_{\text{watermark}} = 1.5\text{s}$) successfully enriches issuance events across the CA--KDC boundary, achieving $100.00\%$ recall across all 48 attack instances. Note that on isolated, low-noise cyber-range testbeds ($N=7$, Table~\ref{tab:live_traces}), CIPG also detects 7/7 attacks ($100.0\%$).
+    \item \textbf{Correlation Horizon ($\Delta t$) vs. False Positives:} In an active enterprise domain ($2,000$ renewals/hr), when an administrator opens a maintenance window $[t_1, t_2]$ on a template ($n=50$ windows, durations $\le 45\text{s}$), legitimate background machine/user \texttt{AutoEnroll} requests randomly land inside the window with probability $1 - e^{-\lambda \Delta t}$. At $\Delta t = 10\text{s}$, zero collisions occur ($0.0\%$ FPR, $100.0\%$ precision). Widening $\Delta t$ to $30\text{s}$ admits 3 Poisson collisions ($6.0\%$ FPR). Once $\Delta t \ge 60\text{s}$, false positives plateau at exactly 4 out of 50 maintenance windows ($8.00\%$ maintenance FPR, $0.0395\%$ overall event FPR, $92.16\%$--$92.31\%$ precision) because all 50 administrative maintenance operations revert within $45\text{s} < 60\text{s}$. By contrast, naive rollback monitors flag all 50 windows ($100\%$ FPR, $19.35\%$ precision).
+    \item \textbf{CA Database Polling Lag ($\Delta_{\text{poll}}$) vs. False Negatives:} Because KDC Event 4768 omits SubjectKeyIdentifier (SKID), linking Event 4887 to Event 4768 strictly depends on periodic CA Jet DB enrichment. When an attacker's PKINIT execution delay $\delta_{\text{pkinit}} \sim \text{LogNormal}(1.2, 0.8)$ executes before the next polling tick ($t_{\text{auth}} + \Delta_{\text{watermark}} < t_{\text{poll}}$), the join keys remain un-enriched at evaluation time, generating organic False Negatives. At $\Delta_{\text{poll}} = 1.0\text{s}$, CIPG achieves $100.00\%$ recall ($48/48$). At default $\Delta_{\text{poll}} = 5.0\text{s}$, recall is $97.92\%$ ($47/48$). At $\Delta_{\text{poll}} \in \{15\text{s}, 60\text{s}\}$, rapid attacks beat the polling cycle, resulting in $89.58\%$ recall ($43/48$). On isolated cyber-range testbeds ($N=7$, Table~\ref{tab:live_traces}), CIPG also detects 7/7 attacks ($100.0\%$).
 \end{enumerate}
 
 Finally, Table~\ref{tab:provenance_scalability} compiles the computational throughput, memory footprint, and compression efficiency measured during the 10,182-event stress benchmark.
@@ -637,12 +655,12 @@ Total Raw Provenance Events & \textbf{10,182 events} & $> 10,000$ events & PASS 
 Compressed Graph Elements & \textbf{2,382 elements} & $< 5,000$ elements & PASS \\
 Meta-Logon Edges Created & \textbf{150 meta-edges} (from 7,950 logons) & Repetitive 4624/69 collapsed & PASS \\
 \textbf{Graph Compression Ratio} & \textbf{76.61\%} & $> 60.0\%$ & PASS \\
-\textbf{Invariant Ingestion Throughput} & \textbf{11,834.7 events/sec} & $> 1,000$ events/sec & PASS \\
-Invariant Evaluation Latency & \textbf{860.35 ms} & Real-time streaming & PASS \\
+\textbf{Invariant Ingestion Throughput} & \textbf{13,192.4 events/sec} & $> 1,000$ events/sec & PASS \\
+Invariant Evaluation Latency & \textbf{771.81 ms} & Real-time streaming & PASS \\
 \textbf{Peak Memory Footprint} & \textbf{6.91 MB} & $< 50$ MB RAM & PASS \\
-Total Pipeline Latency & \textbf{3,186.92 ms} & Synchronous batch & PASS \\
+Total Pipeline Latency & \textbf{3,011.43 ms} & Synchronous batch & PASS \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-The empirical measurements in Tables~\ref{tab:sha256_blindspot_proof}--\ref{tab:provenance_scalability} validate that CIPG bridges the three-way telemetry blind spot of static scanners, single-host CA rules, and KDC rules, achieving \textbf{100.00\% recall, 92.31\% precision (96.00\% F1-score)}, and an 8.00\% maintenance window false positive rate under enterprise Windows Server 2019 operations.
+The empirical measurements in Tables~\ref{tab:sha256_blindspot_proof}--\ref{tab:provenance_scalability} validate that CIPG bridges the three-way telemetry blind spot of static scanners, single-host CA rules, and KDC rules, achieving \textbf{97.92\%--100.00\% recall, 92.16\%--92.31\% precision (94.95\%--96.00\% F1-score)}, and an 8.00\% maintenance window false positive rate under enterprise Windows Server 2019 operations.
