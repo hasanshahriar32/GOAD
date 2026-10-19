@@ -27,7 +27,8 @@ We evaluated detection architectures on a curated benchmark of 63 adversarial ha
 \caption{Adversarial Hard-Negative Evaluation across ESC1--ESC13 Archetypes (63 Adversarial Test Cases).}
 \label{tab:hard_negatives}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
 \toprule
 \textbf{Detection Architecture} & \textbf{Clean Test F1} & \textbf{Hard Negative Accuracy} & \textbf{False Positive Rate} & \textbf{Failure Mode} \\
 \midrule
@@ -38,7 +39,8 @@ Standard GAT~\cite{velickovic2018graph} & 0.849 & 0.00\% (0/63) & 100.0\% & Loca
 \textbf{\texttt{CertGraph-Gated} (Bilinear Gating)} & \textbf{1.000} & \textbf{65.08\% (41/63)} & \textbf{34.92\%} & \textbf{Multi-attribute semantic crosstalk} \\
 \textbf{Tier-2 Neuro-Symbolic Hybrid (Ours)} & \textbf{1.000} & \textbf{100.00\% (63/63)} & \textbf{0.00\%} & \textbf{None (Exact Transitive Closure)} \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 As reported in Table~\ref{tab:hard_negatives}, rule-based heuristics and standard GNNs fail completely (0/63 correct), tagging every hard negative as an active vulnerability. Crucially, \texttt{CertGraph-AddSkip} suffers from inductive shortcut collapse, correctly classifying 0 out of 63 cases ($0.00\%$, $95\%$ Wilson CI: $[0.0\%, 5.7\%]$). By contrast, our \textbf{\texttt{CertGraph-Gated}} model leverages multiplicative bilinear gating to verify authenticated topological reachability, achieving \textbf{65.08\% accuracy (41/63, 95\% Wilson CI: [52.8\%, 75.7\%])} on zero-shot hard negatives while maintaining 1.000 clean validation F1.
@@ -59,7 +61,8 @@ We evaluated CIPG across both isolated cyber-range traces ($N=7$) and an enterpr
 \caption{Live Cyber-Range Execution Traces on Windows Server 2019 ($N=7$ Low-Noise Traces).}
 \label{tab:live_traces}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccc}
 \toprule
 \textbf{Trace ID} & \textbf{Scenario Description} & \textbf{Events Ingested} & \textbf{Triggered Invariant} & \textbf{Detection Recall} \\
 \midrule
@@ -71,7 +74,8 @@ Trace 5 & ASN.1 SAN Concealment via Binary CSR Extension & 92 & Invariant V (CA 
 Trace 6 & Benign: Admin Typo with Immediate Rollback & 8 & None (Suppressed) & 0.0\% FPR (0/1) \\
 Trace 7 & Split-Actor Collusion with 24h Delayed PKINIT & 52 & Invariant V (State Automaton) & 100.0\% (1/1) \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 \begin{table}[ht]
@@ -79,7 +83,8 @@ Trace 7 & Split-Actor Collusion with 24h Delayed PKINIT & 52 & Invariant V (Stat
 \caption{Enterprise Streaming Provenance Stress Benchmark ($10,182$ Events, 48 Attacks, 50 Maintenance Windows).}
 \label{tab:cipg_stress}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
 \toprule
 \textbf{Detection Pipeline} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Maint. Window FPR} & \textbf{Event FPR} \\
 \midrule
@@ -88,7 +93,8 @@ Single-Host CA Monitor (Event 4887) & 88.24\% & 58.33\% & 70.16\% & 0.00\% (0/50
 \textbf{CIPG ($\Delta_{\text{poll}}=5.0\text{s}$, default)} & \textbf{92.16\%} & \textbf{97.92\%} & \textbf{94.95\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
 \textbf{CIPG ($\Delta_{\text{poll}}=1.0\text{s}$, fast poll)} & \textbf{92.31\%} & \textbf{100.00\%} & \textbf{96.00\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 \begin{table}[ht]
@@ -96,7 +102,8 @@ Single-Host CA Monitor (Event 4887) & 88.24\% & 58.33\% & 70.16\% & 0.00\% (0/50
 \caption{2D Sensitivity Matrix: Precision / Recall (\%) across Correlation Horizon ($\Delta t$) and CA Jet DB Polling Lag ($\Delta_{\text{poll}}$).}
 \label{tab:sensitivity_matrix}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
 \toprule
 \textbf{Correlation Window ($\Delta t$)} & \textbf{$\Delta_{\text{poll}} = 1.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 5.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 15.0\text{s}$} & \textbf{$\Delta_{\text{poll}} = 60.0\text{s}$} \\
 \midrule
@@ -106,7 +113,8 @@ $\Delta t = 60\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 
 $\Delta t = 300\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 91.49\% / 89.58\% & 91.49\% / 89.58\% \\
 $\Delta t = 900\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% & 91.49\% / 89.58\% & 91.49\% / 89.58\% \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 \paragraph{Enterprise Concurrency Mechanics and Sensitivity Trade-Offs:}
@@ -138,7 +146,8 @@ We evaluated our Co-Adaptive Stackelberg policy against three standard remediati
 \caption{Remediation Performance across 30 Enterprise Topologies under Operational Budget Constraints.}
 \label{tab:stackelberg_results}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
 \toprule
 \textbf{Remediation Policy} & \textbf{Budget $B_{\text{ops}}=6$} & \textbf{Budget $B_{\text{ops}}=12$} & \textbf{Budget $B_{\text{ops}}=18$} & \textbf{Budget $B_{\text{ops}}=24$} \\
 \midrule
@@ -150,7 +159,8 @@ Static Greedy & $69.5 \pm 16.7\%$ & $88.4 \pm 9.9\%$ & $96.1 \pm 7.1\%$ & $97.6 
 \textit{Significance (Stackelberg vs. Greedy)} & $t = 4.04, p = 3.58 \times 10^{-4}$ & $t = 1.51, p = 0.141$ & $t = 1.86, p = 0.0732$ & $t = 1.93, p = 0.0635$ \\
 \textit{Wilcoxon Signed-Rank Test} & $W = 17.0, p = 6.18 \times 10^{-4}$ & $W = 58.0, p = 0.136$ & $W = 6.0, p = 0.0506$ & $W = 0.0, p = 0.0431$ \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 \begin{figure}[ht]
@@ -172,7 +182,8 @@ Under $B_{\text{ops}} = 24$, Static Greedy revokes an average of \textbf{10.9 ed
 \caption{Provenance-Guided Min-Cut Scalability Benchmark ($N=100$ to $N=5,000$ Nodes).}
 \label{tab:scalability_bench}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
 \toprule
 \textbf{Graph Size ($N$ Nodes)} & \textbf{Graph Edges} & \textbf{Cone Nodes} & \textbf{Whole-Graph Min-Cut} & \textbf{CIPG Cone Min-Cut} & \textbf{Speedup Factor} \\
 \midrule
@@ -182,7 +193,8 @@ $N = 1,000$ & 936 & 96 & 108.7 ms & 5.5 ms & $19.9\times$ \\
 $N = 2,500$ & 2,328 & 74 & 731.1 ms & 3.1 ms & $234.6\times$ \\
 $N = 5,000$ & 4,659 & 66 & 3,181.5 ms & 2.6 ms & $\mathbf{1,246.3\times}$ \\
 \bottomrule
-\end{tabular*}
+\end{tabular}%
+}
 \end{table}
 
 \paragraph{Scalability via Provenance-Cone Guidance:}
