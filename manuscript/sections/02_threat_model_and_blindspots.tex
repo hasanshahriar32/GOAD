@@ -63,7 +63,7 @@ Let $\pi_{\text{CA}}$ denote the projection of security attributes recorded by M
 \begin{equation}
 \pi_{\text{CA}} \cap \pi_{\text{KDC}} = \emptyset
 \end{equation}
-Specifically, $\pi_{\text{CA}} = \{\text{Subject}, \text{TemplateName}, \text{RequestID}, \text{Disposition}\}$, whereas $\pi_{\text{KDC}} = \{\text{TargetUserName}, \text{PreAuthType}=16, \text{CertSerialNumber}, \text{CertThumbprint}\}$.
+Specifically, $\pi_{\text{CA}} = \{\text{Subject}, \text{TemplateName}, \text{RequestID}, \text{Disposition}, \text{SubjectKeyIdentifier}\}$, whereas $\pi_{\text{KDC}} = \{\text{TargetUserName}, \text{PreAuthType}=16, \text{CertSerialNumber}, \text{CertThumbprint}\}$.
 \end{proposition}
 
 \paragraph{The ASN.1 SAN Concealment Phenomenon:}
@@ -91,4 +91,4 @@ Our forensic investigation of live Windows Server 2019 event streams reveals tha
 </Event>
 \end{lstlisting}
 
-As demonstrated in Listing~\ref{lst:ca_event}, the \texttt{Attributes} tag is completely blank, and the \texttt{Subject} field displays only the low-privileged requester's identity (\texttt{khal.drogo}). Consequently, any SIEM correlation rule that inspects Event 4887 for unauthorized administrator UPNs fails with a $100\%$ false-negative rate. When the attacker subsequently authenticates as \texttt{Administrator} via Kerberos PKINIT (Event 4768), the KDC log records only the certificate serial number and SHA-1 thumbprint, leaving zero common identifiers to link the issuance to the compromised authentication.
+As demonstrated in Listing~\ref{lst:ca_event}, the \texttt{Attributes} tag is completely blank, and the \texttt{Subject} field displays only the low-privileged requester's identity (\texttt{khal.drogo}). Consequently, any SIEM correlation rule that inspects Event 4887 for unauthorized administrator UPNs fails with a $100\%$ false-negative rate. When the attacker subsequently authenticates as \texttt{Administrator} via Kerberos PKINIT (Event 4768), the KDC log records only the certificate serial number and SHA-1 thumbprint (omitting \texttt{SubjectKeyIdentifier}), leaving zero common identifiers to link the issuance to the compromised authentication.
