@@ -1,7 +1,7 @@
 \section{Cryptographic Invariant Provenance Graph (CIPG)}
 \label{sec:cipg_provenance}
 
-To overcome the static snapshot blind spot and the CA--KDC schema discontinuity identified in Section~\ref{sec:threat_model}, we design the \textbf{Cryptographic Invariant Provenance Graph (CIPG)}. CIPG dynamically ingests raw Windows security audit event streams and CA transactional records, maintaining an asynchronous, taint-tracking automaton that bridges disconnected protocol layers.
+To overcome the static snapshot blind spot and the CA--KDC schema discontinuity identified in Section~\ref{sec:threat_model}, we design the \textbf{Cryptographic Invariant Provenance Graph (CIPG)} (Figure~\ref{fig:cipg_arch}). CIPG dynamically ingests raw Windows security audit event streams and CA transactional records, maintaining an asynchronous, taint-tracking automaton that bridges disconnected protocol layers.
 
 \subsection{Multi-Source Provenance Ingestion and Entity Resolution}
 CIPG processes heterogeneous audit streams across three disjoint operational layers:
@@ -14,11 +14,11 @@ CIPG processes heterogeneous audit streams across three disjoint operational lay
     \item \textbf{KDC Kerberos Pre-Authentication Events:} Monitored via Event ID 4768 (\textit{Kerberos Authentication Ticket Requested}). Identifies PKINIT authentication requests where \texttt{PreAuthType = 16}, extracting the authenticating client name, domain target, certificate issuer CA, \texttt{CertSerialNumber}, and \texttt{CertThumbprint}.
 \end{enumerate}
 
-\begin{figure}[ht]
+\begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/neuro_symbolic_pipeline.png}
-\caption{Two-tier neuro-symbolic architecture: Tier~1 inductive GNN screening filters benign templates ($O(|V|+|E|)$), while Tier~2 CIPG provenance auditing dynamically correlates temporal LDAP mutations (Event 5136), CA issuances (Event 4887), and Kerberos PKINIT authentications (Event 4768) via the continuous CA Jet Database bridge.}
-\label{fig:neuro_symbolic_pipeline}
+\includegraphics[width=\textwidth]{figures/cipg_architecture_diagram.png}
+\caption{Cryptographic Invariant Provenance Graph (CIPG) cross-layer state tracking: (1) Directory Layer captures Event 5136 modifications and rollback invariance ($\text{SHA-256}(\mathcal{G}_{t_0}) = \text{SHA-256}(\mathcal{G}_{t_3})$); (2) PKI Layer ingests Event 4887 certificate issuances under PKCS\#10 ASN.1 SAN concealment and queries the \texttt{ICertView2} CA Jet Database Bridge to extract complete cryptographic tuples $\tau_{\text{crypto}} = \langle \text{RequestID}, \text{SKID}, \text{SerialNumber}, \text{Thumbprint} \rangle$; (3) KDC Layer ingests Event 4768 Kerberos PKINIT pre-authentications; and (4) Invariant~V Automaton executes cross-host joins, stateful taint tracking, and meta-node compacting to detect dormant and split-actor escalations.}
+\label{fig:cipg_arch}
 \end{figure}
 
 \subsection{Formal Cryptographic Invariants}

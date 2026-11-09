@@ -1,7 +1,7 @@
 \section{CertGraph Static Architecture and Bilinear Gating}
 \label{sec:certgraph_arch}
 
-This section details the static detection layer of CertGraph, analyzes the theoretical failure of standard message passing on access control graphs, and introduces the Multiplicative Bilinear Reachability Gate to eliminate shortcut memorization.
+This section details the static detection layer of CertGraph (Figure~\ref{fig:certgraph_arch}), analyzes the theoretical failure of standard message passing on access control graphs, and introduces the Multiplicative Bilinear Reachability Gate to eliminate shortcut memorization.
 
 \subsection{Heterogeneous Graph Attention Network (HetGAT)}
 To model multi-typed security entities and non-uniform privilege relations, CertGraph employs a multi-relational graph attention network. Let $\mathbf{x}_v \in \mathbb{R}^{d_{\phi(v)}}$ denote the initial feature vector of entity $v \in \mathcal{V}$. Vertices are first projected into a shared hidden space of dimension $d$:
@@ -23,7 +23,7 @@ where $\mathbf{a}_r \in \mathbb{R}^{2d}$ is the parameterized attention vector f
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{figures/certgraph_architecture_diagram.png}
-\caption{CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Graph across 5 entity node types, (2) Layer~1 relational multi-head attention with residual skip projections ($W_{\text{skip}}$), (3) Layer~2 aggregation and template readout embedding, and (4) Multiplicative Bilinear Reachability Gate ($\mathbf{g}_{uv}$) conditioning neighborhood aggregation on authenticated authorization paths.}
+\caption{CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Multigraph across 5 entity types and 16 relation types, (2) Layer~1 relational multi-head attention with Theorem~\ref{thm:theorem1} residual skip projections ($\mathbf{W}_{\text{skip}}$) preventing attribute erasure, (3) Multiplicative Bilinear Reachability Gate ($\mathbf{g}_{uv} = \sigma(\mathbf{h}_u^\top \mathbf{W}_g \mathbf{h}_v + b_g)$) conditioning neighborhood aggregation on authenticated authorization paths to eliminate inductive shortcut collapse, and (4) Two-Tier Classification Head combining fast neural screening with Tier-2 symbolic verification.}
 \label{fig:certgraph_arch}
 \end{figure}
 
@@ -49,6 +49,32 @@ Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterog
     \end{equation}
 \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+We establish the two claims sequentially:
+
+\paragraph{Part 1: Intrinsic Feature Erasure under Pure Neighborhood Aggregation.}
+Under pure relational convolution at layer $l=1$, the hidden state $\mathbf{h}_v^{(1)}$ is computed as $\sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(1)} \mathbf{W}_r^{(1)} \mathbf{h}_u^{(0)} \right)$. In an Active Directory multigraph, template nodes possess no explicit self-loops ($v \notin \mathcal{N}_r(v)$ for all $r$). Differentiating $\mathbf{h}_v^{(1)}$ with respect to the initial template feature vector $\mathbf{x}_v = \mathbf{h}_v^{(0)}$:
+\begin{equation}
+\frac{\partial \mathbf{h}_v^{(1)}}{\partial \mathbf{x}_v} = \sigma'(\cdot) \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(1)} \mathbf{W}_r^{(1)} \frac{\partial \mathbf{h}_u^{(0)}}{\partial \mathbf{h}_v^{(0)}}
+\end{equation}
+Because distinct nodes possess independent initial feature vectors ($\partial \mathbf{h}_u^{(0)} / \partial \mathbf{h}_v^{(0)} = \mathbf{0}$ for all $u \neq v$), every term in the summation vanishes identically, yielding $\partial \mathbf{h}_v^{(1)} / \partial \mathbf{x}_v = \mathbf{0}$. Thus, the layer-1 embedding is conditionally independent of $\mathbf{x}_v$, discarding all intrinsic template configuration flags (e.g., \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT}). Moreover, for any source node $u$ with in-degree $d_{\text{in}}(u) = 0$, $\mathcal{N}_r(u) = \emptyset$ for all $r$, so $\mathbf{h}_u^{(l)} = \mathbf{0}$ for all $l \ge 1$ by empty summation and $\sigma(\mathbf{0}) = \mathbf{0}$.
+
+\paragraph{Part 2: Gradient Lower Bounds via Parameterized Residual Skips.}
+With parameterized residual skip connections $\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$ and $\tilde{\mathbf{h}}_v^{(0)} = \mathbf{x}_v$, unrolling the recurrence across $L$ layers yields:
+\begin{equation}
+\tilde{\mathbf{h}}_v^{(L)} = \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \mathbf{x}_v + \sum_{l=1}^L \left( \prod_{k=l+1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \mathbf{h}_v^{(l)}
+\end{equation}
+Differentiating $\tilde{\mathbf{h}}_v^{(L)}$ with respect to $\mathbf{x}_v$:
+\begin{equation}
+\frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} = \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} + \mathcal{J}_{\text{graph}}(v), \quad \text{where} \quad \mathcal{J}_{\text{graph}}(v) = \sum_{l=1}^L \left( \prod_{k=l+1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \frac{\partial \mathbf{h}_v^{(l)}}{\partial \mathbf{x}_v}
+\end{equation}
+By Weyl's singular value perturbation inequality and the sub-multiplicative property of singular values:
+\begin{equation}
+\sigma_{\min} \left( \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right) \ge \sigma_{\min} \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) - \|\mathcal{J}_{\text{graph}}(v)\| \ge \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|
+\end{equation}
+In directed authorization DAGs where no 2-cycle $v \rightsquigarrow u \rightsquigarrow v$ feeds back to $v$, $\mathcal{J}_{\text{graph}}(v) = \mathbf{0}$, establishing that $\sigma_{\min}(\partial \tilde{\mathbf{h}}_v^{(L)} / \partial \mathbf{x}_v) = \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) > 0$. Even in general cyclical topologies, the operator norm $\|\mathcal{J}_{\text{graph}}(v)\|$ is bounded by $L_\sigma^L \alpha_{\max} \prod_{l=1}^L \|\mathbf{W}^{(l)}\|$. Provided $\prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) > \|\mathcal{J}_{\text{graph}}(v)\|$, the Jacobian has strictly positive minimum singular value, guaranteeing that initial configuration attributes are preserved without vanishing across message passing.
+\end{proof}
 
 \subsection{Inductive Shortcut Collapse and the Multiplicative Gating Cure}
 While Theorem~\ref{thm:theorem1} guarantees non-vanishing gradient bounds via additive residual skips ($\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$), empirical testing reveals a profound secondary failure mode: \textit{inductive shortcut collapse}.
@@ -80,5 +106,12 @@ Suppose template $v$ possesses vulnerable flags $\mathbf{x}_v$ but is disconnect
 \lim_{\mathbf{g}_{uv} \to 0} \mathbf{m}_{vu}^{(l)} = \mathbf{0}
 \end{equation}
 Consequently, the network cannot output a positive vulnerability prediction based solely on isolated template flags. As demonstrated in Section~\ref{sec:evaluation}, \texttt{CertGraph-Gated} elevates hard-negative accuracy from $0.00\%$ to \textbf{$65.08\%$ ($41/63$, $95\%$ Wilson CI: $[52.8\%, 75.7\%]$)}.
-The remaining $22/63$ misclassifications ($34.92\%$) stem from multi-attribute semantic crosstalk: in Low-Privilege OID Group Links (15 cases) and Unenrollable CAs (7 cases), topological reachability exists, but privilege escalation is neutralized by non-linear multi-attribute policy interactions that continuous 2-layer message passing cannot disentangle. This $34.92\%$ continuous neural residual strictly motivates our Tier-2 Neuro-Symbolic Verification pipeline, which applies exact symbolic attribute verification and transitive closure to resolve all 22 cases to $100\%$ precision.
+The remaining $22/63$ misclassifications ($34.92\%$) stem from multi-attribute semantic crosstalk: in Low-Privilege OID Group Links (15 cases) and Unenrollable CAs (7 cases), topological reachability exists, but privilege escalation is neutralized by non-linear multi-attribute policy interactions that continuous 2-layer message passing cannot disentangle. This $34.92\%$ continuous neural residual strictly motivates our Two-Tier Neuro-Symbolic Verification pipeline (Figure~\ref{fig:neuro_symbolic_pipeline}), which applies exact symbolic attribute verification and transitive closure to resolve all 22 cases to $100\%$ precision.
 \end{proposition}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/neuro_symbolic_pipeline.png}
+\caption{Two-Tier Neuro-Symbolic Hybrid Architecture: Tier~1 performs fast GNN reachability screening across the enterprise multigraph, while Tier~2 executes deterministic backward reachability traversal and policy constraint verification on candidate escalation paths, resolving residual multi-attribute crosstalk to achieve 100\% precision on hard negatives.}
+\label{fig:neuro_symbolic_pipeline}
+\end{figure}

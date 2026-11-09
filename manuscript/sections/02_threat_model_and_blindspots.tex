@@ -4,7 +4,7 @@
 In this section, we formalize the heterogeneous identity multigraph of Active Directory Certificate Services and expose two fundamental blind spots in current defensive audit practices: the static snapshot blind spot under rollback attacks, and the PKCS\#10 ASN.1 schema discontinuity between CA and KDC telemetry.
 
 \subsection{Heterogeneous Access Control Multigraph Formalization}
-We model an enterprise Active Directory forest and its integrated Public Key Infrastructure as a directed heterogeneous multigraph.
+We model an enterprise Active Directory forest and its integrated Public Key Infrastructure as a directed heterogeneous multigraph (Figure~\ref{fig:adcs_schema}).
 
 \begin{definition}[Identity Multigraph Schema]
 Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterogeneous multigraph, where:
@@ -27,6 +27,20 @@ An attack path $p$ from an initial compromised user foothold $u_{\text{attacker}
 p = (v_0, e_1, v_1, e_2, \dots, e_k, v_k), \quad v_0 = u_{\text{attacker}}, \quad v_k = v_{\text{target}}
 \end{equation}
 In an ADCS privilege escalation, the path traverses intermediate membership and ACL delegation edges to a certificate template $t$, leverages an enterprise CA $c$ to issue an administrative credential, and culminates in a domain-level credential takeover.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/adcs_attack_graph_schema.png}
+\caption{Active Directory Certificate Services (ADCS) Heterogeneous Multigraph Schema, detailing the primary security principal entity classes, sixteen directed relationship edges, and the composite escalation attack surface connecting unprivileged domain footholds to Enterprise Domain Controllers.}
+\label{fig:adcs_schema}
+\end{figure}
+
+\paragraph{ADCS ESC1--ESC15 Taxonomy Scoping Rationale:}
+To establish formal defensive boundaries across the full ESC1--ESC15 escalation taxonomy, our framework partitions vulnerabilities into two distinct structural operating regimes:
+\begin{enumerate}
+    \item \textbf{Template-Centric Topological Vectors (Static Graph Evaluation):} Escalation archetypes ESC1 (enrollee supplies SAN), ESC2 (any-purpose EKU), ESC3 (certificate request agent), ESC4 (template DACL overwrite), ESC9 (weak shadow credentials with template enrollment), and ESC13 (issuance policy OID linkage to administrative groups) are governed by directory access control lists (ACLs), group nesting DAGs, and persistent LDAP configuration flags. These vectors are natively modeled on the static identity multigraph $\mathcal{G}$ and evaluated via reachability-gated graph neural networks and exact symbolic verification.
+    \item \textbf{Runtime Protocol and Environmental Vectors (Dynamic Invariant Tracking):} In contrast, ESC6 (\texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} CA registry flag), ESC7 (CA administrator compromise), ESC8 (HTTP certificate web enrollment NTLM relay), raw PKCS\#10 ASN.1 SAN concealment, and temporal mutation rollbacks (ephemeral ESC4/ESC9 modifications) manifest as server-level registry states, network-layer NTLM reflections, or transient directory modifications that vanish between audit snapshots. Because these vectors leave zero permanent topological footprints in scheduled directory extractions, they strictly require runtime state-tracking by our continuous Cryptographic Invariant Provenance Graph (CIPG).
+\end{enumerate}
 
 \subsection{The Static Snapshot Blind Spot: Formal Proof and Empirical Evidence}
 Existing enterprise defense workflows rely on periodic directory extraction tools (e.g., BloodHound, SharpHound, Certipy) that execute every 6 to 24 hours. Under temporal mutation-and-rollback attacks (such as ESC4 and ESC9), an attacker exploits transient write permissions to mutate a template, obtain a rogue certificate, and immediately roll back the attributes to their original configuration.
