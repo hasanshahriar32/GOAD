@@ -23,7 +23,7 @@ All attacks were executed by unprivileged domain accounts (\texttt{ESSOS\textbac
 Prior to evaluating adversarial hard negatives, we empirically validate the theoretical predictions of Theorem~\ref{thm:theorem1} and quantify the behavior of GNN models on in-distribution identity multigraph partitions:
 
 \paragraph{Empirical Confirmation of Theorem~\ref{thm:theorem1} (Skip-Connection Ablation):}
-To verify whether parameterized residual skip connections are strictly necessary to prevent configuration attribute erasure across relational message passing, we conducted a 5-fold cross-validation ablation study. Disabling residual skip connections ($\mathbf{W}_{\text{skip}} = \mathbf{0}$) causes validation Macro-F1 to collapse from $0.9986 \pm 0.0029$ to $0.4768 \pm 0.0532$ (paired $t$-test: $t = 18.42, p = 1.31 \times 10^{-6}$, representing a $52.2\%$ absolute drop; Figure~\ref{fig:gnn_ablation_and_hn}a inset). Jacobian differentiation confirms that $\partial \mathbf{h}_t^{(1)} / \partial \mathbf{x}_t = \mathbf{0}$ when skips are omitted, validating Part 1 of Theorem~\ref{thm:theorem1}.
+To verify whether parameterized residual skip connections are strictly necessary to prevent configuration attribute erasure across relational message passing, we conducted a 5-fold cross-validation ablation study. Disabling residual skip connections ($\mathbf{W}_{\text{skip}} = \mathbf{0}$) causes validation Macro-F1 to collapse from $0.9986 \pm 0.0029$ to $0.4768 \pm 0.0532$ (paired $t$-test: $t = 18.42, p = 1.31 \times 10^{-6}$, representing a $52.2\%$ absolute drop). Jacobian differentiation confirms that $\partial \mathbf{h}_t^{(1)} / \partial \mathbf{x}_t = \mathbf{0}$ when skips are omitted, validating Part 1 of Theorem~\ref{thm:theorem1}.
 
 \paragraph{Class-Imbalance Probability Calibration (96\% Safe Base Rate):}
 In enterprise production networks, vulnerable escalation templates represent rare needle-in-a-haystack anomalies within large forest configurations. We calibrated CertGraph under an authentic 96.0\% benign base rate ($N=2,000$ security principals) using Platt scaling and temperature adjustment. The calibrated model achieves an Area Under the Precision-Recall Curve ($\text{PR-AUC}$) of $0.9982$, an Expected Calibration Error ($\text{ECE}$) of $0.0142$, and a Brier Score of $0.0031$, demonstrating that output posterior probabilities accurately reflect true ground-truth confidence under severe class imbalance.
@@ -31,7 +31,7 @@ In enterprise production networks, vulnerable escalation templates represent rar
 \paragraph{The 7-Node Decision Tree Counterexample and Perturbation Asymmetry:}
 Crucially, evaluating detection architectures solely on standard in-distribution splits introduces severe benchmark saturation (Arp et al.~\cite{arp2022dos}). We discovered that a simple 7-node CART decision tree augmented with 4 node-degree counters achieves a near-perfect $0.9928$ Macro-F1 on standard validation partitions.
 
-To diagnose the underlying representation learned by the network, we subjected trained models to systematic topological versus feature perturbations (Figure~\ref{fig:gnn_ablation_and_hn}a):
+To diagnose the underlying representation learned by the network, we subjected trained models to systematic topological versus feature perturbations:
 \begin{itemize}
     \item \textbf{Topological Edge-Drop Perturbation:} Randomly pruning up to $30\%$ of directory multigraph edges retains $0.9637$ Macro-F1 ($96.4\%$ relative performance retention).
     \item \textbf{Configuration Flag-Flip Perturbation:} In sharp contrast, perturbing merely $5\%\text{--}10\%$ of binary template configuration flags causes Macro-F1 to collapse dramatically to $0.8412$ and $0.7105$.
@@ -71,13 +71,6 @@ Detailed inspection of the 63 hard negatives reveals how topological gating and 
     \item \textbf{Multi-Attribute Semantic Crosstalk (22 cases):} In scenarios involving Low-Privilege OID Group Links (15 cases) and Unenrollable CAs (7 cases), reachability exists in the topological graph, but the vulnerability is neutralized by multi-attribute policy interactions. Continuous 2-layer matrix multiplication cannot disentangle these non-linear attribute intersections.
 \end{enumerate}
 Crucially, this exact $34.92\%$ neural residual ($22/63$) is why our \textbf{Tier-2 Neuro-Symbolic Verification} pipeline is strictly required: by executing an exact backward symbolic reachability traversal and attribute verification on GNN-flagged candidates, the hybrid framework eliminates all 22 misclassifications, achieving $100.00\%$ precision without manual heuristics.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/gnn_ablation_and_hard_negatives.png}
-\caption{Static GNN Architecture Evaluation: (a) Theorem~\ref{thm:theorem1} Skip-Connection Ablation ($\mathbf{W}_{\text{skip}}=0$ collapses Macro-F1 from $0.9986$ to $0.4768$, $p=1.31\times 10^{-6}$) and Perturbation Asymmetry (topological edge-dropping retains $96.4\%$ F1 at $30\%$ drop, whereas template flag-flipping degrades F1 to $0.7105$ at $10\%$ flip); and (b) Per-category Zero-Shot Hard Negative Accuracy across the 63 adversarial test cases, demonstrating how Bilinear Gating elevates accuracy from $0.00\%$ to $65.08\%$ and Tier-2 Hybrid achieves $100.00\%$.}
-\label{fig:gnn_ablation_and_hn}
-\end{figure}
 
 \subsection{RQ2 \& RQ3: Live Provenance Evaluation and Automaton Scalability}
 We evaluated CIPG across both isolated cyber-range traces ($N=7$) and an enterprise-scale streaming stress test ($10,182$ events).
@@ -144,7 +137,7 @@ $\Delta t = 900\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% &
 \end{table}
 
 \paragraph{Enterprise Concurrency Mechanics and Sensitivity Trade-Offs:}
-As documented in Table~\ref{tab:cipg_stress}, Table~\ref{tab:sensitivity_matrix}, and Figure~\ref{fig:cipg_sensitivity_and_scaling}a, under strict Windows Server 2019 event schema fidelity ($\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset$), operational performance is governed by two orthogonal systems dimensions:
+As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matrix}, under strict Windows Server 2019 event schema fidelity ($\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset$), operational performance is governed by two orthogonal systems dimensions:
 \begin{itemize}
     \item \textbf{Correlation Horizon ($\Delta t$) vs. False Positives:} During 50 simulated administrator maintenance windows ($\Delta t \in [10\text{s}, 45\text{s}]$), background \texttt{AutoEnroll} requests arrived concurrently inside the mutation window with probability $1 - e^{-\lambda \Delta t}$. At $\Delta t = 10\text{s}$, zero collisions occur ($0.0\%$ FPR, $100.0\%$ precision). Widening $\Delta t$ to $30\text{s}$ admits 3 Poisson collisions ($6.0\%$ FPR). For $\Delta t \ge 60\text{s}$, false positives plateau at exactly 4 / 50 ($8.00\%$ maintenance window FPR, $0.0395\%$ overall event FPR, $92.16\%$ precision at $\Delta_{\text{poll}}=5\text{s}$ and $92.31\%$ at $\Delta_{\text{poll}}=1\text{s}$) because all 50 administrative maintenance windows conclude within $45\text{s} < 60\text{s}$. Naive rollback monitors generated 50/50 false alarms ($100\%$ FPR, $19.35\%$ precision).
     \item \textbf{CA Database Polling Lag ($\Delta_{\text{poll}}$) vs. False Negatives:} Because KDC Event 4768 omits SubjectKeyIdentifier (SKID), linking Event 4887 to Event 4768 strictly requires CA Jet DB enrichment. When an attacker's PKINIT execution delay $\delta_{\text{pkinit}} \sim \text{LogNormal}(1.2, 0.8)$ executes before the next polling tick ($t_{\text{auth}} + \Delta_{\text{watermark}} < t_{\text{poll}}$), the join keys remain un-enriched at evaluation time, generating organic False Negatives. At $\Delta_{\text{poll}} = 1.0\text{s}$, CIPG achieves $100.00\%$ recall ($48/48$). At default $\Delta_{\text{poll}} = 5.0\text{s}$, CIPG achieves $97.92\%$ recall ($47/48$). At $\Delta_{\text{poll}} \in \{15\text{s}, 60\text{s}\}$, rapid attacks beat the polling cycle, resulting in $89.58\%$ recall ($43/48$).
@@ -224,11 +217,4 @@ $N = 5,000$ & 4,659 & 66 & 3,181.5 ms & 2.6 ms & $\mathbf{1,246.3\times}$ \\
 \end{table}
 
 \paragraph{Scalability via Provenance-Cone Guidance:}
-As shown in Table~\ref{tab:scalability_bench} and Figure~\ref{fig:cipg_sensitivity_and_scaling}b, evaluating whole-graph min-cuts at enterprise scale slows down from $7.2$~ms at $N=100$ to $3,181.5$~ms at $N=5,000$ when evaluating 325 active low-privilege attacker entry points. By restricting the candidate cut search to CIPG's backward causal taint cone $\mathcal{D}(v)$ ($66$ nodes), the solver executes in \textbf{2.6 ms} at $N=5,000$—delivering a \textbf{$1,246.3\times$ speedup} and enabling real-time online re-interdiction during active multi-stage attacks.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/cipg_sensitivity_and_cone_scaling.png}
-\caption{Runtime Provenance and Interdiction Benchmarks: (a) 2D Sensitivity Heatmap of CIPG detection recall across correlation window $\Delta t \in \{10\text{s}, \dots, 300\text{s}\}$ and CA Jet DB polling interval $\Delta_{\text{poll}} \in \{1\text{s}, 5\text{s}, 15\text{s}, 60\text{s}\}$ under a $10,182$-event concurrent stream (visualizing Table~\ref{tab:sensitivity_matrix}); and (b) Scalability comparison of whole-graph Stackelberg min-cut search versus CIPG Provenance-Cone guided interdiction across network sizes up to $N=5,000$ principals, delivering a $1,246.3\times$ speedup (visualizing Table~\ref{tab:scalability_bench}).}
-\label{fig:cipg_sensitivity_and_scaling}
-\end{figure}
+As shown in Table~\ref{tab:scalability_bench}, evaluating whole-graph min-cuts at enterprise scale slows down from $7.2$~ms at $N=100$ to $3,181.5$~ms at $N=5,000$ when evaluating 325 active low-privilege attacker entry points. By restricting the candidate cut search to CIPG's backward causal taint cone $\mathcal{D}(v)$ ($66$ nodes), the solver executes in \textbf{2.6 ms} at $N=5,000$—delivering a \textbf{$1,246.3\times$ speedup} and enabling real-time online re-interdiction during active multi-stage attacks.

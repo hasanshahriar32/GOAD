@@ -23,7 +23,7 @@ where $\mathbf{a}_r \in \mathbb{R}^{2d}$ is the parameterized attention vector f
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{figures/certgraph_architecture_diagram.png}
-\caption{CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Multigraph across 5 entity types and 16 relation types, (2) Layer~1 relational multi-head attention with Theorem~\ref{thm:theorem1} residual skip projections ($\mathbf{W}_{\text{skip}}$) preventing attribute erasure, (3) Multiplicative Bilinear Reachability Gate ($\mathbf{g}_{uv} = \sigma(\mathbf{h}_u^\top \mathbf{W}_g \mathbf{h}_v + b_g)$) conditioning neighborhood aggregation on authenticated authorization paths to eliminate inductive shortcut collapse, and (4) Two-Tier Classification Head combining fast neural screening with Tier-2 symbolic verification.}
+\caption{CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Graph across 5 entity node types, (2) Layer~1 relational multi-head attention with residual skip projections ($W_{\text{skip}}$) preserving template attribute gradients, (3) Layer~2 aggregation and template readout embedding, and (4) Classification Head mapping latent embeddings to multi-class ESC predictions.}
 \label{fig:certgraph_arch}
 \end{figure}
 
@@ -106,12 +106,5 @@ Suppose template $v$ possesses vulnerable flags $\mathbf{x}_v$ but is disconnect
 \lim_{\mathbf{g}_{uv} \to 0} \mathbf{m}_{vu}^{(l)} = \mathbf{0}
 \end{equation}
 Consequently, the network cannot output a positive vulnerability prediction based solely on isolated template flags. As demonstrated in Section~\ref{sec:evaluation}, \texttt{CertGraph-Gated} elevates hard-negative accuracy from $0.00\%$ to \textbf{$65.08\%$ ($41/63$, $95\%$ Wilson CI: $[52.8\%, 75.7\%]$)}.
-The remaining $22/63$ misclassifications ($34.92\%$) stem from multi-attribute semantic crosstalk: in Low-Privilege OID Group Links (15 cases) and Unenrollable CAs (7 cases), topological reachability exists, but privilege escalation is neutralized by non-linear multi-attribute policy interactions that continuous 2-layer message passing cannot disentangle. This $34.92\%$ continuous neural residual strictly motivates our Two-Tier Neuro-Symbolic Verification pipeline (Figure~\ref{fig:neuro_symbolic_pipeline}), which applies exact symbolic attribute verification and transitive closure to resolve all 22 cases to $100\%$ precision.
+The remaining $22/63$ misclassifications ($34.92\%$) stem from multi-attribute semantic crosstalk: in Low-Privilege OID Group Links (15 cases) and Unenrollable CAs (7 cases), topological reachability exists, but privilege escalation is neutralized by non-linear multi-attribute policy interactions that continuous 2-layer message passing cannot disentangle. This $34.92\%$ continuous neural residual strictly motivates our Two-Tier Neuro-Symbolic Verification pipeline (detailed in Section~\ref{sec:cipg_provenance} and Figure~\ref{fig:neuro_symbolic_pipeline}), which applies exact symbolic attribute verification and transitive closure to resolve all 22 cases to $100\%$ precision.
 \end{proposition}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/neuro_symbolic_pipeline.png}
-\caption{Two-Tier Neuro-Symbolic Hybrid Architecture: Tier~1 performs fast GNN reachability screening across the enterprise multigraph, while Tier~2 executes deterministic backward reachability traversal and policy constraint verification on candidate escalation paths, resolving residual multi-attribute crosstalk to achieve 100\% precision on hard negatives.}
-\label{fig:neuro_symbolic_pipeline}
-\end{figure}
