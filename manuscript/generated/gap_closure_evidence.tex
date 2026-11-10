@@ -1,0 +1,48 @@
+\begin{table}[ht]
+\centering
+\caption{Equal-input identity projection on 1,410 main challenge histories, including 60 chronology-negative controls; 1,241 true successful observed links. All event times are erased. The 60 wrong terminal claims in each row are the chronology controls. A separate 60 consistently forged-source controls also fool every method. This compares relational identity contracts, not full PIDS detection.}
+\label{tab:sql_identity}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Method & Resolved & Correct & Wrong & True candidates retained \\
+\midrule
+CIPG identity & 820 & 760 & 60 & 1176 \\
+SQL strong join & 912 & 852 & 60 & 852 \\
+SQL guarded & 820 & 760 & 60 & 1176 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\caption{Prospective transfer to a new forest/CA, two templates and two ordinary enrollers: six concurrent batches and 24 distinct certificates. Each condition has four template/batch/enroller units shared by eight certificate cases. ESC1 and Sigma columns count these four configuration units; they are not attack-detection counts. The Windows image family is shared with the previous environment.}
+\label{tab:transfer_workload}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Condition & Cases & Self & Admin & ESC1 pre & ESC1 post & Risky EKU \\
+\midrule
+Baseline & 8 & 8 & 0 & 0 & 0 & 0 \\
+Enabled & 8 & 4 & 4 & 4 & 0 & 4 \\
+Rollback first & 8 & 8 & 0 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\caption{Paired isolated-lab pilot: eight authentications per arm, three seeded arm orders. Auth denotes the median host Certipy process envelope in milliseconds; CPU is Python process CPU time during the arm, also milliseconds. RSS is sampled Python collector MiB, excluding Certipy children and the Windows VM. Outcome-verification waits occur after the measured arm.}
+\label{tab:collection_pilot}
+\small
+\begin{tabular}{rlrrrr}
+\toprule
+Pair & Arm & Verified uses & Auth ms & CPU ms & RSS MiB \\
+\midrule
+1 & polling & 8 & 687.8 & 664.3 & 56.5 \\
+1 & idle & 8 & 639.2 & 85.1 & 58.6 \\
+2 & polling & 8 & 702.0 & 672.3 & 59.4 \\
+2 & idle & 8 & 622.0 & 85.9 & 59.2 \\
+3 & idle & 8 & 602.9 & 88.6 & 59.4 \\
+3 & polling & 8 & 703.2 & 664.7 & 59.5 \\
+\bottomrule
+\end{tabular}
+\end{table}

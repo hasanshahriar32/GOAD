@@ -1,0 +1,108 @@
+{
+  "input_sha256": {
+    "thesis_research/results/lineage_constraints/2026-11-10/interdiction_recheck/graphs.json": "7e2cfaa50e8c5b6f0c91b327a44465f78b88c44246b1e5053b068d020b87e36b",
+    "thesis_research/results/lineage_constraints/2026-11-10/interdiction_recheck/manifest.json": "b7e3dda29113cd675ac959993a7958164d6bf7e5a8a3222ef7b31d948328b136",
+    "thesis_research/results/lineage_constraints/2026-11-10/interdiction_recheck/per_case.json": "0ae66904b286318df4b21986d3c352007532810f5ea1c7a17260678e9178a8d1"
+  },
+  "rows": [
+    {
+      "budget": 6,
+      "changed_legacy_objective_cases": 4,
+      "corrected_mean_cut_edges": 3.2333333333333334,
+      "corrected_mean_pct": 79.01673214741467,
+      "corrected_population_sd_cut_edges": 0.7608474807008885,
+      "corrected_population_sd_pct": 16.34537291575993,
+      "exact_signed_rank": {
+        "method": "Exact conditional sign flips via integer subset-sum counts; tied ranks from exact rational disconnection fractions; zero differences omitted",
+        "nonzero_pairs": 21,
+        "p_value": 9.5367431640625e-07,
+        "sign_assignments": 2097152,
+        "tail_assignments": 2
+      },
+      "graphs": 30,
+      "greedy_mean_cut_edges": 4.366666666666666,
+      "greedy_mean_pct": 69.53706019837274,
+      "greedy_population_sd_pct": 16.738197048433243,
+      "holm_exact_rank_p": 7.62939453125e-06,
+      "holm_t_p": 2.851823683990066e-05,
+      "mean_gain_percentage_points": 9.479671949041942,
+      "paired_t_p": 4.074033834271523e-06,
+      "paired_t_statistic": 5.6590392193225405
+    },
+    {
+      "budget": 12,
+      "changed_legacy_objective_cases": 4,
+      "corrected_mean_cut_edges": 4.533333333333333,
+      "corrected_mean_pct": 92.2720815775259,
+      "corrected_population_sd_cut_edges": 1.2578641509408806,
+      "corrected_population_sd_pct": 11.66935737704455,
+      "exact_signed_rank": {
+        "method": "Exact conditional sign flips via integer subset-sum counts; tied ranks from exact rational disconnection fractions; zero differences omitted",
+        "nonzero_pairs": 21,
+        "p_value": 0.06464958190917969,
+        "sign_assignments": 2097152,
+        "tail_assignments": 135580
+      },
+      "graphs": 30,
+      "greedy_mean_cut_edges": 6.933333333333334,
+      "greedy_mean_pct": 88.41574234143178,
+      "greedy_population_sd_pct": 9.855338313853768,
+      "holm_exact_rank_p": 0.25,
+      "holm_t_p": 0.25,
+      "mean_gain_percentage_points": 3.856339236094079,
+      "paired_t_p": 0.07562223048524923,
+      "paired_t_statistic": 1.8426704485185499
+    },
+    {
+      "budget": 18,
+      "changed_legacy_objective_cases": 1,
+      "corrected_mean_cut_edges": 5.366666666666666,
+      "corrected_mean_pct": 98.03985430728984,
+      "corrected_population_sd_cut_edges": 1.9405039437103846,
+      "corrected_population_sd_pct": 5.062872466760693,
+      "exact_signed_rank": {
+        "method": "Exact conditional sign flips via integer subset-sum counts; tied ranks from exact rational disconnection fractions; zero differences omitted",
+        "nonzero_pairs": 9,
+        "p_value": 0.00390625,
+        "sign_assignments": 512,
+        "tail_assignments": 2
+      },
+      "graphs": 30,
+      "greedy_mean_cut_edges": 8.833333333333334,
+      "greedy_mean_pct": 96.14720352844243,
+      "greedy_population_sd_pct": 7.077766058324677,
+      "holm_exact_rank_p": 0.0234375,
+      "holm_t_p": 0.0513820667821279,
+      "mean_gain_percentage_points": 1.8926507788473983,
+      "paired_t_p": 0.01027641335642558,
+      "paired_t_statistic": 2.745071443045938
+    },
+    {
+      "budget": 24,
+      "changed_legacy_objective_cases": 0,
+      "corrected_mean_cut_edges": 5.7,
+      "corrected_mean_pct": 98.51465102890192,
+      "corrected_population_sd_cut_edges": 2.325940669922601,
+      "corrected_population_sd_pct": 3.960175818681938,
+      "exact_signed_rank": {
+        "method": "Exact conditional sign flips via integer subset-sum counts; tied ranks from exact rational disconnection fractions; zero differences omitted",
+        "nonzero_pairs": 5,
+        "p_value": 0.0625,
+        "sign_assignments": 32,
+        "tail_assignments": 2
+      },
+      "graphs": 30,
+      "greedy_mean_cut_edges": 10.9,
+      "greedy_mean_pct": 97.57300422963971,
+      "greedy_population_sd_pct": 6.5055317219464674,
+      "holm_exact_rank_p": 0.25,
+      "holm_t_p": 0.25,
+      "mean_gain_percentage_points": 0.941646799262224,
+      "paired_t_p": 0.06350241971890125,
+      "paired_t_statistic": 1.9295166218105608
+    }
+  ],
+  "scope": "Exploratory paired reanalysis of the same 30 synthetic graphs; eight-test family across four budgets and two procedures, not enterprise effectiveness",
+  "source_sha256": "f674acff31df249cb6dc7e50d4f81d17f8dfe3e6764a9805bd3425c5defafbd9",
+  "standard_deviation": "Population denominator over the finite evaluated graph set, matching the historical table convention"
+}

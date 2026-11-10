@@ -1,0 +1,38 @@
+{
+  "adjudication_sha256": "6fdad435e61f2ef2f18f2f8d449228842b49e7f6495e00ec37da52c5de141d25",
+  "certificate_cases_checked": 24,
+  "domain_sid_values": [
+    "S-1-5-21-3576737527-1549231359-1615615133"
+  ],
+  "fixed_signed_request_groups": 4,
+  "issuer_names": [
+    "Q1-Transfer-CA"
+  ],
+  "leaf_signatures_verified": 24,
+  "observed_outcomes": {
+    "privileged_certificate_use": 4,
+    "self_certificate_use": 20
+  },
+  "peak_overlapping_submission_envelopes_by_batch": {
+    "b01": 4,
+    "b02": 4,
+    "b03": 4,
+    "b04": 4,
+    "b05": 4,
+    "b06": 4
+  },
+  "public_ca_verification": {
+    "observed_ntauth_membership": true,
+    "public_ca_sha256": "993c37bc00eee7d1d46da8e9980dbcc83815c84e59fa10ce6a9e20928a0bbfce",
+    "scope": "Later public CA/trust observation; historical use remains grounded in raw KDC evidence",
+    "self_signature_verified": true
+  },
+  "reused_key_groups": {
+    "q1.operator": 1,
+    "q1.reader": 1
+  },
+  "scope": "Checks exact requests/keys, fresh forest context, ordinary enrollers, restoration and overlapping host command envelopes. Shared batch files are not independent event samples; not proof of simultaneous CA execution or OS-distribution transfer.",
+  "source_sha256": "d75a076cab1ff0ba3053dbf746bc63a75f892866a0c8c9e1b79f35eb083b536a",
+  "status": "passed",
+  "unique_public_certificates": 24
+}

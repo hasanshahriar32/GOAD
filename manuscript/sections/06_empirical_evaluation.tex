@@ -172,6 +172,23 @@ Actual Certipy and Sigma executions retain the same pre-request risky-configurat
 
 The first adjudication preserves a collector defect: an empty System-log query prevented the following CA database export in 18 trials. A separately recorded later read-only CA snapshot supplies only those missing exports in ephemeral verification views; all original captures and manifests remain unchanged. Matching public certificate bytes, CA rows, trial issuance events and KDC evidence then resolves all 24 outcomes. This later snapshot does not establish historical template state or repair the audit-clock model. A live empty-query control validates the collector correction before the restored lab is shut down. Across the four final matrices, 48 trials therefore provide 42 successful exact-certificate authentications, including nine administrative uses, and six exact-certificate rejections.
 
+\paragraph{Equal-input relational realization and revision:}
+We execute two SQLite correlators on the same canonical observations as the identity reference. A strong conjunctive join resolves a unique strong, nonconflicting match; a guarded query also retains incomplete candidates and relevant conflicts. All event intervals are projected to $[0,0]$, with no mutation windows, so this experiment concerns identity and revisions rather than temporal attribution. Across 1,470 newly seeded histories, the guarded query and reference agree at all 5,423 evaluated prefixes. Independent set-based verification checks 16,269 prediction rows and 450 saved latent random-history labels. Both methods retract 225 provisional resolved links during shuffled delivery and bridge removal/reinsertion. This establishes relational realizability of the contract; the query is our implementation in SQLite, not an execution of HADES or Splunk.
+
+\input{generated/gap_closure_evidence}
+
+The main 1,410-case group includes 60 chronology-negative controls, which produce wrong terminal claims in every identity-only method because time was erased. A separate 60 consistently forged-source controls also fool every method. The guarded contract retains more true candidates but resolves fewer correct links than the strong join on this challenge. We therefore do not claim unique reasoning power or universal superiority over a competent relational implementation. Candidate completeness, temporal evidence and source truth remain separate requirements.
+
+\paragraph{Prospective concurrent transfer to a new forest:}
+Before collection, we freeze the unchanged identity detector and a new workload protocol. A writable child of the updated Windows image is demoted and reprovisioned as \texttt{q1transfer.test}, with a fresh domain SID, hostname, CA, two templates and two ordinary enrollers. The seed and original disk mounts remain read-only. This transfers identity namespaces and workload conditions while sharing the Windows image family. Six batches each issue four certificates through overlapping enrollment command envelopes. Each enroller reuses one RSA key across its certificates, with identical signed request bytes within each enroller/target group. These are repeated issuances with reused keys, not a Windows renewal-protocol experiment.
+
+All 24 distinct public certificates match their CSR keys, CA issuance and successful KDC outcomes: 20 self-uses and four administrative uses. Every batch has four overlapping submission command envelopes; that does not prove simultaneous CA execution. All 24 leaf signatures verify under the separately captured public CA certificate, whose current NTAuth membership is observed. The frozen detector links all 24 successful uses, including four privileged SID divergences. A later adjudicator reporting fix leaves legacy mutation-history fields unvalidated for the new condition names; certificate-use criteria and labels are unchanged. Actual Certipy/Sigma findings are counted in 12 distinct template/batch/enroller units, since two certificate cases share each enumeration. All 12 postrollback enumerations cease flagging tested-template ESC1. The six batch exports contain 4,544 Security events, including process creation/termination, explicit credentials and service-ticket events. They are not full Sysmon/file/socket provenance for an end-to-end PIDS comparison.
+
+\paragraph{Paired collection and authentication-envelope pilot:}
+A separately frozen pilot compares periodic collection with an idle collector in three seeded arm orders on the restored transfer forest. Each arm performs eight legitimate certificate authentications at a three-second target start period. Polling targets two seconds, exports incremental Security records and the CA database, updates the identity reference and retains checkpoints. Independent public-certificate/KDC checks validate all 48 measured authentications. Median authentication process envelopes increase by 48.6, 80.0 and 100.3~ms in the three pairs. These include Certipy startup and network work; they are not packet-level KDC latency or a production interference bound.
+
+The 33 polling iterations have per-arm median collection-plus-reasoning envelopes of 1.586--1.659~s. Sampled Python collector RSS ranges from 56.5 to 59.5~MiB across arms, excluding Certipy children and the Windows VM. Periodic reference state grows from 30 seeded records to 37 records, with a 16,000-byte final checkpoint in each polling arm. This short pilot does not establish bounded lifetime retention or maximum sustainable throughput. An initial run exported outcome evidence too early and undercounted final idle-arm records; it is retained separately. The corrected run waits for outcome verification after the measured interval, preserving the authentication timing denominator.
+
 \subsection{RQ4: Game-Theoretic Stackelberg Remediation Performance}
 We evaluated our Co-Adaptive Stackelberg policy against three standard remediation baselines across 30 generated identity graphs:
 \begin{enumerate}
@@ -181,32 +198,12 @@ We evaluated our Co-Adaptive Stackelberg policy against three standard remediati
     \item \textbf{Co-Adaptive Stackelberg (Ours):} Applies the sequential reachability heuristic to the interdiction formulation under heterogeneous operational disruption costs and operational edge immutability ($E_b \subsetneq E$).
 \end{enumerate}
 
-\begin{table}[ht]
-\centering
-\caption{Remediation Performance across 30 Generated Identity Graphs under Operational Budget Constraints.}
-\label{tab:stackelberg_results}
-\small
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Remediation Policy} & \textbf{Budget $B_{\text{ops}}=6$} & \textbf{Budget $B_{\text{ops}}=12$} & \textbf{Budget $B_{\text{ops}}=18$} & \textbf{Budget $B_{\text{ops}}=24$} \\
-\midrule
-Random Cut & $12.0 \pm 7.3\%$ & $14.0 \pm 10.5\%$ & $12.2 \pm 8.1\%$ & $11.5 \pm 7.4\%$ \\
-Degree Centrality & $52.6 \pm 24.7\%$ & $69.1 \pm 16.9\%$ & $77.2 \pm 15.4\%$ & $83.6 \pm 14.1\%$ \\
-Static Greedy & $69.5 \pm 16.7\%$ & $88.4 \pm 9.9\%$ & $96.1 \pm 7.1\%$ & $97.6 \pm 6.5\%$ \\
-\textbf{Co-Adaptive Stackelberg (Ours)} & $\mathbf{77.5 \pm 17.2\%}$ & $\mathbf{91.5 \pm 11.5\%}$ & $\mathbf{97.5 \pm 5.6\%}$ & $\mathbf{98.5 \pm 4.0\%}$ \\
-\midrule
-\textit{Significance (Stackelberg vs. Greedy)} & $t = 4.04, p = 3.58 \times 10^{-4}$ & $t = 1.51, p = 0.141$ & $t = 1.86, p = 0.0732$ & $t = 1.93, p = 0.0635$ \\
-\textit{Wilcoxon Signed-Rank Test} & $W = 17.0, p = 6.18 \times 10^{-4}$ & $W = 58.0, p = 0.136$ & $W = 6.0, p = 0.0506$ & $W = 0.0, p = 0.0431$ \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
+\input{generated/interdiction_recheck_evidence}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.88\textwidth]{figures/game_theoretic_convergence.png}
-\caption{Historical remediation visualization. Left: illustrative analytic objective curves, not measured policy-training or equilibrium evidence. Right: saved heuristic results on 30 generated identity graphs. The horizontal budgets are assigned weighted costs, despite the historical image's revoked-edge-count label.}
+\caption{Historical remediation visualization. Left: illustrative analytic objective curves, not measured policy-training or equilibrium evidence. Right: historical heuristic results on 30 generated identity graphs; corrected measurements are in Table~\ref{tab:stackelberg_results}. The horizontal budgets are assigned weighted costs, despite the historical image's revoked-edge-count label.}
 \label{fig:stackelberg_convergence}
 \end{figure}
 
@@ -215,10 +212,10 @@ In enterprise networks, a realistic fraction of directory edges represents immut
 This experiment leaves a mean residual of approximately $1.5\%$ under the selected graph instances, budgets, and non-blockable edges. It does not prove that every enterprise has an unavoidable residual of that size or that a different feasible policy cannot disconnect all modeled paths. Runtime monitoring is complementary to the evaluated hardening policies.
 
 \paragraph{Exact paired sensitivity and multiple comparisons:}
-Recomputing all saved per-topology statistics reproduces the historical values. At budget 24, only five of 30 paired differences are nonzero, all positive, with mean gain 0.94 percentage points. Exact signed-rank sign-flip enumeration over $2^5=32$ assignments gives two-sided $p=0.0625$, compared with the historical asymptotic Wilcoxon $p=0.0431$ and paired $t$-test $p=0.0635$. Applying Holm correction to the eight tests formed by four budgets and the paired-$t$/exact-signed-rank procedures leaves only budget 6 below 0.05; both adjusted budget-24 values are 0.3281. These are descriptive reanalyses of the saved synthetic-graph study, not evidence of enterprise operational superiority.
+Recomputing all saved per-topology statistics reproduces the historical values. At budget 24, only five of 30 paired differences are nonzero, all positive, with mean gain 0.94 percentage points. Exact signed-rank sign-flip enumeration over $2^5=32$ assignments gives two-sided $p=0.0625$, compared with the historical asymptotic Wilcoxon $p=0.0431$ and paired $t$-test $p=0.0635$. The historical eight-test Holm analysis leaves only budget 6 below 0.05. We now rerun the original 30 graphs at all four budgets with full edge-attribute restoration. Independent adjacency-list checks validate 120 cut/budget outcomes and 11,100 reachability queries, while reproducing all 120 historical adaptive and 120 static-greedy percentages. The correction changes nine disconnection outcomes and 24 cut counts. Table~\ref{tab:stackelberg_results} uses the corrected row and a fresh eight-test family: budget 6 survives both procedures, budget 18 survives only exact signed rank (adjusted $p=0.02344$, paired-$t$ adjusted $p=0.05138$), and budget 24 survives neither (both adjusted $p=0.25$). Exact ranks use rational disconnection fractions and omit zero differences. These are descriptive reanalyses of the saved synthetic-graph study, not evidence of enterprise operational superiority.
 
-\paragraph{45.0\% Reduction in Revoked-Edge Count:}
-Under $B_{\text{ops}} = 24$, Static Greedy revokes an average of \textbf{10.9 edges} ($10.9 \pm 0.9$), under the assigned heterogeneous costs. The saved summary does not measure the resulting business-workflow disruption. In contrast, Co-Adaptive Stackelberg revokes an average of only \textbf{6.0 edges} ($6.0 \pm 2.6$) by targeting CA template chokepoints—a \textbf{45.0\% reduction in revoked-edge count}. The disruption weights are assigned model parameters; actual administrator effort and business disruption were not measured.
+\paragraph{Corrected Revoked-Edge Count:}
+Under $B_{\text{ops}} = 24$, Static Greedy revokes an average of \textbf{10.9 edges} ($10.9 \pm 0.9$), under the assigned heterogeneous costs. The saved summary does not measure the resulting business-workflow disruption. The metadata-preserving adaptive rerun revokes an average of \textbf{5.7 edges} ($5.7 \pm 2.3$), a \textbf{47.7\% reduction in revoked-edge count}. The historical implementation used 6.0 edges on average; its source, results and retained visualization remain labeled historical. The disruption weights are assigned model parameters; actual administrator effort and business disruption were not measured.
 
 \input{generated/projection_evidence}
 

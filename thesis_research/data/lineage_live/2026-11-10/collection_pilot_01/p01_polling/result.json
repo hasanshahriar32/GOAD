@@ -1,0 +1,27 @@
+{
+  "arm": "polling",
+  "authentication_process_envelopes_seconds": [
+    0.93829343,
+    0.691568641,
+    0.744777956,
+    0.714261858,
+    0.675343868,
+    0.974799052,
+    0.811951595,
+    0.619618024
+  ],
+  "collector_rss_peak_kib": 57880,
+  "expected_authentications": 8,
+  "id": "p01_polling",
+  "measured_arm_seconds": 21.621072558002197,
+  "median_authentication_seconds": 0.729519907,
+  "new_security_events_exported": 259,
+  "pair": 1,
+  "poll_xml_bytes_written": 340952,
+  "polls": 11,
+  "python_process_cpu_seconds": 0.623844439,
+  "raw_successful_exact_certificate_kdc_records": 8,
+  "retained_checkpoint_bytes": 15550,
+  "retained_reference_records": 36,
+  "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+}

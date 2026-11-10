@@ -45,6 +45,7 @@ def freeze(path):
         ROOT/'scripts/capture_trace7_split_actor_delayed_pkinit.py']
     dump(path,{'schema':1,'declared_utc':datetime.now(timezone.utc).isoformat(),'arms':arms,'authentications_per_arm':8,
         'auth_start_period_seconds':3,'poll_target_period_seconds':2,'warmup_authentications':2,
+        'outcome_verification_timeout_seconds':30,'verification_wait_outside_measured_arm':True,
         'collection':'Incremental filtered Security export plus full CA export; canonical identity-reference updates; snapshots retained',
         'memory':'Current Python collector process VmRSS from /proc/self/status, excludes Certipy children and Windows VM',
         'latency':'Host process envelope for actual Certipy certificate authentication, including startup/network; not packet-only KDC latency',
@@ -146,13 +147,23 @@ def run(protocol_path,inventory_path,output,certipy):
             measured_seconds=time.monotonic()-start;cpu_seconds=time.process_time()-cpu_start;stop.set();sampler.join()
             if collector:collector.join()
         if errors:dump(directory/'collection_errors.json',errors);raise RuntimeError('Collector failed during pilot')
-        export_security(r,boundary,directory/'ground_truth_events.xml')
-        matching=[e for e in events(directory/'ground_truth_events.xml') if e['event_id']==4768 and
-            hexkey(e['fields'].get('CertSerialNumber'))==hexkey(identity['serial']) and
-            hexkey(e['fields'].get('CertThumbprint'))==hexkey(identity['sha1']) and e['fields'].get('Status') in ('0','0x0','0x00000000') and e['fields'].get('TargetSid')==sid]
+        verification_start=time.monotonic();checks=[]
+        while True:
+            snapshot=directory/f'verification_{len(checks):02d}.xml'
+            export_security(r,boundary,snapshot)
+            matching=[e for e in events(snapshot) if e['event_id']==4768 and
+                hexkey(e['fields'].get('CertSerialNumber'))==hexkey(identity['serial']) and
+                hexkey(e['fields'].get('CertThumbprint'))==hexkey(identity['sha1']) and e['fields'].get('Status') in ('0','0x0','0x00000000') and e['fields'].get('TargetSid')==sid]
+            checks.append({'snapshot':snapshot.name,'observed_exact_certificate_successes':len(matching),
+                'elapsed_seconds':time.monotonic()-verification_start})
+            if len(matching)>=protocol['authentications_per_arm'] or time.monotonic()-verification_start>=protocol['outcome_verification_timeout_seconds']:
+                (directory/'ground_truth_events.xml').write_bytes(snapshot.read_bytes());break
+            time.sleep(1)
+        dump(directory/'verification_barrier.json',{'checks':checks,'outside_measured_arm':True})
         row={**arm,'authentication_process_envelopes_seconds':latencies,'median_authentication_seconds':statistics.median(latencies),
             'raw_successful_exact_certificate_kdc_records':len(matching),'expected_authentications':protocol['authentications_per_arm'],
             'measured_arm_seconds':measured_seconds,'python_process_cpu_seconds':cpu_seconds,
+            'postmeasurement_verification_seconds':time.monotonic()-verification_start,
             'polls':len(polls),'collector_rss_peak_kib':max((s['rss_kib'] for s in samples),default=rss_kib()),
             'retained_reference_records':len(engine.records),'retained_checkpoint_bytes':len(engine.checkpoint().encode()),
             'new_security_events_exported':sum(p['new_security_events'] for p in polls),

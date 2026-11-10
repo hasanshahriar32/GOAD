@@ -63,6 +63,14 @@ class PolicyOutcomeTests(unittest.TestCase):
         with (self.path/"events.xml").open("a") as target:target.write(" ")
         with self.assertRaises(ValueError):adjudicate(self.path,self.trial)
 
+    def test_unknown_condition_does_not_claim_a_validated_mutation_chain(self):
+        trial={**self.trial,"condition":"transfer_enabled_admin"}
+        result=adjudicate(self.path,trial)
+        self.assertTrue(result["successful_administrator_use"])
+        self.assertIsNone(result["controlled_mutation_chain_complete"])
+        self.assertIsNone(result["mutation_actor_checked"])
+        self.assertEqual(result["mutation_history_validation"],"not_evaluated_for_this_condition")
+
 
 class KdcSystemOutcomeTests(unittest.TestCase):
     def check(self,provider="Microsoft-Windows-Kerberos-Key-Distribution-Center",thumb="AA BB",serial="00 12"):

@@ -1,0 +1,190 @@
+{
+  "all_expected_kdc_counts_match": true,
+  "arms": [
+    {
+      "arm": "polling",
+      "authentication_process_envelopes_seconds": [
+        0.656297173,
+        0.67827586,
+        0.67742263,
+        0.742276427,
+        0.696720444,
+        0.681660887,
+        0.791337311,
+        0.693870216
+      ],
+      "collector_rss_peak_kib": 57840,
+      "expected_authentications": 8,
+      "id": "p01_polling",
+      "measured_arm_seconds": 21.698912826992455,
+      "median_authentication_seconds": 0.6877655515000001,
+      "new_security_events_exported": 285,
+      "pair": 1,
+      "poll_xml_bytes_written": 374814,
+      "polls": 11,
+      "postmeasurement_verification_seconds": 3.794013015998644,
+      "python_process_cpu_seconds": 0.6643395400000001,
+      "raw_successful_exact_certificate_kdc_records": 8,
+      "retained_checkpoint_bytes": 16000,
+      "retained_reference_records": 37,
+      "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+    },
+    {
+      "arm": "idle",
+      "authentication_process_envelopes_seconds": [
+        0.591479034,
+        0.645513201,
+        0.581856373,
+        0.617606774,
+        0.659651474,
+        0.800820592,
+        0.632899165,
+        0.661834886
+      ],
+      "collector_rss_peak_kib": 59972,
+      "expected_authentications": 8,
+      "id": "p01_idle",
+      "measured_arm_seconds": 21.663517736000358,
+      "median_authentication_seconds": 0.639206183,
+      "new_security_events_exported": 0,
+      "pair": 1,
+      "poll_xml_bytes_written": 0,
+      "polls": 0,
+      "postmeasurement_verification_seconds": 3.2577438599982997,
+      "python_process_cpu_seconds": 0.08505001300000004,
+      "raw_successful_exact_certificate_kdc_records": 8,
+      "retained_checkpoint_bytes": 13445,
+      "retained_reference_records": 30,
+      "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+    },
+    {
+      "arm": "polling",
+      "authentication_process_envelopes_seconds": [
+        0.690676459,
+        0.704894359,
+        0.738291454,
+        0.726588566,
+        0.69911297,
+        0.696851127,
+        0.664258888,
+        0.709632493
+      ],
+      "collector_rss_peak_kib": 60844,
+      "expected_authentications": 8,
+      "id": "p02_polling",
+      "measured_arm_seconds": 21.711490910005523,
+      "median_authentication_seconds": 0.7020036645,
+      "new_security_events_exported": 269,
+      "pair": 2,
+      "poll_xml_bytes_written": 354070,
+      "polls": 11,
+      "postmeasurement_verification_seconds": 3.7431676519918256,
+      "python_process_cpu_seconds": 0.672264902,
+      "raw_successful_exact_certificate_kdc_records": 8,
+      "retained_checkpoint_bytes": 16000,
+      "retained_reference_records": 37,
+      "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+    },
+    {
+      "arm": "idle",
+      "authentication_process_envelopes_seconds": [
+        0.57901578,
+        0.632512218,
+        0.611457533,
+        0.56675097,
+        0.739823809,
+        0.70869214,
+        0.601778674,
+        0.685995164
+      ],
+      "collector_rss_peak_kib": 60660,
+      "expected_authentications": 8,
+      "id": "p02_idle",
+      "measured_arm_seconds": 21.687814556993544,
+      "median_authentication_seconds": 0.6219848755,
+      "new_security_events_exported": 0,
+      "pair": 2,
+      "poll_xml_bytes_written": 0,
+      "polls": 0,
+      "postmeasurement_verification_seconds": 3.252139083997463,
+      "python_process_cpu_seconds": 0.0858920900000002,
+      "raw_successful_exact_certificate_kdc_records": 8,
+      "retained_checkpoint_bytes": 13445,
+      "retained_reference_records": 30,
+      "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+    },
+    {
+      "arm": "idle",
+      "authentication_process_envelopes_seconds": [
+        0.596552549,
+        0.640413383,
+        0.603422669,
+        0.583559247,
+        0.602377072,
+        0.594839864,
+        0.638483176,
+        0.626477155
+      ],
+      "collector_rss_peak_kib": 60864,
+      "expected_authentications": 8,
+      "id": "p03_idle",
+      "measured_arm_seconds": 21.629005304988823,
+      "median_authentication_seconds": 0.6028998704999999,
+      "new_security_events_exported": 0,
+      "pair": 3,
+      "poll_xml_bytes_written": 0,
+      "polls": 0,
+      "postmeasurement_verification_seconds": 3.2459908120072214,
+      "python_process_cpu_seconds": 0.08861444799999996,
+      "raw_successful_exact_certificate_kdc_records": 8,
+      "retained_checkpoint_bytes": 13445,
+      "retained_reference_records": 30,
+      "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+    },
+    {
+      "arm": "polling",
+      "authentication_process_envelopes_seconds": [
+        0.753358572,
+        0.786240846,
+        0.676761682,
+        0.700022581,
+        0.706309875,
+        0.741585754,
+        0.682970261,
+        0.650849444
+      ],
+      "collector_rss_peak_kib": 60960,
+      "expected_authentications": 8,
+      "id": "p03_polling",
+      "measured_arm_seconds": 21.65322472200205,
+      "median_authentication_seconds": 0.703166228,
+      "new_security_events_exported": 270,
+      "pair": 3,
+      "poll_xml_bytes_written": 355094,
+      "polls": 11,
+      "postmeasurement_verification_seconds": 3.785106117997202,
+      "python_process_cpu_seconds": 0.664678093,
+      "raw_successful_exact_certificate_kdc_records": 8,
+      "retained_checkpoint_bytes": 16000,
+      "retained_reference_records": 37,
+      "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+    }
+  ],
+  "latency_definition": "Host process envelope for actual Certipy certificate authentication, including startup/network; not packet-only KDC latency",
+  "memory_definition": "Current Python collector process VmRSS from /proc/self/status, excludes Certipy children and Windows VM",
+  "paired": [
+    {
+      "median_envelope_difference_seconds": 0.04855936850000009,
+      "pair": 1
+    },
+    {
+      "median_envelope_difference_seconds": 0.08001878899999992,
+      "pair": 2
+    },
+    {
+      "median_envelope_difference_seconds": 0.10026635750000001,
+      "pair": 3
+    }
+  ],
+  "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+}

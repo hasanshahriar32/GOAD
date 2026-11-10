@@ -1,0 +1,27 @@
+{
+  "base_seed": 42,
+  "budgets": [
+    6,
+    12,
+    18,
+    24
+  ],
+  "classes": [
+    "ESC1",
+    "ESC2",
+    "ESC3",
+    "ESC4",
+    "ESC9",
+    "ESC13"
+  ],
+  "corrected_function_sha256": "90824aa80971931bad4390a9388e75b7c71b170d02f2b20a1556eb7b6c09e044",
+  "declared_utc": "2026-11-10T18:05:55.869117+00:00",
+  "historical_input_sha256": "786d9ae0e0db07c72cc3facf82c43f2a7c9e7304c612c583bb7b307e2ec34809",
+  "schema": 1,
+  "scope": "Same original 30 generated graphs and all four budgets; metadata correction and historical reproducibility, not enterprise or optimality evidence",
+  "source_sha256": {
+    "thesis_research/src/lineage_constraints/interdiction_recheck.py": "58bf9c77d55301fed12d6f5ae56d95c5f706d63ea8024cdf41e1ae310ae3bffe",
+    "thesis_research/src/phase2_certgraph/run_real_stackelberg_eval.py": "e409a14e20d91ab3a417e7d21ad5575b71929c4d72abd80417eec3a60ec94606"
+  },
+  "topologies": 30
+}

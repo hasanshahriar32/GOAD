@@ -1,0 +1,214 @@
+{
+  "by_condition": {
+    "baseline": {
+      "certificate_cases": 8,
+      "certipy_post_esc1": 0,
+      "certipy_pre_esc1": 0,
+      "sigma_eku_rule": 0,
+      "sigma_subject_rule": 0,
+      "template_batch_units": 4,
+      "verified_administrative_cases": 0
+    },
+    "enabled": {
+      "certificate_cases": 8,
+      "certipy_post_esc1": 0,
+      "certipy_pre_esc1": 4,
+      "sigma_eku_rule": 4,
+      "sigma_subject_rule": 4,
+      "template_batch_units": 4,
+      "verified_administrative_cases": 4
+    },
+    "rollback_first": {
+      "certificate_cases": 8,
+      "certipy_post_esc1": 0,
+      "certipy_pre_esc1": 0,
+      "sigma_eku_rule": 0,
+      "sigma_subject_rule": 0,
+      "template_batch_units": 4,
+      "verified_administrative_cases": 0
+    }
+  },
+  "input_sha256": {
+    "thesis_research/data/lineage_live/2026-11-10/transfer_workload_01/protocol.json": "954da1ac293ea99fb8563fd57734b62f1dffc0dd2b43299b7c0e0bfd487c23a9",
+    "thesis_research/results/lineage_constraints/2026-11-10/transfer_workload_01_adjudication.json": "74961ced0d2dfe50ccf87f1ef316c3953c048f68d0e9c023b2237eb02167c54e",
+    "thesis_research/results/lineage_constraints/2026-11-10/transfer_workload_01_sigma/manifest.json": "a950222652ef0f837bf00df4e5e6687b20d3423963a8d9f942739cb8be04b66e"
+  },
+  "scope": "Twelve distinct template/batch/enroller units; two certificate cases share each actual pre/post enumeration. Configuration-risk findings are not attack-intent or certificate-use labels.",
+  "source_sha256": "169417b6750d93abc1aac5ca46546919d2a082addfd89708547c56b873d21e32",
+  "units": [
+    {
+      "block": "b01",
+      "certificate_cases": [
+        "r01_Q1TransferA_self",
+        "r01_Q1TransferA_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": false,
+      "condition": "baseline",
+      "sigma_eku_rule": false,
+      "sigma_subject_rule": false,
+      "template": "Q1TransferA",
+      "verified_administrative_cases": 0
+    },
+    {
+      "block": "b01",
+      "certificate_cases": [
+        "r01_Q1TransferB_self",
+        "r01_Q1TransferB_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": false,
+      "condition": "baseline",
+      "sigma_eku_rule": false,
+      "sigma_subject_rule": false,
+      "template": "Q1TransferB",
+      "verified_administrative_cases": 0
+    },
+    {
+      "block": "b02",
+      "certificate_cases": [
+        "r02_Q1TransferA_self",
+        "r02_Q1TransferA_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": true,
+      "condition": "enabled",
+      "sigma_eku_rule": true,
+      "sigma_subject_rule": true,
+      "template": "Q1TransferA",
+      "verified_administrative_cases": 1
+    },
+    {
+      "block": "b02",
+      "certificate_cases": [
+        "r02_Q1TransferB_self",
+        "r02_Q1TransferB_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": true,
+      "condition": "enabled",
+      "sigma_eku_rule": true,
+      "sigma_subject_rule": true,
+      "template": "Q1TransferB",
+      "verified_administrative_cases": 1
+    },
+    {
+      "block": "b03",
+      "certificate_cases": [
+        "r03_Q1TransferA_self",
+        "r03_Q1TransferA_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": false,
+      "condition": "rollback_first",
+      "sigma_eku_rule": false,
+      "sigma_subject_rule": false,
+      "template": "Q1TransferA",
+      "verified_administrative_cases": 0
+    },
+    {
+      "block": "b03",
+      "certificate_cases": [
+        "r03_Q1TransferB_self",
+        "r03_Q1TransferB_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": false,
+      "condition": "rollback_first",
+      "sigma_eku_rule": false,
+      "sigma_subject_rule": false,
+      "template": "Q1TransferB",
+      "verified_administrative_cases": 0
+    },
+    {
+      "block": "b04",
+      "certificate_cases": [
+        "r04_Q1TransferA_self",
+        "r04_Q1TransferA_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": false,
+      "condition": "rollback_first",
+      "sigma_eku_rule": false,
+      "sigma_subject_rule": false,
+      "template": "Q1TransferA",
+      "verified_administrative_cases": 0
+    },
+    {
+      "block": "b04",
+      "certificate_cases": [
+        "r04_Q1TransferB_self",
+        "r04_Q1TransferB_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": false,
+      "condition": "rollback_first",
+      "sigma_eku_rule": false,
+      "sigma_subject_rule": false,
+      "template": "Q1TransferB",
+      "verified_administrative_cases": 0
+    },
+    {
+      "block": "b05",
+      "certificate_cases": [
+        "r05_Q1TransferA_self",
+        "r05_Q1TransferA_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": true,
+      "condition": "enabled",
+      "sigma_eku_rule": true,
+      "sigma_subject_rule": true,
+      "template": "Q1TransferA",
+      "verified_administrative_cases": 1
+    },
+    {
+      "block": "b05",
+      "certificate_cases": [
+        "r05_Q1TransferB_self",
+        "r05_Q1TransferB_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": true,
+      "condition": "enabled",
+      "sigma_eku_rule": true,
+      "sigma_subject_rule": true,
+      "template": "Q1TransferB",
+      "verified_administrative_cases": 1
+    },
+    {
+      "block": "b06",
+      "certificate_cases": [
+        "r06_Q1TransferA_self",
+        "r06_Q1TransferA_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": false,
+      "condition": "baseline",
+      "sigma_eku_rule": false,
+      "sigma_subject_rule": false,
+      "template": "Q1TransferA",
+      "verified_administrative_cases": 0
+    },
+    {
+      "block": "b06",
+      "certificate_cases": [
+        "r06_Q1TransferB_self",
+        "r06_Q1TransferB_admin"
+      ],
+      "certipy_post_esc1": false,
+      "certipy_pre_esc1": false,
+      "condition": "baseline",
+      "sigma_eku_rule": false,
+      "sigma_subject_rule": false,
+      "template": "Q1TransferB",
+      "verified_administrative_cases": 0
+    }
+  ],
+  "upstream_commit": "d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55",
+  "versions": {
+    "PyYAML": "6.0.3",
+    "pysigma": "2.1.0",
+    "pysigma-backend-sqlite": "2.1.1"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "arm": "idle",
+  "authentication_process_envelopes_seconds": [
+    0.57901578,
+    0.632512218,
+    0.611457533,
+    0.56675097,
+    0.739823809,
+    0.70869214,
+    0.601778674,
+    0.685995164
+  ],
+  "collector_rss_peak_kib": 60660,
+  "expected_authentications": 8,
+  "id": "p02_idle",
+  "measured_arm_seconds": 21.687814556993544,
+  "median_authentication_seconds": 0.6219848755,
+  "new_security_events_exported": 0,
+  "pair": 2,
+  "poll_xml_bytes_written": 0,
+  "polls": 0,
+  "postmeasurement_verification_seconds": 3.252139083997463,
+  "python_process_cpu_seconds": 0.0858920900000002,
+  "raw_successful_exact_certificate_kdc_records": 8,
+  "retained_checkpoint_bytes": 13445,
+  "retained_reference_records": 30,
+  "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification"
+}

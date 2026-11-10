@@ -1,0 +1,28 @@
+--- original_function
++++ metadata_preserving_function
+@@ -1,4 +1,4 @@
+-def stackelberg_backward_causal_mincut(G, forbidden_pairs, budget):
++def metadata_preserving_adaptive(G, forbidden_pairs, budget):
+     """
+     Policy 4 (Co-Adaptive Stackelberg Policy / Backward Causal DAG Minimal-Cut):
+     Optimized via reverse BFS (nx.ancestors) per unique target.
+@@ -45,11 +45,12 @@
+                 continue
+ 
+             # Evaluate exact marginal disconnection on residual graph via reverse BFS
++            edge_attributes = dict(G_curr[u][v])
+             G_curr.remove_edge(u, v)
+             unique_tg = set(t for _, t in active_pairs)
+             tg_anc = {t: nx.ancestors(G_curr, t) for t in unique_tg}
+             rem = sum(1 for (src, tgt) in active_pairs if src in tg_anc[tgt])
+-            G_curr.add_edge(u, v, cost=c)
++            G_curr.add_edge(u, v, **edge_attributes)
+             delta = cur_active - rem
+ 
+             rel = G_curr[u][v].get("rel", "")
+@@ -79,4 +80,4 @@
+ 
+     pct = evaluate_severed(G_curr, forbidden_pairs)
+     compliance = (C_total / budget) * 100.0 if budget > 0 else 100.0
+-    return pct, len(E_cut), compliance
++    return {'pct': pct, 'cut': E_cut, 'cost': C_total, 'compliance': compliance}

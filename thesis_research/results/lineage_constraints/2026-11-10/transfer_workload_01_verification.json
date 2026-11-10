@@ -1,0 +1,31 @@
+{
+  "adjudication_sha256": "74961ced0d2dfe50ccf87f1ef316c3953c048f68d0e9c023b2237eb02167c54e",
+  "certificate_cases_checked": 24,
+  "domain_sid_values": [
+    "S-1-5-21-3576737527-1549231359-1615615133"
+  ],
+  "fixed_signed_request_groups": 4,
+  "issuer_names": [
+    "Q1-Transfer-CA"
+  ],
+  "observed_outcomes": {
+    "privileged_certificate_use": 4,
+    "self_certificate_use": 20
+  },
+  "peak_overlapping_submission_envelopes_by_batch": {
+    "b01": 4,
+    "b02": 4,
+    "b03": 4,
+    "b04": 4,
+    "b05": 4,
+    "b06": 4
+  },
+  "reused_key_groups": {
+    "q1.operator": 1,
+    "q1.reader": 1
+  },
+  "scope": "Checks exact requests/keys, fresh forest context, ordinary enrollers, restoration and overlapping host command envelopes. Shared batch files are not independent event samples; not proof of simultaneous CA execution or OS-distribution transfer.",
+  "source_sha256": "e31067be5749eff763a127e476e5e7c9c461df62251292a8762d44eee833b593",
+  "status": "passed",
+  "unique_public_certificates": 24
+}

@@ -154,6 +154,7 @@ def adjudicate(directory, trial):
                     r["fields"].get("SubjectUserName","").casefold()==mutator_name.casefold() and
                     (r["fields"].get("SubjectUserSid")==context["mutator_sid"] if context.get("mutator_sid") else
                      r["fields"].get("SubjectUserSid","").startswith(context["domain_sid"]+"-"))}
+    known_mutation_condition=trial["condition"] in ("baseline_admin_san","enabled_admin_san","benign_self_enrollment","rollback_before_enroll")
     needed_mutation=trial["condition"] in ("enabled_admin_san","benign_self_enrollment","rollback_before_enroll")
     mutation_checked=not needed_mutation or str(original["name_flag"]|1) in mutator_values
     restored_event_checked=not needed_mutation or str(original["name_flag"]) in mutator_values
@@ -166,8 +167,10 @@ def adjudicate(directory, trial):
                   rejected_kdc_event_ids=[r["id"] for r in rejected],
                   rejected_kdc_statuses=sorted({r["fields"]["Status"] for r in rejected}),
                   exact_certificate_kdc_system_rejections=system_failed,
-                  mutation_actor_checked=mutation_checked,restoration_event_checked=restored_event_checked,
-                  controlled_mutation_chain_complete=bool(complete),
+                  mutation_actor_checked=mutation_checked if known_mutation_condition else None,
+                  restoration_event_checked=restored_event_checked if known_mutation_condition else None,
+                  controlled_mutation_chain_complete=bool(complete) if known_mutation_condition else None,
+                  mutation_history_validation="legacy_condition_contract" if known_mutation_condition else "not_evaluated_for_this_condition",
                   successful_exact_certificate_use=bool(admin or self_use),successful_administrator_use=bool(admin),
                   observed_outcome="privileged_certificate_use" if admin else "self_certificate_use" if self_use else
                   "certificate_authentication_rejected" if (rejected or system_failed) and not successful and len(ca_rows)==1 and issuance else "issued_chain_incomplete")

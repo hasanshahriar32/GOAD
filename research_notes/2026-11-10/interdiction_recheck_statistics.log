@@ -1,0 +1,98 @@
+[
+  {
+    "budget": 6,
+    "graphs": 30,
+    "corrected_mean_pct": 79.01673214741467,
+    "corrected_population_sd_pct": 16.34537291575993,
+    "greedy_mean_pct": 69.53706019837274,
+    "greedy_population_sd_pct": 16.738197048433243,
+    "mean_gain_percentage_points": 9.479671949041942,
+    "corrected_mean_cut_edges": 3.2333333333333334,
+    "corrected_population_sd_cut_edges": 0.7608474807008885,
+    "greedy_mean_cut_edges": 4.366666666666666,
+    "paired_t_statistic": 5.6590392193225405,
+    "paired_t_p": 4.074033834271523e-06,
+    "exact_signed_rank": {
+      "p_value": 9.5367431640625e-07,
+      "nonzero_pairs": 21,
+      "sign_assignments": 2097152,
+      "tail_assignments": 2,
+      "method": "Exact conditional sign flips via integer subset-sum counts; tied ranks from exact rational disconnection fractions; zero differences omitted"
+    },
+    "changed_legacy_objective_cases": 4,
+    "holm_t_p": 2.851823683990066e-05,
+    "holm_exact_rank_p": 7.62939453125e-06
+  },
+  {
+    "budget": 12,
+    "graphs": 30,
+    "corrected_mean_pct": 92.2720815775259,
+    "corrected_population_sd_pct": 11.66935737704455,
+    "greedy_mean_pct": 88.41574234143178,
+    "greedy_population_sd_pct": 9.855338313853768,
+    "mean_gain_percentage_points": 3.856339236094079,
+    "corrected_mean_cut_edges": 4.533333333333333,
+    "corrected_population_sd_cut_edges": 1.2578641509408806,
+    "greedy_mean_cut_edges": 6.933333333333334,
+    "paired_t_statistic": 1.8426704485185499,
+    "paired_t_p": 0.07562223048524923,
+    "exact_signed_rank": {
+      "p_value": 0.06464958190917969,
+      "nonzero_pairs": 21,
+      "sign_assignments": 2097152,
+      "tail_assignments": 135580,
+      "method": "Exact conditional sign flips via integer subset-sum counts; tied ranks from exact rational disconnection fractions; zero differences omitted"
+    },
+    "changed_legacy_objective_cases": 4,
+    "holm_t_p": 0.25,
+    "holm_exact_rank_p": 0.25
+  },
+  {
+    "budget": 18,
+    "graphs": 30,
+    "corrected_mean_pct": 98.03985430728984,
+    "corrected_population_sd_pct": 5.062872466760693,
+    "greedy_mean_pct": 96.14720352844243,
+    "greedy_population_sd_pct": 7.077766058324677,
+    "mean_gain_percentage_points": 1.8926507788473983,
+    "corrected_mean_cut_edges": 5.366666666666666,
+    "corrected_population_sd_cut_edges": 1.9405039437103846,
+    "greedy_mean_cut_edges": 8.833333333333334,
+    "paired_t_statistic": 2.745071443045938,
+    "paired_t_p": 0.01027641335642558,
+    "exact_signed_rank": {
+      "p_value": 0.00390625,
+      "nonzero_pairs": 9,
+      "sign_assignments": 512,
+      "tail_assignments": 2,
+      "method": "Exact conditional sign flips via integer subset-sum counts; tied ranks from exact rational disconnection fractions; zero differences omitted"
+    },
+    "changed_legacy_objective_cases": 1,
+    "holm_t_p": 0.0513820667821279,
+    "holm_exact_rank_p": 0.0234375
+  },
+  {
+    "budget": 24,
+    "graphs": 30,
+    "corrected_mean_pct": 98.51465102890192,
+    "corrected_population_sd_pct": 3.960175818681938,
+    "greedy_mean_pct": 97.57300422963971,
+    "greedy_population_sd_pct": 6.5055317219464674,
+    "mean_gain_percentage_points": 0.941646799262224,
+    "corrected_mean_cut_edges": 5.7,
+    "corrected_population_sd_cut_edges": 2.325940669922601,
+    "greedy_mean_cut_edges": 10.9,
+    "paired_t_statistic": 1.9295166218105608,
+    "paired_t_p": 0.06350241971890125,
+    "exact_signed_rank": {
+      "p_value": 0.0625,
+      "nonzero_pairs": 5,
+      "sign_assignments": 32,
+      "tail_assignments": 2,
+      "method": "Exact conditional sign flips via integer subset-sum counts; tied ranks from exact rational disconnection fractions; zero differences omitted"
+    },
+    "changed_legacy_objective_cases": 0,
+    "holm_t_p": 0.25,
+    "holm_exact_rank_p": 0.25
+  }
+]

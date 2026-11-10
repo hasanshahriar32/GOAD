@@ -1,0 +1,8 @@
+{
+  "host_after": 1794333647.6904094,
+  "host_before": 1794333645.9572861,
+  "host_monotonic_elapsed_ns": 1733123504,
+  "returncode": 1,
+  "stderr": "CA certificate not uniquely found\nAt line:8 char:26\n+ if(@($cert).Count -ne 1){throw 'CA certificate not uniquely found'}\n+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (CA certificate not uniquely found:String) [], RuntimeException\n    + FullyQualifiedErrorId : CA certificate not uniquely found",
+  "stdout": ""
+}

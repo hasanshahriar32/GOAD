@@ -1,0 +1,58 @@
+{
+  "arms": [
+    {
+      "arm": "polling",
+      "id": "p01_polling",
+      "pair": 1
+    },
+    {
+      "arm": "idle",
+      "id": "p01_idle",
+      "pair": 1
+    },
+    {
+      "arm": "polling",
+      "id": "p02_polling",
+      "pair": 2
+    },
+    {
+      "arm": "idle",
+      "id": "p02_idle",
+      "pair": 2
+    },
+    {
+      "arm": "idle",
+      "id": "p03_idle",
+      "pair": 3
+    },
+    {
+      "arm": "polling",
+      "id": "p03_polling",
+      "pair": 3
+    }
+  ],
+  "auth_start_period_seconds": 3,
+  "authentications_per_arm": 8,
+  "collection": "Incremental filtered Security export plus full CA export; canonical identity-reference updates; snapshots retained",
+  "declared_utc": "2026-11-10T17:56:39.818997+00:00",
+  "latency": "Host process envelope for actual Certipy certificate authentication, including startup/network; not packet-only KDC latency",
+  "memory": "Current Python collector process VmRSS from /proc/self/status, excludes Certipy children and Windows VM",
+  "outcome_verification_timeout_seconds": 30,
+  "poll_target_period_seconds": 2,
+  "schema": 1,
+  "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification",
+  "source_sha256": {
+    "scripts/capture_trace7_split_actor_delayed_pkinit.py": "8366e2d464dfb80828d2334d97b33934d810312d3b909f5974be6fa5628cf8e8",
+    "thesis_research/src/lineage_constraints/adjudicate_policy_matrix.py": "ac38268320ae536f0c4a756822aab411950ce735a1ff2111a6bc8fee6e510b4f",
+    "thesis_research/src/lineage_constraints/collection_pilot.py": "4ab3031eae4c0dd982650aa45cafba60c11c7817e3ed720be7e09e66c943552c",
+    "thesis_research/src/lineage_constraints/engine.py": "86613cc1d461b196234621eca93be12c4f83c1fbd97253dbf5c277bb1fc603e4",
+    "thesis_research/src/lineage_constraints/goad.py": "f1c04d92a2a8b2adf67497b177575b4e957b55ed17b81994f9a4410db2c5cf74",
+    "thesis_research/src/lineage_constraints/independent_policy_2019.py": "28bb17969e705020d3b2646e5d89d6104c8944a7337dd701b2d21e0299eea4e2",
+    "thesis_research/src/lineage_constraints/lab/provision_2019.py": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+    "thesis_research/src/lineage_constraints/lab/transfer_2019.py": "6970a9a884cdb69501af457ef6b5eac83ca6fa9bdad7d2489692f9c3476f2206",
+    "thesis_research/src/lineage_constraints/live_policy_matrix.py": "62121a4ee1393428fc0a27019244534a70034eab389288255925054029cb2141",
+    "thesis_research/src/lineage_constraints/transfer_workload.py": "b52a8e9a126037a9e9f1bd17842935cca70b7958120de6bbbfbf155f9cc06b8a"
+  },
+  "verification_wait_outside_measured_arm": true,
+  "warmup_authentications": 2
+}

@@ -1,0 +1,1836 @@
+{
+  "adjudicator_source_sha256": "ac38268320ae536f0c4a756822aab411950ce735a1ff2111a6bc8fee6e510b4f",
+  "by_condition": {
+    "transfer_baseline_admin": {
+      "attempts": 4,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 4,
+      "verified_uses": 4
+    },
+    "transfer_baseline_self": {
+      "attempts": 4,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 4,
+      "verified_uses": 4
+    },
+    "transfer_enabled_admin": {
+      "attempts": 4,
+      "infrastructure_errors": 0,
+      "privileged_uses": 4,
+      "restored": 4,
+      "verified_uses": 4
+    },
+    "transfer_enabled_self": {
+      "attempts": 4,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 4,
+      "verified_uses": 4
+    },
+    "transfer_rollback_first_admin": {
+      "attempts": 4,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 4,
+      "verified_uses": 4
+    },
+    "transfer_rollback_first_self": {
+      "attempts": 4,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 4,
+      "verified_uses": 4
+    }
+  },
+  "scope": "Independent controlled outcome adjudication; no CIPG detector imports or enterprise-rate estimate",
+  "trials": [
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:49629"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "condition": "transfer_baseline_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 92,
+        "4634": 85,
+        "4648": 36,
+        "4672": 80,
+        "4688": 160,
+        "4689": 162,
+        "4768": 39,
+        "4769": 35,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 4
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 727,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "3700000003413c9f90baaef23c000000000003",
+      "sha256": "a97148a4bcd1f2ff0fd61ba9e395ec4147642403c3bd4270b1e06ccf7e013f49",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:49923"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r01_Q1TransferA_self",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:49613"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "condition": "transfer_baseline_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 92,
+        "4634": 85,
+        "4648": 36,
+        "4672": 80,
+        "4688": 160,
+        "4689": 162,
+        "4768": 39,
+        "4769": 35,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 4
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 727,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "37000000047ae24653200cbde8000000000004",
+      "sha256": "09d2d4b87596822797d948ecdb9a883052b156fc06a5b025b2231eb9e5e5f205",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:49922"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r01_Q1TransferA_admin",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:49617"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "condition": "transfer_baseline_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 92,
+        "4634": 85,
+        "4648": 36,
+        "4672": 80,
+        "4688": 160,
+        "4689": 162,
+        "4768": 39,
+        "4769": 35,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 4
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 727,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000523568d7f8c2fc2b7000000000005",
+      "sha256": "5e373a1e7d9b359ec59348953b4d3e59f076d0b5225056bbc33557a4c33e901a",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:49921"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r01_Q1TransferB_self",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:49623"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "condition": "transfer_baseline_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 92,
+        "4634": 85,
+        "4648": 36,
+        "4672": 80,
+        "4688": 160,
+        "4689": 162,
+        "4768": 39,
+        "4769": 35,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 4
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 727,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "3700000006b39c289021c6d1ef000000000006",
+      "sha256": "b468753dde816670ebd156951a548adba4de5e6ca5990c1690ddf22c0ecb0195",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:49924"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r01_Q1TransferB_admin",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1TransferA",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:50564"
+      ],
+      "certificate_san_uris": [
+        "tag:microsoft.com,2022-09-14:sid:S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "certificate_security_sid_values": [],
+      "condition": "transfer_enabled_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 94,
+        "4634": 90,
+        "4648": 36,
+        "4672": 82,
+        "4688": 170,
+        "4689": 172,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 8
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 762,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000ab5d41ae4177f6bd500000000000a",
+      "sha256": "f094dc3ac809a9a14085ca027398ff0f3cbe29fdc07ca7f8f21052a4efd43cae",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:50836"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r02_Q1TransferA_self",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1TransferA",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:50563"
+      ],
+      "certificate_san_uris": [
+        "tag:microsoft.com,2022-09-14:sid:S-1-5-21-3576737527-1549231359-1615615133-500"
+      ],
+      "certificate_security_sid_values": [],
+      "condition": "transfer_enabled_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 94,
+        "4634": 90,
+        "4648": 36,
+        "4672": 82,
+        "4688": 170,
+        "4689": 172,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 8
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 762,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "37000000095620d6b474a19333000000000009",
+      "sha256": "313e390a81802ca9046bb2d8c9427f5de631869ce1752295e41b1f845ea02af7",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:50834"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-500"
+      ],
+      "trial": "r02_Q1TransferA_admin",
+      "upns": [
+        "administrator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1TransferB",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:50549"
+      ],
+      "certificate_san_uris": [
+        "tag:microsoft.com,2022-09-14:sid:S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "certificate_security_sid_values": [],
+      "condition": "transfer_enabled_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 94,
+        "4634": 90,
+        "4648": 36,
+        "4672": 82,
+        "4688": 170,
+        "4689": 172,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 8
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 762,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000729370c9221a63129000000000007",
+      "sha256": "fb396019bdfe6170e0ada79413cfd63b0c2cc73ce2890acb61919fdfd140c1c8",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:50835"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r02_Q1TransferB_self",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1TransferB",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:50550"
+      ],
+      "certificate_san_uris": [
+        "tag:microsoft.com,2022-09-14:sid:S-1-5-21-3576737527-1549231359-1615615133-500"
+      ],
+      "certificate_security_sid_values": [],
+      "condition": "transfer_enabled_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 94,
+        "4634": 90,
+        "4648": 36,
+        "4672": 82,
+        "4688": 170,
+        "4689": 172,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 8
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 762,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000881aec828cde548d8000000000008",
+      "sha256": "dd3a49bc5c4809e05ed1b2e7ee8343bebaf32a4f30862b8f3ead8b9757e0d28c",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:50833"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-500"
+      ],
+      "trial": "r02_Q1TransferB_admin",
+      "upns": [
+        "administrator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:51422"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "condition": "transfer_rollback_first_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 95,
+        "4634": 102,
+        "4648": 36,
+        "4672": 83,
+        "4688": 172,
+        "4689": 175,
+        "4768": 38,
+        "4769": 34,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 12
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 781,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000c1dda4ded9bed290400000000000c",
+      "sha256": "294de56413c28f2a99bb1085ac2a3185e63ae715591152efb308c236501c08d3",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:51707"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r03_Q1TransferA_self",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:51418"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "condition": "transfer_rollback_first_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 95,
+        "4634": 102,
+        "4648": 36,
+        "4672": 83,
+        "4688": 172,
+        "4689": 175,
+        "4768": 38,
+        "4769": 34,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 12
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 781,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000bd9085615d4738f5c00000000000b",
+      "sha256": "ba37fefd2e2d30f5a9b61017a8b66ca18d988cc1b1095fd61bc774dbbe74b320",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:51710"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r03_Q1TransferA_admin",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:51429"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "condition": "transfer_rollback_first_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 95,
+        "4634": 102,
+        "4648": 36,
+        "4672": 83,
+        "4688": 172,
+        "4689": 175,
+        "4768": 38,
+        "4769": 34,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 12
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 781,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000e8cca619e567ad07b00000000000e",
+      "sha256": "fc49e1712d7a3b9778bedd032cc263b746633e068ea5b66956b4a6cf3dbb5ceb",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:51709"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r03_Q1TransferB_self",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:51419"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "condition": "transfer_rollback_first_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 95,
+        "4634": 102,
+        "4648": 36,
+        "4672": 83,
+        "4688": 172,
+        "4689": 175,
+        "4768": 38,
+        "4769": 34,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 12
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 781,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000d76bb12c4ca93c2b600000000000d",
+      "sha256": "33bd8d8380b7e921a8d95f66c6bd482e66f9488d57bfe17caecd49d0d1edc6a1",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:51708"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r03_Q1TransferB_admin",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:52314"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "condition": "transfer_rollback_first_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 93,
+        "4634": 87,
+        "4648": 36,
+        "4672": 81,
+        "4688": 161,
+        "4689": 165,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 16
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 749,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "3700000011ac2b5fbc8d838de5000000000011",
+      "sha256": "91d2adc850c38398388b7e2fad72951ba406a1d7e9abc7db6fae2809246afed1",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:52581"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r04_Q1TransferA_self",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:52312"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "condition": "transfer_rollback_first_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 93,
+        "4634": 87,
+        "4648": 36,
+        "4672": 81,
+        "4688": 161,
+        "4689": 165,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 16
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 749,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "37000000128299bf265293f42e000000000012",
+      "sha256": "ee4826ad66e601004ec941871d84f499d10ea5b023eb8451fe0dca2f1ddfac09",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:52583"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r04_Q1TransferA_admin",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:52300"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "condition": "transfer_rollback_first_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 93,
+        "4634": 87,
+        "4648": 36,
+        "4672": 81,
+        "4688": 161,
+        "4689": 165,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 16
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 749,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000000f6512bd82a9b3dd3c00000000000f",
+      "sha256": "5c9c3b6cfda1117950383506615815d894b2b53866a21f728b159b63531bfcbf",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:52584"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r04_Q1TransferB_self",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:52298"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "condition": "transfer_rollback_first_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 93,
+        "4634": 87,
+        "4648": 36,
+        "4672": 81,
+        "4688": 161,
+        "4689": 165,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 16
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 749,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "37000000105ace5652eac703ab000000000010",
+      "sha256": "226921cb99ed7f5deefc5f8fc3287cbe805ac0114b44822caec42231538f06ca",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:52582"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r04_Q1TransferB_admin",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1TransferA",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:53153"
+      ],
+      "certificate_san_uris": [
+        "tag:microsoft.com,2022-09-14:sid:S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "certificate_security_sid_values": [],
+      "condition": "transfer_enabled_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 91,
+        "4634": 86,
+        "4648": 36,
+        "4672": 79,
+        "4688": 171,
+        "4689": 175,
+        "4768": 39,
+        "4769": 35,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 12
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 758,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "3700000013c9aee91f1106fed8000000000013",
+      "sha256": "49252d4c2865d8c78f8b0d30e9f27197715539c2e35e8caeb33dfdab4d195a03",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:53441"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r05_Q1TransferA_self",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1TransferA",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:53165"
+      ],
+      "certificate_san_uris": [
+        "tag:microsoft.com,2022-09-14:sid:S-1-5-21-3576737527-1549231359-1615615133-500"
+      ],
+      "certificate_security_sid_values": [],
+      "condition": "transfer_enabled_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 91,
+        "4634": 86,
+        "4648": 36,
+        "4672": 79,
+        "4688": 171,
+        "4689": 175,
+        "4768": 39,
+        "4769": 35,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 12
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 758,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000001653714dbfc4896940000000000016",
+      "sha256": "3d9a652f7980270ef2344748fe37db24dee9d740ab46dca54465d1a5fba8a130",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:53440"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-500"
+      ],
+      "trial": "r05_Q1TransferA_admin",
+      "upns": [
+        "administrator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1TransferB",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:53154"
+      ],
+      "certificate_san_uris": [
+        "tag:microsoft.com,2022-09-14:sid:S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "certificate_security_sid_values": [],
+      "condition": "transfer_enabled_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 91,
+        "4634": 86,
+        "4648": 36,
+        "4672": 79,
+        "4688": 171,
+        "4689": 175,
+        "4768": 39,
+        "4769": 35,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 12
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 758,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "3700000014fbc0e18722e07c7a000000000014",
+      "sha256": "8a93a2005b199a4b37f10e14426a453c991152347914d4c7842dd62a0b5854ad",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:53442"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r05_Q1TransferB_self",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1TransferB",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:53167"
+      ],
+      "certificate_san_uris": [
+        "tag:microsoft.com,2022-09-14:sid:S-1-5-21-3576737527-1549231359-1615615133-500"
+      ],
+      "certificate_security_sid_values": [],
+      "condition": "transfer_enabled_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 91,
+        "4634": 86,
+        "4648": 36,
+        "4672": 79,
+        "4688": 171,
+        "4689": 175,
+        "4768": 39,
+        "4769": 35,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 12
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 758,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "3700000015d5b4c9ab809f92f4000000000015",
+      "sha256": "0a35c3b5aa0437cad958c827f6dc77a6e4c324f7f0ca6aea03837fb27294e4a6",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:53439"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-500"
+      ],
+      "trial": "r05_Q1TransferB_admin",
+      "upns": [
+        "administrator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:54025"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "condition": "transfer_baseline_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 98,
+        "4634": 94,
+        "4648": 36,
+        "4672": 86,
+        "4688": 166,
+        "4689": 173,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 4
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 767,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "3700000018901ae830ea4feb82000000000018",
+      "sha256": "9f78819b40bd2944a2323fc42f31811fd20b12cb470b0e4c9ca97ef01db56f7c",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:54312"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r06_Q1TransferA_self",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferA",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.reader"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:54032"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "condition": "transfer_baseline_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 98,
+        "4634": 94,
+        "4648": 36,
+        "4672": 86,
+        "4688": 166,
+        "4689": 173,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 4
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 767,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000001752b2848c2a929862000000000017",
+      "sha256": "ea43a5e636e24637c68f1a78b38bd91afa3e06e156af8e053e73ff7fe20e5b87",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:54311"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "trial": "r06_Q1TransferA_admin",
+      "upns": [
+        "q1.reader@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:54019"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "condition": "transfer_baseline_self",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 98,
+        "4634": 94,
+        "4648": 36,
+        "4672": 86,
+        "4688": 166,
+        "4689": 173,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 4
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 767,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000001a38b283ea902ca98d00000000001a",
+      "sha256": "2233d81b05d73e6b04d030485f52917136d195b2672c757018cfc8c77010ec08",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:54309"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r06_Q1TransferB_self",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "actual_postrollback_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1TransferB",
+        "[+] User Enrollable Principals": [
+          "Q1TRANSFER.TEST\\q1.operator"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "Q1XFER19.q1transfer.test:54016"
+      ],
+      "certificate_san_uris": [],
+      "certificate_security_sid_values": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "condition": "transfer_baseline_admin",
+      "controlled_mutation_chain_complete": true,
+      "event_ids": {
+        "4624": 98,
+        "4634": 94,
+        "4648": 36,
+        "4672": 86,
+        "4688": 166,
+        "4689": 173,
+        "4768": 40,
+        "4769": 36,
+        "4886": 4,
+        "4887": 4,
+        "4898": 26,
+        "5136": 4
+      },
+      "exact_certificate_kdc_system_rejections": [],
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 767,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "370000001975333d9015f4a2df000000000019",
+      "sha256": "2943e6e57381f204626bcc8deebe0a1582b4f694c813c201888fe9f55a089e2c",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "Q1XFER19.q1transfer.test:54310"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "trial": "r06_Q1TransferB_admin",
+      "upns": [
+        "q1.operator@q1transfer.test"
+      ]
+    }
+  ],
+  "trials_adjudicated": 24,
+  "trials_planned": 24
+}

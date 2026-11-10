@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/capture_transfer_ca.py", line 33, in <module>
+    if __name__=='__main__':run()
+                            ^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/capture_transfer_ca.py", line 27, in run
+    runner.ps(runner.admin,'observation',script)
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/independent_policy_2019.py", line 78, in ps
+    if r.status_code:raise RuntimeError("Failed phase "+name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Failed phase observation

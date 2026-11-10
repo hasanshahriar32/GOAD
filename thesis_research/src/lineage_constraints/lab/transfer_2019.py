@@ -150,7 +150,16 @@ if($domain.DNSRoot -ne 'q1transfer.test'){throw 'Local AD database belongs to an
     elif action=="clock":
         execute(connection(),"clock","if((Get-ADDomain).DNSRoot -ne '"+DOMAIN+"'){throw 'Wrong forest'};Set-Date -Date ([DateTime]::Parse('"+datetime.now(timezone.utc).isoformat()+"').ToLocalTime()) | Out-Null;[DateTime]::UtcNow.ToString('o')",OUTPUT,redact)
     elif action=="shutdown":
-        execute(connection(),"shutdown","if((Get-ADDomain).DNSRoot -ne '"+DOMAIN+"'){throw 'Wrong forest'};shutdown.exe /s /t 10;'TRANSFER_SHUTDOWN_SCHEDULED'",OUTPUT,redact)
+        execute(connection(),"shutdown","""if((Get-ADDomain).DNSRoot -ne 'q1transfer.test'){throw 'Wrong forest'}
+$nc=(Get-ADRootDSE).configurationNamingContext
+$flags=@(foreach($name in @('Q1TransferA','Q1TransferB')){
+ $t=Get-ADObject ('CN='+$name+',CN=Certificate Templates,CN=Public Key Services,CN=Services,'+$nc) -Properties msPKI-Certificate-Name-Flag
+ if($t.'msPKI-Certificate-Name-Flag' -ne 33554432){throw 'Transfer template not restored'}
+ @{template=$name;name_flag=$t.'msPKI-Certificate-Name-Flag'}
+})
+@{utc=[DateTime]::UtcNow.ToString('o');restored_templates=$flags}|ConvertTo-Json -Depth 4 -Compress
+shutdown.exe /s /t 10
+'TRANSFER_SHUTDOWN_SCHEDULED'""",OUTPUT,redact)
     else:
         mapped={"new_forest":"forest","template_a":"template","template_b":"template",
                 "remoting_a":"enroller_remoting","remoting_b":"enroller_remoting"}.get(action,action)

@@ -30,7 +30,7 @@ def git_bytes(*args):return subprocess.check_output(["git",*args],cwd=ROOT)
 def run(output):
     if output.exists():raise FileExistsError(output)
     standard={}
-    for name in ("gating_audit","bilinear_study","interdiction_audit","projection_repeated","falsification_controls","legacy_statistics_audit"):
+    for name in ("gating_audit","bilinear_study","interdiction_audit","projection_repeated","falsification_controls","legacy_statistics_audit","sql_comparison","interdiction_recheck","interdiction_recheck_statistics"):
         directory=RESULTS/name
         if (directory/"manifest.json").exists():standard[name]={"hashed_files_checked":simple_manifest(directory),"manifest_sha256":sha(directory/"manifest.json")}
     for name,key in (("confirmation","result_sha256"),("robustness","artifact_sha256")):
@@ -47,6 +47,7 @@ def run(output):
     for directory in sorted(DATA.iterdir()):
         if not directory.is_dir() or not (directory/"protocol.json").exists() or not (directory/"sources").exists():continue
         protocol=json.loads((directory/"protocol.json").read_text())
+        if "trials" not in protocol:continue
         for name,expected in protocol["source_sha256"].items():
             if sha(directory/"sources"/Path(name).name)!=expected:raise AssertionError("Frozen matrix source differs")
         trials=[p for p in sorted(directory.glob("r*")) if p.is_dir() and (p/"manifest.json").exists()]
@@ -69,6 +70,42 @@ def run(output):
         elif table.stem=="bilinear_evidence":
             if sha(RESULTS/"bilinear_study_verification.json")!=manifest["verification_sha256"]:raise AssertionError("Bilinear verification input differs")
         generated[table.name]=sha(table)
+    continued={}
+    for name in ("collection_pilot_01","collection_pilot_02"):
+        directory=DATA/name
+        if (directory/"manifest.json").exists():
+            protocol=json.loads((directory/"protocol.json").read_text())
+            for filename,expected in protocol["source_sha256"].items():
+                if sha(directory/"sources"/Path(filename).name)!=expected:raise AssertionError("Pilot frozen source differs")
+            result=json.loads((directory/"results.json").read_text())
+            if name.endswith("02") and not result["all_expected_kdc_counts_match"]:raise AssertionError("Corrected pilot outcome verification incomplete")
+            continued[name]={"hashed_files_checked":simple_manifest(directory),"manifest_sha256":sha(directory/"manifest.json"),
+                "all_expected_kdc_counts_match":result["all_expected_kdc_counts_match"]}
+    transfer=DATA/"transfer_workload_01"
+    if (RESULTS/"transfer_workload_01_identity_final.json").exists():
+        protocol=json.loads((transfer/"protocol.json").read_text())
+        identity=json.loads((RESULTS/"transfer_workload_01_identity_final.json").read_text())
+        detector="thesis_research/src/lineage_constraints/evaluate_live_identity.py"
+        if identity["source_sha256"]!=protocol["source_sha256"][detector]:raise AssertionError("Transfer detector changed after freezing")
+        continued["transfer_precollection_identity_source_verified"]=True
+        continued["transfer_batch_manifests_checked"]=sum(simple_manifest(p) for p in transfer.glob("b*") if p.is_dir() and (p/"manifest.json").exists())
+        continued["transfer_root_files_checked"]=simple_manifest(transfer)
+        continued["transfer_sigma_files_checked"]=simple_manifest(RESULTS/"transfer_workload_01_sigma")
+        continued["transfer_public_ca_files_checked"]=simple_manifest(DATA/"transfer_ca_public_02")
+        complete=json.loads((RESULTS/"transfer_workload_01_verification_complete.json").read_text())
+        if complete["leaf_signatures_verified"]!=24 or not complete["public_ca_verification"]["observed_ntauth_membership"]:raise AssertionError("Transfer signature/trust verification incomplete")
+        if complete["public_ca_verification"]["public_ca_sha256"]!=sha(DATA/"transfer_ca_public_02/ca_certificate.cer"):raise AssertionError("Public CA verification input differs")
+        if complete["adjudication_sha256"]!=sha(RESULTS/"transfer_workload_01_adjudication_final.json"):raise AssertionError("Final transfer adjudication differs")
+        adjudication=json.loads((RESULTS/"transfer_workload_01_adjudication_final.json").read_text())
+        if any(t["controlled_mutation_chain_complete"] is not None for t in adjudication["trials"]):raise AssertionError("Unknown transfer conditions claim legacy mutation-history validation")
+    for name,study in (("sql_comparison_verification.json",RESULTS/"sql_comparison"),
+                       ("collection_pilot_02_verification.json",DATA/"collection_pilot_02"),
+                       ("interdiction_recheck_verification.json",RESULTS/"interdiction_recheck")):
+        path=RESULTS/name
+        if path.exists():
+            verification=json.loads(path.read_text())
+            if verification["status"]!="passed" or verification["input_manifest_sha256"]!=sha(study/"manifest.json"):raise AssertionError("Continued study verification differs")
+            continued[name]=sha(path)
     supplemental={}
     for name in ("current_patch_ca_supplement_01","current_patch_export_control_01"):
         directory=DATA/name
@@ -118,8 +155,8 @@ def run(output):
     style["tracked_existing_figures"]=not bool(git_bytes("diff","--name-only",base,"--","manuscript/figures","thesis_paper/figures").strip())
     if not all(style.values()):raise AssertionError("Original design/source preservation check failed: "+str(style))
     private_paths=[];private_headers=[];credential_matches=[]
-    private_file=Path("/tmp/goad-q1-independent-2019/credentials.json")
-    credentials=list(json.loads(private_file.read_text()).values()) if private_file.exists() else []
+    private_files=[Path("/tmp/goad-q1-independent-2019/credentials.json"),Path.home()/".cache/goad-q1-transfer-2019/credentials.json"]
+    credentials=[value for p in private_files if p.exists() for value in json.loads(p.read_text()).values()]
     for path in DATA.rglob("*"):
         if not path.is_file():continue
         if path.suffix.casefold() in (".pfx",".p12",".ccache",".kirbi",".key"):private_paths.append(str(path.relative_to(ROOT)))
@@ -131,7 +168,7 @@ def run(output):
     tests={"count":int(counts[-1]) if counts else None,"status":"passed" if re.search(r"\nOK\s*$",log) else "not_verified","log_sha256":sha(ROOT/"research_notes/2026-11-10/continued_tests.log")}
     if tests["status"]!="passed":raise AssertionError("Latest test log not passing")
     result={"checked_utc":datetime.now(timezone.utc).isoformat(),"workspace":str(ROOT),"status":"passed","standard_studies":standard,
-        "live_matrices":matrices,"generated_tables":generated,"supplemental_evidence":supplemental,"current_patch_reviews":reviews,
+        "live_matrices":matrices,"generated_tables":generated,"continued_research":continued,"supplemental_evidence":supplemental,"current_patch_reviews":reviews,
         "preservation_from_commit":base,"preservation":style,
         "new_dataset_privacy":{"private_artifact_paths":private_paths,"private_key_headers":private_headers,"credential_value_matches":credential_matches,
                                "credential_scan_performed":bool(credentials)},"unit_tests":tests,"current_manuscript_pdf_sha256":sha(ROOT/"manuscript/main.pdf"),

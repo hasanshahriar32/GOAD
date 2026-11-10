@@ -1,0 +1,1624 @@
+{
+  "adjudication_sha256": "6fdad435e61f2ef2f18f2f8d449228842b49e7f6495e00ec37da52c5de141d25",
+  "counts": {
+    "correct_nonprivileged_outcomes": 20,
+    "correct_privileged_divergences": 4,
+    "outcome_checked_authentications": 24,
+    "unique_identity_links": 24
+  },
+  "detector_inputs": "events.xml, CA database stdout, observed directory template OID/name mapping and domain Admin SID; public certificate/CSR and outcome labels excluded from inference",
+  "predictions": [
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49924",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49923",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:49629"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:49629",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:49916",
+        "Q1XFER19.q1transfer.test:49524",
+        "Q1XFER19.q1transfer.test:49512",
+        "Q1XFER19.q1transfer.test:49409",
+        "Q1XFER19.q1transfer.test:49407",
+        "Q1XFER19.q1transfer.test:49401"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49922",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:49613"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:49613",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:49916",
+        "Q1XFER19.q1transfer.test:49524",
+        "Q1XFER19.q1transfer.test:49512",
+        "Q1XFER19.q1transfer.test:49409",
+        "Q1XFER19.q1transfer.test:49407",
+        "Q1XFER19.q1transfer.test:49401"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49921",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49924",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49923",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:49629"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:49629",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:49916",
+        "Q1XFER19.q1transfer.test:49524",
+        "Q1XFER19.q1transfer.test:49512",
+        "Q1XFER19.q1transfer.test:49409",
+        "Q1XFER19.q1transfer.test:49407",
+        "Q1XFER19.q1transfer.test:49401"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49922",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:49613"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:49613",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:49916",
+        "Q1XFER19.q1transfer.test:49524",
+        "Q1XFER19.q1transfer.test:49512",
+        "Q1XFER19.q1transfer.test:49409",
+        "Q1XFER19.q1transfer.test:49407",
+        "Q1XFER19.q1transfer.test:49401"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49921",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49924",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:49623"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:49623",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:49919",
+        "Q1XFER19.q1transfer.test:49584",
+        "Q1XFER19.q1transfer.test:49558",
+        "Q1XFER19.q1transfer.test:49413",
+        "Q1XFER19.q1transfer.test:49411",
+        "Q1XFER19.q1transfer.test:49404"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49923",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49922",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49921",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:49617"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:49617",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:49919",
+        "Q1XFER19.q1transfer.test:49584",
+        "Q1XFER19.q1transfer.test:49558",
+        "Q1XFER19.q1transfer.test:49413",
+        "Q1XFER19.q1transfer.test:49411",
+        "Q1XFER19.q1transfer.test:49404"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49924",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:49623"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:49623",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:49919",
+        "Q1XFER19.q1transfer.test:49584",
+        "Q1XFER19.q1transfer.test:49558",
+        "Q1XFER19.q1transfer.test:49413",
+        "Q1XFER19.q1transfer.test:49411",
+        "Q1XFER19.q1transfer.test:49404"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49923",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49922",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:49921",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:49617"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:49617",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:49919",
+        "Q1XFER19.q1transfer.test:49584",
+        "Q1XFER19.q1transfer.test:49558",
+        "Q1XFER19.q1transfer.test:49413",
+        "Q1XFER19.q1transfer.test:49411",
+        "Q1XFER19.q1transfer.test:49404"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50836",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:50564"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:50564",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:50828",
+        "Q1XFER19.q1transfer.test:50520",
+        "Q1XFER19.q1transfer.test:50485",
+        "Q1XFER19.q1transfer.test:50346",
+        "Q1XFER19.q1transfer.test:50342",
+        "Q1XFER19.q1transfer.test:50336"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50835",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50834",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:50563"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:50563",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:50828",
+        "Q1XFER19.q1transfer.test:50520",
+        "Q1XFER19.q1transfer.test:50485",
+        "Q1XFER19.q1transfer.test:50346",
+        "Q1XFER19.q1transfer.test:50342",
+        "Q1XFER19.q1transfer.test:50336"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50833",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50836",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:50564"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:50564",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:50828",
+        "Q1XFER19.q1transfer.test:50520",
+        "Q1XFER19.q1transfer.test:50485",
+        "Q1XFER19.q1transfer.test:50346",
+        "Q1XFER19.q1transfer.test:50342",
+        "Q1XFER19.q1transfer.test:50336"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50835",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50834",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:50563"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:50563",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:50828",
+        "Q1XFER19.q1transfer.test:50520",
+        "Q1XFER19.q1transfer.test:50485",
+        "Q1XFER19.q1transfer.test:50346",
+        "Q1XFER19.q1transfer.test:50342",
+        "Q1XFER19.q1transfer.test:50336"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50833",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50836",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50835",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:50549"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:50549",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:50831",
+        "Q1XFER19.q1transfer.test:50510",
+        "Q1XFER19.q1transfer.test:50489",
+        "Q1XFER19.q1transfer.test:50348",
+        "Q1XFER19.q1transfer.test:50344",
+        "Q1XFER19.q1transfer.test:50339"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50834",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50833",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:50550"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:50550",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:50831",
+        "Q1XFER19.q1transfer.test:50510",
+        "Q1XFER19.q1transfer.test:50489",
+        "Q1XFER19.q1transfer.test:50348",
+        "Q1XFER19.q1transfer.test:50344",
+        "Q1XFER19.q1transfer.test:50339"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50836",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50835",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:50549"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:50549",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:50831",
+        "Q1XFER19.q1transfer.test:50510",
+        "Q1XFER19.q1transfer.test:50489",
+        "Q1XFER19.q1transfer.test:50348",
+        "Q1XFER19.q1transfer.test:50344",
+        "Q1XFER19.q1transfer.test:50339"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50834",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:50833",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:50550"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:50550",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:50831",
+        "Q1XFER19.q1transfer.test:50510",
+        "Q1XFER19.q1transfer.test:50489",
+        "Q1XFER19.q1transfer.test:50348",
+        "Q1XFER19.q1transfer.test:50344",
+        "Q1XFER19.q1transfer.test:50339"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51710",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:51418"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:51418",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:51702",
+        "Q1XFER19.q1transfer.test:51346",
+        "Q1XFER19.q1transfer.test:51335",
+        "Q1XFER19.q1transfer.test:51205",
+        "Q1XFER19.q1transfer.test:51203",
+        "Q1XFER19.q1transfer.test:51197"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51709",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51708",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51707",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:51422"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:51422",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:51702",
+        "Q1XFER19.q1transfer.test:51346",
+        "Q1XFER19.q1transfer.test:51335",
+        "Q1XFER19.q1transfer.test:51205",
+        "Q1XFER19.q1transfer.test:51203",
+        "Q1XFER19.q1transfer.test:51197"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51710",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:51418"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:51418",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:51702",
+        "Q1XFER19.q1transfer.test:51346",
+        "Q1XFER19.q1transfer.test:51335",
+        "Q1XFER19.q1transfer.test:51205",
+        "Q1XFER19.q1transfer.test:51203",
+        "Q1XFER19.q1transfer.test:51197"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51709",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51708",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51707",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:51422"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:51422",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:51702",
+        "Q1XFER19.q1transfer.test:51346",
+        "Q1XFER19.q1transfer.test:51335",
+        "Q1XFER19.q1transfer.test:51205",
+        "Q1XFER19.q1transfer.test:51203",
+        "Q1XFER19.q1transfer.test:51197"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51710",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51709",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:51429"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:51429",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:51705",
+        "Q1XFER19.q1transfer.test:51383",
+        "Q1XFER19.q1transfer.test:51368",
+        "Q1XFER19.q1transfer.test:51209",
+        "Q1XFER19.q1transfer.test:51207",
+        "Q1XFER19.q1transfer.test:51200"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51708",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:51419"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:51419",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:51705",
+        "Q1XFER19.q1transfer.test:51383",
+        "Q1XFER19.q1transfer.test:51368",
+        "Q1XFER19.q1transfer.test:51209",
+        "Q1XFER19.q1transfer.test:51207",
+        "Q1XFER19.q1transfer.test:51200"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51707",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51710",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51709",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:51429"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:51429",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:51705",
+        "Q1XFER19.q1transfer.test:51383",
+        "Q1XFER19.q1transfer.test:51368",
+        "Q1XFER19.q1transfer.test:51209",
+        "Q1XFER19.q1transfer.test:51207",
+        "Q1XFER19.q1transfer.test:51200"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51708",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:51419"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:51419",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:51705",
+        "Q1XFER19.q1transfer.test:51383",
+        "Q1XFER19.q1transfer.test:51368",
+        "Q1XFER19.q1transfer.test:51209",
+        "Q1XFER19.q1transfer.test:51207",
+        "Q1XFER19.q1transfer.test:51200"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:51707",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52584",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52583",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:52312"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:52312",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:52576",
+        "Q1XFER19.q1transfer.test:52222",
+        "Q1XFER19.q1transfer.test:52218",
+        "Q1XFER19.q1transfer.test:52089",
+        "Q1XFER19.q1transfer.test:52085",
+        "Q1XFER19.q1transfer.test:52071"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52582",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52581",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:52314"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:52314",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:52576",
+        "Q1XFER19.q1transfer.test:52222",
+        "Q1XFER19.q1transfer.test:52218",
+        "Q1XFER19.q1transfer.test:52089",
+        "Q1XFER19.q1transfer.test:52085",
+        "Q1XFER19.q1transfer.test:52071"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52584",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52583",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:52312"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:52312",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:52576",
+        "Q1XFER19.q1transfer.test:52222",
+        "Q1XFER19.q1transfer.test:52218",
+        "Q1XFER19.q1transfer.test:52089",
+        "Q1XFER19.q1transfer.test:52085",
+        "Q1XFER19.q1transfer.test:52071"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52582",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52581",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:52314"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:52314",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:52576",
+        "Q1XFER19.q1transfer.test:52222",
+        "Q1XFER19.q1transfer.test:52218",
+        "Q1XFER19.q1transfer.test:52089",
+        "Q1XFER19.q1transfer.test:52085",
+        "Q1XFER19.q1transfer.test:52071"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52584",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:52300"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:52300",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:52579",
+        "Q1XFER19.q1transfer.test:52265",
+        "Q1XFER19.q1transfer.test:52235",
+        "Q1XFER19.q1transfer.test:52091",
+        "Q1XFER19.q1transfer.test:52087",
+        "Q1XFER19.q1transfer.test:52082"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52583",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52582",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:52298"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:52298",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:52579",
+        "Q1XFER19.q1transfer.test:52265",
+        "Q1XFER19.q1transfer.test:52235",
+        "Q1XFER19.q1transfer.test:52091",
+        "Q1XFER19.q1transfer.test:52087",
+        "Q1XFER19.q1transfer.test:52082"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52581",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52584",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:52300"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:52300",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:52579",
+        "Q1XFER19.q1transfer.test:52265",
+        "Q1XFER19.q1transfer.test:52235",
+        "Q1XFER19.q1transfer.test:52091",
+        "Q1XFER19.q1transfer.test:52087",
+        "Q1XFER19.q1transfer.test:52082"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52583",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52582",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:52298"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:52298",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:52579",
+        "Q1XFER19.q1transfer.test:52265",
+        "Q1XFER19.q1transfer.test:52235",
+        "Q1XFER19.q1transfer.test:52091",
+        "Q1XFER19.q1transfer.test:52087",
+        "Q1XFER19.q1transfer.test:52082"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:52581",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r04_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53442",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53441",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:53153"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:53153",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:53434",
+        "Q1XFER19.q1transfer.test:53107",
+        "Q1XFER19.q1transfer.test:53078",
+        "Q1XFER19.q1transfer.test:52947",
+        "Q1XFER19.q1transfer.test:52945",
+        "Q1XFER19.q1transfer.test:52939"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53440",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:53165"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:53165",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:53434",
+        "Q1XFER19.q1transfer.test:53107",
+        "Q1XFER19.q1transfer.test:53078",
+        "Q1XFER19.q1transfer.test:52947",
+        "Q1XFER19.q1transfer.test:52945",
+        "Q1XFER19.q1transfer.test:52939"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53439",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53442",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53441",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:53153"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:53153",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:53434",
+        "Q1XFER19.q1transfer.test:53107",
+        "Q1XFER19.q1transfer.test:53078",
+        "Q1XFER19.q1transfer.test:52947",
+        "Q1XFER19.q1transfer.test:52945",
+        "Q1XFER19.q1transfer.test:52939"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53440",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:53165"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:53165",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:53434",
+        "Q1XFER19.q1transfer.test:53107",
+        "Q1XFER19.q1transfer.test:53078",
+        "Q1XFER19.q1transfer.test:52947",
+        "Q1XFER19.q1transfer.test:52945",
+        "Q1XFER19.q1transfer.test:52939"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53439",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53442",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:53154"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:53154",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:53437",
+        "Q1XFER19.q1transfer.test:53123",
+        "Q1XFER19.q1transfer.test:53095",
+        "Q1XFER19.q1transfer.test:52951",
+        "Q1XFER19.q1transfer.test:52949",
+        "Q1XFER19.q1transfer.test:52942"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53441",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53440",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53439",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:53167"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:53167",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:53437",
+        "Q1XFER19.q1transfer.test:53123",
+        "Q1XFER19.q1transfer.test:53095",
+        "Q1XFER19.q1transfer.test:52951",
+        "Q1XFER19.q1transfer.test:52949",
+        "Q1XFER19.q1transfer.test:52942"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53442",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:53154"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:53154",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:53437",
+        "Q1XFER19.q1transfer.test:53123",
+        "Q1XFER19.q1transfer.test:53095",
+        "Q1XFER19.q1transfer.test:52951",
+        "Q1XFER19.q1transfer.test:52949",
+        "Q1XFER19.q1transfer.test:52942"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53441",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53440",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:53439",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:53167"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:53167",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:53437",
+        "Q1XFER19.q1transfer.test:53123",
+        "Q1XFER19.q1transfer.test:53095",
+        "Q1XFER19.q1transfer.test:52951",
+        "Q1XFER19.q1transfer.test:52949",
+        "Q1XFER19.q1transfer.test:52942"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r05_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54312",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:54025"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:54025",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:54304",
+        "Q1XFER19.q1transfer.test:53986",
+        "Q1XFER19.q1transfer.test:53937",
+        "Q1XFER19.q1transfer.test:53807",
+        "Q1XFER19.q1transfer.test:53804",
+        "Q1XFER19.q1transfer.test:53798"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54311",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:54032"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:54032",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:54304",
+        "Q1XFER19.q1transfer.test:53986",
+        "Q1XFER19.q1transfer.test:53937",
+        "Q1XFER19.q1transfer.test:53807",
+        "Q1XFER19.q1transfer.test:53804",
+        "Q1XFER19.q1transfer.test:53798"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54310",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54309",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferA_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54312",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:54025"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:54025",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:54304",
+        "Q1XFER19.q1transfer.test:53986",
+        "Q1XFER19.q1transfer.test:53937",
+        "Q1XFER19.q1transfer.test:53807",
+        "Q1XFER19.q1transfer.test:53804",
+        "Q1XFER19.q1transfer.test:53798"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54311",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:54032"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:54032",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:54304",
+        "Q1XFER19.q1transfer.test:53986",
+        "Q1XFER19.q1transfer.test:53937",
+        "Q1XFER19.q1transfer.test:53807",
+        "Q1XFER19.q1transfer.test:53804",
+        "Q1XFER19.q1transfer.test:53798"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1103"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54310",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54309",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferA_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54312",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54311",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54310",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:54016"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:54016",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:54307",
+        "Q1XFER19.q1transfer.test:53971",
+        "Q1XFER19.q1transfer.test:53959",
+        "Q1XFER19.q1transfer.test:53812",
+        "Q1XFER19.q1transfer.test:53809",
+        "Q1XFER19.q1transfer.test:53801"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54309",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:54019"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:54019",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:54307",
+        "Q1XFER19.q1transfer.test:53971",
+        "Q1XFER19.q1transfer.test:53959",
+        "Q1XFER19.q1transfer.test:53812",
+        "Q1XFER19.q1transfer.test:53809",
+        "Q1XFER19.q1transfer.test:53801"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferB_admin"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54312",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54311",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54310",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:54016"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:54016",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:54307",
+        "Q1XFER19.q1transfer.test:53971",
+        "Q1XFER19.q1transfer.test:53959",
+        "Q1XFER19.q1transfer.test:53812",
+        "Q1XFER19.q1transfer.test:53809",
+        "Q1XFER19.q1transfer.test:53801"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferB_self"
+    },
+    {
+      "auth_id": "Q1XFER19.q1transfer.test:Security:54309",
+      "identity_candidates": [
+        "Q1XFER19.q1transfer.test:Security:54019"
+      ],
+      "issuance_id": "Q1XFER19.q1transfer.test:Security:54019",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "Q1XFER19.q1transfer.test:54307",
+        "Q1XFER19.q1transfer.test:53971",
+        "Q1XFER19.q1transfer.test:53959",
+        "Q1XFER19.q1transfer.test:53812",
+        "Q1XFER19.q1transfer.test:53809",
+        "Q1XFER19.q1transfer.test:53801"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3576737527-1549231359-1615615133-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r06_Q1TransferB_self"
+    }
+  ],
+  "scope": "Log/CA-export/SID identity-only ablation; no timing, necessary-causation, or attack-intent guarantee",
+  "source_sha256": "69effb4765009ca3dcce171000d03e9c1a17468baad7211f61ea72065bb6ad77",
+  "timing": [
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.12128322900389321,
+      "trial": "r01_Q1TransferA_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.09246408699254971,
+      "trial": "r01_Q1TransferA_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.10310923898941837,
+      "trial": "r01_Q1TransferB_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.13457535099587403,
+      "trial": "r01_Q1TransferB_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.15013050600828137,
+      "trial": "r02_Q1TransferA_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.09367716500128154,
+      "trial": "r02_Q1TransferA_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.11595194600522518,
+      "trial": "r02_Q1TransferB_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.1305432350054616,
+      "trial": "r02_Q1TransferB_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.14433980100147892,
+      "trial": "r03_Q1TransferA_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.10207621900190134,
+      "trial": "r03_Q1TransferA_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.10811284800001886,
+      "trial": "r03_Q1TransferB_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.09849618400039617,
+      "trial": "r03_Q1TransferB_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.08515737201378215,
+      "trial": "r04_Q1TransferA_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.07973690699145664,
+      "trial": "r04_Q1TransferA_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.08282580599188805,
+      "trial": "r04_Q1TransferB_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.08548395498655736,
+      "trial": "r04_Q1TransferB_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.09142224601237103,
+      "trial": "r05_Q1TransferA_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.08188776099996176,
+      "trial": "r05_Q1TransferA_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.09228503599297255,
+      "trial": "r05_Q1TransferB_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.08651378798822407,
+      "trial": "r05_Q1TransferB_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.0895357069966849,
+      "trial": "r06_Q1TransferA_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.07866372600256,
+      "trial": "r06_Q1TransferA_self"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.09111867999308743,
+      "trial": "r06_Q1TransferB_admin"
+    },
+    {
+      "certificate_records": 8,
+      "input_projection_and_reasoning_seconds": 0.09298039400891867,
+      "trial": "r06_Q1TransferB_self"
+    }
+  ]
+}
