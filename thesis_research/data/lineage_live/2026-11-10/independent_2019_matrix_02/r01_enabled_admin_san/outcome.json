@@ -1,0 +1,17 @@
+{
+  "certificate_identity": {
+    "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+    "serial": "2900000007c41873009d8cc4e2000000000007",
+    "sha1": "1caf527619f9a691fedaddc8ea6f13241a228839",
+    "sha256": "a5a081fdb3683568880cb81a3168535cfd3c391dd1065119e5112e0c165da0b7",
+    "upns": [
+      "administrator@q1lab.test"
+    ]
+  },
+  "condition": "enabled_admin_san",
+  "id": "r01_enabled_admin_san",
+  "native_submission_exit": 0,
+  "privileged_san_present": true,
+  "restored": true,
+  "status": "issued_auth_attempted"
+}

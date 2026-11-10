@@ -1,0 +1,5 @@
+{
+  "status": 0,
+  "stdout": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CertSvc\\Configuration\\CertGraph-Lab-CA\\PolicyModules\\CertificateAuthority_MicrosoftDefault.Policy\\EditFlags:\r\n\r\n  EditFlags REG_DWORD = 31014e (3211598)\r\n    EDITF_REQUESTEXTENSIONLIST -- 2\r\n    EDITF_DISABLEEXTENSIONLIST -- 4\r\n    EDITF_ADDOLDKEYUSAGE -- 8\r\n    EDITF_BASICCONSTRAINTSCRITICAL -- 40 (64)\r\n    EDITF_ENABLEAKIKEYID -- 100 (256)\r\n    EDITF_ENABLEDEFAULTSMIME -- 10000 (65536)\r\n    EDITF_ENABLECHASECLIENTDC -- 100000 (1048576)\r\n    EDITF_AUDITCERTTEMPLATELOAD -- 200000 (2097152)\r\nCertUtil: -getreg command completed successfully.\r\n",
+  "stderr": ""
+}

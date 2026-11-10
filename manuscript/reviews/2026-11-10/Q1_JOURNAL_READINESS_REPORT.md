@@ -1,0 +1,22 @@
+# Q1 submission readiness: current evidence assessment
+
+The manuscript has materially stronger evidence, but it is not yet defensible to declare every Q1 submission gap closed. This is a scientific assessment rather than a journal acceptance forecast. JCR and SJR quartiles must be checked for a selected journal, category and year; neither system grades a manuscript.
+
+The detailed record is [LIVE_RESEARCH_AND_NOVELTY_UPDATE.md](../../../research_notes/2026-11-10/LIVE_RESEARCH_AND_NOVELTY_UPDATE.md). The earlier [component-study report](../../../research_notes/2026-11-10/Q1_GAP_CLOSURE_CONTINUATION.md) and [initial constraint confirmation](../../../research_notes/2026-11-10/RESEARCH_DEVELOPMENT_REPORT.md) remain relevant for their frozen studies. Their earlier lists of unperformed live work are superseded by the completed work below.
+
+| Scientific question | Evidence now available | Assessment |
+|---|---|---|
+| Can a captured certificate be linked to an actual privileged use? | Two final 12-trial matrices, 24 exact-certificate uses, six administrative outcomes, CA/public-certificate/KDC/SID checks. | Substantially strengthened in controlled laboratories. |
+| Does the tested enabling bit matter under matched inputs? | Six matched blocks across two forests, identical signed administrative CSR/key within a block, recorded policy equality and restored state. | Conditional controlled contrast supported; temporal overlap alone remains insufficient. |
+| Are comparisons actual third-party executions? | Actual Certipy 5.0.4 enumeration and three upstream Sigma rules executed through pySigma/SQLite in every final trial. | Completed for configuration-risk tasks. Full SIEM/provenance-system comparisons remain distinct. |
+| Are current patch semantics covered? | Independent Windows 2019 base 17763.4974 measured; official update installation underway in a separate writable state. | Current-patch trial results remain pending until installed builds and fresh outcomes are checked. |
+| Is gating a demonstrated general shortcut cure? | New matched augmentation audit, 6,000 verified checkpoint predictions, corrected deep-path labels. | No. The current gate misses deep positives and does not outperform the augmentation-matched additive arm in pooled accuracy. |
+| Does the static experiment validate the literal bilinear formulation? | Explicit implementation audit distinguishes feature-channel sigmoid from general bilinear edge scoring. | Separate literal implementation and stronger family-split validation are still required. |
+| Is interdiction optimal or an equilibrium solver? | Exhaustive 60-case small-graph comparison and independent check of 6,113 feasible subsets. | No. The evaluated policy is heuristic; metadata is preserved in the corrected reference, which remains suboptimal in some cases. |
+| Does the cone speed ratio preserve the same task? | The historical cone drops queried pairs; a new path-preserving projection retains every pair and its possible paths. | Historical 1,246x ratio cannot support an equal-task acceleration claim. Fair projection measurements are being integrated. |
+| Is the novelty new CA/KDC correlation or a new graph-complexity result? | Closest provenance, uncertain-query, temporal-constraint, entity-resolution and vendor detection work checked. | Those constituent ideas predate this work. The candidate contribution is certificate-specific evidence contracts and controlled evaluation. |
+| Are reported costs operationally meaningful? | Collection command envelopes and offline identity inference measured separately. | Better grounded; continuous polling, retention and production interference are not established. |
+
+The best submission direction centers the certificate-evidence problem and its falsifiable contracts. Broad GNN superiority, universal attack detection, causal attribution from time alone, and optimal autonomous remediation would overstate the artifact. Current revisions retain the article's styling, title, section structure, figures and layer count while making the scientific claims match the evidence.
+
+The work should continue with installed current-patch validation, the literal bilinear implementation boundary, stronger family-level data, matched external provenance tasks and source-compromise controls. These are research tasks, rather than cosmetic revisions. A submission-ready decision should be revisited after their results and the final compiled artifact are synchronized.

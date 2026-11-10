@@ -1,0 +1,1397 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Events xmlns:ns0="http://schemas.microsoft.com/win/2004/08/events/event"><ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:09:14.034639800Z" /><ns0:EventRecordID>192226</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x401c0c</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:09:13.279306100Z" /><ns0:EventRecordID>192217</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffe3b</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:09:12.335679300Z" /><ns0:EventRecordID>192208</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="760" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3fdec2</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:09:07.153045400Z" /><ns0:EventRecordID>192200</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="760" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1115</ns0:Data><ns0:Data Name="TargetUserName">khal.drogo</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3fc2a3</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:09:07.004412600Z" /><ns0:EventRecordID>192198</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">viserys.targaryen</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1114</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40800010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">16</ns0:Data><ns0:Data Name="IpAddress">::ffff:172.22.0.1</ns0:Data><ns0:Data Name="IpPort">40190</ns0:Data><ns0:Data Name="CertIssuerName">CertGraph-Lab-CA</ns0:Data><ns0:Data Name="CertSerialNumber">1D000000301DDC2EAD1C250846000000000030</ns0:Data><ns0:Data Name="CertThumbprint">1FD2F79976BDA6C0729B09536C03A24FD1DABABB</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:09:06.079097600Z" /><ns0:EventRecordID>192196</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3fb13e</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:09:05.472160100Z" /><ns0:EventRecordID>192191</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3f9e54</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:58.206902900Z" /><ns0:EventRecordID>191719</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">MEEREEN$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3f7c16</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{EF658B70-3D05-9049-B471-4893B215C673}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">50761</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>5136</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14081</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:57.266070800Z" /><ns0:EventRecordID>191717</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F1083C-70CC-0000-0E09-F1A6CC70DD01}" /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="OpCorrelationID">{F15BE6F6-AA6C-460A-8225-8D901AF7CA01}</ns0:Data><ns0:Data Name="AppCorrelationID">-</ns0:Data><ns0:Data Name="SubjectUserSid">S-1-5-21-3304911894-2815406861-4222388662-1115</ns0:Data><ns0:Data Name="SubjectUserName">khal.drogo</ns0:Data><ns0:Data Name="SubjectDomainName">ESSOS</ns0:Data><ns0:Data Name="SubjectLogonId">0x24996e</ns0:Data><ns0:Data Name="DSName">essos.local</ns0:Data><ns0:Data Name="DSType">%%14676</ns0:Data><ns0:Data Name="ObjectDN">CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="ObjectGUID">{DBD77AA7-45A5-45D4-8E67-5CEE1B359345}</ns0:Data><ns0:Data Name="ObjectClass">pKICertificateTemplate</ns0:Data><ns0:Data Name="AttributeLDAPDisplayName">msPKI-Certificate-Name-Flag</ns0:Data><ns0:Data Name="AttributeSyntaxOID">2.5.5.9</ns0:Data><ns0:Data Name="AttributeValue">33554432</ns0:Data><ns0:Data Name="OperationType">%%14674</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>5136</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14081</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:57.265622500Z" /><ns0:EventRecordID>191716</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F1083C-70CC-0000-0E09-F1A6CC70DD01}" /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="OpCorrelationID">{F15BE6F6-AA6C-460A-8225-8D901AF7CA01}</ns0:Data><ns0:Data Name="AppCorrelationID">-</ns0:Data><ns0:Data Name="SubjectUserSid">S-1-5-21-3304911894-2815406861-4222388662-1115</ns0:Data><ns0:Data Name="SubjectUserName">khal.drogo</ns0:Data><ns0:Data Name="SubjectDomainName">ESSOS</ns0:Data><ns0:Data Name="SubjectLogonId">0x24996e</ns0:Data><ns0:Data Name="DSName">essos.local</ns0:Data><ns0:Data Name="DSType">%%14676</ns0:Data><ns0:Data Name="ObjectDN">CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="ObjectGUID">{DBD77AA7-45A5-45D4-8E67-5CEE1B359345}</ns0:Data><ns0:Data Name="ObjectClass">pKICertificateTemplate</ns0:Data><ns0:Data Name="AttributeLDAPDisplayName">msPKI-Certificate-Name-Flag</ns0:Data><ns0:Data Name="AttributeSyntaxOID">2.5.5.9</ns0:Data><ns0:Data Name="AttributeValue">33554433</ns0:Data><ns0:Data Name="OperationType">%%14675</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:56.059074200Z" /><ns0:EventRecordID>191714</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1114</ns0:Data><ns0:Data Name="TargetUserName">viserys.targaryen</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3f6785</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:51.287408100Z" /><ns0:EventRecordID>191707</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1115</ns0:Data><ns0:Data Name="TargetUserName">khal.drogo</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3f4b58</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:50.817457200Z" /><ns0:EventRecordID>191704</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3f3a1c</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:50.358034600Z" /><ns0:EventRecordID>191700</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3f26b6</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:50.001962600Z" /><ns0:EventRecordID>191696</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3f1575</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:49.566234900Z" /><ns0:EventRecordID>191692</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="760" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3f043d</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:49.125481800Z" /><ns0:EventRecordID>191688</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3ef2f6</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:47.635356900Z" /><ns0:EventRecordID>191681</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-7</ns0:Data><ns0:Data Name="TargetUserName">ANONYMOUS LOGON</ns0:Data><ns0:Data Name="TargetDomainName">NT AUTHORITY</ns0:Data><ns0:Data Name="TargetLogonId">0x3ef2e0</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">BRAAVOS</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V1</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">50974</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1843</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:44.601227800Z" /><ns0:EventRecordID>191678</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3ee191</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:44.209548100Z" /><ns0:EventRecordID>191673</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="640" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3ecf32</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:38.389155500Z" /><ns0:EventRecordID>191552</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="760" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1114</ns0:Data><ns0:Data Name="TargetUserName">viserys.targaryen</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea552</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:37.802998100Z" /><ns0:EventRecordID>191423</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1114</ns0:Data><ns0:Data Name="TargetUserName">viserys.targaryen</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea53c</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">meereen.essos.local</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">45051</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>5136</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14081</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:37.250482100Z" /><ns0:EventRecordID>191421</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F1083C-70CC-0000-0E09-F1A6CC70DD01}" /><ns0:Execution ProcessID="584" ThreadID="760" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="OpCorrelationID">{DE12E2D8-3B31-4478-89FD-BF88C4B9A1EB}</ns0:Data><ns0:Data Name="AppCorrelationID">-</ns0:Data><ns0:Data Name="SubjectUserSid">S-1-5-21-3304911894-2815406861-4222388662-1115</ns0:Data><ns0:Data Name="SubjectUserName">khal.drogo</ns0:Data><ns0:Data Name="SubjectDomainName">ESSOS</ns0:Data><ns0:Data Name="SubjectLogonId">0x24996e</ns0:Data><ns0:Data Name="DSName">essos.local</ns0:Data><ns0:Data Name="DSType">%%14676</ns0:Data><ns0:Data Name="ObjectDN">CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="ObjectGUID">{DBD77AA7-45A5-45D4-8E67-5CEE1B359345}</ns0:Data><ns0:Data Name="ObjectClass">pKICertificateTemplate</ns0:Data><ns0:Data Name="AttributeLDAPDisplayName">msPKI-Certificate-Name-Flag</ns0:Data><ns0:Data Name="AttributeSyntaxOID">2.5.5.9</ns0:Data><ns0:Data Name="AttributeValue">33554433</ns0:Data><ns0:Data Name="OperationType">%%14674</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>5136</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14081</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:37.250150400Z" /><ns0:EventRecordID>191420</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F1083C-70CC-0000-0E09-F1A6CC70DD01}" /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="OpCorrelationID">{DE12E2D8-3B31-4478-89FD-BF88C4B9A1EB}</ns0:Data><ns0:Data Name="AppCorrelationID">-</ns0:Data><ns0:Data Name="SubjectUserSid">S-1-5-21-3304911894-2815406861-4222388662-1115</ns0:Data><ns0:Data Name="SubjectUserName">khal.drogo</ns0:Data><ns0:Data Name="SubjectDomainName">ESSOS</ns0:Data><ns0:Data Name="SubjectLogonId">0x24996e</ns0:Data><ns0:Data Name="DSName">essos.local</ns0:Data><ns0:Data Name="DSType">%%14676</ns0:Data><ns0:Data Name="ObjectDN">CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="ObjectGUID">{DBD77AA7-45A5-45D4-8E67-5CEE1B359345}</ns0:Data><ns0:Data Name="ObjectClass">pKICertificateTemplate</ns0:Data><ns0:Data Name="AttributeLDAPDisplayName">msPKI-Certificate-Name-Flag</ns0:Data><ns0:Data Name="AttributeSyntaxOID">2.5.5.9</ns0:Data><ns0:Data Name="AttributeValue">33554432</ns0:Data><ns0:Data Name="OperationType">%%14675</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:37.004555500Z" /><ns0:EventRecordID>191418</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51707</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.834620500Z" /><ns0:EventRecordID>191416</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51704</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.659691500Z" /><ns0:EventRecordID>191414</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51701</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.491000600Z" /><ns0:EventRecordID>191412</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51698</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.330196700Z" /><ns0:EventRecordID>191410</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51695</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.162671400Z" /><ns0:EventRecordID>191408</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51692</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.985846900Z" /><ns0:EventRecordID>191406</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51689</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.829856800Z" /><ns0:EventRecordID>191404</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51686</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.659872900Z" /><ns0:EventRecordID>191402</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51683</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.493919500Z" /><ns0:EventRecordID>191400</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51680</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.316412700Z" /><ns0:EventRecordID>191398</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51677</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.179993400Z" /><ns0:EventRecordID>191396</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea4ce</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51675</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.052806300Z" /><ns0:EventRecordID>191394</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51673</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.915294700Z" /><ns0:EventRecordID>191392</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2256" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea4ac</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51671</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.791245700Z" /><ns0:EventRecordID>191390</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51669</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.701265900Z" /><ns0:EventRecordID>191388</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea48f</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51667</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.565935300Z" /><ns0:EventRecordID>191386</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51665</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.434112600Z" /><ns0:EventRecordID>191384</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2256" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea472</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51663</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.307133300Z" /><ns0:EventRecordID>191382</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51661</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.143699100Z" /><ns0:EventRecordID>191263</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51658</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.020304900Z" /><ns0:EventRecordID>191261</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51655</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:33.932171200Z" /><ns0:EventRecordID>191260</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2256" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea44e</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51653</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:33.867459200Z" /><ns0:EventRecordID>191257</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2256" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea432</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51652</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:33.754446900Z" /><ns0:EventRecordID>191255</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51650</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:30.826279500Z" /><ns0:EventRecordID>191253</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea3d4</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51648</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:30.725114500Z" /><ns0:EventRecordID>191251</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2256" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea3bd</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51646</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:30.534291700Z" /><ns0:EventRecordID>191131</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-3304911894-2815406861-4222388662-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::ffff:192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51644</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:30.444875800Z" /><ns0:EventRecordID>191130</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="1628" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea39f</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51642</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:30.425899900Z" /><ns0:EventRecordID>191129</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="760" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1104</ns0:Data><ns0:Data Name="TargetUserName">BRAAVOS$</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS.LOCAL</ns0:Data><ns0:Data Name="TargetLogonId">0x3ea38b</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{1290067D-A698-B3A5-CE7A-928ABA380499}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">192.168.56.22</ns0:Data><ns0:Data Name="IpPort">51641</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:29.002715200Z" /><ns0:EventRecordID>191119</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3e85aa</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:28.126723200Z" /><ns0:EventRecordID>191110</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="760" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3e67bb</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:23.959136300Z" /><ns0:EventRecordID>191102</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1115</ns0:Data><ns0:Data Name="TargetUserName">khal.drogo</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3e4ba0</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:23.097713600Z" /><ns0:EventRecordID>191099</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="584" ThreadID="2900" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>meereen.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-3304911894-2815406861-4222388662-1000</ns0:Data><ns0:Data Name="TargetUserName">vagrant</ns0:Data><ns0:Data Name="TargetDomainName">ESSOS</ns0:Data><ns0:Data Name="TargetLogonId">0x3e37c0</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event><ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4887</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:47.692587500Z" /><ns0:EventRecordID>69102</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="RequestId">48</ns0:Data><ns0:Data Name="Requester">ESSOS\viserys.targaryen</ns0:Data><ns0:Data Name="Attributes">
+ccm:braavos.essos.local</ns0:Data><ns0:Data Name="Disposition">3</ns0:Data><ns0:Data Name="SubjectKeyIdentifier">d7 d3 92 af ff b7 e6 97 e0 a2 56 8b a8 93 b0 d7 62 cc 95 d5</ns0:Data><ns0:Data Name="Subject">CN=viserys.targaryen</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4886</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:47.668319900Z" /><ns0:EventRecordID>69101</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="RequestId">48</ns0:Data><ns0:Data Name="Requester">ESSOS\viserys.targaryen</ns0:Data><ns0:Data Name="Attributes">
+ccm:braavos.essos.local</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:37.089014600Z" /><ns0:EventRecordID>69075</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="3808" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">Administrator</ns0:Data><ns0:Data Name="TemplateVersion">4.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=Administrator,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x1023a (66106)
+  CT_FLAG_ADD_EMAIL -- 0x2
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0xa6000000 (2785017856)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_EMAIL -- 0x4000000 (67108864)
+  CT_FLAG_SUBJECT_REQUIRE_EMAIL -- 0x20000000 (536870912)
+  CT_FLAG_SUBJECT_REQUIRE_DIRECTORY_PATH -- 0x80000000 (2147483648)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 4
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = Administrator
+
+distinguishedName = Administrator
+
+pKIKeyUsage = a0
+
+displayName = Administrator
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.10.3.1 Microsoft Trust List Signing
+  1.3.6.1.4.1.311.10.3.4 Encrypting File System
+  1.3.6.1.5.5.7.3.4 Secure Email
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.917315400Z" /><ns0:EventRecordID>69070</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="3808" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">SubCA</ns0:Data><ns0:Data Name="TemplateVersion">5.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=SubCA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x102d1 (66257)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_IS_CA -- 0x80 (128)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x1 (1)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 5
+
+msPKI-Template-Minor-Revision = 1
+
+pKIMaxIssuingDepth = 0
+
+pKIDefaultKeySpec = 2
+
+pKIExpirationPeriod = 5 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = SubCA
+
+distinguishedName = SubCA
+
+pKIKeyUsage = 86
+
+displayName = Subordinate Certification Authority
+
+templateDescription = Certification authority (CA)
+
+pKIExtendedKeyUsage =
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+  2.5.29.19 Basic Constraints
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.746549600Z" /><ns0:EventRecordID>69065</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">User</ns0:Data><ns0:Data Name="TemplateVersion">3.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=User,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x1023a (66106)
+  CT_FLAG_ADD_EMAIL -- 0x2
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0xa6000000 (2785017856)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_EMAIL -- 0x4000000 (67108864)
+  CT_FLAG_SUBJECT_REQUIRE_EMAIL -- 0x20000000 (536870912)
+  CT_FLAG_SUBJECT_REQUIRE_DIRECTORY_PATH -- 0x80000000 (2147483648)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 3
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = User
+
+distinguishedName = User
+
+pKIKeyUsage = a0
+
+displayName = User
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.10.3.4 Encrypting File System
+  1.3.6.1.5.5.7.3.4 Secure Email
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1114)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1115)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DU)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\viserys.targaryen
+	Enroll
+Allow	ESSOS\khal.drogo
+	Enroll
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Domain Users
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.574226200Z" /><ns0:EventRecordID>69060</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">Machine</ns0:Data><ns0:Data Name="TemplateVersion">5.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=Machine,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10260 (66144)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x18000000 (402653184)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+  CT_FLAG_SUBJECT_REQUIRE_DNS_AS_CN -- 0x10000000 (268435456)
+
+msPKI-Enrollment-Flag = 0x20 (32)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 5
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = Machine
+
+distinguishedName = Machine
+
+pKIKeyUsage = a0
+
+displayName = Computer
+
+templateDescription = Computer
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DC)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Domain Computers
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.403178600Z" /><ns0:EventRecordID>69055</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">WebServer</ns0:Data><ns0:Data Name="TemplateVersion">4.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=WebServer,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10241 (66113)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x1 (1)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 4
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 2 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = WebServer
+
+distinguishedName = WebServer
+
+pKIKeyUsage = a0
+
+displayName = Web Server
+
+templateDescription = Computer
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.2.3.5 KDC Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+  Microsoft DH SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DU)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Domain Users
+	Enroll
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.244316800Z" /><ns0:EventRecordID>69050</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">DomainController</ns0:Data><ns0:Data Name="TemplateVersion">4.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=DomainController,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x1026c (66156)
+  CT_FLAG_ADD_OBJ_GUID -- 0x4
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x19000000 (419430400)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DIRECTORY_GUID -- 0x1000000 (16777216)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+  CT_FLAG_SUBJECT_REQUIRE_DNS_AS_CN -- 0x10000000 (268435456)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 4
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = DomainController
+
+distinguishedName = DomainController
+
+pKIKeyUsage = a0
+
+displayName = Domain Controller
+
+templateDescription = Directory e-mail replication
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-498)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;ED)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Enterprise Read-only Domain Controllers
+	Enroll
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Domain Controllers
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:36.076340700Z" /><ns0:EventRecordID>69045</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">EFS</ns0:Data><ns0:Data Name="TemplateVersion">3.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=EFS,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10238 (66104)
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x82000000 (2181038080)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_REQUIRE_DIRECTORY_PATH -- 0x80000000 (2147483648)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 3
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = EFS
+
+distinguishedName = EFS
+
+pKIKeyUsage = 20
+
+displayName = Basic EFS
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.10.3.4 Encrypting File System
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DU)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Domain Users
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.901062700Z" /><ns0:EventRecordID>69040</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">EFSRecovery</ns0:Data><ns0:Data Name="TemplateVersion">6.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=EFSRecovery,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10230 (66096)
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x82000000 (2181038080)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_REQUIRE_DIRECTORY_PATH -- 0x80000000 (2147483648)
+
+msPKI-Enrollment-Flag = 0x21 (33)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 6
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 5 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = EFSRecovery
+
+distinguishedName = EFSRecovery
+
+pKIKeyUsage = 20
+
+displayName = EFS Recovery Agent
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.10.3.4.1 File Recovery
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.745850500Z" /><ns0:EventRecordID>69035</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">KerberosAuthentication</ns0:Data><ns0:Data Name="TemplateVersion">110.0</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.33</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=KerberosAuthentication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10060 (65632)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x8400000 (138412032)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DOMAIN_DNS -- 0x400000 (4194304)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+
+msPKI-Enrollment-Flag = 0x20 (32)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 110
+
+msPKI-Template-Minor-Revision = 0
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = KerberosAuthentication
+
+distinguishedName = KerberosAuthentication
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.33 Kerberos Authentication
+
+pKIKeyUsage = a0
+
+displayName = Kerberos Authentication
+
+templateDescription = Computer
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+  1.3.6.1.4.1.311.20.2.2 Smart Card Logon
+  1.3.6.1.5.2.3.5 KDC Authentication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+  1.3.6.1.4.1.311.20.2.2 Smart Card Logon
+  1.3.6.1.5.2.3.5 KDC Authentication
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+  2.5.29.17 Subject Alternative Name
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-498)(OA;;RPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;S-1-5-21-3304911894-2815406861-4222388662-498)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;ED)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;ED)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Enterprise Read-only Domain Controllers
+	Enroll
+Allow	ESSOS\Enterprise Read-only Domain Controllers
+	Auto-Enroll
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Domain Controllers
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow	ESSOS\Domain Controllers
+	Auto-Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Auto-Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.574427200Z" /><ns0:EventRecordID>69030</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">DomainControllerAuthentication</ns0:Data><ns0:Data Name="TemplateVersion">110.0</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.28</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=DomainControllerAuthentication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10060 (65632)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x8000000 (134217728)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+
+msPKI-Enrollment-Flag = 0x20 (32)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 110
+
+msPKI-Template-Minor-Revision = 0
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = DomainControllerAuthentication
+
+distinguishedName = DomainControllerAuthentication
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.28 Domain Controller Authentication
+
+pKIKeyUsage = a0
+
+displayName = Domain Controller Authentication
+
+templateDescription = Computer
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+  1.3.6.1.4.1.311.20.2.2 Smart Card Logon
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+  DomainController
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+  1.3.6.1.4.1.311.20.2.2 Smart Card Logon
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+  2.5.29.17 Subject Alternative Name
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-498)(OA;;RPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;S-1-5-21-3304911894-2815406861-4222388662-498)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;ED)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;ED)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Enterprise Read-only Domain Controllers
+	Enroll
+Allow	ESSOS\Enterprise Read-only Domain Controllers
+	Auto-Enroll
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Domain Controllers
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow	ESSOS\Domain Controllers
+	Auto-Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Auto-Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.407316500Z" /><ns0:EventRecordID>69025</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="3808" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">DirectoryEmailReplication</ns0:Data><ns0:Data Name="TemplateVersion">115.0</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.29</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=DirectoryEmailReplication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10060 (65632)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x9000000 (150994944)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DIRECTORY_GUID -- 0x1000000 (16777216)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 115
+
+msPKI-Template-Minor-Revision = 0
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = DirectoryEmailReplication
+
+distinguishedName = DirectoryEmailReplication
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.29 Directory Email Replication
+
+pKIKeyUsage = a0
+
+displayName = Directory Email Replication
+
+templateDescription = Directory e-mail replication
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.21.19 Directory Service Email Replication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+  DomainController
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.4.1.311.21.19 Directory Service Email Replication
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+  2.5.29.17 Subject Alternative Name
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-3304911894-2815406861-4222388662-519G:S-1-5-21-3304911894-2815406861-4222388662-519D:PAI(OA;;RPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-498)(OA;;RPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;S-1-5-21-3304911894-2815406861-4222388662-498)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-519)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;ED)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;ED)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\Enterprise Read-only Domain Controllers
+	Enroll
+Allow	ESSOS\Enterprise Read-only Domain Controllers
+	Auto-Enroll
+Allow	ESSOS\Domain Admins
+	Enroll
+Allow	ESSOS\Domain Controllers
+	Enroll
+Allow	ESSOS\Enterprise Admins
+	Enroll
+Allow	ESSOS\Domain Controllers
+	Auto-Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Auto-Enroll
+Allow(0x000f00ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f00ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:35.228353300Z" /><ns0:EventRecordID>69020</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">CGPubPositive</ns0:Data><ns0:Data Name="TemplateVersion">100.4</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.100</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x20220 (131616)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_MODIFIED -- 0x20000 (131072)
+
+msPKI-Private-Key-Flag = 0x1010000 (16842752)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_2003&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x10000 (65536)
+  TEMPLATE_CLIENT_VER_XP&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x1000000 (16777216)
+
+msPKI-Certificate-Name-Flag = 0x2000001 (33554433)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 100
+
+msPKI-Template-Minor-Revision = 4
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 2
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = CGPubPositive
+
+distinguishedName = CGPubPositive
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.100
+
+pKIKeyUsage = 80
+
+displayName = CGPubPositive
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+  Microsoft Base DSS Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.1 CGPublicationPolicy
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKICriticalExtensions =
+  2.5.29.7 Subject Alternative Name
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:DAG:DAD:PAI(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1114)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1115)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1122)(A;;SWWPRC;;;S-1-5-21-3304911894-2815406861-4222388662-1115)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-1000)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\viserys.targaryen
+	Enroll
+Allow	ESSOS\khal.drogo
+	Enroll
+Allow	ESSOS\CGPublicationEnroll
+	Enroll
+Allow(0x00020028)	ESSOS\khal.drogo
+	Read
+Allow(0x000f01ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\vagrant
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.966009000Z" /><ns0:EventRecordID>69015</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">CGPubApproval</ns0:Data><ns0:Data Name="TemplateVersion">100.4</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.101</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=CGPubApproval,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x20220 (131616)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_MODIFIED -- 0x20000 (131072)
+
+msPKI-Private-Key-Flag = 0x1010000 (16842752)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_2003&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x10000 (65536)
+  TEMPLATE_CLIENT_VER_XP&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x1000000 (16777216)
+
+msPKI-Certificate-Name-Flag = 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+
+msPKI-Enrollment-Flag = 0x2 (2)
+  CT_FLAG_PEND_ALL_REQUESTS -- 0x2
+
+msPKI-Template-Schema-Version = 2
+
+revision = 100
+
+msPKI-Template-Minor-Revision = 4
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 2
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = CGPubApproval
+
+distinguishedName = CGPubApproval
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.101
+
+pKIKeyUsage = 80
+
+displayName = CGPubApproval
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+  Microsoft Base DSS Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.1 CGPublicationPolicy
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKICriticalExtensions =
+  2.5.29.7 Subject Alternative Name
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:DAG:DAD:PAI(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1122)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-1000)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\CGPublicationEnroll
+	Enroll
+Allow(0x000f01ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\vagrant
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.747219200Z" /><ns0:EventRecordID>69010</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">CGPubSignature</ns0:Data><ns0:Data Name="TemplateVersion">100.4</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.102</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=CGPubSignature,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x20220 (131616)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_MODIFIED -- 0x20000 (131072)
+
+msPKI-Private-Key-Flag = 0x1010000 (16842752)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_2003&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x10000 (65536)
+  TEMPLATE_CLIENT_VER_XP&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x1000000 (16777216)
+
+msPKI-Certificate-Name-Flag = 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 100
+
+msPKI-Template-Minor-Revision = 4
+
+msPKI-RA-Signature = 1
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 2
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = CGPubSignature
+
+distinguishedName = CGPubSignature
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.102
+
+pKIKeyUsage = 80
+
+displayName = CGPubSignature
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+  Microsoft Base DSS Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.1 CGPublicationPolicy
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKICriticalExtensions =
+  2.5.29.7 Subject Alternative Name
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:DAG:DAD:PAI(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1122)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-1000)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\CGPublicationEnroll
+	Enroll
+Allow(0x000f01ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\vagrant
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.479124800Z" /><ns0:EventRecordID>69005</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">CGPubDenied</ns0:Data><ns0:Data Name="TemplateVersion">100.4</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.103</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=CGPubDenied,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x20220 (131616)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_MODIFIED -- 0x20000 (131072)
+
+msPKI-Private-Key-Flag = 0x1010000 (16842752)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_2003&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x10000 (65536)
+  TEMPLATE_CLIENT_VER_XP&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x1000000 (16777216)
+
+msPKI-Certificate-Name-Flag = 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 100
+
+msPKI-Template-Minor-Revision = 4
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 2
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = CGPubDenied
+
+distinguishedName = CGPubDenied
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.103
+
+pKIKeyUsage = 80
+
+displayName = CGPubDenied
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+  Microsoft Base DSS Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.1 CGPublicationPolicy
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKICriticalExtensions =
+  2.5.29.7 Subject Alternative Name
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:DAG:DAD:PAI(OD;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1121)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1122)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-1000)(A;;LCRPLORC;;;AU)
+
+Deny	ESSOS\cg.publication
+	Enroll
+Allow	ESSOS\CGPublicationEnroll
+	Enroll
+Allow(0x000f01ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\vagrant
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-A5BA-3E3B0328C30D}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T05:08:34.261820900Z" /><ns0:EventRecordID>69000</ns0:EventRecordID><ns0:Correlation ActivityID="{A6F23BB5-70CC-0000-4D3C-F2A6CC70DD01}" /><ns0:Execution ProcessID="600" ThreadID="944" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>braavos.essos.local</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">CGPubNoPolicy</ns0:Data><ns0:Data Name="TemplateVersion">100.4</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.105</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=CGPubNoPolicy,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local</ns0:Data><ns0:Data Name="DCDNSName">meereen.essos.local</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x20220 (131616)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_MODIFIED -- 0x20000 (131072)
+
+msPKI-Private-Key-Flag = 0x1010000 (16842752)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_2003&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x10000 (65536)
+  TEMPLATE_CLIENT_VER_XP&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x1000000 (16777216)
+
+msPKI-Certificate-Name-Flag = 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 100
+
+msPKI-Template-Minor-Revision = 4
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 2
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = CGPubNoPolicy
+
+distinguishedName = CGPubNoPolicy
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.105
+
+pKIKeyUsage = 80
+
+displayName = CGPubNoPolicy
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+  Microsoft Base DSS Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKICriticalExtensions =
+  2.5.29.7 Subject Alternative Name
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:DAG:DAD:PAI(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1122)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-1000)(A;;LCRPLORC;;;AU)
+
+Allow	ESSOS\CGPublicationEnroll
+	Enroll
+Allow(0x000f01ff)	ESSOS\Domain Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\Enterprise Admins
+	Full Control
+Allow(0x000f01ff)	ESSOS\vagrant
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event></Events>

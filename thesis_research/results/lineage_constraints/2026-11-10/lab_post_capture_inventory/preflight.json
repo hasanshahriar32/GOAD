@@ -1,0 +1,14 @@
+{
+  "scope": "Read-only inventory in new writable overlays of original read-only disk images",
+  "hosts": {
+    "dc03": {
+      "error_type": "ConnectTimeout",
+      "error": "HTTPConnectionPool(host='172.22.0.2', port=15985): Max retries exceeded with url: /wsman (Caused by ConnectTimeoutError(<HTTPConnection(host='172.22.0.2', port=15985) at 0x7fc80de7b390>, 'Connection to 172.22.0.2 timed out. (connect timeout=3)'))"
+    },
+    "srv03": {
+      "error_type": "ConnectTimeout",
+      "error": "HTTPConnectionPool(host='172.22.0.3', port=15985): Max retries exceeded with url: /wsman (Caused by ConnectTimeoutError(<HTTPConnection(host='172.22.0.3', port=15985) at 0x7fc80de89a90>, 'Connection to 172.22.0.3 timed out. (connect timeout=3)'))"
+    }
+  },
+  "source_sha256": "488a7a9505d0572e4efed9e59273e30e89f105e7c26cef170e0e1ab01f79869c"
+}

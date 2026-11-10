@@ -1,0 +1,14 @@
+{
+  "scope": "Read-only inventory in new writable overlays of original read-only disk images",
+  "hosts": {
+    "dc03": {
+      "error_type": "ReadTimeout",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=55985): Read timed out. (read timeout=3)"
+    },
+    "srv03": {
+      "error_type": "ReadTimeout",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=56985): Read timed out. (read timeout=3)"
+    }
+  },
+  "source_sha256": "d5441ae0f43e6c2bce80ffbd1b2bf85cea46ede879c3b7be00b50e3b0861afb2"
+}

@@ -1,0 +1,10640 @@
+[
+  {
+    "budget": 3,
+    "case": 0,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 0,
+      "cut": [],
+      "feasible_subsets": 30,
+      "severed_pairs": 0
+    },
+    "legacy_adaptive_severed": 0,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n6"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.007483930996386334,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 0,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n5"
+        ],
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 185,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.014719591999892145,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 1,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n5",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 27,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.006464256002800539,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 1,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n5",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 161,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.013909208006225526,
+    "seed": 42017,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 3,
+    "case": 2,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 19,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.00407981600437779,
+    "seed": 42017,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 6,
+    "case": 2,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 99,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.008011746991542168,
+    "seed": 42017,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 3,
+    "case": 3,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 40,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.005907389990170486,
+    "seed": 42017,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 6,
+    "case": 3,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n4",
+          "n5"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 187,
+      "severed_pairs": 4
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 5,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n4",
+          "n5"
+        ],
+        [
+          "n1",
+          "n3"
+        ]
+      ],
+      "severed_pairs": 4
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.015249489995767362,
+    "seed": 42017,
+    "static_greedy_severed": 3
+  },
+  {
+    "budget": 3,
+    "case": 4,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 22,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.005003824000596069,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 4,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 134,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 5,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.013225493996287696,
+    "seed": 42017,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 3,
+    "case": 5,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 41,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0070282389933709055,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 5,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n2"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 227,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.019240652007283643,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 6,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3"
+        ]
+      ],
+      "feasible_subsets": 33,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 0,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.006551806000061333,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 6,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n3"
+        ]
+      ],
+      "feasible_subsets": 213,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.028550193004775792,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 7,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n3"
+        ]
+      ],
+      "feasible_subsets": 31,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n3"
+        ],
+        [
+          "n1",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.011437584005761892,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 7,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 4,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 215,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n3"
+        ],
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n1",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.02567945201008115,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 8,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 0,
+      "cut": [],
+      "feasible_subsets": 42,
+      "severed_pairs": 0
+    },
+    "legacy_adaptive_severed": 0,
+    "metadata_preserving_adaptive": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.013783539005089551,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 8,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 297,
+      "severed_pairs": 4
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n4",
+          "n5"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.04960716699133627,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 9,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 31,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n5",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.018453816999681294,
+    "seed": 42017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 9,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 215,
+      "severed_pairs": 4
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n5",
+          "n6"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n2",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.033042973998817615,
+    "seed": 42017,
+    "static_greedy_severed": 4
+  },
+  {
+    "budget": 3,
+    "case": 0,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 13,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 2,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.005031517008319497,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 6,
+    "case": 0,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 65,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 4,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.005685352007276379,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 3,
+    "case": 1,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 51,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0068212059995858,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 6,
+    "case": 1,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 306,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 5,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n3",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.02049510100914631,
+    "seed": 43003,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 3,
+    "case": 2,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 1,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 17,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.00858352599607315,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 6,
+    "case": 2,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 107,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.014145284003461711,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 3,
+    "case": 3,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 20,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 2,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.005370857994421385,
+    "seed": 43003,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 6,
+    "case": 3,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n5",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 118,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n5"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.010775112008559518,
+    "seed": 43003,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 3,
+    "case": 4,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 39,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.01818780100438744,
+    "seed": 43003,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 6,
+    "case": 4,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 296,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.031787251005880535,
+    "seed": 43003,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 3,
+    "case": 5,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n5",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 17,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.003424712995183654,
+    "seed": 43003,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 5,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n5",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 87,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n4",
+          "n5"
+        ],
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n0",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.007992195009137504,
+    "seed": 43003,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 6,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 45,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0052981110056862235,
+    "seed": 43003,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 6,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n6"
+        ],
+        [
+          "n2",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 218,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n6"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n2",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.016055850996053778,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 3,
+    "case": 7,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 16,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0024292180023621768,
+    "seed": 43003,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 7,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n4",
+          "n3"
+        ]
+      ],
+      "feasible_subsets": 71,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 4,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.006431394998799078,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 3,
+    "case": 8,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 1,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 17,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 1,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.003563837002729997,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 6,
+    "case": 8,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n6",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 87,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n1",
+          "n3"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.008113195988698862,
+    "seed": 43003,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 3,
+    "case": 9,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 25,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n5"
+        ],
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n3",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.00625946099171415,
+    "seed": 43003,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 6,
+    "case": 9,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 142,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n5"
+        ],
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.01256172001012601,
+    "seed": 43003,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 3,
+    "case": 0,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 24,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0038409889966715127,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 0,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 118,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.008649661991512403,
+    "seed": 44017,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 3,
+    "case": 1,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 0,
+      "cut": [],
+      "feasible_subsets": 19,
+      "severed_pairs": 0
+    },
+    "legacy_adaptive_severed": 0,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n2"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0035367709933780134,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 1,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n2"
+        ],
+        [
+          "n3",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 99,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 4,
+      "cut": [
+        [
+          "n1",
+          "n2"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n6",
+          "n0"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.007664038988878019,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 2,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 0,
+      "cut": [],
+      "feasible_subsets": 23,
+      "severed_pairs": 0
+    },
+    "legacy_adaptive_severed": 0,
+    "metadata_preserving_adaptive": {
+      "cost": 1,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.003382631010026671,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 2,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 4,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 117,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n3",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.00852525798836723,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 3,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 31,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.01723451999714598,
+    "seed": 44017,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 6,
+    "case": 3,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n4",
+          "n5"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 224,
+      "severed_pairs": 4
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n2",
+          "n5"
+        ],
+        [
+          "n4",
+          "n5"
+        ],
+        [
+          "n1",
+          "n3"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.028570139009389095,
+    "seed": 44017,
+    "static_greedy_severed": 3
+  },
+  {
+    "budget": 3,
+    "case": 4,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 23,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0036138459981884807,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 4,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 117,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.008822497999062762,
+    "seed": 44017,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 3,
+    "case": 5,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n5",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n4",
+          "n5"
+        ]
+      ],
+      "feasible_subsets": 38,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.00992334500188008,
+    "seed": 44017,
+    "static_greedy_severed": 3
+  },
+  {
+    "budget": 6,
+    "case": 5,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n5",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 5,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 258,
+      "severed_pairs": 4
+    },
+    "legacy_adaptive_severed": 4,
+    "metadata_preserving_adaptive": {
+      "cost": 5,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2"
+        ]
+      ],
+      "severed_pairs": 4
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.023636489000637084,
+    "seed": 44017,
+    "static_greedy_severed": 3
+  },
+  {
+    "budget": 3,
+    "case": 6,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 2,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 19,
+      "severed_pairs": 1
+    },
+    "legacy_adaptive_severed": 1,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.003567652005585842,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 6,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n3",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 4,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n0",
+          "n4"
+        ]
+      ],
+      "feasible_subsets": 99,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n0",
+          "n2"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.00782000100298319,
+    "seed": 44017,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 3,
+    "case": 7,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 22,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n3",
+          "n6"
+        ]
+      ],
+      "severed_pairs": 2
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0029965349967824295,
+    "seed": 44017,
+    "static_greedy_severed": 1
+  },
+  {
+    "budget": 6,
+    "case": 7,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n3",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": false,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n5",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n6",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n3",
+          "n2"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 95,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 3,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n4",
+          "n6"
+        ],
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n3",
+          "n2"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.006804730001022108,
+    "seed": 44017,
+    "static_greedy_severed": 2
+  },
+  {
+    "budget": 3,
+    "case": 8,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 0,
+      "cut": [],
+      "feasible_subsets": 8,
+      "severed_pairs": 0
+    },
+    "legacy_adaptive_severed": 0,
+    "metadata_preserving_adaptive": {
+      "cost": 2,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.0014728380047017708,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 8,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n1",
+        "n0",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n2",
+        "n1",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": false,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 0,
+      "cut": [],
+      "feasible_subsets": 39,
+      "severed_pairs": 0
+    },
+    "legacy_adaptive_severed": 0,
+    "metadata_preserving_adaptive": {
+      "cost": 4,
+      "cut": [
+        [
+          "n0",
+          "n2"
+        ],
+        [
+          "n1",
+          "n5"
+        ]
+      ],
+      "severed_pairs": 0
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.003411524012335576,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 3,
+    "case": 9,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 3,
+      "cut": [
+        [
+          "n3",
+          "n6"
+        ],
+        [
+          "n4",
+          "n6"
+        ]
+      ],
+      "feasible_subsets": 78,
+      "severed_pairs": 2
+    },
+    "legacy_adaptive_severed": 0,
+    "metadata_preserving_adaptive": {
+      "cost": 3,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ]
+      ],
+      "severed_pairs": 1
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.020038924005348235,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  },
+  {
+    "budget": 6,
+    "case": 9,
+    "edges": [
+      [
+        "n0",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n0",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n0",
+        "n1",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n1",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n4",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n1",
+        "n2",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n2",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n3",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 2,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n5",
+        {
+          "blockable": true,
+          "cost": 3,
+          "rel": "enrolls"
+        }
+      ],
+      [
+        "n4",
+        "n6",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ],
+      [
+        "n4",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "write_dacl"
+        }
+      ],
+      [
+        "n6",
+        "n3",
+        {
+          "blockable": true,
+          "cost": 1,
+          "rel": "member_of"
+        }
+      ]
+    ],
+    "exact": {
+      "cost": 6,
+      "cut": [
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n1",
+          "n2"
+        ]
+      ],
+      "feasible_subsets": 656,
+      "severed_pairs": 3
+    },
+    "legacy_adaptive_severed": 2,
+    "metadata_preserving_adaptive": {
+      "cost": 6,
+      "cut": [
+        [
+          "n1",
+          "n3"
+        ],
+        [
+          "n1",
+          "n4"
+        ],
+        [
+          "n0",
+          "n4"
+        ],
+        [
+          "n1",
+          "n2"
+        ]
+      ],
+      "severed_pairs": 3
+    },
+    "nodes": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "n4",
+      "n5",
+      "n6"
+    ],
+    "pairs": [
+      [
+        "n0",
+        "n5"
+      ],
+      [
+        "n0",
+        "n6"
+      ],
+      [
+        "n1",
+        "n5"
+      ],
+      [
+        "n1",
+        "n6"
+      ]
+    ],
+    "seconds": 0.05087294799159281,
+    "seed": 44017,
+    "static_greedy_severed": 0
+  }
+]

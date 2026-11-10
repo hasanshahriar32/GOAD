@@ -1,0 +1,171 @@
+{
+  "adjudication_sha256": "6ca180336c3889388d00a9311663e3e669e0db7017a23408b9aea34e9dbf3a4f",
+  "counts": {
+    "outcome_checked_authentications": 12,
+    "principal_abstentions": 12,
+    "unique_identity_links": 0
+  },
+  "detector_inputs": "events.xml, CA database stdout and collected domain Admin SID; public certificate/CSR and outcome labels excluded from inference",
+  "predictions": [
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:20095",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:20324",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:20551",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:20790",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:21470",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:21254",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:21708",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:21019",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:22406",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:22635",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:22191",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:21961",
+      "identity_candidates": [],
+      "privileged_identity_divergence": null,
+      "status": "identity_unresolved",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_rollback_before_enroll"
+    }
+  ],
+  "scope": "Log/CA-export/SID identity-only ablation; no timing, necessary-causation, or attack-intent guarantee",
+  "source_sha256": "3dccac1e4e93e56ce94b576e956c7937ebb7013683318ed018b805aebedf581f",
+  "timing": [
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.00910348400066141,
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.007072674998198636,
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.008148312001139857,
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.00835566500609275,
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.006997644013608806,
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.0077033770066918805,
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.007393024003249593,
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.014517453004373237,
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.008790894993580878,
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.008731092006200925,
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.008104886990622617,
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.008659234998049214,
+      "trial": "r03_rollback_before_enroll"
+    }
+  ]
+}

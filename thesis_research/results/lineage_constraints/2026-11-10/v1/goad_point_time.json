@@ -1,0 +1,201 @@
+{
+  "assumptions": {
+    "clock_error_seconds_per_record": 0,
+    "measured_clock_bound": false,
+    "mutation_attribution_evaluated": false,
+    "single_CA_issuer_context": "CertGraph-Lab-CA"
+  },
+  "evidence_scope": "Archived observations only; no independently adjudicated attack labels or recall estimate.",
+  "traces": [
+    {
+      "certificate_auth_records": 1,
+      "decision_status_counts": {
+        "no_consistent_candidate": 1
+      },
+      "decisions": [
+        {
+          "auth_id": "meereen.essos.local:Security:163080",
+          "candidate_ids": [],
+          "evidence_ids": [],
+          "exposure": "unresolved",
+          "issuance_id": null,
+          "principal_divergence": null,
+          "status": "no_consistent_candidate",
+          "window_ids": []
+        }
+      ],
+      "event_counts": {
+        "4624": 47,
+        "4768": 18,
+        "4769": 17,
+        "4886": 1,
+        "4887": 1,
+        "5136": 4
+      },
+      "failed_certificate_auth_records": 0,
+      "filename": "trace_asn1_san_concealment.xml",
+      "raw_events": 88
+    },
+    {
+      "certificate_auth_records": 0,
+      "decision_status_counts": {},
+      "decisions": [],
+      "event_counts": {
+        "4624": 4,
+        "5136": 2
+      },
+      "failed_certificate_auth_records": 0,
+      "filename": "trace_benign_admin_typo_rollback.xml",
+      "raw_events": 6
+    },
+    {
+      "certificate_auth_records": 1,
+      "decision_status_counts": {
+        "no_consistent_candidate": 1
+      },
+      "decisions": [
+        {
+          "auth_id": "meereen.essos.local:Security:163581",
+          "candidate_ids": [],
+          "evidence_ids": [],
+          "exposure": "unresolved",
+          "issuance_id": null,
+          "principal_divergence": null,
+          "status": "no_consistent_candidate",
+          "window_ids": []
+        }
+      ],
+      "event_counts": {
+        "4624": 47,
+        "4768": 18,
+        "4769": 17,
+        "4886": 1,
+        "4887": 1,
+        "5136": 5
+      },
+      "failed_certificate_auth_records": 0,
+      "filename": "trace_benign_normal_enrollment.xml",
+      "raw_events": 89
+    },
+    {
+      "certificate_auth_records": 1,
+      "decision_status_counts": {
+        "no_consistent_candidate": 1
+      },
+      "decisions": [
+        {
+          "auth_id": "meereen.essos.local:Security:160947",
+          "candidate_ids": [],
+          "evidence_ids": [],
+          "exposure": "unresolved",
+          "issuance_id": null,
+          "principal_divergence": null,
+          "status": "no_consistent_candidate",
+          "window_ids": []
+        }
+      ],
+      "event_counts": {
+        "4624": 50,
+        "4768": 18,
+        "4769": 18,
+        "4886": 1,
+        "4887": 1,
+        "5136": 2
+      },
+      "failed_certificate_auth_records": 0,
+      "filename": "trace_esc4_rollback_full.xml",
+      "raw_events": 90
+    },
+    {
+      "certificate_auth_records": 1,
+      "decision_status_counts": {
+        "failed_or_unknown_authentication": 1
+      },
+      "decisions": [
+        {
+          "auth_id": "meereen.essos.local:Security:162479",
+          "candidate_ids": [],
+          "evidence_ids": [],
+          "exposure": "unresolved",
+          "issuance_id": null,
+          "principal_divergence": null,
+          "status": "failed_or_unknown_authentication",
+          "window_ids": []
+        }
+      ],
+      "event_counts": {
+        "4624": 93,
+        "4768": 39,
+        "4769": 38,
+        "4886": 1,
+        "4887": 1
+      },
+      "failed_certificate_auth_records": 1,
+      "filename": "trace_esc6_ca_flag_abuse.xml",
+      "raw_events": 172
+    },
+    {
+      "certificate_auth_records": 1,
+      "decision_status_counts": {
+        "no_consistent_candidate": 1
+      },
+      "decisions": [
+        {
+          "auth_id": "meereen.essos.local:Security:161444",
+          "candidate_ids": [],
+          "evidence_ids": [],
+          "exposure": "unresolved",
+          "issuance_id": null,
+          "principal_divergence": null,
+          "status": "no_consistent_candidate",
+          "window_ids": []
+        }
+      ],
+      "event_counts": {
+        "4624": 48,
+        "4768": 18,
+        "4769": 17,
+        "4886": 1,
+        "4887": 1,
+        "5136": 9
+      },
+      "failed_certificate_auth_records": 0,
+      "filename": "trace_esc9_upn_swap_rollback.xml",
+      "raw_events": 94
+    },
+    {
+      "certificate_auth_records": 1,
+      "decision_status_counts": {
+        "resolved": 1
+      },
+      "decisions": [
+        {
+          "auth_id": "meereen.essos.local:Security:165486",
+          "candidate_ids": [
+            "braavos.essos.local:Security:64623"
+          ],
+          "evidence_ids": [
+            "braavos.essos.local:Security:64623",
+            "bridge:CertGraph-Lab-CA:23",
+            "meereen.essos.local:Security:165486"
+          ],
+          "exposure": "no_observed_overlap",
+          "issuance_id": "braavos.essos.local:Security:64623",
+          "principal_divergence": true,
+          "status": "resolved",
+          "window_ids": []
+        }
+      ],
+      "event_counts": {
+        "4624": 23,
+        "4768": 18,
+        "4886": 1,
+        "4887": 1,
+        "5136": 4
+      },
+      "failed_certificate_auth_records": 0,
+      "filename": "trace_split_actor_delayed_pkinit.xml",
+      "raw_events": 47
+    }
+  ]
+}

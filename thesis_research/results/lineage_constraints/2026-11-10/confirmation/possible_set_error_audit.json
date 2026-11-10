@@ -1,0 +1,159 @@
+{
+  "scope": "Post-confirmation error analysis only; no engine or generator change. Compared raw bridge fields with saved latent physical truth, without importing engine or simulator.",
+  "possible_set_miss_count": 17,
+  "cases": [
+    {
+      "case_id": "s2011:randomized_mix:52",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s2011:randomized_mix:52:issuance:2",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s2011:randomized_mix:52:bridge:2"
+      ]
+    },
+    {
+      "case_id": "s2011:randomized_mix:139",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s2011:randomized_mix:139:issuance:5",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s2011:randomized_mix:139:bridge:5"
+      ]
+    },
+    {
+      "case_id": "s2011:randomized_mix:342",
+      "status": "insufficient_identity",
+      "true_issuance_id": "s2011:randomized_mix:342:issuance:2",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s2011:randomized_mix:342:bridge:2"
+      ]
+    },
+    {
+      "case_id": "s3019:randomized_mix:88",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s3019:randomized_mix:88:issuance:0",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s3019:randomized_mix:88:bridge:0"
+      ]
+    },
+    {
+      "case_id": "s3019:randomized_mix:145",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s3019:randomized_mix:145:issuance:1",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s3019:randomized_mix:145:bridge:1"
+      ]
+    },
+    {
+      "case_id": "s3019:randomized_mix:267",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s3019:randomized_mix:267:issuance:3",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s3019:randomized_mix:267:bridge:3"
+      ]
+    },
+    {
+      "case_id": "s3019:randomized_mix:276",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s3019:randomized_mix:276:issuance:3",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s3019:randomized_mix:276:bridge:3"
+      ]
+    },
+    {
+      "case_id": "s3019:randomized_mix:391",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s3019:randomized_mix:391:issuance:1",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s3019:randomized_mix:391:bridge:1"
+      ]
+    },
+    {
+      "case_id": "s4021:randomized_mix:162",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s4021:randomized_mix:162:issuance:1",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s4021:randomized_mix:162:bridge:1"
+      ]
+    },
+    {
+      "case_id": "s4021:randomized_mix:316",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s4021:randomized_mix:316:issuance:3",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s4021:randomized_mix:316:bridge:3"
+      ]
+    },
+    {
+      "case_id": "s5023:randomized_mix:19",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s5023:randomized_mix:19:issuance:4",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s5023:randomized_mix:19:bridge:4"
+      ]
+    },
+    {
+      "case_id": "s5023:randomized_mix:178",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s5023:randomized_mix:178:issuance:2",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s5023:randomized_mix:178:bridge:2"
+      ]
+    },
+    {
+      "case_id": "s5023:randomized_mix:209",
+      "status": "insufficient_identity",
+      "true_issuance_id": "s5023:randomized_mix:209:issuance:0",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s5023:randomized_mix:209:bridge:0"
+      ]
+    },
+    {
+      "case_id": "s6029:randomized_mix:71",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s6029:randomized_mix:71:issuance:2",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s6029:randomized_mix:71:bridge:2"
+      ]
+    },
+    {
+      "case_id": "s6029:randomized_mix:293",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s6029:randomized_mix:293:issuance:8",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s6029:randomized_mix:293:bridge:8"
+      ]
+    },
+    {
+      "case_id": "s6029:randomized_mix:316",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s6029:randomized_mix:316:issuance:4",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s6029:randomized_mix:316:bridge:4"
+      ]
+    },
+    {
+      "case_id": "s6029:randomized_mix:317",
+      "status": "no_consistent_candidate",
+      "true_issuance_id": "s6029:randomized_mix:317:issuance:0",
+      "issuance_thumbprint_missing": true,
+      "bad_bridge_thumbprint_ids": [
+        "s6029:randomized_mix:317:bridge:0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+{
+  "scope": "Read-only inventory in new writable overlays of original read-only disk images",
+  "hosts": {
+    "dc03": {
+      "inventory_returncode": 0,
+      "inventory": {
+        "computer": "MEEREEN",
+        "utc": "2026-11-09T23:29:24.8141425Z",
+        "os": "Microsoft Windows Server 2016 Standard Evaluation",
+        "version": "10.0.14393",
+        "build": "14393",
+        "ca_service": "absent",
+        "ca_name": null,
+        "network": [
+          {
+            "InterfaceAlias": "Ethernet 5",
+            "IPAddress": "10.20.0.15",
+            "PrefixLength": 24
+          },
+          {
+            "InterfaceAlias": "Ethernet 4",
+            "IPAddress": "192.168.56.23",
+            "PrefixLength": 24
+          },
+          {
+            "InterfaceAlias": "Ethernet 3",
+            "IPAddress": "10.0.2.15",
+            "PrefixLength": 24
+          },
+          {
+            "InterfaceAlias": "Loopback Pseudo-Interface 1",
+            "IPAddress": "127.0.0.1",
+            "PrefixLength": 8
+          }
+        ],
+        "templates": [
+          {
+            "Name": "User",
+            "DistinguishedName": "CN=User,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.1",
+            "msPKI-Certificate-Name-Flag": -1509949440,
+            "msPKI-Enrollment-Flag": 41,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.10.3.4",
+              "1.3.6.1.5.5.7.3.4",
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "UserSignature",
+            "DistinguishedName": "CN=UserSignature,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.2",
+            "msPKI-Certificate-Name-Flag": -1509949440,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.4",
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "SmartcardUser",
+            "DistinguishedName": "CN=SmartcardUser,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.3",
+            "msPKI-Certificate-Name-Flag": -1509949440,
+            "msPKI-Enrollment-Flag": 9,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.4",
+              "1.3.6.1.5.5.7.3.2",
+              "1.3.6.1.4.1.311.20.2.2"
+            ]
+          },
+          {
+            "Name": "ClientAuth",
+            "DistinguishedName": "CN=ClientAuth,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.4",
+            "msPKI-Certificate-Name-Flag": -2113929216,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "SmartcardLogon",
+            "DistinguishedName": "CN=SmartcardLogon,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.5",
+            "msPKI-Certificate-Name-Flag": -2113929216,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2",
+              "1.3.6.1.4.1.311.20.2.2"
+            ]
+          },
+          {
+            "Name": "EFS",
+            "DistinguishedName": "CN=EFS,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.6",
+            "msPKI-Certificate-Name-Flag": -2113929216,
+            "msPKI-Enrollment-Flag": 41,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.10.3.4"
+            ]
+          },
+          {
+            "Name": "Administrator",
+            "DistinguishedName": "CN=Administrator,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.7",
+            "msPKI-Certificate-Name-Flag": -1509949440,
+            "msPKI-Enrollment-Flag": 41,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.10.3.1",
+              "1.3.6.1.4.1.311.10.3.4",
+              "1.3.6.1.5.5.7.3.4",
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "EFSRecovery",
+            "DistinguishedName": "CN=EFSRecovery,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.8",
+            "msPKI-Certificate-Name-Flag": -2113929216,
+            "msPKI-Enrollment-Flag": 33,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.10.3.4.1"
+            ]
+          },
+          {
+            "Name": "CodeSigning",
+            "DistinguishedName": "CN=CodeSigning,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.9",
+            "msPKI-Certificate-Name-Flag": -2113929216,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.3"
+            ]
+          },
+          {
+            "Name": "CTLSigning",
+            "DistinguishedName": "CN=CTLSigning,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.10",
+            "msPKI-Certificate-Name-Flag": -2113929216,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.10.3.1"
+            ]
+          },
+          {
+            "Name": "EnrollmentAgent",
+            "DistinguishedName": "CN=EnrollmentAgent,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.11",
+            "msPKI-Certificate-Name-Flag": -2113929216,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.20.2.1"
+            ]
+          },
+          {
+            "Name": "EnrollmentAgentOffline",
+            "DistinguishedName": "CN=EnrollmentAgentOffline,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.12",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.20.2.1"
+            ]
+          },
+          {
+            "Name": "MachineEnrollmentAgent",
+            "DistinguishedName": "CN=MachineEnrollmentAgent,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.13",
+            "msPKI-Certificate-Name-Flag": 402653184,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.20.2.1"
+            ]
+          },
+          {
+            "Name": "Machine",
+            "DistinguishedName": "CN=Machine,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.14",
+            "msPKI-Certificate-Name-Flag": 402653184,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2",
+              "1.3.6.1.5.5.7.3.1"
+            ]
+          },
+          {
+            "Name": "DomainController",
+            "DistinguishedName": "CN=DomainController,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.15",
+            "msPKI-Certificate-Name-Flag": 419430400,
+            "msPKI-Enrollment-Flag": 41,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2",
+              "1.3.6.1.5.5.7.3.1"
+            ]
+          },
+          {
+            "Name": "WebServer",
+            "DistinguishedName": "CN=WebServer,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.16",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.2.3.5",
+              "1.3.6.1.5.5.7.3.1"
+            ]
+          },
+          {
+            "Name": "CA",
+            "DistinguishedName": "CN=CA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.17",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": []
+          },
+          {
+            "Name": "SubCA",
+            "DistinguishedName": "CN=SubCA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.18",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": []
+          },
+          {
+            "Name": "IPSECIntermediateOnline",
+            "DistinguishedName": "CN=IPSECIntermediateOnline,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.19",
+            "msPKI-Certificate-Name-Flag": 402653184,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.8.2.2"
+            ]
+          },
+          {
+            "Name": "IPSECIntermediateOffline",
+            "DistinguishedName": "CN=IPSECIntermediateOffline,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.20",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.8.2.2"
+            ]
+          },
+          {
+            "Name": "OfflineRouter",
+            "DistinguishedName": "CN=OfflineRouter,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.21",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "CEPEncryption",
+            "DistinguishedName": "CN=CEPEncryption,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.22",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.20.2.1"
+            ]
+          },
+          {
+            "Name": "ExchangeUser",
+            "DistinguishedName": "CN=ExchangeUser,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.23",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 1,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.4"
+            ]
+          },
+          {
+            "Name": "ExchangeUserSignature",
+            "DistinguishedName": "CN=ExchangeUserSignature,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.24",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.4"
+            ]
+          },
+          {
+            "Name": "CrossCA",
+            "DistinguishedName": "CN=CrossCA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.25",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 8,
+            "pKIExtendedKeyUsage": []
+          },
+          {
+            "Name": "CAExchange",
+            "DistinguishedName": "CN=CAExchange,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.26",
+            "msPKI-Certificate-Name-Flag": 1,
+            "msPKI-Enrollment-Flag": 1,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.21.5"
+            ]
+          },
+          {
+            "Name": "KeyRecoveryAgent",
+            "DistinguishedName": "CN=KeyRecoveryAgent,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.27",
+            "msPKI-Certificate-Name-Flag": -2113929216,
+            "msPKI-Enrollment-Flag": 39,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.21.6"
+            ]
+          },
+          {
+            "Name": "DomainControllerAuthentication",
+            "DistinguishedName": "CN=DomainControllerAuthentication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.28",
+            "msPKI-Certificate-Name-Flag": 134217728,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2",
+              "1.3.6.1.5.5.7.3.1",
+              "1.3.6.1.4.1.311.20.2.2"
+            ]
+          },
+          {
+            "Name": "DirectoryEmailReplication",
+            "DistinguishedName": "CN=DirectoryEmailReplication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.29",
+            "msPKI-Certificate-Name-Flag": 150994944,
+            "msPKI-Enrollment-Flag": 41,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.4.1.311.21.19"
+            ]
+          },
+          {
+            "Name": "Workstation",
+            "DistinguishedName": "CN=Workstation,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.30",
+            "msPKI-Certificate-Name-Flag": 134217728,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "RASAndIASServer",
+            "DistinguishedName": "CN=RASAndIASServer,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.31",
+            "msPKI-Certificate-Name-Flag": 1207959552,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2",
+              "1.3.6.1.5.5.7.3.1"
+            ]
+          },
+          {
+            "Name": "OCSPResponseSigning",
+            "DistinguishedName": "CN=OCSPResponseSigning,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.32",
+            "msPKI-Certificate-Name-Flag": 402653184,
+            "msPKI-Enrollment-Flag": 20480,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.9"
+            ]
+          },
+          {
+            "Name": "KerberosAuthentication",
+            "DistinguishedName": "CN=KerberosAuthentication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.1.33",
+            "msPKI-Certificate-Name-Flag": 138412032,
+            "msPKI-Enrollment-Flag": 32,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2",
+              "1.3.6.1.5.5.7.3.1",
+              "1.3.6.1.4.1.311.20.2.2",
+              "1.3.6.1.5.2.3.5"
+            ]
+          },
+          {
+            "Name": "CGPubPositive",
+            "DistinguishedName": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.100",
+            "msPKI-Certificate-Name-Flag": 33554432,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "CGPubApproval",
+            "DistinguishedName": "CN=CGPubApproval,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.101",
+            "msPKI-Certificate-Name-Flag": 33554432,
+            "msPKI-Enrollment-Flag": 2,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "CGPubSignature",
+            "DistinguishedName": "CN=CGPubSignature,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.102",
+            "msPKI-Certificate-Name-Flag": 33554432,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "CGPubDenied",
+            "DistinguishedName": "CN=CGPubDenied,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.103",
+            "msPKI-Certificate-Name-Flag": 33554432,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "CGPubUnpublished",
+            "DistinguishedName": "CN=CGPubUnpublished,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.104",
+            "msPKI-Certificate-Name-Flag": 33554432,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          },
+          {
+            "Name": "CGPubNoPolicy",
+            "DistinguishedName": "CN=CGPubNoPolicy,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+            "msPKI-Cert-Template-OID": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.105",
+            "msPKI-Certificate-Name-Flag": 33554432,
+            "msPKI-Enrollment-Flag": 0,
+            "pKIExtendedKeyUsage": [
+              "1.3.6.1.5.5.7.3.2"
+            ]
+          }
+        ]
+      },
+      "clock_samples": [
+        {
+          "local_before": 1794266965.2237537,
+          "local_after": 1794266965.5311964,
+          "remote_utc": 1794266965.611,
+          "offset_lower_seconds": 0.0798037052154541,
+          "offset_upper_seconds": 0.38724637031555176
+        },
+        {
+          "local_before": 1794266965.5312016,
+          "local_after": 1794266965.841995,
+          "remote_utc": 1794266965.923,
+          "offset_lower_seconds": 0.08100509643554688,
+          "offset_upper_seconds": 0.3917984962463379
+        },
+        {
+          "local_before": 1794266965.841999,
+          "local_after": 1794266966.14893,
+          "remote_utc": 1794266966.236,
+          "offset_lower_seconds": 0.08706998825073242,
+          "offset_upper_seconds": 0.3940010070800781
+        }
+      ],
+      "clock_offset_intersection_seconds": [
+        0.08706998825073242,
+        0.38724637031555176
+      ],
+      "clock_assumptions": "Constant guest-host offset during each request, trusted clocks, and timestamp evaluation inside the measured request/response bracket. Not an NTP drift guarantee."
+    },
+    "srv03": {
+      "inventory_returncode": 1,
+      "clock_samples": [
+        {
+          "local_before": 1794266969.221001,
+          "local_after": 1794266969.5564363,
+          "remote_utc": 1794266969.604,
+          "offset_lower_seconds": 0.047563791275024414,
+          "offset_upper_seconds": 0.3829991817474365
+        },
+        {
+          "local_before": 1794266969.5564408,
+          "local_after": 1794266969.8592682,
+          "remote_utc": 1794266969.948,
+          "offset_lower_seconds": 0.08873176574707031,
+          "offset_upper_seconds": 0.3915591239929199
+        },
+        {
+          "local_before": 1794266969.8592725,
+          "local_after": 1794266970.199914,
+          "remote_utc": 1794266970.291,
+          "offset_lower_seconds": 0.09108591079711914,
+          "offset_upper_seconds": 0.43172740936279297
+        }
+      ],
+      "clock_offset_intersection_seconds": [
+        0.09108591079711914,
+        0.3829991817474365
+      ],
+      "clock_assumptions": "Constant guest-host offset during each request, trusted clocks, and timestamp evaluation inside the measured request/response bracket. Not an NTP drift guarantee."
+    }
+  },
+  "source_sha256": "e8c0fc0026b93dcfdb63a61366c67ff9f5fb6e52a990e55cd1c775da1666e022"
+}

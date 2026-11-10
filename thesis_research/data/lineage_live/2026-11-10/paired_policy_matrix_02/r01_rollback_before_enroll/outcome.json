@@ -1,0 +1,18 @@
+{
+  "certificate_identity": {
+    "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+    "serial": "1d0000002943aff07cdac4b38a000000000029",
+    "sha1": "dbb6137aa6d5562dbcb14ec4ed2b412cefade021",
+    "sha256": "a0733e398a0a31b4a69a1c9584cabb07703685b5afa565fc0bae80ce236eef4b",
+    "upns": [
+      "viserys.targaryen@essos.local"
+    ]
+  },
+  "condition": "rollback_before_enroll",
+  "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+  "id": "r01_rollback_before_enroll",
+  "native_submission_exit": 0,
+  "privileged_san_present": false,
+  "restored": true,
+  "status": "issued_auth_attempted"
+}

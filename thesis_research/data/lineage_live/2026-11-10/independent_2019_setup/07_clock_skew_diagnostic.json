@@ -1,0 +1,11 @@
+{
+  "status_code": 0,
+  "host_before": 1794307902.7012463,
+  "host_after": 1794307904.849081,
+  "stdout": "{\"Id\":\"UTC\",\"BaseUtcOffset\":{\"Ticks\":0,\"Days\":0,\"Hours\":0,\"Milliseconds\":0,\"Minutes\":0,\"Seconds\":0,\"TotalDays\":0,\"TotalHours\":0,\"TotalMilliseconds\":0,\"TotalMinutes\":0,\"TotalSeconds\":0}}\r\n2026-11-10T06:50:54.4660011Z\r\nLeap Indicator: 0(no warning)\nStratum: 1 (primary reference - syncd by radio clock)\nPrecision: -23 (119.209ns per tick)\nRoot Delay: 0.0000000s\nRoot Dispersion: 10.0000000s\nReferenceId: 0x4C4F434C (source name:  \"LOCL\")\nLast Successful Sync Time: 11/10/2026 5:23:42 AM\nSource: Local CMOS Clock\nPoll Interval: 6 (64s)\n\n__Q1_PHASE_COMPLETE__\r\n",
+  "stderr": "",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": true
+}

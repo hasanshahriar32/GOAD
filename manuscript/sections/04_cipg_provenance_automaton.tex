@@ -9,7 +9,7 @@ CIPG processes heterogeneous audit streams across three disjoint operational lay
     \item \textbf{Directory Service Audit Events (NTDS):} Monitored via Windows Security Event ID 5136 (\textit{Directory Service Object Modified}). Captures granular LDAP mutations on certificate templates, user objects, and access control lists, recording the modifying principal, target object GUID, modified attribute (e.g., \texttt{nTDSDSOptions}, \texttt{pKIExtendedKeyUsage}, \texttt{msPKI-Certificate-Name-Flag}), and operation type (Value Added / Value Deleted).
     \item \textbf{Certificate Authority Telemetry and CA DB Bridge:} Monitored via Event IDs 4886 (\textit{Certificate Request Received}) and 4887 (\textit{Certificate Issued}). To bridge the PKCS\#10 ASN.1 SAN concealment gap ($\pi_{\text{CA}} \cap \pi_{\text{KDC}} = \emptyset$), CIPG queries the local CA transactional database (\texttt{certutil -view -out RequestID,SerialNumber,SubjectKeyIdentifier,CertificateHash}) or the raw CA RPC interface. This populates a persistent cryptographic tuple:
     \begin{equation}
-    \tau_{\text{crypto}} = \langle \text{RequestID}, \text{SKID}, \text{SerialNumber}, \text{Thumbprint}_{\text{SHA1}} \rangle
+    \tau_{\text{crypto}} = \langle \text{Issuer}, \text{RequestID}, \text{SKID}, \text{SerialNumber}, \text{Thumbprint}_{\text{SHA1}} \rangle
     \end{equation}
     \item \textbf{KDC Kerberos Pre-Authentication Events:} Monitored via Event ID 4768 (\textit{Kerberos Authentication Ticket Requested}). Identifies PKINIT authentication requests where \texttt{PreAuthType = 16}, extracting the authenticating client name, domain target, certificate issuer CA, \texttt{CertSerialNumber}, and \texttt{CertThumbprint}.
 \end{enumerate}
@@ -36,7 +36,7 @@ For any valid certificate lifecycle, the sequence of events must satisfy strict 
 \begin{equation}
 t(e_{\text{mut}}) \le t(e_{\text{req}}) \le t(e_{\text{iss}}) \le t(e_{\text{auth}})
 \end{equation}
-Any authentication $e_{\text{auth}}$ claiming issuance prior to $t(e_{\text{iss}})$ indicates out-of-order clock spoofing or unauthorized replay.
+This progression refers to effective operations. An audit timestamp inconsistent with it can also arise from clock error, audit delay, or an incorrect event association; it does not alone establish spoofing or replay. When these assumptions cannot be justified, the implementation retains a possible explanation or reports inconsistent evidence.
 \end{definition}
 
 \begin{definition}[Invariant III: Principal Identity Discrepancy]
@@ -57,7 +57,7 @@ where $\tau_{\text{window}}$ is the maximum temporal attack window (configured t
 \subsection{Invariant V: Persistent Cryptographic Taint-Flow Automaton}
 While Invariants I--IV detect synchronous single-actor attacks, sophisticated adversaries can evade them via two evasive techniques: (i) \textbf{Split-Actor Collusion}, where Actor A mutates the template, Actor B requests the certificate, and Actor A rolls the template back; and (ii) \textbf{Dormant PKINIT Exploitation}, where the attacker delays Kerberos authentication by hours or days until the temporal correlation window $\tau_{\text{window}}$ has expired.
 
-To provide provable detection over unbounded time horizons, we formalize the \textbf{Persistent Cryptographic Taint-Flow Automaton (Invariant~V)}:
+To retain certificate evidence beyond the immediate mutation window, we formalize the \textbf{Persistent Cryptographic Taint-Flow Automaton (Invariant~V)}. Its conclusions depend on captured identity evidence and retained state; it does not guarantee detection over an unbounded history:
 
 \begin{algorithm}[H]
 \caption{CIPG Invariant V Cryptographic Taint-Flow Automaton}
@@ -71,18 +71,18 @@ To provide provable detection over unbounded time horizons, we formalize the \te
         \EndIf
     \ElsIf{$e.\text{EventID} == 4887$ (Certificate Issued)}
         \If{$\exists \text{ active mutation in } \mathcal{M} \text{ for template } e.\text{Template}$}
-            \State Query $\mathcal{B}_{\text{CA}}$ with $e.\text{RequestID}$ to retrieve $\langle \text{SKID}, \text{Serial}, \text{Thumbprint} \rangle$
+            \State Query $\mathcal{B}_{\text{CA}}$ with $(e.\text{Issuer},e.\text{RequestID})$ for certificate identifiers
             \State $\mathcal{T}_{\text{taint}} \leftarrow \mathcal{T}_{\text{taint}} \cup \{\langle \text{SKID}, \text{Serial}, \text{Thumbprint}, e.\text{Requester}, \mathcal{M}.\text{Actor}, e.\text{Time} \rangle\}$
-            \State Mark certificate entity $v_{\text{cert}}$ as \textbf{CRYPTOGRAPHICALLY TAINTED}
+            \State Retain certificate entity $v_{\text{cert}}$ as a provisional mutation-overlap candidate
         \EndIf
     \ElsIf{$e.\text{EventID} == 4768$ (Kerberos PKINIT Authentication)}
-        \If{$e.\text{PreAuthType} == 16$}
-            \State Look up $\langle e.\text{CertSerialNumber}, e.\text{CertThumbprint} \rangle$ in $\mathcal{T}_{\text{taint}}$
-            \If{match found with record $\tau \in \mathcal{T}_{\text{taint}}$}
-                \State \textbf{Trigger High-Severity Alert}: Invariant V Violation Detected!
+        \If{$e.\text{Status} == 0$ and $e.\text{PreAuthType} \in \{15,16,17\}$}
+            \State Retain all compatible candidates; reject any known identifier contradiction
+            \If{one strongly identified candidate $\tau$ has justified issuance-before-use order}
+                \State Emit a resolved lineage explanation; distinguish definite and possible overlap
                 \State Attributing Colluding Actors: Mutator = $\tau.\text{Actor}_{\text{mut}}$, Requester = $\tau.\text{Requester}$
                 \State Authenticated Target = $e.\text{TargetUserName}$, Latency = $e.\text{Time} - \tau.\text{Time}$
-                \State Dispatch Immediate Revocation via $\text{CRL} \cup \text{OCSP}$
+                \State Forward the supported explanation to the remediation policy
             \EndIf
         \EndIf
     \EndIf
@@ -91,12 +91,17 @@ To provide provable detection over unbounded time horizons, we formalize the \te
 \end{algorithm}
 
 \paragraph{Mathematical Guarantees and Operational Concurrency Realities:}
-Because the certificate serial number and SHA-1 thumbprint are cryptographically bound to the private key and CA digital signature via RFC 5280~\cite{rfc5280}, an attacker cannot alter their certificate thumbprint or serial number without invalidating the cryptographic signature. Once a certificate is marked as tainted in $\mathcal{T}_{\text{taint}}$, Invariant~V maintains state permanently in memory until revocation, enabling detection across arbitrary time horizons (15 seconds or 30 days post-rollback).
+A serial number is scoped to its issuer~\cite{rfc5280}; SKID identifies a public key and can recur across distinct certificates. A thumbprint identifies certificate bytes, while an unauthenticated log field does not itself prove certificate possession or source integrity. The reference implementation requires all shared identity fields to agree and preserves compatible incompletely identified issuances, so missing fields cannot manufacture uniqueness. Late evidence can withdraw a previously resolved link. Retention enables delayed-use analysis only while the necessary observations remain available; no bounded-memory or irreversible-finality guarantee follows.
 
-However, in 24/7 enterprise production environments, two physical systems constraints govern detection trade-offs:
+\paragraph{Bounded-time and source-fault reasoning:}
+For opening, issuance, and rollback intervals $O,I,R$, definite temporal overlap requires $O^{+}\le I^{-}$ and $I^{+}\le R^{-}$. Otherwise, a feasible overlap remains possible. An exact difference-constraint reference additionally accepts explicitly justified operation-order edges~\cite{dechter1991temporal,amarilli2017order}; contradictory constraints yield an inconsistent-evidence answer. Cross-host record numbers do not supply those edges. This is an application of established temporal reasoning, with certificate-specific evidence requirements.
+
+For a declared optional-export fault budget $k$, let $\mathcal{H}_k$ contain every deletion of at most $k$ CA bridge records. Candidate union over $\mathcal{H}_k$ preserves alternative explanations; a certain link must be resolved to the same issuance in every hypothesis. Abstaining hypotheses are retained, rather than removed to force agreement. If the true issuance is captured, raw issuance/KDC fields and time bounds are correct, and at most $k$ bridge records are faulty, deleting those faulty records leaves a hypothesis containing the true candidate. This is a conditional retention property, not a claim of certain resolution or robustness to compromised raw audit sources. The exhaustive implementation is a correctness reference with combinatorial cost, and source-level compromise can invalidate a record-level budget~\cite{fagin2023entity,heinzl2026timestamps}.
+
+The earlier trace-driven synthetic stress stream illustrates two configured trade-offs; its rates do not measure a production deployment:
 \begin{enumerate}
     \item \textbf{Poisson Auto-Enrollment Collisions (False Positives):} When an administrator performs a legitimate template modification and subsequent rollback ($n=50$ maintenance windows, duration $\Delta t \in [10\text{s}, 45\text{s}]$), concurrent background machine renewals and user \texttt{AutoEnroll} requests arrive according to a Poisson process ($\lambda_{\text{enroll}} \approx 2,000/\text{hr}$). Any benign enrollment that lands inside $[t_1, t_2]$ is flagged by Causal Invariant~I, generating 4 realistic False Positives ($8.00\%$ maintenance window FPR, $0.0395\%$ overall event FPR, $92.16\%$ precision at $\Delta_{\text{poll}}=5\text{s}$ and $92.31\%$ at $\Delta_{\text{poll}}=1\text{s}$), compared to a $100\%$ FPR and $19.35\%$ precision for naive rollback monitors.
-    \item \textbf{CA Jet Database Polling Latency and Cross-Forest Coverage (False Negatives):} Under strict Event 4768 schema fidelity ($\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset$, where KDC Event 4768 omits SKID), dynamic CA Jet DB polling joins issuance events across the CA--KDC boundary, achieving $48/48$ ($100.00\%$) recall at $\Delta_{\text{poll}}=1.0\text{s}$ and $47/48$ ($97.92\%$) recall at default $\Delta_{\text{poll}}=5.0\text{s}$ under enterprise stress conditions (as well as $7/7 = 100\%$ recall on isolated lab cyber-ranges).
+    \item \textbf{CA Database Polling Latency (Simulated False Negatives):} The configured stress stream reports $48/48$ recall at $\Delta_{\text{poll}}=1.0\text{s}$ and $47/48$ at $5.0\text{s}$. These outcomes use the stream's synthetic labels. They are separate from independently checking a successful issuance-to-use chain in captured Windows records; Section~\ref{sec:evaluation} reports that evidence audit.
 \end{enumerate}
 
 \subsection{Graph Reduction and Meta-Node Compacting}

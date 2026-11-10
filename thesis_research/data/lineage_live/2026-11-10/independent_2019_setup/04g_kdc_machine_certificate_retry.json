@@ -1,0 +1,11 @@
+{
+  "status_code": 0,
+  "host_before": 1794307290.9638934,
+  "host_after": 1794307328.4619265,
+  "stdout": "Active Directory Enrollment Policy\r\n  {CB8E343E-1BEF-45DA-BDF9-BA1326F88C3E}\r\n  ldap:\r\nThe operation completed successfully.\r\nRequestId = 2\r\nWIN-NA2FC16NO63.q1lab.test\\Q1-Evidence-CA\r\nSerial Number: 2900000002bb031cb65f4c4894000000000002\r\n52fc58af321f807e761fa01e549fdfc7ee1c145e\r\nKey Container Name: 943e7203db75ebdcbb33a6ef363a5a2f_c47f0a85-1207-4b89-b971-de27ed3d2dce\r\nKey Container Name: te-DomainController-67e448ec-44b4-4ff2-9610-180384be4dd1\r\n\r\n\r\n    The requested certificate has been issued.\r\n\r\n\r\n{\"Subject\":\"CN=WIN-NA2FC16NO63.q1lab.test\",\"Issuer\":\"CN=Q1-Evidence-CA, DC=q1lab, DC=test\",\"Thumbprint\":\"52FC58AF321F807E761FA01E549FDFC7EE1C145E\",\"HasPrivateKey\":true,\"NotAfter\":\"\\/Date(1825824389000)\\/\",\"eku\":{\"value\":[\"1.3.6.1.5.5.7.3.2\",\"1.3.6.1.5.5.7.3.1\"],\"Count\":2}}\r\n__Q1_PHASE_COMPLETE__\r\n",
+  "stderr": "Waiting for service 'Kerberos Key Distribution Center (Kdc)' to stop...Waiting for service 'Kerberos Key Distribution Center (Kdc)' to stop...Waiting for service 'Kerberos Key Distribution Center (Kdc)' to stop...Waiting for service 'Kerberos Key Distribution Center (Kdc)' to stop...Waiting for service 'Kerberos Key Distribution Center (Kdc)' to stop...",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "9cdd30ecc38048ee84e021d3dac2c367e930403277e40e0d3730e6bc3c6968b3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": true
+}

@@ -1,7 +1,7 @@
 \section{CertGraph Static Architecture and Bilinear Gating}
 \label{sec:certgraph_arch}
 
-This section details the static detection layer of CertGraph (Figure~\ref{fig:certgraph_arch}), analyzes the theoretical failure of standard message passing on access control graphs, and introduces the Multiplicative Bilinear Reachability Gate to eliminate shortcut memorization.
+This section details the static detection layer of CertGraph (Figure~\ref{fig:certgraph_arch}), analyzes the theoretical failure of standard message passing on access control graphs, and introduces a bilinear compatibility formulation whose learned output must be distinguished from exact authorization reachability.
 
 \subsection{Heterogeneous Graph Attention Network (HetGAT)}
 To model multi-typed security entities and non-uniform privilege relations, CertGraph employs a multi-relational graph attention network. Let $\mathbf{x}_v \in \mathbb{R}^{d_{\phi(v)}}$ denote the initial feature vector of entity $v \in \mathcal{V}$. Vertices are first projected into a shared hidden space of dimension $d$:
@@ -32,7 +32,7 @@ A critical structural flaw in pure neighborhood aggregation on directed multigra
 
 \begin{theorem}[Intrinsic Attribute Preservation and Gradient Lower Bounds]
 \label{thm:theorem1}
-Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterogeneous multigraph. Consider an $L$-layer GNN where layer $l$ computes representations according to pure relational neighborhood aggregation.
+Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterogeneous multigraph. Consider an $L$-layer pure relational aggregation model with no target-feature dependence in its aggregation coefficients, no biases, and $\sigma(\mathbf{0})=\mathbf{0}$. For the residual bound, assume square compatible skip maps and differentiability at the evaluated input. These assumptions restrict the theorem; attention coefficients that depend on the target features can transmit those features even without a self-loop.
 \begin{enumerate}
     \item \textbf{Intrinsic Feature Erasure:} If $\mathcal{G}$ contains no explicit self-loops on template nodes ($v \notin \mathcal{N}_r(v)$ for all $r$), the first-layer representation $\mathbf{h}_v^{(1)}$ is conditionally independent of initial features $\mathbf{x}_v$:
     \begin{equation}
@@ -43,7 +43,7 @@ Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterog
     \begin{equation}
     \sigma_{\min} \left( \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right) \ge \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|
     \end{equation}
-    where $\|\mathcal{J}_{\text{graph}}(v)\| \le L_\sigma^L \alpha_{\max} \prod_{l=1}^L \|\mathbf{W}^{(l)}\|$ bounds the cyclical feedback gradient. When $\prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) > \|\mathcal{J}_{\text{graph}}(v)\|$, initial feature sensitivity is strictly preserved:
+    where $\mathcal{J}_{\text{graph}}(v)$ is the full derivative of all non-skip contributions, including their dependence through earlier residual states. Its norm must be measured or bounded for the particular model; a single path's weight product does not bound an arbitrary graph's aggregate derivative. When $\prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) > \|\mathcal{J}_{\text{graph}}(v)\|$, initial feature sensitivity is strictly preserved:
     \begin{equation}
     \left\| \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right\| > 0
     \end{equation}
@@ -73,21 +73,21 @@ By Weyl's singular value perturbation inequality and the sub-multiplicative prop
 \begin{equation}
 \sigma_{\min} \left( \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right) \ge \sigma_{\min} \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) - \|\mathcal{J}_{\text{graph}}(v)\| \ge \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|
 \end{equation}
-In directed authorization DAGs where no 2-cycle $v \rightsquigarrow u \rightsquigarrow v$ feeds back to $v$, $\mathcal{J}_{\text{graph}}(v) = \mathbf{0}$, establishing that $\sigma_{\min}(\partial \tilde{\mathbf{h}}_v^{(L)} / \partial \mathbf{x}_v) = \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) > 0$. Even in general cyclical topologies, the operator norm $\|\mathcal{J}_{\text{graph}}(v)\|$ is bounded by $L_\sigma^L \alpha_{\max} \prod_{l=1}^L \|\mathbf{W}^{(l)}\|$. Provided $\prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) > \|\mathcal{J}_{\text{graph}}(v)\|$, the Jacobian has strictly positive minimum singular value, guaranteeing that initial configuration attributes are preserved without vanishing across message passing.
+Under the stated coefficient-independence assumptions, absence of every directed return walk to $v$ within the evaluated depth implies $\mathcal{J}_{\text{graph}}(v)=\mathbf{0}$. Then the minimum singular value of the skip product is bounded below by the product of the individual minimum singular values; equality is not generally implied. In cyclic or feature-dependent attention models, the non-skip derivative can reinforce or cancel the skip path. The positive-sensitivity conclusion therefore requires the displayed strict inequality and is not an unconditional guarantee for all GNNs.
 \end{proof}
 
 \subsection{Inductive Shortcut Collapse and the Multiplicative Gating Cure}
-While Theorem~\ref{thm:theorem1} guarantees non-vanishing gradient bounds via additive residual skips ($\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$), empirical testing reveals a profound secondary failure mode: \textit{inductive shortcut collapse}.
+While Theorem~\ref{thm:theorem1} gives a conditional sensitivity bound for additive residual skips ($\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$), empirical testing reveals a secondary failure mode: \textit{inductive shortcut collapse}.
 
 \paragraph{The Shortcut Memorization Failure:}
 Because certificate template attributes (e.g., \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} $= 1$ and Client Authentication EKU $= 1$) are strongly correlated with positive escalation labels in synthetic training distributions, additive skip connections allow the network to bypass the multi-hop graph aggregation entirely. The MLP classification head learns an inductive shortcut:
 \begin{equation}
 \hat{y}_t = \text{MLP}(\tilde{\mathbf{h}}_t^{(L)}) \approx \text{MLP} \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \mathbf{h}_t^{(0)} \right)
 \end{equation}
-When the trained model is evaluated against \textbf{adversarial hard negatives}—templates that possess vulnerable attribute flags but reside in disconnected graph components or require mandatory manager approval—standard additive-skip GNNs memorize the flag pattern and classify them as vulnerable, collapsing to a dismal \textbf{$0.00\%$ accuracy ($0/63$)}.
+When the trained model is evaluated against \textbf{adversarial hard negatives}—templates that possess vulnerable attribute flags but reside in disconnected graph components or require mandatory manager approval—standard additive-skip GNNs memorize the flag pattern and classify them as vulnerable, showing poor agreement on the historical canonical generator. The matched audit in Section~\ref{sec:evaluation} corrects its reachable-path labels and separates augmentation from implementation differences.
 
 \paragraph{Multiplicative Bilinear Reachability Gating (\texttt{CertGraph-Gated}):}
-To eliminate shortcut memorization, we enforce that attribute signals cannot propagate to the output head unless gated by verified topological reachability from an authenticated principal. We formulate the \textbf{Multiplicative Bilinear Reachability Gate}:
+To reduce shortcut memorization, we condition messages on a learned bilinear compatibility gate. Exact reachability is checked separately by the existing symbolic verification step; the learned gate alone is not a Boolean authorization predicate. We formulate the \textbf{Multiplicative Bilinear Reachability Gate}:
 \begin{equation}
 \mathbf{g}_{uv}^{(l)} = \sigma \left( \mathbf{h}_u^{(l-1)\top} \mathbf{W}_g^{(l)} \mathbf{h}_v^{(l-1)} + b_g^{(l)} \right)
 \end{equation}
@@ -100,11 +100,10 @@ The gated message vector $\mathbf{m}_{vu}^{(l)}$ and state update are defined as
 \end{align}
 where $\odot$ denotes the element-wise Hadamard product.
 
-\begin{proposition}[Mathematical Neutralization of Hard-Negative Shortcuts]
-Suppose template $v$ possesses vulnerable flags $\mathbf{x}_v$ but is disconnected from any unprivileged attacker principal $u$ ($p(u \rightsquigarrow v) = \emptyset$). Because no valid relational path propagates activation to $v$, the bilateral gate $\mathbf{g}_{uv} \to 0$. By multiplicative annihilation:
+\begin{proposition}[Conditional Attenuation by Multiplicative Gating]
+For a bounded transformed neighbor message, if its scalar gate tends to zero, multiplicative attenuation gives:
 \begin{equation}
 \lim_{\mathbf{g}_{uv} \to 0} \mathbf{m}_{vu}^{(l)} = \mathbf{0}
 \end{equation}
-Consequently, the network cannot output a positive vulnerability prediction based solely on isolated template flags. As demonstrated in Section~\ref{sec:evaluation}, \texttt{CertGraph-Gated} elevates hard-negative accuracy from $0.00\%$ to \textbf{$65.08\%$ ($41/63$, $95\%$ Wilson CI: $[52.8\%, 75.7\%]$)}.
-The remaining $22/63$ misclassifications ($34.92\%$) stem from multi-attribute semantic crosstalk: in Low-Privilege OID Group Links (15 cases) and Unenrollable CAs (7 cases), topological reachability exists, but privilege escalation is neutralized by non-linear multi-attribute policy interactions that continuous 2-layer message passing cannot disentangle. This $34.92\%$ continuous neural residual strictly motivates our Two-Tier Neuro-Symbolic Verification pipeline (detailed in Section~\ref{sec:cipg_provenance} and Figure~\ref{fig:neuro_symbolic_pipeline}), which applies exact symbolic attribute verification and transitive closure to resolve all 22 cases to $100\%$ precision.
+Disconnection alone does not imply this gate limit: with zero embeddings and zero bias, the sigmoid gate equals $1/2$. Other residual paths or classifier biases can also produce a positive output. The attenuation statement therefore does not prove universal elimination of shortcuts. The numerical implementation audit in Section~\ref{sec:evaluation} evaluates the repository's feature-channel gate, which uses fixed first-step membership transforms and semantic projections. Its measured results do not validate a general bilinear edge scorer or arbitrary-depth reachability. In that matched audit, the gate reduces false positives but misses positive enrollment paths beyond its propagation horizon. A second-tier verifier must process unresolved and out-of-horizon cases, including neural negatives, if it is to recover those cases. No universal shortcut-elimination or end-to-end precision guarantee follows from the attenuation equation.
 \end{proposition}

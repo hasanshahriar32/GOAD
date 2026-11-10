@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/create_update_media.py", line 42, in <module>
+    args=parser.parse_args();create(args.downloads,args.output,args.manifest)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/create_update_media.py", line 32, in create
+    iso=pycdlib.PyCdlib();iso.new(interchange_level=3,joliet=3,vol_ident="Q1_OFFICIAL_UPDATES")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/.cache/uv/archive-v0/NLRdldrOZo-CkqKF/lib/python3.11/site-packages/pycdlib/pycdlib.py", line 4300, in new
+    self.joliet_vd = headervd.joliet_vd_factory(joliet, sys_ident_bytes,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/.cache/uv/archive-v0/NLRdldrOZo-CkqKF/lib/python3.11/site-packages/pycdlib/headervd.py", line 933, in joliet_vd_factory
+    svd.new(0, sys_ident, vol_ident, set_size, seqnum, log_block_size,
+  File "/home/m4x1d/.cache/uv/archive-v0/NLRdldrOZo-CkqKF/lib/python3.11/site-packages/pycdlib/headervd.py", line 282, in new
+    self.volume_identifier = utils.encode_space_pad(vol_ident, 32, self.encoding)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/.cache/uv/archive-v0/NLRdldrOZo-CkqKF/lib/python3.11/site-packages/pycdlib/utils.py", line 158, in encode_space_pad
+    raise pycdlibexception.PyCdlibInvalidInput('Input string too long!')
+pycdlib.pycdlibexception.PyCdlibInvalidInput: Input string too long!

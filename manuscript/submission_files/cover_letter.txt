@@ -1,32 +1,20 @@
-To:
-Editor-in-Chief
-Computers & Security (Elsevier)
+DRAFT — journal not selected; not submitted
 
-Subject: Submission of Original Research Article: "CertGraph: Cryptographic Invariant Provenance and Multiplicative Bilinear Gating for Active Directory Certificate Services Escalation Interdiction"
+To: Editor-in-Chief of the selected journal
 
-Dear Editor-in-Chief and Editorial Board,
+Subject: CertGraph: Cryptographic Invariant Provenance and Multiplicative Bilinear Gating for Active Directory Certificate Services Escalation Interdiction
 
-We are pleased to submit our original research manuscript titled "CertGraph: Cryptographic Invariant Provenance and Multiplicative Bilinear Gating for Active Directory Certificate Services Escalation Interdiction" for consideration for publication as a regular research article in Computers & Security.
+Dear Editor,
 
-Active Directory Certificate Services (ADCS) forms the identity and public-key infrastructure (PKI) backbone of modern enterprise Windows domains, issuing cryptographic credentials for single sign-on, smartcard logon, and code signing. However, structural misconfigurations in certificate templates and enrollment access control lists (ACLs) introduce critical privilege escalation vectors that allow unprivileged domain users to compromise enterprise root domain controllers.
+We propose CertGraph as a study of certificate-specific evidence assurance in Active Directory Certificate Services. The framework combines static graph analysis, an issuer-scoped provenance reference, and budgeted interdiction. Its central empirical question is when incomplete or conflicting evidence supports a possible or definite issuance-to-use explanation.
 
-Current defensive systems suffer from three fundamental blind spots:
-1. Static Snapshot Blindness: Adversaries leverage temporal mutation-and-rollback techniques (e.g., ESC4, ESC9) that leave the directory in a bit-identical pre-attack and post-rollback state, rendering static scanners (e.g., BloodHound, Certipy) completely blind to post-rollback credential abuse.
-2. Inductive Shortcut Memorization in GNNs: Standard message-passing graph neural networks memorize local template attribute flags, collapsing to 0.00% accuracy under adversarial counterfactual hard negatives.
-3. CA-KDC Schema Discontinuity: In Windows Server 2019, Certification Authority (CA) issuance logs (Event ID 4887) and Domain Controller Kerberos PKINIT authentication logs (Event ID 4768) share zero common event identifiers, allowing PKCS#10 ASN.1 Subject Alternative Name (SAN) concealment attacks to remain undetected across single-host monitors.
+The artifact includes a frozen synthetic confirmation and component studies, two paired twelve-trial Windows matrices with exact-certificate authentication outcomes, and executed Certipy/Sigma configuration-risk comparisons. Matched signed requests distinguish the tested configuration intervention from baseline and rollback-before-enrollment conditions. The measured Windows 2019 build is explicitly reported; its base results are not described as current-patch validation.
 
-In this work, we present CertGraph, an integrated static-to-dynamic neuro-symbolic framework addressing these challenges:
-- We formulate the Multiplicative Bilinear Reachability Gate, which conditions GNN message passing on topological authorization reachability, eliminating inductive shortcut collapse and elevating hard-negative accuracy from 0.00% to 65.08%, with residual semantic crosstalk cases resolved to 100% precision via Tier-2 symbolic verification.
-- We engineer the Cryptographic Invariant Provenance Graph (CIPG), an asynchronous state-tracking automaton that bridges CA transactional records and KDC event streams. On a 10,182-event enterprise concurrency stream and live Windows Server 2019 cyber-range testbed, CIPG detects 7/7 live attacks and achieves 97.92% to 100.00% recall, 92.16% to 92.31% precision, and an 8.00% maintenance window false-positive rate (0.0395% overall event FPR) under sustained throughput exceeding 13,000 events/second.
-- We model proactive privilege revocation as a disruption-budgeted Stackelberg game, prove that Multi-Principal Access Interdiction (MPAI) is NP-complete via reduction from Directed Multiway Cut, and validate a co-adaptive remediation policy that neutralizes 98.5% of attack paths under operational edge immutability with 45.0% lower administrative disruption, accelerated 1,246-fold by CIPG provenance-cone guidance.
+Additional matched model and exhaustive small-graph audits identify neural horizon errors, augmentation confounding, and heuristic optimality gaps. The manuscript reports those findings and distinguishes its general bilinear formulation from the evaluated feature-channel implementation. It does not claim universal GNN superiority, an optimal Stackelberg solver, or enterprise deployment effectiveness from laboratory evidence.
 
-This manuscript represents original research that has not been published previously, is not under consideration for publication elsewhere, and its submission has been approved by all authors. We confirm that there are no competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+The final cover letter must be reviewed by all authors after journal selection and after the experiments, submission declarations, and public artifact release are finalized. Originality, exclusive submission, author approval, and conflicts must be confirmed factually before submitting this draft. No submission is made by this file.
 
-Thank you very much for your time and consideration of our work.
-
-Sincerely,
-
-Md. Hasan Shahriar (Corresponding Author, hasanshahriar32@gmail.com)
-On behalf of the authors
+Corresponding author recorded in the manuscript:
+Md. Hasan Shahriar, hasanshahriar32@gmail.com
 Department of Electronics and Communication Engineering
-Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur-5200, Bangladesh
+Hajee Mohammad Danesh Science and Technology University, Bangladesh

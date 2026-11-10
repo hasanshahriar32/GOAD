@@ -1,0 +1,8 @@
+{
+  "host_after": 1794286469.3965971,
+  "host_before": 1794286464.0887787,
+  "host_monotonic_elapsed_ns": 5307818136,
+  "returncode": 1,
+  "stderr": "ACCEPT_FAILED\nAt line:3 char:23\n+ if($p.ExitCode -ne 0){throw 'ACCEPT_FAILED'}\n+                       ~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (ACCEPT_FAILED:String) [], RuntimeException\n    + FullyQualifiedErrorId : ACCEPT_FAILED",
+  "stdout": "\r\n\r\n    A certificate issued by the certification authority cannot be installed. Contact your administrator.\r\n    Cannot find object or property. 0x80092004 (-2146885628 CRYPT_E_NOT_FOUND)\r\n    A certificate issued by the certification authority cannot be installed. Contact your administrator.\r\n    Cannot find object or property. 0x80092004 (-2146885628 CRYPT_E_NOT_FOUND)\r\n\r\n\r\nCertificate Request Processor: Cannot find object or property. 0x80092004 (-2146885628 CRYPT_E_NOT_FOUND)\r\n"
+}

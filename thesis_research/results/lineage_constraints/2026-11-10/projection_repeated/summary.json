@@ -1,0 +1,41 @@
+[
+  {
+    "nodes": 100,
+    "seeds": 3,
+    "timing_pairs": 15,
+    "query_pairs_per_graph": 6,
+    "projected_nodes_min": 17,
+    "projected_nodes_max": 23,
+    "median_full_ms": 1.9867569935740903,
+    "median_projection_inclusive_ms": 1.1570940114324912,
+    "median_ratio": 1.7803368655117782,
+    "min_ratio": 1.4310328986715086,
+    "max_ratio": 2.1076214586390143
+  },
+  {
+    "nodes": 1000,
+    "seeds": 3,
+    "timing_pairs": 15,
+    "query_pairs_per_graph": 65,
+    "projected_nodes_min": 173,
+    "projected_nodes_max": 182,
+    "median_full_ms": 86.3612459943397,
+    "median_projection_inclusive_ms": 21.55993199266959,
+    "median_ratio": 4.005636289748161,
+    "min_ratio": 3.6623014143314654,
+    "max_ratio": 6.012154521040125
+  },
+  {
+    "nodes": 5000,
+    "seeds": 3,
+    "timing_pairs": 15,
+    "query_pairs_per_graph": 325,
+    "projected_nodes_min": 874,
+    "projected_nodes_max": 890,
+    "median_full_ms": 3448.146593000274,
+    "median_projection_inclusive_ms": 439.2912070034072,
+    "median_ratio": 7.543067143325906,
+    "min_ratio": 6.624802436390803,
+    "max_ratio": 8.99242885385522
+  }
+]

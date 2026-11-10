@@ -1,0 +1,59 @@
+{
+  "declared_utc": "2026-11-10T04:13:28.742257+00:00",
+  "per_cell_per_seed": 20,
+  "repair_grid": {
+    "budgets": [
+      0,
+      1,
+      2
+    ],
+    "certificates": [
+      1,
+      4,
+      8
+    ],
+    "corrupt_target_bridge_records": [
+      0,
+      1,
+      2
+    ],
+    "missing_raw_thumbprint_probability": [
+      0,
+      0.5,
+      1
+    ]
+  },
+  "repair_task": "Trusted raw issuance/KDC records; up to k faulty optional bridge records, not k faulty sources",
+  "schema": 1,
+  "scope": "Locally frozen synthetic study; no external registration, enterprise prevalence, or Windows generalization claim",
+  "seeds": [
+    7103,
+    8111,
+    9109,
+    10111,
+    11113
+  ],
+  "source_sha256": {
+    "thesis_research/src/lineage_constraints/engine.py": "86613cc1d461b196234621eca93be12c4f83c1fbd97253dbf5c277bb1fc603e4",
+    "thesis_research/src/lineage_constraints/repair.py": "60b9c47970be1be9574b8ad4acadb2bf3688bf31cd0d447f624f99d676c4823a",
+    "thesis_research/src/lineage_constraints/robustness_study.py": "595be0f925a80cbb9145f1de290c0ac2ef2bb511e52ac3ae907a3dca4940edd9",
+    "thesis_research/src/lineage_constraints/temporal.py": "5e4307448574fcd54b57fd413148a104b3a5d7682e5d61595417e16ae2e454f7"
+  },
+  "temporal_grid": {
+    "interval_width": [
+      0,
+      2,
+      5
+    ],
+    "negative_control": [
+      false,
+      true
+    ],
+    "order_observation_probability": [
+      0,
+      0.5,
+      1
+    ]
+  },
+  "temporal_task": "Integer-bounded continuous-time component study; observed order is an additional input channel"
+}

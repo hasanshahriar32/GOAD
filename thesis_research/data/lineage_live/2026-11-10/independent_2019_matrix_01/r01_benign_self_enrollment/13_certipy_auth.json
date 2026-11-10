@@ -1,0 +1,7 @@
+{
+  "elapsed_ns": 624991057,
+  "returncode": 1,
+  "scope": "Diagnostics; raw matching KDC outcome determines successful use",
+  "stderr": "Certipy v5.0.4 - by Oliver Lyak (ly4k)\n\n",
+  "stdout": "[*] Certificate identities:\n[*]     SAN UPN: 'q1.enroller@q1lab.test'\n[*] Using principal: 'q1.enroller@q1lab.test'\n[*] Trying to get TGT...\n[-] Got error while trying to request TGT: Kerberos SessionError: KRB_AP_ERR_SKEW(Clock skew too great)\n[-] Use -debug to print a stacktrace\n[-] See the wiki for more information\n"
+}

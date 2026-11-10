@@ -1,0 +1,360 @@
+{
+  "executed_utc": "2026-11-10T11:00:11.848104+00:00",
+  "execution_controls": {
+    "matches": {
+      "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+        "fixture:eku",
+        "fixture:subject"
+      ],
+      "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [
+        "fixture:machine"
+      ],
+      "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+        "fixture:eku"
+      ]
+    },
+    "passed": true
+  },
+  "files": [
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898
+      ],
+      "events": 64,
+      "input_sha256": "49fefadd216e5f3b810f99ac9a2c2a6147f00c7cad9c1a2aab9f560dfe5877a7",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:20038",
+          "WIN-NA2FC16NO63.q1lab.test:Security:20059"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r01_baseline_admin_san/events.xml",
+      "query_and_load_seconds": 0.0016265509912045673,
+      "xml_projection_seconds": 0.004958716002875008
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 67,
+      "input_sha256": "bf2c96ec4445059c756c52b55fffc54a1c2fc699296a7cbc61ad1547cecb5c6c",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:20214",
+          "WIN-NA2FC16NO63.q1lab.test:Security:20263",
+          "WIN-NA2FC16NO63.q1lab.test:Security:20284"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:20214"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r01_benign_self_enrollment/events.xml",
+      "query_and_load_seconds": 0.0017247169889742509,
+      "xml_projection_seconds": 0.004108877998078242
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 72,
+      "input_sha256": "4eddb91ed09bbea203e2fcb4502afeb2d796eb8fe0a2cd15e93666e53580ff29",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:20441",
+          "WIN-NA2FC16NO63.q1lab.test:Security:20490",
+          "WIN-NA2FC16NO63.q1lab.test:Security:20511"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:20441"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r01_enabled_admin_san/events.xml",
+      "query_and_load_seconds": 0.0016140809893840924,
+      "xml_projection_seconds": 0.0042297830077586696
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 72,
+      "input_sha256": "6e1971ac1f047e4bc978258ce7b1c38436334dccd3a1d31de25b2f45db83ceb2",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:20733",
+          "WIN-NA2FC16NO63.q1lab.test:Security:20754"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r01_rollback_before_enroll/events.xml",
+      "query_and_load_seconds": 0.001697239000350237,
+      "xml_projection_seconds": 0.00571675700484775
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898
+      ],
+      "events": 63,
+      "input_sha256": "b6c727179a66bab6ddeacaf5312043cb24f54ac9fe8b8daeebae9635f06f426e",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:21413",
+          "WIN-NA2FC16NO63.q1lab.test:Security:21434"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r02_baseline_admin_san/events.xml",
+      "query_and_load_seconds": 0.0015178559988271445,
+      "xml_projection_seconds": 0.004015619997517206
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 70,
+      "input_sha256": "2f33a52215b40786c6a3c94c0ecb8590f1e5cf4f131794247e85f771081193d0",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:21144",
+          "WIN-NA2FC16NO63.q1lab.test:Security:21193",
+          "WIN-NA2FC16NO63.q1lab.test:Security:21214"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:21144"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r02_benign_self_enrollment/events.xml",
+      "query_and_load_seconds": 0.0016342210001312196,
+      "xml_projection_seconds": 0.0042018450039904565
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 67,
+      "input_sha256": "068603e74e956b60cb9c0f3a912783b1bfb38647abf7056f49a2a7feb1b5a7c0",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:21598",
+          "WIN-NA2FC16NO63.q1lab.test:Security:21647",
+          "WIN-NA2FC16NO63.q1lab.test:Security:21668"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:21598"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r02_enabled_admin_san/events.xml",
+      "query_and_load_seconds": 0.0015761370013933629,
+      "xml_projection_seconds": 0.004021247004857287
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 71,
+      "input_sha256": "a46881dd9466fdbfeba741f0688448bb3bab78230b6718068fccbd33982eed25",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:20962",
+          "WIN-NA2FC16NO63.q1lab.test:Security:20983"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r02_rollback_before_enroll/events.xml",
+      "query_and_load_seconds": 0.0017655350093264133,
+      "xml_projection_seconds": 0.004149970001890324
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 66,
+      "input_sha256": "1921279e2aed0c517470a8c021a2b9572f8fd6aff95e617d3f4f64a98d19e92c",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:22349",
+          "WIN-NA2FC16NO63.q1lab.test:Security:22370"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r03_baseline_admin_san/events.xml",
+      "query_and_load_seconds": 0.0016081619978649542,
+      "xml_projection_seconds": 0.004040180996526033
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 67,
+      "input_sha256": "c58b8c2eca2acb6d0371615f02f68cb7291493138d2f422ea9a441ecedaba100",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:22525",
+          "WIN-NA2FC16NO63.q1lab.test:Security:22574",
+          "WIN-NA2FC16NO63.q1lab.test:Security:22595"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:22525"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r03_benign_self_enrollment/events.xml",
+      "query_and_load_seconds": 0.0015524540067417547,
+      "xml_projection_seconds": 0.0038713300018571317
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 69,
+      "input_sha256": "513594218668a853737e457f29a5697b49bf9aa6042c5fed41f2ae54506ecef0",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:22081",
+          "WIN-NA2FC16NO63.q1lab.test:Security:22130",
+          "WIN-NA2FC16NO63.q1lab.test:Security:22151"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:22081"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r03_enabled_admin_san/events.xml",
+      "query_and_load_seconds": 0.001682267989963293,
+      "xml_projection_seconds": 0.004172998000285588
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 78,
+      "input_sha256": "0fbb1daf0daf9d8c2004a7e6baa7f75018dec1ee80cad95cf0c4116e96b9b24f",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:21891",
+          "WIN-NA2FC16NO63.q1lab.test:Security:21912"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r03_rollback_before_enroll/events.xml",
+      "query_and_load_seconds": 0.0017177940026158467,
+      "xml_projection_seconds": 0.004733081994345412
+    }
+  ],
+  "mapping": "Raw XML System/EventData fields, EventID as integer, absent rule fields NULL; SQLite ASCII case-insensitive comparison enabled",
+  "rules": [
+    {
+      "id": "5ee3a654-372f-11ec-8d3d-0242ac130003",
+      "path": "rules/windows/builtin/security/win_security_adcs_certificate_template_configuration_vulnerability.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE (EventID=4898 AND TemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\') OR (EventID=4899 AND NewTemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\')"
+      ],
+      "sha256": "82f1c480ffdbc12a5a50736ef5f092f466850af7efcf198a3aa6b624e5e595c3",
+      "status": "test",
+      "title": "ADCS Certificate Template Configuration Vulnerability"
+    },
+    {
+      "id": "bfbd3291-de87-4b7c-88a2-d6a5deb28668",
+      "path": "rules/windows/builtin/security/win_security_adcs_certificate_template_configuration_vulnerability_eku.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE ((EventID=4898 AND (TemplateContent LIKE '%1.3.6.1.5.5.7.3.2%' ESCAPE '\\' OR TemplateContent LIKE '%1.3.6.1.5.2.3.4%' ESCAPE '\\' OR TemplateContent LIKE '%1.3.6.1.4.1.311.20.2.2%' ESCAPE '\\' OR TemplateContent LIKE '%2.5.29.37.0%' ESCAPE '\\')) AND TemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\') OR ((EventID=4899 AND (NewTemplateContent LIKE '%1.3.6.1.5.5.7.3.2%' ESCAPE '\\' OR NewTemplateContent LIKE '%1.3.6.1.5.2.3.4%' ESCAPE '\\' OR NewTemplateContent LIKE '%1.3.6.1.4.1.311.20.2.2%' ESCAPE '\\' OR NewTemplateContent LIKE '%2.5.29.37.0%' ESCAPE '\\')) AND NewTemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\')"
+      ],
+      "sha256": "01942ca58c6c1e4cd277406fce6aa8bc3c465ab63e7c10ca5ce3744304fb4d6c",
+      "status": "test",
+      "title": "ADCS Certificate Template Configuration Vulnerability with Risky EKU"
+    },
+    {
+      "id": "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5",
+      "path": "rules/windows/builtin/security/win_security_petitpotam_susp_tgt_request.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE (EventID=4768 AND TargetUserName LIKE '%$' ESCAPE '\\' AND CertThumbprint LIKE '%' ESCAPE '\\') AND (NOT COALESCE((IpAddress='::1' COLLATE NOCASE OR CertThumbprint='' COLLATE NOCASE), 0))"
+      ],
+      "sha256": "ef0befc88cb8a8b8d0408077e07e0e515701242b0b560a8efc9051ad712ff390",
+      "status": "test",
+      "title": "PetitPotam Suspicious Kerberos TGT Request"
+    }
+  ],
+  "scope": "Actual upstream Sigma rules converted by actual pySigma SQLite backend and executed by SQLite; event-predicate matches, not attack recall",
+  "source_sha256": "1941a4855e96b4154aecb23c3a1b40b98daa801940694d685617cd66d622d217",
+  "sqlite_version": "3.53.1",
+  "task_boundaries": [
+    "Template rules require 4898/4899 telemetry; absence is a coverage gap, not proof of a missed applicable detection",
+    "The machine-account rule is scoped to machine targets; human Administrator authentication is not its intended target",
+    "These are Sigma/SQLite runs, not Splunk or HADES executions"
+  ],
+  "upstream": "https://github.com/SigmaHQ/sigma",
+  "upstream_commit": "d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55",
+  "versions": {
+    "PyYAML": "6.0.3",
+    "pysigma": "2.1.0",
+    "pysigma-backend-sqlite": "2.1.1"
+  }
+}

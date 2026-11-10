@@ -1,0 +1,5 @@
+{
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Error initializing default drive: 'Unable to find a default server with Active Directory Web Services running.'.Get-ADRootDSE : Unable to find a default server with Active Directory Web Services running.\nAt line:16 char:11\n+   $root = Get-ADRootDSE\n+           ~~~~~~~~~~~~~\n    + CategoryInfo          : ResourceUnavailable: (:) [Get-ADRootDSE], ADServerDownException\n    + FullyQualifiedErrorId : ActiveDirectoryServer:1355,Microsoft.ActiveDirectory.Management.Commands.GetADRootDSE"
+}

@@ -1,0 +1,9 @@
+{
+  "status_code": 1,
+  "host_before": 1794287588.1942463,
+  "host_after": 1794287593.3772342,
+  "stdout": "",
+  "stderr": "Install-ADDSForest : Verification of prerequisites for Domain Controller promotion failed. Certificate Server is \ninstalled.\nAt line:6 char:1\n+ Install-ADDSForest -DomainName 'q1lab.test' -DomainNetbiosName Q1LAB  ...\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (:) [Install-ADDSForest], TestFailedException\n    + FullyQualifiedErrorId : Test.VerifyDcPromoCore.DCPromo.General.13,Microsoft.DirectoryServices.Deployment.PowerSh \n   ell.Commands.InstallADDSForestCommand",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "75f2196b833d6a672fdf709284a1fe967f5d2a0a5e229ebf34eda91c8b2c33ec"
+}

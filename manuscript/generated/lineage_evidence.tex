@@ -1,0 +1,75 @@
+% Generated from hash-verified saved research artifacts; do not hand-edit.
+\begin{table}[ht]
+\centering
+\caption{Confirmation on 2,000 synthetic histories: 1,804 true observed links and 539 true mutation overlaps. Link coverage is a percentage; overlap entries are edge counts. These are attribution outcomes, not exploit detection rates.}
+\label{tab:lineage_confirmation}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Method & Definite links & Possible links & True overlap & False overlap \\
+\midrule
+Identifier OR & 91.69 & 91.69 & 374 & 175 \\
+Issuer--serial & 62.86 & 62.86 & 265 & 88 \\
+Conjunctive, 300 s & 47.67 & 47.67 & 196 & 34 \\
+Conjunctive, point & 74.56 & 74.56 & 310 & 51 \\
+CIPG constraint reference & 55.82 & 99.06 & 107 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\caption{Temporal component study, 300 histories per observation rate. The order-aware method receives an additional explicit sensor channel; no cross-host ordering is inferred from record numbers. Each row is evaluated on the same cases as the other methods at that rate.}
+\label{tab:order_component}
+\small
+\begin{tabular}{rlrrr}
+\toprule
+Order rate & Method & True overlaps & Recovered & False claims \\
+\midrule
+0 & Point time & 122 & 93 & 18 \\
+0 & Interval boxes & 122 & 54 & 0 \\
+0 & Intervals + observed order & 122 & 54 & 0 \\
+0.5 & Point time & 148 & 104 & 12 \\
+0.5 & Interval boxes & 148 & 59 & 0 \\
+0.5 & Intervals + observed order & 148 & 88 & 0 \\
+1 & Point time & 138 & 112 & 11 \\
+1 & Interval boxes & 138 & 53 & 0 \\
+1 & Intervals + observed order & 138 & 138 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\caption{Bridge-fault component study: 2,700 histories, 2,180 successful observed links. Fault counts range from zero to two; budgets below the true count include outside-assumption controls. Candidate retention and certain-link coverage are reported separately.}
+\label{tab:bridge_component}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Method & Retained true links & Certain true links & Wrong certain & Hypotheses \\
+\midrule
+$k=0$ & 1440 & 721 & 0 & 2700 \\
+$k=1$ & 1811 & 602 & 0 & 15300 \\
+$k=2$ & 2180 & 602 & 0 & 49800 \\
+Ignore optional exports & 2180 & 1757 & 0 & 2700 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\begin{table}[ht]
+\centering
+\caption{Paired interventions in Windows 2016 and an independent Windows 2019 forest: three blocks per environment, with identical signed administrative CSR/key within each block. All 24 certificate-use outcomes are checked and baseline readback is restored. External columns concern configuration risk on the exact template, not attack intent. The 2019 build is 17763.4974.}
+\label{tab:paired_live_policy}
+\small
+\begin{tabular}{llrrrr}
+\toprule
+OS & Condition & Trials & Admin uses & ESC1 & Risky EKU \\
+\midrule
+2016 & Baseline/admin request & 3 & 0 & 0 & 0 \\
+2016 & Subject bit enabled & 3 & 3 & 3 & 3 \\
+2016 & Rollback before request & 3 & 0 & 0 & 0 \\
+2016 & Legitimate self request & 3 & 0 & 3 & 3 \\
+2019 & Baseline/admin request & 3 & 0 & 0 & 0 \\
+2019 & Subject bit enabled & 3 & 3 & 3 & 3 \\
+2019 & Rollback before request & 3 & 0 & 0 & 0 \\
+2019 & Legitimate self request & 3 & 0 & 3 & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}

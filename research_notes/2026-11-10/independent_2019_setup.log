@@ -1,0 +1,45 @@
+{"phase": "inventory", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+{"phase": "roles", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 147, in <module>
+    run(parser.parse_args())
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 81, in run
+    execute(connection,"02_new_forest",script,args.output,secret)
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 50, in execute
+    if result.status_code:raise RuntimeError(name+" failed; see saved raw outcome")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: 02_new_forest failed; see saved raw outcome
+{"phase": "remove_unconfigured_ca_feature", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+{"phase": "forest_retry", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 171, in <module>
+    run(parser.parse_args())
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 151, in run
+    execute(connection,"04_independent_template",script,args.output,secret)
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 50, in execute
+    if result.status_code:raise RuntimeError(name+" failed; see saved raw outcome")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: 04_independent_template failed; see saved raw outcome
+/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/__init__.py:87: UserWarning: There was a problem converting the Powershell error message: no element found: line 1, column 0
+  warnings.warn("There was a problem converting the Powershell error " "message: %s" % (e))
+{"phase": "template_retry", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+{"phase": "kdc_certificate", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+{"phase": "final_inventory", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 203, in <module>
+    run(parser.parse_args())
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 183, in run
+    execute(connection,phase,script,args.output,secret)
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 75, in execute
+    if result.status_code or "__Q1_PHASE_COMPLETE__" not in stdout:raise RuntimeError(name+" failed or lacks completion marker; see saved raw outcome")
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: 04d_independent_template_resume failed or lacks completion marker; see saved raw outcome
+{"phase": "template_file_resume", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+{"phase": "kdc_certificate_retry", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}
+{"phase": "enroller_remoting", "status": "saved", "output": "thesis_research/data/lineage_live/2026-11-10/independent_2019_setup"}

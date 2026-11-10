@@ -1,0 +1,606 @@
+{
+  "adjudicator_source_sha256": "a61ec1d0b655e59dd15059f25deb9f369fcbe8d921f4b64a8a05fb6b580e470f",
+  "by_condition": {
+    "baseline_admin_san": {
+      "attempts": 3,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 3,
+      "verified_uses": 3
+    },
+    "benign_self_enrollment": {
+      "attempts": 2,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 2,
+      "verified_uses": 0
+    },
+    "enabled_admin_san": {
+      "attempts": 3,
+      "infrastructure_errors": 0,
+      "privileged_uses": 2,
+      "restored": 3,
+      "verified_uses": 2
+    },
+    "rollback_before_enroll": {
+      "attempts": 3,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 3,
+      "verified_uses": 3
+    }
+  },
+  "scope": "Independent controlled outcome adjudication; no CIPG detector imports or enterprise-rate estimate",
+  "trials": [
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1Evidence",
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:20089"
+      ],
+      "condition": "baseline_admin_san",
+      "event_ids": {
+        "4624": 34,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 64,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "290000000563c6c1710a12148d000000000005",
+      "sha256": "aa56646bf9a9190f1f32b3fab1c33ffd8f5b96321337eb0b6b14ab32239ca327",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:20095"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "trial": "r01_baseline_admin_san",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1Evidence",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:20312"
+      ],
+      "condition": "benign_self_enrollment",
+      "event_ids": {
+        "4624": 35,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 2
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "issued_chain_incomplete",
+      "raw_events": 67,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": false,
+      "restored": true,
+      "serial": "29000000067fdce5be218f3615000000000006",
+      "sha256": "cce7b4f5bd62111a72f64355b4a1d4023adb824af25d8eec9d424d6e4bd7b220",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": false,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:20324"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "trial": "r01_benign_self_enrollment",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1Evidence",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:20539"
+      ],
+      "condition": "enabled_admin_san",
+      "event_ids": {
+        "4624": 36,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 6
+      },
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 72,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "2900000007c41873009d8cc4e2000000000007",
+      "sha256": "a5a081fdb3683568880cb81a3168535cfd3c391dd1065119e5112e0c165da0b7",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:20551"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-500"
+      ],
+      "trial": "r01_enabled_admin_san",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1Evidence",
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:20784"
+      ],
+      "condition": "rollback_before_enroll",
+      "event_ids": {
+        "4624": 38,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 4
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 72,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "29000000087fe54c5251474398000000000008",
+      "sha256": "48975e56dc898a8aab709279d3450b4f01b76feb2acedbb1cf0c7aed9facab2b",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:20790"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "trial": "r01_rollback_before_enroll",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1Evidence",
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21013"
+      ],
+      "condition": "rollback_before_enroll",
+      "event_ids": {
+        "4624": 35,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 6
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 71,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "29000000098329797e324e7d54000000000009",
+      "sha256": "7c30661627c30fc770d23f8864fa4e1333904c6836d8c856b00a7eb12dd1d585",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21019"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "trial": "r02_rollback_before_enroll",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1Evidence",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21242"
+      ],
+      "condition": "benign_self_enrollment",
+      "event_ids": {
+        "4624": 38,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 2
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "issued_chain_incomplete",
+      "raw_events": 70,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": false,
+      "restored": true,
+      "serial": "290000000a8ec16956d46d749900000000000a",
+      "sha256": "3cfb0a9f3dc839cf00139550f2617c9941f7c959ea311c17d963b671d30f5bcd",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": false,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21254"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "trial": "r02_benign_self_enrollment",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1Evidence",
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21464"
+      ],
+      "condition": "baseline_admin_san",
+      "event_ids": {
+        "4624": 33,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 63,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "290000000bf4098f466ed2ea3200000000000b",
+      "sha256": "596d40470d7cc9a9b37e107c12eef9e4ec8ee6dd148ebf641e9f5ab567160427",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21470"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "trial": "r02_baseline_admin_san",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1Evidence",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21696"
+      ],
+      "condition": "enabled_admin_san",
+      "event_ids": {
+        "4624": 35,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 2
+      },
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "issued_chain_incomplete",
+      "raw_events": 67,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": false,
+      "restored": true,
+      "serial": "290000000c1b08a35f7aad42a100000000000c",
+      "sha256": "d27d04014cf3fc7c6c95945dfe700a4c7de54b54292792fa74eab1ac5f93b598",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": false,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21708"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-500"
+      ],
+      "trial": "r02_enabled_admin_san",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1Evidence",
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21955"
+      ],
+      "condition": "rollback_before_enroll",
+      "event_ids": {
+        "4624": 42,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 6
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 78,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "290000000ddf20653c76b0a7a400000000000d",
+      "sha256": "81bd0b7ad23b7f2e9cbb2812d8b3d1449b76de5256c0ff0bcbb17de97c68e65e",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:21961"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "trial": "r03_rollback_before_enroll",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "Q1Evidence",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication."
+        },
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:22179"
+      ],
+      "condition": "enabled_admin_san",
+      "event_ids": {
+        "4624": 35,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 4
+      },
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 69,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "290000000e001362f62c47cb6200000000000e",
+      "sha256": "e211fef8bb41fb4ef0a83ccd5776b6e5be5a9a7e1fa7ddc2755559a333a329c3",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:22191"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-500"
+      ],
+      "trial": "r03_enabled_admin_san",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "Q1Evidence",
+        "[+] User Enrollable Principals": [
+          "Q1LAB.TEST\\q1.enroller"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:22400"
+      ],
+      "condition": "baseline_admin_san",
+      "event_ids": {
+        "4624": 34,
+        "4768": 16,
+        "4886": 1,
+        "4887": 1,
+        "4898": 12,
+        "5136": 2
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 66,
+      "rejected_kdc_event_ids": [],
+      "rejected_kdc_statuses": [],
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "290000000fb270416a09fe9be100000000000f",
+      "sha256": "921f0e2a52848590790cd5ec1efb7f04be465047434137cda784044b653d1867",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "WIN-NA2FC16NO63.q1lab.test:22406"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "trial": "r03_baseline_admin_san",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    }
+  ],
+  "trials_adjudicated": 11,
+  "trials_planned": 12
+}

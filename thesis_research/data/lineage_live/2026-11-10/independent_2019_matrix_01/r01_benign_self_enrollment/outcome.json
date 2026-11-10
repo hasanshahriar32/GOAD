@@ -1,0 +1,17 @@
+{
+  "certificate_identity": {
+    "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+    "serial": "29000000045fb7f3eb211acab5000000000004",
+    "sha1": "2ef79b22230702c15ceb9f6693467cbbaec34439",
+    "sha256": "7b6fc96e2c01d393c5e63bd8f04409d1ec7c3478c5685e24126537ea6d35cfe7",
+    "upns": [
+      "q1.enroller@q1lab.test"
+    ]
+  },
+  "condition": "benign_self_enrollment",
+  "id": "r01_benign_self_enrollment",
+  "native_submission_exit": 0,
+  "privileged_san_present": false,
+  "restored": true,
+  "status": "issued_auth_attempted"
+}

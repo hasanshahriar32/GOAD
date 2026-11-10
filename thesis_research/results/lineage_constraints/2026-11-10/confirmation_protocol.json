@@ -1,0 +1,20 @@
+{
+  "declared_before_execution_utc": "2026-11-10T03:59:12.431430+00:00",
+  "exploratory_run": "v2",
+  "confirmation_seeds": [
+    2011,
+    3019,
+    4021,
+    5023,
+    6029
+  ],
+  "cases_per_named_family_per_seed": 40,
+  "randomized_histories_per_seed": 400,
+  "source_sha256": {
+    "thesis_research/src/lineage_constraints/engine.py": "86613cc1d461b196234621eca93be12c4f83c1fbd97253dbf5c277bb1fc603e4",
+    "thesis_research/src/lineage_constraints/simulator.py": "86280409578e748dfa7082fe01fca97a5b9f72c0025cd22618429568b6b25f2d",
+    "thesis_research/src/lineage_constraints/baselines.py": "5c57af0604ebca5ae3095ddf595c109b640d53bd7e9127564d872760bf1cc9cd",
+    "thesis_research/src/lineage_constraints/evaluate.py": "18bc68824ddaa7027fc31ea95fd6e4c73fb6bbcc65b4e287b7c92dc532692a1f"
+  },
+  "interpretation": "Fresh random histories under the same synthetic generator; no independent Windows generalization or enterprise prevalence claim."
+}

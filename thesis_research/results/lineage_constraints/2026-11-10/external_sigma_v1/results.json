@@ -1,0 +1,221 @@
+{
+  "executed_utc": "2026-11-10T04:37:16.477917+00:00",
+  "execution_controls": {
+    "matches": {
+      "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+        "fixture:eku",
+        "fixture:subject"
+      ],
+      "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [
+        "fixture:machine"
+      ],
+      "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+        "fixture:eku"
+      ]
+    },
+    "passed": true
+  },
+  "files": [
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4769,
+        4886,
+        4887,
+        5136
+      ],
+      "events": 88,
+      "input_sha256": "55c9eec19ae4b6fab570fa127a85936778b948af3e8ce0f00e8d53f3d034cfc2",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "/home/m4x1d/Desktop/GOAD/thesis_research/data/live_goad_traces/trace_asn1_san_concealment.xml",
+      "query_and_load_seconds": 0.002886934991693124,
+      "xml_projection_seconds": 0.008427298002061434
+    },
+    {
+      "event_ids_present": [
+        4624,
+        5136
+      ],
+      "events": 6,
+      "input_sha256": "26721b4e57c822786201d17668053e80d9dd63ab5f3dd3765565eb6f56889460",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "/home/m4x1d/Desktop/GOAD/thesis_research/data/live_goad_traces/trace_benign_admin_typo_rollback.xml",
+      "query_and_load_seconds": 0.0006146560044726357,
+      "xml_projection_seconds": 0.0009534429991617799
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4769,
+        4886,
+        4887,
+        5136
+      ],
+      "events": 89,
+      "input_sha256": "7ab828e9f56cfd49444612413ec12e1886e015a5fdf6677c6aa5c4f7ae2c8ff3",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "/home/m4x1d/Desktop/GOAD/thesis_research/data/live_goad_traces/trace_benign_normal_enrollment.xml",
+      "query_and_load_seconds": 0.0019301400025142357,
+      "xml_projection_seconds": 0.008945779001805931
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4769,
+        4886,
+        4887,
+        5136
+      ],
+      "events": 90,
+      "input_sha256": "3385062484a10e6267a8c46cb83d660e3df077722386da336f5d9e8d18fffe38",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "/home/m4x1d/Desktop/GOAD/thesis_research/data/live_goad_traces/trace_esc4_rollback_full.xml",
+      "query_and_load_seconds": 0.002520046997233294,
+      "xml_projection_seconds": 0.007577651005703956
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4769,
+        4886,
+        4887
+      ],
+      "events": 172,
+      "input_sha256": "48ec7f3bfd6dc81be706430405b76f331925805aee106a7850f9f090227c6f7e",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "/home/m4x1d/Desktop/GOAD/thesis_research/data/live_goad_traces/trace_esc6_ca_flag_abuse.xml",
+      "query_and_load_seconds": 0.004285444010747597,
+      "xml_projection_seconds": 0.013992316002259031
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4769,
+        4886,
+        4887,
+        5136
+      ],
+      "events": 94,
+      "input_sha256": "8e09ebe42a6b6b393de8490ec284a69520f2072d29a47a232ea4945dfcd07b70",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "/home/m4x1d/Desktop/GOAD/thesis_research/data/live_goad_traces/trace_esc9_upn_swap_rollback.xml",
+      "query_and_load_seconds": 0.002416689007077366,
+      "xml_projection_seconds": 0.008183610989362933
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        5136
+      ],
+      "events": 47,
+      "input_sha256": "d0238648bb3576520b4ac22254e25bd9c253c2e22286a150f8e655a242987a7a",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "/home/m4x1d/Desktop/GOAD/thesis_research/data/live_goad_traces/trace_split_actor_delayed_pkinit.xml",
+      "query_and_load_seconds": 0.00209637000807561,
+      "xml_projection_seconds": 0.004975903997546993
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        5136
+      ],
+      "events": 49,
+      "input_sha256": "4c69564a5612331123b768697a954e4f8c7947d3ba5b7d7d9759eee82aadffd6",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "/home/m4x1d/Desktop/GOAD/thesis_research/data/lineage_live/2026-11-10/split_actor_02/trace_split_actor_delayed_pkinit.xml",
+      "query_and_load_seconds": 0.001123003996326588,
+      "xml_projection_seconds": 0.004220670001814142
+    }
+  ],
+  "mapping": "Raw XML System/EventData fields, EventID as integer, absent rule fields NULL; SQLite ASCII case-insensitive comparison enabled",
+  "rules": [
+    {
+      "id": "5ee3a654-372f-11ec-8d3d-0242ac130003",
+      "path": "rules/windows/builtin/security/win_security_adcs_certificate_template_configuration_vulnerability.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE (EventID=4898 AND TemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\') OR (EventID=4899 AND NewTemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\')"
+      ],
+      "sha256": "82f1c480ffdbc12a5a50736ef5f092f466850af7efcf198a3aa6b624e5e595c3",
+      "status": "test",
+      "title": "ADCS Certificate Template Configuration Vulnerability"
+    },
+    {
+      "id": "bfbd3291-de87-4b7c-88a2-d6a5deb28668",
+      "path": "rules/windows/builtin/security/win_security_adcs_certificate_template_configuration_vulnerability_eku.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE ((EventID=4898 AND (TemplateContent LIKE '%1.3.6.1.5.5.7.3.2%' ESCAPE '\\' OR TemplateContent LIKE '%1.3.6.1.5.2.3.4%' ESCAPE '\\' OR TemplateContent LIKE '%1.3.6.1.4.1.311.20.2.2%' ESCAPE '\\' OR TemplateContent LIKE '%2.5.29.37.0%' ESCAPE '\\')) AND TemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\') OR ((EventID=4899 AND (NewTemplateContent LIKE '%1.3.6.1.5.5.7.3.2%' ESCAPE '\\' OR NewTemplateContent LIKE '%1.3.6.1.5.2.3.4%' ESCAPE '\\' OR NewTemplateContent LIKE '%1.3.6.1.4.1.311.20.2.2%' ESCAPE '\\' OR NewTemplateContent LIKE '%2.5.29.37.0%' ESCAPE '\\')) AND NewTemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\')"
+      ],
+      "sha256": "01942ca58c6c1e4cd277406fce6aa8bc3c465ab63e7c10ca5ce3744304fb4d6c",
+      "status": "test",
+      "title": "ADCS Certificate Template Configuration Vulnerability with Risky EKU"
+    },
+    {
+      "id": "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5",
+      "path": "rules/windows/builtin/security/win_security_petitpotam_susp_tgt_request.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE (EventID=4768 AND TargetUserName LIKE '%$' ESCAPE '\\' AND CertThumbprint LIKE '%' ESCAPE '\\') AND (NOT COALESCE((IpAddress='::1' COLLATE NOCASE OR CertThumbprint='' COLLATE NOCASE), 0))"
+      ],
+      "sha256": "ef0befc88cb8a8b8d0408077e07e0e515701242b0b560a8efc9051ad712ff390",
+      "status": "test",
+      "title": "PetitPotam Suspicious Kerberos TGT Request"
+    }
+  ],
+  "scope": "Actual upstream Sigma rules converted by actual pySigma SQLite backend and executed by SQLite; event-predicate matches, not attack recall",
+  "source_sha256": "1941a4855e96b4154aecb23c3a1b40b98daa801940694d685617cd66d622d217",
+  "sqlite_version": "3.53.1",
+  "task_boundaries": [
+    "Template rules require 4898/4899 telemetry; absence is a coverage gap, not proof of a missed applicable detection",
+    "The machine-account rule is scoped to machine targets; human Administrator authentication is not its intended target",
+    "These are Sigma/SQLite runs, not Splunk or HADES executions"
+  ],
+  "upstream": "https://github.com/SigmaHQ/sigma",
+  "upstream_commit": "d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55",
+  "versions": {
+    "PyYAML": "6.0.3",
+    "pysigma": "2.1.0",
+    "pysigma-backend-sqlite": "2.1.1"
+  }
+}

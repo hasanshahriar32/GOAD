@@ -1,0 +1,26 @@
+{
+  "status": "outcome_checked_capture",
+  "source_sha256": "ee4d32f5ffc583763fb37ebf04547fcc5d07148930faa402cd0eaf46e67c0f46",
+  "python": "3.11.17",
+  "delay_seconds": 14.0,
+  "original_state_restored": true,
+  "output_sha256": {
+    "00_domain_context.json": "2a1782006663518bc83944a6d97cebafcb12e39e12c9833f13e9766d841b29e8",
+    "00_original_template_state.json": "e18f45bf45d9eb61a1cd1881642290471f1e921932d4d2129044e689c26e17e3",
+    "01_mutation.json": "68b50e3d9af6f1c55090674ce7e8e7df5b3769b9e36d3e1099514ee548df0ce5",
+    "02_csr.json": "c8c8f1fdaa2f8911e6b8de8bf52376ca44b5f97146fc0a6d5d9be8aaa158bf83",
+    "03_submission.json": "076a31eff5204ffed251af071f6b3d5b99cb7383b66a8ce80bec1db4078f0ce4",
+    "04_rollback.json": "6a1b14462514df88e07ce029feed2ee9e276feabf7b648eb39a65b7b1c397aeb",
+    "05_exact_pfx_export.json": "f1f61601fe77b3efdbf7de68b6775244fc8471c06b28017ef438cd6ccbd1ff4c",
+    "06_certipy_authentication.json": "4fd4a263760b633937e98f1b8b9b27cc919ae4a767cb3fc9408159ecfe41e171",
+    "07_ca_database_export.json": "849ac1662fb3a533d2df0375dda07b8db78cd65b78153c29a3374f48983480d7",
+    "99_restore_original_state.json": "0db6af30c5a7f2a7dd6372a88a2386ed6ad516e00d95142be47fff2cb98ad40a",
+    "adjudication.json": "17cc68949f3412300d6ae4a97334753921655fc6a1e91ad1fceeb210d7d2c7e6",
+    "capture_source.py": "ee4d32f5ffc583763fb37ebf04547fcc5d07148930faa402cd0eaf46e67c0f46",
+    "case_timeline.json": "9067f06b75a75421d006fe64e8879152d10b47374c673efe6b51a8823d971e84",
+    "certificate_identity.json": "96774a17a278bcea3e373438d72e75adab647fe758a29e8f593c0596b327d65d",
+    "issued_certificate.cer": "d271cbb23a37b3bf8e655fd4e59a9c6c648fa04d45fb41aa653def86f968182d",
+    "srv03_ca_db_bridge.csv": "e241245af1d36c576bc1608ef1aa7e39ea28bd2a972522ff1509ecbfd13de68b",
+    "trace_split_actor_delayed_pkinit.xml": "4c69564a5612331123b768697a954e4f8c7947d3ba5b7d7d9759eee82aadffd6"
+  }
+}

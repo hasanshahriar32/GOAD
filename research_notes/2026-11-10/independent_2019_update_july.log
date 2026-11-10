@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 159, in _get_module_details
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/update_2019.py", line 51
+    """.replace("KB_TOKEN",kb).replace("REMOTE_TOKEN",remote).replace("ENCODED_TOKEN",encoded).replace("SCRIPT_HASH_TOKEN",hashlib.sha256(script.encode()).hexdigest())
+       ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 101-102: truncated \uXXXX escape

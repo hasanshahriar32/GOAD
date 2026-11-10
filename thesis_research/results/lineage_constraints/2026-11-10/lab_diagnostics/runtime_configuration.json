@@ -1,0 +1,87 @@
+{
+  "scope": "Lab restoration diagnostics, not attack experiments",
+  "containers": [
+    {
+      "name": "goad-lineage-dc03",
+      "image_id": "sha256:fe26dbf1d0a118842da596ba60b51c67de81a32d952deffaba13b8b5405a0207",
+      "qemu_arguments": [
+        "-enable-kvm",
+        "-m",
+        "2560",
+        "-smp",
+        "2",
+        "-cpu",
+        "host",
+        "-drive",
+        "file=/lab/dc03.qcow2,format=qcow2,if=ide",
+        "-netdev",
+        "user,id=mgmt,restrict=on,hostfwd=tcp::5985-:5985,hostfwd=tcp::88-:88",
+        "-device",
+        "virtio-net-pci,netdev=mgmt",
+        "-netdev",
+        "socket,id=lan,listen=:12000",
+        "-device",
+        "virtio-net-pci,netdev=lan,mac=52:54:00:56:12:03",
+        "-monitor",
+        "tcp:127.0.0.1:4444,server=on,wait=off",
+        "-display",
+        "none"
+      ],
+      "mounts": [
+        {
+          "source": "/tmp/goad-lineage-lab",
+          "destination": "/lab",
+          "writable": true
+        },
+        {
+          "source": "/run/media/m4x1d/255fb331-4ad9-49d7-92b8-080d9effb0ef",
+          "destination": "/run/media/hs32/255fb331-4ad9-49d7-92b8-080d9effb0ef",
+          "writable": false
+        }
+      ],
+      "memory_limit_bytes": 3670016000,
+      "status": "running"
+    },
+    {
+      "name": "goad-lineage-srv03",
+      "image_id": "sha256:fe26dbf1d0a118842da596ba60b51c67de81a32d952deffaba13b8b5405a0207",
+      "qemu_arguments": [
+        "-enable-kvm",
+        "-m",
+        "2560",
+        "-smp",
+        "2",
+        "-cpu",
+        "host",
+        "-drive",
+        "file=/lab/srv03.qcow2,format=qcow2,if=ide",
+        "-netdev",
+        "user,id=mgmt,restrict=on,hostfwd=tcp::5985-:5985,hostfwd=tcp::88-:88",
+        "-device",
+        "virtio-net-pci,netdev=mgmt",
+        "-netdev",
+        "socket,id=lan,connect=goad-lineage-dc03:12000",
+        "-device",
+        "virtio-net-pci,netdev=lan,mac=52:54:00:56:23:03",
+        "-monitor",
+        "tcp:127.0.0.1:4444,server=on,wait=off",
+        "-display",
+        "none"
+      ],
+      "mounts": [
+        {
+          "source": "/tmp/goad-lineage-lab",
+          "destination": "/lab",
+          "writable": true
+        },
+        {
+          "source": "/run/media/m4x1d/255fb331-4ad9-49d7-92b8-080d9effb0ef",
+          "destination": "/run/media/hs32/255fb331-4ad9-49d7-92b8-080d9effb0ef",
+          "writable": false
+        }
+      ],
+      "memory_limit_bytes": 3670016000,
+      "status": "running"
+    }
+  ]
+}

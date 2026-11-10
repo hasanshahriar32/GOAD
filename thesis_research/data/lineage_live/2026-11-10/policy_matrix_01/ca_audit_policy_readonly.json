@@ -1,0 +1,5 @@
+{
+  "status": 0,
+  "stdout": "Machine Name,Policy Target,Subcategory,Subcategory GUID,Inclusion Setting,Exclusion Setting\r\r\nBRAAVOS,System,Certification Services,{0CCE9221-69AE-11D9-BED3-505054503030},Success and Failure,\r\r\nHKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CertSvc\\Configuration\\CertGraph-Lab-CA\\AuditFilter:\r\n\r\n  AuditFilter REG_DWORD = 7f (127)\r\nCertUtil: -getreg command completed successfully.\r\n",
+  "stderr": ""
+}

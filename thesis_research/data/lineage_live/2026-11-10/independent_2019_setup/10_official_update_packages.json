@@ -1,0 +1,32 @@
+{
+  "packages": [
+    {
+      "kb": "KB5062557",
+      "catalog_update_id": "34d72c76-85c4-484c-830d-f91ab49daccd",
+      "urls": [
+        "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/secu/2025/07/windows10.0-kb5062557-x64_cf62475a0842bb1dc1f73180bc478ad7d8d9c7ab.msu"
+      ],
+      "bytes": 739196007,
+      "sha1": "cf62475a0842bb1dc1f73180bc478ad7d8d9c7ab",
+      "sha256": "4d9db36760f2ea5876f5212f1a977b64917061b06b257f876c8f036f629691f2",
+      "file": "windows10.0-kb5062557-x64_cf62475a0842bb1dc1f73180bc478ad7d8d9c7ab.msu"
+    },
+    {
+      "kb": "KB5126651",
+      "catalog_update_id": "09f6ed54-b3c1-4812-9982-eff7c37c53f7",
+      "urls": [
+        "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/secu/2026/10/windows10.0-kb5126651-x64_fbdb84a0b07b1192dccce63174efba953c0108e2.msu"
+      ],
+      "bytes": 901622024,
+      "sha1": "fbdb84a0b07b1192dccce63174efba953c0108e2",
+      "sha256": "a0a374cf1f0a738823ad09b1a60a4feae1ff20a3c1022177d9d3c9deb06d691b",
+      "file": "windows10.0-kb5126651-x64_fbdb84a0b07b1192dccce63174efba953c0108e2.msu"
+    }
+  ],
+  "scope": "Independent writable Windows 2019 research copy only; July 2025 prerequisite then October 2026 security cumulative update",
+  "installation_contract": "Normal Windows servicing signature/applicability checks; never IgnoreCheck",
+  "support_sources": [
+    "https://support.microsoft.com/en-us/servicing/os/windows-10/2025/07/july-8-2025-kb5062557-os-build-17763-7558",
+    "https://support.microsoft.com/en-us/servicing/os/windows-10/2026/10/kb5126651-windows-10-1809-security-update"
+  ]
+}

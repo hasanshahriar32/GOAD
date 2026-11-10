@@ -1,0 +1,1009 @@
+{
+  "input_trial_manifest_sha256": {
+    "r01_baseline_admin_san": "456e9c0ce40e8bd67ce1e7d628c5b968341d1227110acfa3e9f2babf3aaaec72",
+    "r01_benign_self_enrollment": "0117e271516af22d81e55e82e8c65bbff73eb8cf55c307cb771260f94348707a",
+    "r01_enabled_admin_san": "6615409984d5530ed3dc9518c64d499a6b9c57e6ca665fd19e35a7369fc18e0d",
+    "r01_rollback_before_enroll": "96313cb1b205508799b43c1703e5efe5d1153715b0d69a603caa1dc6fc34fa04",
+    "r02_baseline_admin_san": "b9b2cfc52fec3194f3543ff7b128ad6437fa64db842f3dc018dfdf8437baaf32",
+    "r02_benign_self_enrollment": "2090d4d5b4cdd46eecbff36c9254fc487bd8aa0b0cf7561257f83fbf24b45a65",
+    "r02_enabled_admin_san": "6fe854ff67e4c8ecf3c5450e855f7ff24fb5b364d122bfb205c613418920e5ce",
+    "r02_rollback_before_enroll": "14f5bd4a8b3348c4021dd58764f79fdc1733b5288f2375cbc4228888bf71e942",
+    "r03_baseline_admin_san": "d819f268cd5254c4a20cba406d0b5bf769846da0c696435e3bcd6534bbe431a4",
+    "r03_benign_self_enrollment": "ebacdaee292e5c57a024ae8729fa749878aab0f34ce8c0aaaa997c4822900c82",
+    "r03_enabled_admin_san": "df1f3ba07577eb04c31483efd5be87ba6211159ec4683479b65f93e37a243b37",
+    "r03_rollback_before_enroll": "a1f89470cc1a27221ae357d84520225650687b767c5e5a12ba69e856e720df0f"
+  },
+  "scope": "Measured experiment command envelopes and offline identity reasoning, not continuous polling, detection latency, host RSS or enterprise overhead",
+  "source_sha256": "dfa86ddc0101b3a0c4b1282ffbe97a7ff5b9160356f07ae66a909204bdc1fd1c",
+  "summary": {
+    "offline_identity_median_seconds": {
+      "maximum": 0.013356607509194873,
+      "mean": 0.009572673333119988,
+      "median": 0.009178177748253802,
+      "minimum": 0.007715044499491341,
+      "n": 12
+    },
+    "python_traced_peak_bytes": {
+      "maximum": 1683451,
+      "mean": 1511610.25,
+      "median": 1497137.5,
+      "minimum": 1412345,
+      "n": 12
+    },
+    "trial_command_envelope_seconds": {
+      "maximum": 35.27791452407837,
+      "mean": 31.270716269810993,
+      "median": 32.13691818714142,
+      "minimum": 19.311267852783203,
+      "n": 12
+    }
+  },
+  "trials": [
+    {
+      "ca_export_bytes": 1110,
+      "certificate_observations": 2,
+      "logged_command_seconds": 23.030139166999998,
+      "offline_identity_seconds": {
+        "maximum": 0.016483854997204617,
+        "mean": 0.012018814802286216,
+        "median": 0.013356607509194873,
+        "minimum": 0.008565694995922968,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.102965597,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.1029653549194336
+        },
+        {
+          "monotonic_seconds": 0.845056217,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.8450560569763184
+        },
+        {
+          "monotonic_seconds": 1.118814918,
+          "phase": "01_before_state.json",
+          "wall_seconds": 1.118814468383789
+        },
+        {
+          "monotonic_seconds": 0.921302261,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.921302080154419
+        },
+        {
+          "monotonic_seconds": 1.130469581,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.130469799041748
+        },
+        {
+          "monotonic_seconds": 13.35876904,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 13.358768463134766
+        },
+        {
+          "monotonic_seconds": 0.559551567,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.5595517158508301
+        },
+        {
+          "monotonic_seconds": 1.553857668,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.5538575649261475
+        },
+        {
+          "monotonic_seconds": 0.556222834,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.556222677230835
+        },
+        {
+          "monotonic_seconds": 1.033496293,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.0334961414337158
+        },
+        {
+          "monotonic_seconds": 0.849633191,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.8496332168579102
+        }
+      ],
+      "python_traced_peak_bytes": 1426681,
+      "recorded_command_envelope_seconds": 35.27791452407837,
+      "retained_raw_xml_bytes": 134444,
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "ca_export_bytes": 1334,
+      "certificate_observations": 2,
+      "logged_command_seconds": 25.382643023999997,
+      "offline_identity_seconds": {
+        "maximum": 0.010156600008485839,
+        "mean": 0.009148185403319076,
+        "median": 0.009181977497064508,
+        "minimum": 0.008310026008985005,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.457357022,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.457357406616211
+        },
+        {
+          "monotonic_seconds": 0.778441713,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.7784419059753418
+        },
+        {
+          "monotonic_seconds": 0.810439212,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.8104386329650879
+        },
+        {
+          "monotonic_seconds": 0.735825415,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 0.7358255386352539
+        },
+        {
+          "monotonic_seconds": 0.783519336,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.7835195064544678
+        },
+        {
+          "monotonic_seconds": 0.972163655,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 0.9721636772155762
+        },
+        {
+          "monotonic_seconds": 12.964752131,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 12.964751958847046
+        },
+        {
+          "monotonic_seconds": 0.924639291,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.9246394634246826
+        },
+        {
+          "monotonic_seconds": 1.608188791,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.6081888675689697
+        },
+        {
+          "monotonic_seconds": 1.195803615,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 1.1958036422729492
+        },
+        {
+          "monotonic_seconds": 0.590562469,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.5905623435974121
+        },
+        {
+          "monotonic_seconds": 1.162411351,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.1624112129211426
+        },
+        {
+          "monotonic_seconds": 1.398539023,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 1.3985390663146973
+        }
+      ],
+      "python_traced_peak_bytes": 1476547,
+      "recorded_command_envelope_seconds": 31.9795138835907,
+      "retained_raw_xml_bytes": 139769,
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "ca_export_bytes": 1558,
+      "certificate_observations": 2,
+      "logged_command_seconds": 25.058447785,
+      "offline_identity_seconds": {
+        "maximum": 0.02799431700259447,
+        "mean": 0.01419737529795384,
+        "median": 0.012228537998453248,
+        "minimum": 0.010870063997572288,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.196583013,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.1965835094451904
+        },
+        {
+          "monotonic_seconds": 0.538849563,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.5388486385345459
+        },
+        {
+          "monotonic_seconds": 1.098794778,
+          "phase": "01_before_state.json",
+          "wall_seconds": 1.09879469871521
+        },
+        {
+          "monotonic_seconds": 0.879828272,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 0.8798279762268066
+        },
+        {
+          "monotonic_seconds": 1.645124454,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.6451244354248047
+        },
+        {
+          "monotonic_seconds": 1.095953794,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.095954179763794
+        },
+        {
+          "monotonic_seconds": 13.02637144,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 13.026371479034424
+        },
+        {
+          "monotonic_seconds": 0.589833833,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.5898342132568359
+        },
+        {
+          "monotonic_seconds": 1.621766338,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.6217663288116455
+        },
+        {
+          "monotonic_seconds": 0.814466379,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 0.8144669532775879
+        },
+        {
+          "monotonic_seconds": 0.6763077,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.6763081550598145
+        },
+        {
+          "monotonic_seconds": 1.073607068,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.0736072063446045
+        },
+        {
+          "monotonic_seconds": 0.800961153,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.8009607791900635
+        }
+      ],
+      "python_traced_peak_bytes": 1554407,
+      "recorded_command_envelope_seconds": 32.166619062423706,
+      "retained_raw_xml_bytes": 148334,
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "ca_export_bytes": 1781,
+      "certificate_observations": 2,
+      "logged_command_seconds": 25.652010283,
+      "offline_identity_seconds": {
+        "maximum": 0.015990786996553652,
+        "mean": 0.0107497464021435,
+        "median": 0.010179602999414783,
+        "minimum": 0.00944698799867183,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.109977293,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.109978199005127
+        },
+        {
+          "monotonic_seconds": 0.566914724,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.5669138431549072
+        },
+        {
+          "monotonic_seconds": 0.959154897,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.9591548442840576
+        },
+        {
+          "monotonic_seconds": 1.070503889,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 1.0705039501190186
+        },
+        {
+          "monotonic_seconds": 1.077111537,
+          "phase": "03_rollback_before_enroll.json",
+          "wall_seconds": 1.0771114826202393
+        },
+        {
+          "monotonic_seconds": 1.217215411,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.2172150611877441
+        },
+        {
+          "monotonic_seconds": 1.511766352,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.511765480041504
+        },
+        {
+          "monotonic_seconds": 13.120870784,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 13.120870590209961
+        },
+        {
+          "monotonic_seconds": 0.548177227,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.5481772422790527
+        },
+        {
+          "monotonic_seconds": 1.573756831,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.5737569332122803
+        },
+        {
+          "monotonic_seconds": 0.577369177,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.5773687362670898
+        },
+        {
+          "monotonic_seconds": 1.323827166,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.3238270282745361
+        },
+        {
+          "monotonic_seconds": 0.995364995,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.9953644275665283
+        }
+      ],
+      "python_traced_peak_bytes": 1565456,
+      "recorded_command_envelope_seconds": 32.80316686630249,
+      "retained_raw_xml_bytes": 148933,
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "ca_export_bytes": 2456,
+      "certificate_observations": 2,
+      "logged_command_seconds": 23.132895032,
+      "offline_identity_seconds": {
+        "maximum": 0.01603083599184174,
+        "mean": 0.010114802997850347,
+        "median": 0.009394398497533984,
+        "minimum": 0.008311716999742202,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.091590719,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.0915911197662354
+        },
+        {
+          "monotonic_seconds": 0.655129428,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.6551289558410645
+        },
+        {
+          "monotonic_seconds": 0.956188058,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.9561877250671387
+        },
+        {
+          "monotonic_seconds": 1.095894188,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.0958943367004395
+        },
+        {
+          "monotonic_seconds": 1.311223645,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.3112232685089111
+        },
+        {
+          "monotonic_seconds": 12.954106999,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 12.954105377197266
+        },
+        {
+          "monotonic_seconds": 0.861639923,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.861640214920044
+        },
+        {
+          "monotonic_seconds": 1.5794896,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.5794882774353027
+        },
+        {
+          "monotonic_seconds": 0.653481188,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.6534817218780518
+        },
+        {
+          "monotonic_seconds": 1.133391516,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.1333918571472168
+        },
+        {
+          "monotonic_seconds": 0.840759768,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.8407588005065918
+        }
+      ],
+      "python_traced_peak_bytes": 1412345,
+      "recorded_command_envelope_seconds": 29.844388961791992,
+      "retained_raw_xml_bytes": 133259,
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "ca_export_bytes": 2231,
+      "certificate_observations": 2,
+      "logged_command_seconds": 25.156686145000002,
+      "offline_identity_seconds": {
+        "maximum": 0.014275238005211577,
+        "mean": 0.009689411299768835,
+        "median": 0.009174377999443095,
+        "minimum": 0.008766661005211063,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.118457649,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.118457555770874
+        },
+        {
+          "monotonic_seconds": 0.60186334,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.6018631458282471
+        },
+        {
+          "monotonic_seconds": 1.052779726,
+          "phase": "01_before_state.json",
+          "wall_seconds": 1.052781105041504
+        },
+        {
+          "monotonic_seconds": 0.935137575,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 0.9351375102996826
+        },
+        {
+          "monotonic_seconds": 1.326851821,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.3268516063690186
+        },
+        {
+          "monotonic_seconds": 1.257812321,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.2578117847442627
+        },
+        {
+          "monotonic_seconds": 13.047304031,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 13.047304391860962
+        },
+        {
+          "monotonic_seconds": 0.553649717,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.55364990234375
+        },
+        {
+          "monotonic_seconds": 1.570693216,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.570693016052246
+        },
+        {
+          "monotonic_seconds": 0.832355536,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 0.8323559761047363
+        },
+        {
+          "monotonic_seconds": 0.553008146,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.5530080795288086
+        },
+        {
+          "monotonic_seconds": 1.382538404,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.382537841796875
+        },
+        {
+          "monotonic_seconds": 0.924234663,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.9242343902587891
+        }
+      ],
+      "python_traced_peak_bytes": 1543898,
+      "recorded_command_envelope_seconds": 32.24271488189697,
+      "retained_raw_xml_bytes": 146618,
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "ca_export_bytes": 2680,
+      "certificate_observations": 2,
+      "logged_command_seconds": 24.828766008999995,
+      "offline_identity_seconds": {
+        "maximum": 0.012596699001733214,
+        "mean": 0.00843024450005032,
+        "median": 0.007715044499491341,
+        "minimum": 0.007386961005977355,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.221429234,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.2214291095733643
+        },
+        {
+          "monotonic_seconds": 0.563956721,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.5639562606811523
+        },
+        {
+          "monotonic_seconds": 0.963779289,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.9637794494628906
+        },
+        {
+          "monotonic_seconds": 0.942965243,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 0.9429652690887451
+        },
+        {
+          "monotonic_seconds": 0.965903289,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.9659037590026855
+        },
+        {
+          "monotonic_seconds": 1.137855097,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.1378545761108398
+        },
+        {
+          "monotonic_seconds": 12.96885619,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 12.9688560962677
+        },
+        {
+          "monotonic_seconds": 0.609530992,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.6095306873321533
+        },
+        {
+          "monotonic_seconds": 1.889296569,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.889296293258667
+        },
+        {
+          "monotonic_seconds": 0.865080347,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 0.8650777339935303
+        },
+        {
+          "monotonic_seconds": 0.657955575,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.6579551696777344
+        },
+        {
+          "monotonic_seconds": 1.141460834,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.1414611339569092
+        },
+        {
+          "monotonic_seconds": 0.900696629,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.9006955623626709
+        }
+      ],
+      "python_traced_peak_bytes": 1482259,
+      "recorded_command_envelope_seconds": 31.875425100326538,
+      "retained_raw_xml_bytes": 140605,
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "ca_export_bytes": 2006,
+      "certificate_observations": 2,
+      "logged_command_seconds": 24.463044324000002,
+      "offline_identity_seconds": {
+        "maximum": 0.012660716005484574,
+        "mean": 0.008598242999869398,
+        "median": 0.008105476503260434,
+        "minimum": 0.007748962001642212,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.166568581,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.1665689945220947
+        },
+        {
+          "monotonic_seconds": 0.569079133,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.5690789222717285
+        },
+        {
+          "monotonic_seconds": 0.962959853,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.9629597663879395
+        },
+        {
+          "monotonic_seconds": 0.940293816,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 0.9402933120727539
+        },
+        {
+          "monotonic_seconds": 0.973232408,
+          "phase": "03_rollback_before_enroll.json",
+          "wall_seconds": 0.9732325077056885
+        },
+        {
+          "monotonic_seconds": 1.031449725,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.031449317932129
+        },
+        {
+          "monotonic_seconds": 1.184378569,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.1843788623809814
+        },
+        {
+          "monotonic_seconds": 12.934307348,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 12.934307098388672
+        },
+        {
+          "monotonic_seconds": 0.557119993,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.557119607925415
+        },
+        {
+          "monotonic_seconds": 1.643496482,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.6434967517852783
+        },
+        {
+          "monotonic_seconds": 0.614458697,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.6144587993621826
+        },
+        {
+          "monotonic_seconds": 1.052861815,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.0528616905212402
+        },
+        {
+          "monotonic_seconds": 0.832837904,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.8328380584716797
+        }
+      ],
+      "python_traced_peak_bytes": 1538355,
+      "recorded_command_envelope_seconds": 31.711891651153564,
+      "retained_raw_xml_bytes": 146938,
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "ca_export_bytes": 3356,
+      "certificate_observations": 2,
+      "logged_command_seconds": 12.056172572000001,
+      "offline_identity_seconds": {
+        "maximum": 0.012320227004238404,
+        "mean": 0.008219197997823358,
+        "median": 0.007749438998871483,
+        "minimum": 0.007137975000659935,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.286391952,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.2863919734954834
+        },
+        {
+          "monotonic_seconds": 0.802936985,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.8029294013977051
+        },
+        {
+          "monotonic_seconds": 1.036727343,
+          "phase": "01_before_state.json",
+          "wall_seconds": 1.0367274284362793
+        },
+        {
+          "monotonic_seconds": 1.111256777,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.1112570762634277
+        },
+        {
+          "monotonic_seconds": 1.187357273,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.1873576641082764
+        },
+        {
+          "monotonic_seconds": 1.11986612,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 1.119865894317627
+        },
+        {
+          "monotonic_seconds": 0.747941409,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.7479414939880371
+        },
+        {
+          "monotonic_seconds": 1.966577718,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.9665772914886475
+        },
+        {
+          "monotonic_seconds": 0.645004689,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.6450045108795166
+        },
+        {
+          "monotonic_seconds": 1.142228427,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.142228126525879
+        },
+        {
+          "monotonic_seconds": 1.009883879,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 1.0098834037780762
+        }
+      ],
+      "python_traced_peak_bytes": 1461649,
+      "recorded_command_envelope_seconds": 19.311267852783203,
+      "retained_raw_xml_bytes": 138527,
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "ca_export_bytes": 3581,
+      "certificate_observations": 2,
+      "logged_command_seconds": 25.769093317,
+      "offline_identity_seconds": {
+        "maximum": 0.013537790000555106,
+        "mean": 0.009598906099563464,
+        "median": 0.009135831998719368,
+        "minimum": 0.008445586994639598,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.370321274,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.370321273803711
+        },
+        {
+          "monotonic_seconds": 0.607647977,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.6076478958129883
+        },
+        {
+          "monotonic_seconds": 2.317639122,
+          "phase": "01_before_state.json",
+          "wall_seconds": 2.317638635635376
+        },
+        {
+          "monotonic_seconds": 1.145150598,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 1.1451513767242432
+        },
+        {
+          "monotonic_seconds": 0.971589764,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.9715895652770996
+        },
+        {
+          "monotonic_seconds": 1.073504549,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.0735044479370117
+        },
+        {
+          "monotonic_seconds": 12.899061319,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 12.89906120300293
+        },
+        {
+          "monotonic_seconds": 0.519447574,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.5194475650787354
+        },
+        {
+          "monotonic_seconds": 1.545251798,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.5452518463134766
+        },
+        {
+          "monotonic_seconds": 0.782237168,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 0.7822372913360596
+        },
+        {
+          "monotonic_seconds": 0.721933812,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.7219338417053223
+        },
+        {
+          "monotonic_seconds": 1.00908706,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.0090868473052979
+        },
+        {
+          "monotonic_seconds": 0.806221302,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.8062210083007812
+        }
+      ],
+      "python_traced_peak_bytes": 1482686,
+      "recorded_command_envelope_seconds": 32.968791007995605,
+      "retained_raw_xml_bytes": 140602,
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "ca_export_bytes": 3131,
+      "certificate_observations": 2,
+      "logged_command_seconds": 25.535396734999996,
+      "offline_identity_seconds": {
+        "maximum": 0.011028833003365435,
+        "mean": 0.00970533570216503,
+        "median": 0.009599456498108339,
+        "minimum": 0.008874736013240181,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.514555192,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.5145554542541504
+        },
+        {
+          "monotonic_seconds": 0.574628561,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.5746285915374756
+        },
+        {
+          "monotonic_seconds": 1.012015642,
+          "phase": "01_before_state.json",
+          "wall_seconds": 1.0120153427124023
+        },
+        {
+          "monotonic_seconds": 0.866761177,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 0.8667623996734619
+        },
+        {
+          "monotonic_seconds": 1.009016041,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.0090155601501465
+        },
+        {
+          "monotonic_seconds": 1.151802015,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.1518020629882812
+        },
+        {
+          "monotonic_seconds": 13.01041797,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 13.010417699813843
+        },
+        {
+          "monotonic_seconds": 0.702213843,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.702214241027832
+        },
+        {
+          "monotonic_seconds": 1.729279517,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.7292792797088623
+        },
+        {
+          "monotonic_seconds": 0.936365371,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 0.9363653659820557
+        },
+        {
+          "monotonic_seconds": 0.621416809,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.6214170455932617
+        },
+        {
+          "monotonic_seconds": 1.359946465,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.3599650859832764
+        },
+        {
+          "monotonic_seconds": 1.046978132,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 1.0469779968261719
+        }
+      ],
+      "python_traced_peak_bytes": 1511589,
+      "recorded_command_envelope_seconds": 32.95968413352966,
+      "retained_raw_xml_bytes": 143896,
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "ca_export_bytes": 2904,
+      "certificate_observations": 2,
+      "logged_command_seconds": 24.777225733999998,
+      "offline_identity_seconds": {
+        "maximum": 0.012839632996474393,
+        "mean": 0.009392625599866733,
+        "median": 0.009051328997884411,
+        "minimum": 0.008560686997952871,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 1.272454069,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.272454023361206
+        },
+        {
+          "monotonic_seconds": 0.588462933,
+          "phase": "00_requester_identity.json",
+          "wall_seconds": 0.5884923934936523
+        },
+        {
+          "monotonic_seconds": 1.080239648,
+          "phase": "01_before_state.json",
+          "wall_seconds": 1.0802390575408936
+        },
+        {
+          "monotonic_seconds": 0.85759312,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 0.857593297958374
+        },
+        {
+          "monotonic_seconds": 0.840389873,
+          "phase": "03_rollback_before_enroll.json",
+          "wall_seconds": 0.8403894901275635
+        },
+        {
+          "monotonic_seconds": 1.024531503,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.024531364440918
+        },
+        {
+          "monotonic_seconds": 1.271183648,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.2711832523345947
+        },
+        {
+          "monotonic_seconds": 12.948867731,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 12.948867559432983
+        },
+        {
+          "monotonic_seconds": 0.547038809,
+          "phase": "08_stage_public_csr.json",
+          "wall_seconds": 0.5470387935638428
+        },
+        {
+          "monotonic_seconds": 1.685921199,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.685920238494873
+        },
+        {
+          "monotonic_seconds": 0.787816568,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.7878170013427734
+        },
+        {
+          "monotonic_seconds": 1.051749769,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.0517499446868896
+        },
+        {
+          "monotonic_seconds": 0.820976864,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 0.8209748268127441
+        }
+      ],
+      "python_traced_peak_bytes": 1683451,
+      "recorded_command_envelope_seconds": 32.10721731185913,
+      "retained_raw_xml_bytes": 161128,
+      "trial": "r03_rollback_before_enroll"
+    }
+  ]
+}

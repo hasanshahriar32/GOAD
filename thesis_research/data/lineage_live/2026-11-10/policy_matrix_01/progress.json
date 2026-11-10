@@ -1,0 +1,198 @@
+[
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000001ae5615f0f590c6f4b00000000001a",
+      "sha1": "24e63031de5fc1f9dca5f94807b730c2ebbd8bad",
+      "sha256": "c5a4ed07c9cd3c4a980522b1d0ea2cc1511ff8ae14d70fb343674dbdfdb3c5ca",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+    "id": "r01_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000001bc6c99eea261054b300000000001b",
+      "sha1": "9bfdd5053ab106132307268a694644d90aecdf67",
+      "sha256": "5a306972d1ed2d3061e7320cf59d75f7db1e53f033ffabdd439db601548d9032",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r01_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000001c11f204f0aec594e800000000001c",
+      "sha1": "8b84e14e84c94fde3580f0b818ab2e81af663009",
+      "sha256": "68cb6f5dfafea1a9e74e0cb6c2a2f9be761c32e70131d99e567fd5572c160d92",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r01_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "cleanup_error": "RuntimeError: Failed phase: 99_remove_private_export",
+    "condition": "rollback_before_enroll",
+    "id": "r01_rollback_before_enroll",
+    "native_submission_exit": -2147023174,
+    "restored": true,
+    "status": "ca_nonissuance_requires_adjudication"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000001d4cdb6654673a977200000000001d",
+      "sha1": "b06c24389b0fd368e98e49bc05f0960a9789e0ab",
+      "sha256": "db7d1b9381727d8b62bfcab60eb7d64dcaf4a41f2b4503243172f88e85319d17",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r02_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000001e5d7476fd57e548e500000000001e",
+      "sha1": "d93c5999bd4106348ec30012615075f53cbc00a0",
+      "sha256": "a4dd87178dceabbb249e15fb65bd04b9e6d5ef86da96c6274767b905b2f7803e",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+    "id": "r02_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "cleanup_error": "RuntimeError: Failed phase: 99_remove_private_export",
+    "condition": "benign_self_enrollment",
+    "id": "r02_benign_self_enrollment",
+    "native_submission_exit": -2147023174,
+    "restored": true,
+    "status": "ca_nonissuance_requires_adjudication"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000001f538d26368ac41dcf00000000001f",
+      "sha1": "7cb0f39a8190c7431f59baa3adac119684fb7e81",
+      "sha256": "2ce0a32e7090dad49fc6d337214a84337daef52ee1a1178be28383f0309b4edf",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r02_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d00000020e764fc13f06cb026000000000020",
+      "sha1": "889dc0bf5d39251f7ff8b4038c2374c8f0741ad4",
+      "sha256": "82311ced86568dcbe2c6aad41fab05db24fd13d3d2825a7e1e73295214cc69bc",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+    "id": "r03_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002192826537fc87ab0f000000000021",
+      "sha1": "09faaf790d2a6f2aea16b2449dde0c1ade0ad4a9",
+      "sha256": "07a5b4957b33acec321cdb5b18db6bf2a4f670509c2d33f5a64025eae5f77cb2",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r03_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002227b29e534af97eb2000000000022",
+      "sha1": "751700736380649caa2e2e74ecafbbe0a1f09c6b",
+      "sha256": "d091dc4a37301c626a992079a69c7d9c17f3b68c715a60b26cf7066940c39762",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r03_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d00000023c8553f097c548831000000000023",
+      "sha1": "6a2ecb92218aca83b22bf6790344ef2f5a2e8d0b",
+      "sha256": "030a3288c88825314069433a1cfc3882cff58b6a262d57506a5edd1d4cfe1f62",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r03_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  }
+]

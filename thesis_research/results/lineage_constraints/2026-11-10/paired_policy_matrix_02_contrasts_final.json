@@ -1,0 +1,140 @@
+{
+  "adjudication_input_sha256": "9678cefafed4125cd017d1a5301b7115f412095f3645b2aca4da2b4e55834a9c",
+  "blocks": [
+    {
+      "block": "r01",
+      "complete": true,
+      "controlled_necessity_supported": true,
+      "identical_public_key": true,
+      "identical_signed_request": true,
+      "observed_outcomes": {
+        "baseline_admin_san": "self_certificate_use",
+        "enabled_admin_san": "privileged_certificate_use",
+        "rollback_before_enroll": "self_certificate_use"
+      },
+      "other_recorded_effective_policy_fields_equal": true,
+      "scope": "Necessity for this privileged certificate outcome under the matched recorded inputs and controlled cache protocol only",
+      "single_name_flag_bit_intervention": true
+    },
+    {
+      "block": "r02",
+      "complete": true,
+      "controlled_necessity_supported": true,
+      "identical_public_key": true,
+      "identical_signed_request": true,
+      "observed_outcomes": {
+        "baseline_admin_san": "self_certificate_use",
+        "enabled_admin_san": "privileged_certificate_use",
+        "rollback_before_enroll": "self_certificate_use"
+      },
+      "other_recorded_effective_policy_fields_equal": true,
+      "scope": "Necessity for this privileged certificate outcome under the matched recorded inputs and controlled cache protocol only",
+      "single_name_flag_bit_intervention": true
+    },
+    {
+      "block": "r03",
+      "complete": true,
+      "controlled_necessity_supported": true,
+      "identical_public_key": true,
+      "identical_signed_request": true,
+      "observed_outcomes": {
+        "baseline_admin_san": "self_certificate_use",
+        "enabled_admin_san": "privileged_certificate_use",
+        "rollback_before_enroll": "self_certificate_use"
+      },
+      "other_recorded_effective_policy_fields_equal": true,
+      "scope": "Necessity for this privileged certificate outcome under the matched recorded inputs and controlled cache protocol only",
+      "single_name_flag_bit_intervention": true
+    }
+  ],
+  "complete_blocks": 3,
+  "request_checks": [
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "b1c33ab6fd6291e408ad68b1b7bbee51472c576083d0ffbc498d16a78627c65b",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "9be183080d434b362efeb9b62cf8f509eba34e9a9628e01ceb7685b4a5f43f36",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "b1c33ab6fd6291e408ad68b1b7bbee51472c576083d0ffbc498d16a78627c65b",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "b1c33ab6fd6291e408ad68b1b7bbee51472c576083d0ffbc498d16a78627c65b",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "81f2bb8788b5756ebed7445e4864e1e699902d4ed9bf0b5f87320bb258784596",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "914b1501796c7cebdfff6f70d6093b4bfc1d9822ba2f77440d087bbf05d680b2",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "81f2bb8788b5756ebed7445e4864e1e699902d4ed9bf0b5f87320bb258784596",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "81f2bb8788b5756ebed7445e4864e1e699902d4ed9bf0b5f87320bb258784596",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "0ea9dd7ebb71bda7c65c30ffbb977aa44dbea2e4867a8a070e034afd9ed002ae",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "e36294ce1fab56d3ef5aabd861884c3f3b56a7a3df7f926b172bdf706e128a75",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "0ea9dd7ebb71bda7c65c30ffbb977aa44dbea2e4867a8a070e034afd9ed002ae",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "certificate_public_key_matches_request": true,
+      "csr_sha256": "0ea9dd7ebb71bda7c65c30ffbb977aa44dbea2e4867a8a070e034afd9ed002ae",
+      "csr_signature_hash": "sha1",
+      "rsa_signature_verified": true,
+      "trial": "r03_rollback_before_enroll"
+    }
+  ],
+  "scope": "Signed CSR/key and recorded policy verification; conditional matched intervention evidence, not universal policy causality",
+  "supported_controlled_contrasts": 3,
+  "verifier_sha256": "3aba2a3ccd5869ae50f7229975cff00fcb709773fe5bad3e3ee9dd453b305093"
+}
