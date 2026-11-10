@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/transfer_workload.py", line 31, in <module>
+    from .lab.transfer_2019 import connection,credentials,DOMAIN,NETBIOS,CA
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 96
+    <<<<<<< HEAD
+    ^^
+SyntaxError: invalid syntax

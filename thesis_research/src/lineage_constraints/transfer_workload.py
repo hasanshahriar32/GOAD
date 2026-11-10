@@ -56,7 +56,7 @@ def freeze(path):
                         'condition':'transfer_'+condition+'_'+target,'expected_admin_certificate':condition=='enabled' and target=='admin'})
                     ids.append(tid)
             blocks.append({'id':bid,'condition':condition,'trials':ids})
-    sources=[Path(__file__),Path(__file__).with_name('independent_policy_2019.py'),Path(__file__).parent/'lab/transfer_2019.py',
+    sources=[Path(__file__),Path(__file__).with_name('independent_policy_2019.py'),Path(__file__).with_name('live_policy_matrix.py'),Path(__file__).parent/'lab/transfer_2019.py',
         Path(__file__).parent/'lab/provision_2019.py',Path(__file__).with_name('adjudicate_policy_matrix.py'),
         Path(__file__).with_name('evaluate_live_identity.py'),Path(__file__).with_name('engine.py'),Path(__file__).with_name('goad.py'),
         ROOT/'scripts/capture_trace7_split_actor_delayed_pkinit.py']

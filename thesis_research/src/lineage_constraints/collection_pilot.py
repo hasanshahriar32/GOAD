@@ -40,7 +40,7 @@ def freeze(path):
     for pair in range(3):
         values=['idle','polling'];random.Random(84011+pair).shuffle(values)
         for arm in values:arms.append({'id':f'p{pair+1:02d}_{arm}','pair':pair+1,'arm':arm})
-    sources=[Path(__file__),Path(__file__).with_name('transfer_workload.py'),Path(__file__).with_name('engine.py'),Path(__file__).with_name('goad.py'),
+    sources=[Path(__file__),Path(__file__).with_name('transfer_workload.py'),Path(__file__).with_name('live_policy_matrix.py'),Path(__file__).parent/'lab/provision_2019.py',Path(__file__).with_name('engine.py'),Path(__file__).with_name('goad.py'),
         Path(__file__).with_name('independent_policy_2019.py'),Path(__file__).parent/'lab/transfer_2019.py',Path(__file__).with_name('adjudicate_policy_matrix.py'),
         ROOT/'scripts/capture_trace7_split_actor_delayed_pkinit.py']
     dump(path,{'schema':1,'declared_utc':datetime.now(timezone.utc).isoformat(),'arms':arms,'authentications_per_arm':8,
