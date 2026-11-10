@@ -1,13 +1,35 @@
 {
   "artifact_audit": {
-    "generated_tables": 5,
-    "matrix_versions": 7,
-    "path": "ARTIFACT_AUDIT_FINAL_PDF.json",
-    "sha256": "bd68086bdf9fe5e5e571f7086133269293956dca56fd70d672dfe35d13b7a8f0",
+    "generated_tables": 7,
+    "matrix_versions": 8,
+    "path": "ARTIFACT_AUDIT_GAP_CLOSURE_FINAL.json",
+    "sha256": "3153c427c4c5e3c1e7f12121b952891402437485a8244a8ec02adc36a06eacfb",
     "status": "passed",
-    "studies": 8
+    "studies": 11
   },
-  "checked_at_utc": "2026-11-10T16:21:10.086145+00:00",
+  "checked_at_utc": "2026-11-10T18:40:08.802481+00:00",
+  "collection_pilot": {
+    "arms": 6,
+    "checkpoint_counts_and_bytes_checked": true,
+    "corrected_run": "collection_pilot_02",
+    "exact_certificate_kdc_authentications_verified": 48,
+    "initial_run_status": "Incomplete immediate outcome export retained as collection_pilot_01",
+    "latency_definition": "Host process envelope for actual Certipy certificate authentication, including startup/network; not packet-only KDC latency",
+    "memory_definition": "Current Python collector process VmRSS from /proc/self/status, excludes Certipy children and Windows VM",
+    "paired_median_client_envelope_increases_ms": [
+      48.55936850000009,
+      80.01878899999993,
+      100.26635750000001
+    ],
+    "paired_orders": 3,
+    "polls": 33,
+    "python_rss_mib_range": [
+      56.484375,
+      59.53125
+    ],
+    "scope": "Three paired arm orders in one isolated updated Windows2019 forest; exploratory pilot, not production interference certification",
+    "status": "passed"
+  },
   "component_study": {
     "prediction_rows_checked": 16200,
     "repair_histories_checked": 2700,
@@ -17,6 +39,27 @@
     "temporal_oracle_queries_checked": 3600,
     "verifier_sha256": "9d50f348420bb60b4ac0be26e25ef429b5bce32db46aa5e8433c5f1991c07591",
     "within_budget_true_link_checks": 4346
+  },
+  "corrected_interdiction": {
+    "budget24_mean_cut_edges": 5.7,
+    "budget24_revoked_edge_count_reduction_pct": 47.706422018348626,
+    "budget24_static_greedy_mean_cut_edges": 10.9,
+    "changed_cut_counts": 24,
+    "changed_objective_cases": 9,
+    "multiple_comparison_family": "Four budgets times paired t and exact conditional signed rank,8tests",
+    "scope": "Assigned synthetic costs; heuristic, no equilibrium/global optimum or measured business disruption",
+    "statistics_report": "interdiction_recheck_statistics/results.json",
+    "verification": {
+      "corrected_vs_legacy_same_percentages": 111,
+      "graph_budget_cases_checked": 120,
+      "historical_legacy_percentages_reproduced": 120,
+      "historical_static_greedy_percentages_reproduced": 120,
+      "input_manifest_sha256": "b7e3dda29113cd675ac959993a7958164d6bf7e5a8a3222ef7b31d948328b136",
+      "reachability_queries_checked": 11100,
+      "scope": "Independent cut/cost/objective checks and historical value comparison; no optimality/equilibrium claim",
+      "status": "passed",
+      "verifier_sha256": "b1e3e9def433a11b20adcea9179323fae523a894e10ed4ea7db2cee42fc638ab"
+    }
   },
   "current_patch": {
     "administrative_uses": 3,
@@ -32,6 +75,17 @@
     "successful_exact_certificate_authentications": 18,
     "supplemented_missing_trial_ca_exports": 18,
     "trials": 24
+  },
+  "equal_input_relational": {
+    "chronology_negative_failures_per_method": 60,
+    "evaluated_prefixes": 5423,
+    "guarded_sql_matches_reference_every_prefix": true,
+    "histories": 1470,
+    "independent_random_latent_labels": 450,
+    "outside_model_forgery_failures_per_method": 60,
+    "prediction_rows_checked": 16269,
+    "scope": "Identity projection with event times erased; our queries in actualSQLite, not full HADES/Splunk execution",
+    "status": "passed"
   },
   "existing_section_hierarchy_and_figures_unchanged": true,
   "four_final_matrices": {
@@ -61,6 +115,15 @@
     "research_container_removed": true,
     "shutdown_log": "independent_2019_final_shutdown.log",
     "temporary_sleep_inhibitor_released": true,
+    "transfer_container_exit_code": 0,
+    "transfer_container_removed": true,
+    "transfer_restored_template_flags": {
+      "Q1TransferA": 33554432,
+      "Q1TransferB": 33554432
+    },
+    "transfer_shutdown_evidence": "thesis_research/data/lineage_live/2026-11-10/transfer_2019_setup/transfer_shutdown_shutdown.json",
+    "transfer_temporary_sleep_inhibitor_released": false,
+    "transfer_writable_disk_preserved": true,
     "verified_utc": "2026-11-10T16:22:22.129854+00:00",
     "writable_disk_preserved": true
   },
@@ -73,22 +136,26 @@
     "status": "passed",
     "verification_report": "thesis_research/results/lineage_constraints/2026-11-10/bilinear_study_verification_final.json"
   },
+  "local_session_date_note": "Session dated November10 UTC; final local time November11 Asia/Dhaka",
   "manuscript_build": {
-    "log": "manuscript_build_current_patch_final.log",
-    "log_sha256": "e86b6fdcd331a70c70b1c1f4a5770ded7f245a4b48a0f5b441a596f740413a14",
+    "abstract_words": 213,
+    "log": "manuscript_build_gap_closure_final2.log",
+    "log_sha256": "f5211577cf1408b4256fa4197ed6cee4bbb17e67da889bbdaf1a2a7d69d09f1f",
     "new_evidence_table_pages_visually_checked": [
-      27
+      28,
+      30
     ],
-    "pages": 36,
+    "pages": 38,
     "status": "passed",
     "unresolved_citation_markers": 0,
+    "unresolved_reference_markers": 0,
     "warnings_retained": [
-      "Font/fontconfig warnings",
-      "Overfull boxes in retained manuscript material",
+      "Existing font/fontconfig requests",
+      "Overfull boxes in retained material",
       "Tectonic internal bbl consistency/six-pass rerun warning"
     ]
   },
-  "manuscript_pdf_sha256": "03f520813827c4aa378d934e3b954b363de2eb7c3c676e4f0924fe3a11c15d58",
+  "manuscript_pdf_sha256": "f48693b14d3d213a06c1306848ecd405f951c59e48499d2c8bb9582d01824631",
   "new_dataset_privacy": {
     "credential_scan_performed": true,
     "credential_value_matches": [],
@@ -104,6 +171,13 @@
     "title": true,
     "tracked_existing_figures": true
   },
+  "primary_studies_plus_transfer": {
+    "administrative_uses": 13,
+    "certificate_cases": 72,
+    "exact_certificate_rejections": 6,
+    "scope": "Four final intervention matrices plus24prospectivecertificatecases; cost-pilot repetitions and earlier development/infrastructure attempts excluded",
+    "successful_exact_certificate_cases": 66
+  },
   "private_key_or_ticket_files_in_new_capture": [],
   "projection_repeated": {
     "graph_tasks": 9,
@@ -114,7 +188,46 @@
     "timing_pairs_checked": 45,
     "verification_report": "thesis_research/results/lineage_constraints/2026-11-10/projection_repeated_verification.json"
   },
-  "scope": "Completed local research extension and artifact checks; no Q1 acceptance, enterprise effectiveness, external provenance-system superiority or submission certification.",
+  "prospective_transfer": {
+    "certificate_cases": 24,
+    "concurrent_batches": 6,
+    "domain_sids": [
+      "S-1-5-21-3576737527-1549231359-1615615133"
+    ],
+    "final_verification_report": "transfer_workload_01_verification_complete.json",
+    "identity_counts": {
+      "correct_nonprivileged_outcomes": 20,
+      "correct_privileged_divergences": 4,
+      "outcome_checked_authentications": 24,
+      "unique_identity_links": 24
+    },
+    "issuer_names": [
+      "Q1-Transfer-CA"
+    ],
+    "leaf_signatures_verified": 24,
+    "maximum_overlapping_submission_envelopes_per_batch": {
+      "b01": 4,
+      "b02": 4,
+      "b03": 4,
+      "b04": 4,
+      "b05": 4,
+      "b06": 4
+    },
+    "mutation_history_scope": "Unknown transfer conditions explicitly unvalidated by legacy mutation-chain logic; exact-certificate labels unchanged",
+    "observed_outcomes": {
+      "privileged_certificate_use": 4,
+      "self_certificate_use": 20
+    },
+    "public_ca_verification": {
+      "observed_ntauth_membership": true,
+      "public_ca_sha256": "993c37bc00eee7d1d46da8e9980dbcc83815c84e59fa10ce6a9e20928a0bbfce",
+      "scope": "Later public CA/trust observation; historical use remains grounded in raw KDC evidence",
+      "self_signature_verified": true
+    },
+    "shared_windows_image_family": true,
+    "unique_public_certificates": 24
+  },
+  "scope": "Completed local research gap-closure studies and artifact checks; focused evidence-assurance contribution, no Q1 acceptance, full-PIDS superiority or production-effectiveness certification.",
   "static_model_implementation_unchanged": true,
   "style_and_compile_script_unchanged": true,
   "synthetic_confirmation": {
@@ -129,8 +242,8 @@
   "synthetic_confirmation_and_component_source_hash_sets_match_current_source": true,
   "unit_tests": {
     "log": "continued_tests.log",
-    "passed": 69,
-    "sha256": "7310df87c4ef12b29fb68e86e71047e12cce97d29cdfc2de5a3b592f580adcce"
+    "passed": 78,
+    "sha256": "c6536bf1d0797f0c77228202d7b1385f5ec6b6190a2f93fe17725d51a38d522f"
   },
   "workspace": "/home/m4x1d/Desktop/GOAD"
 }

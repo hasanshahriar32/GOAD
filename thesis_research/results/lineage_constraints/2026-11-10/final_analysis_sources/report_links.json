@@ -1,0 +1,50 @@
+[
+  {
+    "report": "thesis_research/results/lineage_constraints/2026-11-10/transfer_workload_01_adjudication_final.json",
+    "source_field": "adjudicator_source_sha256",
+    "snapshot": "adjudicate_policy_matrix.py",
+    "source_sha256": "dfe15cc4ec083c99651dcdff64a79d78d605d43bb32061c249477e7236628bec"
+  },
+  {
+    "report": "thesis_research/results/lineage_constraints/2026-11-10/transfer_workload_01_identity_final.json",
+    "source_field": "source_sha256",
+    "snapshot": "evaluate_live_identity.py",
+    "source_sha256": "69effb4765009ca3dcce171000d03e9c1a17468baad7211f61ea72065bb6ad77"
+  },
+  {
+    "report": "thesis_research/results/lineage_constraints/2026-11-10/transfer_workload_01_external_final.json",
+    "source_field": "source_sha256",
+    "snapshot": "analyze_transfer_external.py",
+    "source_sha256": "169417b6750d93abc1aac5ca46546919d2a082addfd89708547c56b873d21e32"
+  },
+  {
+    "report": "thesis_research/results/lineage_constraints/2026-11-10/transfer_workload_01_verification_complete.json",
+    "source_field": "source_sha256",
+    "snapshot": "verify_transfer_workload.py",
+    "source_sha256": "d75a076cab1ff0ba3053dbf746bc63a75f892866a0c8c9e1b79f35eb083b536a"
+  },
+  {
+    "report": "thesis_research/results/lineage_constraints/2026-11-10/collection_pilot_02_verification.json",
+    "source_field": "verifier_sha256",
+    "snapshot": "verify_collection_pilot.py",
+    "source_sha256": "80878a09499d0934c0ba1602582eca3462b9d459442390a5df0375978b65b7ef"
+  },
+  {
+    "report": "thesis_research/results/lineage_constraints/2026-11-10/interdiction_recheck_verification.json",
+    "source_field": "verifier_sha256",
+    "snapshot": "verify_interdiction_recheck.py",
+    "source_sha256": "b1e3e9def433a11b20adcea9179323fae523a894e10ed4ea7db2cee42fc638ab"
+  },
+  {
+    "report": "thesis_research/results/lineage_constraints/2026-11-10/interdiction_recheck_statistics/results.json",
+    "source_field": "source_sha256",
+    "snapshot": "summarize_interdiction_recheck.py",
+    "source_sha256": "f674acff31df249cb6dc7e50d4f81d17f8dfe3e6764a9805bd3425c5defafbd9"
+  },
+  {
+    "report": "thesis_research/results/lineage_constraints/2026-11-10/sql_comparison_verification.json",
+    "source_field": "verifier_sha256",
+    "snapshot": "verify_sql_comparison.py",
+    "source_sha256": "148decf6cbc8d7a62914891b284381fe5ae6068898c80d212bd7a4d5b76e01bf"
+  }
+]

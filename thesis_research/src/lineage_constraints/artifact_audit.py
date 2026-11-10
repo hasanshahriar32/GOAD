@@ -71,6 +71,10 @@ def run(output):
             if sha(RESULTS/"bilinear_study_verification.json")!=manifest["verification_sha256"]:raise AssertionError("Bilinear verification input differs")
         generated[table.name]=sha(table)
     continued={}
+    if (RESULTS/"final_analysis_sources/manifest.json").exists():
+        continued["final_analysis_source_files_checked"]=simple_manifest(RESULTS/"final_analysis_sources")
+        for link in json.loads((RESULTS/"final_analysis_sources/report_links.json").read_text()):
+            if json.loads((ROOT/link["report"]).read_text())[link["source_field"]]!=link["source_sha256"]:raise AssertionError("Final report/source link differs")
     for name in ("collection_pilot_01","collection_pilot_02"):
         directory=DATA/name
         if (directory/"manifest.json").exists():
