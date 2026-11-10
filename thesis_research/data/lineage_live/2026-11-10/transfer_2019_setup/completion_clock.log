@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/protocol.py", line 268, in send_message
+    root = ET.fromstring(ex.response_text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/.local/share/uv/python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/xml/etree/ElementTree.py", line 1351, in XML
+    return parser.close()
+           ^^^^^^^^^^^^^^
+xml.etree.ElementTree.ParseError: no element found: line 1, column 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 166, in <module>
+    else:setup(args.action,args.attempt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 151, in setup
+    execute(connection(),"clock","if((Get-ADDomain).DNSRoot -ne '"+DOMAIN+"'){throw 'Wrong forest'};Set-Date -Date ([DateTime]::Parse('"+datetime.now(timezone.utc).isoformat()+"').ToLocalTime()) | Out-Null;[DateTime]::UtcNow.ToString('o')",OUTPUT,redact)
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 108, in execute
+    return original_execute(conn,name,script,OUTPUT,redact)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 70, in execute
+    result=connection.run_ps(full_script)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/__init__.py", line 57, in run_ps
+    rs = self.run_cmd("powershell -encodedcommand {0}".format(encoded_ps))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/__init__.py", line 47, in run_cmd
+    self.protocol.cleanup_command(shell_id, command_id)
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/protocol.py", line 427, in cleanup_command
+    res = self.send_message(xmltodict.unparse(req))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/protocol.py", line 271, in send_message
+    raise ex
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/protocol.py", line 263, in send_message
+    resp = self.transport.send_message(message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/transport.py", line 336, in send_message
+    response = self._send_message_request(session, prepared_request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/transport.py", line 352, in _send_message_request
+    raise WinRMTransportError("http", ex.response.status_code, response_text.decode())
+winrm.exceptions.WinRMTransportError: Bad HTTP response returned from server. Code 400

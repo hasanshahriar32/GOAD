@@ -1,0 +1,11 @@
+{
+  "status_code": 0,
+  "host_before": 1794331887.123458,
+  "host_after": 1794331992.301336,
+  "stdout": "\r\nHKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CertSvc\\Configuration\\Q1-Transfer-CA\\AuditFilter:\r\n\r\nNew Value:\r\n  AuditFilter REG_DWORD = 7f (127)\r\nCertUtil: -setreg command completed successfully.\r\nThe CertSvc service may need to be restarted for changes to take effect.\r\nHKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CertSvc\\Configuration\\Q1-Transfer-CA\\PolicyModules\\CertificateAuthority_MicrosoftDefault.Policy\\EditFlags:\r\n\r\nOld Value:\r\n  EditFlags REG_DWORD = 11014e (1114446)\r\n    EDITF_REQUESTEXTENSIONLIST -- 2\r\n    EDITF_DISABLEEXTENSIONLIST -- 4\r\n    EDITF_ADDOLDKEYUSAGE -- 8\r\n    EDITF_BASICCONSTRAINTSCRITICAL -- 40 (64)\r\n    EDITF_ENABLEAKIKEYID -- 100 (256)\r\n    EDITF_ENABLEDEFAULTSMIME -- 10000 (65536)\r\n    EDITF_ENABLECHASECLIENTDC -- 100000 (1048576)\r\n\r\nNew Value:\r\n  EditFlags REG_DWORD = 31014e (3211598)\r\n    EDITF_REQUESTEXTENSIONLIST -- 2\r\n    EDITF_DISABLEEXTENSIONLIST -- 4\r\n    EDITF_ADDOLDKEYUSAGE -- 8\r\n    EDITF_BASICCONSTRAINTSCRITICAL -- 40 (64)\r\n    EDITF_ENABLEAKIKEYID -- 100 (256)\r\n    EDITF_ENABLEDEFAULTSMIME -- 10000 (65536)\r\n    EDITF_ENABLECHASECLIENTDC -- 100000 (1048576)\r\n    EDITF_AUDITCERTTEMPLATELOAD -- 200000 (2097152)\r\nCertUtil: -setreg command completed successfully.\r\nThe CertSvc service may need to be restarted for changes to take effect.\r\nThe command was successfully executed.\r\r\nThe command was successfully executed.\r\r\nThe command was successfully executed.\r\r\nErrorId ErrorString\r\n------- -----------\r\n      0            \r\n{\"Name\":\"CertSvc\",\"Status\":4}\r\n__Q1_PHASE_COMPLETE__\r\n\r\n\r\n",
+  "stderr": "",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": true
+}

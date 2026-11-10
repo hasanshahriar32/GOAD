@@ -1,0 +1,2 @@
+if(-not @(Get-NetAdapter | Where-Object {$_.MacAddress -eq '52-54-00-21-29-02'}).Count){throw 'Not the isolated transfer clone'}
+if((Get-ADDomain).DNSRoot -ne 'q1transfer.test'){throw 'Wrong forest'};Set-Date -Date ([DateTime]::Parse('2026-11-10T17:36:24.018041+00:00').ToLocalTime()) | Out-Null;[DateTime]::UtcNow.ToString('o')

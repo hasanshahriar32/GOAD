@@ -1,0 +1,11 @@
+{
+  "status_code": 0,
+  "host_before": 1794331716.848135,
+  "host_after": 1794331737.1200912,
+  "stdout": "[{\"AddressFamily\":2,\"ServerAddresses\":[\"127.0.0.1\"]},{\"AddressFamily\":23,\"ServerAddresses\":[\"::1\"]}]\r\n{\"domain_sid\":\"S-1-5-21-3576737527-1549231359-1615615133\",\"domain\":\"q1transfer.test\",\"dns\":[{\"AddressFamily\":2,\"ServerAddresses\":[\"127.0.0.1\"]},{\"AddressFamily\":23,\"ServerAddresses\":[\"::1\"]}],\"services\":[{\"Name\":\"ADWS\",\"Status\":4},{\"Name\":\"DNS\",\"Status\":4},{\"Name\":\"Netlogon\",\"Status\":4}]}\r\n__Q1_PHASE_COMPLETE__\r\n",
+  "stderr": "Waiting for service 'Netlogon (Netlogon)' to start...",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": true
+}

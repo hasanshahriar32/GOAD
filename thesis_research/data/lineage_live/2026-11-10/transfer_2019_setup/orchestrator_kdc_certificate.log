@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 164, in <module>
+    else:setup(args.action,args.attempt)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 155, in setup
+    base.run(SimpleNamespace(action=mapped,output=OUTPUT))
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 202, in run
+    execute(connection,"04g_kdc_machine_certificate_retry" if args.action=="kdc_certificate_retry" else "04b_kdc_machine_certificate",script,args.output,secret)
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 106, in execute
+    return original_execute(conn,name,script,OUTPUT,redact)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 78, in execute
+    if result.status_code or "__Q1_PHASE_COMPLETE__" not in stdout:raise RuntimeError(name+" failed or lacks completion marker; see saved raw outcome")
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: transfer_kdc_certificate_04b_kdc_machine_certificate failed or lacks completion marker; see saved raw outcome

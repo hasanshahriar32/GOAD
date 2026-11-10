@@ -1,0 +1,14 @@
+2026-11-10T17:20:39.787509+00:00 rename
+2026-11-10T17:21:44.938050+00:00 new_forest
+2026-11-10T17:26:27.090785+00:00 ca
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/finish_transfer_setup.py", line 36, in <module>
+    for name in ('ca','template_a','template_b','kdc_certificate','remoting_a','remoting_b','clock','probe_domain'):action(name)
+                                                                                                                    ^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/finish_transfer_setup.py", line 29, in action
+    subprocess.run([sys.executable,'-m','thesis_research.src.lineage_constraints.lab.transfer_2019',name],stdout=stream,stderr=subprocess.STDOUT,check=True)
+  File "/home/m4x1d/.local/share/uv/python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/m4x1d/Desktop/GOAD/.venv/bin/python', '-m', 'thesis_research.src.lineage_constraints.lab.transfer_2019', 'ca']' returned non-zero exit status 1.

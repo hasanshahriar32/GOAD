@@ -1,0 +1,11 @@
+{
+  "status_code": 0,
+  "host_before": 1794332090.6864936,
+  "host_after": 1794332105.093715,
+  "stdout": "Connecting to Q1XFER19.q1transfer.test\\Q1-Transfer-CA ...\r\nServer \"Q1-Transfer-CA\" ICertRequest2 interface is alive (16ms)\r\nCertUtil: -ping command completed successfully.\r\nActive Directory Enrollment Policy\r\n  {1A14A2DB-4375-4712-83E8-8B4F54D1D622}\r\n  ldap:\r\nThe operation completed successfully.\r\nRequestId = 2\r\nQ1XFER19.q1transfer.test\\Q1-Transfer-CA\r\nSerial Number: 370000000281da3116bb590d29000000000002\r\n6be3ca4e8da1351b2a7d8ecccab93d79618e2b53\r\nKey Container Name: f476a24c5aea50acf75021143f95d654_c47f0a85-1207-4b89-b971-de27ed3d2dce\r\nKey Container Name: te-DomainController-99172fd2-c5d5-44ce-953c-28bcde79246d\r\n\r\n\r\n    The requested certificate has been issued.\r\n\r\n\r\n{\"Subject\":\"CN=Q1XFER19.q1transfer.test\",\"Issuer\":\"CN=Q1-Transfer-CA, DC=q1transfer, DC=test\",\"Thumbprint\":\"6BE3CA4E8DA1351B2A7D8ECCCAB93D79618E2B53\",\"HasPrivateKey\":true,\"NotAfter\":\"\\/Date(1825867504000)\\/\",\"eku\":{\"value\":[\"1.3.6.1.5.5.7.3.2\",\"1.3.6.1.5.5.7.3.1\"],\"Count\":2}}\r\n__Q1_PHASE_COMPLETE__\r\n",
+  "stderr": "",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": true
+}

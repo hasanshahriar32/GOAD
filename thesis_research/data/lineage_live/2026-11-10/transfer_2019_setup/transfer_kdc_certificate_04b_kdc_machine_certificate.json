@@ -1,0 +1,11 @@
+{
+  "status_code": 1,
+  "host_before": 1794332008.502931,
+  "host_after": 1794332021.1841445,
+  "stdout": "Active Directory Enrollment Policy\r\n  {1A14A2DB-4375-4712-83E8-8B4F54D1D622}\r\n  ldap:\r\n\r\n\r\nQ1XFER19.q1transfer.test\\Q1-Transfer-CA\r\n    The certificate request could not be submitted to the certification authority.\r\n    The RPC server is unavailable. 0x800706ba (WIN32: 1722 RPC_S_SERVER_UNAVAILABLE)\r\n\r\n\r\nCertificate Request Processor: The RPC server is unavailable. 0x800706ba (WIN32: 1722 RPC_S_SERVER_UNAVAILABLE)\r\n__Q1_PHASE_FAILURE__\r\nSystem.Management.Automation.RuntimeException: KDC_CERTIFICATE_ENROLLMENT_EXIT:-2147023174\r\n",
+  "stderr": "",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": false
+}

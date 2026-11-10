@@ -1,0 +1,77 @@
+{
+  "cases": 1470,
+  "prefix_decision_equivalence_checks": 5423,
+  "guarded_query_matches_reference_every_prefix": true,
+  "by_group_method": {
+    "prefix/constraint_identity": {
+      "decisions": 5423,
+      "retractions": 225,
+      "wrong_certain_with_true_issue_observed": 0
+    },
+    "prefix/sql_strong_join": {
+      "decisions": 5423,
+      "retractions": 186,
+      "wrong_certain_with_true_issue_observed": 0
+    },
+    "prefix/sql_guarded": {
+      "decisions": 5423,
+      "retractions": 225,
+      "wrong_certain_with_true_issue_observed": 0
+    },
+    "main/constraint_identity": {
+      "cases": 1410,
+      "resolved": 820,
+      "correct_certain": 760,
+      "wrong_certain": 60,
+      "successful_truth": 1241,
+      "candidate_retained": 1176
+    },
+    "main/sql_strong_join": {
+      "cases": 1410,
+      "resolved": 912,
+      "correct_certain": 852,
+      "wrong_certain": 60,
+      "successful_truth": 1241,
+      "candidate_retained": 852
+    },
+    "main/sql_guarded": {
+      "cases": 1410,
+      "resolved": 820,
+      "correct_certain": 760,
+      "wrong_certain": 60,
+      "successful_truth": 1241,
+      "candidate_retained": 1176
+    },
+    "outside_assumption/constraint_identity": {
+      "cases": 60,
+      "resolved": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60,
+      "successful_truth": 0,
+      "candidate_retained": 0
+    },
+    "outside_assumption/sql_strong_join": {
+      "cases": 60,
+      "resolved": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60,
+      "successful_truth": 0,
+      "candidate_retained": 0
+    },
+    "outside_assumption/sql_guarded": {
+      "cases": 60,
+      "resolved": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60,
+      "successful_truth": 0,
+      "candidate_retained": 0
+    }
+  },
+  "total_inference_seconds": {
+    "constraint_identity": 1.1599815353401937,
+    "sql_strong_join": 5.826741805605707,
+    "sql_guarded": 5.73366089357296
+  },
+  "sqlite_version": "3.53.1",
+  "scope": "Equal-input relational identity and revision comparison; not HADES/Splunk execution, new independent generator, or a deployment-frequency estimate"
+}

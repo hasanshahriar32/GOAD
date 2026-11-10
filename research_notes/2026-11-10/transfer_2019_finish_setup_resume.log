@@ -1,0 +1,15 @@
+2026-11-10T17:31:26.860258+00:00 ca
+2026-11-10T17:33:12.352422+00:00 template_a
+2026-11-10T17:33:22.204717+00:00 template_b
+2026-11-10T17:33:28.324308+00:00 kdc_certificate
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/finish_transfer_setup.py", line 44, in <module>
+    for name in ('template_a','template_b','kdc_certificate','remoting_a','remoting_b','clock','probe_domain'):action(name)
+                                                                                                               ^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/finish_transfer_setup.py", line 32, in action
+    subprocess.run([sys.executable,'-m','thesis_research.src.lineage_constraints.lab.transfer_2019',name,'--attempt',str(attempt)],stdout=stream,stderr=subprocess.STDOUT,check=True)
+  File "/home/m4x1d/.local/share/uv/python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/m4x1d/Desktop/GOAD/.venv/bin/python', '-m', 'thesis_research.src.lineage_constraints.lab.transfer_2019', 'kdc_certificate', '--attempt', '1']' returned non-zero exit status 1.
