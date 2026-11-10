@@ -132,11 +132,28 @@
     "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}right"
   ],
   "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}sectPr": [
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}headerReference",
     "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}footerReference",
     "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}footnotePr",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}endnotePr",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}type",
     "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}pgSz",
     "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}pgMar",
-    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}titlePg"
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}paperSrc",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}pgBorders",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}lnNumType",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}pgNumType",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}cols",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}formProt",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}vAlign",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}noEndnote",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}titlePg",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}textDirection",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}bidi",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}rtlGutter",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}docGrid",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}printerSettings",
+    "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}sectPrChange"
   ],
   "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}footnotePr": [
     "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}numRestart"

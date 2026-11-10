@@ -406,10 +406,17 @@ def canonicalize_properties(output):
  for name,data in list(parts.items()):
   if not name.startswith('word/') or not name.endswith('.xml'):continue
   root=etree.fromstring(data)
-  for element in root.iter():
+  for element in list(root.iter()):
    if element.tag==qn('m:rPr') and element.find(qn('m:nor')) is not None:
     # Normal text and mathematical style are alternatives in the math schema.
     for sty in list(element.findall(qn('m:sty'))):element.remove(sty)
+    for scr in list(element.findall(qn('m:scr'))):
+     if scr.get(qn('m:val'))=='monospace':
+      run=element.getparent();props=run.find(qn('w:rPr'))
+      if props is None:props=xml('w:rPr');run.insert(1,props)
+      for old in list(props.findall(qn('w:rFonts'))):props.remove(old)
+      props.insert(0,xml('w:rFonts',ascii='Latin Modern Mono',hAnsi='Latin Modern Mono'))
+     element.remove(scr)
    if element.tag==qn('w:trPr'):
     for tag in ('cantSplit','tblHeader'):
      duplicates=element.findall(qn('w:'+tag))

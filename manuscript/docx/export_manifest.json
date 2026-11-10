@@ -47,14 +47,21 @@
     "docx/fonts/TeXGyreTermesX-Italic.otf": "388d2a20aef137bbecc7444e54cc9557173b43b15d22512b48f2c530398c3e73",
     "docx/fonts/TeXGyreTermesX-Regular.otf": "027989ecf7ea89d6e3ef18031b852b1f81d77f75af25c7d1e95d776750ac6617",
     "docx/fonts/lmmono10-regular.otf": "22deb6d3be3ffcb40b33f0e010afb256c677d97c2a2bdee1f5740cdc97751558",
-    "docx/fonts/texgyretermes-math.otf": "e5ce42b4fe826b7ea4c0874359decf0b294439355c511a4794107a9924e2cd5a"
+    "docx/fonts/texgyretermes-math.otf": "e5ce42b4fe826b7ea4c0874359decf0b294439355c511a4794107a9924e2cd5a",
+    "docx/ooxml_property_order.json": "da4d65434272cb1f6ef59484cb2d96977fc25f0cac4146ff0595b80558a82531"
   },
-  "output_sha256": "20a1d16ce9a502faaa9a2f95162c44070023c578de933873533a0d2f611e77a5",
+  "output_sha256": "5831a01d6297ab199ae07daa23e3d2a4aae2669506f817c64a2d9658087f9432",
   "validation": {
     "native_math_objects": 427,
     "numbered_display_equations": 34,
     "embedded_images": 4,
-    "native_data_tables": 15
+    "native_data_tables": 15,
+    "embedded_font_faces": 6,
+    "bibliography_entries": 35,
+    "numbered_equations_sequential": true,
+    "original_image_bytes_preserved": true
   },
-  "visual_match": "See visual comparison report; exact Word/LaTeX pagination is not guaranteed."
+  "visual_match": "See visual comparison report; exact Word/LaTeX pagination is not guaranteed.",
+  "target_application": "Microsoft Word desktop",
+  "source_pdf_sha256": "f48693b14d3d213a06c1306848ecd405f951c59e48499d2c8bb9582d01824631"
 }
