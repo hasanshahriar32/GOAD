@@ -1,0 +1,45 @@
+{
+  "cases_per_named_family": 20,
+  "declared_utc": "2026-11-10T17:16:21.016057+00:00",
+  "families": [
+    "clean",
+    "issuer_collision",
+    "conflicting_fields",
+    "reused_skid",
+    "missing_bridge",
+    "late_bridge",
+    "clock_overlap",
+    "failed_auth",
+    "preceding_auth",
+    "long_delay",
+    "unrelated_template",
+    "boundary_overlap",
+    "conflicting_bridge",
+    "missing_issuer",
+    "request_namespace_collision",
+    "missing_competitor",
+    "outside_model_forgery",
+    "randomized_mix"
+  ],
+  "methods": [
+    "constraint_identity",
+    "sql_strong_join",
+    "sql_guarded"
+  ],
+  "prefixes": "Seeded shuffled delivery; then remove/re-add one optional bridge if present; every prefix compared",
+  "projection": "Same canonical identity observations; all event intervals set to [0,0], no mutation windows, no temporal/exposure claims",
+  "random_cases_per_seed": 150,
+  "schema": 1,
+  "scope": "Equal-input relational identity and revision comparison; not HADES/Splunk execution, new independent generator, or a deployment-frequency estimate",
+  "seeds": [
+    72019,
+    73009,
+    74017
+  ],
+  "source_sha256": {
+    "thesis_research/src/lineage_constraints/engine.py": "86613cc1d461b196234621eca93be12c4f83c1fbd97253dbf5c277bb1fc603e4",
+    "thesis_research/src/lineage_constraints/simulator.py": "86280409578e748dfa7082fe01fca97a5b9f72c0025cd22618429568b6b25f2d",
+    "thesis_research/src/lineage_constraints/sql_comparison.py": "e090e1fc3dbba6d2eb006f2354548863e9a504589f60f7430ac67aa37abbb080",
+    "thesis_research/src/lineage_constraints/sql_lineage.py": "bdc47417288f155208b9c5cfd9a8270fc1c45983c0834d8e175cff24074c2627"
+  }
+}

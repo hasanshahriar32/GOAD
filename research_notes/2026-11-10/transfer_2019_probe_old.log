@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/transport.py", line 342, in _send_message_request
+    response.raise_for_status()
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error:  for url: http://127.0.0.1:57986/wsman
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 148, in <module>
+    else:setup(args.action)
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 112, in setup
+    execute(connection(mode),"inventory","""$v=Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion';$c=Get-CimInstance Win32_ComputerSystem
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 105, in execute
+    return original_execute(conn,name,script,OUTPUT,redact)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 70, in execute
+    result=connection.run_ps(full_script)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/__init__.py", line 57, in run_ps
+    rs = self.run_cmd("powershell -encodedcommand {0}".format(encoded_ps))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/__init__.py", line 44, in run_cmd
+    shell_id = self.protocol.open_shell()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/protocol.py", line 193, in open_shell
+    res = self.send_message(xmltodict.unparse(req))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/protocol.py", line 263, in send_message
+    resp = self.transport.send_message(message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/transport.py", line 323, in send_message
+    session = self.build_session()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/transport.py", line 305, in build_session
+    self.setup_encryption(session)
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/transport.py", line 313, in setup_encryption
+    self._send_message_request(session, prepared_request)
+  File "/home/m4x1d/Desktop/GOAD/.venv/lib/python3.11/site-packages/winrm/transport.py", line 346, in _send_message_request
+    raise InvalidCredentialsError("the specified credentials were rejected by the server")
+winrm.exceptions.InvalidCredentialsError: the specified credentials were rejected by the server

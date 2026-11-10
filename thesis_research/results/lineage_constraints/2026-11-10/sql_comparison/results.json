@@ -1,0 +1,77 @@
+{
+  "by_group_method": {
+    "main/constraint_identity": {
+      "candidate_retained": 1176,
+      "cases": 1410,
+      "correct_certain": 760,
+      "resolved": 820,
+      "successful_truth": 1241,
+      "wrong_certain": 60
+    },
+    "main/sql_guarded": {
+      "candidate_retained": 1176,
+      "cases": 1410,
+      "correct_certain": 760,
+      "resolved": 820,
+      "successful_truth": 1241,
+      "wrong_certain": 60
+    },
+    "main/sql_strong_join": {
+      "candidate_retained": 852,
+      "cases": 1410,
+      "correct_certain": 852,
+      "resolved": 912,
+      "successful_truth": 1241,
+      "wrong_certain": 60
+    },
+    "outside_assumption/constraint_identity": {
+      "candidate_retained": 0,
+      "cases": 60,
+      "correct_certain": 0,
+      "resolved": 60,
+      "successful_truth": 0,
+      "wrong_certain": 60
+    },
+    "outside_assumption/sql_guarded": {
+      "candidate_retained": 0,
+      "cases": 60,
+      "correct_certain": 0,
+      "resolved": 60,
+      "successful_truth": 0,
+      "wrong_certain": 60
+    },
+    "outside_assumption/sql_strong_join": {
+      "candidate_retained": 0,
+      "cases": 60,
+      "correct_certain": 0,
+      "resolved": 60,
+      "successful_truth": 0,
+      "wrong_certain": 60
+    },
+    "prefix/constraint_identity": {
+      "decisions": 5423,
+      "retractions": 225,
+      "wrong_certain_with_true_issue_observed": 0
+    },
+    "prefix/sql_guarded": {
+      "decisions": 5423,
+      "retractions": 225,
+      "wrong_certain_with_true_issue_observed": 0
+    },
+    "prefix/sql_strong_join": {
+      "decisions": 5423,
+      "retractions": 186,
+      "wrong_certain_with_true_issue_observed": 0
+    }
+  },
+  "cases": 1470,
+  "guarded_query_matches_reference_every_prefix": true,
+  "prefix_decision_equivalence_checks": 5423,
+  "scope": "Equal-input relational identity and revision comparison; not HADES/Splunk execution, new independent generator, or a deployment-frequency estimate",
+  "sqlite_version": "3.53.1",
+  "total_inference_seconds": {
+    "constraint_identity": 1.1599815353401937,
+    "sql_guarded": 5.73366089357296,
+    "sql_strong_join": 5.826741805605707
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "status_code": 1,
+  "host_before": 1794331587.6560743,
+  "host_after": 1794331593.037313,
+  "stdout": "__Q1_PHASE_FAILURE__\r\nMicrosoft.ActiveDirectory.Management.ADServerDownException: Unable to find a default server with Active Directory Web Services running. ---> Microsoft.ActiveDirectory.Management.ADException: Unable to find a default server with flags: 'MinimumDirectoryServiceVersion:Windows2000 | ADWS | ReturnDnsName'.\r\n   --- End of inner exception stack trace ---\r\n   at Microsoft.ActiveDirectory.Management.AdwsConnection.DiscoverServerName(Boolean forceDiscovery)\r\n   at Microsoft.ActiveDirectory.Management.AdwsConnection.CreateEndpointAddress(String configName)\r\n   at Microsoft.ActiveDirectory.Management.AdwsConnection.InitializeChannel[TChannel](TChannel& channel, ChannelFactory`1& chFactory, String endpointName, CommunicationException& commException)\r\n   at Microsoft.ActiveDirectory.Management.AdwsConnection.SearchAnObject(ADSearchRequest request)\r\n   at Microsoft.ActiveDirectory.Management.AdwsConnection.Search(ADSearchRequest request)\r\n   at Microsoft.ActiveDirectory.Management.ADWebServiceStoreAccess.Microsoft.ActiveDirectory.Management.IADSyncOperations.Search(ADSessionHandle handle, ADSearchRequest request)\r\n   at Microsoft.ActiveDirectory.Management.ADObjectSearcher.GetRootDSE()\r\n   at Microsoft.ActiveDirectory.Management.Commands.ADCmdletBase`1.GetRootDSE()\r\n   at Microsoft.ActiveDirectory.Management.Commands.ADCmdletBase`1.GetConnectedStore()\r\n   at Microsoft.ActiveDirectory.Management.Commands.ADCmdletBase`1.GetCmdletSessionInfo()\r\n   at Microsoft.ActiveDirectory.Management.Commands.ADGetCmdletBase`3.ADGetCmdletBaseProcessCSRoutine()\r\n   at Microsoft.ActiveDirectory.Management.CmdletSubroutinePipeline.Invoke()\r\n   at Microsoft.ActiveDirectory.Management.Commands.ADCmdletBase`1.ProcessRecord()\r\n",
+  "stderr": "",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": false
+}

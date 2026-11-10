@@ -1,0 +1,3 @@
+if(-not @(Get-NetAdapter | Where-Object {$_.MacAddress -eq '52-54-00-21-29-02'}).Count){throw 'Not the isolated transfer clone'}
+$v=Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion';$c=Get-CimInstance Win32_ComputerSystem
+@{domain=$c.Domain;domain_member=$c.PartOfDomain;computer=$env:COMPUTERNAME;build=$v.CurrentBuild;ubr=$v.UBR;utc=[DateTime]::UtcNow.ToString('o')} | ConvertTo-Json -Compress

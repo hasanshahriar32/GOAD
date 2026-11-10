@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 148, in <module>
+    else:setup(args.action)
+         ^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 128, in setup
+    execute(connection("old"),"new_standalone",script,OUTPUT,redact)
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/transfer_2019.py", line 105, in execute
+    return original_execute(conn,name,script,OUTPUT,redact)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/lab/provision_2019.py", line 78, in execute
+    if result.status_code or "__Q1_PHASE_COMPLETE__" not in stdout:raise RuntimeError(name+" failed or lacks completion marker; see saved raw outcome")
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: transfer_demote_new_standalone failed or lacks completion marker; see saved raw outcome
