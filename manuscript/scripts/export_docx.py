@@ -241,7 +241,7 @@ def postprocess(raw,output,equations):
    for r in p.runs:style_run(r,10.91)
   elif style=='Source Code':
    pf.first_line_indent=Pt(0);pf.left_indent=Pt(12);pf.right_indent=Pt(8);pf.line_spacing=Pt(10.5)
-   shade=xml('w:shd',fill='F8F9FA');p._p.get_or_add_pPr().append(shade)
+   shade=xml('w:shd',val='clear',fill='F8F9FA');p._p.get_or_add_pPr().append(shade)
    for r in p.runs:r.font.name='Latin Modern Mono';r.font.size=Pt(9)
   if p._p.xpath('./w:pPr/w:numPr'):
    pf.left_indent=Pt(27.3);pf.first_line_indent=Pt(-16.4)
@@ -288,7 +288,7 @@ def postprocess(raw,output,equations):
     rpr.append(xml('w:rFonts',ascii=MATHFONT,hAnsi=MATHFONT));rpr.append(xml('w:sz',val=22))
    for prop in math.iter():
     local=etree.QName(prop).localname
-    if local.endswith('Pr') and local not in ('rPr','ctrlPr','oMathParaPr') and etree.QName(prop).namespace=='http://schemas.openxmlformats.org/officeDocument/2006/math':
+    if local in ('accPr','barPr','borderBoxPr','boxPr','dPr','eqArrPr','fPr','funcPr','groupChrPr','limLowPr','limUppPr','mPr','naryPr','phantPr','radPr','sPrePr','sSubPr','sSubSupPr','sSupPr') and etree.QName(prop).namespace=='http://schemas.openxmlformats.org/officeDocument/2006/math':
      ctrl=prop.find(qn('m:ctrlPr'))
      if ctrl is None:ctrl=OxmlElement('m:ctrlPr');prop.append(ctrl)
      pr=ctrl.find(qn('w:rPr'))
@@ -398,6 +398,32 @@ def embed_fonts(output):
  with zipfile.ZipFile(output,'w',zipfile.ZIP_DEFLATED) as z:
   for name,data in parts.items():z.writestr(name,data)
 
+def canonicalize_properties(output):
+ # Property ordering is schema data checked with Microsoft Open XML SDK.
+ # Reorder properties only; preserve every paragraph, run, equation and table.
+ orders=json.loads((SUPPORT/'ooxml_property_order.json').read_text())
+ with zipfile.ZipFile(output) as z:parts={n:z.read(n) for n in z.namelist()}
+ for name,data in list(parts.items()):
+  if not name.startswith('word/') or not name.endswith('.xml'):continue
+  root=etree.fromstring(data)
+  for element in root.iter():
+   if element.tag==qn('m:rPr') and element.find(qn('m:nor')) is not None:
+    # Normal text and mathematical style are alternatives in the math schema.
+    for sty in list(element.findall(qn('m:sty'))):element.remove(sty)
+   if element.tag==qn('w:trPr'):
+    for tag in ('cantSplit','tblHeader'):
+     duplicates=element.findall(qn('w:'+tag))
+     for old in duplicates[:-1]:element.remove(old)
+   if element.tag in orders:
+    order={tag:i for i,tag in enumerate(orders[element.tag])}
+    if element.tag==qn('m:rPr'):order[qn('m:nor')]=-1
+    children=list(element)
+    children.sort(key=lambda child:order.get(child.tag,len(order)))
+    element[:]=children
+  parts[name]=etree.tostring(root,xml_declaration=True,encoding='UTF-8',standalone=True)
+ with zipfile.ZipFile(output,'w',zipfile.ZIP_DEFLATED) as z:
+  for name,data in parts.items():z.writestr(name,data)
+
 def main():
  parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--aux',type=Path);args=parser.parse_args()
  sources={};SUPPORT.mkdir(exist_ok=True)
@@ -452,7 +478,7 @@ def main():
    elif isinstance(o,list):
     for v in o:count(v)
   count(cited)
-  output=ROOT/'main.docx';postprocess(raw,output,equations);embed_fonts(output)
+  output=ROOT/'main.docx';postprocess(raw,output,equations);embed_fonts(output);canonicalize_properties(output)
   with zipfile.ZipFile(output) as z:
    tree=etree.fromstring(z.read('word/document.xml'));ns={'m':'http://schemas.openxmlformats.org/officeDocument/2006/math'}
    validation={'native_math_objects':len(tree.findall('.//m:oMath',ns)),'numbered_display_equations':equations,'embedded_images':sum(n.startswith('word/media/') for n in z.namelist()),'native_data_tables':len(Document(raw).tables)}
