@@ -1,0 +1,8 @@
+{
+  "host_after": 1794325684.4404743,
+  "host_before": 1794325670.615901,
+  "host_monotonic_elapsed_ns": 13824573560,
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "Connecting to WIN-NA2FC16NO63.q1lab.test\\Q1-Evidence-CA ...\r\nServer could not be reached: The RPC server is unavailable. 0x800706ba (WIN32: 1722 RPC_S_SERVER_UNAVAILABLE) -- (0ms)\r\n\r\nCertUtil: -ping command FAILED: 0x800706ba (WIN32: 1722 RPC_S_SERVER_UNAVAILABLE)\r\nCertUtil: The RPC server is unavailable.\r\nConnecting to WIN-NA2FC16NO63.q1lab.test\\Q1-Evidence-CA ...\r\nServer \"Q1-Evidence-CA\" ICertRequest2 interface is alive (16ms)\r\nCertUtil: -ping command completed successfully.\r\nRPC_READY\r\n"
+}

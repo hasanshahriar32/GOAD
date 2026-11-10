@@ -1,0 +1,8 @@
+{
+  "host_after": 1794325598.3145795,
+  "host_before": 1794325597.8130925,
+  "host_monotonic_elapsed_ns": 501487241,
+  "returncode": 0,
+  "stderr": "",
+  "stdout": "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider Name='Microsoft-Windows-Kerberos-Key-Distribution-Center' Guid='{3FD9DA1A-5A54-46C5-9A26-9BD7C0685056}' EventSourceName='KDC'/><EventID Qualifiers='32768'>39</EventID><Version>0</Version><Level>2</Level><Task>0</Task><Opcode>0</Opcode><Keywords>0x80000000000000</Keywords><TimeCreated SystemTime='2026-11-10T15:46:29.334169300Z'/><EventRecordID>3806</EventRecordID><Correlation/><Execution ProcessID='0' ThreadID='0'/><Channel>System</Channel><Computer>WIN-NA2FC16NO63.q1lab.test</Computer><Security/></System><EventData><Data Name='AccountName'>q1.enroller</Data><Data Name='Subject'>@@@CN=q1.enroller</Data><Data Name='Issuer'>Q1-Evidence-CA</Data><Data Name='SerialNumber'>29000000162E9F675015178B0B000000000016</Data><Data Name='Thumbprint'>CE7A1E80EAECC2AFAA953E567C97598B8E0DB493</Data><Data Name='IssuancePolicies'></Data><Binary></Binary></EventData></Event>\r\n"
+}

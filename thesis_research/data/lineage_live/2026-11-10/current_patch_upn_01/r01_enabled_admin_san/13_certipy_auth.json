@@ -1,0 +1,7 @@
+{
+  "elapsed_ns": 502915638,
+  "returncode": 1,
+  "scope": "Diagnostics; raw matching KDC outcome determines successful use",
+  "stderr": "Certipy v5.0.4 - by Oliver Lyak (ly4k)\n\n",
+  "stdout": "[*] Certificate identities:\n[*]     SAN UPN: 'administrator@q1lab.test'\n[*] Using principal: 'administrator@q1lab.test'\n[*] Trying to get TGT...\n[-] Object SID mismatch between certificate and user 'administrator'\n[-] See the wiki for more information\n"
+}

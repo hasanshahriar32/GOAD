@@ -1,0 +1,18 @@
+{
+  "certificate_identity": {
+    "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+    "serial": "290000002234665a207353c9ea000000000022",
+    "sha1": "26d1afb304a286bd590da8ab23d13115914b1b3b",
+    "sha256": "5215110a2126ff847780be076941585688eaaf0206029f7c57a5147d6d657594",
+    "upns": [
+      "q1.enroller@q1lab.test"
+    ]
+  },
+  "condition": "benign_self_enrollment",
+  "evidence_error": "RuntimeError: Failed phase 99_kdc_system_export",
+  "id": "r02_benign_self_enrollment",
+  "native_submission_exit": 0,
+  "privileged_san_present": false,
+  "restored": true,
+  "status": "issued_auth_attempted"
+}

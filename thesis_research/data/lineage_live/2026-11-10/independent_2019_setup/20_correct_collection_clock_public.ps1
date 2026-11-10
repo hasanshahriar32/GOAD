@@ -1,0 +1,2 @@
+if((Get-ADDomain).DNSRoot -ne 'q1lab.test'){throw 'Wrong independent forest'}
+$before=[DateTime]::UtcNow;Set-Date -Date ([DateTime]::Parse('2026-11-10T15:35:28.720262+00:00').ToLocalTime()) | Out-Null;@{before_utc=$before.ToString('o');after_utc=[DateTime]::UtcNow.ToString('o');reason='Align independent lab copy with actual host UTC before new PKINIT trials; not a historical audit-clock calibration claim'} | ConvertTo-Json -Compress

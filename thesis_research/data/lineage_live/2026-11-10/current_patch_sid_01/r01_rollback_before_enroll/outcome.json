@@ -1,0 +1,18 @@
+{
+  "certificate_identity": {
+    "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+    "serial": "29000000200b512f919b33db62000000000020",
+    "sha1": "54a49620778b446f10b80aecc31f4dc85eef0d41",
+    "sha256": "94057ae82089e104d61871945ff5296633cd34b02f0b3fe69059dc63b62782f0",
+    "upns": [
+      "q1.enroller@q1lab.test"
+    ]
+  },
+  "condition": "rollback_before_enroll",
+  "evidence_error": "RuntimeError: Failed phase 99_kdc_system_export",
+  "id": "r01_rollback_before_enroll",
+  "native_submission_exit": 0,
+  "privileged_san_present": false,
+  "restored": true,
+  "status": "issued_auth_attempted"
+}

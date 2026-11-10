@@ -1,0 +1,32 @@
+{
+  "command": [
+    "/tmp/goad-q1-tools/bin/certipy",
+    "find",
+    "-u",
+    "q1.enroller@q1lab.test",
+    "-p",
+    "<private environment>",
+    "-dc-ip",
+    "127.0.0.3",
+    "-target-ip",
+    "127.0.0.3",
+    "-dc-host",
+    "WIN-NA2FC16NO63.q1lab.test",
+    "-ldap-scheme",
+    "ldap",
+    "-ldap-port",
+    "389",
+    "-dc-only",
+    "-json",
+    "-text",
+    "-output",
+    "certipy",
+    "-timeout",
+    "10"
+  ],
+  "elapsed_seconds": 1.0306688949931413,
+  "returncode": 0,
+  "scope": "Actual Certipy DC-only LDAP enumeration; no CA runtime configuration claim",
+  "stderr": "Certipy v5.0.4 - by Oliver Lyak (ly4k)\n\n",
+  "stdout": "[*] Finding certificate templates\n[*] Found 34 certificate templates\n[*] Finding certificate authorities\n[*] Found 1 certificate authority\n[*] Found 12 enabled certificate templates\n[*] Finding issuance policies\n[*] Found 13 issuance policies\n[*] Found 0 OIDs linked to templates\n[*] Saving text output to 'certipy_Certipy.txt'\n[*] Wrote text output to 'certipy_Certipy.txt'\n[*] Saving JSON output to 'certipy_Certipy.json'\n[*] Wrote JSON output to 'certipy_Certipy.json'\n"
+}

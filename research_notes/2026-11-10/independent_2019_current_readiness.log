@@ -1,0 +1,15 @@
+{"enroller_sid":"S-1-5-21-229414924-2366940259-2788903835-1104","name_flag":33554432,"ubr":9376,"defender":{"AntivirusEnabled":true,"RealTimeProtectionEnabled":true},"kdc_file_version":"10.0.17763.8276 (WinBuild.160101.0800)","strong_binding_registry":null,"eku":["1.3.6.1.5.5.7.3.2"],"utc":"2026-11-10T15:34:05.4375500Z","hotfix":"KB5126651","domain":"q1lab.test","use_subject_alt_name":null,"reboot_pending":false,"services":[{"Name":"CertSvc","Status":4},{"Name":"Kdc","Status":4}],"enrollment_flag":0,"groups":[{"Name":"Domain Users","SID":"S-1-5-21-229414924-2366940259-2788903835-513"},{"Name":"Remote Management Users","SID":"S-1-5-32-580"}],"last_boot":"\/Date(1794317773500)\/","build":"17763","os":"Microsoft Windows Server 2019 Standard Evaluation"}
+System audit policy
+Category/Subcategory                      Setting
+Account Logon
+  Kerberos Authentication Service         Success and Failure
+System audit policy
+Category/Subcategory                      Setting
+Object Access
+  Certification Services                  Success and Failure
+System audit policy
+Category/Subcategory                      Setting
+DS Access
+  Directory Service Changes               Success and Failure
+__Q1_PHASE_COMPLETE__
+

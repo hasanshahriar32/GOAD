@@ -1,0 +1,212 @@
+[
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "2900000011ab35cbda82c4037b000000000011",
+      "sha1": "b091f1922ee2e9786841b7c89f6b5542f5559a33",
+      "sha256": "74fa99ebab61461193f52fd60528cd64930e6564a9daf8ff6d3cc59bdc00729d",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "evidence_error": "RuntimeError: Failed phase 99_kdc_system_export",
+    "id": "r01_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "29000000125d96d94da222527c000000000012",
+      "sha1": "17f3457e84ab2fabb59578b5d453300a27e44418",
+      "sha256": "b8fb92d56f076337bd3b34c434e727e89cbd59d74e7dabfec5fee456ae40d22a",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "id": "r01_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "2900000013a13ab4f6f4b2281c000000000013",
+      "sha1": "70ed38ad66f38c88e4db55f979fab1cb81d4960c",
+      "sha256": "e36e1b387353afa09d266e7742a7998164efd99fd2fcbbbf960159d05941fd6e",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "id": "r01_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "2900000014aef8f45696c76572000000000014",
+      "sha1": "86ec4bd60691176b2faa4bd495e8a746d4029c90",
+      "sha256": "7ffc78fad4fb697aa8b744f03901add890afb369334ac739612d0c6b55143d73",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "evidence_error": "RuntimeError: Failed phase 99_kdc_system_export",
+    "id": "r01_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "29000000150c051316322b17d7000000000015",
+      "sha1": "627c80e1cbb201d0bfa024aa48a9b1177d7c2f9e",
+      "sha256": "fc99fa8ca3763993a352e598ca6c27849d46d47fa720729b45a6ca8c68013f2b",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "evidence_error": "RuntimeError: Failed phase 99_kdc_system_export",
+    "id": "r02_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "29000000162e9f675015178b0b000000000016",
+      "sha1": "ce7a1e80eaecc2afaa953e567c97598b8e0db493",
+      "sha256": "b449cc9381bb072f504fd7a66876a0d4d42b1005a6b6e0a027454147f9054b60",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "id": "r02_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000001737f1bb1835b018fa000000000017",
+      "sha1": "1c8750ec3ff7812b1c3633e96417b9ec6d293b22",
+      "sha256": "6ad60c07fb5421cc33194dd8f3eb129ade632b419263eb8bf2c313f1bbe2a25d",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "evidence_error": "RuntimeError: Failed phase 99_kdc_system_export",
+    "id": "r02_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "2900000018f017ec623d56dcfd000000000018",
+      "sha1": "e8b8ca167f44f170501301ba3dfb5bb194189e58",
+      "sha256": "2ce01a2c5ddae7f51dc8a985d07efd6856eeb8af4d481e5a883beb4fa1bdbfef",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "id": "r02_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "29000000198b55380460799c4f000000000019",
+      "sha1": "723033858bdc8750b2eae54e7e56082c55f4c252",
+      "sha256": "90b8e8a13447ee9658f75730f775ec01f8cf2329c58cf1191609726331e33276",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "evidence_error": "RuntimeError: Failed phase 99_kdc_system_export",
+    "id": "r03_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000001a030d23339f19800900000000001a",
+      "sha1": "6c468a3ddbcdb2e2dd88604244516b8a57969345",
+      "sha256": "582e96537645f668e748cada3cb390a8f90a224887a5358fc115f78386c2a182",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "id": "r03_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000001b26233a0237dfc68800000000001b",
+      "sha1": "1055ae607ca692d2636f7bcc69fdf4872b560c50",
+      "sha256": "46057ec7c81d52812ff6966d037e4721ac6bf8c4e711ebb7e9a4f17d613a1458",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "evidence_error": "RuntimeError: Failed phase 99_kdc_system_export",
+    "id": "r03_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000001c0730311c51c7370300000000001c",
+      "sha1": "7deea8b182f977c27951f49332e97255befddbaa",
+      "sha256": "d797b1957f5f68b5cdbeb6464bb19cbbbc2ed1ee67f1098731880eb4fe2afa51",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "id": "r03_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  }
+]

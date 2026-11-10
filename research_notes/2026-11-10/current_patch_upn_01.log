@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 159, in _get_module_details
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/independent_policy_2019.py", line 37
+    >>>>>>> 91b4ca390f4a33c22ad0368e901b8ee30e5a92d8
+             ^
+SyntaxError: invalid decimal literal
