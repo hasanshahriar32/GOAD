@@ -1,0 +1,28 @@
+{
+  "original_matrix": "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01",
+  "original_trial_manifest_sha256": {
+    "r01_baseline_admin_san": "1c7076c6e677f1b4774623c1865afb4ecc9cdaaacbeec9fbd41fc54784264c3e",
+    "r01_benign_self_enrollment": "8dc6f00b235ca6e14d38f22ac0321644b882ee6df54b1b9b75affbdcdc574b46",
+    "r01_enabled_admin_san": "e1c9644b47b9a77d9f9fca64490ea5e2d9407c0e5bcb51d1ac6994b084aee461",
+    "r01_rollback_before_enroll": "03a0c159b35a6b3b267463f19523f27029bd352d607a8d2830abb9f6bdf53ce7",
+    "r02_baseline_admin_san": "f30245eab3b04b2c2dbdb07359ff7b91a20504e79cd1577531c628f7527e658e",
+    "r02_benign_self_enrollment": "6c49c1f2b470c5979897d2a8fbd0ffaad3137418219d82e09fbdfd856cd80e2f",
+    "r02_enabled_admin_san": "df52cf302aaeedacfc03eb502d9e0e90421f84d9fbd173f2ea1be02f65b84013",
+    "r02_rollback_before_enroll": "24ef31cb3d0a8b523bf472a7caa4a535d8726cbde7f19d045ff1ea70ee8c2fa7",
+    "r03_baseline_admin_san": "b9c68b7ba041645d3ac8b4271b1078204d230681d2499e5fc91b672d28712c83",
+    "r03_benign_self_enrollment": "83a3bc2f941eb13eb77780e290f435399bac10bdcc6155e7bbe12caf3146857a",
+    "r03_enabled_admin_san": "f351e9518b7abce3a4cef1450a3be99fa7c4d41c502e359571b632ef1d250076",
+    "r03_rollback_before_enroll": "f45994be1463ebde28a008db9ff384f67622bc4011aad79e77ae19bf2e8cf3f8"
+  },
+  "scope": "Original per-trial exports used where available; missing exports supplied by later read-only CA snapshot in ephemeral copies. No original evidence or manifest modified. Later snapshot cannot establish historical policy or temporal causality.",
+  "supplement": "thesis_research/data/lineage_live/2026-11-10/current_patch_ca_supplement_01",
+  "supplement_manifest_sha256": "aad4915457bf20798f39951b97e8457cdbe4cd68c759f499d70cf1ec28e70de8",
+  "supplemented_missing_ca_exports": [
+    "r01_baseline_admin_san",
+    "r01_rollback_before_enroll",
+    "r02_baseline_admin_san",
+    "r02_rollback_before_enroll",
+    "r03_baseline_admin_san",
+    "r03_rollback_before_enroll"
+  ]
+}

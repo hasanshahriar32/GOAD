@@ -30,6 +30,11 @@ from .live_policy_matrix import ROOT,digest,dump
 from scripts.capture_trace7_split_actor_delayed_pkinit import get_current_event_record_id,export_events_since,pull_file_winrm
 
 
+def system_export_script(boundary):
+    # Absence of diagnostics is an empty observation; other failures propagate.
+    return "$events=@();try{$events=@(Get-WinEvent -LogName System -FilterXPath '*[System[(EventRecordID > "+str(int(boundary))+") and (EventID=39 or EventID=40 or EventID=41)]]' -ErrorAction Stop)}catch{if($_.FullyQualifiedErrorId -notlike 'NoMatchingEventsFound*'){throw}};if($events.Count){($events | ForEach-Object {$_.ToXml()}) -join \"`n\"};exit 0"
+
+
 def freeze(path,repeats,identity_form="upn_only",required_ubr=None):
     if path.exists():raise FileExistsError(path)
     trials=[]
@@ -191,7 +196,9 @@ $t=Get-ADObject $dn -Properties *
                     tree=ET.fromstring("<Events>"+raw+"</Events>")
                     ET.ElementTree(tree).write(self.output/"events.xml",encoding="utf-8",xml_declaration=True)
                     if system_boundary is not None:
-                        row=self.ps(self.admin,"99_kdc_system_export", "$events=Get-WinEvent -LogName System -FilterXPath '*[System[(EventRecordID > "+str(system_boundary)+") and (EventID=39 or EventID=40 or EventID=41)]]' -ErrorAction SilentlyContinue;if($events){($events | ForEach-Object {$_.ToXml()}) -join \"`n\"}")
+                        # NoMatchingEventsFound is a normal empty observation,
+                        # not a reason to skip the independent CA export below.
+                        row=self.ps(self.admin,"99_kdc_system_export", system_export_script(system_boundary))
                         ET.ElementTree(ET.fromstring("<Events>"+row["stdout"]+"</Events>")).write(self.output/"kdc_system_events.xml",encoding="utf-8",xml_declaration=True)
                     self.ps(self.admin,"99_ca_bridge","certutil -view -restrict 'Disposition=20' -out 'RequestID,RequesterName,SerialNumber,CertificateHash,CertificateTemplate' csv")
             except Exception as error:result["evidence_error"]=type(error).__name__+": "+str(error)

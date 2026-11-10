@@ -1,0 +1,330 @@
+{
+  "analysis_source_sha256": "924fa73850f7e1ec019eb9eac34c0d3d28fb75ecb2e3b84d4367610abac3e50a",
+  "by_condition": {
+    "baseline_admin_san": {
+      "certipy_esc1": 0,
+      "postrollback_certipy_esc1": 0,
+      "postrollback_enumerations": 3,
+      "sigma_eku_rule": 0,
+      "sigma_subject_rule": 0,
+      "trials": 3,
+      "verified_privileged_uses": 0
+    },
+    "benign_self_enrollment": {
+      "certipy_esc1": 3,
+      "postrollback_certipy_esc1": 0,
+      "postrollback_enumerations": 3,
+      "sigma_eku_rule": 3,
+      "sigma_subject_rule": 3,
+      "trials": 3,
+      "verified_privileged_uses": 0
+    },
+    "enabled_admin_san": {
+      "certipy_esc1": 3,
+      "postrollback_certipy_esc1": 0,
+      "postrollback_enumerations": 3,
+      "sigma_eku_rule": 3,
+      "sigma_subject_rule": 3,
+      "trials": 3,
+      "verified_privileged_uses": 0
+    },
+    "rollback_before_enroll": {
+      "certipy_esc1": 0,
+      "postrollback_certipy_esc1": 0,
+      "postrollback_enumerations": 3,
+      "sigma_eku_rule": 0,
+      "sigma_subject_rule": 0,
+      "trials": 3,
+      "verified_privileged_uses": 0
+    }
+  },
+  "input_sha256": {
+    "thesis_research/results/lineage_constraints/2026-11-10/current_patch_upn_01_review/adjudication.json": "c13b084180cc987278c21e46cad55c03653da6f8c75693098b6cfa9b910e6f80",
+    "thesis_research/results/lineage_constraints/2026-11-10/current_patch_upn_01_sigma/manifest.json": "c4f84e320351b5713d7a626f749c77f08ce2710a7e98b0a1513873e1051ab8d4"
+  },
+  "scope": "Executed external configuration-risk predicates on the exact tested template, separately from observed certificate use; not cross-task detection accuracy",
+  "trials": [
+    {
+      "actual_certipy_esc1_flagged": false,
+      "actual_certipy_vulnerability_keys": [],
+      "assigned_name_flag": 33554432,
+      "condition": "baseline_admin_san",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "trial": "r01_baseline_admin_san",
+      "verified_administrator_use": false,
+      "verified_certificate_use": true
+    },
+    {
+      "actual_certipy_esc1_flagged": true,
+      "actual_certipy_vulnerability_keys": [
+        "ESC1"
+      ],
+      "assigned_name_flag": 33554433,
+      "condition": "benign_self_enrollment",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:35556"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:35556"
+        ]
+      },
+      "trial": "r01_benign_self_enrollment",
+      "verified_administrator_use": false,
+      "verified_certificate_use": false
+    },
+    {
+      "actual_certipy_esc1_flagged": true,
+      "actual_certipy_vulnerability_keys": [
+        "ESC1"
+      ],
+      "assigned_name_flag": 33554433,
+      "condition": "enabled_admin_san",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:35947"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:35947"
+        ]
+      },
+      "trial": "r01_enabled_admin_san",
+      "verified_administrator_use": false,
+      "verified_certificate_use": false
+    },
+    {
+      "actual_certipy_esc1_flagged": false,
+      "actual_certipy_vulnerability_keys": [],
+      "assigned_name_flag": 33554432,
+      "condition": "rollback_before_enroll",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "trial": "r01_rollback_before_enroll",
+      "verified_administrator_use": false,
+      "verified_certificate_use": true
+    },
+    {
+      "actual_certipy_esc1_flagged": false,
+      "actual_certipy_vulnerability_keys": [],
+      "assigned_name_flag": 33554432,
+      "condition": "baseline_admin_san",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "trial": "r02_baseline_admin_san",
+      "verified_administrator_use": false,
+      "verified_certificate_use": true
+    },
+    {
+      "actual_certipy_esc1_flagged": true,
+      "actual_certipy_vulnerability_keys": [
+        "ESC1"
+      ],
+      "assigned_name_flag": 33554433,
+      "condition": "benign_self_enrollment",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:37125"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:37125"
+        ]
+      },
+      "trial": "r02_benign_self_enrollment",
+      "verified_administrator_use": false,
+      "verified_certificate_use": false
+    },
+    {
+      "actual_certipy_esc1_flagged": true,
+      "actual_certipy_vulnerability_keys": [
+        "ESC1"
+      ],
+      "assigned_name_flag": 33554433,
+      "condition": "enabled_admin_san",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:37913"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:37913"
+        ]
+      },
+      "trial": "r02_enabled_admin_san",
+      "verified_administrator_use": false,
+      "verified_certificate_use": false
+    },
+    {
+      "actual_certipy_esc1_flagged": false,
+      "actual_certipy_vulnerability_keys": [],
+      "assigned_name_flag": 33554432,
+      "condition": "rollback_before_enroll",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "trial": "r02_rollback_before_enroll",
+      "verified_administrator_use": false,
+      "verified_certificate_use": true
+    },
+    {
+      "actual_certipy_esc1_flagged": false,
+      "actual_certipy_vulnerability_keys": [],
+      "assigned_name_flag": 33554432,
+      "condition": "baseline_admin_san",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "trial": "r03_baseline_admin_san",
+      "verified_administrator_use": false,
+      "verified_certificate_use": true
+    },
+    {
+      "actual_certipy_esc1_flagged": true,
+      "actual_certipy_vulnerability_keys": [
+        "ESC1"
+      ],
+      "assigned_name_flag": 33554433,
+      "condition": "benign_self_enrollment",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:39465"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:39465"
+        ]
+      },
+      "trial": "r03_benign_self_enrollment",
+      "verified_administrator_use": false,
+      "verified_certificate_use": false
+    },
+    {
+      "actual_certipy_esc1_flagged": true,
+      "actual_certipy_vulnerability_keys": [
+        "ESC1"
+      ],
+      "assigned_name_flag": 33554433,
+      "condition": "enabled_admin_san",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:38698"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:38698"
+        ]
+      },
+      "trial": "r03_enabled_admin_san",
+      "verified_administrator_use": false,
+      "verified_certificate_use": false
+    },
+    {
+      "actual_certipy_esc1_flagged": false,
+      "actual_certipy_vulnerability_keys": [],
+      "assigned_name_flag": 33554432,
+      "condition": "rollback_before_enroll",
+      "postrollback_certipy_esc1_flagged": false,
+      "sigma_other_object_match_counts": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": 4,
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": 0,
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": 0
+      },
+      "sigma_tested_template_matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "trial": "r03_rollback_before_enroll",
+      "verified_administrator_use": false,
+      "verified_certificate_use": true
+    }
+  ],
+  "upstream_commit": "d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55",
+  "versions": {
+    "PyYAML": "6.0.3",
+    "pysigma": "2.1.0",
+    "pysigma-backend-sqlite": "2.1.1"
+  }
+}

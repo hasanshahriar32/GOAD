@@ -1,0 +1,1 @@
+$events=@();try{$events=@(Get-WinEvent -LogName System -FilterXPath '*[System[(EventRecordID > 4032) and (EventID=39 or EventID=40 or EventID=41)]]' -ErrorAction Stop)}catch{if($_.FullyQualifiedErrorId -notlike 'NoMatchingEventsFound*'){throw}};if($events.Count){($events | ForEach-Object {$_.ToXml()}) -join "`n"};exit 0

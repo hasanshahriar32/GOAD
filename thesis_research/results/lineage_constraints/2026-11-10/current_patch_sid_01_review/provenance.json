@@ -1,0 +1,34 @@
+{
+  "original_matrix": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01",
+  "original_trial_manifest_sha256": {
+    "r01_baseline_admin_san": "afd1b868c775a365f689c994569e610699dc19a11cef1e704e2ba1161c8f09a4",
+    "r01_benign_self_enrollment": "587838f88e998efa3122335f861a21253519bfa524e75520cce0b55b9654fb8c",
+    "r01_enabled_admin_san": "a8c1532a4f71ad59055cad3189a05814c759cb33c427d89c4cfb5b46c172e985",
+    "r01_rollback_before_enroll": "8110d877d4383643407f54781d8b3284c108a5f0ce26599b0dd052c45bc491d4",
+    "r02_baseline_admin_san": "52127e3394ccde0edff43cb619536114561cd8946a29fd04bf3d3374d6562575",
+    "r02_benign_self_enrollment": "e5a937893415b41524d4ac22de855752a0c31f6cfac07a8bea93b717a00618ff",
+    "r02_enabled_admin_san": "87e475b9626ba23154d021de515c4a84b68295faccd68c94280f94a8ebce5b08",
+    "r02_rollback_before_enroll": "2c60515e50b781e75f03b5aa9e6430ef789b79d87e397939a65f751284b1f765",
+    "r03_baseline_admin_san": "c137f6d74cb7480eb360bc21721cec2b76500a323e59bff04913abdac9a06980",
+    "r03_benign_self_enrollment": "1926572a92e6602c1ed9e267eb5f041d600cf42a16fe44132945c036999a8d92",
+    "r03_enabled_admin_san": "29c130b5707e89cd6e2d2114ced35cbf97d64e0961ab986c3426c101ba826426",
+    "r03_rollback_before_enroll": "a58eb4945d6e3b5f95d39f6faf44fca85dd9d881cdf280110efc07c40cd3890f"
+  },
+  "scope": "Original per-trial exports used where available; missing exports supplied by later read-only CA snapshot in ephemeral copies. No original evidence or manifest modified. Later snapshot cannot establish historical policy or temporal causality.",
+  "supplement": "thesis_research/data/lineage_live/2026-11-10/current_patch_ca_supplement_01",
+  "supplement_manifest_sha256": "aad4915457bf20798f39951b97e8457cdbe4cd68c759f499d70cf1ec28e70de8",
+  "supplemented_missing_ca_exports": [
+    "r01_baseline_admin_san",
+    "r01_benign_self_enrollment",
+    "r01_enabled_admin_san",
+    "r01_rollback_before_enroll",
+    "r02_baseline_admin_san",
+    "r02_benign_self_enrollment",
+    "r02_enabled_admin_san",
+    "r02_rollback_before_enroll",
+    "r03_baseline_admin_san",
+    "r03_benign_self_enrollment",
+    "r03_enabled_admin_san",
+    "r03_rollback_before_enroll"
+  ]
+}

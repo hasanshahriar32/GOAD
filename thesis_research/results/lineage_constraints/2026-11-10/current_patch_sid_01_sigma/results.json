@@ -1,0 +1,383 @@
+{
+  "executed_utc": "2026-11-10T16:10:41.024051+00:00",
+  "execution_controls": {
+    "matches": {
+      "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+        "fixture:eku",
+        "fixture:subject"
+      ],
+      "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [
+        "fixture:machine"
+      ],
+      "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+        "fixture:eku"
+      ]
+    },
+    "passed": true
+  },
+  "files": [
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898
+      ],
+      "events": 120,
+      "input_sha256": "5a0756b7ec4e53d56ec6ca1b9d2547386f0cfdb019846060658adee2d5d2c90a",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:40024",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40045",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40204",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40225"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r01_baseline_admin_san/events.xml",
+      "query_and_load_seconds": 0.004731807988719083,
+      "xml_projection_seconds": 0.012977974998648278
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 129,
+      "input_sha256": "dd68baefa11a32e120a5385d5cf52a46de7ace746ac9c8deabbf3fc772e99fab",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:40362",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40411",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40432",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40605",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40626"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:40362"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r01_benign_self_enrollment/events.xml",
+      "query_and_load_seconds": 0.0037991970020812005,
+      "xml_projection_seconds": 0.012257416994543746
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 126,
+      "input_sha256": "60df062afab25194980311e7d159b830fb15605439dcbad5893a1cafcf5ac320",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:40766",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40815",
+          "WIN-NA2FC16NO63.q1lab.test:Security:40836",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41000",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41021"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:40766"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r01_enabled_admin_san/events.xml",
+      "query_and_load_seconds": 0.003976184991188347,
+      "xml_projection_seconds": 0.009412497995072044
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 125,
+      "input_sha256": "6b1cc32e636c0a52eda56f2ab7e736413fb03a02a8cfc6a4bdae1a783bd40357",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:41212",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41233",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41389",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41410"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r01_rollback_before_enroll/events.xml",
+      "query_and_load_seconds": 0.0052029780053999275,
+      "xml_projection_seconds": 0.014714669989189133
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898
+      ],
+      "events": 119,
+      "input_sha256": "cf45efefd0fe227053b066ebf118dc76bbbe9778dcb10993d99ca26bc5edb686",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:42366",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42387",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42546",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42567"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r02_baseline_admin_san/events.xml",
+      "query_and_load_seconds": 0.004252172002452426,
+      "xml_projection_seconds": 0.011204062990145758
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 124,
+      "input_sha256": "01f8a30ffcb5e3ef2252ea09996ccf89bbaf94dd38805e123c139e663fd71a7f",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:41939",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41988",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42009",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42170",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42191"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:41939"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r02_benign_self_enrollment/events.xml",
+      "query_and_load_seconds": 0.003804570995271206,
+      "xml_projection_seconds": 0.013211651996243745
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 127,
+      "input_sha256": "85791207cc49de51c3799436e9f4393583d6fcade3b6d2a5046bdf1d66c7f19a",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:42704",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42753",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42774",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42936",
+          "WIN-NA2FC16NO63.q1lab.test:Security:42957"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:42704"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r02_enabled_admin_san/events.xml",
+      "query_and_load_seconds": 0.003549043001839891,
+      "xml_projection_seconds": 0.009732206992339343
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 124,
+      "input_sha256": "08a9e3ef2a6a4fcdb6bc3861cdd5d7ffd3384d12e856a008e92ef82ea61258e3",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:41604",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41625",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41781",
+          "WIN-NA2FC16NO63.q1lab.test:Security:41802"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r02_rollback_before_enroll/events.xml",
+      "query_and_load_seconds": 0.0038300849992083386,
+      "xml_projection_seconds": 0.013281995998113416
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898
+      ],
+      "events": 120,
+      "input_sha256": "9753c66f232e4f1d987b144e6c7a668b9ec523b7d69806bf6b0242554596225e",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:43932",
+          "WIN-NA2FC16NO63.q1lab.test:Security:43953",
+          "WIN-NA2FC16NO63.q1lab.test:Security:44112",
+          "WIN-NA2FC16NO63.q1lab.test:Security:44133"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r03_baseline_admin_san/events.xml",
+      "query_and_load_seconds": 0.002928021000116132,
+      "xml_projection_seconds": 0.009439353991183452
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 126,
+      "input_sha256": "dbbfde80e55099e15ad71c2db55f782b3045c8663fdbc8ae93514cd5b0b00c99",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:44267",
+          "WIN-NA2FC16NO63.q1lab.test:Security:44316",
+          "WIN-NA2FC16NO63.q1lab.test:Security:44337",
+          "WIN-NA2FC16NO63.q1lab.test:Security:44501",
+          "WIN-NA2FC16NO63.q1lab.test:Security:44522"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:44267"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r03_benign_self_enrollment/events.xml",
+      "query_and_load_seconds": 0.004780691000632942,
+      "xml_projection_seconds": 0.012995129989576526
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 126,
+      "input_sha256": "d7aa323fe9fb68a24137a62d31160bcfb5f0844c61d68c16dd937b99067d2cec",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:43505",
+          "WIN-NA2FC16NO63.q1lab.test:Security:43554",
+          "WIN-NA2FC16NO63.q1lab.test:Security:43575",
+          "WIN-NA2FC16NO63.q1lab.test:Security:43736",
+          "WIN-NA2FC16NO63.q1lab.test:Security:43757"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:43505"
+        ]
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r03_enabled_admin_san/events.xml",
+      "query_and_load_seconds": 0.004343096006778069,
+      "xml_projection_seconds": 0.013423048992990516
+    },
+    {
+      "event_ids_present": [
+        4624,
+        4768,
+        4886,
+        4887,
+        4898,
+        5136
+      ],
+      "events": 132,
+      "input_sha256": "77e7272707a43407a9990f5771af8344ae840a1ac3f7aa152bf510bd08451e64",
+      "matches": {
+        "5ee3a654-372f-11ec-8d3d-0242ac130003": [
+          "WIN-NA2FC16NO63.q1lab.test:Security:43164",
+          "WIN-NA2FC16NO63.q1lab.test:Security:43185",
+          "WIN-NA2FC16NO63.q1lab.test:Security:43341",
+          "WIN-NA2FC16NO63.q1lab.test:Security:43362"
+        ],
+        "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5": [],
+        "bfbd3291-de87-4b7c-88a2-d6a5deb28668": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r03_rollback_before_enroll/events.xml",
+      "query_and_load_seconds": 0.004303983994759619,
+      "xml_projection_seconds": 0.014789017994189635
+    }
+  ],
+  "mapping": "Raw XML System/EventData fields, EventID as integer, absent rule fields NULL; SQLite ASCII case-insensitive comparison enabled",
+  "rules": [
+    {
+      "id": "5ee3a654-372f-11ec-8d3d-0242ac130003",
+      "path": "rules/windows/builtin/security/win_security_adcs_certificate_template_configuration_vulnerability.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE (EventID=4898 AND TemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\') OR (EventID=4899 AND NewTemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\')"
+      ],
+      "sha256": "82f1c480ffdbc12a5a50736ef5f092f466850af7efcf198a3aa6b624e5e595c3",
+      "status": "test",
+      "title": "ADCS Certificate Template Configuration Vulnerability"
+    },
+    {
+      "id": "bfbd3291-de87-4b7c-88a2-d6a5deb28668",
+      "path": "rules/windows/builtin/security/win_security_adcs_certificate_template_configuration_vulnerability_eku.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE ((EventID=4898 AND (TemplateContent LIKE '%1.3.6.1.5.5.7.3.2%' ESCAPE '\\' OR TemplateContent LIKE '%1.3.6.1.5.2.3.4%' ESCAPE '\\' OR TemplateContent LIKE '%1.3.6.1.4.1.311.20.2.2%' ESCAPE '\\' OR TemplateContent LIKE '%2.5.29.37.0%' ESCAPE '\\')) AND TemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\') OR ((EventID=4899 AND (NewTemplateContent LIKE '%1.3.6.1.5.5.7.3.2%' ESCAPE '\\' OR NewTemplateContent LIKE '%1.3.6.1.5.2.3.4%' ESCAPE '\\' OR NewTemplateContent LIKE '%1.3.6.1.4.1.311.20.2.2%' ESCAPE '\\' OR NewTemplateContent LIKE '%2.5.29.37.0%' ESCAPE '\\')) AND NewTemplateContent LIKE '%CT\\_FLAG\\_ENROLLEE\\_SUPPLIES\\_SUBJECT%' ESCAPE '\\')"
+      ],
+      "sha256": "01942ca58c6c1e4cd277406fce6aa8bc3c465ab63e7c10ca5ce3744304fb4d6c",
+      "status": "test",
+      "title": "ADCS Certificate Template Configuration Vulnerability with Risky EKU"
+    },
+    {
+      "id": "6a53d871-682d-40b6-83e0-b7c1a6c4e3a5",
+      "path": "rules/windows/builtin/security/win_security_petitpotam_susp_tgt_request.yml",
+      "queries": [
+        "SELECT * FROM logs WHERE (EventID=4768 AND TargetUserName LIKE '%$' ESCAPE '\\' AND CertThumbprint LIKE '%' ESCAPE '\\') AND (NOT COALESCE((IpAddress='::1' COLLATE NOCASE OR CertThumbprint='' COLLATE NOCASE), 0))"
+      ],
+      "sha256": "ef0befc88cb8a8b8d0408077e07e0e515701242b0b560a8efc9051ad712ff390",
+      "status": "test",
+      "title": "PetitPotam Suspicious Kerberos TGT Request"
+    }
+  ],
+  "scope": "Actual upstream Sigma rules converted by actual pySigma SQLite backend and executed by SQLite; event-predicate matches, not attack recall",
+  "source_sha256": "1941a4855e96b4154aecb23c3a1b40b98daa801940694d685617cd66d622d217",
+  "sqlite_version": "3.53.1",
+  "task_boundaries": [
+    "Template rules require 4898/4899 telemetry; absence is a coverage gap, not proof of a missed applicable detection",
+    "The machine-account rule is scoped to machine targets; human Administrator authentication is not its intended target",
+    "These are Sigma/SQLite runs, not Splunk or HADES executions"
+  ],
+  "upstream": "https://github.com/SigmaHQ/sigma",
+  "upstream_commit": "d7c9da10c170a6988d68ebdf2c9f7bd8782b7c55",
+  "versions": {
+    "PyYAML": "6.0.3",
+    "pysigma": "2.1.0",
+    "pysigma-backend-sqlite": "2.1.1"
+  }
+}

@@ -1,44 +1,38 @@
-# Execution checkpoint (update as work continues)
+# GOAD continuation checkpoint — current-patch cycle completed
 
-Workspace: /home/m4x1d/Desktop/GOAD. IDE cwd soccer_bot is not the task repository. User authorizes continuing substantive Q1 research/testing while away; preserve single-column styling and avoid cosmetic redesign. No subagents spawned. No submission/publication authorized.
+Task repository: /home/m4x1d/Desktop/GOAD. The IDE/environment cwd soccer_bot is not the task repository. User requests substantive novelty/evidence improvements, permits manuscript content changes and laboratory tests, and requires the existing single-column style/layer count to stay. No submission or messages to third parties are authorized.
 
-Accepted original design comparison commit: cc707b3. A user/external snapshot committed much of this work as 91b4ca3 during the session; do not undo it. Current changes include later research work. Style, title, seven main section titles, original phase2 code and figure bytes all pass the artifact audit. Manuscript date changed to November 2026.
+## Completed latest extension
 
-Completed new work since earlier summaries:
-- Final 2016 paired matrix: 12 verified uses, 3 admin, 9 self, 3 matched fixed-CSR contrasts.
-- Independent q1lab.test Windows2019 build17763.4974 matrix_02: same 12/3/9 and 3 matched contrasts. Four restoration-addition audit events missing; all uses independently checked, mutation-history completeness separate. Initial skew run matrix_01 preserved.
-- Actual Certipy5.0.4 plus actual Sigma/pySigma/SQLite on each final matrix. Tested-template pre-risk patterns agree (enabled + legitimate self risky). Initial independent identity ablation abstained all12 due template OID/name mismatch; collected directory mapping fixes12/12 links,3 privileged divergences. Both outputs retained as development, not untouched holdout.
-- Historical-feature-gate matched 2x2 study:6000 verified predictions; repeated legacy inputs exposed; deep reachable labels corrected.
-- NEW literal_bilinear.py implements two-layer/four-head full autograd attention/gate/skip model. bilinear_study/ has5100 independently checked cases and10800 reproduced heldout predictions,12 runs. Family+typedWL disjoint within each seed; identical initialization and matched aug. All arms classify identically: IID86%+/-2.19SD, large background87%+/-1SD, long50%; every arm misses450 deep positives. Full results and final verifier source snapshot saved.
-- interdiction_audit/:60 cases, exact optimum matches fixed43/60, legacy46/60, static21/60. Fixed preserves edge metadata; independent bitset verifier checks6113 feasible subsets. No optimum/equilibrium claim.
-- projection_repeated/:same-task path-preserving projection,45 timing pairs,9 graphs,all1188 queries reconstructed. At5000 actual nodes325 pairs,median inclusive ratio7.543,min6.625,max8.992. Full median3448.15ms, projected inclusive439.29ms. Source/generator retain pairs and attributes. Old1246x dropped pairs, no longer primary claim.
-- falsification_controls/:2 deterministic controls. Self-consistent false order can falsely imply definite overlap.6 corrupted bridge rows1 exporter exceed record-budget2 and create false certain link; record-budget6 retains true candidate in64hypotheses, new source-budget1 retains in2 and abstains. Assumptions differ.
-- legacy_statistics_audit/:old p values reproduce; at B24 only5nonzero paired gains, exact signedrank p.0625, t p.0635, old asymptotic W p.0431. Holm8-test adjustment both .328125,onlyB6 survives. Fold ablation fixed no-skipSD.023944,t46.245,p1.30777e-6.
-- 66tests passed latest continued_tests.log (rerun after any further source change).
-- Artifact audits INTERIM/PREPATCH pass; PREPATCH checks8studies,5oldmatrices,table inputs,privacy,style. Latest artifact_audit.py includes custom confirmation/robustness hashes.
+- Windows2019 independent q1lab.test forest upgraded through signed official July prerequisite and October KB5126651. Installed build17763.9376, no pending reboot, ordinary enroller, KDC/CA running and Defender enabled verified.
+- Frozen v4 current_patch_upn_01 and current_patch_sid_01 each finish12trials. UPN-only:6 self uses,6 exact-certificate KDCevent39 rejections. SID-URL:9 self uses,3 administrative uses. All24 postrollback actual Certipy scans cease flagging exact-template ESC1.
+- All four final matrices:48trials,42 successful exact-certificate authentications,9 administrative uses,6 rejections. Earlier infrastructure/development attempts excluded and retained.
+- Collector v4 empty-System-query bug skips subsequent CAexport in18successfultrials. Original raw files/manifests retained. Separate current_patch_ca_supplement_01 later read-only CAexport fills only missing exports in ephemeral views. New supplement_matrix_evidence.py checks manifests/forest/CA, independently adjudicates and runs CSR/policy and identity checks. Provenance saved per review. Later snapshot does not establish historical policy state.
+- Current-patch review dirs under thesis_research/results/lineage_constraints/2026-11-10/current_patch_{upn,sid}_01_review contain adjudication/contrasts/identity/manifest/provenance. Actual Sigma dirs and *_external.json alongside. Original incomplete UPN adjudication retained.
+- Precollection-frozen identity reference unchanged;18/18 successful new authentications linked,3 correct privileged divergences. Rejections outside successful-use denominator. SIDURL3 matched privileged-use contrasts;UPN0. Same keys/CSR within each block/form, not between forms. Older/newer workflows differ; no patch-only causal estimate.
+- Collector corrected normal NoMatchingEventsFound handling after collection. Frozen v4 snapshots/protocols unchanged; current source intentionally differs, so new live collection must freeze a new protocol. Actual read-only current_patch_export_control_01 confirms empty query returns0 and permits following CAexport.3 new preservation/tamper/forest tests pass.
+- Full suite69tests passed. Artifact audit FINAL_PDF passes8studies,7matrix versions,5generatedtables, supplement/review/Sigma hashes, precollection identity source, privacy and style preservation.
+- Manuscript updated substantively including abstract/contributions/results/discussion, same styling/title/7sections/originalfigures/model layers.36-page PDF builds;page27 newtable visually checked. Font/overfull/Tectonic6pass warnings retained, no unresolved citations.
+- Authoritative validation record: research_notes/2026-11-10/VALIDATION_SUMMARY.json and ARTIFACT_AUDIT_FINAL_PDF.json. Final PDF SHA256=03f520813827c4aa378d934e3b954b363de2eb7c3c676e4f0924fe3a11c15d58.
+- Detailed completed findings CURRENT_PATCH_FINDINGS.md; main readiness report manuscript/reviews/2026-11-10/Q1_JOURNAL_READINESS_REPORT.md expanded with JCR/SJR interpretation, precise novelty and remaining research priorities. No acceptance guarantee.
 
-ACTIVE VM/update:
-- Docker goad-lineage-win2019 only research VM running. Source disk ro. Writable state now /home/m4x1d/.cache/goad-q1-lab-2019/windows2019.qcow2; cold preupdate_baseline.qcow2 retained. Old /tmp original state retained too. 3072MB guest,4096m container. Original2016 copies stopped and containers removed earlier.
-- Private random creds outside repo: /tmp/goad-q1-independent-2019/credentials.json (also private durable copy). Never print values. Domain Q1LAB/q1lab.test, Admin and q1.enroller. Endpoint localhost57985; LDAP/KDC127.0.0.3 ports389/88.
-- Signed official update ISO in durable state; host downloads .cache/goad-q1-updates. July KB5062557 verified postboot build17763.7558. October KB5126651 signature Valid Microsoft; CBS S_OK and Hotfix present with pending reboot. WUSA task had not returned final exit/result before controlled reboot; do not invent3010 for October.
-- lab/current_patch_followup.py reboot action successfully scheduled normal reboot at13:28 UTC. At13:34 boot/update still busy; last shortWinRMprobe timed out; do not force poweroff. Need postboot build9376 and no reboot pending before trials.
-- Followup helper retains actual public scripts and its executed source. Actions readiness -> clock -> later shutdown. It refuses existing phase output paths, so invoke full readiness only after short probe confirms ready to avoid unnecessary failed attempts.
-- Required readiness: .venv/bin/python -m thesis_research.src.lineage_constraints.lab.current_patch_followup readiness (phase19).
-- Then clock action (phase20) aligns actual host UTC only in lab copy. New collector also checks guest/host UTC at start and each trial. No claim of repairing historical audit-clock model.
-- Two CURRENT protocols already frozen, must use v4:
-  thesis_research/results/lineage_constraints/2026-11-10/independent_2019_current_patch_upn_protocol_v4.json
-  .../independent_2019_current_patch_sid_protocol_v4.json
-  Require UBR9376 and no pending reboot. Identity forms upn_only and upn_and_sid_url per Microsoft MS-PKCA spec. v4 adds baseline readback and CA restart before authentication plus repeated actual Certipy enumeration after rollback; allconditions receive same controls. Adjudicator and external analyzer support separate postrollback result. Earlier unused protocol versions retained.
-- Run sequentially using module independent_policy_2019 run <protocol> <NEW matrixdir> --certipy /tmp/goad-q1-tools/bin/certipy, logs under research_notes. Do not edit frozen dependencies after runs start; preservefailedversions if needed. Names suggested current_patch_upn_01 and current_patch_sid_01 under data/lineage_live/2026-11-10/.
-- After each, independently adjudicate, fixedCSR verify, actual Sigma via /tmp/goad-q1-tools/bin/python and /tmp/goad-q1-sigma frozencommit, external compare, identity evaluate. Strong-binding rejections need exact KDC System39/40/41 cert serial+thumb or failed certificate-bearing4768; tooloutput alone not success/failure ground truth.
-- Actual package/patch evidence in independent_2019_setup/. 17 failed evidence read wrong empty D: CD;17b correctlyfound E:\OCT26.MSU. Preserve both. Helper updater enumerates actual mounted file correctly.
-- Temporary systemd-inhibit sleep+idle holder is ACTIVE: execsession88193, parentPID120801, child sleepPID120804, pidfile/tmp/goad-q1-inhibitor.pid. Release owned holder after work! Do not kill unrelated sleep/inhibitor processes. Three-hour autoexpiry only fallback.
+## Preserved earlier scientific results
 
-Remaining finish work:
-1. Finish boot/update and run both v4 currentpatch matrices, preserve failures, verify actual outcomes.
-2. Integrate actual results and request-form/binding distinctions, postrollback Certipy output into generated tables, manuscript, detailedreport, readinessreport. No assumptions about outcomes until checked. Existing24 old uses remain factual.
-3. Refresh current reports with literal/projection/statistics/falsification completed evidence; detailed LIVE_RESEARCH_AND_NOVELTY_UPDATE already has appended completedextensions. Readiness/report progress partlyupdated.
-4. Rebuild manuscript after final edits. Earlier build passes,34pages,0[?], visualchecked pages21literal,26paired,27projection; that PDF predates latest statistical paragraph/date/currentpatch results. Figure4 left curves are illustrative; caption now clarifies, figure bytes stay same.
-5. Run relevant/full tests, final artifact_audit, privacy scans, refresh VALIDATION_SUMMARY.json (currently old36tests/PDFhash!) and report with final PDFhash. Frozen engine/simulator/baselines/evaluate sources unchanged and initial18confirmation input/source hashes stillmatch.
-6. Shutdown only lab VM gracefully after restoredflag verified (followup shutdown), remove its container only after guest exit. Preserve overlay; release temporary inhibitor. Supabase and unrelatedservices untouched.
-7. No acceptance/Q1 guarantee or unverified current journal quartile; JCR/SJR category/year selection remains separate. Do not hide negative results or claim literalgating superiority. No remote publication performed.
+Confirmation5400cases/27000predictions with randomized2000independentlabels; robustness4500histories/16200predictions; oldtwofinalmatrices24uses6Admin; featuregate6000verifiedpredictions; literalbilinear5100labels/10800predictions and no classification advantage; exactinterdiction60cases6113feasiblesubsets; repeatedprojection45timingpairs/9graphs1188queries, medianratio7.54 at5000actualnodes; false-order/correlated-source controls; exact/Holm reanalysis removes claimed budget24 significance. Reports, code, manifests and checkpoints remain in repository. Original phase2 source preserved.
+
+## Resources cleaned up
+
+NO research VM/container or owned sleep inhibitor remains active. Final normal shutdown readback33554432, containerexit0, then only goad-lineage-win2019 container removed. Writable disk and cold preupdate snapshot preserved at /home/m4x1d/.cache/goad-q1-lab-2019/. Original source disk remains read-only. Original2016 copy containers were already stopped/removed. Supabase/user services untouched.
+
+Private random credentials remain outside repository at /tmp/goad-q1-independent-2019/credentials.json (durable backup available); never print values. Private keys/TGTs not in new dataset. Do not restart VM just for offline analysis.
+
+An unfinished merge was resolved after preserving both stages in /home/m4x1d/.cache/goad-q1-merge-recovery-20261110. Working collector matched frozen v4 before actual trials. No commits/publication performed by this continuation; external user snapshots may commit while agent works. No new subagents spawned; developer prohibits delegation absent explicit instruction.
+
+## Next scientifically meaningful work
+
+1. Matched external provenance comparison, with honest input/output parity. HADES published implementation consumes authentication/logon and system/Sysmon data. Audited48trialexports contain4780Securityevents and no collected4769/4688/Sysmon. Missing filtered telemetry is not detection failure. PROVENANCE_INPUT_COVERAGE.json records actual counts/inputhashes. A full comparison requires new telemetry or a restricted common subtask; no HADES execution/superiority claimed.
+2. Independent updated-forest/held workload transfer with concurrent multi-issuer/template cases, renewal/reusedkeys, loss and revisions, detector/mapping frozen beforehand. Repeated deterministic blocks do not estimate enterprise prevalence.
+3. Sustained collection/retention/RSS/authentication-interference evaluation and matched analyst/policy utility. Existing command envelopes/offline inference are narrower.
+4. Journal/category/year selection under both JCR/SJR and author/public-release review. No fixed journal chosen; no unverified quartile claims. Do not hide negative findings or redesign styling to manufacture readiness.
+
+No further work requires recovering the old pending-update/reboot state; that cycle is completed and documented.

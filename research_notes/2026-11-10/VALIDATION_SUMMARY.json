@@ -1,48 +1,136 @@
 {
-  "checked_at_utc": "2026-11-10T04:29:24.871455+00:00",
-  "workspace": "/home/m4x1d/Desktop/GOAD",
-  "unit_tests": {
-    "passed": 36,
-    "log": "tests.log"
-  },
-  "synthetic_confirmation": {
-    "cases_checked": 5400,
-    "prediction_rows_checked": 27000,
-    "independent_random_history_labels_checked": 2000,
+  "artifact_audit": {
+    "generated_tables": 5,
+    "matrix_versions": 7,
+    "path": "ARTIFACT_AUDIT_FINAL_PDF.json",
+    "sha256": "bd68086bdf9fe5e5e571f7086133269293956dca56fd70d672dfe35d13b7a8f0",
     "status": "passed",
-    "frozen_source_hashes_verified": 4,
-    "frozen_protocol_sha256": "746b77180e6049a8b2aca520a5256a55feb4347bad890d170afdb88f815a824d",
-    "frozen_seeds_and_case_counts_verified": true
+    "studies": 8
   },
+  "checked_at_utc": "2026-11-10T16:21:10.086145+00:00",
   "component_study": {
-    "status": "passed",
-    "repair_histories_checked": 2700,
-    "temporal_histories_checked": 1800,
     "prediction_rows_checked": 16200,
-    "temporal_oracle_queries_checked": 3600,
-    "within_budget_true_link_checks": 4346,
+    "repair_histories_checked": 2700,
     "scope": "Independent labels/counts/hashes, complete temporal oracle on this grid, and within-budget retention; not repair-set optimality.",
-    "verifier_sha256": "9d50f348420bb60b4ac0be26e25ef429b5bce32db46aa5e8433c5f1991c07591"
-  },
-  "both_protocol_source_hash_sets_match_current_source": true,
-  "style_and_compile_script_unchanged": true,
-  "static_model_implementation_unchanged": true,
-  "existing_section_hierarchy_and_figures_unchanged": true,
-  "manuscript_build": {
     "status": "passed",
-    "log": "manuscript_build.log",
+    "temporal_histories_checked": 1800,
+    "temporal_oracle_queries_checked": 3600,
+    "verifier_sha256": "9d50f348420bb60b4ac0be26e25ef429b5bce32db46aa5e8433c5f1991c07591",
+    "within_budget_true_link_checks": 4346
+  },
+  "current_patch": {
+    "administrative_uses": 3,
+    "exact_certificate_kdc_rejections": 6,
+    "identity_detector_source_frozen_before_collection": true,
+    "installed_build": "17763.9376",
+    "later_snapshot_establishes_historical_policy_state": false,
+    "original_captures_preserved": true,
+    "postrollback_certipy_scans": 24,
+    "postrollback_tested_template_esc1_findings": 0,
+    "protocols_frozen_before_collection": true,
+    "scope": "Within-form matched CSR/key/policy blocks; keys differ between forms and old/new workflows differ; no patch-only causal estimate",
+    "successful_exact_certificate_authentications": 18,
+    "supplemented_missing_trial_ca_exports": 18,
+    "trials": 24
+  },
+  "existing_section_hierarchy_and_figures_unchanged": true,
+  "four_final_matrices": {
+    "administrative_uses": 9,
+    "earlier_development_attempts_excluded": true,
+    "exact_certificate_rejections": 6,
+    "successful_exact_certificate_authentications": 42,
+    "trials": 48
+  },
+  "gating_audit": {
+    "checked_predictions": 6000,
+    "runs": 12,
+    "sha256": "5320ac77cba131ddf0095e57ccde1e304795300b2dfa1382859c6bca213e0e04",
+    "status": "passed",
+    "verification_report": "thesis_research/results/lineage_constraints/2026-11-10/gating_audit_verification.json"
+  },
+  "interdiction_audit": {
+    "cases": 60,
+    "independent_feasible_subsets": 6113,
+    "sha256": "29a4db66bdc7dba9dd754323ecab77dfc147ade8f35fa5e379b8405fd6fa7298",
+    "status": "passed",
+    "verification_report": "thesis_research/results/lineage_constraints/2026-11-10/interdiction_audit_verification.json"
+  },
+  "lab_cleanup": {
+    "baseline_name_flag_read_back": 33554432,
+    "container_exit_code": 0,
+    "research_container_removed": true,
+    "shutdown_log": "independent_2019_final_shutdown.log",
+    "temporary_sleep_inhibitor_released": true,
+    "verified_utc": "2026-11-10T16:22:22.129854+00:00",
+    "writable_disk_preserved": true
+  },
+  "literal_bilinear": {
+    "checkpoint_predictions_reproduced": 10800,
+    "labels_checked_independently": 5100,
+    "runs": 12,
+    "sha256": "cb861e975165752ba75fc98c86476868fe9be778b6f54138db940da1943a0762",
+    "split_contract_checked": "Typed whole-graph WL and family disjointness within each seed; does not establish disjoint local motifs or population independence",
+    "status": "passed",
+    "verification_report": "thesis_research/results/lineage_constraints/2026-11-10/bilinear_study_verification_final.json"
+  },
+  "manuscript_build": {
+    "log": "manuscript_build_current_patch_final.log",
+    "log_sha256": "e86b6fdcd331a70c70b1c1f4a5770ded7f245a4b48a0f5b441a596f740413a14",
+    "new_evidence_table_pages_visually_checked": [
+      27
+    ],
+    "pages": 36,
+    "status": "passed",
     "unresolved_citation_markers": 0,
     "warnings_retained": [
-      "Font requests/fontconfig warnings",
+      "Font/fontconfig warnings",
       "Overfull boxes in retained manuscript material",
-      "Tectonic six-pass rerun warning"
-    ],
-    "new_evidence_table_pages_visually_checked": [
-      23,
-      24
+      "Tectonic internal bbl consistency/six-pass rerun warning"
     ]
   },
-  "manuscript_pdf_sha256": "b56d018f627e5930bbee5630cf883c22752c0d82be25d6855275b107a02b55ad",
+  "manuscript_pdf_sha256": "03f520813827c4aa378d934e3b954b363de2eb7c3c676e4f0924fe3a11c15d58",
+  "new_dataset_privacy": {
+    "credential_scan_performed": true,
+    "credential_value_matches": [],
+    "private_artifact_paths": [],
+    "private_key_headers": []
+  },
+  "preservation": {
+    "document_class": true,
+    "manuscript/compile.sh": true,
+    "manuscript/manuscript.sty": true,
+    "original_static_implementation_files": true,
+    "seven_main_section_titles": true,
+    "title": true,
+    "tracked_existing_figures": true
+  },
   "private_key_or_ticket_files_in_new_capture": [],
-  "scope": "Research and reporting gaps addressed; not a Q1 acceptance or complete-readiness certification."
+  "projection_repeated": {
+    "graph_tasks": 9,
+    "queried_pairs_reconstructed": 1188,
+    "scope": "Reconstructed queries, solver outcomes and recorded timing arithmetic; does not reproduce elapsed wall-clock durations",
+    "sha256": "856e88ba9252716b466fb276cde508b684fa8caab41b7c49464ff14375ce130d",
+    "status": "passed",
+    "timing_pairs_checked": 45,
+    "verification_report": "thesis_research/results/lineage_constraints/2026-11-10/projection_repeated_verification.json"
+  },
+  "scope": "Completed local research extension and artifact checks; no Q1 acceptance, enterprise effectiveness, external provenance-system superiority or submission certification.",
+  "static_model_implementation_unchanged": true,
+  "style_and_compile_script_unchanged": true,
+  "synthetic_confirmation": {
+    "cases_checked": 5400,
+    "frozen_protocol_sha256": "746b77180e6049a8b2aca520a5256a55feb4347bad890d170afdb88f815a824d",
+    "frozen_seeds_and_case_counts_verified": true,
+    "frozen_source_hashes_verified": 4,
+    "independent_random_history_labels_checked": 2000,
+    "prediction_rows_checked": 27000,
+    "status": "passed"
+  },
+  "synthetic_confirmation_and_component_source_hash_sets_match_current_source": true,
+  "unit_tests": {
+    "log": "continued_tests.log",
+    "passed": 69,
+    "sha256": "7310df87c4ef12b29fb68e86e71047e12cce97d29cdfc2de5a3b592f580adcce"
+  },
+  "workspace": "/home/m4x1d/Desktop/GOAD"
 }

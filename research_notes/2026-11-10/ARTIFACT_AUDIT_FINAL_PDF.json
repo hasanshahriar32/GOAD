@@ -1,0 +1,137 @@
+{
+  "audit_source_sha256": "fd627ec209b9a87a8f4ee9709cbf5a4c621b63ab0897b16e050534b06ef43aff",
+  "checked_utc": "2026-11-10T16:19:38.173604+00:00",
+  "current_manuscript_pdf_sha256": "03f520813827c4aa378d934e3b954b363de2eb7c3c676e4f0924fe3a11c15d58",
+  "current_patch_reviews": {
+    "sid": {
+      "installed_build": "17763.9376",
+      "manifest_sha256": "4b36da89acc6616bf737476f6e6d72958de011bd3bde8685825fd83685d3ee09",
+      "precollection_identity_source_verified": true,
+      "preflight_sha256": "78535e3bb01e9df59afc44951b96fb06ce828be64ee4365ce0908e36433ec286",
+      "review_files_checked": 5,
+      "run_manifest_sha256": "24abaa58ef3517fa852aa67c05710359ea24059d1f244d90078a8451f6cefd2d",
+      "sigma_files_checked": 7
+    },
+    "upn": {
+      "installed_build": "17763.9376",
+      "manifest_sha256": "2a83428bdced6f1e69e4780df30657d46f6e736fac8181a3f7abc7f3e19fb7a9",
+      "precollection_identity_source_verified": true,
+      "preflight_sha256": "67875dfa0e9d14720c1d56f3becfc6b585db552518e1fff158295b78b3c5dae4",
+      "review_files_checked": 5,
+      "run_manifest_sha256": "24abaa58ef3517fa852aa67c05710359ea24059d1f244d90078a8451f6cefd2d",
+      "sigma_files_checked": 7
+    }
+  },
+  "generated_tables": {
+    "bilinear_evidence.tex": "f1f403ebc4c916c91ba6e777eb49d95af081a353a5131ad73b9f6780de651ff0",
+    "current_patch_evidence.tex": "30a9c4abb87ba851408036b5af6770b4c18bd2d29a6daf7e81b6bda711e846ae",
+    "gating_evidence.tex": "012d0c6a5e8baede2c5cf8e98027e20df01575b8b6d1e7517c82b34faac1276c",
+    "lineage_evidence.tex": "330f1fec22a890cf59974c6e78d2ca082f3a21a7cd4b9ae8d13c6bab72874d39",
+    "projection_evidence.tex": "e0f3663c7db0955ede063e7edaa5f1c5349c4961d02da454c0da15dd305ed1a2"
+  },
+  "live_matrices": {
+    "current_patch_sid_01": {
+      "hashed_files_checked": 414,
+      "protocol_sha256": "282f8990a5cb2ed137f1558d90a4514db787dbd6a66aa71afd6574b07a078f0f",
+      "trials_with_manifests": 12
+    },
+    "current_patch_upn_01": {
+      "hashed_files_checked": 426,
+      "protocol_sha256": "11b612f809b885d39900558c0d6b710dbeaaa8137312422cb2f0ec37d4202a82",
+      "trials_with_manifests": 12
+    },
+    "independent_2019_matrix_01": {
+      "hashed_files_checked": 70,
+      "protocol_sha256": "983e8e6f249c30567098e099476c3238cfbeba3d72533a23b18d5c6240152aec",
+      "trials_with_manifests": 3
+    },
+    "independent_2019_matrix_02": {
+      "hashed_files_checked": 318,
+      "protocol_sha256": "94c0074bb6e509371eeed161c7cbe3ae076a5513c9403f4e1aa045b2afd6199f",
+      "trials_with_manifests": 12
+    },
+    "paired_policy_matrix_01": {
+      "hashed_files_checked": 72,
+      "protocol_sha256": "0a884764283ee0fb8fcd2b6d03d7f681486e8b556e5dc1294fa8f55f535c01a5",
+      "trials_with_manifests": 2
+    },
+    "paired_policy_matrix_02": {
+      "hashed_files_checked": 480,
+      "protocol_sha256": "2de5f76384fea930d4fcbf62db41a3957001e65d01e0c4380839b2c320e95983",
+      "trials_with_manifests": 12
+    },
+    "policy_matrix_01": {
+      "hashed_files_checked": 333,
+      "protocol_sha256": "f6f086be7aed9e779067455f380788283c25c90f982224cdb5f7a14d3137161a",
+      "trials_with_manifests": 12
+    }
+  },
+  "new_dataset_privacy": {
+    "credential_scan_performed": true,
+    "credential_value_matches": [],
+    "private_artifact_paths": [],
+    "private_key_headers": []
+  },
+  "preservation": {
+    "document_class": true,
+    "manuscript/compile.sh": true,
+    "manuscript/manuscript.sty": true,
+    "original_static_implementation_files": true,
+    "seven_main_section_titles": true,
+    "title": true,
+    "tracked_existing_figures": true
+  },
+  "preservation_from_commit": "cc707b3",
+  "scope": "Local artifact/style/privacy integrity; use independent study reports for scientific outcome checks; no acceptance or public-release certification",
+  "standard_studies": {
+    "bilinear_study": {
+      "hashed_files_checked": 58,
+      "manifest_sha256": "5f3b4a5b04b5328880fb7f1a801034aa0499f04d4c7c43d7e3b8341d411c26bf"
+    },
+    "confirmation": {
+      "hashed_files_checked": 25,
+      "manifest_sha256": "b2c15b754d025a22d64b31943320265cd1ebcbb4cd3b11adbe4bf4641a019d34"
+    },
+    "falsification_controls": {
+      "hashed_files_checked": 7,
+      "manifest_sha256": "545862421fa22e5119283058b60cadccb9ba61846a6a690f088ab8f1435e3d5c"
+    },
+    "gating_audit": {
+      "hashed_files_checked": 31,
+      "manifest_sha256": "1d71c48b5117d41997dd3cd6547e5948d4b4904e9f69fa7c47ad9f8485471ac3"
+    },
+    "interdiction_audit": {
+      "hashed_files_checked": 5,
+      "manifest_sha256": "a62fa5ec992693ac792ed22f447211e7edece717e4ac57d6a5bf1db5cdc4e091"
+    },
+    "legacy_statistics_audit": {
+      "hashed_files_checked": 3,
+      "manifest_sha256": "c2d37738e219fcade3c09db674f59affbb1200751584b431b8916eff0a22afd9"
+    },
+    "projection_repeated": {
+      "hashed_files_checked": 6,
+      "manifest_sha256": "bf962062e0f25619fdd9db36ecdff2a4e3f57a4530c549eca9363ffed6abcae8"
+    },
+    "robustness": {
+      "hashed_files_checked": 9,
+      "manifest_sha256": "0bd59cf25ec0bd4af93bb3e901ff3ce394b9e9f5e3c1798f4e4385fef407bb37"
+    }
+  },
+  "status": "passed",
+  "supplemental_evidence": {
+    "current_patch_ca_supplement_01": {
+      "hashed_files_checked": 5,
+      "manifest_sha256": "aad4915457bf20798f39951b97e8457cdbe4cd68c759f499d70cf1ec28e70de8"
+    },
+    "current_patch_export_control_01": {
+      "hashed_files_checked": 7,
+      "manifest_sha256": "696d686aca800b21355c73fda78389c7c293dfe816419e72c6d3e13bf480aa44"
+    }
+  },
+  "unit_tests": {
+    "count": 69,
+    "log_sha256": "7310df87c4ef12b29fb68e86e71047e12cce97d29cdfc2de5a3b592f580adcce",
+    "status": "passed"
+  },
+  "workspace": "/home/m4x1d/Desktop/GOAD"
+}

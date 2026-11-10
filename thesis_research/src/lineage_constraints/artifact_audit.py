@@ -69,6 +69,38 @@ def run(output):
         elif table.stem=="bilinear_evidence":
             if sha(RESULTS/"bilinear_study_verification.json")!=manifest["verification_sha256"]:raise AssertionError("Bilinear verification input differs")
         generated[table.name]=sha(table)
+    supplemental={}
+    for name in ("current_patch_ca_supplement_01","current_patch_export_control_01"):
+        directory=DATA/name
+        if (directory/"manifest.json").exists():
+            supplemental[name]={"hashed_files_checked":simple_manifest(directory),"manifest_sha256":sha(directory/"manifest.json")}
+    reviews={}
+    for form in ("upn","sid"):
+        directory=RESULTS/f"current_patch_{form}_01_review"
+        if not (directory/"manifest.json").exists():continue
+        count=simple_manifest(directory)
+        provenance=json.loads((directory/"provenance.json").read_text())
+        matrix=ROOT/provenance["original_matrix"];supplement=ROOT/provenance["supplement"]
+        if sha(supplement/"manifest.json")!=provenance["supplement_manifest_sha256"]:raise AssertionError("Supplement provenance changed")
+        for trial,expected in provenance["original_trial_manifest_sha256"].items():
+            if sha(matrix/trial/"manifest.json")!=expected:raise AssertionError("Original trial manifest changed")
+        # The prospective identity detector must be the precollection version.
+        protocol=json.loads((matrix/"protocol.json").read_text())
+        preflight=json.loads((matrix/"preflight_clock_and_patch.json").read_text())
+        inventory=json.loads(preflight["stdout"])
+        if (preflight["returncode"] or str(inventory["build"])!="17763" or inventory["ubr"]!=9376
+                or inventory["reboot_pending"] or inventory["domain"]!="q1lab.test"):
+            raise AssertionError("Current-patch preflight does not establish the required installed build")
+        run_manifest=json.loads((matrix/"run_manifest.json").read_text())
+        if run_manifest["planned"]!=12 or run_manifest["attempted"]!=12:raise AssertionError("Current-patch matrix incomplete")
+        detector="thesis_research/src/lineage_constraints/evaluate_live_identity.py"
+        identity=json.loads((directory/"identity.json").read_text())
+        if identity["source_sha256"]!=protocol["source_sha256"][detector]:raise AssertionError("Current-patch identity detector changed after freezing")
+        sigma=RESULTS/f"current_patch_{form}_01_sigma"
+        reviews[form]={"review_files_checked":count,"sigma_files_checked":simple_manifest(sigma),
+                       "manifest_sha256":sha(directory/"manifest.json"),"precollection_identity_source_verified":True,
+                       "installed_build":"17763.9376","preflight_sha256":sha(matrix/"preflight_clock_and_patch.json"),
+                       "run_manifest_sha256":sha(matrix/"run_manifest.json")}
     base="cc707b3"  # Accepted manuscript before this research continuation.
     style={}
     for name in ("manuscript/manuscript.sty","manuscript/compile.sh"):
@@ -99,7 +131,8 @@ def run(output):
     tests={"count":int(counts[-1]) if counts else None,"status":"passed" if re.search(r"\nOK\s*$",log) else "not_verified","log_sha256":sha(ROOT/"research_notes/2026-11-10/continued_tests.log")}
     if tests["status"]!="passed":raise AssertionError("Latest test log not passing")
     result={"checked_utc":datetime.now(timezone.utc).isoformat(),"workspace":str(ROOT),"status":"passed","standard_studies":standard,
-        "live_matrices":matrices,"generated_tables":generated,"preservation_from_commit":base,"preservation":style,
+        "live_matrices":matrices,"generated_tables":generated,"supplemental_evidence":supplemental,"current_patch_reviews":reviews,
+        "preservation_from_commit":base,"preservation":style,
         "new_dataset_privacy":{"private_artifact_paths":private_paths,"private_key_headers":private_headers,"credential_value_matches":credential_matches,
                                "credential_scan_performed":bool(credentials)},"unit_tests":tests,"current_manuscript_pdf_sha256":sha(ROOT/"manuscript/main.pdf"),
         "scope":"Local artifact/style/privacy integrity; use independent study reports for scientific outcome checks; no acceptance or public-release certification",

@@ -1,0 +1,134 @@
+{
+  "checked_utc": "2026-11-10T16:20:33.678559+00:00",
+  "matrices": [
+    {
+      "matrix": "paired_policy_matrix_02",
+      "trial_files": 12,
+      "event_id_counts": {
+        "4624": 456,
+        "4768": 240,
+        "4887": 12,
+        "4886": 12,
+        "4898": 192,
+        "5136": 38
+      },
+      "provider_counts": {
+        "Microsoft-Windows-Security-Auditing": 950
+      },
+      "channel_counts": {
+        "Security": 950
+      },
+      "input_sha256": {
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r01_baseline_admin_san/events.xml": "2132051745c620cf301f8b8534750865bb17775bb7096b4a53ad4a14af9a0fcd",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r01_benign_self_enrollment/events.xml": "eb277adcdf3fa2196997a15c052891ffdc2e7af8842a4fb32e1fc7e0402cc150",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r01_enabled_admin_san/events.xml": "1922f8e1cac8d88edca893ddd00fb615446de2947dcd7bb2646530f188d7fa15",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r01_rollback_before_enroll/events.xml": "0d19939e6eae20e57280fa39ea4921b09a478eac78630ed9dbdeddc775ed8105",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r02_baseline_admin_san/events.xml": "f09f5479d8b3650e0f470d6733bd1d11703b8af72e963bea6978e8bdd3572253",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r02_benign_self_enrollment/events.xml": "86e6fd101c9ff490743584ed3eefa0c30b361b56e5aebff135e7ac7922072709",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r02_enabled_admin_san/events.xml": "b627cbb70b238704d4abcf92dfcb091632513ffd33835b6bcb0c952276c19e14",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r02_rollback_before_enroll/events.xml": "44577a43b0ecaaea35b10c0cbe464b1dbf9b3af3cffaeb1eedc7251bb22a9080",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r03_baseline_admin_san/events.xml": "7c0ea105a2d7992bd557feaef429081d7656ca0127b039c395f4a0f7c32aae94",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r03_benign_self_enrollment/events.xml": "94d5040c68fbe001da5dc1561f1f81c49b69c5471a396724538244bc2b6c7b14",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r03_enabled_admin_san/events.xml": "540e63ab5e4730eb1fab1694bd3a4e419003305decb0e1485e6e3c61e5558aba",
+        "thesis_research/data/lineage_live/2026-11-10/paired_policy_matrix_02/r03_rollback_before_enroll/events.xml": "330cd11ab851dcb917a38deb920593d0d95c9c46a6b085a6904ce3c45e0020f0"
+      }
+    },
+    {
+      "matrix": "independent_2019_matrix_02",
+      "trial_files": 12,
+      "event_id_counts": {
+        "4624": 430,
+        "4768": 192,
+        "4887": 12,
+        "4886": 12,
+        "4898": 144,
+        "5136": 36
+      },
+      "provider_counts": {
+        "Microsoft-Windows-Security-Auditing": 826
+      },
+      "channel_counts": {
+        "Security": 826
+      },
+      "input_sha256": {
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r01_baseline_admin_san/events.xml": "49fefadd216e5f3b810f99ac9a2c2a6147f00c7cad9c1a2aab9f560dfe5877a7",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r01_benign_self_enrollment/events.xml": "bf2c96ec4445059c756c52b55fffc54a1c2fc699296a7cbc61ad1547cecb5c6c",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r01_enabled_admin_san/events.xml": "4eddb91ed09bbea203e2fcb4502afeb2d796eb8fe0a2cd15e93666e53580ff29",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r01_rollback_before_enroll/events.xml": "6e1971ac1f047e4bc978258ce7b1c38436334dccd3a1d31de25b2f45db83ceb2",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r02_baseline_admin_san/events.xml": "b6c727179a66bab6ddeacaf5312043cb24f54ac9fe8b8daeebae9635f06f426e",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r02_benign_self_enrollment/events.xml": "2f33a52215b40786c6a3c94c0ecb8590f1e5cf4f131794247e85f771081193d0",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r02_enabled_admin_san/events.xml": "068603e74e956b60cb9c0f3a912783b1bfb38647abf7056f49a2a7feb1b5a7c0",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r02_rollback_before_enroll/events.xml": "a46881dd9466fdbfeba741f0688448bb3bab78230b6718068fccbd33982eed25",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r03_baseline_admin_san/events.xml": "1921279e2aed0c517470a8c021a2b9572f8fd6aff95e617d3f4f64a98d19e92c",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r03_benign_self_enrollment/events.xml": "c58b8c2eca2acb6d0371615f02f68cb7291493138d2f422ea9a441ecedaba100",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r03_enabled_admin_san/events.xml": "513594218668a853737e457f29a5697b49bf9aa6042c5fed41f2ae54506ecef0",
+        "thesis_research/data/lineage_live/2026-11-10/independent_2019_matrix_02/r03_rollback_before_enroll/events.xml": "0fbb1daf0daf9d8c2004a7e6baa7f75018dec1ee80cad95cf0c4116e96b9b24f"
+      }
+    },
+    {
+      "matrix": "current_patch_upn_01",
+      "trial_files": 12,
+      "event_id_counts": {
+        "4624": 770,
+        "4768": 384,
+        "4898": 288,
+        "4887": 12,
+        "4886": 12,
+        "5136": 40
+      },
+      "provider_counts": {
+        "Microsoft-Windows-Security-Auditing": 1506
+      },
+      "channel_counts": {
+        "Security": 1506
+      },
+      "input_sha256": {
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r01_baseline_admin_san/events.xml": "ff0daf266032320c31352f5717a650a2d39bd9c1a40995bff2626b0d1b15cc4f",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r01_benign_self_enrollment/events.xml": "028fa4d0da13bcca3aa60105549506b28028fd539fbdd19256aba4f53a96e4b9",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r01_enabled_admin_san/events.xml": "cea0c0144d31b4a546974e542f723e28ae3ed3a2f106e7340af20226867b7452",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r01_rollback_before_enroll/events.xml": "67d5bcb2ad31cddab673b621c759c8d99c17eff7224a3a28f1e5b8198d1acddf",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r02_baseline_admin_san/events.xml": "4dd7b43343fa28a34d9ce6fc4f181d56c86707bc1431e2efcac005815bc47e76",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r02_benign_self_enrollment/events.xml": "b0af6fb75db894c58a9643be3dc77a5bc4581baff5f5edf25e1c6ef1bc7980e8",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r02_enabled_admin_san/events.xml": "41d60b0dc8f703178f1fceb7c7bb23ceefcb5ffee67f28620f32a41126f01eeb",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r02_rollback_before_enroll/events.xml": "d9531ca3d9b328fa057a798855635cd42bc22c8c1f2f4979fc8fe1dd754c97d7",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r03_baseline_admin_san/events.xml": "4781f45fbbfb960b5e828f1aeea61f6720b38bd44b84920615b9c655c72ec49a",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r03_benign_self_enrollment/events.xml": "7160fd57d591ce382701c5c0f530d398fb6cb97d0835980ad8daa96ae8104046",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r03_enabled_admin_san/events.xml": "720481816083efdc1c1259bb74e4e1c65fea50958a9d17520e41c4df25a8648a",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_upn_01/r03_rollback_before_enroll/events.xml": "071212f2d3943ad43636ee4b40942e4731661f07a72e47b951f9c73d40f541e5"
+      }
+    },
+    {
+      "matrix": "current_patch_sid_01",
+      "trial_files": 12,
+      "event_id_counts": {
+        "4624": 762,
+        "4768": 384,
+        "4898": 288,
+        "4887": 12,
+        "4886": 12,
+        "5136": 40
+      },
+      "provider_counts": {
+        "Microsoft-Windows-Security-Auditing": 1498
+      },
+      "channel_counts": {
+        "Security": 1498
+      },
+      "input_sha256": {
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r01_baseline_admin_san/events.xml": "5a0756b7ec4e53d56ec6ca1b9d2547386f0cfdb019846060658adee2d5d2c90a",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r01_benign_self_enrollment/events.xml": "dd68baefa11a32e120a5385d5cf52a46de7ace746ac9c8deabbf3fc772e99fab",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r01_enabled_admin_san/events.xml": "60df062afab25194980311e7d159b830fb15605439dcbad5893a1cafcf5ac320",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r01_rollback_before_enroll/events.xml": "6b1cc32e636c0a52eda56f2ab7e736413fb03a02a8cfc6a4bdae1a783bd40357",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r02_baseline_admin_san/events.xml": "cf45efefd0fe227053b066ebf118dc76bbbe9778dcb10993d99ca26bc5edb686",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r02_benign_self_enrollment/events.xml": "01f8a30ffcb5e3ef2252ea09996ccf89bbaf94dd38805e123c139e663fd71a7f",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r02_enabled_admin_san/events.xml": "85791207cc49de51c3799436e9f4393583d6fcade3b6d2a5046bdf1d66c7f19a",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r02_rollback_before_enroll/events.xml": "08a9e3ef2a6a4fcdb6bc3861cdd5d7ffd3384d12e856a008e92ef82ea61258e3",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r03_baseline_admin_san/events.xml": "9753c66f232e4f1d987b144e6c7a668b9ec523b7d69806bf6b0242554596225e",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r03_benign_self_enrollment/events.xml": "dbbfde80e55099e15ad71c2db55f782b3045c8663fdbc8ae93514cd5b0b00c99",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r03_enabled_admin_san/events.xml": "d7aa323fe9fb68a24137a62d31160bcfb5f0844c61d68c16dd937b99067d2cec",
+        "thesis_research/data/lineage_live/2026-11-10/current_patch_sid_01/r03_rollback_before_enroll/events.xml": "77e7272707a43407a9990f5771af8344ae840a1ac3f7aa152bf510bd08451e64"
+      }
+    }
+  ],
+  "scope": "Recorded observations in explicitly filtered Security exports; missing event types mean not collected, not absence of activity. No external-system execution or detection score."
+}

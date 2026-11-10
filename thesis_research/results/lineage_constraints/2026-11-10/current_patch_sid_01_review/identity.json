@@ -1,0 +1,340 @@
+{
+  "adjudication_sha256": "294e5d44aa60c760195ca773c7ff43080471d377ed7731dce679cc94da1c4281",
+  "counts": {
+    "correct_nonprivileged_outcomes": 9,
+    "correct_privileged_divergences": 3,
+    "outcome_checked_authentications": 12,
+    "unique_identity_links": 12
+  },
+  "detector_inputs": "events.xml, CA database stdout, observed directory template OID/name mapping and domain Admin SID; public certificate/CSR and outcome labels excluded from inference",
+  "predictions": [
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:40239",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:40084"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:40084",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:40237",
+        "WIN-NA2FC16NO63.q1lab.test:40128",
+        "WIN-NA2FC16NO63.q1lab.test:40069",
+        "WIN-NA2FC16NO63.q1lab.test:40057",
+        "WIN-NA2FC16NO63.q1lab.test:39948"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:40640",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:40466"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:40466",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:40638",
+        "WIN-NA2FC16NO63.q1lab.test:40526",
+        "WIN-NA2FC16NO63.q1lab.test:40456",
+        "WIN-NA2FC16NO63.q1lab.test:40444",
+        "WIN-NA2FC16NO63.q1lab.test:40333"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:41035",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:40870"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:40870",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:41033",
+        "WIN-NA2FC16NO63.q1lab.test:40919",
+        "WIN-NA2FC16NO63.q1lab.test:40860",
+        "WIN-NA2FC16NO63.q1lab.test:40848",
+        "WIN-NA2FC16NO63.q1lab.test:40731"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:41424",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:41269"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:41269",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:41422",
+        "WIN-NA2FC16NO63.q1lab.test:41313",
+        "WIN-NA2FC16NO63.q1lab.test:41257",
+        "WIN-NA2FC16NO63.q1lab.test:41245",
+        "WIN-NA2FC16NO63.q1lab.test:41136"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:42581",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:42423"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:42423",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:42579",
+        "WIN-NA2FC16NO63.q1lab.test:42470",
+        "WIN-NA2FC16NO63.q1lab.test:42411",
+        "WIN-NA2FC16NO63.q1lab.test:42399",
+        "WIN-NA2FC16NO63.q1lab.test:42290"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:42205",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:42043"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:42043",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:42203",
+        "WIN-NA2FC16NO63.q1lab.test:42094",
+        "WIN-NA2FC16NO63.q1lab.test:42033",
+        "WIN-NA2FC16NO63.q1lab.test:42021",
+        "WIN-NA2FC16NO63.q1lab.test:41907"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:42970",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:42808"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:42808",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:42968",
+        "WIN-NA2FC16NO63.q1lab.test:42859",
+        "WIN-NA2FC16NO63.q1lab.test:42798",
+        "WIN-NA2FC16NO63.q1lab.test:42786",
+        "WIN-NA2FC16NO63.q1lab.test:42674"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:41816",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:41661"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:41661",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:41814",
+        "WIN-NA2FC16NO63.q1lab.test:41705",
+        "WIN-NA2FC16NO63.q1lab.test:41649",
+        "WIN-NA2FC16NO63.q1lab.test:41637",
+        "WIN-NA2FC16NO63.q1lab.test:41524"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:44147",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:43992"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:43992",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:44145",
+        "WIN-NA2FC16NO63.q1lab.test:44036",
+        "WIN-NA2FC16NO63.q1lab.test:43977",
+        "WIN-NA2FC16NO63.q1lab.test:43965",
+        "WIN-NA2FC16NO63.q1lab.test:43856"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:44536",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:44371"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:44371",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:44534",
+        "WIN-NA2FC16NO63.q1lab.test:44422",
+        "WIN-NA2FC16NO63.q1lab.test:44361",
+        "WIN-NA2FC16NO63.q1lab.test:44349",
+        "WIN-NA2FC16NO63.q1lab.test:44233"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:43771",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:43609"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:43609",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:43769",
+        "WIN-NA2FC16NO63.q1lab.test:43653",
+        "WIN-NA2FC16NO63.q1lab.test:43599",
+        "WIN-NA2FC16NO63.q1lab.test:43587",
+        "WIN-NA2FC16NO63.q1lab.test:43473"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "auth_id": "WIN-NA2FC16NO63.q1lab.test:Security:43376",
+      "identity_candidates": [
+        "WIN-NA2FC16NO63.q1lab.test:Security:43221"
+      ],
+      "issuance_id": "WIN-NA2FC16NO63.q1lab.test:Security:43221",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "WIN-NA2FC16NO63.q1lab.test:43374",
+        "WIN-NA2FC16NO63.q1lab.test:43265",
+        "WIN-NA2FC16NO63.q1lab.test:43209",
+        "WIN-NA2FC16NO63.q1lab.test:43197",
+        "WIN-NA2FC16NO63.q1lab.test:43080"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-229414924-2366940259-2788903835-1104"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_rollback_before_enroll"
+    }
+  ],
+  "scope": "Log/CA-export/SID identity-only ablation; no timing, necessary-causation, or attack-intent guarantee",
+  "source_sha256": "69effb4765009ca3dcce171000d03e9c1a17468baad7211f61ea72065bb6ad77",
+  "timing": [
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.0347746140032541,
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.02165820199297741,
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.024179453001124784,
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.021860651002498344,
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.021033925004303455,
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.01905121900199447,
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.03933308999694418,
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.01984527098829858,
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.02221445601026062,
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.01789728099538479,
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.022744685993529856,
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.02602147401194088,
+      "trial": "r03_rollback_before_enroll"
+    }
+  ]
+}

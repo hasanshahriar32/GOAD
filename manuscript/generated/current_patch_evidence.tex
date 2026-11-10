@@ -1,0 +1,20 @@
+\begin{table}[ht]
+\centering
+\caption{Windows 2019 build 17763.9376: three trials per cell, with baseline restored and actual Certipy enumeration repeated before authentication. Reject denotes a certificate-bound KDC rejection; ESC1 columns are configuration findings before request and after rollback. Eighteen missing per-trial CA exports are supplemented by a separately recorded later read-only CA snapshot; original captures remain unchanged.}
+\label{tab:current_patch_policy}
+\small
+\begin{tabular}{llrrrrr}
+\toprule
+Request form & Condition & Self & Admin & Reject & ESC1 pre & ESC1 post \\
+\midrule
+UPN & Baseline & 3 & 0 & 0 & 0 & 0 \\
+UPN & Enabled & 0 & 0 & 3 & 3 & 0 \\
+UPN & Rollback first & 3 & 0 & 0 & 0 & 0 \\
+UPN & Self request & 0 & 0 & 3 & 3 & 0 \\
+UPN + SID URL & Baseline & 3 & 0 & 0 & 0 & 0 \\
+UPN + SID URL & Enabled & 0 & 3 & 0 & 3 & 0 \\
+UPN + SID URL & Rollback first & 3 & 0 & 0 & 0 & 0 \\
+UPN + SID URL & Self request & 3 & 0 & 0 & 3 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}

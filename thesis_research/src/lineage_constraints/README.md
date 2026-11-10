@@ -100,3 +100,11 @@ OPENBLAS_NUM_THREADS=1 .venv/bin/python -m thesis_research.src.lineage_constrain
 ```
 
 Live collectors require the explicitly isolated lab, matching inventory and externally stored private credentials. A frozen protocol checks collector dependencies and required installed Windows build before execution. `lab/` contains image-copy launch, independent forest provisioning, signed official update media and installation helpers. They are lab tools, not deployment automation for an arbitrary Windows domain. No new trial private keys or tickets are retained in the publication dataset.
+
+## Completed October-security-build follow-up
+
+`current_patch_upn_01` and `current_patch_sid_01` contain 24 trials on verified Windows Server 2019 build 17763.9376. The completed review reports verify 18 successful uses (three administrative) and six certificate-bound KDC rejections. The identity reference is unchanged from its precollection freeze. All 24 actual postrollback Certipy scans cease flagging tested-template ESC1. See `research_notes/2026-11-10/CURRENT_PATCH_FINDINGS.md` for exact task boundaries and artifact paths.
+
+The frozen v4 collector skips a subsequent CA export when its selected KDC System interval is empty. Eighteen missing exports are completed using a separately hashed later read-only CA snapshot through `supplement_matrix_evidence.py`; raw captures and manifests stay unchanged. The review checks forest/CA identity and both input manifest sets, fills missing exports only in temporary copies, independently adjudicates certificate outcomes, verifies matched CSRs/policy, and evaluates successful-use identity linkage. A later snapshot is not evidence of historical policy state. Its three preservation/tamper/forest regression tests and the actual `current_patch_export_control_01` empty-query control pass.
+
+The current collector corrects the empty-query case and therefore intentionally differs from the frozen v4 source hash. Historical protocols and saved source snapshots remain intact. Freeze a new protocol for any new collection with the corrected collector; do not rewrite old protocol hashes. Offline analysis of saved matrices needs no running VM and can use the documented supplementary-review command with a new output directory.
