@@ -1,0 +1,31 @@
+{
+  "result_sha256": {
+    "cases.jsonl": "65b6c1d814bf04099a332cdd095fab915e04a82c49a38099e4bc96d6c9b2283f",
+    "goad_point_time.json": "6006c2b8293134224dacc60aa5549b5e3440cda10ac20c204bb6d93b009d5fec",
+    "goad_two_second_bounds.json": "c28070e98e33dfa43f56a5523d33d45b28c20386ce8fe2e33e2fb5ca33802290",
+    "labels.jsonl": "b5bd6a970b5940c0237fb8914c3a598d6665340a9f62839694a263561ed18d40",
+    "predictions.jsonl": "c5c244ceee13409dda17a9ed8cc14b2ba7166b64ce67f347b0ca9b8c5df60cbc",
+    "protocol.json": "56d25a2f27e964c1a0d620fcd5372e2c77d74ac75972191435310aea63269b0d",
+    "results.json": "61ef04aa3e417b8090e2978a88dde4bde1be6ebbcfbc735a56a19c03915025d3"
+  },
+  "sha256": {
+    "thesis_research/data/live_goad_traces/srv03_ca_db_bridge.csv": "81c34b51c09060a847a9e90e740dc3c41044c42353be052cad5ea64b5304750b",
+    "thesis_research/data/live_goad_traces/trace_asn1_san_concealment.xml": "55c9eec19ae4b6fab570fa127a85936778b948af3e8ce0f00e8d53f3d034cfc2",
+    "thesis_research/data/live_goad_traces/trace_benign_admin_typo_rollback.xml": "26721b4e57c822786201d17668053e80d9dd63ab5f3dd3765565eb6f56889460",
+    "thesis_research/data/live_goad_traces/trace_benign_normal_enrollment.xml": "7ab828e9f56cfd49444612413ec12e1886e015a5fdf6677c6aa5c4f7ae2c8ff3",
+    "thesis_research/data/live_goad_traces/trace_esc4_rollback_full.xml": "3385062484a10e6267a8c46cb83d660e3df077722386da336f5d9e8d18fffe38",
+    "thesis_research/data/live_goad_traces/trace_esc6_ca_flag_abuse.xml": "48ec7f3bfd6dc81be706430405b76f331925805aee106a7850f9f090227c6f7e",
+    "thesis_research/data/live_goad_traces/trace_esc9_upn_swap_rollback.xml": "8e09ebe42a6b6b393de8490ec284a69520f2072d29a47a232ea4945dfcd07b70",
+    "thesis_research/data/live_goad_traces/trace_split_actor_delayed_pkinit.xml": "d0238648bb3576520b4ac22254e25bd9c253c2e22286a150f8e655a242987a7a",
+    "thesis_research/src/lineage_constraints/__init__.py": "11aebe1ac73966dcd02292e5a32dba2aecde3e38456612c57cd897f7ab56a02b",
+    "thesis_research/src/lineage_constraints/analyze_capture.py": "2bfb18dc18cdf6d1385a34b1b26f65399711601d61e90516df6e7f180fb46342",
+    "thesis_research/src/lineage_constraints/baselines.py": "5c57af0604ebca5ae3095ddf595c109b640d53bd7e9127564d872760bf1cc9cd",
+    "thesis_research/src/lineage_constraints/clock_audit.py": "dfec43a3525d6deaad51bed3f23886d1c16857778f1add7139437625c6384578",
+    "thesis_research/src/lineage_constraints/engine.py": "86613cc1d461b196234621eca93be12c4f83c1fbd97253dbf5c277bb1fc603e4",
+    "thesis_research/src/lineage_constraints/evaluate.py": "18bc68824ddaa7027fc31ea95fd6e4c73fb6bbcc65b4e287b7c92dc532692a1f",
+    "thesis_research/src/lineage_constraints/goad.py": "f1c04d92a2a8b2adf67497b177575b4e957b55ed17b81994f9a4410db2c5cf74",
+    "thesis_research/src/lineage_constraints/simulator.py": "86280409578e748dfa7082fe01fca97a5b9f72c0025cd22618429568b6b25f2d",
+    "thesis_research/src/lineage_constraints/summarize.py": "b40d524efea8d8b4563193e1c2b87e43760b38597762459d9ad25e87c3b3be92",
+    "thesis_research/src/lineage_constraints/verify_results.py": "621c841633001d18dc96699178c91957191c3555f5538164cff3b055aa36715b"
+  }
+}

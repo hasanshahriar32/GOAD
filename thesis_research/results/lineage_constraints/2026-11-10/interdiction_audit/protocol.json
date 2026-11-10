@@ -1,0 +1,18 @@
+{
+  "seeds": [
+    42017,
+    43003,
+    44017
+  ],
+  "cases_per_seed": 10,
+  "budgets": [
+    3,
+    6
+  ],
+  "objective": "Maximize severed terminal-pair count with cost as exact-optimum tie break; lambda=0; integer assigned costs",
+  "scope": "Small synthetic graph optimality audit, not enterprise disruption or a Stackelberg equilibrium guarantee",
+  "source_sha256": {
+    "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/interdiction_audit.py": "1d9f861a78ab472b7bae1671334de156ee39f256a2ed980699c7eec6893dd562",
+    "/home/m4x1d/Desktop/GOAD/thesis_research/src/phase2_certgraph/run_real_stackelberg_eval.py": "e409a14e20d91ab3a417e7d21ad5575b71929c4d72abd80417eec3a60ec94606"
+  }
+}

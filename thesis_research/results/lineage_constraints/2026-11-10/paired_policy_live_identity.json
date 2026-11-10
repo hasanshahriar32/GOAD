@@ -1,0 +1,334 @@
+{
+  "adjudication_sha256": "9678cefafed4125cd017d1a5301b7115f412095f3645b2aca4da2b4e55834a9c",
+  "counts": {
+    "correct_nonprivileged_outcomes": 9,
+    "correct_privileged_divergences": 3,
+    "outcome_checked_authentications": 12,
+    "unique_identity_links": 12
+  },
+  "detector_inputs": "events.xml, CA database stdout and collected domain Admin SID; public certificate/CSR and outcome labels excluded from inference",
+  "predictions": [
+    {
+      "auth_id": "meereen.essos.local:Security:183946",
+      "identity_candidates": [
+        "braavos.essos.local:Security:67714"
+      ],
+      "issuance_id": "braavos.essos.local:Security:67714",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:183881",
+        "meereen.essos.local:183877",
+        "meereen.essos.local:183873",
+        "meereen.essos.local:183869",
+        "meereen.essos.local:183863",
+        "meereen.essos.local:183734"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:185107",
+      "identity_candidates": [
+        "braavos.essos.local:Security:67868"
+      ],
+      "issuance_id": "braavos.essos.local:Security:67868",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:184628",
+        "meereen.essos.local:184463",
+        "meereen.essos.local:184334"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:183356",
+      "identity_candidates": [
+        "braavos.essos.local:Security:67559"
+      ],
+      "issuance_id": "braavos.essos.local:Security:67559",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "meereen.essos.local:182875",
+        "meereen.essos.local:182705",
+        "meereen.essos.local:182576"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:185714",
+      "identity_candidates": [
+        "braavos.essos.local:Security:68022"
+      ],
+      "issuance_id": "braavos.essos.local:Security:68022",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:185649",
+        "meereen.essos.local:185645",
+        "meereen.essos.local:185641",
+        "meereen.essos.local:185637",
+        "meereen.essos.local:185634",
+        "meereen.essos.local:185505"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:186863",
+      "identity_candidates": [
+        "braavos.essos.local:Security:68176"
+      ],
+      "issuance_id": "braavos.essos.local:Security:68176",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:186384",
+        "meereen.essos.local:186225",
+        "meereen.essos.local:186096"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:188656",
+      "identity_candidates": [
+        "braavos.essos.local:Security:68486"
+      ],
+      "issuance_id": "braavos.essos.local:Security:68486",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:188175",
+        "meereen.essos.local:188006",
+        "meereen.essos.local:187877"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:187472",
+      "identity_candidates": [
+        "braavos.essos.local:Security:68330"
+      ],
+      "issuance_id": "braavos.essos.local:Security:68330",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "meereen.essos.local:187401",
+        "meereen.essos.local:187397",
+        "meereen.essos.local:187393",
+        "meereen.essos.local:187389",
+        "meereen.essos.local:187386",
+        "meereen.essos.local:187257"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:189263",
+      "identity_candidates": [
+        "braavos.essos.local:Security:68640"
+      ],
+      "issuance_id": "braavos.essos.local:Security:68640",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:189198",
+        "meereen.essos.local:189193",
+        "meereen.essos.local:189191",
+        "meereen.essos.local:189187",
+        "meereen.essos.local:189184",
+        "meereen.essos.local:189055"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:192785",
+      "identity_candidates": [
+        "braavos.essos.local:Security:69256"
+      ],
+      "issuance_id": "braavos.essos.local:Security:69256",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:192720",
+        "meereen.essos.local:192716",
+        "meereen.essos.local:192712",
+        "meereen.essos.local:192708",
+        "meereen.essos.local:192705",
+        "meereen.essos.local:192576"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:192198",
+      "identity_candidates": [
+        "braavos.essos.local:Security:69102"
+      ],
+      "issuance_id": "braavos.essos.local:Security:69102",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:191714",
+        "meereen.essos.local:191552",
+        "meereen.essos.local:191423"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:190425",
+      "identity_candidates": [
+        "braavos.essos.local:Security:68794"
+      ],
+      "issuance_id": "braavos.essos.local:Security:68794",
+      "privileged_identity_divergence": true,
+      "requester_alias_evidence": [
+        "meereen.essos.local:189946",
+        "meereen.essos.local:189781",
+        "meereen.essos.local:189652"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "auth_id": "meereen.essos.local:Security:191035",
+      "identity_candidates": [
+        "braavos.essos.local:Security:68948"
+      ],
+      "issuance_id": "braavos.essos.local:Security:68948",
+      "privileged_identity_divergence": false,
+      "requester_alias_evidence": [
+        "meereen.essos.local:190967",
+        "meereen.essos.local:190963",
+        "meereen.essos.local:190959",
+        "meereen.essos.local:190955",
+        "meereen.essos.local:190952",
+        "meereen.essos.local:190823"
+      ],
+      "requester_sid_candidates": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "status": "unique_identity_link",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+      "temporal_attribution": "not_evaluated",
+      "trial": "r03_rollback_before_enroll"
+    }
+  ],
+  "scope": "Log/CA-export/SID identity-only ablation; no timing, necessary-causation, or attack-intent guarantee",
+  "source_sha256": "3dccac1e4e93e56ce94b576e956c7937ebb7013683318ed018b805aebedf581f",
+  "timing": [
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.02204476299812086,
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.023675748001551256,
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.025096034005400725,
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.023141512996517122,
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.022400720001314767,
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.02242676800233312,
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.02867441700072959,
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.017376930991304107,
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.02200544699735474,
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.013237737002782524,
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.01382582499354612,
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "certificate_records": 2,
+      "input_projection_and_reasoning_seconds": 0.013937482988694683,
+      "trial": "r03_rollback_before_enroll"
+    }
+  ]
+}

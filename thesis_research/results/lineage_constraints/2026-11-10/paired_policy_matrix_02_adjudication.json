@@ -1,0 +1,659 @@
+{
+  "adjudicator_source_sha256": "6f0d0b609842f0f08aae2b75b77dc5909ec03454f65a3d4a983ce56591b54a62",
+  "by_condition": {
+    "baseline_admin_san": {
+      "attempts": 3,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 3,
+      "verified_uses": 3
+    },
+    "benign_self_enrollment": {
+      "attempts": 3,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 3,
+      "verified_uses": 3
+    },
+    "enabled_admin_san": {
+      "attempts": 3,
+      "infrastructure_errors": 0,
+      "privileged_uses": 3,
+      "restored": 3,
+      "verified_uses": 3
+    },
+    "rollback_before_enroll": {
+      "attempts": 3,
+      "infrastructure_errors": 0,
+      "privileged_uses": 0,
+      "restored": 3,
+      "verified_uses": 3
+    }
+  },
+  "scope": "Independent controlled outcome adjudication; no CIPG detector imports or enterprise-rate estimate",
+  "trials": [
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication.",
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:67559"
+      ],
+      "condition": "enabled_admin_san",
+      "event_ids": {
+        "4624": 40,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 6
+      },
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 84,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002622af72deb7335ee8000000000026",
+      "sha256": "c3008c3547da4cca3c1b449f2f54251ba1468ceec545017f7be3e359692386f8",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:183356"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-500"
+      ],
+      "trial": "r01_enabled_admin_san",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:67714"
+      ],
+      "condition": "baseline_admin_san",
+      "event_ids": {
+        "4624": 39,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 77,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d00000027bd559801c889d06a000000000027",
+      "sha256": "e093576a7233035d1528fc7319909a4fc082f058baa93d686ba4f3ccf295bbd0",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:183946"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r01_baseline_admin_san",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication.",
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:67868"
+      ],
+      "condition": "benign_self_enrollment",
+      "event_ids": {
+        "4624": 33,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 75,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d00000028183bebbff54f2581000000000028",
+      "sha256": "f508ca2bcdc236bd17ecc77ee019b3d2f61fc2ddc87a6f18f7f7eb74a6fe9c76",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:185107"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r01_benign_self_enrollment",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:68022"
+      ],
+      "condition": "rollback_before_enroll",
+      "event_ids": {
+        "4624": 41,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 83,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002943aff07cdac4b38a000000000029",
+      "sha256": "a0733e398a0a31b4a69a1c9584cabb07703685b5afa565fc0bae80ce236eef4b",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:185714"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r01_rollback_before_enroll",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:68176"
+      ],
+      "condition": "baseline_admin_san",
+      "event_ids": {
+        "4624": 31,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 69,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002ae294679999489a0500000000002a",
+      "sha256": "fccc0f8e03f74b38b59297db8b2710c7bad2c9664dfcff1e251adfefa8ee5dfa",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:186863"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r02_baseline_admin_san",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication.",
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:68330"
+      ],
+      "condition": "enabled_admin_san",
+      "event_ids": {
+        "4624": 38,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 80,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002b76e4c6830b03e38400000000002b",
+      "sha256": "cbba19c3e5e022584c0b14b3fd53d287aeb74e9638e76c6c3f091be0c6e90285",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:187472"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-500"
+      ],
+      "trial": "r02_enabled_admin_san",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication.",
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:68486"
+      ],
+      "condition": "benign_self_enrollment",
+      "event_ids": {
+        "4624": 42,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 84,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002c75789cc705525c0c00000000002c",
+      "sha256": "ff4f877c7f90c8fae4db15974308a1a584faf938fb6c6bbf8175f406207c6e75",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:188656"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r02_benign_self_enrollment",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:68640"
+      ],
+      "condition": "rollback_before_enroll",
+      "event_ids": {
+        "4624": 41,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 83,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002d9444093c0e06938700000000002d",
+      "sha256": "ff9ed780e3f124e9d232a325de835ba3738fbd6500b7c2be43ae304189c62729",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:189263"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r02_rollback_before_enroll",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication.",
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:68794"
+      ],
+      "condition": "enabled_admin_san",
+      "event_ids": {
+        "4624": 33,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 75,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002e2166282f8c60115f00000000002e",
+      "sha256": "2d24f8e88e64bdbd55d5ba49f372932eb7bbfb076c42d9c8b0972221046a4031",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:190425"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-500"
+      ],
+      "trial": "r03_enabled_admin_san",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:68948"
+      ],
+      "condition": "rollback_before_enroll",
+      "event_ids": {
+        "4624": 41,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 83,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002f4e8aa5d4b332cc3200000000002f",
+      "sha256": "62e3038ec7f81237e3e11ce19207099a5eaad5274401cb72669a2e71ee38460a",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:191035"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r03_rollback_before_enroll",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication.",
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:69102"
+      ],
+      "condition": "benign_self_enrollment",
+      "event_ids": {
+        "4624": 33,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 75,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d000000301ddc2ead1c250846000000000030",
+      "sha256": "a6862e69707d7694f357b92e109444f09ee2aeb2eb9b976a2152094df074ade8",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:192198"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r03_benign_self_enrollment",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": false,
+      "assigned_name_flag": 33554432,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:69256"
+      ],
+      "condition": "baseline_admin_san",
+      "event_ids": {
+        "4624": 44,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16
+      },
+      "expected_admin_certificate": false,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "self_certificate_use",
+      "raw_events": 82,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d00000031a1d811fadc80b734000000000031",
+      "sha256": "59c870bd99da88b76d8de6e7efad2e1af94cd410e8b61c9c9a41c2081106f5c8",
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:192785"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-1114"
+      ],
+      "trial": "r03_baseline_admin_san",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    }
+  ],
+  "trials_adjudicated": 12,
+  "trials_planned": 12
+}

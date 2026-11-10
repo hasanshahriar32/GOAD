@@ -4,94 +4,73 @@
 We conduct an empirical evaluation to validate CertGraph's static gating, dynamic provenance tracking, and game-theoretic interdiction. Specifically, we address four core research questions:
 \begin{itemize}
     \item \textbf{RQ1 (Inductive Shortcut Cure):} Does Multiplicative Bilinear Gating eliminate shortcut memorization and prevent accuracy collapse on adversarial hard negatives?
-    \item \textbf{RQ2 (Live Provenance Accuracy):} Can Invariant~V detect rollback, split-actor, and dormant PKINIT attacks on live Windows Server 2019 VMs without generating false alarms on benign administrator errors?
-    \item \textbf{RQ3 (Provenance Scalability):} Does meta-node compacting maintain bounded memory footprint and high throughput under high-velocity audit telemetry?
+    \item \textbf{RQ2 (Provenance Validity):} Which rollback and split-actor certificate lineages are supported by captured Windows evidence, and how do incomplete identity fields, optional-source faults, and time uncertainty affect attribution?
+    \item \textbf{RQ3 (Provenance Scalability):} What processing cost and compression are observed on the configured stress stream, and which retention and reasoning costs remain unresolved?
     \item \textbf{RQ4 (Operational Interdiction Efficiency):} Does the Co-Adaptive Stackelberg policy achieve superior path interdiction while minimizing administrative disruption compared to industrial greedy heuristics?
 \end{itemize}
 
 \subsection{Experimental Setup}
-\paragraph{Synthetic Identity Graphs:} We synthesized 700 realistic enterprise Active Directory multigraphs ranging from 500 to 10,000 security principals with realistic edge distributions calibrated against real enterprise BloodHound datasets~\cite{robbins2017bloodhound}. The dataset exhibits severe class imbalance (96\% benign, 4\% vulnerable escalation chains), mirroring real-world conditions.
+\paragraph{Synthetic Identity Graphs:} The historical static benchmark uses 700 class-balanced synthetic identity graphs. Additional graph sizes are used in the separate scalability experiments. Neither the class proportions nor the graph generator constitute a measured enterprise distribution. The new matched gating audit uses the existing two-step implementations with fixed source snapshots and separately recorded training, validation, and test inputs.
 
-\paragraph{Live Cyber-Range Cyberbed:} To evaluate live execution, we deployed an enterprise testbed on a virtualized Game of Active Directory (GOAD) cyber-range. The testbed comprises two Windows Server 2019 nodes:
+\paragraph{Live Cyber-Range Cyberbed:} We use a virtualized Game of Active Directory (GOAD) cyber-range. Fresh inventory of the restored DC and CA identifies Windows Server 2016 Standard Evaluation, build 14393. That measured inventory supersedes the earlier draft's Server 2019 description. The two nodes are:
 \begin{itemize}
     \item \texttt{DC03} (\texttt{essos.local}): Active Directory Domain Controller, Kerberos KDC, and LDAP directory.
-    \item \texttt{SRV03} (\texttt{essos-ca.essos.local}): Enterprise Subordinate Certificate Authority running Microsoft Active Directory Certificate Services.
+    \item \texttt{SRV03} (\texttt{braavos.essos.local}): Certificate Authority running Microsoft Active Directory Certificate Services.
 \end{itemize}
-All attacks were executed by unprivileged domain accounts (\texttt{ESSOS\textbackslash khal.drogo} and \texttt{ESSOS\textbackslash viserys.targaryen}) using headless non-interactive exploitation pipelines without GUI dependencies.
+The new split-actor case uses domain accounts \texttt{ESSOS\textbackslash khal.drogo} and \texttt{ESSOS\textbackslash viserys.targaryen}. Original disk images were read-only; execution used writable overlays. The capture pipeline runs non-interactively, while restoring the old VM images required console-assisted recovery. A second, independently provisioned forest uses Windows Server 2019 build 17763.4974, its own CA and ordinary enroller, and host-generated SHA-256-signed requests. This measured 2023 patch level is not described as a current patched configuration.
 
 \subsection{RQ1a: In-Distribution Ablations, Calibration, and Perturbation Asymmetry}
-Prior to evaluating adversarial hard negatives, we empirically validate the theoretical predictions of Theorem~\ref{thm:theorem1} and quantify the behavior of GNN models on in-distribution identity multigraph partitions:
+We first distinguish the historical class-balanced generator from the newer attribution and live-policy experiments. Their labels, model implementations, and observation units differ.
 
 \paragraph{Empirical Confirmation of Theorem~\ref{thm:theorem1} (Skip-Connection Ablation):}
-To verify whether parameterized residual skip connections are strictly necessary to prevent configuration attribute erasure across relational message passing, we conducted a 5-fold cross-validation ablation study. Disabling residual skip connections ($\mathbf{W}_{\text{skip}} = \mathbf{0}$) causes validation Macro-F1 to collapse from $0.9986 \pm 0.0029$ to $0.4768 \pm 0.0532$ (paired $t$-test: $t = 18.42, p = 1.31 \times 10^{-6}$, representing a $52.2\%$ absolute drop). Jacobian differentiation confirms that $\partial \mathbf{h}_t^{(1)} / \partial \mathbf{x}_t = \mathbf{0}$ when skips are omitted, validating Part 1 of Theorem~\ref{thm:theorem1}.
+The saved five-fold artifact reports Macro-F1 $0.9986 \pm 0.0029$ with skips and $0.4768 \pm 0.0239$ without skips. Recomputing the paired statistic from the five saved fold values gives $t=46.245$, $p=1.308\times10^{-6}$, and four degrees of freedom. The dispersions are population standard deviations across these folds. Shared training data and generator assumptions limit interpretation of this descriptive comparison. An empirical ablation does not validate the theorem outside its coefficient-independence and derivative assumptions.
 
-\paragraph{Class-Imbalance Probability Calibration (96\% Safe Base Rate):}
-In enterprise production networks, vulnerable escalation templates represent rare needle-in-a-haystack anomalies within large forest configurations. We calibrated CertGraph under an authentic 96.0\% benign base rate ($N=2,000$ security principals) using Platt scaling and temperature adjustment. The calibrated model achieves an Area Under the Precision-Recall Curve ($\text{PR-AUC}$) of $0.9982$, an Expected Calibration Error ($\text{ECE}$) of $0.0142$, and a Brier Score of $0.0031$, demonstrating that output posterior probabilities accurately reflect true ground-truth confidence under severe class imbalance.
+\paragraph{Class Proportions and Probability Interpretation:}
+The static experiments reported here are generator-based classification studies. Their balanced labels do not establish a 96\% enterprise safe base rate, and their softmax scores are not calibrated probabilities of real-world compromise. We retain probabilities and selected checkpoints in the matched audit so that classification errors can be checked independently.
 
-\paragraph{The 7-Node Decision Tree Counterexample and Perturbation Asymmetry:}
-Crucially, evaluating detection architectures solely on standard in-distribution splits introduces severe benchmark saturation (Arp et al.~\cite{arp2022dos}). We discovered that a simple 7-node CART decision tree augmented with 4 node-degree counters achieves a near-perfect $0.9928$ Macro-F1 on standard validation partitions.
-
-To diagnose the underlying representation learned by the network, we subjected trained models to systematic topological versus feature perturbations:
-\begin{itemize}
-    \item \textbf{Topological Edge-Drop Perturbation:} Randomly pruning up to $30\%$ of directory multigraph edges retains $0.9637$ Macro-F1 ($96.4\%$ relative performance retention).
-    \item \textbf{Configuration Flag-Flip Perturbation:} In sharp contrast, perturbing merely $5\%\text{--}10\%$ of binary template configuration flags causes Macro-F1 to collapse dramatically to $0.8412$ and $0.7105$.
-\end{itemize}
-This extreme perturbation asymmetry demonstrates that on standard in-distribution splits, message-passing layers exploit local template bitflags as inductive shortcuts while ignoring multi-hop graph connectivity. This critical vulnerability provides direct empirical justification for our Zero-Shot Adversarial Hard Negative benchmark ($n=63$) and the Multiplicative Bilinear Reachability Gating mechanism.
+\paragraph{Perturbation Asymmetry and Simple Comparators:}
+The saved robustness artifact gives Macro-F1 $0.9479$ after 30\% edge perturbation, compared with $0.8965$ and $0.7709$ after 5\% and 10\% feature perturbation. This sensitivity pattern motivates testing structural counterfactuals; it does not prove that every prediction ignores topology. A separately verified, previously saved three-seed ESC13 abstraction also favors simple graph-count models over the existing GNN on its IID cases. Its symbolic reference defines the labels, so its perfect agreement is a consistency result rather than independent exploit validation.
 
 \subsection{RQ1b: Static GNN Generalization and Adversarial Hard Negatives}
-We evaluated detection architectures on a curated benchmark of 63 adversarial hard negatives across ESC1 through ESC13. These test cases incorporate dangerous template attribute combinations (\texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} $= 1$, Client Authentication EKU) but are rendered completely non-exploitable via: (i) enrollment ACL restrictions, (ii) missing enterprise CA issuance permissions, or (iii) mandatory manager approval requirements (\texttt{CT\_FLAG\_PEND\_ALL\_REQUESTS}).
+A source audit identifies two problems with interpreting the historical $41/63$ safe-label agreement as a general hard-negative detection result. Ten ``deep horizon'' cases retain a membership path to an allowed enrollment group and therefore are positive under a transitive effective-permission interpretation. The stored 22 disagreements are eight administrator-only write cases, four deny-write cases, seven benign OID links, and three deep OID links; the earlier OID/CA explanation did not match that artifact. The canonical generator also repeats inputs across training and validation. These historical counts are retained in the artifact but do not establish independent-case specificity or a binomial confidence interval.
 
-\begin{table}[ht]
-\centering
-\caption{Adversarial Hard-Negative Evaluation across ESC1--ESC13 Archetypes (63 Adversarial Test Cases).}
-\label{tab:hard_negatives}
-\small
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Detection Architecture} & \textbf{Clean Test F1} & \textbf{Hard Negative Accuracy} & \textbf{False Positive Rate} & \textbf{Failure Mode} \\
-\midrule
-Rule-Based Heuristic (BloodHound / Certipy) & 0.724 & 0.00\% (0/63) & 100.0\% & Pure attribute syntax matching \\
-Standard GCN~\cite{kipf2017semi} & 0.812 & 0.00\% (0/63) & 100.0\% & Oversmoothing \& feature erasure \\
-Standard GAT~\cite{velickovic2018graph} & 0.849 & 0.00\% (0/63) & 100.0\% & Localized degree memorization \\
-\texttt{CertGraph-AddSkip} (Additive Skip) & 1.000 & 0.00\% (0/63) & 100.0\% & Inductive shortcut collapse \\
-\textbf{\texttt{CertGraph-Gated} (Bilinear Gating)} & \textbf{1.000} & \textbf{65.08\% (41/63)} & \textbf{34.92\%} & \textbf{Multi-attribute semantic crosstalk} \\
-\textbf{Tier-2 Neuro-Symbolic Hybrid (Ours)} & \textbf{1.000} & \textbf{100.00\% (63/63)} & \textbf{0.00\%} & \textbf{None (Exact Transitive Closure)} \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
+We therefore freeze and execute a matched $2\times2$ diagnostic: additive versus feature-channel-gated implementations, each with counterfactual augmentation probability zero or 0.3, across three new seeds. Model equations, propagation depth, and original artifacts remain unchanged. Each seed evaluates 250 opposite-label families, with membership depths 0, 1, 2, 4, and 8, randomized node order, and matched configuration features. Positive members retain reachable enrollment; negative members either restrict enrollment to the administrator or add a reachable explicit deny. Queue traversal and Boolean closure independently agree on all test labels under this stated ESC1 permission abstraction. CA trust and resolved permissions are assumed; Windows exploitability is not the label definition.
 
-As reported in Table~\ref{tab:hard_negatives}, rule-based heuristics and standard GNNs fail completely (0/63 correct), tagging every hard negative as an active vulnerability. Crucially, \texttt{CertGraph-AddSkip} suffers from inductive shortcut collapse, correctly classifying 0 out of 63 cases ($0.00\%$, $95\%$ Wilson CI: $[0.0\%, 5.7\%]$). By contrast, our \textbf{\texttt{CertGraph-Gated}} model leverages multiplicative bilinear gating to verify authenticated topological reachability, achieving \textbf{65.08\% accuracy (41/63, 95\% Wilson CI: [52.8\%, 75.7\%])} on zero-shot hard negatives while maintaining 1.000 clean validation F1.
+\input{generated/gating_evidence}
 
-\paragraph{Failure-Mode Breakdown on GNN Hard Negatives:}
-Detailed inspection of the 63 hard negatives reveals how topological gating and symbolic verification partition the problem:
-\begin{enumerate}
-    \item \textbf{Resolved by Reachability Gating (41 cases):} \texttt{CertGraph-Gated} successfully resolves Admin-Only Enrollment (18/18), Explicit-Deny Overrides (10/10), Horizon Nesting (10/10), and Disabled Templates (3/3), correctly closing the reachability gate when low-privilege principals lack topological access.
-    \item \textbf{Multi-Attribute Semantic Crosstalk (22 cases):} In scenarios involving Low-Privilege OID Group Links (15 cases) and Unenrollable CAs (7 cases), reachability exists in the topological graph, but the vulnerability is neutralized by multi-attribute policy interactions. Continuous 2-layer matrix multiplication cannot disentangle these non-linear attribute intersections.
-\end{enumerate}
-Crucially, this exact $34.92\%$ neural residual ($22/63$) is why our \textbf{Tier-2 Neuro-Symbolic Verification} pipeline is strictly required: by executing an exact backward symbolic reachability traversal and attribute verification on GNN-flagged candidates, the hybrid framework eliminates all 22 misclassifications, achieving $100.00\%$ precision without manual heuristics.
+The gate gives zero false positives but misses all 450 positive cases at depths 2, 4, and 8 across the three seeds. Adding the same augmentation to the additive implementation improves its pooled accuracy from 50\% to 71.67\%, compared with the gate's 70\%. Thus the audit does not establish superiority of gating over an augmentation-matched comparator. First-step membership transforms are fixed in these existing NumPy implementations, and their feature-channel gate is $\sigma(W_{\mathrm{gate}}\mu_{\mathrm{reach}}+b)$, rather than a literal implementation of the general bilinear edge scorer in Section~\ref{sec:certgraph_arch}. Initialization also differs between implementations. These distinctions prevent attributing the entire contrast to a bilinear operation.
+
+Only 22 unique training inputs occur per seed, with 21 also present in validation. Consequently, validation selection in this diagnostic is not an independent-distribution generalization test. All 6,000 saved test predictions are reproduced from saved checkpoints, and their labels and aggregates are checked independently. A symbolic second tier must also examine unresolved or out-of-horizon cases: verifying only neural-positive candidates cannot recover these observed neural false negatives.
+
+\paragraph{Literal bilinear realization and family-disjoint validation:}
+We address the implementation mismatch with a separate literal realization of the bilinear edge and self-skip equations: two relational-attention layers, four heads, 32 hidden channels, type-specific input projection, and fully trainable encoder, attention, skip, and gate parameters. The binary readout evaluates the stated ESC1 resolved-permission predicate, not observed Windows compromise. Additive and gated arms start with identical parameter values and receive matched augmentation. Neither symbolic closure nor outcome labels enter the forward pass. Gradient, node-relabeling, and padding checks validate implementation properties; the historical implementations remain unchanged.
+
+The new generator constructs varied reachable and unreachable membership branches and paired allow/deny interventions. For each of three new seeds, 300 training and 100 validation families are separated from 150 families in each of IID, long-path, and larger-background test cohorts. Typed five-round Weisfeiler--Lehman input hashes and family IDs are disjoint across splits within a seed. This conservatively excludes isomorphic whole inputs under the encoded roles and edge types, without claiming disjoint local motifs. Long-path positive enrollment chains have membership depth 2, 4, or 8. The larger-background cohort adds isolated nodes to different generated families; it is not a matched causal estimate of graph-size effects or enterprise-scale generalization.
+
+\input{generated/bilinear_evidence}
+
+Independent NetworkX reachability checks all 5,100 saved case labels, and checkpoint inference reproduces all 10,800 held-out predictions. The literal bilinear and additive models have identical classifications in every matched arm: IID accuracy averages $86.00\%\pm2.19\%$, larger-background accuracy $87.00\%\pm1.00\%$, and long-path accuracy 50\%. In each arm, all 450 positive long-path cases are missed. Some IID negatives also require deny-membership reasoning beyond the local horizon; 126 pooled false positives remain. Probability scores differ, but their reported calibration errors concern these synthetic cohorts only. This closes the literal-implementation and repeated-whole-input gaps while failing to establish classification superiority for bilinear gating. Exact verification of unresolved cases remains necessary under the stated permission contract.
 
 \subsection{RQ2 \& RQ3: Live Provenance Evaluation and Automaton Scalability}
-We evaluated CIPG across both isolated cyber-range traces ($N=7$) and an enterprise-scale streaming stress test ($10,182$ events).
+We separate seven archived trace files, one new outcome-checked Windows case, a synthetic attribution confirmation study, and the earlier $10,182$-event trace-driven synthetic stress stream. Their outcome definitions and evidence levels differ; scenario filenames are not independent success labels.
 
 \begin{table}[ht]
 \centering
-\caption{Live Cyber-Range Execution Traces on Windows Server 2019 ($N=7$ Low-Noise Traces).}
+\caption{Audit of Seven Archived GOAD Files: 586 Raw Events. Status concerns the captured certificate issuance-to-use chain, not scenario-level attack recall.}
 \label{tab:live_traces}
 \small
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llccc}
 \toprule
-\textbf{Trace ID} & \textbf{Scenario Description} & \textbf{Events Ingested} & \textbf{Triggered Invariant} & \textbf{Detection Recall} \\
+\textbf{File} & \textbf{Scenario Description} & \textbf{Raw Events} & \textbf{Linkage Status} & \textbf{Validated Attack Recall} \\
 \midrule
-Trace 1 & ESC1: Insecure Template Enrollment & 88 & Invariant I, III & 100.0\% (1/1) \\
-Trace 2 & ESC4: Template ACL Mutation \& Immediate Rollback & 94 & Invariant I, IV, V & 100.0\% (1/1) \\
-Trace 3 & ESC6: CA \texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} Flag Abuse & 180 & Invariant I, III & 100.0\% (1/1) \\
-Trace 4 & ESC9: UPN Swap with Target Principal \& Rollback & 98 & Invariant I, III, IV & 100.0\% (1/1) \\
-Trace 5 & ASN.1 SAN Concealment via Binary CSR Extension & 92 & Invariant V (CA DB Bridge) & 100.0\% (1/1) \\
-Trace 6 & Benign: Admin Typo with Immediate Rollback & 8 & None (Suppressed) & 0.0\% FPR (0/1) \\
-Trace 7 & Split-Actor Collusion with 24h Delayed PKINIT & 52 & Invariant V (State Automaton) & 100.0\% (1/1) \\
+Archive & Normal enrollment & 89 & No consistent captured issuance & Not established \\
+Archive & ESC4 rollback & 90 & No consistent captured issuance & Not established \\
+Archive & ESC6 CA flag scenario & 172 & KDC failure result \texttt{0x42} & Not established \\
+Archive & ESC9 UPN swap & 94 & No consistent captured issuance & Not established \\
+Archive & ASN.1 SAN concealment & 88 & No consistent captured issuance & Not established \\
+Archive & Admin typo rollback & 6 & No certificate-use observation & Not established \\
+Archive & Split-actor scenario & 47 & Resolved observed linkage & Not established \\
 \bottomrule
 \end{tabular}%
 }
@@ -99,7 +78,7 @@ Trace 7 & Split-Actor Collusion with 24h Delayed PKINIT & 52 & Invariant V (Stat
 
 \begin{table}[ht]
 \centering
-\caption{Enterprise Streaming Provenance Stress Benchmark ($10,182$ Events, 48 Attacks, 50 Maintenance Windows).}
+\caption{Earlier Trace-Driven Synthetic Streaming Benchmark ($10,182$ Events, 48 Generated Attack Instances, 50 Simulated Maintenance Windows). These are legacy implementation results, not measurements of the new constraint reference.}
 \label{tab:cipg_stress}
 \small
 \resizebox{\textwidth}{!}{%
@@ -137,7 +116,7 @@ $\Delta t = 900\text{s}$ ($8.0\%$ FPR) & 92.31\% / 100.0\% & 92.16\% / 97.92\% &
 \end{table}
 
 \paragraph{Enterprise Concurrency Mechanics and Sensitivity Trade-Offs:}
-As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matrix}, under strict Windows Server 2019 event schema fidelity ($\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset$), operational performance is governed by two orthogonal systems dimensions:
+As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matrix}, in the configured synthetic CA/KDC schema model ($\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset$), operational performance is governed by two orthogonal systems dimensions:
 \begin{itemize}
     \item \textbf{Correlation Horizon ($\Delta t$) vs. False Positives:} During 50 simulated administrator maintenance windows ($\Delta t \in [10\text{s}, 45\text{s}]$), background \texttt{AutoEnroll} requests arrived concurrently inside the mutation window with probability $1 - e^{-\lambda \Delta t}$. At $\Delta t = 10\text{s}$, zero collisions occur ($0.0\%$ FPR, $100.0\%$ precision). Widening $\Delta t$ to $30\text{s}$ admits 3 Poisson collisions ($6.0\%$ FPR). For $\Delta t \ge 60\text{s}$, false positives plateau at exactly 4 / 50 ($8.00\%$ maintenance window FPR, $0.0395\%$ overall event FPR, $92.16\%$ precision at $\Delta_{\text{poll}}=5\text{s}$ and $92.31\%$ at $\Delta_{\text{poll}}=1\text{s}$) because all 50 administrative maintenance windows conclude within $45\text{s} < 60\text{s}$. Naive rollback monitors generated 50/50 false alarms ($100\%$ FPR, $19.35\%$ precision).
     \item \textbf{CA Database Polling Lag ($\Delta_{\text{poll}}$) vs. False Negatives:} Because KDC Event 4768 omits SubjectKeyIdentifier (SKID), linking Event 4887 to Event 4768 strictly requires CA Jet DB enrichment. When an attacker's PKINIT execution delay $\delta_{\text{pkinit}} \sim \text{LogNormal}(1.2, 0.8)$ executes before the next polling tick ($t_{\text{auth}} + \Delta_{\text{watermark}} < t_{\text{poll}}$), the join keys remain un-enriched at evaluation time, generating organic False Negatives. At $\Delta_{\text{poll}} = 1.0\text{s}$, CIPG achieves $100.00\%$ recall ($48/48$). At default $\Delta_{\text{poll}} = 5.0\text{s}$, CIPG achieves $97.92\%$ recall ($47/48$). At $\Delta_{\text{poll}} \in \{15\text{s}, 60\text{s}\}$, rapid attacks beat the polling cycle, resulting in $89.58\%$ recall ($43/48$).
@@ -146,23 +125,54 @@ As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matr
 \paragraph{Ingestion Throughput and Memory Profiling:}
 Under continuous streaming load:
 \begin{itemize}
-    \item \textbf{Throughput:} CIPG achieved a sustained processing rate of \textbf{13,192.4 events/second} (evaluation latency: 771.81~ms), comfortably exceeding typical enterprise domain controller telemetry volumes (500--1,200 events/sec).
-    \item \textbf{Memory Footprint:} Peak resident set size (RSS) was bounded at \textbf{6.91 MB RAM}, demonstrating that CIPG can operate as a lightweight local sidecar.
+    \item \textbf{Throughput:} The saved legacy benchmark reports \textbf{13,192.4 events/second} (771.81~ms) on the configured synthetic stream. This excludes a demonstrated end-to-end Windows collection/deployment pipeline and is not a throughput measurement of the new reference reasoners.
+    \item \textbf{Memory Footprint:} The earlier result reports \textbf{6.91 MB}. A finite-run measurement does not establish bounded retained memory as the certificate history grows.
     \item \textbf{Meta-Node Compression:} Meta-node compacting collapsed 10,182 raw elements into 2,382 compressed elements, achieving a \textbf{76.61\% reduction in graph size} without loss of topological taint information.
 \end{itemize}
 
+\paragraph{Outcome-checked split-actor pilot:}
+The new capture contains 49 selected raw Security records. CA request 25 and issuance record 65102 identify the exact public certificate subsequently observed in successful KDC record 168295 (status zero, PKINIT type 16, domain Administrator SID ending in 500). The new certificate and exported private key were checked for identity before use; the original template flag was restored. A failed first capture is preserved and excluded. The configured delay was 14 seconds after the rollback step, not 24 hours. This establishes one controlled outcome, rather than an attack recall estimate.
+
+The pre-capture clock-offset bracket fails a consistency check: the rollback audit timestamp precedes the host's rollback invocation under that constant-offset model. Point-time and assumed-error outputs therefore cannot establish guaranteed audit-time attribution. Separately, the frozen synchronous orchestrator records mutation completion before submission and retrieval of the exact issued certificate before rollback. Difference constraints over that additional operation-order channel establish controlled issuance between those operations without aligning the Windows audit clocks. Removing any one of the five required order edges returns a merely possible overlap. This does not establish when the CA consumed template policy, rule out every intervening mutation, or prove that the changed flag was necessary for issuance.
+
+\paragraph{Locally frozen confirmation and component studies:}
+The original constraint reference was frozen before a five-seed confirmation run containing 5,400 cases and 27,000 method/case predictions. Table~\ref{tab:lineage_confirmation} reports the 2,000 variable-size histories separately from repeated logical challenges and forged-log controls. Compared with the conjunctive point-time baseline, the prototype makes fewer definitive claims: it resolves 55.82\% rather than 74.56\% of true observed links, retaining 99.06\% in possible sets. It recovers 107 of 539 true mutation overlaps definitively with zero false overlap claims, versus 310 correct and 51 false claims for the point baseline. This is a coverage/certainty trade-off, not universal superiority. All 200 internally consistent forged-record controls defeat every method; truthful raw sources remain an explicit premise.
+
+A separate source-hash-frozen factorial study uses 2,700 identity histories and 1,800 temporal histories from an independent component generator. The temporal solver agrees with 3,600 independently enumerated query answers. With a fully observed additional order channel, it recovers all 138 true overlaps in 300 histories; interval boxes recover 53 and point time recovers 112 with 11 false claims (Table~\ref{tab:order_component}). All 900 intentionally contradictory-order controls are rejected by the order-aware method. Complete observation is a designed upper-bound condition, not a measured enterprise sensor rate.
+
+The bridge study tests zero to two faulty export records and fault budgets $k\in\{0,1,2\}$ (Table~\ref{tab:bridge_component}). The $k=2$ reference retains all 2,180 true links as candidates, but resolves only 602 certainly. Discarding all optional exports retains the same true links and resolves 1,757 certainly in this grid. The repair method therefore has no demonstrated advantage over that ablation here. Its exhaustive 49,800 hypotheses expose the cost of the fault contract and motivate testing independently corroborated enrichment, rather than claiming a solved robust-attribution problem. The artifact verifier checks latent labels, counts, hashes, temporal oracle answers, and within-budget retention; it does not prove optimality of repair candidate sets. None of these local comparators is an execution of Splunk or HADES.
+
+\paragraph{Published-rule field-requirement replay:}
+We also execute a SQLite candidate-association proxy for the SAN/principal conditions in Splunk's published ESC1 analytic~\cite{splunk2026esc1}. This is not a Splunk runtime reproduction: scheduling, macros, default join-result truncation, and multivalue behavior are outside the proxy. Seven archived files plus the new pilot contain only one issuance satisfying the textual SAN/UPN prerequisite, in the ESC6 file. Literal principal association returns no pair; an explicitly separate short-name normalization adaptation returns one pair whose KDC status is the failure value \texttt{0x42}. The new successful pilot lacks the textual SAN prerequisite. These results expose required evidence and normalization choices; they do not estimate Splunk's attack precision or recall or compare unlike task outputs as exact certificate linkage.
+
+\input{generated/lineage_evidence}
+
+\paragraph{Repeated fixed-request policy interventions and executed external rules:}
+We extend the initial pilot with a locally frozen 12-trial matrix and three repeated intervention blocks (Table~\ref{tab:paired_live_policy}). Within each block, baseline, enabled, and rollback-before-request conditions reuse identical signed CSR bytes and the same public key. Only the enrollee-supplied-subject bit changes; recorded template DACL, EKU, approval, signature, and OID fields remain equal. CA cache refresh and low-privilege RPC readiness checks are applied consistently. The enabled condition produces three exact-certificate Administrator authentications. Baseline and rollback-before-request conditions each produce three ordinary-user authentications, despite requesting the same administrative SAN. Three legitimate self-enrollments also authenticate as the ordinary user. All 12 outcomes are checked against public certificate bytes, CA database/4887 evidence, successful 4768 outcomes, target SID/name/domain, mutation evidence, and restoration. These controlled contrasts support necessity of the tested bit for the privileged outcome under the recorded conditions; they do not turn temporal overlap alone into a causal explanation.
+
+Earlier development attempts remain in the artifact: the first matrix contains two RPC failures among 12 attempts, and the initial fixed-CSR collector stops on a Windows pending-request-store binding failure in its second trial. Those are infrastructure failures, not policy negatives. The corrected collector explicitly binds the verified held key to the exact new certificate and refuses unrelated keys; it never substitutes a prior certificate. The final fixed-CSR matrix is reported separately. Its Windows-generated requests use their observed SHA-1 signature algorithm, verified explicitly, rather than being relabeled modern SHA-256 requests.
+
+Certipy 5.0.4 is executed against LDAP for each assigned configuration using its DC-only mode. Three unmodified upstream Sigma rules~\cite{sigma2026rules} are compiled by pySigma 2.1.0/SQLite backend 2.1.1 and executed on the captured event fields. Template-load events 4898 supply the actual tested-template configuration. Both Certipy's ESC1 finding and Sigma's risky-EKU predicate identify all three enabled administrative conditions and all three enabled legitimate-self conditions, with no tested-template match in baseline or rollback-before-request conditions. That agreement concerns risky configuration, not malicious intent: legitimate self-enrollment does not become an attack false positive merely because its template remains risky. Sigma matches on other loaded templates are retained separately. The machine-account rule has no matching human-account target. This is an actual external-rule/tool execution, separate from the earlier Splunk semantic proxy and from a full SIEM or HADES deployment.
+
+\paragraph{Independent forest replication and measured collection cost:}
+We repeat the four-condition matrix in a newly provisioned \texttt{q1lab.test} forest, with its own \texttt{Q1-Evidence-CA}, ordinary \texttt{q1.enroller} account, separate template, and host-generated SHA-256-signed CSRs. All 12 exact-certificate outcomes are verified: three enabled-condition Administrator uses and nine self-uses. Three matched signed-request/policy blocks reproduce the controlled contrast. Some restoration value-addition events are absent despite successful write responses and restored readback; certificate-use validation and complete mutation-audit history are therefore reported separately. The measured build, 17763.4974, predates current strong-binding enforcement updates~\cite{microsoft2025strongbinding}. An earlier interrupted collection with a four-hour clock difference is preserved as a failed setup attempt, not counted as a policy or detection result.
+
+On the independent captures, raw template names and CA database template OIDs initially disagree, causing the identity reference to abstain in all 12 cases. Adding the collected directory object's explicit OID/name mapping resolves all 12 identities, with three privileged SID divergences and nine nonprivileged outcomes. Certificate/CSR bytes and adjudicator labels remain excluded from inference. The initial abstentions are retained as development results; the mapping adjustment is not presented as untouched held-out performance. Actual Certipy/Sigma configuration-risk results repeat the Windows 2016 pattern in the independent forest.
+
+The median recorded command envelope is 50.91~s per trial on the two-node 2016 setup and 32.14~s on the single-node independent 2019 setup. Ten offline identity-inference repetitions per captured trial give medians across trials of 10.99~ms and 9.18~ms, respectively. Python-traced peak allocations are approximately 1.74~MB and 1.50~MB at the median. These measurements describe the captured experiment and offline inference; they do not measure continuous polling delay, host RSS, or enterprise authentication interference.
+
 \subsection{RQ4: Game-Theoretic Stackelberg Remediation Performance}
-We evaluated our Co-Adaptive Stackelberg policy against three standard remediation baselines across 30 realistic enterprise multi-forest topologies:
+We evaluated our Co-Adaptive Stackelberg policy against three standard remediation baselines across 30 generated identity graphs:
 \begin{enumerate}
     \item \textbf{Random Cut:} Selects arbitrary reachable edges within budget.
     \item \textbf{Degree Centrality:} Selects edges incident to the highest-degree nodes.
-    \item \textbf{Static Greedy:} Iteratively severs the edge participating in the greatest number of remaining shortest attack paths.
-    \item \textbf{Co-Adaptive Stackelberg (Ours):} Solves the bilevel interdiction game under heterogeneous operational disruption costs and operational edge immutability ($E_b \subsetneq E$).
+    \item \textbf{Static Greedy:} Ranks participation in initially selected shortest paths once, divided by assigned revocation cost, then cuts feasible edges in that order.
+    \item \textbf{Co-Adaptive Stackelberg (Ours):} Applies the sequential reachability heuristic to the interdiction formulation under heterogeneous operational disruption costs and operational edge immutability ($E_b \subsetneq E$).
 \end{enumerate}
 
 \begin{table}[ht]
 \centering
-\caption{Remediation Performance across 30 Enterprise Topologies under Operational Budget Constraints.}
+\caption{Remediation Performance across 30 Generated Identity Graphs under Operational Budget Constraints.}
 \label{tab:stackelberg_results}
 \small
 \resizebox{\textwidth}{!}{%
@@ -185,36 +195,25 @@ Static Greedy & $69.5 \pm 16.7\%$ & $88.4 \pm 9.9\%$ & $96.1 \pm 7.1\%$ & $97.6 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.88\textwidth]{figures/game_theoretic_convergence.png}
-\caption{Remediation convergence dynamics across 30 enterprise topologies, illustrating path interdiction percentage and operational disruption cost scaling across budgets $B_{\text{ops}} \in \{6, 12, 18, 24\}$.}
+\caption{Historical remediation visualization. Left: illustrative analytic objective curves, not measured policy-training or equilibrium evidence. Right: saved heuristic results on 30 generated identity graphs. The horizontal budgets are assigned weighted costs, despite the historical image's revoked-edge-count label.}
 \label{fig:stackelberg_convergence}
 \end{figure}
 
 \paragraph{Operational Immutability Plateau and the Runtime Defense Residual:}
 In enterprise networks, a realistic fraction of directory edges represents immutable operational dependencies ($E_b \subsetneq E$). As shown in Table~\ref{tab:stackelberg_results} and Figure~\ref{fig:stackelberg_convergence}, proactive graph interdiction achieves \textbf{$98.5 \pm 4.0\%$} paths severed at $B_{\text{ops}}=24$ (vs. $97.6 \pm 6.5\%$ for Static Greedy).
-This proves a critical scientific insight: \textit{proactive graph hardening alone can never achieve 100\% security in a living enterprise without breaking mission-critical legacy dependencies}. The resulting $\sim 1.5\%$ residual attack surface strictly necessitates the runtime monitoring provided by CIPG.
+This experiment leaves a mean residual of approximately $1.5\%$ under the selected graph instances, budgets, and non-blockable edges. It does not prove that every enterprise has an unavoidable residual of that size or that a different feasible policy cannot disconnect all modeled paths. Runtime monitoring is complementary to the evaluated hardening policies.
 
-\paragraph{45.0\% Reduction in Administrative Disruption:}
-Under $B_{\text{ops}} = 24$, Static Greedy revokes an average of \textbf{10.9 edges} ($10.9 \pm 0.9$), predominantly cutting high-cost \texttt{MemberOf} delegations that disrupt user workflows. In contrast, Co-Adaptive Stackelberg revokes an average of only \textbf{6.0 edges} ($6.0 \pm 2.6$) by targeting CA template chokepoints—a \textbf{45.0\% reduction in administrative disruption}.
+\paragraph{Exact paired sensitivity and multiple comparisons:}
+Recomputing all saved per-topology statistics reproduces the historical values. At budget 24, only five of 30 paired differences are nonzero, all positive, with mean gain 0.94 percentage points. Exact signed-rank sign-flip enumeration over $2^5=32$ assignments gives two-sided $p=0.0625$, compared with the historical asymptotic Wilcoxon $p=0.0431$ and paired $t$-test $p=0.0635$. Applying Holm correction to the eight tests formed by four budgets and the paired-$t$/exact-signed-rank procedures leaves only budget 6 below 0.05; both adjusted budget-24 values are 0.3281. These are descriptive reanalyses of the saved synthetic-graph study, not evidence of enterprise operational superiority.
 
-\begin{table}[ht]
-\centering
-\caption{Provenance-Guided Min-Cut Scalability Benchmark ($N=100$ to $N=5,000$ Nodes).}
-\label{tab:scalability_bench}
-\small
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lccccc}
-\toprule
-\textbf{Graph Size ($N$ Nodes)} & \textbf{Graph Edges} & \textbf{Cone Nodes} & \textbf{Whole-Graph Min-Cut} & \textbf{CIPG Cone Min-Cut} & \textbf{Speedup Factor} \\
-\midrule
-$N = 100$ & 105 & 63 & 7.2 ms & 5.4 ms & $1.3\times$ \\
-$N = 500$ & 468 & 97 & 38.5 ms & 8.3 ms & $4.7\times$ \\
-$N = 1,000$ & 936 & 96 & 108.7 ms & 5.5 ms & $19.9\times$ \\
-$N = 2,500$ & 2,328 & 74 & 731.1 ms & 3.1 ms & $234.6\times$ \\
-$N = 5,000$ & 4,659 & 66 & 3,181.5 ms & 2.6 ms & $\mathbf{1,246.3\times}$ \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
+\paragraph{45.0\% Reduction in Revoked-Edge Count:}
+Under $B_{\text{ops}} = 24$, Static Greedy revokes an average of \textbf{10.9 edges} ($10.9 \pm 0.9$), under the assigned heterogeneous costs. The saved summary does not measure the resulting business-workflow disruption. In contrast, Co-Adaptive Stackelberg revokes an average of only \textbf{6.0 edges} ($6.0 \pm 2.6$) by targeting CA template chokepoints—a \textbf{45.0\% reduction in revoked-edge count}. The disruption weights are assigned model parameters; actual administrator effort and business disruption were not measured.
+
+\input{generated/projection_evidence}
 
 \paragraph{Scalability via Provenance-Cone Guidance:}
-As shown in Table~\ref{tab:scalability_bench}, evaluating whole-graph min-cuts at enterprise scale slows down from $7.2$~ms at $N=100$ to $3,181.5$~ms at $N=5,000$ when evaluating 325 active low-privilege attacker entry points. By restricting the candidate cut search to CIPG's backward causal taint cone $\mathcal{D}(v)$ ($66$ nodes), the solver executes in \textbf{2.6 ms} at $N=5,000$—delivering a \textbf{$1,246.3\times$ speedup} and enabling real-time online re-interdiction during active multi-stage attacks.
+The historical depth-limited cone benchmark drops some queried source--target pairs. Its nominal $N=5,000$ graph actually contains 4,551 nodes, and its $1,246.3\times$ timing ratio compares different pair tasks. It therefore does not establish equal-task solver acceleration or online response latency.
+
+We implement a path-preserving projection instead. For every requested pair $(s,t)$, retain the intersection of vertices reachable from $s$ and vertices that can reach $t$, together with every pair endpoint. Every original $s$--$t$ path is retained, so subsequent removal of any retained edge subset preserves that pair's reachability answer. Edge costs, relations and immutability are copied unchanged, and initially unconnected endpoints remain represented. Intersecting any full-graph cut with the retained edge set removes no requested-path effect and cannot increase its nonnegative cost, so the optimal budgeted pair-disconnection value is also preserved. A heuristic's selected cut can still depend on its search order. Shared endpoint closures are computed once per distinct endpoint.
+
+The new benchmark retains all pairs, uses the same historical heuristic on full and projected graphs, and includes projection cost (Table~\ref{tab:scalability_bench}). At 5,000 actual nodes and 325 queried pairs, 874--890 nodes remain. Across fifteen alternating-order timing pairs, the median per-run ratio is $7.54\times$, with observed range $6.62$--$8.99\times$, and severed-pair outcomes agree in every run. The median full and projection-inclusive times are 3,448.15~ms and 439.29~ms; their ratio need not equal the median of individual ratios. This controlled result is narrower than the historical headline and does not supply an optimality or enterprise workload guarantee.

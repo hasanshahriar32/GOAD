@@ -1,0 +1,16 @@
+{
+  "status": "failed_capture",
+  "source_sha256": "78ece71fffb3cc7c70335961419a728c1e9bcfb5c5440db363a4571eabcfe288",
+  "python": "3.11.17",
+  "delay_seconds": 14.0,
+  "error_type": "RuntimeError",
+  "error": "Remote artifact differs from the bytes sent",
+  "original_state_restored": true,
+  "output_sha256": {
+    "00_domain_context.json": "a677d68edfe38ba676a130827ac89bc3b892d6ba76e94ad6fffa46814c41d6ad",
+    "00_original_template_state.json": "2958e4080a7935a696da506a800e24cd11a1a5c2f1cc9f20f30c84d61c75f2b0",
+    "01_mutation.json": "2aaec8ad1264842f68cb89e0912413436d03f89424198ac69dc08cd1fae1ac1e",
+    "02_csr.json": "eb05738338c518ceec22ec2972de1b3fe0c7f7883a3a176ec9978becd3767d1b",
+    "99_restore_original_state.json": "16a5c0151e971d2998c214fd11e73f370c60fbe94ff9e6cec302bfdab79323bb"
+  }
+}

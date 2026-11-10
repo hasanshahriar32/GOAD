@@ -1,0 +1,23 @@
+{
+  "seeds": [
+    52021,
+    53003,
+    54001
+  ],
+  "nodes": [
+    100,
+    1000,
+    5000
+  ],
+  "repetitions": 5,
+  "budget": 12,
+  "timing_contract": "Alternate full-first/projected-first, include projection in each projected timing, no cached graph preprocessing across repetitions; host is shared with Windows lab VM",
+  "python": "3.11.17",
+  "networkx": "3.6.1",
+  "platform": "Linux-7.2.9-3-aegis-offensive-x86_64-with-glibc2.44",
+  "source_sha256": {
+    "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/projection_repeated.py": "f4b3e4002c7c5506c974c901df9dd03323d16cf10d04213aaa5e6a71dc1ad56d",
+    "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/projection_contract.py": "b055ed1b1db18afeb1b2cfaa5f216ba31c82e856c193bdc4cd256f295dc3113f",
+    "/home/m4x1d/Desktop/GOAD/thesis_research/src/phase2_certgraph/run_real_stackelberg_eval.py": "e409a14e20d91ab3a417e7d21ad5575b71929c4d72abd80417eec3a60ec94606"
+  }
+}

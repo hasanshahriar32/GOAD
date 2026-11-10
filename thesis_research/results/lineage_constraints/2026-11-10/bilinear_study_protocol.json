@@ -1,0 +1,34 @@
+{
+  "augment_probabilities": [
+    0,
+    0.3
+  ],
+  "batch_size": 32,
+  "declared_utc": "2026-11-10T12:35:50.150799+00:00",
+  "epochs": 30,
+  "heads": 4,
+  "hidden": 32,
+  "layers": 2,
+  "learning_rate": 0.003,
+  "networkx": "3.6.1",
+  "numpy": "2.4.6",
+  "python": "3.11.17",
+  "scope": "Literal fully trained bilinear relational attention in a resolved-permission ESC1 abstraction; no Windows exploit or enterprise prevalence labels",
+  "seeds": [
+    62003,
+    63001,
+    64007
+  ],
+  "selection": "Minimum validation cross entropy, threshold .5 fixed; test sets never used for model selection",
+  "sklearn": "1.9.0",
+  "source_sha256": {
+    "thesis_research/src/lineage_constraints/bilinear_study.py": "9c6e8af9bcb625372ce0d29b4f66b71eb9280ef7436dfac7edd0177d4463bae0",
+    "thesis_research/src/lineage_constraints/literal_bilinear.py": "10101d49b102b5f1d09a6ed2fdfecaba2dc385eefe5fc02d7d5a882e9cc29dac"
+  },
+  "split_contract": "Typed five-round WL input hashes and family IDs disjoint across every split; conservative isomorphism filter, not independent local motif guarantee",
+  "test_families": 150,
+  "torch": "2.12.0+cpu",
+  "train_families": 300,
+  "validation_families": 100,
+  "weight_decay": 0.0001
+}

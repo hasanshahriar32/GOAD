@@ -1,0 +1,166 @@
+{
+  "differences": [
+    "Candidate-set output: no join max=1 truncation, runtime scheduling, macros, or risk actions",
+    "Multivalue UPN records are excluded and listed, rather than guessing SPL semantics",
+    "The separate normalized-principal mode is an explicit adaptation, not the published query",
+    "This analytic's association objective differs from exact certificate linkage; no overall precision/recall comparison is inferred"
+  ],
+  "files": [
+    {
+      "input_sha256": "55c9eec19ae4b6fab570fa127a85936778b948af3e8ce0f00e8d53f3d034cfc2",
+      "literal_principal_proxy": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "normalized_principal_adaptation": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "path": "thesis_research/data/live_goad_traces/trace_asn1_san_concealment.xml",
+      "raw_events": 88
+    },
+    {
+      "input_sha256": "26721b4e57c822786201d17668053e80d9dd63ab5f3dd3765565eb6f56889460",
+      "literal_principal_proxy": {
+        "certificate_auth_records": 0,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "normalized_principal_adaptation": {
+        "certificate_auth_records": 0,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "path": "thesis_research/data/live_goad_traces/trace_benign_admin_typo_rollback.xml",
+      "raw_events": 6
+    },
+    {
+      "input_sha256": "7ab828e9f56cfd49444612413ec12e1886e015a5fdf6677c6aa5c4f7ae2c8ff3",
+      "literal_principal_proxy": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "normalized_principal_adaptation": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "path": "thesis_research/data/live_goad_traces/trace_benign_normal_enrollment.xml",
+      "raw_events": 89
+    },
+    {
+      "input_sha256": "3385062484a10e6267a8c46cb83d660e3df077722386da336f5d9e8d18fffe38",
+      "literal_principal_proxy": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "normalized_principal_adaptation": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "path": "thesis_research/data/live_goad_traces/trace_esc4_rollback_full.xml",
+      "raw_events": 90
+    },
+    {
+      "input_sha256": "48ec7f3bfd6dc81be706430405b76f331925805aee106a7850f9f090227c6f7e",
+      "literal_principal_proxy": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 1,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "normalized_principal_adaptation": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 1,
+        "pairs": [
+          {
+            "auth_record_id": "meereen.essos.local:162479",
+            "auth_status": "0x42",
+            "issuance_record_id": "braavos.essos.local:63806"
+          }
+        ],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "path": "thesis_research/data/live_goad_traces/trace_esc6_ca_flag_abuse.xml",
+      "raw_events": 172
+    },
+    {
+      "input_sha256": "8e09ebe42a6b6b393de8490ec284a69520f2072d29a47a232ea4945dfcd07b70",
+      "literal_principal_proxy": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "normalized_principal_adaptation": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "path": "thesis_research/data/live_goad_traces/trace_esc9_upn_swap_rollback.xml",
+      "raw_events": 94
+    },
+    {
+      "input_sha256": "d0238648bb3576520b4ac22254e25bd9c253c2e22286a150f8e655a242987a7a",
+      "literal_principal_proxy": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "normalized_principal_adaptation": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "path": "thesis_research/data/live_goad_traces/trace_split_actor_delayed_pkinit.xml",
+      "raw_events": 47
+    },
+    {
+      "input_sha256": "4c69564a5612331123b768697a954e4f8c7947d3ba5b7d7d9759eee82aadffd6",
+      "literal_principal_proxy": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "normalized_principal_adaptation": {
+        "certificate_auth_records": 1,
+        "eligible_issuances": 0,
+        "pairs": [],
+        "unsupported_multivalue_or_missing_upn_records": []
+      },
+      "path": "thesis_research/data/lineage_live/2026-11-10/split_actor_02/trace_split_actor_delayed_pkinit.xml",
+      "raw_events": 49
+    }
+  ],
+  "implemented_conditions": [
+    "4887 with textual SAN/UPN and template attribute",
+    "4768 with certificate thumbprint",
+    "principal string association"
+  ],
+  "scope": "Published-rule candidate association proxy in SQLite; NOT Splunk execution or attack detection accuracy",
+  "source": {
+    "accessed": "2026-11-10",
+    "analytic_id": "f0306acf-a6ab-437a-bbc6-8628f8d5c97e",
+    "updated": "2026-05-13",
+    "url": "https://research.splunk.com/endpoint/f0306acf-a6ab-437a-bbc6-8628f8d5c97e/",
+    "version_checked": 10
+  },
+  "source_sha256": "b7c15bf9c9e45d1c9240ad6af554d082b01813c9f285ece51889993117eed2ce"
+}

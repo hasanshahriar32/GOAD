@@ -1,0 +1,29 @@
+{
+  "legacy_or_keys": {
+    "correct_definite_overlap_edges": 371,
+    "missed_true_overlap_edges": 171,
+    "false_definite_overlap_edges": 180
+  },
+  "issuer_serial": {
+    "correct_definite_overlap_edges": 261,
+    "missed_true_overlap_edges": 281,
+    "false_definite_overlap_edges": 82
+  },
+  "conjunctive_window300": {
+    "correct_definite_overlap_edges": 191,
+    "missed_true_overlap_edges": 351,
+    "false_definite_overlap_edges": 41
+  },
+  "conjunctive_point": {
+    "correct_definite_overlap_edges": 300,
+    "missed_true_overlap_edges": 242,
+    "false_definite_overlap_edges": 60
+  },
+  "constraint_lineage": {
+    "correct_definite_overlap_edges": 85,
+    "missed_true_overlap_edges": 457,
+    "false_definite_overlap_edges": 0
+  },
+  "true_randomized_overlap_edges": 542,
+  "full_vs_point_break_even_false_cost_ratio": 3.5833333333333335
+}

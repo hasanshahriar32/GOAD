@@ -1,0 +1,1052 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Events xmlns:ns0="http://schemas.microsoft.com/win/2004/08/events/event"><ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:33.918660700Z" /><ns0:EventRecordID>21717</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x40a84b</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">39220</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:33.014552400Z" /><ns0:EventRecordID>21711</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2196" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x40894b</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">39206</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:32.882367900Z" /><ns0:EventRecordID>21708</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="812" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40800010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">16</ns0:Data><ns0:Data Name="IpAddress">::ffff:172.22.0.1</ns0:Data><ns0:Data Name="IpPort">56266</ns0:Data><ns0:Data Name="CertIssuerName">Q1-Evidence-CA</ns0:Data><ns0:Data Name="CertSerialNumber">290000000C1B08A35F7AAD42A100000000000C</ns0:Data><ns0:Data Name="CertThumbprint">EDBA847B4DBB831CD2F0DDEA31DD17B26A3DA440</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:31.528939900Z" /><ns0:EventRecordID>21703</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x406b42</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">39192</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:31.036959400Z" /><ns0:EventRecordID>21699</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x4054e4</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">53828</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4887</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:30.029650400Z" /><ns0:EventRecordID>21696</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="RequestId">12</ns0:Data><ns0:Data Name="Requester">Q1LAB\q1.enroller</ns0:Data><ns0:Data Name="Attributes">
+CertificateTemplate:Q1Evidence
+ccm:WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="Disposition">3</ns0:Data><ns0:Data Name="SubjectKeyIdentifier">a3 b4 24 c6 6d 5d b5 a9 bc fe fa f8 58 c7 25 85 61 86 09 a2</ns0:Data><ns0:Data Name="Subject">CN=q1.enroller</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4886</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:30.014707400Z" /><ns0:EventRecordID>21695</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="RequestId">12</ns0:Data><ns0:Data Name="Requester">Q1LAB\q1.enroller</ns0:Data><ns0:Data Name="Attributes">
+CertificateTemplate:Q1Evidence
+ccm:WIN-NA2FC16NO63.q1lab.test</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:29.147566900Z" /><ns0:EventRecordID>21692</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-1104</ns0:Data><ns0:Data Name="TargetUserName">q1.enroller</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x403717</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">53822</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:28.335820900Z" /><ns0:EventRecordID>21688</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x40215b</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">53806</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:27.721322100Z" /><ns0:EventRecordID>21684</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x4008f5</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">53788</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:27.170915800Z" /><ns0:EventRecordID>21680</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3540" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-1104</ns0:Data><ns0:Data Name="TargetUserName">q1.enroller</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x4008db</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">34996</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.867661600Z" /><ns0:EventRecordID>21675</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">Administrator</ns0:Data><ns0:Data Name="TemplateVersion">4.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=Administrator,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x1023a (66106)
+  CT_FLAG_ADD_EMAIL -- 0x2
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0xa6000000 (2785017856)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_EMAIL -- 0x4000000 (67108864)
+  CT_FLAG_SUBJECT_REQUIRE_EMAIL -- 0x20000000 (536870912)
+  CT_FLAG_SUBJECT_REQUIRE_DIRECTORY_PATH -- 0x80000000 (2147483648)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 4
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = Administrator
+
+distinguishedName = Administrator
+
+pKIKeyUsage = a0
+
+displayName = Administrator
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.10.3.1 Microsoft Trust List Signing
+  1.3.6.1.4.1.311.10.3.4 Encrypting File System
+  1.3.6.1.5.5.7.3.4 Secure Email
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.857654000Z" /><ns0:EventRecordID>21673</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x4002cb</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.855570100Z" /><ns0:EventRecordID>21669</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.854403900Z" /><ns0:EventRecordID>21668</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">SubCA</ns0:Data><ns0:Data Name="TemplateVersion">5.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=SubCA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x102d1 (66257)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_IS_CA -- 0x80 (128)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x1 (1)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 5
+
+msPKI-Template-Minor-Revision = 1
+
+pKIMaxIssuingDepth = 0
+
+pKIDefaultKeySpec = 2
+
+pKIExpirationPeriod = 5 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = SubCA
+
+distinguishedName = SubCA
+
+pKIKeyUsage = 86
+
+displayName = Subordinate Certification Authority
+
+templateDescription = Certification authority (CA)
+
+pKIExtendedKeyUsage =
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+  2.5.29.19 Basic Constraints
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.842844800Z" /><ns0:EventRecordID>21666</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x40023a</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.841164500Z" /><ns0:EventRecordID>21662</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.840281100Z" /><ns0:EventRecordID>21661</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">User</ns0:Data><ns0:Data Name="TemplateVersion">3.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=User,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x1023a (66106)
+  CT_FLAG_ADD_EMAIL -- 0x2
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0xa6000000 (2785017856)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_EMAIL -- 0x4000000 (67108864)
+  CT_FLAG_SUBJECT_REQUIRE_EMAIL -- 0x20000000 (536870912)
+  CT_FLAG_SUBJECT_REQUIRE_DIRECTORY_PATH -- 0x80000000 (2147483648)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 3
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = User
+
+distinguishedName = User
+
+pKIKeyUsage = a0
+
+displayName = User
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.10.3.4 Encrypting File System
+  1.3.6.1.5.5.7.3.4 Secure Email
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DU)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Domain Users
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.829784000Z" /><ns0:EventRecordID>21659</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x4001a1</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.828101000Z" /><ns0:EventRecordID>21655</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.827156700Z" /><ns0:EventRecordID>21654</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">Machine</ns0:Data><ns0:Data Name="TemplateVersion">5.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=Machine,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10260 (66144)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x18000000 (402653184)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+  CT_FLAG_SUBJECT_REQUIRE_DNS_AS_CN -- 0x10000000 (268435456)
+
+msPKI-Enrollment-Flag = 0x20 (32)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 5
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = Machine
+
+distinguishedName = Machine
+
+pKIKeyUsage = a0
+
+displayName = Computer
+
+templateDescription = Computer
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DC)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Domain Computers
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.815720800Z" /><ns0:EventRecordID>21652</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x400108</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.813151100Z" /><ns0:EventRecordID>21648</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.811230500Z" /><ns0:EventRecordID>21647</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">WebServer</ns0:Data><ns0:Data Name="TemplateVersion">4.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=WebServer,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10241 (66113)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x1 (1)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 4
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 2 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = WebServer
+
+distinguishedName = WebServer
+
+pKIKeyUsage = a0
+
+displayName = Web Server
+
+templateDescription = Computer
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.1 Server Authentication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+  Microsoft DH SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.802498200Z" /><ns0:EventRecordID>21645</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x400077</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.800673200Z" /><ns0:EventRecordID>21641</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.799732100Z" /><ns0:EventRecordID>21640</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">DomainController</ns0:Data><ns0:Data Name="TemplateVersion">4.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=DomainController,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x1026c (66156)
+  CT_FLAG_ADD_OBJ_GUID -- 0x4
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x19000000 (419430400)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DIRECTORY_GUID -- 0x1000000 (16777216)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+  CT_FLAG_SUBJECT_REQUIRE_DNS_AS_CN -- 0x10000000 (268435456)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 4
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = DomainController
+
+distinguishedName = DomainController
+
+pKIKeyUsage = a0
+
+displayName = Domain Controller
+
+templateDescription = Directory e-mail replication
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-498)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;ED)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Enterprise Read-only Domain Controllers
+	Enroll
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Domain Controllers
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.787357100Z" /><ns0:EventRecordID>21638</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3fffd6</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.784915600Z" /><ns0:EventRecordID>21634</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.783708100Z" /><ns0:EventRecordID>21633</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">EFS</ns0:Data><ns0:Data Name="TemplateVersion">3.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=EFS,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10238 (66104)
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x82000000 (2181038080)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_REQUIRE_DIRECTORY_PATH -- 0x80000000 (2147483648)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 3
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = EFS
+
+distinguishedName = EFS
+
+pKIKeyUsage = 20
+
+displayName = Basic EFS
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.10.3.4 Encrypting File System
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DU)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Domain Users
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.772874700Z" /><ns0:EventRecordID>21631</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3fff3d</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.771316100Z" /><ns0:EventRecordID>21627</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.770325500Z" /><ns0:EventRecordID>21626</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">EFSRecovery</ns0:Data><ns0:Data Name="TemplateVersion">6.1</ns0:Data><ns0:Data Name="TemplateSchemaVersion">1</ns0:Data><ns0:Data Name="TemplateOID"> </ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=EFSRecovery,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10230 (66096)
+  CT_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x10 (16)
+  CTPRIVATEKEY_FLAG_EXPORTABLE_KEY -- 0x10 (16)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x82000000 (2181038080)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+  CT_FLAG_SUBJECT_REQUIRE_DIRECTORY_PATH -- 0x80000000 (2147483648)
+
+msPKI-Enrollment-Flag = 0x21 (33)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 1
+
+revision = 6
+
+msPKI-Template-Minor-Revision = 1
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 5 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = EFSRecovery
+
+distinguishedName = EFSRecovery
+
+pKIKeyUsage = 20
+
+displayName = EFS Recovery Agent
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.10.3.4.1 File Recovery
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.761269000Z" /><ns0:EventRecordID>21624</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffeac</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.759498100Z" /><ns0:EventRecordID>21620</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.757916200Z" /><ns0:EventRecordID>21619</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">KerberosAuthentication</ns0:Data><ns0:Data Name="TemplateVersion">110.0</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.1.33</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=KerberosAuthentication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10060 (65632)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x8400000 (138412032)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DOMAIN_DNS -- 0x400000 (4194304)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+
+msPKI-Enrollment-Flag = 0x20 (32)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 110
+
+msPKI-Template-Minor-Revision = 0
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = KerberosAuthentication
+
+distinguishedName = KerberosAuthentication
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.1.33
+
+pKIKeyUsage = a0
+
+displayName = Kerberos Authentication
+
+templateDescription = Computer
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+  1.3.6.1.4.1.311.20.2.2 Smart Card Logon
+  1.3.6.1.5.2.3.5 KDC Authentication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+  1.3.6.1.4.1.311.20.2.2 Smart Card Logon
+  1.3.6.1.5.2.3.5 KDC Authentication
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+  2.5.29.17 Subject Alternative Name
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-498)(OA;;RPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;S-1-5-21-229414924-2366940259-2788903835-498)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;ED)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;ED)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Enterprise Read-only Domain Controllers
+	Enroll
+Allow	Q1LAB\Enterprise Read-only Domain Controllers
+	Auto-Enroll
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Domain Controllers
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow	Q1LAB\Domain Controllers
+	Auto-Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Auto-Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.742079100Z" /><ns0:EventRecordID>21617</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffdfb</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.740138900Z" /><ns0:EventRecordID>21613</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.739149700Z" /><ns0:EventRecordID>21612</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">DomainControllerAuthentication</ns0:Data><ns0:Data Name="TemplateVersion">110.0</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.1.28</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=DomainControllerAuthentication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10060 (65632)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x8000000 (134217728)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+
+msPKI-Enrollment-Flag = 0x20 (32)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 110
+
+msPKI-Template-Minor-Revision = 0
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = DomainControllerAuthentication
+
+distinguishedName = DomainControllerAuthentication
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.1.28
+
+pKIKeyUsage = a0
+
+displayName = Domain Controller Authentication
+
+templateDescription = Computer
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+  1.3.6.1.4.1.311.20.2.2 Smart Card Logon
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+  DomainController
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+  1.3.6.1.5.5.7.3.1 Server Authentication
+  1.3.6.1.4.1.311.20.2.2 Smart Card Logon
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+  2.5.29.17 Subject Alternative Name
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-498)(OA;;RPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;S-1-5-21-229414924-2366940259-2788903835-498)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;ED)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;ED)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Enterprise Read-only Domain Controllers
+	Enroll
+Allow	Q1LAB\Enterprise Read-only Domain Controllers
+	Auto-Enroll
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Domain Controllers
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow	Q1LAB\Domain Controllers
+	Auto-Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Auto-Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.725775300Z" /><ns0:EventRecordID>21610</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffd4a</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.723908600Z" /><ns0:EventRecordID>21606</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.722404500Z" /><ns0:EventRecordID>21605</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">DirectoryEmailReplication</ns0:Data><ns0:Data Name="TemplateVersion">115.0</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.1.29</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=DirectoryEmailReplication,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x10060 (65632)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_MACHINE_TYPE -- 0x40 (64)
+  CT_FLAG_IS_DEFAULT -- 0x10000 (65536)
+
+msPKI-Private-Key-Flag = 0x0 (0)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x0
+  TEMPLATE_CLIENT_VER_NONE&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x0
+
+msPKI-Certificate-Name-Flag = 0x9000000 (150994944)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DIRECTORY_GUID -- 0x1000000 (16777216)
+  CT_FLAG_SUBJECT_ALT_REQUIRE_DNS -- 0x8000000 (134217728)
+
+msPKI-Enrollment-Flag = 0x29 (41)
+  CT_FLAG_INCLUDE_SYMMETRIC_ALGORITHMS -- 0x1
+  CT_FLAG_PUBLISH_TO_DS -- 0x8
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 115
+
+msPKI-Template-Minor-Revision = 0
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 1
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = DirectoryEmailReplication
+
+distinguishedName = DirectoryEmailReplication
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.1.29
+
+pKIKeyUsage = a0
+
+displayName = Directory Email Replication
+
+templateDescription = Directory e-mail replication
+
+pKIExtendedKeyUsage =
+  1.3.6.1.4.1.311.21.19 Directory Service Email Replication
+
+pKIDefaultCSPs =
+  Microsoft RSA SChannel Cryptographic Provider
+
+msPKI-Supersede-Templates =
+  DomainController
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.4.1.311.21.19 Directory Service Email Replication
+
+pKICriticalExtensions =
+  2.5.29.15 Key Usage
+  2.5.29.17 Subject Alternative Name
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:S-1-5-21-229414924-2366940259-2788903835-519G:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;RPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-498)(OA;;RPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;S-1-5-21-229414924-2366940259-2788903835-498)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DA)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-519)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;DD)(OA;;RPWPCR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;ED)(OA;;RPWPCR;a05b8cc2-17bc-4802-a710-e7c15ab866a2;;ED)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOSDRCWDWO;;;S-1-5-21-229414924-2366940259-2788903835-519)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\Enterprise Read-only Domain Controllers
+	Enroll
+Allow	Q1LAB\Enterprise Read-only Domain Controllers
+	Auto-Enroll
+Allow	Q1LAB\Domain Admins
+	Enroll
+Allow	Q1LAB\Domain Controllers
+	Enroll
+Allow	Q1LAB\Enterprise Admins
+	Enroll
+Allow	Q1LAB\Domain Controllers
+	Auto-Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Enroll
+Allow	NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+	Auto-Enroll
+Allow(0x000f00ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x000f00ff)	Q1LAB\Enterprise Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.706201800Z" /><ns0:EventRecordID>21603</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffc99</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.703601700Z" /><ns0:EventRecordID>21599</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4898</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12805</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.702071900Z" /><ns0:EventRecordID>21598</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TemplateInternalName">Q1Evidence</ns0:Data><ns0:Data Name="TemplateVersion">100.4</ns0:Data><ns0:Data Name="TemplateSchemaVersion">2</ns0:Data><ns0:Data Name="TemplateOID">1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.20261110.2019</ns0:Data><ns0:Data Name="TemplateDSObjectFQDN">CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="DCDNSName">WIN-NA2FC16NO63.q1lab.test</ns0:Data><ns0:Data Name="TemplateContent">
+flags = 0x20220 (131616)
+  CT_FLAG_AUTO_ENROLLMENT -- 0x20 (32)
+  CT_FLAG_ADD_TEMPLATE_NAME -- 0x200 (512)
+  CT_FLAG_IS_MODIFIED -- 0x20000 (131072)
+
+msPKI-Private-Key-Flag = 0x1010000 (16842752)
+  CTPRIVATEKEY_FLAG_ATTEST_NONE -- 0x0
+  TEMPLATE_SERVER_VER_2003&lt;&lt;CTPRIVATEKEY_FLAG_SERVERVERSION_SHIFT -- 0x10000 (65536)
+  TEMPLATE_CLIENT_VER_XP&lt;&lt;CTPRIVATEKEY_FLAG_CLIENTVERSION_SHIFT -- 0x1000000 (16777216)
+
+msPKI-Certificate-Name-Flag = 0x2000001 (33554433)
+  CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT -- 0x1
+  CT_FLAG_SUBJECT_ALT_REQUIRE_UPN -- 0x2000000 (33554432)
+
+msPKI-Enrollment-Flag = 0x0 (0)
+
+msPKI-Template-Schema-Version = 2
+
+revision = 100
+
+msPKI-Template-Minor-Revision = 4
+
+msPKI-RA-Signature = 0
+
+msPKI-Minimal-Key-Size = 2048
+
+pKIDefaultKeySpec = 2
+
+pKIExpirationPeriod = 1 Years
+
+pKIOverlapPeriod = 6 Weeks
+
+cn = Q1Evidence
+
+distinguishedName = Q1Evidence
+
+msPKI-Cert-Template-OID =
+  1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.20261110.2019
+
+pKIKeyUsage = 80
+
+displayName = Q1Evidence
+
+templateDescription = User
+
+pKIExtendedKeyUsage =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKIDefaultCSPs =
+  Microsoft Enhanced Cryptographic Provider v1.0
+  Microsoft Base Cryptographic Provider v1.0
+  Microsoft Base DSS Cryptographic Provider
+
+msPKI-Supersede-Templates =
+
+msPKI-RA-Policies =
+
+msPKI-RA-Application-Policies =
+
+msPKI-Certificate-Policy =
+
+msPKI-Certificate-Application-Policy =
+  1.3.6.1.5.5.7.3.2 Client Authentication
+
+pKICriticalExtensions =
+  2.5.29.7 Subject Alternative Name
+  2.5.29.15 Key Usage
+</ns0:Data><ns0:Data Name="SecurityDescriptor">O:DAG:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-1104)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(A;;LCRPLORC;;;AU)
+
+Allow	Q1LAB\q1.enroller
+	Enroll
+Allow(0x000f01ff)	Q1LAB\Domain Admins
+	Full Control
+Allow(0x00020094)	NT AUTHORITY\Authenticated Users
+	Read
+</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.662896900Z" /><ns0:EventRecordID>21596</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffbc5</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.661042500Z" /><ns0:EventRecordID>21592</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.657443600Z" /><ns0:EventRecordID>21590</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffb9a</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.655343700Z" /><ns0:EventRecordID>21586</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.652286700Z" /><ns0:EventRecordID>21585</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3540" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffb75</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{9f777366-487e-5f64-2717-f78e0f8d233d}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">10.21.0.15</ns0:Data><ns0:Data Name="IpPort">57302</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.638743900Z" /><ns0:EventRecordID>21581</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3540" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffa6c</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{207b1fdf-3207-e419-72e3-c9b373151bcc}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">57301</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.635020700Z" /><ns0:EventRecordID>21578</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3ffa24</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{58ee0cc4-a109-5478-9fd3-e5df84e83b71}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:25.632931700Z" /><ns0:EventRecordID>21574</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>5136</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14081</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:17.767454600Z" /><ns0:EventRecordID>21564</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="716" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="OpCorrelationID">{488e0f33-6161-4e3f-80e0-990f3ad9cabe}</ns0:Data><ns0:Data Name="AppCorrelationID">-</ns0:Data><ns0:Data Name="SubjectUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="SubjectUserName">Administrator</ns0:Data><ns0:Data Name="SubjectDomainName">Q1LAB</ns0:Data><ns0:Data Name="SubjectLogonId">0x308819</ns0:Data><ns0:Data Name="DSName">q1lab.test</ns0:Data><ns0:Data Name="DSType">%%14676</ns0:Data><ns0:Data Name="ObjectDN">CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="ObjectGUID">{b0bd2121-8537-426a-ba44-a6f8a71cff4e}</ns0:Data><ns0:Data Name="ObjectClass">pKICertificateTemplate</ns0:Data><ns0:Data Name="AttributeLDAPDisplayName">msPKI-Certificate-Name-Flag</ns0:Data><ns0:Data Name="AttributeSyntaxOID">2.5.5.9</ns0:Data><ns0:Data Name="AttributeValue">33554433</ns0:Data><ns0:Data Name="OperationType">%%14674</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>5136</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14081</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:17.767306000Z" /><ns0:EventRecordID>21563</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="716" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="OpCorrelationID">{488e0f33-6161-4e3f-80e0-990f3ad9cabe}</ns0:Data><ns0:Data Name="AppCorrelationID">-</ns0:Data><ns0:Data Name="SubjectUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="SubjectUserName">Administrator</ns0:Data><ns0:Data Name="SubjectDomainName">Q1LAB</ns0:Data><ns0:Data Name="SubjectLogonId">0x308819</ns0:Data><ns0:Data Name="DSName">q1lab.test</ns0:Data><ns0:Data Name="DSType">%%14676</ns0:Data><ns0:Data Name="ObjectDN">CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test</ns0:Data><ns0:Data Name="ObjectGUID">{b0bd2121-8537-426a-ba44-a6f8a71cff4e}</ns0:Data><ns0:Data Name="ObjectClass">pKICertificateTemplate</ns0:Data><ns0:Data Name="AttributeLDAPDisplayName">msPKI-Certificate-Name-Flag</ns0:Data><ns0:Data Name="AttributeSyntaxOID">2.5.5.9</ns0:Data><ns0:Data Name="AttributeValue">33554432</ns0:Data><ns0:Data Name="OperationType">%%14675</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:13.713511400Z" /><ns0:EventRecordID>21561</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2196" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-1104</ns0:Data><ns0:Data Name="TargetUserName">q1.enroller</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x3fc8ca</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">40970</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:13.565612000Z" /><ns0:EventRecordID>21557</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3540" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3fc6b4</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{207b1fdf-3207-e419-72e3-c9b373151bcc}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">57300</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:13.427356900Z" /><ns0:EventRecordID>21549</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="812" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3fc130</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{9f777366-487e-5f64-2717-f78e0f8d233d}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">10.21.0.15</ns0:Data><ns0:Data Name="IpPort">57299</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:13.382075000Z" /><ns0:EventRecordID>21545</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3fc029</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{3c4b400e-08f3-973c-022a-9991abfa897c}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4768</ns0:EventID><ns0:Version>0</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>14339</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:13.379295500Z" /><ns0:EventRecordID>21541</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetSid">S-1-5-21-229414924-2366940259-2788903835-1001</ns0:Data><ns0:Data Name="ServiceName">krbtgt</ns0:Data><ns0:Data Name="ServiceSid">S-1-5-21-229414924-2366940259-2788903835-502</ns0:Data><ns0:Data Name="TicketOptions">0x40810010</ns0:Data><ns0:Data Name="Status">0x0</ns0:Data><ns0:Data Name="TicketEncryptionType">0x12</ns0:Data><ns0:Data Name="PreAuthType">2</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">0</ns0:Data><ns0:Data Name="CertIssuerName" /><ns0:Data Name="CertSerialNumber" /><ns0:Data Name="CertThumbprint" /></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:13.375555500Z" /><ns0:EventRecordID>21540</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="812" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3fc005</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{9f777366-487e-5f64-2717-f78e0f8d233d}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">10.21.0.15</ns0:Data><ns0:Data Name="IpPort">57298</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:13.365789200Z" /><ns0:EventRecordID>21538</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="3224" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3fbf6a</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{9f777366-487e-5f64-2717-f78e0f8d233d}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">fe80::efe4:8cda:ff76:e938</ns0:Data><ns0:Data Name="IpPort">57297</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:13.315607400Z" /><ns0:EventRecordID>21535</ns0:EventRecordID><ns0:Correlation ActivityID="{8f8d9de0-70d3-0000-849f-8d8fd370dd01}" /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-5-18</ns0:Data><ns0:Data Name="SubjectUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="SubjectDomainName">Q1LAB</ns0:Data><ns0:Data Name="SubjectLogonId">0x3e7</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">SYSTEM</ns0:Data><ns0:Data Name="TargetDomainName">NT AUTHORITY</ns0:Data><ns0:Data Name="TargetLogonId">0x3e7</ns0:Data><ns0:Data Name="LogonType">5</ns0:Data><ns0:Data Name="LogonProcessName">Advapi  </ns0:Data><ns0:Data Name="AuthenticationPackageName">Negotiate</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x254</ns0:Data><ns0:Data Name="ProcessName">C:\Windows\System32\services.exe</ns0:Data><ns0:Data Name="IpAddress">-</ns0:Data><ns0:Data Name="IpPort">-</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:12.570772700Z" /><ns0:EventRecordID>21529</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x3fa2b2</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">40952</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:11.609355500Z" /><ns0:EventRecordID>21524</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x3f80bf</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">40932</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:10.975626200Z" /><ns0:EventRecordID>21518</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="812" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-18</ns0:Data><ns0:Data Name="TargetUserName">WIN-NA2FC16NO63$</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB.TEST</ns0:Data><ns0:Data Name="TargetLogonId">0x3f744f</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">Kerberos</ns0:Data><ns0:Data Name="AuthenticationPackageName">Kerberos</ns0:Data><ns0:Data Name="WorkstationName">-</ns0:Data><ns0:Data Name="LogonGuid">{207b1fdf-3207-e419-72e3-c9b373151bcc}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">-</ns0:Data><ns0:Data Name="KeyLength">0</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">::1</ns0:Data><ns0:Data Name="IpPort">57288</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event>
+<ns0:Event><ns0:System><ns0:Provider Name="Microsoft-Windows-Security-Auditing" Guid="{54849625-5478-4994-a5ba-3e3b0328c30d}" /><ns0:EventID>4624</ns0:EventID><ns0:Version>2</ns0:Version><ns0:Level>0</ns0:Level><ns0:Task>12544</ns0:Task><ns0:Opcode>0</ns0:Opcode><ns0:Keywords>0x8020000000000000</ns0:Keywords><ns0:TimeCreated SystemTime="2026-11-10T10:56:10.669473900Z" /><ns0:EventRecordID>21515</ns0:EventRecordID><ns0:Correlation /><ns0:Execution ProcessID="604" ThreadID="2584" /><ns0:Channel>Security</ns0:Channel><ns0:Computer>WIN-NA2FC16NO63.q1lab.test</ns0:Computer><ns0:Security /></ns0:System><ns0:EventData><ns0:Data Name="SubjectUserSid">S-1-0-0</ns0:Data><ns0:Data Name="SubjectUserName">-</ns0:Data><ns0:Data Name="SubjectDomainName">-</ns0:Data><ns0:Data Name="SubjectLogonId">0x0</ns0:Data><ns0:Data Name="TargetUserSid">S-1-5-21-229414924-2366940259-2788903835-500</ns0:Data><ns0:Data Name="TargetUserName">Administrator</ns0:Data><ns0:Data Name="TargetDomainName">Q1LAB</ns0:Data><ns0:Data Name="TargetLogonId">0x3f6269</ns0:Data><ns0:Data Name="LogonType">3</ns0:Data><ns0:Data Name="LogonProcessName">NtLmSsp </ns0:Data><ns0:Data Name="AuthenticationPackageName">NTLM</ns0:Data><ns0:Data Name="WorkstationName">M4X1D</ns0:Data><ns0:Data Name="LogonGuid">{00000000-0000-0000-0000-000000000000}</ns0:Data><ns0:Data Name="TransmittedServices">-</ns0:Data><ns0:Data Name="LmPackageName">NTLM V2</ns0:Data><ns0:Data Name="KeyLength">128</ns0:Data><ns0:Data Name="ProcessId">0x0</ns0:Data><ns0:Data Name="ProcessName">-</ns0:Data><ns0:Data Name="IpAddress">172.22.0.1</ns0:Data><ns0:Data Name="IpPort">51052</ns0:Data><ns0:Data Name="ImpersonationLevel">%%1833</ns0:Data><ns0:Data Name="RestrictedAdminMode">-</ns0:Data><ns0:Data Name="TargetOutboundUserName">-</ns0:Data><ns0:Data Name="TargetOutboundDomainName">-</ns0:Data><ns0:Data Name="VirtualAccount">%%1843</ns0:Data><ns0:Data Name="TargetLinkedLogonId">0x0</ns0:Data><ns0:Data Name="ElevatedToken">%%1842</ns0:Data></ns0:EventData></ns0:Event></Events>

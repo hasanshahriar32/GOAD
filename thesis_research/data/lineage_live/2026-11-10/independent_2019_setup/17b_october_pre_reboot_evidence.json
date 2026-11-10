@@ -1,0 +1,11 @@
+{
+  "status_code": 0,
+  "host_before": 1794316912.36478,
+  "host_after": 1794316941.763547,
+  "stdout": "{\"ubr\":7558,\"signature_subject\":\"CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US\",\"utc\":\"2026-11-10T13:22:18.0054368Z\",\"build\":\"17763\",\"signature_status\":\"Valid\",\"package_path\":\"E:\\\\OCT26.MSU\",\"hotfix\":\"KB5126651\",\"reboot_pending\":true}\r\n2026-11-10 13:22:20, Info                  CBS    Appl:Forcing GE on revision on parent:Microsoft-Windows-ServerStandardEvalEdition~31bf3856ad364e35~amd64~~10.0.17763.1\r\n2026-11-10 13:22:20, Info                  CBS    Appl:Forcing GE on revision on parent:Microsoft-Windows-ServerStandardNanoEdition~31bf3856ad364e35~amd64~~10.0.17763.1\r\n2026-11-10 13:22:20, Info                  CBS    Appl:Forcing GE on revision on parent:Microsoft-Windows-UtilityVMEdition~31bf3856ad364e35~amd64~~10.0.17763.1\r\n2026-11-10 13:22:20, Info                  CBS    Appl:Forcing GE on revision on parent:Microsoft-Windows-WinPE-Package~31bf3856ad364e35~amd64~~10.0.17763.1\r\n2026-11-10 13:22:20, Info                  CBS    Session: 31289622_2192415248 finalized. Reboot required: no [HRESULT = 0x00000000 - S_OK]\r\n__Q1_PHASE_COMPLETE__\r\n",
+  "stderr": "",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": true
+}

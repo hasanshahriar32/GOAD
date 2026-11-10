@@ -1,0 +1,29 @@
+{
+  "augment_probabilities": [
+    0,
+    0.3
+  ],
+  "epochs": 40,
+  "families_per_depth": 50,
+  "limitations": "Fixed membership transforms and hand-initialized projections in inherited implementations; implementation contrast includes initialization differences. Synthetic legacy training archetypes repeat across splits. This is a diagnostic, not a pure gate-effect or enterprise generalization estimate.",
+  "seeds": [
+    12011,
+    13001,
+    14009
+  ],
+  "selection": "Minimum validation NLL; no test-selected checkpoint",
+  "source_sha256": {
+    "thesis_research/src/lineage_constraints/gating_audit.py": "8302d8254230a1ee51398b98b0dd04f32a38be10b6cbc0d7a9ddf409885ba6da",
+    "thesis_research/src/phase2_certgraph/gated_shortcut_cure.py": "30160877819fd611d277585ad31a4d6f9c8519f474c22a714e7e2b97fc6cc156"
+  },
+  "test_depths": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "test_label_contract": "ESC1 client-auth + supplied subject + no approval, effective allow reachable from low-privileged source, no reachable explicit deny; resolved permissions, CA trust assumed. Deep reachable membership remains positive.",
+  "train": 1400,
+  "validation": 350
+}

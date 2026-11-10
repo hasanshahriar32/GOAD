@@ -1,0 +1,72 @@
+{
+  "successful_controlled_case": true,
+  "certificate_identity": {
+    "serial": "1d0000001974ed828be3240b17000000000019",
+    "sha1_thumbprint": "9102f7174ee8d6dde990515b020a7e7df4b581c5",
+    "sha256_fingerprint": "0615b61e77c082ec284557a4ccec1b6aceee963bce99deffe6315788624f6481",
+    "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local"
+  },
+  "matching_ca_database_rows": 1,
+  "matching_ca_issuance_events": [
+    {
+      "computer": "braavos.essos.local",
+      "record_id": "65102",
+      "requester": "ESSOS\\viserys.targaryen"
+    }
+  ],
+  "matching_successful_kdc_events": [
+    {
+      "computer": "meereen.essos.local",
+      "record_id": "168295",
+      "status": "0x0",
+      "preauth_type": "16",
+      "target": "Administrator",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+      "target_domain": "ESSOS.LOCAL",
+      "issuer": "CertGraph-Lab-CA"
+    }
+  ],
+  "other_matching_kdc_events": [],
+  "template_mutation_events": [
+    {
+      "computer": "meereen.essos.local",
+      "record_id": "167477",
+      "value": "33554432",
+      "operation": "%%14675",
+      "actor": "khal.drogo",
+      "actor_sid": "S-1-5-21-3304911894-2815406861-4222388662-1115",
+      "actor_domain": "ESSOS"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "record_id": "167478",
+      "value": "1",
+      "operation": "%%14674",
+      "actor": "khal.drogo",
+      "actor_sid": "S-1-5-21-3304911894-2815406861-4222388662-1115",
+      "actor_domain": "ESSOS"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "record_id": "167818",
+      "value": "1",
+      "operation": "%%14675",
+      "actor": "khal.drogo",
+      "actor_sid": "S-1-5-21-3304911894-2815406861-4222388662-1115",
+      "actor_domain": "ESSOS"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "record_id": "167819",
+      "value": "33554432",
+      "operation": "%%14674",
+      "actor": "khal.drogo",
+      "actor_sid": "S-1-5-21-3304911894-2815406861-4222388662-1115",
+      "actor_domain": "ESSOS"
+    }
+  ],
+  "rollback_evidence_present": true,
+  "split_actor_identity_verified": true,
+  "label_scope": "Certificate-byte-anchored controlled lab outcome, separate from detector output; not independently adjudicated field data.",
+  "review_source_sha256": "9d48fcfa3a3f91a8a07ab2d288f5aea50d26ef6863600a5d0e59a8a9434343e4"
+}

@@ -1,0 +1,111 @@
+{
+  "adjudicator_source_sha256": "6f0d0b609842f0f08aae2b75b77dc5909ec03454f65a3d4a983ce56591b54a62",
+  "by_condition": {
+    "baseline_admin_san": {
+      "attempts": 1,
+      "infrastructure_errors": 1,
+      "privileged_uses": 0,
+      "restored": 1,
+      "verified_uses": 0
+    },
+    "enabled_admin_san": {
+      "attempts": 1,
+      "infrastructure_errors": 0,
+      "privileged_uses": 1,
+      "restored": 1,
+      "verified_uses": 1
+    }
+  },
+  "scope": "Independent controlled outcome adjudication; no CIPG detector imports or enterprise-rate estimate",
+  "trials": [
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          1,
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": true,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC1": "Enrollee supplies subject and template allows client authentication.",
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "administrator_san_present": true,
+      "assigned_name_flag": 33554433,
+      "ca_issuance_event_ids": [
+        "braavos.essos.local:67249"
+      ],
+      "condition": "enabled_admin_san",
+      "event_ids": {
+        "4624": 33,
+        "4768": 20,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 4
+      },
+      "expected_admin_certificate": true,
+      "matching_ca_rows": 1,
+      "mutation_actor_checked": true,
+      "observed_outcome": "privileged_certificate_use",
+      "raw_events": 75,
+      "restoration_event_checked": true,
+      "restored": true,
+      "serial": "1d0000002412bdbfd3e5dc4ed4000000000024",
+      "sha256": "148d0805d962bb0a5c51435ee0b2ce8ebf9f8f92ff01bbed9238bbaf4a682914",
+      "successful_administrator_use": true,
+      "successful_exact_certificate_use": true,
+      "successful_kdc_event_ids": [
+        "meereen.essos.local:181552"
+      ],
+      "successful_target_sids": [
+        "S-1-5-21-3304911894-2815406861-4222388662-500"
+      ],
+      "trial": "r01_enabled_admin_san",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    {
+      "actual_certipy_template_result": {
+        "Certificate Name Flag": [
+          33554432
+        ],
+        "Enabled": true,
+        "Enrollee Supplies Subject": false,
+        "Template Name": "CGPubPositive",
+        "[!] Vulnerabilities": {
+          "ESC13": "Template allows client authentication and issuance policy is linked to group 'CN=CGPublicationPolicy,OU=CertGraphPublication,DC=essos,DC=local'."
+        },
+        "[+] User Enrollable Principals": [
+          "ESSOS.LOCAL\\viserys.targaryen"
+        ]
+      },
+      "assigned_name_flag": 33554432,
+      "condition": "baseline_admin_san",
+      "error": "RuntimeError: Failed phase: 12_exact_pfx",
+      "event_ids": {
+        "4624": 34,
+        "4768": 19,
+        "4886": 1,
+        "4887": 1,
+        "4898": 16,
+        "5136": 2
+      },
+      "expected_admin_certificate": false,
+      "observed_outcome": "infrastructure_error",
+      "raw_events": 73,
+      "restored": true,
+      "successful_administrator_use": false,
+      "successful_exact_certificate_use": false,
+      "trial": "r01_baseline_admin_san"
+    }
+  ],
+  "trials_adjudicated": 2,
+  "trials_planned": 12
+}

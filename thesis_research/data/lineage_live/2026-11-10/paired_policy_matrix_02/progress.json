@@ -1,0 +1,218 @@
+[
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002622af72deb7335ee8000000000026",
+      "sha1": "82c084ffcc80477032735f84949756ba642d9d11",
+      "sha256": "c3008c3547da4cca3c1b449f2f54251ba1468ceec545017f7be3e359692386f8",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+    "id": "r01_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d00000027bd559801c889d06a000000000027",
+      "sha1": "be4d4464ede63664065be58aa4b03272de947364",
+      "sha256": "e093576a7233035d1528fc7319909a4fc082f058baa93d686ba4f3ccf295bbd0",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r01_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d00000028183bebbff54f2581000000000028",
+      "sha1": "8325c8839c6a726e4ba5cd65a539fc8040d5e7a5",
+      "sha256": "f508ca2bcdc236bd17ecc77ee019b3d2f61fc2ddc87a6f18f7f7eb74a6fe9c76",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r01_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002943aff07cdac4b38a000000000029",
+      "sha1": "dbb6137aa6d5562dbcb14ec4ed2b412cefade021",
+      "sha256": "a0733e398a0a31b4a69a1c9584cabb07703685b5afa565fc0bae80ce236eef4b",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r01_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002ae294679999489a0500000000002a",
+      "sha1": "14e5ab5e2bf7ada73989a89022861673e1f09cf0",
+      "sha256": "fccc0f8e03f74b38b59297db8b2710c7bad2c9664dfcff1e251adfefa8ee5dfa",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r02_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002b76e4c6830b03e38400000000002b",
+      "sha1": "27db7933b0a7f4b54cad25d1aa361d81ac59bd04",
+      "sha256": "cbba19c3e5e022584c0b14b3fd53d287aeb74e9638e76c6c3f091be0c6e90285",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+    "id": "r02_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002c75789cc705525c0c00000000002c",
+      "sha1": "908b4620970478e5de3bf7c9256c44c46caeaf94",
+      "sha256": "ff4f877c7f90c8fae4db15974308a1a584faf938fb6c6bbf8175f406207c6e75",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r02_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002d9444093c0e06938700000000002d",
+      "sha1": "e41cfdaca3783c96355d82844f421d1f7ee8a01b",
+      "sha256": "ff9ed780e3f124e9d232a325de835ba3738fbd6500b7c2be43ae304189c62729",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r02_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002e2166282f8c60115f00000000002e",
+      "sha1": "a90d4aeb96c96acd5692a3999045e153166efccd",
+      "sha256": "2d24f8e88e64bdbd55d5ba49f372932eb7bbfb076c42d9c8b0972221046a4031",
+      "upns": [
+        "administrator@essos.local"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+    "id": "r03_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d0000002f4e8aa5d4b332cc3200000000002f",
+      "sha1": "c862bb3f8f7c96bfc131d01c41f597dd7ec59839",
+      "sha256": "62e3038ec7f81237e3e11ce19207099a5eaad5274401cb72669a2e71ee38460a",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r03_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d000000301ddc2ead1c250846000000000030",
+      "sha1": "1fd2f79976bda6c0729b09536c03a24fd1dababb",
+      "sha256": "a6862e69707d7694f357b92e109444f09ee2aeb2eb9b976a2152094df074ade8",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r03_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+      "serial": "1d00000031a1d811fadc80b734000000000031",
+      "sha1": "f87c155e6d56214d735a2d4395beed478a2ec594",
+      "sha256": "59c870bd99da88b76d8de6e7efad2e1af94cd410e8b61c9c9a41c2081106f5c8",
+      "upns": [
+        "viserys.targaryen@essos.local"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "id": "r03_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  }
+]

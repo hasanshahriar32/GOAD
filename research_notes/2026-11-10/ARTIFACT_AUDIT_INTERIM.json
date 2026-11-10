@@ -1,0 +1,88 @@
+{
+  "audit_source_sha256": "fe7af6a7b3daac3d48b1c54febe93b438b71b81d02d2a7d158c2c060b2d6fba9",
+  "checked_utc": "2026-11-10T13:16:24.129032+00:00",
+  "current_manuscript_pdf_sha256": "b0b90747f2159890f639c1d3de4467cf66785082c22f3cd249da015438dca650",
+  "generated_tables": {
+    "bilinear_evidence.tex": "f1f403ebc4c916c91ba6e777eb49d95af081a353a5131ad73b9f6780de651ff0",
+    "gating_evidence.tex": "012d0c6a5e8baede2c5cf8e98027e20df01575b8b6d1e7517c82b34faac1276c",
+    "lineage_evidence.tex": "330f1fec22a890cf59974c6e78d2ca082f3a21a7cd4b9ae8d13c6bab72874d39",
+    "projection_evidence.tex": "e0f3663c7db0955ede063e7edaa5f1c5349c4961d02da454c0da15dd305ed1a2"
+  },
+  "live_matrices": {
+    "independent_2019_matrix_01": {
+      "hashed_files_checked": 70,
+      "protocol_sha256": "983e8e6f249c30567098e099476c3238cfbeba3d72533a23b18d5c6240152aec",
+      "trials_with_manifests": 3
+    },
+    "independent_2019_matrix_02": {
+      "hashed_files_checked": 318,
+      "protocol_sha256": "94c0074bb6e509371eeed161c7cbe3ae076a5513c9403f4e1aa045b2afd6199f",
+      "trials_with_manifests": 12
+    },
+    "paired_policy_matrix_01": {
+      "hashed_files_checked": 72,
+      "protocol_sha256": "0a884764283ee0fb8fcd2b6d03d7f681486e8b556e5dc1294fa8f55f535c01a5",
+      "trials_with_manifests": 2
+    },
+    "paired_policy_matrix_02": {
+      "hashed_files_checked": 480,
+      "protocol_sha256": "2de5f76384fea930d4fcbf62db41a3957001e65d01e0c4380839b2c320e95983",
+      "trials_with_manifests": 12
+    },
+    "policy_matrix_01": {
+      "hashed_files_checked": 333,
+      "protocol_sha256": "f6f086be7aed9e779067455f380788283c25c90f982224cdb5f7a14d3137161a",
+      "trials_with_manifests": 12
+    }
+  },
+  "new_dataset_privacy": {
+    "credential_scan_performed": true,
+    "credential_value_matches": [],
+    "private_artifact_paths": [],
+    "private_key_headers": []
+  },
+  "preservation": {
+    "document_class": true,
+    "manuscript/compile.sh": true,
+    "manuscript/manuscript.sty": true,
+    "original_static_implementation_files": true,
+    "seven_main_section_titles": true,
+    "title": true,
+    "tracked_existing_figures": true
+  },
+  "preservation_from_commit": "cc707b3",
+  "scope": "Local artifact/style/privacy integrity; use independent study reports for scientific outcome checks; no acceptance or public-release certification",
+  "standard_studies": {
+    "bilinear_study": {
+      "hashed_files_checked": 58,
+      "manifest_sha256": "5f3b4a5b04b5328880fb7f1a801034aa0499f04d4c7c43d7e3b8341d411c26bf"
+    },
+    "falsification_controls": {
+      "hashed_files_checked": 7,
+      "manifest_sha256": "545862421fa22e5119283058b60cadccb9ba61846a6a690f088ab8f1435e3d5c"
+    },
+    "gating_audit": {
+      "hashed_files_checked": 31,
+      "manifest_sha256": "1d71c48b5117d41997dd3cd6547e5948d4b4904e9f69fa7c47ad9f8485471ac3"
+    },
+    "interdiction_audit": {
+      "hashed_files_checked": 5,
+      "manifest_sha256": "a62fa5ec992693ac792ed22f447211e7edece717e4ac57d6a5bf1db5cdc4e091"
+    },
+    "legacy_statistics_audit": {
+      "hashed_files_checked": 3,
+      "manifest_sha256": "c2d37738e219fcade3c09db674f59affbb1200751584b431b8916eff0a22afd9"
+    },
+    "projection_repeated": {
+      "hashed_files_checked": 6,
+      "manifest_sha256": "bf962062e0f25619fdd9db36ecdff2a4e3f57a4530c549eca9363ffed6abcae8"
+    }
+  },
+  "status": "passed",
+  "unit_tests": {
+    "count": 66,
+    "log_sha256": "c7072b48ea8fa8dea8ede75bff24367876e5e2f801f1f6d8966aa4751bd944c4",
+    "status": "passed"
+  },
+  "workspace": "/home/m4x1d/Desktop/GOAD"
+}

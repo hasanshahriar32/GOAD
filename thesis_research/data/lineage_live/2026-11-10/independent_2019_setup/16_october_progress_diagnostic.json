@@ -1,0 +1,11 @@
+{
+  "status_code": 0,
+  "host_before": 1794316582.323982,
+  "host_after": 1794316587.547046,
+  "stdout": "2026-11-10T13:16:24.7085474Z\r\n2026-11-10 13:13:34, Info                  CSI    00006297@2026/11/10:13:13:34.208 CSI Transaction @0x29081836b40 destroyed\r\n2026-11-10 13:13:34, Info                  CBS    Perf: InstallUninstallChain complete.\r\n2026-11-10 13:13:34, Info                  CBS    Exec: TransientManifestCache disabled in config.\r\n2026-11-10 13:13:34, Info                  CBS    FinalCommitPackagesState: Started persisting state of packages\r\n2026-11-10 13:13:36, Info                  CBS    Reporting package change for package: Package_for_RollupFix~31bf3856ad364e35~amd64~~17763.9376.1.44, current: Absent, pending: Default, start: Absent, applicable: Installed, target: Installed, limit: Installed, status: 0x0, failure source: Execute, reboot required: True, client id: WindowsUpdateAgent, initiated offline: False, execution sequence: 46, first merged sequence: 46, reboot reason: DRIVERSPRESENT, RM App session: -1, RM App name: N/A, FileName in use: N/A, release type: Security Update, OC operation: False, download source: 0, download time (secs): 4294967295, download status: 0x0 (S_OK), Express download: False, Download Size: 0\r\n2026-11-10 13:13:38, Info                  CBS    FinalCommitPackagesState: Completed persisting state of packages\r\n2026-11-10 13:13:38, Info                  CBS    Exec: Processing complete.  Session: 31289616_711751699, Package: Package_for_ServicingStack_9354~31bf3856ad364e35~amd64~~17763.9354.1.2, Identifier: KB5126650 [HRESULT = 0x00000000 - S_OK]\r\n2026-11-10 13:13:38, Info                  CBS    Exec: Session: 31289616_711751699 resumed. Reboot required: yes, Current phase: 2, Total phase: 2 [HRESULT = 0x00000000 - S_OK]\r\n[{\"Name\":\"TiWorker\",\"CPU\":974.671875,\"WorkingSet\":159875072},{\"Name\":\"wusa\",\"CPU\":6.578125,\"WorkingSet\":2756608}]\r\n__Q1_PHASE_COMPLETE__\r\n",
+  "stderr": "",
+  "scope": "Fresh independent research VM only",
+  "source_sha256": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+  "staged_public_script_sha256": null,
+  "completion_marker_seen": true
+}

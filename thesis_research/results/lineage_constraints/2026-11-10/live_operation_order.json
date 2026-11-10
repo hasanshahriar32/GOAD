@@ -1,0 +1,89 @@
+{
+  "analysis_sources_sha256": {
+    "scripts/capture_trace7_split_actor_delayed_pkinit.py": "8366e2d464dfb80828d2334d97b33934d810312d3b909f5974be6fa5628cf8e8",
+    "thesis_research/src/lineage_constraints/analyze_capture_order.py": "24ae3f3324a7501a97413f803624bf0971e4996355b816fddd3036dc866c882f",
+    "thesis_research/src/lineage_constraints/temporal.py": "5e4307448574fcd54b57fd413148a104b3a5d7682e5d61595417e16ae2e454f7"
+  },
+  "assumptions": [
+    "The frozen synchronous orchestrator and saved responses truthfully describe this execution.",
+    "Successful Set-ADObject return bounds the effective write on the tested DC.",
+    "The exact new certificate was issued inside the synchronous certreq submission, not reused from an earlier request.",
+    "The observed mutation and rollback correspond to the reviewed commands; no unseen intervening state change is ruled out globally.",
+    "This establishes ordering of the controlled operations, not when the CA consumed template policy or whether the mutation was necessary."
+  ],
+  "ca_issuance_records": [
+    {
+      "computer": "braavos.essos.local",
+      "record_id": "65102",
+      "requester": "ESSOS\\viserys.targaryen"
+    }
+  ],
+  "capture_manifest_sha256": "aeeec73c33e4a9195dee1df6e94948cbcb0200a82f18df88340b9bca6a052da9",
+  "certificate_serial": "1d0000001974ed828be3240b17000000000019",
+  "clock_alignment_repaired": false,
+  "constraints": [
+    {
+      "evidence_id": "01_mutation:return-before-03_submission:invoke",
+      "left": "open",
+      "right": "submit_start",
+      "upper": "0"
+    },
+    {
+      "evidence_id": "03_submission:synchronous-issuance-lower",
+      "left": "submit_start",
+      "right": "issue",
+      "upper": "0"
+    },
+    {
+      "evidence_id": "03_submission:synchronous-issued-response",
+      "left": "issue",
+      "right": "submit_complete",
+      "upper": "0"
+    },
+    {
+      "evidence_id": "03_submission:return-before-04_rollback:invoke",
+      "left": "submit_complete",
+      "right": "rollback_start",
+      "upper": "0"
+    },
+    {
+      "evidence_id": "04_rollback:synchronous-effective-write",
+      "left": "rollback_start",
+      "right": "close",
+      "upper": "0"
+    }
+  ],
+  "executed_source_sha256": "ee4d32f5ffc583763fb37ebf04547fcc5d07148930faa402cd0eaf46e67c0f46",
+  "leave_one_order_edge_out": {
+    "01_mutation:return-before-03_submission:invoke": "possible_overlap",
+    "03_submission:return-before-04_rollback:invoke": "possible_overlap",
+    "03_submission:synchronous-issuance-lower": "possible_overlap",
+    "03_submission:synchronous-issued-response": "possible_overlap",
+    "04_rollback:synchronous-effective-write": "possible_overlap"
+  },
+  "necessary_enabling_mutation_established": false,
+  "operation_order_overlap": "definite_overlap",
+  "outcome_checked": true,
+  "restoration_checked": true,
+  "reviewed_source_phase_sequence": [
+    "01_mutation",
+    "02_csr",
+    "03_submission",
+    "04_rollback",
+    "05_exact_pfx_export",
+    "07_ca_database_export"
+  ],
+  "scope": "One controlled operation-order pilot; additional orchestration evidence, not passive audit telemetry",
+  "successful_kdc_records": [
+    {
+      "computer": "meereen.essos.local",
+      "issuer": "CertGraph-Lab-CA",
+      "preauth_type": "16",
+      "record_id": "168295",
+      "status": "0x0",
+      "target": "Administrator",
+      "target_domain": "ESSOS.LOCAL",
+      "target_sid": "S-1-5-21-3304911894-2815406861-4222388662-500"
+    }
+  ]
+}

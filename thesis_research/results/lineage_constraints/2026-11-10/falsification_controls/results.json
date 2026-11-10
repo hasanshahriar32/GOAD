@@ -1,0 +1,1381 @@
+{
+  "order_control": {
+    "latent_times": {
+      "opened": 0,
+      "closed": 1,
+      "issued": 2
+    },
+    "truth_overlap": false,
+    "bounds": {
+      "opened": [
+        0,
+        3
+      ],
+      "issued": [
+        0,
+        3
+      ],
+      "closed": [
+        0,
+        3
+      ]
+    },
+    "false_order_evidence": [
+      {
+        "left": "opened",
+        "right": "issued",
+        "upper": "0",
+        "evidence_id": "sensor:opened-before-issued",
+        "strict": false
+      },
+      {
+        "left": "issued",
+        "right": "closed",
+        "upper": "0",
+        "evidence_id": "sensor:issued-before-closed",
+        "strict": false
+      }
+    ],
+    "boxes_only": "possible_overlap",
+    "false_but_consistent_order": "definite_overlap",
+    "network_consistent": true,
+    "scope": "Declared source-truth assumption is violated; STN consistency cannot authenticate an order sensor"
+  },
+  "correlated_source_control": {
+    "latent_true_issuance": "true-issue",
+    "raw_anchor_truth_assumed": true,
+    "faulty_source_count": 1,
+    "faulty_record_count": 6,
+    "raw_records": [
+      {
+        "record_id": "true-issue",
+        "kind": "issuance",
+        "time": {
+          "lower": 0,
+          "upper": 0
+        },
+        "issuer": "CA",
+        "request_id": "1",
+        "serial": "",
+        "thumbprint": "",
+        "skid": "",
+        "template": "",
+        "principal": "lab\\alice",
+        "success": true,
+        "preauth_type": 16
+      },
+      {
+        "record_id": "other-issue",
+        "kind": "issuance",
+        "time": {
+          "lower": 1,
+          "upper": 1
+        },
+        "issuer": "CA",
+        "request_id": "2",
+        "serial": "",
+        "thumbprint": "",
+        "skid": "",
+        "template": "",
+        "principal": "lab\\bob",
+        "success": true,
+        "preauth_type": 16
+      },
+      {
+        "record_id": "auth",
+        "kind": "authentication",
+        "time": {
+          "lower": 3,
+          "upper": 3
+        },
+        "issuer": "CA",
+        "request_id": "",
+        "serial": "aa",
+        "thumbprint": "ff",
+        "skid": "",
+        "template": "",
+        "principal": "administrator",
+        "success": true,
+        "preauth_type": 16
+      },
+      {
+        "record_id": "bad-export:1:0",
+        "kind": "bridge",
+        "time": {
+          "lower": 0,
+          "upper": 0
+        },
+        "issuer": "CA",
+        "request_id": "1",
+        "serial": "bb",
+        "thumbprint": "ee",
+        "skid": "",
+        "template": "",
+        "principal": "lab\\alice",
+        "success": true,
+        "preauth_type": 16
+      },
+      {
+        "record_id": "bad-export:1:1",
+        "kind": "bridge",
+        "time": {
+          "lower": 0,
+          "upper": 0
+        },
+        "issuer": "CA",
+        "request_id": "1",
+        "serial": "bb",
+        "thumbprint": "ee",
+        "skid": "",
+        "template": "",
+        "principal": "lab\\alice",
+        "success": true,
+        "preauth_type": 16
+      },
+      {
+        "record_id": "bad-export:1:2",
+        "kind": "bridge",
+        "time": {
+          "lower": 0,
+          "upper": 0
+        },
+        "issuer": "CA",
+        "request_id": "1",
+        "serial": "bb",
+        "thumbprint": "ee",
+        "skid": "",
+        "template": "",
+        "principal": "lab\\alice",
+        "success": true,
+        "preauth_type": 16
+      },
+      {
+        "record_id": "bad-export:2:0",
+        "kind": "bridge",
+        "time": {
+          "lower": 0,
+          "upper": 0
+        },
+        "issuer": "CA",
+        "request_id": "2",
+        "serial": "aa",
+        "thumbprint": "ff",
+        "skid": "",
+        "template": "",
+        "principal": "lab\\bob",
+        "success": true,
+        "preauth_type": 16
+      },
+      {
+        "record_id": "bad-export:2:1",
+        "kind": "bridge",
+        "time": {
+          "lower": 0,
+          "upper": 0
+        },
+        "issuer": "CA",
+        "request_id": "2",
+        "serial": "aa",
+        "thumbprint": "ff",
+        "skid": "",
+        "template": "",
+        "principal": "lab\\bob",
+        "success": true,
+        "preauth_type": 16
+      },
+      {
+        "record_id": "bad-export:2:2",
+        "kind": "bridge",
+        "time": {
+          "lower": 0,
+          "upper": 0
+        },
+        "issuer": "CA",
+        "request_id": "2",
+        "serial": "aa",
+        "thumbprint": "ff",
+        "skid": "",
+        "template": "",
+        "principal": "lab\\bob",
+        "success": true,
+        "preauth_type": 16
+      }
+    ],
+    "source_partition": {
+      "bad-export:1:0": "one-exporter-failure-domain",
+      "bad-export:1:1": "one-exporter-failure-domain",
+      "bad-export:1:2": "one-exporter-failure-domain",
+      "bad-export:2:0": "one-exporter-failure-domain",
+      "bad-export:2:1": "one-exporter-failure-domain",
+      "bad-export:2:2": "one-exporter-failure-domain"
+    },
+    "record_budget_2_outside_assumption": {
+      "status": "certain_link",
+      "certain_issuance_id": "other-issue",
+      "possible_issuance_ids": [
+        "other-issue"
+      ],
+      "certain_overlap": false,
+      "hypotheses_checked": 22,
+      "candidate_witnesses": {
+        "other-issue": []
+      },
+      "hypothesis_outcomes": [
+        {
+          "dropped_bridge_ids": [],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        }
+      ]
+    },
+    "record_budget_6_within_assumption": {
+      "status": "uncertain",
+      "certain_issuance_id": null,
+      "possible_issuance_ids": [
+        "other-issue",
+        "true-issue"
+      ],
+      "certain_overlap": false,
+      "hypotheses_checked": 64,
+      "candidate_witnesses": {
+        "other-issue": [],
+        "true-issue": [
+          "bad-export:1:0",
+          "bad-export:1:1",
+          "bad-export:1:2"
+        ]
+      },
+      "hypothesis_outcomes": [
+        {
+          "dropped_bridge_ids": [],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:1:2"
+          ],
+          "status": "ambiguous",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:0"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:2:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "insufficient_identity",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:0"
+          ],
+          "status": "ambiguous",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:1"
+          ],
+          "status": "ambiguous",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:2"
+          ],
+          "status": "ambiguous",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:2:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "insufficient_identity",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "resolved",
+          "resolved_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:2:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "insufficient_identity",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "insufficient_identity",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:1"
+          ],
+          "status": "ambiguous",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:2"
+          ],
+          "status": "ambiguous",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "ambiguous",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:2:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "insufficient_identity",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "insufficient_identity",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "insufficient_identity",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue"
+          ],
+          "definite_overlap": false
+        },
+        {
+          "dropped_bridge_ids": [
+            "bad-export:1:0",
+            "bad-export:1:1",
+            "bad-export:1:2",
+            "bad-export:2:0",
+            "bad-export:2:1",
+            "bad-export:2:2"
+          ],
+          "status": "ambiguous",
+          "resolved_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ],
+          "definite_overlap": false
+        }
+      ]
+    },
+    "source_budget_1_within_assumption": {
+      "status": "uncertain",
+      "certain_issuance_id": null,
+      "possible_issuance_ids": [
+        "other-issue",
+        "true-issue"
+      ],
+      "candidate_source_witnesses": {
+        "other-issue": [],
+        "true-issue": [
+          "one-exporter-failure-domain"
+        ]
+      },
+      "hypotheses_checked": 2,
+      "source_groups": [
+        "one-exporter-failure-domain"
+      ],
+      "outcomes": [
+        {
+          "dropped_sources": [],
+          "status": "resolved",
+          "issuance_id": "other-issue",
+          "candidate_ids": [
+            "other-issue"
+          ]
+        },
+        {
+          "dropped_sources": [
+            "one-exporter-failure-domain"
+          ],
+          "status": "ambiguous",
+          "issuance_id": null,
+          "candidate_ids": [
+            "other-issue",
+            "true-issue"
+          ]
+        }
+      ]
+    },
+    "scope": "One faulty source is six faulty records; budgets count different units. Grouped hypotheses require trustworthy partition metadata and do not authenticate raw anchors."
+  }
+}

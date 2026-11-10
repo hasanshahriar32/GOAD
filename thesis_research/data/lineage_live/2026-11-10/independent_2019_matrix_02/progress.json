@@ -1,0 +1,206 @@
+[
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000000563c6c1710a12148d000000000005",
+      "sha1": "bb42fe6d514513fd505118c57d3e83b3a4b4388f",
+      "sha256": "aa56646bf9a9190f1f32b3fab1c33ffd8f5b96321337eb0b6b14ab32239ca327",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "id": "r01_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "29000000067fdce5be218f3615000000000006",
+      "sha1": "c1e7f17db8c15c9c3d3f9aae7bb4596013e4f5cf",
+      "sha256": "cce7b4f5bd62111a72f64355b4a1d4023adb824af25d8eec9d424d6e4bd7b220",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "id": "r01_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "2900000007c41873009d8cc4e2000000000007",
+      "sha1": "1caf527619f9a691fedaddc8ea6f13241a228839",
+      "sha256": "a5a081fdb3683568880cb81a3168535cfd3c391dd1065119e5112e0c165da0b7",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "id": "r01_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "29000000087fe54c5251474398000000000008",
+      "sha1": "2dd39f5df1410d0df0560b86f17498d2d4b8c857",
+      "sha256": "48975e56dc898a8aab709279d3450b4f01b76feb2acedbb1cf0c7aed9facab2b",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "id": "r01_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "29000000098329797e324e7d54000000000009",
+      "sha1": "59786ae561bc0b2bf190c16869b25b94596a426d",
+      "sha256": "7c30661627c30fc770d23f8864fa4e1333904c6836d8c856b00a7eb12dd1d585",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "id": "r02_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000000a8ec16956d46d749900000000000a",
+      "sha1": "127496eb923d47bd7cb54b1642f4c71097612f64",
+      "sha256": "3cfb0a9f3dc839cf00139550f2617c9941f7c959ea311c17d963b671d30f5bcd",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "id": "r02_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000000bf4098f466ed2ea3200000000000b",
+      "sha1": "d33a00dcdf9bdc06a96c307bbd906bdaf0cfe1f8",
+      "sha256": "596d40470d7cc9a9b37e107c12eef9e4ec8ee6dd148ebf641e9f5ab567160427",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "id": "r02_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000000c1b08a35f7aad42a100000000000c",
+      "sha1": "edba847b4dbb831cd2f0ddea31dd17b26a3da440",
+      "sha256": "d27d04014cf3fc7c6c95945dfe700a4c7de54b54292792fa74eab1ac5f93b598",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "id": "r02_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000000ddf20653c76b0a7a400000000000d",
+      "sha1": "d94ef58e5b79faafcc19b990c341cbd166ea66d6",
+      "sha256": "81bd0b7ad23b7f2e9cbb2812d8b3d1449b76de5256c0ff0bcbb17de97c68e65e",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "rollback_before_enroll",
+    "id": "r03_rollback_before_enroll",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000000e001362f62c47cb6200000000000e",
+      "sha1": "b8fd140f2cefd1b498e3bf117595d16fdfc056b4",
+      "sha256": "e211fef8bb41fb4ef0a83ccd5776b6e5be5a9a7e1fa7ddc2755559a333a329c3",
+      "upns": [
+        "administrator@q1lab.test"
+      ]
+    },
+    "condition": "enabled_admin_san",
+    "id": "r03_enabled_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": true,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "290000000fb270416a09fe9be100000000000f",
+      "sha1": "d16cfef4c4af5e22f94c9bf3d88e1ae197c1b06e",
+      "sha256": "921f0e2a52848590790cd5ec1efb7f04be465047434137cda784044b653d1867",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "baseline_admin_san",
+    "id": "r03_baseline_admin_san",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  },
+  {
+    "certificate_identity": {
+      "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+      "serial": "2900000010461b4789f758a626000000000010",
+      "sha1": "7c87ae2b65ff47d8cb85ed56aa90e4f90b4702af",
+      "sha256": "7b21ee245aad1ed1dbdbfa74caa00e1950898330a0a6a43dc9961c5cc3912ebe",
+      "upns": [
+        "q1.enroller@q1lab.test"
+      ]
+    },
+    "condition": "benign_self_enrollment",
+    "id": "r03_benign_self_enrollment",
+    "native_submission_exit": 0,
+    "privileged_san_present": false,
+    "restored": true,
+    "status": "issued_auth_attempted"
+  }
+]

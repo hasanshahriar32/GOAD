@@ -1,0 +1,45 @@
+{
+  "baselines": "Executed local correlation algorithms; no claim that Certipy, BloodHound, Splunk, or HADES was run.",
+  "cases_per_family_per_seed": 40,
+  "clock_model": "Independent per-record bounded intervals; true simulated times are inside bounds except explicitly injected consistency faults.",
+  "families": [
+    "clean",
+    "issuer_collision",
+    "conflicting_fields",
+    "reused_skid",
+    "missing_bridge",
+    "late_bridge",
+    "clock_overlap",
+    "failed_auth",
+    "preceding_auth",
+    "long_delay",
+    "unrelated_template",
+    "boundary_overlap",
+    "conflicting_bridge",
+    "missing_issuer",
+    "request_namespace_collision",
+    "missing_competitor",
+    "outside_model_forgery",
+    "randomized_mix"
+  ],
+  "methods": [
+    "legacy_or_keys",
+    "issuer_serial",
+    "conjunctive_point",
+    "conjunctive_window300",
+    "constraint_lineage"
+  ],
+  "negative_control": "outside_model_forgery violates the trusted-record assumption and is excluded from the main aggregate",
+  "python": "3.11.17",
+  "random_mixture_cases_per_seed": 400,
+  "schema": 1,
+  "scope": "Stratified synthetic challenge plus archive replay; not enterprise prevalence or attack detection accuracy.",
+  "seeds": [
+    2011,
+    3019,
+    4021,
+    5023,
+    6029
+  ],
+  "task": "Observed issuance-to-successful-certificate-authentication linkage"
+}

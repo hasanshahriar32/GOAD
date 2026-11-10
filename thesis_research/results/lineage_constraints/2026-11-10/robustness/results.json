@@ -1,0 +1,1562 @@
+{
+  "repair_aggregate": {
+    "bridge_budget_0": {
+      "candidates": 1440,
+      "cases": 2700,
+      "certain_links": 721,
+      "correct_certain_links": 721,
+      "false_certain_links": 0,
+      "hypotheses": 2700,
+      "retained_true_links": 1440,
+      "true_links": 2180
+    },
+    "bridge_budget_1": {
+      "candidates": 1919,
+      "cases": 2700,
+      "certain_links": 602,
+      "correct_certain_links": 602,
+      "false_certain_links": 0,
+      "hypotheses": 15300,
+      "retained_true_links": 1811,
+      "true_links": 2180
+    },
+    "bridge_budget_2": {
+      "candidates": 2288,
+      "cases": 2700,
+      "certain_links": 602,
+      "correct_certain_links": 602,
+      "false_certain_links": 0,
+      "hypotheses": 49800,
+      "retained_true_links": 2180,
+      "true_links": 2180
+    },
+    "ignore_all_bridges": {
+      "candidates": 2288,
+      "cases": 2700,
+      "certain_links": 1757,
+      "correct_certain_links": 1757,
+      "false_certain_links": 0,
+      "hypotheses": 2700,
+      "retained_true_links": 2180,
+      "true_links": 2180
+    }
+  },
+  "repair_by_cell": {
+    "faults=0,missing=0,ncert=1/bridge_budget_0": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 77,
+      "correct_certain_links": 77,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=0,missing=0,ncert=1/bridge_budget_1": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 77,
+      "correct_certain_links": 77,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=0,missing=0,ncert=1/bridge_budget_2": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 77,
+      "correct_certain_links": 77,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=0,missing=0,ncert=1/ignore_all_bridges": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 77,
+      "correct_certain_links": 77,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=0,missing=0,ncert=4/bridge_budget_0": {
+      "candidates": 79,
+      "cases": 100,
+      "certain_links": 79,
+      "correct_certain_links": 79,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 79,
+      "true_links": 79
+    },
+    "faults=0,missing=0,ncert=4/bridge_budget_1": {
+      "candidates": 79,
+      "cases": 100,
+      "certain_links": 79,
+      "correct_certain_links": 79,
+      "false_certain_links": 0,
+      "hypotheses": 500,
+      "retained_true_links": 79,
+      "true_links": 79
+    },
+    "faults=0,missing=0,ncert=4/bridge_budget_2": {
+      "candidates": 79,
+      "cases": 100,
+      "certain_links": 79,
+      "correct_certain_links": 79,
+      "false_certain_links": 0,
+      "hypotheses": 1100,
+      "retained_true_links": 79,
+      "true_links": 79
+    },
+    "faults=0,missing=0,ncert=4/ignore_all_bridges": {
+      "candidates": 79,
+      "cases": 100,
+      "certain_links": 79,
+      "correct_certain_links": 79,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 79,
+      "true_links": 79
+    },
+    "faults=0,missing=0,ncert=8/bridge_budget_0": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 84,
+      "correct_certain_links": 84,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 84,
+      "true_links": 84
+    },
+    "faults=0,missing=0,ncert=8/bridge_budget_1": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 84,
+      "correct_certain_links": 84,
+      "false_certain_links": 0,
+      "hypotheses": 900,
+      "retained_true_links": 84,
+      "true_links": 84
+    },
+    "faults=0,missing=0,ncert=8/bridge_budget_2": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 84,
+      "correct_certain_links": 84,
+      "false_certain_links": 0,
+      "hypotheses": 3700,
+      "retained_true_links": 84,
+      "true_links": 84
+    },
+    "faults=0,missing=0,ncert=8/ignore_all_bridges": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 84,
+      "correct_certain_links": 84,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 84,
+      "true_links": 84
+    },
+    "faults=0,missing=0.5,ncert=1/bridge_budget_0": {
+      "candidates": 81,
+      "cases": 100,
+      "certain_links": 81,
+      "correct_certain_links": 81,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=0,missing=0.5,ncert=1/bridge_budget_1": {
+      "candidates": 81,
+      "cases": 100,
+      "certain_links": 68,
+      "correct_certain_links": 68,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=0,missing=0.5,ncert=1/bridge_budget_2": {
+      "candidates": 81,
+      "cases": 100,
+      "certain_links": 68,
+      "correct_certain_links": 68,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=0,missing=0.5,ncert=1/ignore_all_bridges": {
+      "candidates": 81,
+      "cases": 100,
+      "certain_links": 68,
+      "correct_certain_links": 68,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=0,missing=0.5,ncert=4/bridge_budget_0": {
+      "candidates": 81,
+      "cases": 100,
+      "certain_links": 81,
+      "correct_certain_links": 81,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=0,missing=0.5,ncert=4/bridge_budget_1": {
+      "candidates": 85,
+      "cases": 100,
+      "certain_links": 68,
+      "correct_certain_links": 68,
+      "false_certain_links": 0,
+      "hypotheses": 500,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=0,missing=0.5,ncert=4/bridge_budget_2": {
+      "candidates": 85,
+      "cases": 100,
+      "certain_links": 68,
+      "correct_certain_links": 68,
+      "false_certain_links": 0,
+      "hypotheses": 1100,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=0,missing=0.5,ncert=4/ignore_all_bridges": {
+      "candidates": 85,
+      "cases": 100,
+      "certain_links": 68,
+      "correct_certain_links": 68,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=0,missing=0.5,ncert=8/bridge_budget_0": {
+      "candidates": 82,
+      "cases": 100,
+      "certain_links": 82,
+      "correct_certain_links": 82,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 82,
+      "true_links": 82
+    },
+    "faults=0,missing=0.5,ncert=8/bridge_budget_1": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 73,
+      "correct_certain_links": 73,
+      "false_certain_links": 0,
+      "hypotheses": 900,
+      "retained_true_links": 82,
+      "true_links": 82
+    },
+    "faults=0,missing=0.5,ncert=8/bridge_budget_2": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 73,
+      "correct_certain_links": 73,
+      "false_certain_links": 0,
+      "hypotheses": 3700,
+      "retained_true_links": 82,
+      "true_links": 82
+    },
+    "faults=0,missing=0.5,ncert=8/ignore_all_bridges": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 73,
+      "correct_certain_links": 73,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 82,
+      "true_links": 82
+    },
+    "faults=0,missing=1,ncert=1/bridge_budget_0": {
+      "candidates": 79,
+      "cases": 100,
+      "certain_links": 79,
+      "correct_certain_links": 79,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 79,
+      "true_links": 79
+    },
+    "faults=0,missing=1,ncert=1/bridge_budget_1": {
+      "candidates": 79,
+      "cases": 100,
+      "certain_links": 57,
+      "correct_certain_links": 57,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 79,
+      "true_links": 79
+    },
+    "faults=0,missing=1,ncert=1/bridge_budget_2": {
+      "candidates": 79,
+      "cases": 100,
+      "certain_links": 57,
+      "correct_certain_links": 57,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 79,
+      "true_links": 79
+    },
+    "faults=0,missing=1,ncert=1/ignore_all_bridges": {
+      "candidates": 79,
+      "cases": 100,
+      "certain_links": 57,
+      "correct_certain_links": 57,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 79,
+      "true_links": 79
+    },
+    "faults=0,missing=1,ncert=4/bridge_budget_0": {
+      "candidates": 75,
+      "cases": 100,
+      "certain_links": 75,
+      "correct_certain_links": 75,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 75,
+      "true_links": 75
+    },
+    "faults=0,missing=1,ncert=4/bridge_budget_1": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 45,
+      "correct_certain_links": 45,
+      "false_certain_links": 0,
+      "hypotheses": 500,
+      "retained_true_links": 75,
+      "true_links": 75
+    },
+    "faults=0,missing=1,ncert=4/bridge_budget_2": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 45,
+      "correct_certain_links": 45,
+      "false_certain_links": 0,
+      "hypotheses": 1100,
+      "retained_true_links": 75,
+      "true_links": 75
+    },
+    "faults=0,missing=1,ncert=4/ignore_all_bridges": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 45,
+      "correct_certain_links": 45,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 75,
+      "true_links": 75
+    },
+    "faults=0,missing=1,ncert=8/bridge_budget_0": {
+      "candidates": 83,
+      "cases": 100,
+      "certain_links": 83,
+      "correct_certain_links": 83,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 83,
+      "true_links": 83
+    },
+    "faults=0,missing=1,ncert=8/bridge_budget_1": {
+      "candidates": 95,
+      "cases": 100,
+      "certain_links": 51,
+      "correct_certain_links": 51,
+      "false_certain_links": 0,
+      "hypotheses": 900,
+      "retained_true_links": 83,
+      "true_links": 83
+    },
+    "faults=0,missing=1,ncert=8/bridge_budget_2": {
+      "candidates": 95,
+      "cases": 100,
+      "certain_links": 51,
+      "correct_certain_links": 51,
+      "false_certain_links": 0,
+      "hypotheses": 3700,
+      "retained_true_links": 83,
+      "true_links": 83
+    },
+    "faults=0,missing=1,ncert=8/ignore_all_bridges": {
+      "candidates": 95,
+      "cases": 100,
+      "certain_links": 51,
+      "correct_certain_links": 51,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 83,
+      "true_links": 83
+    },
+    "faults=1,missing=0,ncert=1/bridge_budget_0": {
+      "candidates": 80,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 80,
+      "true_links": 80
+    },
+    "faults=1,missing=0,ncert=1/bridge_budget_1": {
+      "candidates": 80,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 80,
+      "true_links": 80
+    },
+    "faults=1,missing=0,ncert=1/bridge_budget_2": {
+      "candidates": 80,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 80,
+      "true_links": 80
+    },
+    "faults=1,missing=0,ncert=1/ignore_all_bridges": {
+      "candidates": 80,
+      "cases": 100,
+      "certain_links": 80,
+      "correct_certain_links": 80,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 80,
+      "true_links": 80
+    },
+    "faults=1,missing=0,ncert=4/bridge_budget_0": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=0,ncert=4/bridge_budget_1": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 500,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=0,ncert=4/bridge_budget_2": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=0,ncert=4/ignore_all_bridges": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 77,
+      "correct_certain_links": 77,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=0,ncert=8/bridge_budget_0": {
+      "candidates": 83,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 83,
+      "true_links": 83
+    },
+    "faults=1,missing=0,ncert=8/bridge_budget_1": {
+      "candidates": 83,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 900,
+      "retained_true_links": 83,
+      "true_links": 83
+    },
+    "faults=1,missing=0,ncert=8/bridge_budget_2": {
+      "candidates": 83,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 3700,
+      "retained_true_links": 83,
+      "true_links": 83
+    },
+    "faults=1,missing=0,ncert=8/ignore_all_bridges": {
+      "candidates": 83,
+      "cases": 100,
+      "certain_links": 83,
+      "correct_certain_links": 83,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 83,
+      "true_links": 83
+    },
+    "faults=1,missing=0.5,ncert=1/bridge_budget_0": {
+      "candidates": 40,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 40,
+      "true_links": 84
+    },
+    "faults=1,missing=0.5,ncert=1/bridge_budget_1": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 84,
+      "true_links": 84
+    },
+    "faults=1,missing=0.5,ncert=1/bridge_budget_2": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 84,
+      "true_links": 84
+    },
+    "faults=1,missing=0.5,ncert=1/ignore_all_bridges": {
+      "candidates": 84,
+      "cases": 100,
+      "certain_links": 64,
+      "correct_certain_links": 64,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 84,
+      "true_links": 84
+    },
+    "faults=1,missing=0.5,ncert=4/bridge_budget_0": {
+      "candidates": 39,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 39,
+      "true_links": 77
+    },
+    "faults=1,missing=0.5,ncert=4/bridge_budget_1": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 500,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=0.5,ncert=4/bridge_budget_2": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=0.5,ncert=4/ignore_all_bridges": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 55,
+      "correct_certain_links": 55,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=0.5,ncert=8/bridge_budget_0": {
+      "candidates": 34,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 34,
+      "true_links": 81
+    },
+    "faults=1,missing=0.5,ncert=8/bridge_budget_1": {
+      "candidates": 87,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 900,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=1,missing=0.5,ncert=8/bridge_budget_2": {
+      "candidates": 87,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 3700,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=1,missing=0.5,ncert=8/ignore_all_bridges": {
+      "candidates": 87,
+      "cases": 100,
+      "certain_links": 56,
+      "correct_certain_links": 56,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 81,
+      "true_links": 81
+    },
+    "faults=1,missing=1,ncert=1/bridge_budget_0": {
+      "candidates": 0,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 0,
+      "true_links": 77
+    },
+    "faults=1,missing=1,ncert=1/bridge_budget_1": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=1,ncert=1/bridge_budget_2": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 200,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=1,ncert=1/ignore_all_bridges": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 50,
+      "correct_certain_links": 50,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=1,missing=1,ncert=4/bridge_budget_0": {
+      "candidates": 0,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 0,
+      "true_links": 87
+    },
+    "faults=1,missing=1,ncert=4/bridge_budget_1": {
+      "candidates": 98,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 500,
+      "retained_true_links": 87,
+      "true_links": 87
+    },
+    "faults=1,missing=1,ncert=4/bridge_budget_2": {
+      "candidates": 98,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1100,
+      "retained_true_links": 87,
+      "true_links": 87
+    },
+    "faults=1,missing=1,ncert=4/ignore_all_bridges": {
+      "candidates": 98,
+      "cases": 100,
+      "certain_links": 54,
+      "correct_certain_links": 54,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 87,
+      "true_links": 87
+    },
+    "faults=1,missing=1,ncert=8/bridge_budget_0": {
+      "candidates": 0,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 0,
+      "true_links": 78
+    },
+    "faults=1,missing=1,ncert=8/bridge_budget_1": {
+      "candidates": 87,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 900,
+      "retained_true_links": 78,
+      "true_links": 78
+    },
+    "faults=1,missing=1,ncert=8/bridge_budget_2": {
+      "candidates": 87,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 3700,
+      "retained_true_links": 78,
+      "true_links": 78
+    },
+    "faults=1,missing=1,ncert=8/ignore_all_bridges": {
+      "candidates": 87,
+      "cases": 100,
+      "certain_links": 49,
+      "correct_certain_links": 49,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 78,
+      "true_links": 78
+    },
+    "faults=2,missing=0,ncert=1/bridge_budget_0": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 86,
+      "true_links": 86
+    },
+    "faults=2,missing=0,ncert=1/bridge_budget_1": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 300,
+      "retained_true_links": 86,
+      "true_links": 86
+    },
+    "faults=2,missing=0,ncert=1/bridge_budget_2": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 400,
+      "retained_true_links": 86,
+      "true_links": 86
+    },
+    "faults=2,missing=0,ncert=1/ignore_all_bridges": {
+      "candidates": 86,
+      "cases": 100,
+      "certain_links": 86,
+      "correct_certain_links": 86,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 86,
+      "true_links": 86
+    },
+    "faults=2,missing=0,ncert=4/bridge_budget_0": {
+      "candidates": 75,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 75,
+      "true_links": 75
+    },
+    "faults=2,missing=0,ncert=4/bridge_budget_1": {
+      "candidates": 75,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 600,
+      "retained_true_links": 75,
+      "true_links": 75
+    },
+    "faults=2,missing=0,ncert=4/bridge_budget_2": {
+      "candidates": 75,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1600,
+      "retained_true_links": 75,
+      "true_links": 75
+    },
+    "faults=2,missing=0,ncert=4/ignore_all_bridges": {
+      "candidates": 75,
+      "cases": 100,
+      "certain_links": 75,
+      "correct_certain_links": 75,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 75,
+      "true_links": 75
+    },
+    "faults=2,missing=0,ncert=8/bridge_budget_0": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=2,missing=0,ncert=8/bridge_budget_1": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1000,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=2,missing=0,ncert=8/bridge_budget_2": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 4600,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=2,missing=0,ncert=8/ignore_all_bridges": {
+      "candidates": 77,
+      "cases": 100,
+      "certain_links": 77,
+      "correct_certain_links": 77,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=2,missing=0.5,ncert=1/bridge_budget_0": {
+      "candidates": 41,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 41,
+      "true_links": 89
+    },
+    "faults=2,missing=0.5,ncert=1/bridge_budget_1": {
+      "candidates": 41,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 300,
+      "retained_true_links": 41,
+      "true_links": 89
+    },
+    "faults=2,missing=0.5,ncert=1/bridge_budget_2": {
+      "candidates": 89,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 400,
+      "retained_true_links": 89,
+      "true_links": 89
+    },
+    "faults=2,missing=0.5,ncert=1/ignore_all_bridges": {
+      "candidates": 89,
+      "cases": 100,
+      "certain_links": 73,
+      "correct_certain_links": 73,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 89,
+      "true_links": 89
+    },
+    "faults=2,missing=0.5,ncert=4/bridge_budget_0": {
+      "candidates": 50,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 50,
+      "true_links": 88
+    },
+    "faults=2,missing=0.5,ncert=4/bridge_budget_1": {
+      "candidates": 59,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 600,
+      "retained_true_links": 50,
+      "true_links": 88
+    },
+    "faults=2,missing=0.5,ncert=4/bridge_budget_2": {
+      "candidates": 97,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1600,
+      "retained_true_links": 88,
+      "true_links": 88
+    },
+    "faults=2,missing=0.5,ncert=4/ignore_all_bridges": {
+      "candidates": 97,
+      "cases": 100,
+      "certain_links": 71,
+      "correct_certain_links": 71,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 88,
+      "true_links": 88
+    },
+    "faults=2,missing=0.5,ncert=8/bridge_budget_0": {
+      "candidates": 37,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 37,
+      "true_links": 77
+    },
+    "faults=2,missing=0.5,ncert=8/bridge_budget_1": {
+      "candidates": 42,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1000,
+      "retained_true_links": 37,
+      "true_links": 77
+    },
+    "faults=2,missing=0.5,ncert=8/bridge_budget_2": {
+      "candidates": 82,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 4600,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=2,missing=0.5,ncert=8/ignore_all_bridges": {
+      "candidates": 82,
+      "cases": 100,
+      "certain_links": 57,
+      "correct_certain_links": 57,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 77,
+      "true_links": 77
+    },
+    "faults=2,missing=1,ncert=1/bridge_budget_0": {
+      "candidates": 0,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 0,
+      "true_links": 76
+    },
+    "faults=2,missing=1,ncert=1/bridge_budget_1": {
+      "candidates": 0,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 300,
+      "retained_true_links": 0,
+      "true_links": 76
+    },
+    "faults=2,missing=1,ncert=1/bridge_budget_2": {
+      "candidates": 76,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 400,
+      "retained_true_links": 76,
+      "true_links": 76
+    },
+    "faults=2,missing=1,ncert=1/ignore_all_bridges": {
+      "candidates": 76,
+      "cases": 100,
+      "certain_links": 57,
+      "correct_certain_links": 57,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 76,
+      "true_links": 76
+    },
+    "faults=2,missing=1,ncert=4/bridge_budget_0": {
+      "candidates": 0,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 0,
+      "true_links": 78
+    },
+    "faults=2,missing=1,ncert=4/bridge_budget_1": {
+      "candidates": 11,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 600,
+      "retained_true_links": 0,
+      "true_links": 78
+    },
+    "faults=2,missing=1,ncert=4/bridge_budget_2": {
+      "candidates": 89,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1600,
+      "retained_true_links": 78,
+      "true_links": 78
+    },
+    "faults=2,missing=1,ncert=4/ignore_all_bridges": {
+      "candidates": 89,
+      "cases": 100,
+      "certain_links": 48,
+      "correct_certain_links": 48,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 78,
+      "true_links": 78
+    },
+    "faults=2,missing=1,ncert=8/bridge_budget_0": {
+      "candidates": 0,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 0,
+      "true_links": 89
+    },
+    "faults=2,missing=1,ncert=8/bridge_budget_1": {
+      "candidates": 19,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 1000,
+      "retained_true_links": 0,
+      "true_links": 89
+    },
+    "faults=2,missing=1,ncert=8/bridge_budget_2": {
+      "candidates": 108,
+      "cases": 100,
+      "certain_links": 0,
+      "correct_certain_links": 0,
+      "false_certain_links": 0,
+      "hypotheses": 4600,
+      "retained_true_links": 89,
+      "true_links": 89
+    },
+    "faults=2,missing=1,ncert=8/ignore_all_bridges": {
+      "candidates": 108,
+      "cases": 100,
+      "certain_links": 43,
+      "correct_certain_links": 43,
+      "false_certain_links": 0,
+      "hypotheses": 100,
+      "retained_true_links": 89,
+      "true_links": 89
+    }
+  },
+  "scope": "Locally frozen synthetic study; no external registration, enterprise prevalence, or Windows generalization claim",
+  "temporal_by_cell": {
+    "width=0,order=0,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 47,
+      "definite": 47,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=0,order=0,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 47,
+      "definite": 47,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=0,order=0,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 47,
+      "definite": 47,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=0,order=0,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 44
+    },
+    "width=0,order=0,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 44,
+      "definite": 44,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 44
+    },
+    "width=0,order=0,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 44,
+      "definite": 44,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 44
+    },
+    "width=0,order=0.5,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 50,
+      "definite": 50,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 50
+    },
+    "width=0,order=0.5,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 50,
+      "definite": 50,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 50
+    },
+    "width=0,order=0.5,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 50,
+      "definite": 50,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 50
+    },
+    "width=0,order=0.5,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 46
+    },
+    "width=0,order=0.5,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 46,
+      "definite": 46,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 46
+    },
+    "width=0,order=0.5,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 46,
+      "definite": 46,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 46
+    },
+    "width=0,order=1,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 41,
+      "definite": 41,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 41
+    },
+    "width=0,order=1,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 41,
+      "definite": 41,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 41
+    },
+    "width=0,order=1,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 41,
+      "definite": 41,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 41
+    },
+    "width=0,order=1,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 47
+    },
+    "width=0,order=1,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 47,
+      "definite": 47,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=0,order=1,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 47,
+      "definite": 47,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=2,order=0,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 6,
+      "definite": 6,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 37
+    },
+    "width=2,order=0,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 6,
+      "definite": 6,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 37
+    },
+    "width=2,order=0,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 26,
+      "definite": 33,
+      "false_definite": 7,
+      "inconsistent": 0,
+      "true_overlaps": 37
+    },
+    "width=2,order=0,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 45
+    },
+    "width=2,order=0,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 14,
+      "definite": 14,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 45
+    },
+    "width=2,order=0,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 33,
+      "definite": 40,
+      "false_definite": 7,
+      "inconsistent": 0,
+      "true_overlaps": 45
+    },
+    "width=2,order=0.5,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 16,
+      "definite": 16,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 43
+    },
+    "width=2,order=0.5,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 8,
+      "definite": 8,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 43
+    },
+    "width=2,order=0.5,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 29,
+      "definite": 33,
+      "false_definite": 4,
+      "inconsistent": 0,
+      "true_overlaps": 43
+    },
+    "width=2,order=0.5,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 47
+    },
+    "width=2,order=0.5,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 11,
+      "definite": 11,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=2,order=0.5,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 35,
+      "definite": 38,
+      "false_definite": 3,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=2,order=1,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 47,
+      "definite": 47,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=2,order=1,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 11,
+      "definite": 11,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=2,order=1,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 38,
+      "definite": 42,
+      "false_definite": 4,
+      "inconsistent": 0,
+      "true_overlaps": 47
+    },
+    "width=2,order=1,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 44
+    },
+    "width=2,order=1,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 10,
+      "definite": 10,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 44
+    },
+    "width=2,order=1,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 35,
+      "definite": 40,
+      "false_definite": 5,
+      "inconsistent": 0,
+      "true_overlaps": 44
+    },
+    "width=5,order=0,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 1,
+      "definite": 1,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 38
+    },
+    "width=5,order=0,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 1,
+      "definite": 1,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 38
+    },
+    "width=5,order=0,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 20,
+      "definite": 31,
+      "false_definite": 11,
+      "inconsistent": 0,
+      "true_overlaps": 38
+    },
+    "width=5,order=0,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 49
+    },
+    "width=5,order=0,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 5,
+      "definite": 5,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 49
+    },
+    "width=5,order=0,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 32,
+      "definite": 44,
+      "false_definite": 12,
+      "inconsistent": 0,
+      "true_overlaps": 49
+    },
+    "width=5,order=0.5,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 22,
+      "definite": 22,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 55
+    },
+    "width=5,order=0.5,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 1,
+      "definite": 1,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 55
+    },
+    "width=5,order=0.5,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 25,
+      "definite": 33,
+      "false_definite": 8,
+      "inconsistent": 0,
+      "true_overlaps": 55
+    },
+    "width=5,order=0.5,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 43
+    },
+    "width=5,order=0.5,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 2,
+      "definite": 2,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 43
+    },
+    "width=5,order=0.5,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 25,
+      "definite": 41,
+      "false_definite": 16,
+      "inconsistent": 0,
+      "true_overlaps": 43
+    },
+    "width=5,order=1,negative=0/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 50,
+      "definite": 50,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 50
+    },
+    "width=5,order=1,negative=0/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 1,
+      "definite": 1,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 50
+    },
+    "width=5,order=1,negative=0/point_time": {
+      "cases": 100,
+      "correct_definite": 33,
+      "definite": 40,
+      "false_definite": 7,
+      "inconsistent": 0,
+      "true_overlaps": 50
+    },
+    "width=5,order=1,negative=1/interval_and_order": {
+      "cases": 100,
+      "correct_definite": 0,
+      "definite": 0,
+      "false_definite": 0,
+      "inconsistent": 100,
+      "true_overlaps": 48
+    },
+    "width=5,order=1,negative=1/interval_boxes": {
+      "cases": 100,
+      "correct_definite": 4,
+      "definite": 4,
+      "false_definite": 0,
+      "inconsistent": 0,
+      "true_overlaps": 48
+    },
+    "width=5,order=1,negative=1/point_time": {
+      "cases": 100,
+      "correct_definite": 26,
+      "definite": 43,
+      "false_definite": 17,
+      "inconsistent": 0,
+      "true_overlaps": 48
+    }
+  },
+  "wall_seconds": 14.668293917988194
+}

@@ -1,0 +1,17 @@
+{
+  "certificate_identity": {
+    "issuer": "CN=Q1-Evidence-CA,DC=q1lab,DC=test",
+    "serial": "29000000098329797e324e7d54000000000009",
+    "sha1": "59786ae561bc0b2bf190c16869b25b94596a426d",
+    "sha256": "7c30661627c30fc770d23f8864fa4e1333904c6836d8c856b00a7eb12dd1d585",
+    "upns": [
+      "q1.enroller@q1lab.test"
+    ]
+  },
+  "condition": "rollback_before_enroll",
+  "id": "r02_rollback_before_enroll",
+  "native_submission_exit": 0,
+  "privileged_san_present": false,
+  "restored": true,
+  "status": "issued_auth_attempted"
+}

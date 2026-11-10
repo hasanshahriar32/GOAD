@@ -38,7 +38,7 @@ In an ADCS privilege escalation, the path traverses intermediate membership and 
 \paragraph{ADCS ESC1--ESC15 Taxonomy Scoping Rationale:}
 To establish formal defensive boundaries across the full ESC1--ESC15 escalation taxonomy, our framework partitions vulnerabilities into two distinct structural operating regimes:
 \begin{enumerate}
-    \item \textbf{Template-Centric Topological Vectors (Static Graph Evaluation):} Escalation archetypes ESC1 (enrollee supplies SAN), ESC2 (any-purpose EKU), ESC3 (certificate request agent), ESC4 (template DACL overwrite), ESC9 (weak shadow credentials with template enrollment), and ESC13 (issuance policy OID linkage to administrative groups) are governed by directory access control lists (ACLs), group nesting DAGs, and persistent LDAP configuration flags. These vectors are natively modeled on the static identity multigraph $\mathcal{G}$ and evaluated via reachability-gated graph neural networks and exact symbolic verification.
+    \item \textbf{Template-Centric Topological Vectors (Static Graph Evaluation):} Escalation archetypes ESC1 (enrollee supplies SAN), ESC2 (any-purpose EKU), ESC3 (certificate request agent), ESC4 (template DACL overwrite), ESC9 (certificate templates omitting the security extension), and ESC13 (issuance policy OID linkage to administrative groups) are governed by directory access control lists (ACLs), group nesting DAGs, and persistent LDAP configuration flags. These vectors are natively modeled on the static identity multigraph $\mathcal{G}$ and evaluated via reachability-gated graph neural networks and exact symbolic verification.
     \item \textbf{Runtime Protocol and Environmental Vectors (Dynamic Invariant Tracking):} In contrast, ESC6 (\texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} CA registry flag), ESC7 (CA administrator compromise), ESC8 (HTTP certificate web enrollment NTLM relay), raw PKCS\#10 ASN.1 SAN concealment, and temporal mutation rollbacks (ephemeral ESC4/ESC9 modifications) manifest as server-level registry states, network-layer NTLM reflections, or transient directory modifications that vanish between audit snapshots. Because these vectors leave zero permanent topological footprints in scheduled directory extractions, they strictly require runtime state-tracking by our continuous Cryptographic Invariant Provenance Graph (CIPG).
 \end{enumerate}
 
@@ -55,25 +55,25 @@ Let $t_0 < t_1 < t_2 < t_3$ denote the sequence of discrete timestamps in an att
 \end{itemize}
 \end{definition}
 
-\paragraph{Empirical Verification on Live Windows Server 2019:}
-To measure the impact of this vulnerability, we provisioned an enterprise ADCS cyber-range on Windows Server 2019 Domain Controllers and Enterprise CAs. At each phase of an automated ESC4 attack executed by an unprivileged domain account (\texttt{ESSOS\textbackslash khal.drogo}), we extracted the entire Active Directory database and computed cryptographic SHA-256 digests over the canonicalized JSON object graph. The resulting hashes were:
+\paragraph{Snapshot Indistinguishability and Evidence Scope:}
+For a projection restricted to configuration attributes restored by rollback, let $h_0$ and $h_1$ denote the digests before and during the mutation. The relevant equality is:
 \begin{align}
-\text{SHA-256}(\mathcal{G}_{t_0}) &= \texttt{219376ed1562fb8471f25af34b02d0f18cb044e8ebfe0be907c21e1ddf6452d8} \\
-\text{SHA-256}(\mathcal{G}_{t_1}) &= \texttt{d4f82a991820bc695361de42ab5a782806ccbf269a8bfe7df2f518e95079a491} \\
-\text{SHA-256}(\mathcal{G}_{t_3}) &= \texttt{219376ed1562fb8471f25af34b02d0f18cb044e8ebfe0be907c21e1ddf6452d8}
+\text{SHA-256}(\mathcal{G}_{t_0}) &= h_0 \\
+\text{SHA-256}(\mathcal{G}_{t_1}) &= h_1 \\
+\text{SHA-256}(\mathcal{G}_{t_3}) &= h_0
 \end{align}
 
-Because $\text{SHA-256}(\mathcal{G}_{t_0}) = \text{SHA-256}(\mathcal{G}_{t_3})$, the directory state at $t_3$ is bit-identical to the pre-attack state. Any security system that evaluates static snapshots at scheduled intervals $T > t_3 - t_0$ experiences a complete detection failure:
+This is a conditional indistinguishability argument for that projection, not evidence that the entire AD database is bit-identical. The earlier draft's literal digests cannot substitute for retained canonical input bytes. For a detector using only the restored projection and no other historical evidence, the attack-specific restored-state difference is absent:
 \begin{equation}
 \text{Recall}_{\text{static}}(\text{Attack}_{t \ge t_3}) = 0.0\%
 \end{equation}
-The attacker retains the cryptographic certificate $\text{Cert}_{\text{admin}}$ indefinitely, enabling Kerberos PKINIT authentication at arbitrary future timestamps without leaving any residual footprint in the directory multigraph.
+The issued certificate can remain usable after rollback subject to its validity, revocation, trust, and account-mapping conditions. This does not imply indefinite validity or absence of every residual directory artifact. The new controlled outcome in Section~\ref{sec:evaluation} was measured on inventoried Windows Server 2016 VMs.
 
 \subsection{Protocol Discontinuity: PKCS\#10 ASN.1 SAN Concealment and CA--KDC Logging Gap}
-Even when defenders deploy Security Information and Event Management (SIEM) systems to collect Windows Security audit logs, standard detection rules fail due to a structural discontinuity between Certificate Authority and Key Distribution Center logging schemas.
+Collecting both CA and KDC Security events does not necessarily supply a shared certificate key. The following statement concerns selected observed fields, rather than disjointness of complete Windows event schemas.
 
 \begin{proposition}[CA--KDC Schema Disjointness]
-Let $\pi_{\text{CA}}$ denote the projection of security attributes recorded by Microsoft-Windows-CertificationAuthority (Event IDs 4886 and 4887), and let $\pi_{\text{KDC}}$ denote the projection recorded by Microsoft-Windows-Security-Auditing during Kerberos PKINIT pre-authentication (Event ID 4768). Then:
+Let $\pi_{\text{CA}}$ denote the selected issuance attributes in the captured Security event 4887, and let $\pi_{\text{KDC}}$ denote the projection recorded by Microsoft-Windows-Security-Auditing during Kerberos PKINIT pre-authentication (Event ID 4768). For the listed field-name projections, which exclude generic event metadata:
 \begin{equation}
 \pi_{\text{CA}} \cap \pi_{\text{KDC}} = \emptyset
 \end{equation}
@@ -87,22 +87,24 @@ When an attacker requests a certificate with a rogue Subject Alternative Name (e
     \item \textbf{Raw PKCS\#10 ASN.1 Binary Extension:} Embedded directly within the cryptographic Certificate Signing Request (CSR) under the \texttt{szOID\_SUBJECT\_ALT\_NAME2} (\texttt{2.5.29.17}) extension attribute.
 \end{enumerate}
 
-Our forensic investigation of live Windows Server 2019 event streams reveals that when an attacker employs the PKCS\#10 ASN.1 CSR extension (as executed natively by modern exploit tooling), the CA event log omits the SAN string entirely from the XML event payload:
-\begin{lstlisting}[language=XML,caption={Live Windows Server 2019 Event ID 4887 under PKCS\#10 ASN.1 SAN Concealment.},label=lst:ca_event]
+Our forensic investigation of live archived GOAD event streams reveals that when an attacker employs the PKCS\#10 ASN.1 CSR extension (as executed natively by modern exploit tooling), the CA event log omits the SAN string entirely from the XML event payload:
+\begin{lstlisting}[language=XML,caption={Selected fields from the independent 2019 enabled-condition capture: Security record 20539. The raw XML is retained in the artifact.},label=lst:ca_event]
 <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
   <System>
-    <Provider Name="Microsoft-Windows-CertificationAuthority"/>
+    <Provider Name="Microsoft-Windows-Security-Auditing"/>
     <EventID>4887</EventID>
-    <TimeCreated SystemTime="2026-10-17T03:15:22.418Z"/>
+    <TimeCreated SystemTime="2026-11-10T10:53:51.393283900Z"/>
+    <EventRecordID>20539</EventRecordID>
   </System>
   <EventData>
-    <Data Name="RequestId">19</Data>
-    <Data Name="Requester">ESSOS\khal.drogo</Data>
-    <Data Name="Template">ESC1-Vulnerable</Data>
-    <Data Name="Subject">khal.drogo</Data>
-    <Data Name="Attributes"></Data> <!-- CRITICAL: SAN is completely absent! -->
+    <Data Name="RequestId">7</Data>
+    <Data Name="Requester">Q1LAB\q1.enroller</Data>
+    <Data Name="Subject">CN=q1.enroller</Data>
+    <Data Name="Attributes">
+CertificateTemplate:Q1Evidence
+ccm:WIN-NA2FC16NO63.q1lab.test</Data>
   </EventData>
 </Event>
 \end{lstlisting}
 
-As demonstrated in Listing~\ref{lst:ca_event}, the \texttt{Attributes} tag is completely blank, and the \texttt{Subject} field displays only the low-privileged requester's identity (\texttt{khal.drogo}). Consequently, any SIEM correlation rule that inspects Event 4887 for unauthorized administrator UPNs fails with a $100\%$ false-negative rate. When the attacker subsequently authenticates as \texttt{Administrator} via Kerberos PKINIT (Event 4768), the KDC log records only the certificate serial number and SHA-1 thumbprint (omitting \texttt{SubjectKeyIdentifier}), leaving zero common identifiers to link the issuance to the compromised authentication.
+Listing~\ref{lst:ca_event} contains a template and client-machine attribute, but no textual SAN UPN. The issued public certificate does contain the requested administrative SAN, and an exact-certificate successful KDC event independently checks its use. A query requiring a textual administrative SAN in this issuance event has no such input here; this is a concrete missing-field case, not a measured universal SIEM false-negative rate. The selected issuance fields supply a Request ID and SKID, whereas the certificate-bearing KDC record supplies issuer, serial, and thumbprint. The CA database export supplies the issuer-scoped bridge evaluated in Section~\ref{sec:evaluation}.

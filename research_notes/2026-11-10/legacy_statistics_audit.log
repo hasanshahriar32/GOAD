@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "budget24": {
+    "budget": 24,
+    "topologies": 30,
+    "paired_mean_gain_percentage_points": 0.941646799262224,
+    "nonzero_differences": 5,
+    "positive_differences": 5,
+    "negative_differences": 0,
+    "paired_t_p": 0.06350241971890125,
+    "legacy_asymptotic_wilcoxon_p": 0.043114446783075355,
+    "exact_signed_rank": {
+      "p_value": 0.0625,
+      "nonzero_pairs": 5,
+      "sign_assignments": 32,
+      "tail_assignments": 2,
+      "method": "Two-sided exact conditional signed-rank sign-flip enumeration, zeros omitted, doubled ranks retain ties exactly"
+    },
+    "holm_adjusted_paired_t_p": 0.328125,
+    "holm_adjusted_exact_signed_rank_p": 0.328125
+  },
+  "skip_ablation": {
+    "folds": 5,
+    "full_mean": 0.9985705351559011,
+    "no_skip_mean": 0.4767697376453185,
+    "full_population_sd": 0.0028589296881979644,
+    "no_skip_population_sd": 0.023944017176471155,
+    "t_statistic": 46.245219864195754,
+    "p_value": 1.3077696457800541e-06,
+    "degrees_of_freedom": 4
+  }
+}

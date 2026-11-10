@@ -1,0 +1,875 @@
+[
+  {
+    "seed": 52021,
+    "nodes": 100,
+    "edges": 104,
+    "pairs": 6,
+    "projected_nodes": 20,
+    "projected_edges": 24,
+    "dropped_pairs": 0,
+    "median_ratio": 1.8261402973618968,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 0.0031514209986198694,
+        "projection_inclusive_seconds": 0.001495250005973503,
+        "projection_only_seconds": 0.0005402060050982982,
+        "full_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "ratio": 2.1076214586390143
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.002010436001000926,
+        "projection_inclusive_seconds": 0.0011001539969583973,
+        "projection_only_seconds": 0.00031748900073580444,
+        "full_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "ratio": 1.8274132590157295
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.0019088689878117293,
+        "projection_inclusive_seconds": 0.0011141319992020726,
+        "projection_only_seconds": 0.0002625229972181842,
+        "full_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "ratio": 1.7133239052274214
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.0021130160021129996,
+        "projection_inclusive_seconds": 0.0011570940114324912,
+        "projection_only_seconds": 0.0002713630092330277,
+        "full_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "ratio": 1.8261402973618968
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.0026679930015234277,
+        "projection_inclusive_seconds": 0.001530223002191633,
+        "projection_only_seconds": 0.00036754499888047576,
+        "full_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          72.66666666666667
+        ],
+        "ratio": 1.7435321503481813
+      }
+    ]
+  },
+  {
+    "seed": 52021,
+    "nodes": 1000,
+    "edges": 930,
+    "pairs": 65,
+    "projected_nodes": 173,
+    "projected_edges": 175,
+    "dropped_pairs": 0,
+    "median_ratio": 4.278217312800596,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 0.07984707900322974,
+        "projection_inclusive_seconds": 0.019741733005503193,
+        "projection_only_seconds": 0.002598459002911113,
+        "full_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "ratio": 4.044583065781085
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.12854645900370087,
+        "projection_inclusive_seconds": 0.021381097001722082,
+        "projection_only_seconds": 0.0025433030095882714,
+        "full_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "ratio": 6.012154521040125
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.16142257100727875,
+        "projection_inclusive_seconds": 0.03613276498799678,
+        "projection_only_seconds": 0.004374602998723276,
+        "full_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "ratio": 4.467484596346361
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.14075124899682123,
+        "projection_inclusive_seconds": 0.038432459012256004,
+        "projection_only_seconds": 0.004952549003064632,
+        "full_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "ratio": 3.6623014143314654
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.08446709900454152,
+        "projection_inclusive_seconds": 0.019743526994716376,
+        "projection_only_seconds": 0.002263478992972523,
+        "full_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          42.75
+        ],
+        "ratio": 4.278217312800596
+      }
+    ]
+  },
+  {
+    "seed": 52021,
+    "nodes": 5000,
+    "edges": 4653,
+    "pairs": 325,
+    "projected_nodes": 874,
+    "projected_edges": 877,
+    "dropped_pairs": 0,
+    "median_ratio": 8.317328147700394,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 3.4508942690008553,
+        "projection_inclusive_seconds": 0.45749218499986455,
+        "projection_only_seconds": 0.01569694999489002,
+        "full_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "ratio": 7.543067143325906
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 3.5743472649919568,
+        "projection_inclusive_seconds": 0.39748407500155736,
+        "projection_only_seconds": 0.013914538998506032,
+        "full_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "ratio": 8.99242885385522
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 3.391591646010056,
+        "projection_inclusive_seconds": 0.459154062991729,
+        "projection_only_seconds": 0.015739574999315664,
+        "full_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "ratio": 7.386609243771738
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 3.448146593000274,
+        "projection_inclusive_seconds": 0.40441726200515404,
+        "projection_only_seconds": 0.014803577010752633,
+        "full_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "ratio": 8.52621022135383
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 3.68290171699482,
+        "projection_inclusive_seconds": 0.4427986549999332,
+        "projection_only_seconds": 0.016179654994630255,
+        "full_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          55.33333333333332
+        ],
+        "ratio": 8.317328147700394
+      }
+    ]
+  },
+  {
+    "seed": 53003,
+    "nodes": 100,
+    "edges": 105,
+    "pairs": 6,
+    "projected_nodes": 17,
+    "projected_edges": 17,
+    "dropped_pairs": 0,
+    "median_ratio": 2.020801768185453,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 0.001779120007995516,
+        "projection_inclusive_seconds": 0.0008682449988555163,
+        "projection_only_seconds": 0.00026024699036497623,
+        "full_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "projected_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "ratio": 2.049099056534361
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.0017481349932495505,
+        "projection_inclusive_seconds": 0.0008650700037833303,
+        "projection_only_seconds": 0.0002662129991222173,
+        "full_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "projected_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "ratio": 2.020801768185453
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.0015176659944700077,
+        "projection_inclusive_seconds": 0.0008700569887878373,
+        "projection_only_seconds": 0.00031839299481362104,
+        "full_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "projected_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "ratio": 1.744329410633686
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.001693733996944502,
+        "projection_inclusive_seconds": 0.0008361950021935627,
+        "projection_only_seconds": 0.00026189400523435324,
+        "full_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "projected_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "ratio": 2.0255251376788737
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.001692962003289722,
+        "projection_inclusive_seconds": 0.0008513540087733418,
+        "projection_only_seconds": 0.0002923980064224452,
+        "full_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "projected_result": [
+          100.0,
+          3,
+          70.33333333333333
+        ],
+        "ratio": 1.9885523364469688
+      }
+    ]
+  },
+  {
+    "seed": 53003,
+    "nodes": 1000,
+    "edges": 930,
+    "pairs": 65,
+    "projected_nodes": 182,
+    "projected_edges": 184,
+    "dropped_pairs": 0,
+    "median_ratio": 3.93323875476591,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 0.0863612459943397,
+        "projection_inclusive_seconds": 0.02155993199266959,
+        "projection_only_seconds": 0.0024357089860131964,
+        "full_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "ratio": 4.005636289748161
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.0878469360031886,
+        "projection_inclusive_seconds": 0.021636169010889716,
+        "projection_only_seconds": 0.0027368770097382367,
+        "full_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "ratio": 4.060189026947159
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.08581391899497248,
+        "projection_inclusive_seconds": 0.022789442009525374,
+        "projection_only_seconds": 0.0026079469971591607,
+        "full_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "ratio": 3.7655120717349977
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.08618014899548143,
+        "projection_inclusive_seconds": 0.02193534500838723,
+        "projection_only_seconds": 0.0025079680053750053,
+        "full_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "ratio": 3.92882578151971
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.08741925600043032,
+        "projection_inclusive_seconds": 0.022225769003853202,
+        "projection_only_seconds": 0.002612536001834087,
+        "full_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          40.166666666666664
+        ],
+        "ratio": 3.93323875476591
+      }
+    ]
+  },
+  {
+    "seed": 53003,
+    "nodes": 5000,
+    "edges": 4659,
+    "pairs": 325,
+    "projected_nodes": 882,
+    "projected_edges": 884,
+    "dropped_pairs": 0,
+    "median_ratio": 7.20721446548828,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 3.2435875330120325,
+        "projection_inclusive_seconds": 0.4763451280014124,
+        "projection_only_seconds": 0.014563822012860328,
+        "full_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "ratio": 6.80932236385215
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 3.1319591159990523,
+        "projection_inclusive_seconds": 0.43197447899729013,
+        "projection_only_seconds": 0.015040562007925473,
+        "full_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "ratio": 7.250333684686728
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 2.9365824239939684,
+        "projection_inclusive_seconds": 0.4074504009913653,
+        "projection_only_seconds": 0.012814229994546622,
+        "full_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "ratio": 7.20721446548828
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 3.064577751996694,
+        "projection_inclusive_seconds": 0.4142127490049461,
+        "projection_only_seconds": 0.013804889997118153,
+        "full_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "ratio": 7.398559699957715
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 3.0012651059951168,
+        "projection_inclusive_seconds": 0.4265130579879042,
+        "projection_only_seconds": 0.014512783993268386,
+        "full_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          43.333333333333336
+        ],
+        "ratio": 7.036748464756809
+      }
+    ]
+  },
+  {
+    "seed": 54001,
+    "nodes": 100,
+    "edges": 106,
+    "pairs": 6,
+    "projected_nodes": 23,
+    "projected_edges": 28,
+    "dropped_pairs": 0,
+    "median_ratio": 1.5922377831169159,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 0.002510363992769271,
+        "projection_inclusive_seconds": 0.001410049997502938,
+        "projection_only_seconds": 0.00035602899151854217,
+        "full_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "ratio": 1.7803368655117782
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.0020567880128510296,
+        "projection_inclusive_seconds": 0.0013711240026168525,
+        "projection_only_seconds": 0.00033576099667698145,
+        "full_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "ratio": 1.5000743980307807
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.001834308000979945,
+        "projection_inclusive_seconds": 0.0012818070099456236,
+        "projection_only_seconds": 0.0002841810055542737,
+        "full_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "ratio": 1.4310328986715086
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.0019867569935740903,
+        "projection_inclusive_seconds": 0.001222974999109283,
+        "projection_only_seconds": 0.00031175100593827665,
+        "full_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "ratio": 1.6245278889765407
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.0020880670053884387,
+        "projection_inclusive_seconds": 0.0013114040048094466,
+        "projection_only_seconds": 0.0003138790052616969,
+        "full_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "projected_result": [
+          100.0,
+          5,
+          81.0
+        ],
+        "ratio": 1.5922377831169159
+      }
+    ]
+  },
+  {
+    "seed": 54001,
+    "nodes": 1000,
+    "edges": 930,
+    "pairs": 65,
+    "projected_nodes": 175,
+    "projected_edges": 177,
+    "dropped_pairs": 0,
+    "median_ratio": 3.99639916355802,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 0.08026893400528934,
+        "projection_inclusive_seconds": 0.021545547002460808,
+        "projection_only_seconds": 0.0025337859988212585,
+        "full_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "ratio": 3.7255463505345903
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.09226432400464546,
+        "projection_inclusive_seconds": 0.02308686400647275,
+        "projection_only_seconds": 0.00281524499587249,
+        "full_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "ratio": 3.99639916355802
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.09064814100565854,
+        "projection_inclusive_seconds": 0.020608026010449976,
+        "projection_only_seconds": 0.002447254999424331,
+        "full_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "ratio": 4.398681414692141
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 0.07543238300422672,
+        "projection_inclusive_seconds": 0.020380563000799157,
+        "projection_only_seconds": 0.0029083069966873154,
+        "full_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "ratio": 3.7011923076545474
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 0.07761656900402158,
+        "projection_inclusive_seconds": 0.018286033999174833,
+        "projection_only_seconds": 0.0024179659958463162,
+        "full_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "projected_result": [
+          100.0,
+          4,
+          38.00000000000001
+        ],
+        "ratio": 4.24458190373725
+      }
+    ]
+  },
+  {
+    "seed": 54001,
+    "nodes": 5000,
+    "edges": 4650,
+    "pairs": 325,
+    "projected_nodes": 890,
+    "projected_edges": 894,
+    "dropped_pairs": 0,
+    "median_ratio": 7.971194778118072,
+    "repetitions": [
+      {
+        "order": "full_first",
+        "full_seconds": 3.561323349000304,
+        "projection_inclusive_seconds": 0.4467740969994338,
+        "projection_only_seconds": 0.016612029998213984,
+        "full_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "projected_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "ratio": 7.971194778118072
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 3.7089257359912153,
+        "projection_inclusive_seconds": 0.42728643599548377,
+        "projection_only_seconds": 0.014350836994708516,
+        "full_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "projected_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "ratio": 8.680185991278265
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 3.5565853270090884,
+        "projection_inclusive_seconds": 0.4529243349970784,
+        "projection_only_seconds": 0.01526776299579069,
+        "full_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "projected_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "ratio": 7.852493346448321
+      },
+      {
+        "order": "projection_first",
+        "full_seconds": 3.5533793450013036,
+        "projection_inclusive_seconds": 0.4392912070034072,
+        "projection_only_seconds": 0.01490431500133127,
+        "full_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "projected_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "ratio": 8.088892489427277
+      },
+      {
+        "order": "full_first",
+        "full_seconds": 3.40520677700988,
+        "projection_inclusive_seconds": 0.5140088039916009,
+        "projection_only_seconds": 0.015295908990083262,
+        "full_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "projected_result": [
+          100.0,
+          6,
+          62.83333333333333
+        ],
+        "ratio": 6.624802436390803
+      }
+    ]
+  }
+]

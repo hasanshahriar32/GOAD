@@ -1,0 +1,96 @@
+{
+  "ca": "Q1-Evidence-CA",
+  "declared_utc": "2026-11-10T12:38:04.849081+00:00",
+  "domain": "q1lab.test",
+  "identity_form": "upn_only",
+  "intervention": "original | 1; same signed administrative CSR/key within each block; identical CA cache/RPC readiness control",
+  "original_name_flag": 33554432,
+  "private_keys": "Host process memory and temporary mode-0600 PFX only",
+  "request_signature_hash": "sha256",
+  "required_ubr": 9376,
+  "schema": 1,
+  "scope": "Independent Windows 2019 q1lab.test configuration with controlled repeated interventions; no enterprise-prevalence estimate",
+  "source_sha256": {
+    "scripts/capture_trace7_split_actor_delayed_pkinit.py": "8366e2d464dfb80828d2334d97b33934d810312d3b909f5974be6fa5628cf8e8",
+    "thesis_research/src/lineage_constraints/adjudicate_policy_matrix.py": "bae0c503664dc8f902fb898237d20a1cf88483757b8a74a4e1d8431a215c0680",
+    "thesis_research/src/lineage_constraints/evaluate_live_identity.py": "69effb4765009ca3dcce171000d03e9c1a17468baad7211f61ea72065bb6ad77",
+    "thesis_research/src/lineage_constraints/independent_policy_2019.py": "bfa9f9824c0f8dbffd7dd59a59fe4114da3a5b65aeea8662cfed86554dee4147",
+    "thesis_research/src/lineage_constraints/lab/provision_2019.py": "35c31b75083e3d36c8bc639854da33b43e389de2e698358efcd2b316af69eba3",
+    "thesis_research/src/lineage_constraints/live_policy_matrix.py": "62121a4ee1393428fc0a27019244534a70034eab389288255925054029cb2141"
+  },
+  "template": "Q1Evidence",
+  "trials": [
+    {
+      "condition": "baseline_admin_san",
+      "expected_admin_certificate": false,
+      "id": "r01_baseline_admin_san",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "benign_self_enrollment",
+      "expected_admin_certificate": false,
+      "id": "r01_benign_self_enrollment",
+      "requested_upn": "q1.enroller@q1lab.test"
+    },
+    {
+      "condition": "enabled_admin_san",
+      "expected_admin_certificate": true,
+      "id": "r01_enabled_admin_san",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "rollback_before_enroll",
+      "expected_admin_certificate": false,
+      "id": "r01_rollback_before_enroll",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "rollback_before_enroll",
+      "expected_admin_certificate": false,
+      "id": "r02_rollback_before_enroll",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "benign_self_enrollment",
+      "expected_admin_certificate": false,
+      "id": "r02_benign_self_enrollment",
+      "requested_upn": "q1.enroller@q1lab.test"
+    },
+    {
+      "condition": "baseline_admin_san",
+      "expected_admin_certificate": false,
+      "id": "r02_baseline_admin_san",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "enabled_admin_san",
+      "expected_admin_certificate": true,
+      "id": "r02_enabled_admin_san",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "rollback_before_enroll",
+      "expected_admin_certificate": false,
+      "id": "r03_rollback_before_enroll",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "enabled_admin_san",
+      "expected_admin_certificate": true,
+      "id": "r03_enabled_admin_san",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "baseline_admin_san",
+      "expected_admin_certificate": false,
+      "id": "r03_baseline_admin_san",
+      "requested_upn": "administrator@q1lab.test"
+    },
+    {
+      "condition": "benign_self_enrollment",
+      "expected_admin_certificate": false,
+      "id": "r03_benign_self_enrollment",
+      "requested_upn": "q1.enroller@q1lab.test"
+    }
+  ]
+}

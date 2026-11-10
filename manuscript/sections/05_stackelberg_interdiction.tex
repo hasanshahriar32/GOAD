@@ -1,7 +1,7 @@
 \section{Disruption-Budgeted Stackelberg Remediation Game}
 \label{sec:game_theoretic}
 
-Detecting vulnerabilities is insufficient if remediation induces unacceptable operational friction. In this section, we formulate the autonomous remediation problem as a bilevel Stackelberg game between an enterprise defender and an optimal adversary, prove its computational hardness, and detail the co-adaptive interdiction algorithm.
+Detecting vulnerabilities is insufficient if remediation induces unacceptable operational friction. In this section, we formulate proposed permission-edge revocation as a leader--follower model between an enterprise defender and an optimal adversary, prove its computational hardness, and detail the co-adaptive interdiction algorithm.
 
 \subsection{Bilevel Stackelberg Game Formulation}
 We model the defensive interaction on the identity multigraph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ as a non-cooperative Stackelberg game:
@@ -35,7 +35,7 @@ We now prove that finding the optimal edge revocation strategy to neutralize mul
 
 \begin{theorem}[NP-Hardness of Multi-Principal Access Interdiction]
 \label{thm:nphardness}
-Let $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ be a directed identity multigraph with edge revocation costs $c: \mathcal{E} \to \mathbb{R}^+$, and let $\mathcal{P}_{\text{forbidden}} = \{(s_1, t_1), \dots, (s_k, t_k)\}$ be $k \ge 3$ independent source-target compromise pairs. The Multi-Principal Access Interdiction (MPAI) problem, which decides whether there exists $E_{\text{cut}} \subseteq \mathcal{E}$ with $\sum_{e \in E_{\text{cut}}} c(e) \le B_{\text{ops}}$ such that all paths in $\mathcal{P}_{\text{forbidden}}$ are severed, is NP-complete.
+Let $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ be a directed identity multigraph with positive binary-encoded rational edge revocation costs and budget, and let $\mathcal{P}_{\text{forbidden}} = \{(s_1, t_1), \dots, (s_k, t_k)\}$ be $k \ge 3$ source-target compromise pairs, with $k$ part of the input. Pairs may share endpoints; no endpoint-disjoint restriction is asserted. The Multi-Principal Access Interdiction (MPAI) problem, which decides whether there exists $E_{\text{cut}} \subseteq \mathcal{E}$ with $\sum_{e \in E_{\text{cut}}} c(e) \le B_{\text{ops}}$ such that all paths in $\mathcal{P}_{\text{forbidden}}$ are severed, is NP-complete.
 \end{theorem}
 
 \begin{proof}
@@ -51,38 +51,24 @@ Given a candidate cut set $E_{\text{cut}} \subseteq \mathcal{E}$:
 Because all checks execute in deterministic polynomial time, $\text{MPAI} \in \text{NP}$.
 
 \paragraph{Part 2: Reduction from Directed Multiway Cut.}
-In the Directed Multiway Cut problem, we are given a directed graph $H = (V_H, E_H)$ with positive edge weights $w: E_H \to \mathbb{R}^+$, a set of $k \ge 3$ distinct terminal vertices $X = \{x_1, \dots, x_k\} \subseteq V_H$, and a budget $W$. The objective is to determine whether there exists an edge cut $C \subseteq E_H$ with $\sum_{e \in C} w(e) \le W$ such that no directed path connects any $x_i$ to any $x_j$ ($i \neq j$) in $H' = (V_H, E_H \setminus C)$.
+Directed Multiway Cut takes a directed graph $H=(V_H,E_H)$, positive rational edge costs $w$, terminals $X=\{x_1,\ldots,x_q\}$, and budget $W$, and asks whether a cut of cost at most $W$ removes every path between distinct terminals. This known NP-hard problem is a special source of interdiction instances; the complexity classification is not a new graph-theoretic discovery.
 
-Given an arbitrary instance of Directed Multiway Cut, we construct an instance of MPAI $\langle \mathcal{G} = (\mathcal{V}, \mathcal{E}), c, \mathcal{P}_{\text{forbidden}}, B_{\text{ops}} \rangle$ as follows:
-\begin{enumerate}
-    \item For each terminal $x_i \in X$, construct two vertices in $\mathcal{G}$: a source foothold principal $s_i$ and a target administrative principal $t_i$. For all non-terminals $v \in V_H \setminus X$, set $v \in \mathcal{V}$.
-    \item For every edge $(u, v) \in E_H$:
-    \begin{itemize}
-        \item If $u, v \notin X$, add $(u, v) \in \mathcal{E}$ with cost $c(u, v) = w(u, v)$.
-        \item If $u = x_i \in X$ and $v \notin X$, add $(s_i, v) \in \mathcal{E}$ with cost $c(s_i, v) = w(x_i, v)$.
-        \item If $u \notin X$ and $v = x_j \in X$, add $(u, t_j) \in \mathcal{E}$ with cost $c(u, t_j) = w(u, x_j)$.
-        \item If $u = x_i$ and $v = x_j$ ($i \neq j$), add $(s_i, t_j) \in \mathcal{E}$ with cost $c(s_i, t_j) = w(x_i, x_j)$.
-    \end{itemize}
-    \item Define the set of forbidden pairs as all cross-terminal combinations:
-    \begin{equation}
-    \mathcal{P}_{\text{forbidden}} = \{(s_i, t_j) \mid i, j \in \{1, \dots, k\}, i \neq j\}
-    \end{equation}
-    \item Set budget $B_{\text{ops}} = W$.
-\end{enumerate}
-
-Any valid multiway cut $C \subseteq E_H$ severing all paths between distinct terminals in $H$ directly corresponds to an edge cut $E_{\text{cut}} \subseteq \mathcal{E}$ severing all paths between $s_i$ and $t_j$ in $\mathcal{G}$ with identical total cost $\sum_{e \in E_{\text{cut}}} c(e) = \sum_{e \in C} w(e) \le B_{\text{ops}}$, and vice-versa. Since Directed Multiway Cut is NP-complete for $k \ge 3$, MPAI is NP-complete. Thus, finding the optimal edge-severing defense strategy is NP-hard.
+Retain every vertex and edge of $H$, with its original cost. For each terminal $x_i$, add distinct source and target copies $s_i,t_i$, with connector edges $(s_i,x_i)$ and $(x_i,t_i)$ of cost $W+1$. Set
+\begin{equation}
+\mathcal{P}_{\mathrm{forbidden}}=\{(s_i,t_j):i\ne j\},\qquad B_{\mathrm{ops}}=W.
+\end{equation}
+No budget-feasible cut can remove a connector. A path from $s_i$ to $t_j$ therefore exists exactly when a path from $x_i$ to $x_j$ remains in $H$, including paths passing through other terminals. Consequently, feasible cuts correspond with identical cost in both directions. The construction adds $2q$ vertices, $2q$ edges, and $q(q-1)$ forbidden pairs, and has polynomial encoding length. Together with polynomial verification of a candidate cut and rational budget, this proves NP-completeness of the stated general pair problem. It does not establish a new hardness result for a fixed pair count or for a particular restricted AD graph family.
 \end{proof}
 
 \subsection{Co-Adaptive Stackelberg vs. Static Greedy Interdiction}
-Standard industrial remediation approaches employ static greedy heuristics (e.g., iteratively severing the edge with the highest betweenness centrality or degree). However, on heterogeneous identity multigraphs, greedy heuristics suffer from two severe structural deficiencies:
-\begin{enumerate}
-    \item \textbf{Disruption Blindness:} Myopic greedy algorithms select high-degree nodes without considering edge costs, frequently revoking high-cost \texttt{MemberOf} edges ($c = 3.5$) that cause widespread operational failure while rapidly exhausting the budget $B_{\text{ops}}$.
-    \item \textbf{Fallback Vulnerability:} Greedy selection severs one path without anticipating the attacker's immediate pivot to an alternate parallel template path (e.g., switching from ESC1 to ESC6).
-\end{enumerate}
+We compare simple degree-based and cost-aware static shortest-path-participation heuristics. The latter computes initial path participation divided by assigned edge cost once, so it already accounts for cost. Its limitation is the fixed ranking: earlier cuts can make later candidates redundant, and new shortest paths can change which permissions matter. The adaptive policy recomputes this information after each chosen cut. Degree-only ranking is a distinct baseline and need not have the same cost sensitivity. These are implemented research comparators rather than measured deployments of an industrial remediation product.
 
-In contrast, our \textbf{Co-Adaptive Stackelberg Solver} executes a bilevel branch-and-cut optimization. At each step, it models the attacker's best-response cost-minimizing traversal across the residual multigraph, prioritizing low-disruption structural chokepoints (\texttt{Enroll} and \texttt{EnablesEnrollment} edges on the CA boundary, $c = 1.0$) that simultaneously sever multiple downstream escalation chains.
+The evaluated \textbf{Co-Adaptive Stackelberg policy} is a sequential heuristic for the stated formulation. It recomputes active shortest paths and candidate marginal pair-disconnection gains, prioritizing assigned low-cost structural chokepoints (\texttt{Enroll} and \texttt{EnablesEnrollment} edges on the CA boundary, $c = 1.0$) that can sever multiple downstream escalation chains. This implementation is not a branch-and-cut solver and supplies neither a global optimum nor an equilibrium certificate. The reachability utility shown above does not depend on which surviving shortest path the follower selects; the experiments evaluate that reachability objective rather than a separately validated strategic equilibrium.
 
 \subsection{Operational Edge Immutability ($E_b \subsetneq E$) and Provenance-Cone Scalability}
-In enterprise production networks (Guo et al.~\cite{guo2023scalable,guo2024limited}; Zhang et al.~\cite{zhang2025rethinking}), not all permissions can be revoked without breaking production workflows. A realistic fraction of permissions represents mission-critical operational dependencies (e.g., core domain controllers, legacy service accounts, or administrative replication pipelines) where IT administrators enforce $e \notin E_b$ (\texttt{blockable = False}). Because of these immutable operational corridors, proactive graph hardening alone achieves $98.5 \pm 4.0\%$ path neutralization at $B_{\text{ops}}=24$ (vs. $97.6 \pm 6.5\%$ for static greedy, $p = 0.0431$), leaving an irreducible $\sim 1.5\%$ residual attack surface that \textit{strictly requires} runtime monitoring by CIPG.
+In enterprise production networks (Guo et al.~\cite{guo2023scalable,guo2024limited}; Zhang et al.~\cite{zhang2025rethinking}), not all permissions can be revoked without breaking production workflows. A realistic fraction of permissions represents mission-critical operational dependencies (e.g., core domain controllers, legacy service accounts, or administrative replication pipelines) where IT administrators enforce $e \notin E_b$ (\texttt{blockable = False}). Because of these immutable operational corridors, the historical adaptive heuristic reports $98.5 \pm 4.0\%$ disconnected pairs at $B_{\text{ops}}=24$ (vs. $97.6 \pm 6.5\%$ for static greedy). The saved paired $t$-test has $p=0.0635$, while the historical asymptotic Wilcoxon test has $p=0.0431$. Exact signed-rank enumeration gives $p=0.0625$; the eight-test Holm sensitivity analysis in Section~\ref{sec:evaluation} does not support a significant budget-24 difference, leaving a measured mean residual of approximately $1.5\%$ on those synthetic instances. This is not a proof that the residual is irreducible or that CIPG is its only possible defense.
 
-Furthermore, while naive whole-graph Stackelberg interdiction slows down from $7.2$~ms at $N=100$ to $3,181.5$~ms at $N=5,000$ nodes due to repeated all-pair reachability checks across 325 active attacker paths, \textbf{CIPG Provenance-Cone Guidance} restricts candidate cut evaluations to the backward causal taint cone $\mathcal{D}(v)$ extracted from active alerts. Because $\mathcal{D}(v)$ is bounded to localized causal paths ($66$ nodes), the cone-guided solver neutralizes threats at $N=5,000$ in $2.6$~ms—delivering a \textbf{$1,246.3\times$ speedup}.
+The historical depth-limited cone timing compares fewer source--target queries with the whole-graph task. We replace that performance interpretation with a path-preserving projection evaluated on identical pairs in Section~\ref{sec:evaluation}. Every pair endpoint and every vertex on a requested source--target path is retained, with unchanged edge attributes. This permits a meaningful comparison of the same reachability objective, including projection overhead, without treating a smaller query set as an algorithmic speedup.
+
+\paragraph{Exact small-instance audit and metadata preservation:}
+A fresh 60-case budgeted audit over 30 seven-node, twelve-edge graphs compares exhaustive feasible cuts with the historical adaptive heuristic, a metadata-preserving correction, and static greedy. The historical implementation removes a candidate edge and reinserts only its cost, losing its relation metadata during scoring. The corrected reference restores every attribute before continuing. It matches the optimal severed-pair count in 43/60 cases, compared with 46/60 for the historical version and 21/60 for static greedy, and has a maximum gap of two pairs. Correct metadata handling does not establish a performance improvement or an optimality guarantee. The original large-instance metrics remain historical results; they are not silently relabeled as measurements of the corrected reference.

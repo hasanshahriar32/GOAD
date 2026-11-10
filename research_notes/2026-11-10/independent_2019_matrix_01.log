@@ -1,0 +1,29 @@
+{"id": "r01_baseline_admin_san", "status": "issued_auth_attempted", "restored": true, "privileged_san_present": false, "error": null}
+{"id": "r01_benign_self_enrollment", "status": "issued_auth_attempted", "restored": true, "privileged_san_present": false, "error": null}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/independent_policy_2019.py", line 204, in <module>
+    else:run(args)
+         ^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/independent_policy_2019.py", line 190, in run
+    result=runner.trial(trial,args.output);results.append(result);dump(args.output/"progress.json",results)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/independent_policy_2019.py", line 118, in trial
+    self.find()
+  File "/home/m4x1d/Desktop/GOAD/thesis_research/src/lineage_constraints/independent_policy_2019.py", line 88, in find
+    start=time.perf_counter();r=subprocess.run(command,cwd=folder,capture_output=True,text=True,timeout=120)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/.local/share/uv/python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/.local/share/uv/python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/.local/share/uv/python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/subprocess.py", line 2115, in _communicate
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/m4x1d/.local/share/uv/python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

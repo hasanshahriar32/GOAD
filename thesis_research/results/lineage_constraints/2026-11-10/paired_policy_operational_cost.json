@@ -1,0 +1,2059 @@
+{
+  "input_trial_manifest_sha256": {
+    "r01_baseline_admin_san": "6a62d639b71cf8bb59e98486d831b65e1c5a8781272c36180ba618c672eaf19f",
+    "r01_benign_self_enrollment": "a87e2f8a2056babf7a27814e9c9dd46754fc82eb702a29f8a15132befc12c784",
+    "r01_enabled_admin_san": "9ea70b7bab2da57fb89bb9004da9846ea47f25cc3a09943decd7fb8b4976534a",
+    "r01_rollback_before_enroll": "072c375998285469c59807543f11fde107ea79d374ef05766958944ad81f591b",
+    "r02_baseline_admin_san": "f064908e369c4432af7524b815a6739ac5b3eff75253b3c46d8945cc367ded30",
+    "r02_benign_self_enrollment": "3aa182dd766aec1731d8ba9c9c048955aba36b1fd477836b3692578b35249de5",
+    "r02_enabled_admin_san": "20ae49da29474285986eaeabb49f08a12d0e1805f9e1594a20baa9796afa981c",
+    "r02_rollback_before_enroll": "7a7839b1378b23a9e584d5b4e56e5554c52adf8423251698e3341a9c5bdac3b1",
+    "r03_baseline_admin_san": "e80ef48093645e30a434aadbe386b42166e4d223de652903d30b873cfb64a51d",
+    "r03_benign_self_enrollment": "2d96a7fe857ccb137a98c3ba11cf4c2fcf12cf2fdf99d4fa69a745d197ed88b0",
+    "r03_enabled_admin_san": "cef65599a146ecb567c726cf5dfd50ef5e4d366ed5c42e56d0ea448b992d40af",
+    "r03_rollback_before_enroll": "f306827d9fbd19a1ae9ae551584d6eef94eca249df38ed81aca3df0e2110389e"
+  },
+  "scope": "Measured experiment command envelopes and offline identity reasoning, not continuous polling, detection latency, host RSS or enterprise overhead",
+  "source_sha256": "dfa86ddc0101b3a0c4b1282ffbe97a7ff5b9160356f07ae66a909204bdc1fd1c",
+  "summary": {
+    "offline_identity_median_seconds": {
+      "maximum": 0.018263696998474188,
+      "mean": 0.012104772999009583,
+      "median": 0.010992841747793136,
+      "minimum": 0.008727576503588352,
+      "n": 12
+    },
+    "python_traced_peak_bytes": {
+      "maximum": 1790981,
+      "mean": 1696368.25,
+      "median": 1739307.0,
+      "minimum": 1506590,
+      "n": 12
+    },
+    "trial_command_envelope_seconds": {
+      "maximum": 59.811182498931885,
+      "mean": 52.18780962626139,
+      "median": 50.91255712509155,
+      "minimum": 44.151626110076904,
+      "n": 12
+    }
+  },
+  "trials": [
+    {
+      "ca_export_bytes": 8099,
+      "certificate_observations": 2,
+      "logged_command_seconds": 34.644034639000004,
+      "offline_identity_seconds": {
+        "maximum": 0.015564129993435927,
+        "mean": 0.01115701369853923,
+        "median": 0.010841989998880308,
+        "minimum": 0.00880579098884482,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.722504653,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.7225048542022705
+        },
+        {
+          "monotonic_seconds": 1.246430156,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.2464303970336914
+        },
+        {
+          "monotonic_seconds": 0.850982949,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.8509824275970459
+        },
+        {
+          "monotonic_seconds": 0.843614006,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.843613862991333
+        },
+        {
+          "monotonic_seconds": 0.812228977,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.8122289180755615
+        },
+        {
+          "monotonic_seconds": 0.763421556,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.7634215354919434
+        },
+        {
+          "monotonic_seconds": 0.971863158,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 0.97186279296875
+        },
+        {
+          "monotonic_seconds": 8.578183474,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 8.5781831741333
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "07_csr.json",
+          "wall_seconds": 5.972988128662109
+        },
+        {
+          "monotonic_seconds": 3.91476695,
+          "phase": "07_reused_csr_decode.json",
+          "wall_seconds": 3.914766550064087
+        },
+        {
+          "monotonic_seconds": 0.514916896,
+          "phase": "07_reused_csr_init.json",
+          "wall_seconds": 0.5149166584014893
+        },
+        {
+          "monotonic_seconds": 0.767371694,
+          "phase": "07_reused_csr_part0.json",
+          "wall_seconds": 0.767371416091919
+        },
+        {
+          "monotonic_seconds": 0.444542323,
+          "phase": "07_reused_csr_part1.json",
+          "wall_seconds": 0.44454336166381836
+        },
+        {
+          "monotonic_seconds": 0.454569117,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.45456862449645996
+        },
+        {
+          "monotonic_seconds": 0.376637663,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.37663769721984863
+        },
+        {
+          "monotonic_seconds": 0.334527492,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.33452677726745605
+        },
+        {
+          "monotonic_seconds": 0.325177259,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.3251769542694092
+        },
+        {
+          "monotonic_seconds": 1.465239481,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.4652392864227295
+        },
+        {
+          "monotonic_seconds": 0.423864233,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.42386364936828613
+        },
+        {
+          "monotonic_seconds": 0.353802513,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.3538026809692383
+        },
+        {
+          "monotonic_seconds": 0.395026916,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.39502692222595215
+        },
+        {
+          "monotonic_seconds": 0.344621738,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.3446214199066162
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 2.1261019706726074
+        },
+        {
+          "monotonic_seconds": 0.442720356,
+          "phase": "12_exact_reissued_pfx_transfer_decode.json",
+          "wall_seconds": 0.4427199363708496
+        },
+        {
+          "monotonic_seconds": 0.353957425,
+          "phase": "12_exact_reissued_pfx_transfer_init.json",
+          "wall_seconds": 0.3539578914642334
+        },
+        {
+          "monotonic_seconds": 0.32732095,
+          "phase": "12_exact_reissued_pfx_transfer_part0.json",
+          "wall_seconds": 0.32732057571411133
+        },
+        {
+          "monotonic_seconds": 0.333232747,
+          "phase": "12_exact_reissued_pfx_transfer_part1.json",
+          "wall_seconds": 0.33323240280151367
+        },
+        {
+          "monotonic_seconds": 0.355736351,
+          "phase": "12_exact_reissued_pfx_transfer_part2.json",
+          "wall_seconds": 0.35573601722717285
+        },
+        {
+          "monotonic_seconds": 0.428068166,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.4280681610107422
+        },
+        {
+          "monotonic_seconds": 0.954020692,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.9540202617645264
+        },
+        {
+          "monotonic_seconds": 0.919512091,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.9195120334625244
+        },
+        {
+          "monotonic_seconds": 0.42292551,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.4229249954223633
+        },
+        {
+          "monotonic_seconds": 5.202247147,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 5.202246904373169
+        }
+      ],
+      "python_traced_peak_bytes": 1670423,
+      "recorded_command_envelope_seconds": 44.151626110076904,
+      "retained_raw_xml_bytes": 165276,
+      "trial": "r01_baseline_admin_san"
+    },
+    {
+      "ca_export_bytes": 8327,
+      "certificate_observations": 2,
+      "logged_command_seconds": 39.53319607,
+      "offline_identity_seconds": {
+        "maximum": 0.014754082993022166,
+        "mean": 0.00973597399861319,
+        "median": 0.0092018920040573,
+        "minimum": 0.008633742996607907,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.74585966,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.7458598613739014
+        },
+        {
+          "monotonic_seconds": 1.123477907,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.1234769821166992
+        },
+        {
+          "monotonic_seconds": 0.76413214,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.7641317844390869
+        },
+        {
+          "monotonic_seconds": 0.797412127,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.7974116802215576
+        },
+        {
+          "monotonic_seconds": 4.16825955,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 4.168259620666504
+        },
+        {
+          "monotonic_seconds": 0.802201576,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.8022012710571289
+        },
+        {
+          "monotonic_seconds": 0.962580419,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.9625804424285889
+        },
+        {
+          "monotonic_seconds": 0.990238282,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 0.9902377128601074
+        },
+        {
+          "monotonic_seconds": 6.671083861,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 6.671083927154541
+        },
+        {
+          "monotonic_seconds": 5.251883451,
+          "phase": "07_csr.json",
+          "wall_seconds": 5.251883268356323
+        },
+        {
+          "monotonic_seconds": 0.417372704,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.417372465133667
+        },
+        {
+          "monotonic_seconds": 0.337025305,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.3370246887207031
+        },
+        {
+          "monotonic_seconds": 0.330982296,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.3309824466705322
+        },
+        {
+          "monotonic_seconds": 0.373849018,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.37384867668151855
+        },
+        {
+          "monotonic_seconds": 1.528252148,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.528252124786377
+        },
+        {
+          "monotonic_seconds": 0.403524813,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.40352439880371094
+        },
+        {
+          "monotonic_seconds": 0.334785849,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.33478593826293945
+        },
+        {
+          "monotonic_seconds": 0.320661734,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.3206610679626465
+        },
+        {
+          "monotonic_seconds": 0.323609112,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.3236088752746582
+        },
+        {
+          "monotonic_seconds": 4.169603858,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 4.169604063034058
+        },
+        {
+          "monotonic_seconds": 1.967767302,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 1.9677667617797852
+        },
+        {
+          "monotonic_seconds": 0.415569813,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.4155702590942383
+        },
+        {
+          "monotonic_seconds": 0.87824856,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.8782482147216797
+        },
+        {
+          "monotonic_seconds": 0.837219993,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.8372209072113037
+        },
+        {
+          "monotonic_seconds": 0.41553699,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.41553711891174316
+        },
+        {
+          "monotonic_seconds": 4.202057602,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 4.202057123184204
+        }
+      ],
+      "python_traced_peak_bytes": 1606342,
+      "recorded_command_envelope_seconds": 49.78030443191528,
+      "retained_raw_xml_bytes": 160048,
+      "trial": "r01_benign_self_enrollment"
+    },
+    {
+      "ca_export_bytes": 7869,
+      "certificate_observations": 2,
+      "logged_command_seconds": 46.230376634,
+      "offline_identity_seconds": {
+        "maximum": 0.02139686000009533,
+        "mean": 0.015837718998955096,
+        "median": 0.01728663300309563,
+        "minimum": 0.010518163995584473,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.753554957,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.7535536289215088
+        },
+        {
+          "monotonic_seconds": 1.280498092,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.2804977893829346
+        },
+        {
+          "monotonic_seconds": 0.839655844,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.839655876159668
+        },
+        {
+          "monotonic_seconds": 0.843266554,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.8432660102844238
+        },
+        {
+          "monotonic_seconds": 5.541831505,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 5.541831016540527
+        },
+        {
+          "monotonic_seconds": 1.250047135,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.2500474452972412
+        },
+        {
+          "monotonic_seconds": 0.951041106,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.9510412216186523
+        },
+        {
+          "monotonic_seconds": 1.051644258,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.0516438484191895
+        },
+        {
+          "monotonic_seconds": 8.673492713,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 8.673492431640625
+        },
+        {
+          "monotonic_seconds": 6.287875401,
+          "phase": "07_csr.json",
+          "wall_seconds": 6.287874937057495
+        },
+        {
+          "monotonic_seconds": 0.453277112,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.4532768726348877
+        },
+        {
+          "monotonic_seconds": 0.369846866,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.36984705924987793
+        },
+        {
+          "monotonic_seconds": 0.383521748,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.38352155685424805
+        },
+        {
+          "monotonic_seconds": 0.351331876,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.3513319492340088
+        },
+        {
+          "monotonic_seconds": 4.598412215,
+          "phase": "09_submission.json",
+          "wall_seconds": 4.598412752151489
+        },
+        {
+          "monotonic_seconds": 0.584281081,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.5842809677124023
+        },
+        {
+          "monotonic_seconds": 0.42839481,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.42839527130126953
+        },
+        {
+          "monotonic_seconds": 0.394628167,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.39462757110595703
+        },
+        {
+          "monotonic_seconds": 0.443412182,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.44341230392456055
+        },
+        {
+          "monotonic_seconds": 3.967804495,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 3.967804431915283
+        },
+        {
+          "monotonic_seconds": 1.982598694,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 1.9825987815856934
+        },
+        {
+          "monotonic_seconds": 0.52825439,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.5282547473907471
+        },
+        {
+          "monotonic_seconds": 1.132235983,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.1322360038757324
+        },
+        {
+          "monotonic_seconds": 0.981515109,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.9815146923065186
+        },
+        {
+          "monotonic_seconds": 0.546723262,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.5467236042022705
+        },
+        {
+          "monotonic_seconds": 1.611231079,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 1.6112308502197266
+        }
+      ],
+      "python_traced_peak_bytes": 1778612,
+      "recorded_command_envelope_seconds": 59.811182498931885,
+      "retained_raw_xml_bytes": 177363,
+      "trial": "r01_enabled_admin_san"
+    },
+    {
+      "ca_export_bytes": 8557,
+      "certificate_observations": 2,
+      "logged_command_seconds": 42.929317508,
+      "offline_identity_seconds": {
+        "maximum": 0.015457395988050848,
+        "mean": 0.011012881400529296,
+        "median": 0.010466514999279752,
+        "minimum": 0.009882680998998694,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.615193951,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.6151936054229736
+        },
+        {
+          "monotonic_seconds": 1.050407554,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.0504076480865479
+        },
+        {
+          "monotonic_seconds": 0.77977437,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.7797741889953613
+        },
+        {
+          "monotonic_seconds": 0.856131795,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.8561315536499023
+        },
+        {
+          "monotonic_seconds": 5.290906811,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 5.2909064292907715
+        },
+        {
+          "monotonic_seconds": 4.520837042,
+          "phase": "03_rollback_before_enroll.json",
+          "wall_seconds": 4.5208375453948975
+        },
+        {
+          "monotonic_seconds": 1.11979006,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 1.1197893619537354
+        },
+        {
+          "monotonic_seconds": 0.984281494,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.9842817783355713
+        },
+        {
+          "monotonic_seconds": 1.018388817,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.0183887481689453
+        },
+        {
+          "monotonic_seconds": 8.624017215,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 8.624016761779785
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "07_csr.json",
+          "wall_seconds": 5.417404413223267
+        },
+        {
+          "monotonic_seconds": 3.882521411,
+          "phase": "07_reused_csr_decode.json",
+          "wall_seconds": 3.882521152496338
+        },
+        {
+          "monotonic_seconds": 0.369731984,
+          "phase": "07_reused_csr_init.json",
+          "wall_seconds": 0.3697319030761719
+        },
+        {
+          "monotonic_seconds": 0.389315004,
+          "phase": "07_reused_csr_part0.json",
+          "wall_seconds": 0.3893144130706787
+        },
+        {
+          "monotonic_seconds": 0.385164774,
+          "phase": "07_reused_csr_part1.json",
+          "wall_seconds": 0.3851642608642578
+        },
+        {
+          "monotonic_seconds": 0.399463975,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.3994638919830322
+        },
+        {
+          "monotonic_seconds": 0.333942532,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.3339424133300781
+        },
+        {
+          "monotonic_seconds": 0.315517388,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.3155171871185303
+        },
+        {
+          "monotonic_seconds": 0.529681774,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.5296814441680908
+        },
+        {
+          "monotonic_seconds": 1.494602213,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.4946024417877197
+        },
+        {
+          "monotonic_seconds": 0.380740141,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.380739688873291
+        },
+        {
+          "monotonic_seconds": 0.403603483,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.40360379219055176
+        },
+        {
+          "monotonic_seconds": 0.374624586,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.37462401390075684
+        },
+        {
+          "monotonic_seconds": 0.33932247,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.3393220901489258
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 2.2270994186401367
+        },
+        {
+          "monotonic_seconds": 0.433680068,
+          "phase": "12_exact_reissued_pfx_transfer_decode.json",
+          "wall_seconds": 0.43367981910705566
+        },
+        {
+          "monotonic_seconds": 0.331307351,
+          "phase": "12_exact_reissued_pfx_transfer_init.json",
+          "wall_seconds": 0.33130741119384766
+        },
+        {
+          "monotonic_seconds": 0.356528423,
+          "phase": "12_exact_reissued_pfx_transfer_part0.json",
+          "wall_seconds": 0.35652852058410645
+        },
+        {
+          "monotonic_seconds": 0.408605942,
+          "phase": "12_exact_reissued_pfx_transfer_part1.json",
+          "wall_seconds": 0.40860605239868164
+        },
+        {
+          "monotonic_seconds": 0.366446978,
+          "phase": "12_exact_reissued_pfx_transfer_part2.json",
+          "wall_seconds": 0.36644673347473145
+        },
+        {
+          "monotonic_seconds": 0.395115378,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.3951144218444824
+        },
+        {
+          "monotonic_seconds": 0.777519306,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.7775182723999023
+        },
+        {
+          "monotonic_seconds": 0.936650461,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.9366505146026611
+        },
+        {
+          "monotonic_seconds": 0.457010679,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.45700860023498535
+        },
+        {
+          "monotonic_seconds": 4.008492078,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 4.0084919929504395
+        }
+      ],
+      "python_traced_peak_bytes": 1769857,
+      "recorded_command_envelope_seconds": 52.53998899459839,
+      "retained_raw_xml_bytes": 175977,
+      "trial": "r01_rollback_before_enroll"
+    },
+    {
+      "ca_export_bytes": 8786,
+      "certificate_observations": 2,
+      "logged_command_seconds": 40.50246457400001,
+      "offline_identity_seconds": {
+        "maximum": 0.014853279004455544,
+        "mean": 0.00927973630168708,
+        "median": 0.008727576503588352,
+        "minimum": 0.008214461005991325,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.577685655,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.5776858329772949
+        },
+        {
+          "monotonic_seconds": 1.02701812,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.0270180702209473
+        },
+        {
+          "monotonic_seconds": 0.777517397,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.7775170803070068
+        },
+        {
+          "monotonic_seconds": 0.831234453,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.8312339782714844
+        },
+        {
+          "monotonic_seconds": 0.788109453,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.788109302520752
+        },
+        {
+          "monotonic_seconds": 0.801643642,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.8016436100006104
+        },
+        {
+          "monotonic_seconds": 0.959590178,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 0.9595894813537598
+        },
+        {
+          "monotonic_seconds": 8.668487297,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 8.668487310409546
+        },
+        {
+          "monotonic_seconds": 5.116425961,
+          "phase": "07_csr.json",
+          "wall_seconds": 5.11642599105835
+        },
+        {
+          "monotonic_seconds": 0.367067245,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.3670668601989746
+        },
+        {
+          "monotonic_seconds": 0.343922832,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.34392309188842773
+        },
+        {
+          "monotonic_seconds": 0.312691661,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.31269145011901855
+        },
+        {
+          "monotonic_seconds": 0.314520115,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.31451988220214844
+        },
+        {
+          "monotonic_seconds": 3.580739718,
+          "phase": "09_submission.json",
+          "wall_seconds": 3.580739736557007
+        },
+        {
+          "monotonic_seconds": 0.39961427,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.3996138572692871
+        },
+        {
+          "monotonic_seconds": 0.369401669,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.3694005012512207
+        },
+        {
+          "monotonic_seconds": 0.330735639,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.3307366371154785
+        },
+        {
+          "monotonic_seconds": 0.326241998,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.32624197006225586
+        },
+        {
+          "monotonic_seconds": 6.409052772,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 6.409052610397339
+        },
+        {
+          "monotonic_seconds": 0.504367051,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.5043659210205078
+        },
+        {
+          "monotonic_seconds": 0.952316715,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.9523169994354248
+        },
+        {
+          "monotonic_seconds": 0.828798667,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.8287982940673828
+        },
+        {
+          "monotonic_seconds": 0.421277134,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.4212768077850342
+        },
+        {
+          "monotonic_seconds": 5.494004932,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 5.494004726409912
+        }
+      ],
+      "python_traced_peak_bytes": 1506590,
+      "recorded_command_envelope_seconds": 50.8246328830719,
+      "retained_raw_xml_bytes": 149328,
+      "trial": "r02_baseline_admin_san"
+    },
+    {
+      "ca_export_bytes": 9243,
+      "certificate_observations": 2,
+      "logged_command_seconds": 40.845549161,
+      "offline_identity_seconds": {
+        "maximum": 0.01458945700142067,
+        "mean": 0.010943908797344193,
+        "median": 0.010735366995504592,
+        "minimum": 0.009425812997506,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.627674608,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.6276750564575195
+        },
+        {
+          "monotonic_seconds": 1.053500655,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.0535006523132324
+        },
+        {
+          "monotonic_seconds": 0.935445789,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.9354457855224609
+        },
+        {
+          "monotonic_seconds": 0.965729841,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.9657299518585205
+        },
+        {
+          "monotonic_seconds": 5.232136069,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 5.232136249542236
+        },
+        {
+          "monotonic_seconds": 0.873601633,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.8736014366149902
+        },
+        {
+          "monotonic_seconds": 0.781065449,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.7810654640197754
+        },
+        {
+          "monotonic_seconds": 1.00455554,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.0045554637908936
+        },
+        {
+          "monotonic_seconds": 6.654266227,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 6.654266357421875
+        },
+        {
+          "monotonic_seconds": 4.511837222,
+          "phase": "07_csr.json",
+          "wall_seconds": 4.511835813522339
+        },
+        {
+          "monotonic_seconds": 0.479845328,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.4798460006713867
+        },
+        {
+          "monotonic_seconds": 0.362809437,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.3628087043762207
+        },
+        {
+          "monotonic_seconds": 0.362927785,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.3629279136657715
+        },
+        {
+          "monotonic_seconds": 0.399773361,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.39977264404296875
+        },
+        {
+          "monotonic_seconds": 1.504733021,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.5047330856323242
+        },
+        {
+          "monotonic_seconds": 0.912612558,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.912611722946167
+        },
+        {
+          "monotonic_seconds": 0.321851469,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.3218512535095215
+        },
+        {
+          "monotonic_seconds": 0.333307728,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.33330774307250977
+        },
+        {
+          "monotonic_seconds": 0.366407196,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.3664069175720215
+        },
+        {
+          "monotonic_seconds": 4.050553539,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 4.0505530834198
+        },
+        {
+          "monotonic_seconds": 2.19944143,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 2.199441432952881
+        },
+        {
+          "monotonic_seconds": 0.454307288,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.45430731773376465
+        },
+        {
+          "monotonic_seconds": 0.860476734,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.860476016998291
+        },
+        {
+          "monotonic_seconds": 0.793148372,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.7931482791900635
+        },
+        {
+          "monotonic_seconds": 0.39097217,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.3909721374511719
+        },
+        {
+          "monotonic_seconds": 4.412568712,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 4.41256856918335
+        }
+      ],
+      "python_traced_peak_bytes": 1790981,
+      "recorded_command_envelope_seconds": 50.72217035293579,
+      "retained_raw_xml_bytes": 178109,
+      "trial": "r02_benign_self_enrollment"
+    },
+    {
+      "ca_export_bytes": 9014,
+      "certificate_observations": 2,
+      "logged_command_seconds": 40.75391724200001,
+      "offline_identity_seconds": {
+        "maximum": 0.016081930996733718,
+        "mean": 0.010734942999260966,
+        "median": 0.009769208998477552,
+        "minimum": 0.009297049007727765,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.597726767,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.5977268218994141
+        },
+        {
+          "monotonic_seconds": 1.192691228,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.1926913261413574
+        },
+        {
+          "monotonic_seconds": 0.780742355,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.7807419300079346
+        },
+        {
+          "monotonic_seconds": 0.776449913,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.7764496803283691
+        },
+        {
+          "monotonic_seconds": 4.376502917,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 4.3765034675598145
+        },
+        {
+          "monotonic_seconds": 0.828218147,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.8282172679901123
+        },
+        {
+          "monotonic_seconds": 0.82128072,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.8212809562683105
+        },
+        {
+          "monotonic_seconds": 0.955925974,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 0.955925464630127
+        },
+        {
+          "monotonic_seconds": 6.562410904,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 6.562410593032837
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "07_csr.json",
+          "wall_seconds": 6.1448814868927
+        },
+        {
+          "monotonic_seconds": 4.699474322,
+          "phase": "07_reused_csr_decode.json",
+          "wall_seconds": 4.699474096298218
+        },
+        {
+          "monotonic_seconds": 0.366840657,
+          "phase": "07_reused_csr_init.json",
+          "wall_seconds": 0.3668406009674072
+        },
+        {
+          "monotonic_seconds": 0.322510207,
+          "phase": "07_reused_csr_part0.json",
+          "wall_seconds": 0.3225100040435791
+        },
+        {
+          "monotonic_seconds": 0.372876436,
+          "phase": "07_reused_csr_part1.json",
+          "wall_seconds": 0.3728764057159424
+        },
+        {
+          "monotonic_seconds": 0.440754574,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.44075441360473633
+        },
+        {
+          "monotonic_seconds": 0.357249976,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.3572502136230469
+        },
+        {
+          "monotonic_seconds": 0.356706907,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.3566713333129883
+        },
+        {
+          "monotonic_seconds": 0.355527131,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.3555476665496826
+        },
+        {
+          "monotonic_seconds": 1.709522321,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.7095224857330322
+        },
+        {
+          "monotonic_seconds": 0.393594103,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.39359402656555176
+        },
+        {
+          "monotonic_seconds": 0.322183362,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.32218337059020996
+        },
+        {
+          "monotonic_seconds": 0.316218983,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.31621861457824707
+        },
+        {
+          "monotonic_seconds": 0.321456408,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.3214561939239502
+        },
+        {
+          "monotonic_seconds": 3.860558385,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 3.8605597019195557
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 2.5458028316497803
+        },
+        {
+          "monotonic_seconds": 0.544875893,
+          "phase": "12_exact_reissued_pfx_transfer_decode.json",
+          "wall_seconds": 0.5448758602142334
+        },
+        {
+          "monotonic_seconds": 0.378337278,
+          "phase": "12_exact_reissued_pfx_transfer_init.json",
+          "wall_seconds": 0.37833738327026367
+        },
+        {
+          "monotonic_seconds": 0.484447867,
+          "phase": "12_exact_reissued_pfx_transfer_part0.json",
+          "wall_seconds": 0.4844474792480469
+        },
+        {
+          "monotonic_seconds": 0.370885596,
+          "phase": "12_exact_reissued_pfx_transfer_part1.json",
+          "wall_seconds": 0.37088537216186523
+        },
+        {
+          "monotonic_seconds": 0.385082781,
+          "phase": "12_exact_reissued_pfx_transfer_part2.json",
+          "wall_seconds": 0.3850820064544678
+        },
+        {
+          "monotonic_seconds": 0.413318687,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.4133186340332031
+        },
+        {
+          "monotonic_seconds": 0.806903206,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.8069031238555908
+        },
+        {
+          "monotonic_seconds": 0.78354514,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.7835445404052734
+        },
+        {
+          "monotonic_seconds": 0.422915359,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.4229152202606201
+        },
+        {
+          "monotonic_seconds": 5.076182738,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 5.076183319091797
+        }
+      ],
+      "python_traced_peak_bytes": 1709005,
+      "recorded_command_envelope_seconds": 50.62122464179993,
+      "retained_raw_xml_bytes": 170084,
+      "trial": "r02_enabled_admin_san"
+    },
+    {
+      "ca_export_bytes": 9473,
+      "certificate_observations": 2,
+      "logged_command_seconds": 41.039742261,
+      "offline_identity_seconds": {
+        "maximum": 0.02371315300115384,
+        "mean": 0.015044533897889779,
+        "median": 0.013719546994252596,
+        "minimum": 0.011919632001081482,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.639096,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.6390960216522217
+        },
+        {
+          "monotonic_seconds": 1.189500482,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.1895005702972412
+        },
+        {
+          "monotonic_seconds": 0.762630162,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.7626302242279053
+        },
+        {
+          "monotonic_seconds": 0.829880036,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.8298795223236084
+        },
+        {
+          "monotonic_seconds": 5.462244013,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 5.4622437953948975
+        },
+        {
+          "monotonic_seconds": 4.45637097,
+          "phase": "03_rollback_before_enroll.json",
+          "wall_seconds": 4.456370830535889
+        },
+        {
+          "monotonic_seconds": 0.78053947,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.7805392742156982
+        },
+        {
+          "monotonic_seconds": 0.753021921,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.7530217170715332
+        },
+        {
+          "monotonic_seconds": 1.076898121,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.0768976211547852
+        },
+        {
+          "monotonic_seconds": 6.735482541,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 6.735482692718506
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "07_csr.json",
+          "wall_seconds": 5.396725177764893
+        },
+        {
+          "monotonic_seconds": 3.723385211,
+          "phase": "07_reused_csr_decode.json",
+          "wall_seconds": 3.7233853340148926
+        },
+        {
+          "monotonic_seconds": 0.439383972,
+          "phase": "07_reused_csr_init.json",
+          "wall_seconds": 0.43938374519348145
+        },
+        {
+          "monotonic_seconds": 0.416859917,
+          "phase": "07_reused_csr_part0.json",
+          "wall_seconds": 0.41685938835144043
+        },
+        {
+          "monotonic_seconds": 0.436991911,
+          "phase": "07_reused_csr_part1.json",
+          "wall_seconds": 0.43699145317077637
+        },
+        {
+          "monotonic_seconds": 0.399544087,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.39954376220703125
+        },
+        {
+          "monotonic_seconds": 0.341530675,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.34153056144714355
+        },
+        {
+          "monotonic_seconds": 0.321940338,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.32194042205810547
+        },
+        {
+          "monotonic_seconds": 0.32863644,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.32863664627075195
+        },
+        {
+          "monotonic_seconds": 1.526171158,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.5261712074279785
+        },
+        {
+          "monotonic_seconds": 0.402427159,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.40242791175842285
+        },
+        {
+          "monotonic_seconds": 0.316853596,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.31685400009155273
+        },
+        {
+          "monotonic_seconds": 0.381415065,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.38141465187072754
+        },
+        {
+          "monotonic_seconds": 0.309188413,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.3091881275177002
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 2.2561779022216797
+        },
+        {
+          "monotonic_seconds": 0.517164577,
+          "phase": "12_exact_reissued_pfx_transfer_decode.json",
+          "wall_seconds": 0.5171642303466797
+        },
+        {
+          "monotonic_seconds": 0.322342939,
+          "phase": "12_exact_reissued_pfx_transfer_init.json",
+          "wall_seconds": 0.3223419189453125
+        },
+        {
+          "monotonic_seconds": 0.34645461,
+          "phase": "12_exact_reissued_pfx_transfer_part0.json",
+          "wall_seconds": 0.346454381942749
+        },
+        {
+          "monotonic_seconds": 0.384263639,
+          "phase": "12_exact_reissued_pfx_transfer_part1.json",
+          "wall_seconds": 0.384263277053833
+        },
+        {
+          "monotonic_seconds": 0.36903923,
+          "phase": "12_exact_reissued_pfx_transfer_part2.json",
+          "wall_seconds": 0.36903953552246094
+        },
+        {
+          "monotonic_seconds": 0.454440415,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.4544403553009033
+        },
+        {
+          "monotonic_seconds": 1.079532583,
+          "phase": "99_final_state.json",
+          "wall_seconds": 1.0795323848724365
+        },
+        {
+          "monotonic_seconds": 0.778956441,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.7789566516876221
+        },
+        {
+          "monotonic_seconds": 0.414964833,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.4149644374847412
+        },
+        {
+          "monotonic_seconds": 4.342591336,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 4.342591047286987
+        }
+      ],
+      "python_traced_peak_bytes": 1769778,
+      "recorded_command_envelope_seconds": 51.000481367111206,
+      "retained_raw_xml_bytes": 175964,
+      "trial": "r02_rollback_before_enroll"
+    },
+    {
+      "ca_export_bytes": 10388,
+      "certificate_observations": 2,
+      "logged_command_seconds": 38.33751624,
+      "offline_identity_seconds": {
+        "maximum": 0.018755718992906623,
+        "mean": 0.014509219001047314,
+        "median": 0.013920757504820358,
+        "minimum": 0.012427699999534525,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.677250094,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.6772503852844238
+        },
+        {
+          "monotonic_seconds": 1.023577712,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.0235774517059326
+        },
+        {
+          "monotonic_seconds": 0.874023195,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.8740229606628418
+        },
+        {
+          "monotonic_seconds": 0.839257765,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.8392574787139893
+        },
+        {
+          "monotonic_seconds": 0.746748971,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.7467491626739502
+        },
+        {
+          "monotonic_seconds": 0.828061894,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.828061580657959
+        },
+        {
+          "monotonic_seconds": 0.987539317,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 0.98752760887146
+        },
+        {
+          "monotonic_seconds": 8.595279286,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 8.595279455184937
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "07_csr.json",
+          "wall_seconds": 6.7528908252716064
+        },
+        {
+          "monotonic_seconds": 5.08323674,
+          "phase": "07_reused_csr_decode.json",
+          "wall_seconds": 5.083236217498779
+        },
+        {
+          "monotonic_seconds": 0.454253082,
+          "phase": "07_reused_csr_init.json",
+          "wall_seconds": 0.4542529582977295
+        },
+        {
+          "monotonic_seconds": 0.413221279,
+          "phase": "07_reused_csr_part0.json",
+          "wall_seconds": 0.4132211208343506
+        },
+        {
+          "monotonic_seconds": 0.387789052,
+          "phase": "07_reused_csr_part1.json",
+          "wall_seconds": 0.3877887725830078
+        },
+        {
+          "monotonic_seconds": 0.403188466,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.40318822860717773
+        },
+        {
+          "monotonic_seconds": 0.403119987,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.4031200408935547
+        },
+        {
+          "monotonic_seconds": 0.381805772,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.381805419921875
+        },
+        {
+          "monotonic_seconds": 0.402491933,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.40249156951904297
+        },
+        {
+          "monotonic_seconds": 4.596664835,
+          "phase": "09_submission.json",
+          "wall_seconds": 4.596664905548096
+        },
+        {
+          "monotonic_seconds": 0.423725907,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.4237253665924072
+        },
+        {
+          "monotonic_seconds": 0.358240101,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.35824036598205566
+        },
+        {
+          "monotonic_seconds": 0.350044174,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.35004401206970215
+        },
+        {
+          "monotonic_seconds": 0.34378695,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.34378719329833984
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 2.464071273803711
+        },
+        {
+          "monotonic_seconds": 0.456539683,
+          "phase": "12_exact_reissued_pfx_transfer_decode.json",
+          "wall_seconds": 0.4565398693084717
+        },
+        {
+          "monotonic_seconds": 0.44034998,
+          "phase": "12_exact_reissued_pfx_transfer_init.json",
+          "wall_seconds": 0.4403500556945801
+        },
+        {
+          "monotonic_seconds": 0.44898383,
+          "phase": "12_exact_reissued_pfx_transfer_part0.json",
+          "wall_seconds": 0.44898390769958496
+        },
+        {
+          "monotonic_seconds": 0.375841776,
+          "phase": "12_exact_reissued_pfx_transfer_part1.json",
+          "wall_seconds": 0.3758413791656494
+        },
+        {
+          "monotonic_seconds": 0.365393887,
+          "phase": "12_exact_reissued_pfx_transfer_part2.json",
+          "wall_seconds": 0.36539363861083984
+        },
+        {
+          "monotonic_seconds": 0.522144679,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.5221447944641113
+        },
+        {
+          "monotonic_seconds": 0.849541178,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.8495407104492188
+        },
+        {
+          "monotonic_seconds": 0.8140218,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.8140215873718262
+        },
+        {
+          "monotonic_seconds": 0.422017022,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.42201685905456543
+        },
+        {
+          "monotonic_seconds": 5.069375893,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 5.069375514984131
+        }
+      ],
+      "python_traced_peak_bytes": 1772594,
+      "recorded_command_envelope_seconds": 48.42416858673096,
+      "retained_raw_xml_bytes": 175244,
+      "trial": "r03_baseline_admin_san"
+    },
+    {
+      "ca_export_bytes": 10160,
+      "certificate_observations": 2,
+      "logged_command_seconds": 49.53291863699999,
+      "offline_identity_seconds": {
+        "maximum": 0.027757222997024655,
+        "mean": 0.01699716329749208,
+        "median": 0.018263696998474188,
+        "minimum": 0.010284882999258116,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.657405526,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.6574053764343262
+        },
+        {
+          "monotonic_seconds": 1.152378681,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.152379035949707
+        },
+        {
+          "monotonic_seconds": 0.856232629,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.8562328815460205
+        },
+        {
+          "monotonic_seconds": 0.813318973,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.8133187294006348
+        },
+        {
+          "monotonic_seconds": 4.16806695,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 4.168067455291748
+        },
+        {
+          "monotonic_seconds": 0.876313661,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.8763134479522705
+        },
+        {
+          "monotonic_seconds": 0.765875417,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.7658746242523193
+        },
+        {
+          "monotonic_seconds": 0.971439085,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 0.9714388847351074
+        },
+        {
+          "monotonic_seconds": 6.606485651,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 6.606485843658447
+        },
+        {
+          "monotonic_seconds": 5.821859609,
+          "phase": "07_csr.json",
+          "wall_seconds": 5.82185959815979
+        },
+        {
+          "monotonic_seconds": 0.474432848,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.47443270683288574
+        },
+        {
+          "monotonic_seconds": 0.40876984,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.4087700843811035
+        },
+        {
+          "monotonic_seconds": 0.41397024,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.4139704704284668
+        },
+        {
+          "monotonic_seconds": 0.370573168,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.3705730438232422
+        },
+        {
+          "monotonic_seconds": 1.581473682,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.5814733505249023
+        },
+        {
+          "monotonic_seconds": 0.46146652,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.46146631240844727
+        },
+        {
+          "monotonic_seconds": 0.442822242,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.4428219795227051
+        },
+        {
+          "monotonic_seconds": 0.437199736,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.43719935417175293
+        },
+        {
+          "monotonic_seconds": 0.353651474,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.3536512851715088
+        },
+        {
+          "monotonic_seconds": 4.77387084,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 4.77386999130249
+        },
+        {
+          "monotonic_seconds": 9.411793931,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 9.41179347038269
+        },
+        {
+          "monotonic_seconds": 0.429084902,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.42908477783203125
+        },
+        {
+          "monotonic_seconds": 0.946038625,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.9460384845733643
+        },
+        {
+          "monotonic_seconds": 0.751000075,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.7509992122650146
+        },
+        {
+          "monotonic_seconds": 0.406372815,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.4063727855682373
+        },
+        {
+          "monotonic_seconds": 5.181021517,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 5.181021213531494
+        }
+      ],
+      "python_traced_peak_bytes": 1606314,
+      "recorded_command_envelope_seconds": 59.46650671958923,
+      "retained_raw_xml_bytes": 160034,
+      "trial": "r03_benign_self_enrollment"
+    },
+    {
+      "ca_export_bytes": 9701,
+      "certificate_observations": 2,
+      "logged_command_seconds": 45.10326594199999,
+      "offline_identity_seconds": {
+        "maximum": 0.017742166994139552,
+        "mean": 0.011777441494632512,
+        "median": 0.011180398490978405,
+        "minimum": 0.010491066001122817,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.551220439,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.5512199401855469
+        },
+        {
+          "monotonic_seconds": 0.992690256,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 0.9926900863647461
+        },
+        {
+          "monotonic_seconds": 0.7767241,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.776724100112915
+        },
+        {
+          "monotonic_seconds": 0.903478284,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.9034779071807861
+        },
+        {
+          "monotonic_seconds": 4.473936894,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 4.473935127258301
+        },
+        {
+          "monotonic_seconds": 0.840467155,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.8404669761657715
+        },
+        {
+          "monotonic_seconds": 0.945871355,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 0.945871114730835
+        },
+        {
+          "monotonic_seconds": 0.973541132,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 0.9735405445098877
+        },
+        {
+          "monotonic_seconds": 8.639928882,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 8.639928102493286
+        },
+        {
+          "monotonic_seconds": 6.118060495,
+          "phase": "07_csr.json",
+          "wall_seconds": 6.118060827255249
+        },
+        {
+          "monotonic_seconds": 0.397695997,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.39769554138183594
+        },
+        {
+          "monotonic_seconds": 0.397459841,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.3974599838256836
+        },
+        {
+          "monotonic_seconds": 0.352623979,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.35262393951416016
+        },
+        {
+          "monotonic_seconds": 0.30749014,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.30749034881591797
+        },
+        {
+          "monotonic_seconds": 4.657868957,
+          "phase": "09_submission.json",
+          "wall_seconds": 4.657869815826416
+        },
+        {
+          "monotonic_seconds": 0.41170315,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.41170263290405273
+        },
+        {
+          "monotonic_seconds": 0.613348895,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.613349437713623
+        },
+        {
+          "monotonic_seconds": 0.33764609,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.3376457691192627
+        },
+        {
+          "monotonic_seconds": 0.328922977,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.32892274856567383
+        },
+        {
+          "monotonic_seconds": 3.816205186,
+          "phase": "11_rollback_after_issue.json",
+          "wall_seconds": 3.8162055015563965
+        },
+        {
+          "monotonic_seconds": 1.981926364,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 1.9819262027740479
+        },
+        {
+          "monotonic_seconds": 0.459347807,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.4593479633331299
+        },
+        {
+          "monotonic_seconds": 0.891718088,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.8917179107666016
+        },
+        {
+          "monotonic_seconds": 0.751091826,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 0.751091718673706
+        },
+        {
+          "monotonic_seconds": 0.407271238,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.4072713851928711
+        },
+        {
+          "monotonic_seconds": 3.775026415,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 3.7750260829925537
+        }
+      ],
+      "python_traced_peak_bytes": 1606314,
+      "recorded_command_envelope_seconds": 54.967647314071655,
+      "retained_raw_xml_bytes": 160039,
+      "trial": "r03_enabled_admin_san"
+    },
+    {
+      "ca_export_bytes": 9930,
+      "certificate_observations": 2,
+      "logged_command_seconds": 43.654415532,
+      "offline_identity_seconds": {
+        "maximum": 0.015305334993172437,
+        "mean": 0.011493000797054264,
+        "median": 0.011143693496705964,
+        "minimum": 0.010342287001549266,
+        "n": 10
+      },
+      "phases": [
+        {
+          "monotonic_seconds": 0.560738197,
+          "phase": "00_ca_inventory.json",
+          "wall_seconds": 0.5607380867004395
+        },
+        {
+          "monotonic_seconds": 1.055945176,
+          "phase": "00_domain_context.json",
+          "wall_seconds": 1.0559453964233398
+        },
+        {
+          "monotonic_seconds": 0.781806794,
+          "phase": "01_before_state.json",
+          "wall_seconds": 0.781806230545044
+        },
+        {
+          "monotonic_seconds": 0.810074712,
+          "phase": "01_before_state_effective_policy.json",
+          "wall_seconds": 0.8100748062133789
+        },
+        {
+          "monotonic_seconds": 5.613705344,
+          "phase": "02_enable_subject.json",
+          "wall_seconds": 5.613704681396484
+        },
+        {
+          "monotonic_seconds": 4.475518728,
+          "phase": "03_rollback_before_enroll.json",
+          "wall_seconds": 4.475518703460693
+        },
+        {
+          "monotonic_seconds": 0.816358186,
+          "phase": "04_assigned_state.json",
+          "wall_seconds": 0.8163573741912842
+        },
+        {
+          "monotonic_seconds": 1.013052748,
+          "phase": "04_assigned_state_effective_policy.json",
+          "wall_seconds": 1.0130524635314941
+        },
+        {
+          "monotonic_seconds": 1.031364003,
+          "phase": "05_controlled_cache_refresh.json",
+          "wall_seconds": 1.0313646793365479
+        },
+        {
+          "monotonic_seconds": 6.675031943,
+          "phase": "05_lowpriv_rpc_readiness.json",
+          "wall_seconds": 6.675031661987305
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "07_csr.json",
+          "wall_seconds": 6.328005313873291
+        },
+        {
+          "monotonic_seconds": 4.648398565,
+          "phase": "07_reused_csr_decode.json",
+          "wall_seconds": 4.648398160934448
+        },
+        {
+          "monotonic_seconds": 0.401020434,
+          "phase": "07_reused_csr_init.json",
+          "wall_seconds": 0.4010200500488281
+        },
+        {
+          "monotonic_seconds": 0.494124583,
+          "phase": "07_reused_csr_part0.json",
+          "wall_seconds": 0.494124174118042
+        },
+        {
+          "monotonic_seconds": 0.406677356,
+          "phase": "07_reused_csr_part1.json",
+          "wall_seconds": 0.40667724609375
+        },
+        {
+          "monotonic_seconds": 0.395709459,
+          "phase": "08_csr_transfer_decode.json",
+          "wall_seconds": 0.3957095146179199
+        },
+        {
+          "monotonic_seconds": 0.332894558,
+          "phase": "08_csr_transfer_init.json",
+          "wall_seconds": 0.33289456367492676
+        },
+        {
+          "monotonic_seconds": 0.299379047,
+          "phase": "08_csr_transfer_part0.json",
+          "wall_seconds": 0.2993788719177246
+        },
+        {
+          "monotonic_seconds": 0.326634516,
+          "phase": "08_csr_transfer_part1.json",
+          "wall_seconds": 0.32663416862487793
+        },
+        {
+          "monotonic_seconds": 1.523415825,
+          "phase": "09_submission.json",
+          "wall_seconds": 1.5234158039093018
+        },
+        {
+          "monotonic_seconds": 0.394853801,
+          "phase": "10_certificate_transfer_decode.json",
+          "wall_seconds": 0.3948535919189453
+        },
+        {
+          "monotonic_seconds": 0.326311459,
+          "phase": "10_certificate_transfer_init.json",
+          "wall_seconds": 0.3263118267059326
+        },
+        {
+          "monotonic_seconds": 0.315121122,
+          "phase": "10_certificate_transfer_part0.json",
+          "wall_seconds": 0.3151206970214844
+        },
+        {
+          "monotonic_seconds": 0.313924964,
+          "phase": "10_certificate_transfer_part1.json",
+          "wall_seconds": 0.31392431259155273
+        },
+        {
+          "monotonic_seconds": 0.0,
+          "phase": "12_exact_pfx.json",
+          "wall_seconds": 2.824209451675415
+        },
+        {
+          "monotonic_seconds": 0.446492386,
+          "phase": "12_exact_reissued_pfx_transfer_decode.json",
+          "wall_seconds": 0.44649195671081543
+        },
+        {
+          "monotonic_seconds": 0.34705697,
+          "phase": "12_exact_reissued_pfx_transfer_init.json",
+          "wall_seconds": 0.34705686569213867
+        },
+        {
+          "monotonic_seconds": 0.348542965,
+          "phase": "12_exact_reissued_pfx_transfer_part0.json",
+          "wall_seconds": 0.3485429286956787
+        },
+        {
+          "monotonic_seconds": 0.946779229,
+          "phase": "12_exact_reissued_pfx_transfer_part1.json",
+          "wall_seconds": 0.9467792510986328
+        },
+        {
+          "monotonic_seconds": 0.319797527,
+          "phase": "12_exact_reissued_pfx_transfer_part2.json",
+          "wall_seconds": 0.3197972774505615
+        },
+        {
+          "monotonic_seconds": 0.588077567,
+          "phase": "99_ca_bridge.json",
+          "wall_seconds": 0.5880777835845947
+        },
+        {
+          "monotonic_seconds": 0.751679991,
+          "phase": "99_final_state.json",
+          "wall_seconds": 0.7516798973083496
+        },
+        {
+          "monotonic_seconds": 1.013820607,
+          "phase": "99_final_state_effective_policy.json",
+          "wall_seconds": 1.013819932937622
+        },
+        {
+          "monotonic_seconds": 0.468291162,
+          "phase": "99_remove_private_export.json",
+          "wall_seconds": 0.4682910442352295
+        },
+        {
+          "monotonic_seconds": 5.411815608,
+          "phase": "99_restore_flag.json",
+          "wall_seconds": 5.411815404891968
+        }
+      ],
+      "python_traced_peak_bytes": 1769609,
+      "recorded_command_envelope_seconds": 53.94378161430359,
+      "retained_raw_xml_bytes": 175960,
+      "trial": "r03_rollback_before_enroll"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "certificate_identity": {
+    "issuer": "CN=CertGraph-Lab-CA,DC=essos,DC=local",
+    "serial": "1d0000001ae5615f0f590c6f4b00000000001a",
+    "sha1": "24e63031de5fc1f9dca5f94807b730c2ebbd8bad",
+    "sha256": "c5a4ed07c9cd3c4a980522b1d0ea2cc1511ff8ae14d70fb343674dbdfdb3c5ca",
+    "upns": [
+      "administrator@essos.local"
+    ]
+  },
+  "condition": "enabled_admin_san",
+  "expected_auth_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+  "id": "r01_enabled_admin_san",
+  "native_submission_exit": 0,
+  "privileged_san_present": true,
+  "restored": true,
+  "status": "issued_auth_attempted"
+}

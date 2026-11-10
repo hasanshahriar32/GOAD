@@ -1,0 +1,90 @@
+{
+  "cache_control": "Restart CertSvc after the assigned state, identically across all conditions",
+  "declared_utc": "2026-11-10T04:59:39.130056+00:00",
+  "intervention": "Set only enrollee-supplied-subject bit via original | 1",
+  "labels": "Public certificate SAN, matching 4887 request and successful 4768 certificate/target SID; infrastructure errors are not negatives",
+  "original_name_flag_required": 33554432,
+  "readiness_control": "Successful enrollment RPC ping as the submitter before the single request attempt; preserve all failures",
+  "request_control": "Reuse identical signed CSR bytes within each repeat and requested UPN; no replayed certificate or private-key export substitution",
+  "schema": 2,
+  "scope": "Controlled single-configuration repeated policy interventions, not enterprise prevalence or cross-version generalization",
+  "source_sha256": {
+    "scripts/capture_trace7_split_actor_delayed_pkinit.py": "8366e2d464dfb80828d2334d97b33934d810312d3b909f5974be6fa5628cf8e8",
+    "thesis_research/src/lineage_constraints/live_policy_matrix.py": "62121a4ee1393428fc0a27019244534a70034eab389288255925054029cb2141",
+    "thesis_research/src/lineage_constraints/paired_policy_matrix.py": "bda57accc2ef705396e55e8d6e078fe8ed30b0b93743cf1d265789047ad725ff"
+  },
+  "trials": [
+    {
+      "condition": "enabled_admin_san",
+      "expected_admin_certificate": true,
+      "id": "r01_enabled_admin_san",
+      "requested_upn": "administrator@essos.local"
+    },
+    {
+      "condition": "baseline_admin_san",
+      "expected_admin_certificate": false,
+      "id": "r01_baseline_admin_san",
+      "requested_upn": "administrator@essos.local"
+    },
+    {
+      "condition": "benign_self_enrollment",
+      "expected_admin_certificate": false,
+      "id": "r01_benign_self_enrollment",
+      "requested_upn": "viserys.targaryen@essos.local"
+    },
+    {
+      "condition": "rollback_before_enroll",
+      "expected_admin_certificate": false,
+      "id": "r01_rollback_before_enroll",
+      "requested_upn": "administrator@essos.local"
+    },
+    {
+      "condition": "baseline_admin_san",
+      "expected_admin_certificate": false,
+      "id": "r02_baseline_admin_san",
+      "requested_upn": "administrator@essos.local"
+    },
+    {
+      "condition": "enabled_admin_san",
+      "expected_admin_certificate": true,
+      "id": "r02_enabled_admin_san",
+      "requested_upn": "administrator@essos.local"
+    },
+    {
+      "condition": "benign_self_enrollment",
+      "expected_admin_certificate": false,
+      "id": "r02_benign_self_enrollment",
+      "requested_upn": "viserys.targaryen@essos.local"
+    },
+    {
+      "condition": "rollback_before_enroll",
+      "expected_admin_certificate": false,
+      "id": "r02_rollback_before_enroll",
+      "requested_upn": "administrator@essos.local"
+    },
+    {
+      "condition": "enabled_admin_san",
+      "expected_admin_certificate": true,
+      "id": "r03_enabled_admin_san",
+      "requested_upn": "administrator@essos.local"
+    },
+    {
+      "condition": "rollback_before_enroll",
+      "expected_admin_certificate": false,
+      "id": "r03_rollback_before_enroll",
+      "requested_upn": "administrator@essos.local"
+    },
+    {
+      "condition": "benign_self_enrollment",
+      "expected_admin_certificate": false,
+      "id": "r03_benign_self_enrollment",
+      "requested_upn": "viserys.targaryen@essos.local"
+    },
+    {
+      "condition": "baseline_admin_san",
+      "expected_admin_certificate": false,
+      "id": "r03_baseline_admin_san",
+      "requested_upn": "administrator@essos.local"
+    }
+  ]
+}
