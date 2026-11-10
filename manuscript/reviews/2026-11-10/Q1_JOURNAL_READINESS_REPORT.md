@@ -79,3 +79,6 @@ Neither ranking defines a minimum number of experiments, a manuscript novelty sc
 - [Current-patch detailed findings](../../../research_notes/2026-11-10/CURRENT_PATCH_FINDINGS.md) records the outcome interpretation and reproduction paths.
 - [Validation summary](../../../research_notes/2026-11-10/VALIDATION_SUMMARY.json) records the final test/build and integrity results.
 - The existing single-column style, title, seven-section hierarchy, original figures and original static implementation remain preserved.
+
+
+Final local validation for this cycle: **78 passing tests, 38 compiled pages, no unresolved citation/reference markers**, and successful study/source/privacy/style integrity checks. New tables are visually checked on pages 28 and 30. Research VMs and temporary sleep inhibitors are stopped; private lab disks remain preserved. See the linked validation summary for exact hashes and retained compiler warnings.

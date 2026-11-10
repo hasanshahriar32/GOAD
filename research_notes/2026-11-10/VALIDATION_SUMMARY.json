@@ -122,9 +122,9 @@
       "Q1TransferB": 33554432
     },
     "transfer_shutdown_evidence": "thesis_research/data/lineage_live/2026-11-10/transfer_2019_setup/transfer_shutdown_shutdown.json",
-    "transfer_temporary_sleep_inhibitor_released": false,
+    "transfer_temporary_sleep_inhibitor_released": true,
     "transfer_writable_disk_preserved": true,
-    "verified_utc": "2026-11-10T16:22:22.129854+00:00",
+    "verified_utc": "2026-11-10T18:41:05.873736+00:00",
     "writable_disk_preserved": true
   },
   "literal_bilinear": {
@@ -228,6 +228,10 @@
     "unique_public_certificates": 24
   },
   "scope": "Completed local research gap-closure studies and artifact checks; focused evidence-assurance contribution, no Q1 acceptance, full-PIDS superiority or production-effectiveness certification.",
+  "source_diff_check": {
+    "scope": "Python/LaTeX/Markdown/BibTeX/text source; raw compiler streams retained verbatim",
+    "status": "passed"
+  },
   "static_model_implementation_unchanged": true,
   "style_and_compile_script_unchanged": true,
   "synthetic_confirmation": {
