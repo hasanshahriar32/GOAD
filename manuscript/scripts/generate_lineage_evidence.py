@@ -4,6 +4,7 @@ from collections import Counter, defaultdict
 import hashlib
 import json
 from pathlib import Path
+from evidence_table_layout import style_evidence_tables
 
 ROOT = Path(__file__).resolve().parents[2]
 RESULTS = ROOT / "thesis_research/results/lineage_constraints/2026-11-10"
@@ -14,10 +15,10 @@ def read(name):
 
 
 def table(caption, label, columns, header, rows):
-    return ("\\begin{table}[ht]\n\\centering\n\\caption{" + caption + "}\n\\label{" + label + "}\n\\small\n"
+    return ("\\begin{table*}[ht]\n\\centering\n\\caption{" + caption + "}\n\\label{" + label + "}\n\\small\n"
             "\\begin{tabular}{" + columns + "}\n\\toprule\n" + header + " \\\\\n\\midrule\n" +
             "\n".join(" & ".join(map(str, row)) + " \\\\" for row in rows) +
-            "\n\\bottomrule\n\\end{tabular}\n\\end{table}\n")
+            "\n\\bottomrule\n\\end{tabular}\n\\end{table*}\n")
 
 
 def main():
@@ -69,17 +70,22 @@ def main():
                                      ("rollback_before_enroll", "Rollback before request"),
                                      ("benign_self_enrollment", "Legitimate self request")):
                 r = paired["by_condition"][condition]
-                rows.append([os_label,label,r["trials"],r["verified_privileged_uses"],r["certipy_esc1"],r["sigma_eku_rule"]])
+                outcomes = [x for x in paired['trials'] if x['condition'] == condition]
+                assert len(outcomes) == r['trials']
+                assert all(x['verified_certificate_use'] for x in outcomes)
+                self_uses = sum(not x['verified_administrator_use'] for x in outcomes)
+                assert self_uses + r['verified_privileged_uses'] == r['trials']
+                rows.append([os_label,label,r["trials"],self_uses,r["verified_privileged_uses"],r["certipy_esc1"],r["sigma_eku_rule"]])
         text += table("Paired interventions in Windows 2016 and an independent Windows 2019 forest: three blocks per environment, with identical signed administrative CSR/key within each block. All 24 certificate-use outcomes are checked and baseline readback is restored. External columns concern configuration risk on the exact template, not attack intent. The 2019 build is 17763.4974.",
-                      "tab:paired_live_policy", "llrrrr", "OS & Condition & Trials & Admin uses & ESC1 & Risky EKU", rows)
+                      "tab:paired_live_policy", "llrrrrr", "OS & Condition & Trials & Self uses & Admin uses & ESC1 & Risky EKU", rows)
     path = ROOT/"manuscript/generated/lineage_evidence.tex"
     path.parent.mkdir(exist_ok=True)
-    path.write_text(text)
+    path.write_text(style_evidence_tables(text))
     inputs = [RESULTS/"confirmation/results.json", RESULTS/"robustness/results.json"]
     if paired_path.exists():
         inputs += [paired_path]
     if independent_path.exists():inputs += [independent_path]
-    (path.parent/"lineage_evidence_manifest.json").write_text(json.dumps({
+    (path.parent/"lineage_evidence_manifest.json").write_text(json.dumps({"layout_sha256": hashlib.sha256((Path(__file__).parent/"evidence_table_layout.py").read_bytes()).hexdigest(),
         "source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "input_sha256": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
         "output_sha256": hashlib.sha256(path.read_bytes()).hexdigest()}, indent=2)+"\n")

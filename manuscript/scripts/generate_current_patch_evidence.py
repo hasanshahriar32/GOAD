@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from evidence_table_layout import style_evidence_tables
 
 from generate_lineage_evidence import table
 
@@ -31,8 +32,8 @@ def main():
             rows.append([label,short,*counts,r["certipy_esc1"],r["postrollback_certipy_esc1"]])
     text=table("Windows 2019 build 17763.9376: three trials per cell, with baseline restored and actual Certipy enumeration repeated before authentication. Reject denotes a certificate-bound KDC rejection; ESC1 columns are configuration findings before request and after rollback. Eighteen missing per-trial CA exports are supplemented by a separately recorded later read-only CA snapshot; original captures remain unchanged.",
                "tab:current_patch_policy","llrrrrr","Request form & Condition & Self & Admin & Reject & ESC1 pre & ESC1 post",rows)
-    path=ROOT/"manuscript/generated/current_patch_evidence.tex";path.write_text(text)
-    path.with_name("current_patch_evidence_manifest.json").write_text(json.dumps({
+    path=ROOT/"manuscript/generated/current_patch_evidence.tex";path.write_text(style_evidence_tables(text))
+    path.with_name("current_patch_evidence_manifest.json").write_text(json.dumps({"layout_sha256": hashlib.sha256((Path(__file__).parent/"evidence_table_layout.py").read_bytes()).hexdigest(),
         "source_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "input_sha256":{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
         "output_sha256":hashlib.sha256(path.read_bytes()).hexdigest()},indent=2)+"\n")

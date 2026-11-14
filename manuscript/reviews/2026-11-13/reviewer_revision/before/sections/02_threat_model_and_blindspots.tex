@@ -1,0 +1,116 @@
+\section{ADCS Threat Model and Systematic Blind Spots}
+\label{sec:threat_model}
+
+In this section, we formalize the heterogeneous identity multigraph of Active Directory Certificate Services and expose two fundamental blind spots in current defensive audit practices: the static snapshot blind spot under rollback attacks, and the PKCS\#10 ASN.1 schema discontinuity between CA and KDC telemetry.
+
+\subsection{Heterogeneous Access Control Multigraph Formalization}
+We model an enterprise Active Directory forest and its integrated Public Key Infrastructure as a directed heterogeneous multigraph (Figure~\ref{fig:adcs_schema}).
+
+\begin{definition}[Identity Multigraph Schema]
+Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterogeneous multigraph, where:
+\begin{itemize}
+    \item $\mathcal{V}$ is the finite set of identity and PKI vertices, and $\phi: \mathcal{V} \to \mathcal{T}_V$ is a node-type assignment function mapping vertices to the entity set:
+    \begin{equation}
+\fitmath{\begin{gathered}\mathcal{T}_V = \{\text{User}, \text{Group}, \text{Computer},\\  \text{CertificateTemplate}, \text{EnterpriseCA}, \text{Domain}\}\end{gathered}}
+\end{equation}
+    \item $\mathcal{E}$ is the finite set of directed edges, and $\psi: \mathcal{E} \to \mathcal{T}_E$ maps edges to relationship types:
+    \begin{equation}
+\fitmath{\begin{gathered}\mathcal{T}_E = \{\text{MemberOf}, \text{GenericAll}, \text{GenericWrite}, \text{WriteOwner}, \text{WriteDacl},   \\ 
+    \text{Enroll}, \text{ExtendedRight}, \text{EnablesEnrollment}, \text{IssuedBy}, \text{TrustedForNTAuth}\}\end{gathered}}
+\end{equation}
+    \item Each node $v \in \mathcal{V}$ is associated with a raw feature vector $\mathbf{x}_v \in \mathbb{R}^{d_{\phi(v)}}$. For certificate templates $t \in \mathcal{V}_{\text{Template}}$, $\mathbf{x}_t \in \{0, 1\}^{10}$ encodes security configuration flags, including whether the template permits enrollee-supplied SANs (\texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT}), requires manager approval (\texttt{CT\_FLAG\_PEND\_ALL\_REQUESTS}), or specifies Client Authentication EKUs (\texttt{1.3.6.1.5.5.7.3.2}).
+\end{itemize}
+\end{definition}
+
+An attack path $p$ from an initial compromised user foothold $u_{\text{attacker}} \in \mathcal{V}_{\text{User}}$ to a high-value domain target $v_{\text{target}} \in \mathcal{V}_{\text{Domain}}$ is a sequence of alternating vertices and edges:
+\begin{equation}
+\fitmath{\begin{gathered}p = (v_0, e_1, v_1, e_2, \dots, e_k, v_k),\\ v_0 = u_{\text{attacker}}, \quad v_k = v_{\text{target}}\end{gathered}}
+\end{equation}
+In an ADCS privilege escalation, the path traverses intermediate membership and ACL delegation edges to a certificate template $t$, leverages an enterprise CA $c$ to issue an administrative credential, and culminates in a domain-level credential takeover.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/adcs_attack_graph_schema.png}
+\caption{Active Directory Certificate Services (ADCS) Heterogeneous Multigraph Schema, detailing the primary security principal entity classes, sixteen directed relationship edges, and the composite escalation attack surface connecting unprivileged domain footholds to Enterprise Domain Controllers.}
+\label{fig:adcs_schema}
+\end{figure*}
+
+\paragraph{ADCS ESC1--ESC15 Taxonomy Scoping Rationale}
+To establish formal defensive boundaries across the full ESC1--ESC15 escalation taxonomy, our framework partitions vulnerabilities into two distinct structural operating regimes:
+\begin{enumerate}
+    \item \textbf{Template-Centric Topological Vectors (Static Graph Evaluation):} Escalation archetypes ESC1 (enrollee supplies SAN), ESC2 (any-purpose EKU), ESC3 (certificate request agent), ESC4 (template DACL overwrite), ESC9 (certificate templates omitting the security extension), and ESC13 (issuance policy OID linkage to administrative groups) are governed by directory access control lists (ACLs), group nesting DAGs, and persistent LDAP configuration flags. These vectors are natively modeled on the static identity multigraph $\mathcal{G}$ and evaluated via reachability-gated graph neural networks and exact symbolic verification.
+    \item \textbf{Runtime Protocol and Environmental Vectors (Dynamic Invariant Tracking):} In contrast, ESC6 (\texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} CA registry flag), ESC7 (CA administrator compromise), ESC8 (HTTP certificate web enrollment NTLM relay), raw PKCS\#10 ASN.1 SAN concealment, and temporal mutation rollbacks (ephemeral ESC4/ESC9 modifications) manifest as server-level registry states, network-layer NTLM reflections, or transient directory modifications that vanish between audit snapshots. Because these vectors leave zero permanent topological footprints in scheduled directory extractions, they strictly require runtime state-tracking by our continuous Cryptographic Invariant Provenance Graph (CIPG).
+\end{enumerate}
+
+\subsection{Template Rollback and Snapshot Evidence}
+Existing enterprise defense workflows rely on periodic directory extraction tools (e.g., BloodHound, SharpHound, Certipy) that execute every 6 to 24 hours. Under temporal mutation-and-rollback attacks (such as ESC4 and ESC9), an attacker exploits transient write permissions to mutate a template, obtain a rogue certificate, and immediately roll back the attributes to their original configuration.
+
+\begin{definition}[Static Snapshot Invariance under Rollback]
+Let $t_0 < t_1 < t_2 < t_3$ denote the sequence of discrete timestamps in an attack execution lifecycle:
+\begin{itemize}
+    \item $t_0$: Pristine baseline state of directory $\mathcal{G}_{t_0}$.
+    \item $t_1$: The attacker executes an LDAP modification adding \texttt{Enroll} permissions or setting \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} on template $t$, yielding state $\mathcal{G}_{t_1}$.
+    \item $t_2$: The attacker submits a certificate request and receives an issued certificate $\text{Cert}_{\text{admin}}$ valid for 1 year.
+    \item $t_3$: The attacker rolls back the template modifications, restoring the directory attributes to their baseline state, yielding $\mathcal{G}_{t_3}$.
+\end{itemize}
+\end{definition}
+
+\paragraph{Snapshot Indistinguishability and Evidence Scope}
+For a projection restricted to configuration attributes restored by rollback, let $h_0$ and $h_1$ denote the digests before and during the mutation. The relevant equality is:
+\begin{equation}
+\fitmath{\begin{gathered}\text{SHA-256}(\mathcal{G}_{t_0}) = h_0\end{gathered}}
+\end{equation}
+\begin{equation}
+\fitmath{\begin{gathered}\text{SHA-256}(\mathcal{G}_{t_1}) = h_1\end{gathered}}
+\end{equation}
+\begin{equation}
+\fitmath{\begin{gathered}\text{SHA-256}(\mathcal{G}_{t_3}) = h_0\end{gathered}}
+\end{equation}
+
+This is a conditional indistinguishability argument for that projection, not evidence that the entire AD database is bit-identical. The earlier draft's literal digests cannot substitute for retained canonical input bytes. For a detector using only the restored projection and no other historical evidence, the attack-specific restored-state difference is absent:
+\begin{equation}
+\fitmath{\text{Recall}_{\text{static}}(\text{Attack}_{t \ge t_3}) = 0.0\%}
+\end{equation}
+The issued certificate can remain usable after rollback subject to its validity, revocation, trust, and account-mapping conditions. This does not imply indefinite validity or absence of every residual directory artifact. The new controlled outcome in Section~\ref{sec:evaluation} was measured on inventoried Windows Server 2016 VMs.
+
+\subsection{Protocol Discontinuity: PKCS\#10 ASN.1 SAN Concealment and CA--KDC Logging Gap}
+Collecting both CA and KDC Security events does not necessarily supply a shared certificate key. The following statement concerns selected observed fields, rather than disjointness of complete Windows event schemas.
+
+\begin{proposition}[CA--KDC Schema Disjointness]
+Let $\pi_{\text{CA}}$ denote the selected issuance attributes in the captured Security event 4887, and let $\pi_{\text{KDC}}$ denote the projection recorded by Microsoft-Windows-Security-Auditing during Kerberos PKINIT pre-authentication (Event ID 4768). For the listed field-name projections, which exclude generic event metadata:
+\begin{equation}
+\fitmath{\pi_{\text{CA}} \cap \pi_{\text{KDC}} = \emptyset}
+\end{equation}
+The selected field-name projections are
+\[\fitmath{\begin{gathered}\pi_{\text{CA}} = \{\text{Subject}, \text{TemplateName}, \text{RequestID},\\  \text{Disposition}, \text{SubjectKeyIdentifier}\}\end{gathered}}\]
+\[\fitmath{\begin{gathered}\pi_{\text{KDC}} = \{\text{TargetUserName}, \text{PreAuthType}=16,\\  \text{CertSerialNumber}, \text{CertThumbprint}\}\end{gathered}}\]
+\end{proposition}
+
+\paragraph{SAN fields in requests and audit records}
+When an attacker requests a certificate with a rogue Subject Alternative Name (e.g., impersonating the Domain Administrator), the SAN attribute can be supplied through two distinct mechanisms:
+\begin{enumerate}
+    \item \textbf{Explicit RPC Attribute String:} Passed via the \texttt{Attributes} string parameter of \texttt{ICertRequest::Submit} (e.g., \texttt{"SAN:upn=Administrator@domain.local"}). In this configuration, the CA security log explicitly populates the \texttt{Attributes} field in Event ID 4887.
+    \item \textbf{Raw PKCS\#10 ASN.1 Binary Extension:} Embedded directly within the cryptographic Certificate Signing Request (CSR) under the \texttt{szOID\_SUBJECT\_ALT\_NAME2} (\texttt{2.5.29.17}) extension attribute.
+\end{enumerate}
+
+Our forensic investigation of live archived GOAD event streams reveals that when an attacker employs the PKCS\#10 ASN.1 CSR extension (as executed natively by modern exploit tooling), the CA event log omits the SAN string entirely from the XML event payload:
+\begin{lstlisting}[language=XML,caption={Selected fields from the independent 2019 enabled-condition capture: Security record 20539. The raw XML is retained in the artifact.},label=lst:ca_event]
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="Microsoft-Windows-Security-Auditing"/>
+    <EventID>4887</EventID>
+    <TimeCreated SystemTime="2026-11-10T10:53:51.393283900Z"/>
+    <EventRecordID>20539</EventRecordID>
+  </System>
+  <EventData>
+    <Data Name="RequestId">7</Data>
+    <Data Name="Requester">Q1LAB\q1.enroller</Data>
+    <Data Name="Subject">CN=q1.enroller</Data>
+    <Data Name="Attributes">
+CertificateTemplate:Q1Evidence
+ccm:WIN-NA2FC16NO63.q1lab.test</Data>
+  </EventData>
+</Event>
+\end{lstlisting}
+
+Listing~\ref{lst:ca_event} contains a template and client-machine attribute, but no textual SAN UPN. The issued public certificate does contain the requested administrative SAN, and an exact-certificate successful KDC event independently checks its use. A query requiring a textual administrative SAN in this issuance event has no such input here; this is a concrete missing-field case, not a measured universal SIEM false-negative rate. The selected issuance fields supply a Request ID and SKID, whereas the certificate-bearing KDC record supplies issuer, serial, and thumbprint. The CA database export supplies the issuer-scoped bridge evaluated in Section~\ref{sec:evaluation}.

@@ -1,8 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{manuscript}[2026/10/17 Standalone Academic 1-Column Manuscript Styling]
+\ProvidesPackage{manuscript}[2026/10/17 IEEE Journal Manuscript Styling]
 
-% Page Geometry: 1.0 inch margins all around
-\RequirePackage[a4paper, top=1.0in, bottom=1.0in, left=1.0in, right=1.0in]{geometry}
+% Page geometry and headings are controlled by IEEEtran.
 
 % Mathematics & Symbols
 \RequirePackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
@@ -12,8 +11,10 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{newtxtext,newtxmath}
 \RequirePackage{microtype}
-\RequirePackage{setspace}
-\setstretch{1.15} % Standard readable single-column journal review spacing
+
+% IEEEtran supplies the text grid; do not stretch paragraphs to fill columns.
+\AtBeginDocument{\raggedbottom}
+\setcounter{secnumdepth}{2}
 
 % Floating element control
 \renewcommand{\topfraction}{0.85}
@@ -36,7 +37,8 @@
 % Hyperlinks
 \RequirePackage{hyperref}
 \hypersetup{
-    colorlinks=true,
+    hidelinks,
+    hypertexnames=false,
     linkcolor=darkblue,
     citecolor=primaryblue,
     urlcolor=accentred,
@@ -45,23 +47,24 @@
 }
 \RequirePackage{xurl}
 \RequirePackage[htt]{hyphenat}
-\DeclareRobustCommand{\_}{\textunderscore\allowbreak}
+\DeclareRobustCommand{\_}{\char95\relax\allowbreak}
 
 % Tables
 \RequirePackage{booktabs}
 \RequirePackage{tabularx}
 \RequirePackage{multirow}
 \RequirePackage{makecell}
-\RequirePackage{caption}
-\RequirePackage{subcaption}
-\captionsetup{font=small,labelfont=bf,margin=10pt}
-\setlength{\tabcolsep}{5pt}
+\RequirePackage[caption=false,font=footnotesize]{subfig}
 
-% Section Headings
-\RequirePackage{titlesec}
-\titleformat{\section}{\normalfont\large\bfseries\color{darkblue}}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\normalsize\bfseries\color{darkblue}}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\normalsize\itshape\color{darkblue}}{\thesubsubsection}{1em}{}
+
+\setlength{\tabcolsep}{4pt}
+\newcommand{\evidencetable}{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.15}}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{14pt plus 2pt minus 2pt}
+
+
+% IEEEtran supplies section and subsection styles.
 
 % Algorithms & Code
 \RequirePackage{algorithm}
@@ -94,14 +97,16 @@
 \newtheorem{invariant}{Invariant}[section]
 \newtheorem{remark}{Remark}[section]
 
-% Headers and Footers
-\RequirePackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\small\itshape CertGraph: Cryptographic Invariant Provenance \& Gated Multigraph Interdiction}
-\fancyhead[R]{\small\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\setlength{\headheight}{15pt}
+% Do not reproduce the reference article's publication banner, DOI or copyright.
+\markboth{CertGraph: Manuscript for Review}{Shahriar et al.: CertGraph}
+
+% Keep vector equations within a column; never enlarge short expressions.
+\newsavebox{\certgraphmathbox}
+\newcommand{\fitmath}[1]{\mbox{\begingroup
+\sbox{\certgraphmathbox}{$\displaystyle #1$}%
+\ifdim\wd\certgraphmathbox>\dimexpr\linewidth-2em\relax
+\resizebox{\dimexpr\linewidth-2em\relax}{!}{\usebox{\certgraphmathbox}}%
+\else\usebox{\certgraphmathbox}\fi\endgroup}}
 
 % Bibliography styling
 \RequirePackage[numbers,sort&compress]{natbib}

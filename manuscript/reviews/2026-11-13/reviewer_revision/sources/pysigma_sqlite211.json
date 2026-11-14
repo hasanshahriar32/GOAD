@@ -1,0 +1,110 @@
+{
+  "info": {
+    "author": "wagga",
+    "author_email": null,
+    "bugtrack_url": null,
+    "classifiers": [
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Programming Language :: Python :: 3.15"
+    ],
+    "description": "![Tests](https://github.com/wagga40/pySigma-backend-sqlite/actions/workflows/test.yml/badge.svg)\n![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/wagga40/2ec45ded898fa11f2c42bcb9d2b163cf/raw/test.json)\n\n# pySigma SQLite Backend\n\nConverts [Sigma](https://github.com/SigmaHQ/sigma) rules into SQLite queries. The\npackage `sigma.backends.sqlite` provides `sqliteBackend`, registered as the\nsigma-cli target `sqlite`. It is the converter behind\n[Zircolite](https://github.com/wagga40/Zircolite), and its output runs on any\nSQLite table of flattened events.\n\nMaintained by [wagga](https://github.com/wagga40/).\n\n## Install\n\n```shell\npip install pysigma-backend-sqlite\n```\n\nRequires Python 3.11+ and [pySigma](https://github.com/SigmaHQ/pySigma) 2.0.1 or\nnewer. Correlation output needs SQLite 3.38 or newer. sigma-cli 3.1 still requires\npySigma 1.x, so alongside it pip installs backend 2.0.0, which has no keyword search.\n\n## Quick start\n\n```python\nfrom sigma.collection import SigmaCollection\nfrom sigma.backends.sqlite import sqliteBackend\n\nrules = SigmaCollection.from_yaml(r\"\"\"\ntitle: Whoami execution\nstatus: test\nlogsource:\n    category: process_creation\n    product: windows\ndetection:\n    selection:\n        Image|endswith: '\\whoami.exe'\n    condition: selection\n\"\"\")\n\nprint(sqliteBackend().convert(rules)[0])\n# SELECT * FROM logs WHERE Image LIKE '%\\\\whoami.exe' ESCAPE '\\'\n```\n\nProcessing pipelines map a logsource to concrete fields. With\n`sqliteBackend(sysmon_pipeline() + windows_logsource_pipeline())` the same rule becomes:\n\n```sql\nSELECT * FROM logs WHERE Channel='Microsoft-Windows-Sysmon/Operational' AND (EventID=1 AND Image LIKE '%\\\\whoami.exe' ESCAPE '\\')\n```\n\nThe sysmon and windows pipelines still declare `pysigma<2`; install them with\n`pip install --no-deps pysigma-pipeline-sysmon pysigma-pipeline-windows`. With sigma-cli:\n\n```shell\nsigma convert -t sqlite -f zircolite -p sysmon -p windows-logsources rules/\n```\n\n## Output formats\n\n| Format | Output |\n|---|---|\n| `default` | One `SELECT * FROM logs WHERE ...` statement per rule |\n| `zircolite` | A JSON list with one entry per rule: Sigma metadata, the SQL, and what a consumer needs to run it. See [output format](https://github.com/SigmaHQ/pySigma-backend-sqlite/blob/main/docs/output-format.md) |\n\n## Options\n\nPass options as constructor keywords, or from sigma-cli with `-O name=value`. Set\nthem at construction; changing attributes afterwards is unsupported.\n\n| Option | Default | Purpose |\n|---|---|---|\n| `table` | `logs` | Table to query. A pipeline `setState` on `table` takes precedence |\n| `collate_nocase` | `false` | Emit `field='value' COLLATE NOCASE` for tables without `NOCASE` columns |\n| `max_flat_operands` | `100` | Longer AND/OR chains are nested to stay under SQLite's expression depth limit |\n| `fulltext_field` | none | Column of searchable event text; enables [keyword search](https://github.com/SigmaHQ/pySigma-backend-sqlite/blob/main/docs/keyword-search.md) |\n| `timestamp_field` | `timestamp` | Event time column used by correlations |\n| `timestamp_format` | `iso` | `iso`, `unix`, `unix_ms` or `unix_us` |\n| `timestamp_seconds_expression` | ISO parser | SQL turning `{field}` into Unix seconds; overrides `timestamp_format` |\n| `event_id_field` | `rowid` | Non-NULL, per-table unique event identifier for correlation evidence |\n| `observation_end` | latest event | Unix seconds up to which absence windows can expire |\n\n## Generated SQL\n\n| Modifier | SQL |\n|---|---|\n| `contains`, `startswith`, `endswith` | `LIKE '%value%' ESCAPE '\\'` and its prefix/suffix forms |\n| `all` | `AND` of the values |\n| `re` | `REGEXP` (needs a registered function, see [Limitations](#limitations)) |\n| `cidr` | `=` or `LIKE` prefixes of the expanded network |\n| `cased` | `GLOB`; literal `*`, `?`, `[` become `[*]`, `[?]`, `[[]` |\n| `fieldref` | `field1=field2`, or `LIKE` with the second field's `%` and `_` escaped |\n| `exists` | `IS NOT NULL` / `IS NULL` |\n| `gt`, `gte`, `lt`, `lte`, `neq` | `>`, `>=`, `<`, `<=`, negated equality |\n| `minute`, `hour`, `day`, `week`, `month`, `year` | `strftime()` part |\n| `base64`, `base64offset`, `wide`, `utf16*`, `windash` | Expanded by pySigma into ordinary matches |\n\nThe SQL keeps Sigma's meaning without help from the caller:\n\n- **Negation.** Sigma reads a condition on a missing field as false; SQLite reads\n  it as `NULL`, and `NOT NULL` drops the row. Every `NOT` therefore wraps its\n  operand: `EventID=1 AND (NOT COALESCE((CommandLine LIKE '%foo%' ESCAPE '\\'), 0))`.\n- **Case.** `LIKE` ignores case; `=` does only on `NOCASE` columns (Zircolite's\n  layout), otherwise set `collate_nocase`.\n- **Booleans.** `Flag: true` matches text or integer storage: `(Flag='true' OR Flag=1)`.\n- **Field names.** SQLite keywords and names with characters other than letters,\n  digits and `_` are quoted with backticks. `field: null` becomes `field IS NULL`.\n\n## Correlations\n\nAll Sigma correlation types run in SQLite, including chains, aliases and extended\ntemporal conditions. See [correlations](https://github.com/SigmaHQ/pySigma-backend-sqlite/blob/main/docs/correlations.md)\nfor their semantics and the [migration guide](https://github.com/SigmaHQ/pySigma-backend-sqlite/blob/main/docs/migration-v2.md)\nfor upgrading from backend 1.x.\n\n## Keyword search\n\nKeyword (fieldless) rules need `fulltext_field`, a column holding each event's\nsearchable text. See [keyword search](https://github.com/SigmaHQ/pySigma-backend-sqlite/blob/main/docs/keyword-search.md).\n\n## Limitations\n\n- **REGEXP.** SQLite has no built-in `REGEXP`. Register one that is false for `NULL`:\n  `connection.create_function(\"regexp\", 2, lambda p, v: v is not None and re.search(p, str(v)) is not None)`.\n  pySigma validates `|re` with RE2 by default, rejecting lookarounds and\n  backreferences. For trusted rules, pass `policy=TrustedPolicy` (from\n  `sigma.policy.profiles`) to `SigmaCollection.from_yaml()`; the patterns must then\n  suit Python's `re`.\n- **CIDR.** SQLite has no network type. Prefix patterns match IPv6 addresses only\n  in the spellings pySigma expands to.\n- **Case folding** (`NOCASE`, `LIKE`) is ASCII only.\n- **Timestamp parts** use `strftime()` and need ISO-8601 text; a numeric epoch is\n  read as a Julian day. `%W` can return week 0.\n- **Field existence.** SQL `NULL` cannot tell a missing field from an explicit null.\n- **Multi-field `value_count`** (a list in `condition.field`) is rejected.\n- **Unknown columns.** A query naming a column the table lacks fails to prepare.\n  Add missing columns as `NULL` first; see [output format](https://github.com/SigmaHQ/pySigma-backend-sqlite/blob/main/docs/output-format.md).\n\n## Development\n\n```shell\npoetry install\npoetry run pytest\nSQLITE_MIN_BINARY=/path/to/sqlite-3.38 poetry run pytest tests/test_sqlite_minimum.py\n```\n\n`tools/audit_corpus.py` converts and prepares a SigmaHQ checkout per profile (see\n[coverage](https://github.com/SigmaHQ/pySigma-backend-sqlite/blob/main/docs/keyword-search.md#coverage)).\n`tools/benchmark_correlations.py` times sparse and dense correlation windows.\n\n",
+    "description_content_type": "text/markdown",
+    "docs_url": null,
+    "download_url": null,
+    "downloads": {
+      "last_day": -1,
+      "last_month": -1,
+      "last_week": -1
+    },
+    "dynamic": null,
+    "home_page": null,
+    "keywords": null,
+    "license": null,
+    "license_expression": "LGPL-3.0-only",
+    "license_files": [
+      "LICENSE"
+    ],
+    "maintainer": null,
+    "maintainer_email": null,
+    "name": "pySigma-backend-sqlite",
+    "package_url": "https://pypi.org/project/pySigma-backend-sqlite/",
+    "platform": null,
+    "project_url": "https://pypi.org/project/pySigma-backend-sqlite/",
+    "project_urls": {
+      "Repository": "https://github.com/SigmaHQ/pySigma-backend-sqlite"
+    },
+    "provides_extra": null,
+    "release_url": "https://pypi.org/project/pySigma-backend-sqlite/2.1.1/",
+    "requires_dist": [
+      "pysigma<3.0,>=2.0.1"
+    ],
+    "requires_python": "<4.0,>=3.11",
+    "summary": "pySigma sqlite backend",
+    "version": "2.1.1",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  "last_serial": 42389836,
+  "ownership": {
+    "organization": null,
+    "roles": [
+      {
+        "role": "Owner",
+        "user": "thomaspatzke"
+      }
+    ]
+  },
+  "urls": [
+    {
+      "comment_text": null,
+      "core-metadata": {
+        "sha256": "5c5e1193d2fac3b3ef569fec44f42cbc2976b5850d5aeeaae71d0fad28b3289e"
+      },
+      "digests": {
+        "blake2b_256": "1423297112ac22dd2792139fe33d84783e0a2d4feb89b6db49c9b0341c03b5d5",
+        "md5": "74c8503ec8158bfff6db374c28283545",
+        "sha256": "1fe1941943dcc9ed14a66836b1ed96b1456ad750df84dedb9136a1db979ab967"
+      },
+      "downloads": -1,
+      "filename": "pysigma_backend_sqlite-2.1.1-py3-none-any.whl",
+      "has_sig": false,
+      "md5_digest": "74c8503ec8158bfff6db374c28283545",
+      "packagetype": "bdist_wheel",
+      "python_version": "py3",
+      "requires_python": "<4.0,>=3.11",
+      "size": 28616,
+      "upload_time": "2026-10-18T07:22:27",
+      "upload_time_iso_8601": "2026-10-18T07:22:27.971890Z",
+      "url": "https://files.pythonhosted.org/packages/14/23/297112ac22dd2792139fe33d84783e0a2d4feb89b6db49c9b0341c03b5d5/pysigma_backend_sqlite-2.1.1-py3-none-any.whl",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    {
+      "comment_text": null,
+      "core-metadata": false,
+      "digests": {
+        "blake2b_256": "38465bea3a7e1004c3d9b7d94ff131311687b79adc6beb0db39926729872ca84",
+        "md5": "766d2a5e2453664a2eb6d5332c197061",
+        "sha256": "df500e04a1589b8604436bdb0106d4b89a7ab31159b59789be9435fdd255a35f"
+      },
+      "downloads": -1,
+      "filename": "pysigma_backend_sqlite-2.1.1.tar.gz",
+      "has_sig": false,
+      "md5_digest": "766d2a5e2453664a2eb6d5332c197061",
+      "packagetype": "sdist",
+      "python_version": "source",
+      "requires_python": "<4.0,>=3.11",
+      "size": 28780,
+      "upload_time": "2026-10-18T07:22:29",
+      "upload_time_iso_8601": "2026-10-18T07:22:29.631779Z",
+      "url": "https://files.pythonhosted.org/packages/38/46/5bea3a7e1004c3d9b7d94ff131311687b79adc6beb0db39926729872ca84/pysigma_backend_sqlite-2.1.1.tar.gz",
+      "yanked": false,
+      "yanked_reason": null
+    }
+  ],
+  "vulnerabilities": []
+}

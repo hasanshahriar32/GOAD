@@ -1,17 +1,17 @@
 % Generated from verified literal bilinear checkpoint predictions.
-\begin{table}[ht]
+\begin{table}[tbp]
 \centering
-\caption{Literal two-layer attention comparison: mean accuracy (\%) and sample standard deviation across three seeds, with 150 paired families per test cohort per seed. Every arm starts with identical parameter values. Augmentation is matched; typed whole-graph hashes and family IDs are disjoint across splits within each seed.}
+\caption{Literal two-layer attention: mean accuracy (\%) $\pm$ sample SD over three seeds. Each test cohort contains 150 paired families per seed; initialization and augmentation are matched.}
 \label{tab:literal_bilinear}
-\small
+\evidencetable
 \begin{tabular}{llrrr}
 \toprule
-Model & Augmentation & IID & Long paths & Larger background \\
+Model & Aug. & IID & \makecell{Long\\paths} & \makecell{Larger\\background} \\
 \midrule
-Additive attention & 0 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
-Additive attention & 0.3 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
-Bilinear attention & 0 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
-Bilinear attention & 0.3 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
+\makecell[l]{Additive\\attention} & 0 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
+\makecell[l]{Additive\\attention} & 0.3 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
+\makecell[l]{Bilinear\\attention} & 0 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
+\makecell[l]{Bilinear\\attention} & 0.3 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
 \bottomrule
 \end{tabular}
 \end{table}

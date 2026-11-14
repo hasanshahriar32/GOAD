@@ -1,11 +1,11 @@
-\begin{table}[ht]
+\begin{table}[tbp]
 \centering
-\caption{Equal-input identity projection on 1,410 main challenge histories, including 60 chronology-negative controls; 1,241 true successful observed links. All event times are erased. The 60 wrong terminal claims in each row are the chronology controls. A separate 60 consistently forged-source controls also fool every method. This compares relational identity contracts, not full PIDS detection.}
+\caption{Identity projection on 1,410 histories, including 60 chronology-negative controls, with 1,241 true observed links. Event times are erased. The 60 wrong terminal claims per method are chronology controls; 60 separate forged-source controls also fool every method. These are identity-query outcomes, not full PIDS detection.}
 \label{tab:sql_identity}
-\small
+\evidencetable
 \begin{tabular}{lrrrr}
 \toprule
-Method & Resolved & Correct & Wrong & True candidates retained \\
+Method & Resolved & Correct & Wrong & \makecell{True candidates\\retained} \\
 \midrule
 CIPG identity & 820 & 760 & 60 & 1176 \\
 SQL strong join & 912 & 852 & 60 & 852 \\
@@ -13,14 +13,14 @@ SQL guarded & 820 & 760 & 60 & 1176 \\
 \bottomrule
 \end{tabular}
 \end{table}
-\begin{table}[ht]
+\begin{table}[tbp]
 \centering
-\caption{Prospective transfer to a new forest/CA, two templates and two ordinary enrollers: six concurrent batches and 24 distinct certificates. Each condition has four template/batch/enroller units shared by eight certificate cases. ESC1 and Sigma columns count these four configuration units; they are not attack-detection counts. The Windows image family is shared with the previous environment.}
+\caption{Prospective new-forest workload: 24 certificates in six concurrent batches, two templates and two enrollers. Configuration columns count four template/batch/enroller units per condition, shared by eight certificate cases. The Windows image family is shared with the previous environment.}
 \label{tab:transfer_workload}
-\small
+\evidencetable
 \begin{tabular}{lrrrrrr}
 \toprule
-Condition & Cases & Self & Admin & ESC1 pre & ESC1 post & Risky EKU \\
+Condition & Cases & Self & Admin & \makecell{ESC1\\pre} & \makecell{ESC1\\post} & \makecell{Risky\\EKU} \\
 \midrule
 Baseline & 8 & 8 & 0 & 0 & 0 & 0 \\
 Enabled & 8 & 4 & 4 & 4 & 0 & 4 \\
@@ -28,14 +28,14 @@ Rollback first & 8 & 8 & 0 & 0 & 0 & 0 \\
 \bottomrule
 \end{tabular}
 \end{table}
-\begin{table}[ht]
+\begin{table}[tbp]
 \centering
-\caption{Paired isolated-lab pilot: eight authentications per arm, three seeded arm orders. Auth denotes the median host Certipy process envelope in milliseconds; CPU is Python process CPU time during the arm, also milliseconds. RSS is sampled Python collector MiB, excluding Certipy children and the Windows VM. Outcome-verification waits occur after the measured arm.}
+\caption{Paired isolated-lab pilot; eight verified authentications per arm. Auth is the median Certipy process envelope (ms); CPU is Python collector CPU time (ms). RSS is Python collector MiB, excluding children and the Windows VM. Verification waits follow timing.}
 \label{tab:collection_pilot}
-\small
+\evidencetable
 \begin{tabular}{rlrrrr}
 \toprule
-Pair & Arm & Verified uses & Auth ms & CPU ms & RSS MiB \\
+Pair & Arm & \makecell{Verified\\uses} & \makecell{Auth\\(ms)} & \makecell{CPU\\(ms)} & \makecell{RSS\\(MiB)} \\
 \midrule
 1 & polling & 8 & 687.8 & 664.3 & 56.5 \\
 1 & idle & 8 & 639.2 & 85.1 & 58.6 \\

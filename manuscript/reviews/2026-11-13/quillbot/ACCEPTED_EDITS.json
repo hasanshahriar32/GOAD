@@ -1,0 +1,59 @@
+[
+  {
+    "source_file": "sections/01_introduction.tex",
+    "passage": "opening paragraph",
+    "service_result": "PILOT_RESULT.json",
+    "original": "Issuance and later use are recorded by different services.",
+    "accepted": "Different services record issuance and subsequent use.",
+    "reason": "Active voice with the same issuance/use distinction.",
+    "other_pilot_suggestions": "Rejected passive opening, the longer inverted sentence, and the less precise replacement of CA records with CA data."
+  },
+  {
+    "source_file": "main.tex",
+    "service_result": "BATCH_RESULTS.json:abstract_1",
+    "original": "CertGraph combines graph analysis, certificate-specific provenance and remediation under an assigned disruption budget.",
+    "accepted": "CertGraph combines graph analysis, certificate-specific provenance and remediation within an assigned disruption budget.",
+    "reason": "Uses the suggested budget phrasing while retaining assigned costs rather than implying measured production disruption.",
+    "reviewed_hybrid": true
+  },
+  {
+    "source_file": "sections/01_introduction.tex",
+    "service_result": "BATCH_RESULTS.json:introduction_second_1",
+    "original": "Certificate-service escalation techniques are documented by SpecterOps~\\cite{schroeder2021certified}.",
+    "accepted": "SpecterOps documented certificate-service escalation techniques~\\cite{schroeder2021certified}.",
+    "reason": "Active subject suggested by QuillBot; original technical noun and citation retained.",
+    "reviewed_hybrid": true
+  },
+  {
+    "source_file": "sections/01_introduction.tex",
+    "service_result": "BATCH_RESULTS.json:introduction_second_1",
+    "original": "Whether a particular certificate yields an administrative identity also depends on certificate mapping and the installed Windows updates~\\cite{microsoft2025strongbinding}.",
+    "accepted": "Certificate mapping and the installed Windows updates also affect whether a certificate is accepted for an administrative identity~\\cite{microsoft2025strongbinding}.",
+    "reason": "Uses the active construction without the incorrect suggestion that a certificate generates an identity.",
+    "reviewed_hybrid": true
+  },
+  {
+    "source_file": "sections/01_introduction.tex",
+    "service_result": "BATCH_RESULTS.json:introduction_second_1",
+    "original": "Our question is narrower than detecting every ADCS attack: what certificate-specific attribution is justified when identifiers or timing evidence are incomplete, late or contradictory?",
+    "accepted": "We ask what certificate-specific attribution is justified when identifiers or timing evidence are incomplete, late or contradictory.",
+    "reason": "Condenses the question while preserving justified attribution and all three evidence conditions.",
+    "reviewed_hybrid": true
+  },
+  {
+    "source_file": "sections/07_related_work_and_conclusion.tex",
+    "service_result": "BATCH_RESULTS.json:conclusion_1_1",
+    "original": "The identity contract can also be implemented with guarded SQL; the evaluated contribution lies in its security requirements and evidence handling rather than a unique reasoning primitive.",
+    "accepted": "The identity contract can also be implemented using guarded SQL; the evaluated contribution concerns its security requirements and evidence handling rather than a unique reasoning primitive.",
+    "reason": "Accepts the using construction and a direct description of the contribution; preserves the novelty boundary.",
+    "reviewed_hybrid": true
+  },
+  {
+    "source_file": "sections/07_related_work_and_conclusion.tex",
+    "service_result": "BATCH_RESULTS.json:conclusion_2_1",
+    "original": "The remediation experiments likewise show heuristic optimality gaps and budget-dependent differences from greedy selection.",
+    "accepted": "The remediation experiments also show heuristic optimality gaps and budget-dependent differences from greedy selection.",
+    "reason": "Uses a simpler transition while retaining remediation, gaps, and the named comparison.",
+    "reviewed_hybrid": true
+  }
+]

@@ -1,0 +1,280 @@
+{
+  "by_family_method": {
+    "boundary_overlap/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "boundary_overlap/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "boundary_overlap/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "clean/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "clean/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "clean/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "clock_overlap/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "clock_overlap/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "clock_overlap/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "conflicting_bridge/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "conflicting_bridge/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "conflicting_bridge/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "conflicting_fields/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "conflicting_fields/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "conflicting_fields/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "failed_auth/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "failed_auth/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "failed_auth/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "issuer_collision/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "issuer_collision/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "issuer_collision/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "late_bridge/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "late_bridge/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "late_bridge/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "long_delay/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "long_delay/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "long_delay/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "missing_bridge/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "missing_bridge/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "missing_bridge/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "missing_competitor/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "missing_competitor/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "missing_competitor/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "missing_issuer/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "missing_issuer/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "missing_issuer/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "outside_model_forgery/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60
+    },
+    "outside_model_forgery/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60
+    },
+    "outside_model_forgery/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60
+    },
+    "preceding_auth/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60
+    },
+    "preceding_auth/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60
+    },
+    "preceding_auth/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 60
+    },
+    "randomized_mix/constraint_identity": {
+      "cases": 450,
+      "correct_certain": 280,
+      "wrong_certain": 0
+    },
+    "randomized_mix/sql_guarded": {
+      "cases": 450,
+      "correct_certain": 280,
+      "wrong_certain": 0
+    },
+    "randomized_mix/sql_strong_join": {
+      "cases": 450,
+      "correct_certain": 312,
+      "wrong_certain": 0
+    },
+    "request_namespace_collision/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "request_namespace_collision/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "request_namespace_collision/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "reused_skid/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "reused_skid/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "reused_skid/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 0,
+      "wrong_certain": 0
+    },
+    "unrelated_template/constraint_identity": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "unrelated_template/sql_guarded": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    },
+    "unrelated_template/sql_strong_join": {
+      "cases": 60,
+      "correct_certain": 60,
+      "wrong_certain": 0
+    }
+  },
+  "input_manifest_sha256": "45217fe93e89ff9306043c24f7533595ca4fd89fdc530c60371f24d6cb92a064",
+  "interpretation": "Identity-only projection erases chronology. The 60 preceding_auth controls produce wrong terminal linkage in every method; 60 outside_model_forgery controls also fool every method. These failures are retained, not treated as enterprise rates.",
+  "prediction_rows_checked": 16269,
+  "random_latent_labels_checked": 450,
+  "status": "passed",
+  "verifier_sha256": "148decf6cbc8d7a62914891b284381fe5ae6068898c80d212bd7a4d5b76e01bf"
+}

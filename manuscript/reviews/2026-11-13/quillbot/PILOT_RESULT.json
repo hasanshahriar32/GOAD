@@ -1,0 +1,9 @@
+{
+  "service": "QuillBot",
+  "mode": "Standard",
+  "url": "https://quillbot.com/paraphrasing-tool",
+  "input": "Active Directory Certificate Services (ADCS) issues certificates that can be used for domain authentication through PKINIT. Issuance and later use are recorded by different services. When a certificate template is changed, used and restored between scans, its current configuration no longer describes the conditions under which an earlier certificate was issued. Investigators must therefore connect directory changes, CA records and KDC authentication outcomes.",
+  "actual_output": "Certificates that can be used for PKINIT-based domain authentication are issued by Active Directory Certificate Services (ADCS). Different services record issuance and subsequent use. A certificate template's current configuration no longer reflects the circumstances under which a previous certificate was issued when it is modified, used, and restored in between scans. As a result, investigators need to link directory modifications, CA data, and KDC authentication results.",
+  "generated": true,
+  "password_entered_by_assistant": false
+}

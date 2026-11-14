@@ -1,0 +1,73 @@
+\section{Disruption-Budgeted Sequential Interdiction}
+\label{sec:game_theoretic}
+
+A supported certificate-use explanation can identify permissions for hardening, but revocation has operational costs. We evaluate a separate graph-remediation task: choose blockable permission edges whose removal disconnects specified source--target pairs under an assigned budget. The utility counts disconnected pairs; it does not depend on an attacker's choice among surviving paths. Accordingly, the evaluated method is a sequential interdiction heuristic, not a computed strategic equilibrium.
+
+\subsection{Budgeted Pair-Disconnection Objective}
+Let $E_b\subseteq\mathcal E$ be the blockable edges and $\mathcal Q=\{(s_i,t_i)\}_{i=1}^{k}$ the queried compromise pairs. Define $D(C)$ as the number of pairs disconnected after removing $C\subseteq E_b$.
+
+\paragraph{Heterogeneous Operational Revocation Costs}
+In enterprise Active Directory environments, revoking different permission types imposes vastly unequal operational disruption on legitimate business workflows. We assign heterogeneous cost functions $c: \mathcal{E} \to \mathbb{R}^+$ as model parameters, without a measured mapping to enterprise impact:
+\begin{equation}
+\fitmath{c(e)=\begin{cases}
+ c_{\mathrm{group}}\in[2.8,3.8], & \psi(e)=\mathrm{MemberOf},\\
+ c_{\mathrm{acl}}\in[2.0,3.0], & \psi(e)\in\{\mathrm{GenericAll},\mathrm{WriteDacl}\},\\
+ c_{\mathrm{choke}}\in[1.0,1.4], & \begin{gathered}\psi(e)\in\{\mathrm{Enroll},\\ \mathrm{EnablesEnrollment}\}.\end{gathered}
+\end{cases}}
+\end{equation}
+The assigned disruption labels are high for changes to user-role workflows, medium for changes to administrative synchronization, and low for template-enrollment reconfiguration.
+
+
+The evaluated objective is
+\begin{equation}
+\fitmath{\max_{C\subseteq E_b}D(C),\qquad
+D(C)=\sum_{i=1}^{k}\mathbb I[t_i\notin\operatorname{Reach}_{\mathcal G\setminus C}(s_i)],}
+\end{equation}
+\begin{equation}
+\fitmath{\text{subject to}\quad\sum_{e\in C}c(e)\le B_{\mathrm{ops}}.}
+\label{eq:budget_constraint}
+\end{equation}
+The small-instance audit uses cost as the exact solver's tie-break among equal-disconnection cuts. The sequential heuristic uses costs in candidate ranking; neither choice represents a measured administrator utility. Classical interdiction models provide the broader optimization context~\cite{wood1993interdiction,israeli2002shortest}.
+
+\subsection{Computational Complexity: NP-Hardness of Multi-Principal Access Interdiction}
+We show that finding the optimal edge revocation strategy to neutralize multiple compromise paths under budget constraints is intractable.
+
+\begin{theorem}[NP-Hardness of Multi-Principal Access Interdiction]
+\label{thm:nphardness}
+Let $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ be a directed identity multigraph with positive binary-encoded rational edge revocation costs and budget, and let $\mathcal{P}_{\text{forbidden}} = \{(s_1, t_1), \dots, (s_k, t_k)\}$ be $k \ge 3$ source-target compromise pairs, with $k$ part of the input. Pairs may share endpoints; no endpoint-disjoint restriction is asserted. The Multi-Principal Access Interdiction (MPAI) problem, which decides whether there exists $E_{\text{cut}} \subseteq \mathcal{E}$ with $\sum_{e \in E_{\text{cut}}} c(e) \le B_{\text{ops}}$ such that all paths in $\mathcal{P}_{\text{forbidden}}$ are severed, is NP-complete.
+\end{theorem}
+
+\begin{proof}
+We establish membership in NP and provide a polynomial-time reduction from the NP-complete \textbf{Directed Multiway Cut} problem~\cite{garg1994multiway}.
+
+\paragraph{Part 1: Membership in NP.}
+Given a candidate cut set $E_{\text{cut}} \subseteq \mathcal{E}$:
+\begin{enumerate}
+    \item We compute $\sum_{e \in E_{\text{cut}}} c(e)$ in $\mathcal{O}(|E_{\text{cut}}|)$ time and verify the budget condition (\ref{eq:budget_constraint}).
+    \item We construct the residual graph $\mathcal{G}' = (\mathcal{V}, \mathcal{E} \setminus E_{\text{cut}})$ in $\mathcal{O}(|\mathcal{V}| + |\mathcal{E}|)$ time.
+    \item For each $(s_i, t_i) \in \mathcal{P}_{\text{forbidden}}$, we run Breadth-First Search (BFS) in $\mathcal{G}'$ starting from $s_i$ to verify that $t_i$ is unreachable in $\mathcal{O}(k \cdot (|\mathcal{V}| + |\mathcal{E}|))$ time.
+\end{enumerate}
+Because all checks execute in deterministic polynomial time, $\text{MPAI} \in \text{NP}$.
+
+\paragraph{Part 2: Reduction from Directed Multiway Cut.}
+Directed Multiway Cut takes a directed graph $H=(V_H,E_H)$, positive rational edge costs $w$, terminals $X=\{x_1,\ldots,x_q\}$, and budget $W$, and asks whether a cut of cost at most $W$ removes every path between distinct terminals. This known NP-hard problem is a special source of interdiction instances; the complexity classification is not a new graph-theoretic discovery.
+
+Retain every vertex and edge of $H$, with its original cost. For each terminal $x_i$, add distinct source and target copies $s_i,t_i$, with connector edges $(s_i,x_i)$ and $(x_i,t_i)$ of cost $W+1$. Set
+\begin{equation}
+\fitmath{\mathcal{P}_{\mathrm{forbidden}}=\{(s_i,t_j):i\ne j\},\qquad B_{\mathrm{ops}}=W.}
+\end{equation}
+No budget-feasible cut can remove a connector. A path from $s_i$ to $t_j$ therefore exists exactly when a path from $x_i$ to $x_j$ remains in $H$, including paths passing through other terminals. Consequently, feasible cuts correspond with identical cost in both directions. The construction adds $2q$ vertices, $2q$ edges, and $q(q-1)$ forbidden pairs, and has polynomial encoding length. Together with polynomial verification of a candidate cut and rational budget, this proves NP-completeness of the stated general pair problem. It does not establish a new hardness result for a fixed pair count or for a particular restricted AD graph family.
+\end{proof}
+
+\subsection{Adaptive and Static Greedy Heuristics}
+We compare simple degree-based and cost-aware static shortest-path-participation heuristics. The latter computes initial path participation divided by assigned edge cost once, so it already accounts for cost. Its limitation is the fixed ranking: earlier cuts can make later candidates redundant, and new shortest paths can change which permissions matter. The adaptive policy recomputes this information after each chosen cut. Degree-only ranking is a distinct baseline and need not have the same cost sensitivity. These are implemented research comparators rather than measured deployments of an industrial remediation product.
+
+The evaluated \textbf{adaptive sequential policy} recomputes active shortest paths and candidate marginal pair-disconnection gains after each cut. It can select low-cost enrollment edges when they lie on relevant paths. Removing a candidate temporarily must preserve every edge attribute when the candidate is restored; relation and immutability metadata affect subsequent scoring. The implementation supplies no global optimum or approximation guarantee. Exact small-instance comparisons quantify its observed suboptimality.
+
+\subsection{Operational Edge Immutability ($E_b \subsetneq E$) and Provenance-Cone Scalability}
+As considered in AD graph-hardening work~\cite{goel2024hardening}, not all permissions can be revoked without breaking production workflows. A realistic fraction of permissions represents operational dependencies (e.g., core domain controllers, long-lived service accounts, or administrative replication pipelines) where IT administrators enforce $e \notin E_b$ (\texttt{blockable = False}). Because of these immutable operational corridors, the metadata-preserving adaptive rerun reports $98.5 \pm 4.0\%$ disconnected pairs at $B_{\text{ops}}=24$ (vs. $97.6 \pm 6.5\%$ for static greedy). The eight-test Holm analysis in Section~\ref{sec:evaluation} gives adjusted $p=0.25$ for both budget-24 procedures, leaving a measured mean residual of approximately $1.5\%$ on those synthetic instances. This is not a proof that the residual is irreducible or that CIPG is its only possible defense.
+
+We evaluate a path-preserving projection on identical pairs in Section~\ref{sec:evaluation}. Every pair endpoint and every vertex on a requested source--target path is retained, with unchanged edge attributes. This permits a meaningful comparison of the same reachability objective, including projection overhead, without treating a smaller query set as an algorithmic speedup.
+
+\paragraph{Exact small-instance audit}
+Exhaustive feasible cuts on 30 seven-node, twelve-edge graphs at two budgets produce 60 cases. The metadata-preserving adaptive heuristic matches the optimal severed-pair count in 43/60 cases, compared with 21/60 for static greedy, and has a maximum gap of two pairs. This is a finite-instance comparison, not an optimality guarantee. Appendix~\ref{sec:artifact_corrections} records the attribute-restoration control, including the uncorrected implementation's 46/60 optimum matches.

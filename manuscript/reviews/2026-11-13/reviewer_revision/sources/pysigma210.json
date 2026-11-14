@@ -1,0 +1,124 @@
+{
+  "info": {
+    "author": "Thomas Patzke",
+    "author_email": "thomas@patzke.org",
+    "bugtrack_url": null,
+    "classifiers": [
+      "Development Status :: 4 - Beta",
+      "Intended Audience :: Developers",
+      "License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)",
+      "Programming Language :: Python :: 3.11",
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.13",
+      "Programming Language :: Python :: 3.14",
+      "Topic :: Security"
+    ],
+    "description": "# pySigma\n\n![Tests](https://github.com/SigmaHQ/pySigma/actions/workflows/test.yml/badge.svg)\n![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/thomaspatzke/11b31b4f709b6dc54a30d5203e8fe0ee/raw/SigmaHQ-pySigma-coverage.json)\n![Status](https://img.shields.io/badge/Status-pre--release-orange)\n\n`pySigma` is a python library that parses and converts Sigma rules into queries. It is a replacement\nfor the legacy Sigma toolchain (sigmac) with a much cleaner design and is almost fully tested.\nBackends for support of conversion into query languages and processing pipelines for transforming\nrule for log data models are separated into dedicated projects to keep pySigma itself slim and\nvendor-agnostic. See the *Related Projects* section below to get an overview.\n\n## Getting Started\n\nTo start using `pySigma`, you need Python 3.11 or later. Install it using your python package manager of choice. Examples:\n\n```\npip install pysigma\npipenv install pysigma\npoetry add pysigma\n```\n\nDocumentation with some usage examples can be found [here](https://sigmahq-pysigma.readthedocs.io/).\n\n## Create Your Own Backend for pySigma\n\nThe creation of a backend has become much easier with pySigma. We recommend using the \"Cookie Cutter Template\" and reviewing the existing backends listed in the \"Related Projects\" section of this README.\n\n[pySigma Cookie Cutter Template](https://github.com/SigmaHQ/cookiecutter-pySigma-backend)\n\n## Features\n\n`pySigma` brings a number of additional features compared to the all in one `sigmac`, as well as some changes.\n\n[sigma-cli](https://github.com/SigmaHQ/sigma-cli) is the equivalent of sigmac for command-line conversion\n\n### Modifier \n\nuse `sigma list modifiers`\n\n### Backends\n\nuse `sigma plugin list --plugin-type backend`\n\n## Overview\n\nConversion Overview\n\n![Conversion Graph](/docs/images/conversion.png)\n\nPipelines\n\n![Conversion Graph](/docs/images/pipelines.png)\n\nMore details are described in [the documentation](https://sigmahq-pysigma.readthedocs.io/).\n\n## Testing\n\npySigma uses pytest as testing framework. Simply run `pytest` to run all tests. Run `pytest\n--cov=sigma` to get a coverage report.\n\n## Building\n\nTo build your own package run `poetry build`.\n\n## Linting\n\nTo lint the code run `poetry run black`. To check for linting errors run `poetry run black --check`.\n\nThis project also uses [pre-commit](https://pre-commit.com/), which is installed by poetry as part of dev dependencies. To install the git hooks run `poetry run pre-commit install` after cloning the repository and installing the dependencies.\n\n## Contributing\n\nPull requests are welcome. Please feel free to lodge any issues/PRs as discussion points.\n\nThis [blog post](https://medium.com/@micahbabinski/creating-a-sigma-backend-for-fun-and-no-profit-ed16d20da142) by Micah Babinski explains the process from a developer's perspective.\n\n## Maintainers\n\nThe project is currently maintained by:\n\n- Thomas Patzke <thomas@patzke.org>\n- [Fran\u00e7ois Hubaut](https://github.com/frack113)\n\n## Related Projects\n\npySigma isn't a monolithic library attempting to support everything but the core. Support for target\nquery languages and log data models is provided by additional packages that extend pySigma:\n\n* [sigma-cli](https://github.com/SigmaHQ/sigma-cli): a command line interface for conversion of\n  Sigma rules based on pySigma.\n* [pySigma-backend-splunk](https://github.com/SigmaHQ/pySigma-backend-splunk)\n* [pySigma-pipeline-sysmon](https://github.com/SigmaHQ/pySigma-pipeline-sysmon)\n* [pySigma-pipeline-crowdstrike](https://github.com/SigmaHQ/pySigma-pipeline-crowdstrike)\n* [pySigma-backend-netwitness](https://github.com/marcelkwaschny/pySigma-backend-netwitness)\n* [pySigma-backend-panther](https://github.com/panther-labs/pySigma-backend-panther)\n\nAll packages can also be installed from PyPI if not mentioned otherwise by the Python package\nmanager of your choice.\n\n## License\n\nGNU Lesser General Public License v2.1. For details, please see the full license file [located here](https://github.com/SigmaHQ/pySigma/blob/main/LICENSE).\n\n",
+    "description_content_type": "text/markdown",
+    "docs_url": null,
+    "download_url": null,
+    "downloads": {
+      "last_day": -1,
+      "last_month": -1,
+      "last_week": -1
+    },
+    "dynamic": null,
+    "home_page": null,
+    "keywords": null,
+    "license": null,
+    "license_expression": "LGPL-2.1-only",
+    "license_files": [
+      "LICENSE"
+    ],
+    "maintainer": null,
+    "maintainer_email": null,
+    "name": "pySigma",
+    "package_url": "https://pypi.org/project/pySigma/",
+    "platform": null,
+    "project_url": "https://pypi.org/project/pySigma/",
+    "project_urls": {
+      "Repository": "https://github.com/SigmaHQ/pySigma"
+    },
+    "provides_extra": null,
+    "release_url": "https://pypi.org/project/pySigma/2.1.0/",
+    "requires_dist": [
+      "diskcache-community<6.0.0,>=5.8.3",
+      "google-re2>=1.0",
+      "jinja2<4.0.0,>=3.1.6",
+      "jq<2.0,>=1.12",
+      "packaging<27.0,>=26.3",
+      "pyparsing<4.0.0,>=3.2.5",
+      "pyyaml<7.0.0,>=6.0.3",
+      "requests<3.0.0,>=2.32.5",
+      "types-pyyaml<7.0.0.0,>=6.0.12.20261103"
+    ],
+    "requires_python": "<4.0,>=3.11",
+    "summary": "Sigma rule processing and conversion tools",
+    "version": "2.1.0",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  "last_serial": 43429865,
+  "ownership": {
+    "organization": null,
+    "roles": [
+      {
+        "role": "Owner",
+        "user": "thomaspatzke"
+      },
+      {
+        "role": "Maintainer",
+        "user": "nas_bench"
+      }
+    ]
+  },
+  "urls": [
+    {
+      "comment_text": null,
+      "core-metadata": {
+        "sha256": "8aa8c3a1edfd440ff24487b4a9da74c349729fee7665c13c3b8b35bca1565a74"
+      },
+      "digests": {
+        "blake2b_256": "bbc6b7cde993ae35ecbd5d36d2d7a94637cdd070332fb74ff8b308772633ab73",
+        "md5": "7d9ba5fb108c072ba80852d2083bcc06",
+        "sha256": "3495dcfff8aaefc81f9249a6ebdb3ef823ca84bfa32fa0a8f0ef0421049cced4"
+      },
+      "downloads": -1,
+      "filename": "pysigma-2.1.0-py3-none-any.whl",
+      "has_sig": false,
+      "md5_digest": "7d9ba5fb108c072ba80852d2083bcc06",
+      "packagetype": "bdist_wheel",
+      "python_version": "py3",
+      "requires_python": "<4.0,>=3.11",
+      "size": 197899,
+      "upload_time": "2026-11-09T23:19:11",
+      "upload_time_iso_8601": "2026-11-09T23:19:11.675523Z",
+      "url": "https://files.pythonhosted.org/packages/bb/c6/b7cde993ae35ecbd5d36d2d7a94637cdd070332fb74ff8b308772633ab73/pysigma-2.1.0-py3-none-any.whl",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    {
+      "comment_text": null,
+      "core-metadata": false,
+      "digests": {
+        "blake2b_256": "f91e4d5d0bac0fba32895222f0d01217629b0057e983f3ebd2bd3b9eeb6a8ae9",
+        "md5": "471c364f154f7eb5baaaf886e245a7d4",
+        "sha256": "b800923786ace5bc90bd35f488d81b7a2b86e04856f213f5de52c05f876901d1"
+      },
+      "downloads": -1,
+      "filename": "pysigma-2.1.0.tar.gz",
+      "has_sig": false,
+      "md5_digest": "471c364f154f7eb5baaaf886e245a7d4",
+      "packagetype": "sdist",
+      "python_version": "source",
+      "requires_python": "<4.0,>=3.11",
+      "size": 163103,
+      "upload_time": "2026-11-09T23:19:13",
+      "upload_time_iso_8601": "2026-11-09T23:19:13.516113Z",
+      "url": "https://files.pythonhosted.org/packages/f9/1e/4d5d0bac0fba32895222f0d01217629b0057e983f3ebd2bd3b9eeb6a8ae9/pysigma-2.1.0.tar.gz",
+      "yanked": false,
+      "yanked_reason": null
+    }
+  ],
+  "vulnerabilities": []
+}

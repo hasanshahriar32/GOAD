@@ -1,0 +1,27 @@
+{
+  "entries": 39,
+  "by_type": {
+    "article": 22,
+    "book": 1,
+    "inproceedings": 3,
+    "misc": 11,
+    "techreport": 2
+  },
+  "journal_entries_with_doi": 21,
+  "conference_keys": [
+    "velickovic2018graph",
+    "garg1994multiway",
+    "brody2022attentive"
+  ],
+  "software_versions": {
+    "Certipy": "5.0.4",
+    "pySigma": "2.1.0",
+    "SQLite backend": "2.1.1"
+  },
+  "notes": [
+    "No software archival DOI was invented. Versioned primary release URLs are cited.",
+    "HADES and CPD volumes/issues/pages confirmed against Crossref.",
+    "No HADES USENIX 2025 version was confirmed; no duplicate conference entry was added.",
+    "A guessed Garg DOI ending _80 resolved to a different paper and was rejected; verified title query gives _92."
+  ]
+}

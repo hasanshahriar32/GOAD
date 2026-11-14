@@ -1,0 +1,575 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        19
+      ]
+    ],
+    "date-time": "2026-10-19T00:50:35Z",
+    "timestamp": 1792371035918,
+    "version": "4.4.0"
+  },
+  "reference-count": 40,
+  "publisher": "Elsevier BV",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            1
+          ]
+        ],
+        "date-time": "2025-10-01T00:00:00Z",
+        "timestamp": 1759276800000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2025,
+            10,
+            1
+          ]
+        ],
+        "date-time": "2025-10-01T00:00:00Z",
+        "timestamp": 1759276800000
+      },
+      "content-version": "tdm",
+      "delay-in-days": 0,
+      "URL": "https://www.elsevier.com/legal/tdmrep-license"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2025,
+            7,
+            23
+          ]
+        ],
+        "date-time": "2025-07-23T00:00:00Z",
+        "timestamp": 1753228800000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "http://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/501100013410",
+      "name": "INCIBE",
+      "doi-asserted-by": "publisher",
+      "id": [
+        {
+          "id": "10.13039/501100013410",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    },
+    {
+      "DOI": "10.13039/501100000780",
+      "name": "European Commission",
+      "doi-asserted-by": "publisher",
+      "id": [
+        {
+          "id": "10.13039/501100000780",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [
+      "elsevier.com",
+      "sciencedirect.com"
+    ],
+    "crossmark-restriction": true
+  },
+  "short-container-title": [
+    "Computers &amp; Security"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2025,
+        10
+      ]
+    ]
+  },
+  "DOI": "10.1016/j.cose.2025.104578",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2025,
+        7,
+        23
+      ]
+    ],
+    "date-time": "2025-07-23T15:57:55Z",
+    "timestamp": 1753286275000
+  },
+  "page": "104578",
+  "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+  "source": "Crossref",
+  "is-referenced-by-count": 4,
+  "special_numbering": "C",
+  "title": [
+    "Attack structure matters: Causality-preserving metrics for Provenance-based Intrusion Detection Systems"
+  ],
+  "prefix": "10.1016",
+  "volume": "157",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0009-0008-2569-6178",
+      "authenticated-orcid": false,
+      "given": "Manuel",
+      "family": "Suarez-Roman",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-4573-3967",
+      "authenticated-orcid": false,
+      "given": "Juan",
+      "family": "Tapiador",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "78",
+  "reference": [
+    {
+      "key": "10.1016/j.cose.2025.104578_b1",
+      "series-title": "ATLAS: A sequence-based learning approach for attack investigation",
+      "author": "Alsaheel",
+      "year": "2021"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b2",
+      "series-title": "Fifth IEEE International Conference on Data Mining",
+      "first-page": "8",
+      "article-title": "Shortest-path kernels on graphs",
+      "author": "Borgwardt",
+      "year": "2005"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b3",
+      "series-title": "Kairos: Practical intrusion detection and investigation using whole-system provenance",
+      "author": "Cheng",
+      "year": "2023"
+    },
+    {
+      "issue": "10",
+      "key": "10.1016/j.cose.2025.104578_b4",
+      "doi-asserted-by": "crossref",
+      "first-page": "1367",
+      "DOI": "10.1109/TPAMI.2004.75",
+      "article-title": "A (sub)graph isomorphism algorithm for matching large graphs",
+      "volume": "26",
+      "author": "Cordella",
+      "year": "2004",
+      "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell."
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b5",
+      "series-title": "Are we there yet? An industrial viewpoint on provenance-based endpoint detection and response tools",
+      "author": "Dong",
+      "year": "2023"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b6",
+      "series-title": "SEAL: Storage-efficient causality analysis on enterprise logs with query-friendly compression",
+      "author": "Fei",
+      "year": "2021"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b7",
+      "series-title": "Proceedings 2023 Network and Distributed System Security Symposium",
+      "article-title": "Sometimes, you aren\u2019t what you do: Mimicry attacks against provenance graph host intrusion detection systems",
+      "author": "Goyal",
+      "year": "2023"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b8",
+      "series-title": "Node2vec: Scalable feature learning for networks",
+      "author": "Grover",
+      "year": "2016"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b9",
+      "series-title": "Proceedings 2020 Network and Distributed System Security Symposium",
+      "article-title": "Unicorn: Runtime provenance-based detector for advanced persistent threats",
+      "author": "Han",
+      "year": "2020"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b10",
+      "series-title": "2020 IEEE Symposium on Security and Privacy",
+      "first-page": "1172",
+      "article-title": "RapSheet: Tactical provenance analysis for endpoint detection and response systems",
+      "author": "Hassan",
+      "year": "2020"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b11",
+      "series-title": "Proceedings 2019 Network and Distributed System Security Symposium",
+      "article-title": "Nodoze: Combatting threat alert fatigue with automated provenance triage",
+      "author": "Hassan",
+      "year": "2019"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b12",
+      "series-title": "Proceedings 2018 Network and Distributed System Security Symposium",
+      "article-title": "Winnower: Towards scalable cluster auditing through grammatical inference over provenance graphs",
+      "author": "Hassan",
+      "year": "2018"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b13",
+      "series-title": "26th USENIX Security Symposium (USENIX Security 17)",
+      "first-page": "487",
+      "article-title": "SLEUTH: Real-time attack scenario reconstruction from COTS audit data",
+      "author": "Hossain",
+      "year": "2017"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b14",
+      "series-title": "2023 IEEE Symposium on Security and Privacy",
+      "first-page": "2620",
+      "article-title": "Sok: History is a vast early warning system: Auditing the provenance of system intrusions",
+      "author": "Inam",
+      "year": "2023"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b15",
+      "series-title": "Proceedings of the Twentieth International Conference on International Conference on Machine Learning",
+      "first-page": "321",
+      "article-title": "Marginalized kernels between labeled graphs",
+      "author": "Kashima",
+      "year": "2003"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b16",
+      "series-title": "Transparent computing engagement 3 data release",
+      "author": "Keromytis",
+      "year": "2018"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b17",
+      "series-title": "Subgraph matching kernels for attributed graphs",
+      "author": "Kriege",
+      "year": "2012"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b18",
+      "series-title": "Proceedings of the 2013 ACM SIGSAC Conference on Computer & Communications Security - CCS \u201913",
+      "first-page": "1005",
+      "article-title": "Loggc: garbage collecting audit log",
+      "author": "Lee",
+      "year": "2013"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b19",
+      "series-title": "Threat detection and investigation with system-level provenance graphs: A survey",
+      "author": "Li",
+      "year": "2020"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b20",
+      "doi-asserted-by": "crossref",
+      "DOI": "10.1016/j.cose.2021.102282",
+      "article-title": "Threat detection and investigation with system-level provenance graphs: A survey",
+      "volume": "106",
+      "author": "Li",
+      "year": "2021",
+      "journal-title": "Comput. Secur."
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b21",
+      "series-title": "Proceedings 2024 Network and Distributed System Security Symposium",
+      "article-title": "NODLINK: An online system for fine-grained APT attack detection and investigation",
+      "author": "Li",
+      "year": "2024"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b22",
+      "series-title": "Cyber persistence detector (CPD): Accurate and scalable detection and investigation of cyber persistence threats",
+      "author": "Liu",
+      "year": "2024"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b23",
+      "series-title": "Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security",
+      "first-page": "1795",
+      "article-title": "POIROT: Aligning attack behavior with kernel audit records for cyber threat hunting",
+      "author": "Milajerdi",
+      "year": "2019"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b24",
+      "series-title": "2019 IEEE Symposium on Security and Privacy",
+      "first-page": "1137",
+      "article-title": "HOLMES: Real-time APT detection through correlation of suspicious information flows",
+      "author": "Milajerdi",
+      "year": "2019"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b25",
+      "series-title": "Graph2vec: Learning distributed representations of graphs",
+      "author": "Narayanan",
+      "year": "2017"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b26",
+      "doi-asserted-by": "crossref",
+      "first-page": "943",
+      "DOI": "10.1613/jair.1.13225",
+      "article-title": "Graph kernels: A survey",
+      "volume": "72",
+      "author": "Nikolentzos",
+      "year": "2021",
+      "journal-title": "J. Artificial Intelligence Res."
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b27",
+      "series-title": "Oprationally transparent cyber (OpTC) data release",
+      "author": "M. van Opstal",
+      "year": "2019"
+    },
+    {
+      "issue": "8",
+      "key": "10.1016/j.cose.2025.104578_b28",
+      "doi-asserted-by": "crossref",
+      "first-page": "1817",
+      "DOI": "10.14778/3594512.3594514",
+      "article-title": "Computing graph edit distance via neural graph matching",
+      "volume": "16",
+      "author": "Piao",
+      "year": "2023",
+      "journal-title": "Proc. VLDB Endow."
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b29",
+      "first-page": "65",
+      "article-title": "Expressivity versus efficiency of graph kernels",
+      "author": "Ramon",
+      "year": "2003"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b30",
+      "series-title": "FLASH: A comprehensive approach to intrusion detection via provenance graph representation learning",
+      "author": "Rehman",
+      "year": "2024"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b31",
+      "series-title": "A generalized weisfeiler-lehman graph kernel",
+      "author": "Schulz",
+      "year": "2021"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b32",
+      "series-title": "Structural, Syntactic, and Statistical Pattern Recognition",
+      "first-page": "530",
+      "article-title": "Graph edit distance or graph edit pseudo-distance?",
+      "author": "Serratosa",
+      "year": "2016"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b33",
+      "series-title": "weisfeiler-lehman graph kernels",
+      "author": "Shervashidze",
+      "year": "2011"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b34",
+      "series-title": "Transparent computing engagement 5 data release",
+      "author": "Torrey",
+      "year": "2020"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b35",
+      "series-title": "Proceedings 2020 Network and Distributed System Security Symposium",
+      "article-title": "Provdetector: You are what you do: Hunting stealthy malware via data provenance analysis",
+      "author": "Wang",
+      "year": "2020"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b36",
+      "series-title": "Threatrace: Detecting and tracing host-based threats in node level through provenance graph learning",
+      "author": "Wang",
+      "year": "2021"
+    },
+    {
+      "issue": "N9",
+      "key": "10.1016/j.cose.2025.104578_b37",
+      "first-page": "12",
+      "article-title": "A Reduction of a Graph to a Canonical Form and an Algebra Arising During This Reduction",
+      "volume": "Ser. 2",
+      "author": "Weisfeiler",
+      "year": "1968",
+      "journal-title": "Nauchno- Tech. Informatsia"
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b38",
+      "series-title": "2022 IEEE Symposium on Security and Privacy",
+      "first-page": "489",
+      "article-title": "Shadewatcher: Recommendation-guided cyber threat analysis using system audit records",
+      "author": "Zengy",
+      "year": "2022"
+    },
+    {
+      "issue": "6",
+      "key": "10.1016/j.cose.2025.104578_b39",
+      "doi-asserted-by": "crossref",
+      "first-page": "1245",
+      "DOI": "10.1137/0218082",
+      "article-title": "Simple fast algorithms for the editing distance between trees and related problems",
+      "volume": "18",
+      "author": "Zhang",
+      "year": "1989",
+      "journal-title": "SIAM J. Comput."
+    },
+    {
+      "key": "10.1016/j.cose.2025.104578_b40",
+      "series-title": "Wasserstein K-means for clustering probability distributions",
+      "author": "Zhuang",
+      "year": "2022"
+    }
+  ],
+  "container-title": [
+    "Computers &amp; Security"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://api.elsevier.com/content/article/PII:S0167404825002676?httpAccept=text/xml",
+      "content-type": "text/xml",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://api.elsevier.com/content/article/PII:S0167404825002676?httpAccept=text/plain",
+      "content-type": "text/plain",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2026,
+        3,
+        6
+      ]
+    ],
+    "date-time": "2026-03-06T07:51:09Z",
+    "timestamp": 1772783469000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0167404825002676"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2025,
+        10
+      ]
+    ]
+  },
+  "references-count": 40,
+  "alternative-id": [
+    "S0167404825002676"
+  ],
+  "URL": "https://doi.org/10.1016/j.cose.2025.104578",
+  "relation": {
+    "is-supplemented-by": [
+      {
+        "id-type": "uri",
+        "id": "https://github.com/msrom/SDTED",
+        "asserted-by": "subject"
+      }
+    ]
+  },
+  "ISSN": [
+    "0167-4048"
+  ],
+  "issn-type": [
+    {
+      "value": "0167-4048",
+      "type": "print"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2025,
+        10
+      ]
+    ]
+  },
+  "assertion": [
+    {
+      "value": "Elsevier",
+      "name": "publisher",
+      "label": "This article is maintained by"
+    },
+    {
+      "value": "Attack structure matters: Causality-preserving metrics for Provenance-based Intrusion Detection Systems",
+      "name": "articletitle",
+      "label": "Article Title"
+    },
+    {
+      "value": "Computers & Security",
+      "name": "journaltitle",
+      "label": "Journal Title"
+    },
+    {
+      "value": "https://doi.org/10.1016/j.cose.2025.104578",
+      "name": "articlelink",
+      "label": "CrossRef DOI link to publisher maintained version"
+    },
+    {
+      "value": "article",
+      "name": "content_type",
+      "label": "Content Type"
+    },
+    {
+      "value": "\u00a9 2025 The Authors. Published by Elsevier Ltd.",
+      "name": "copyright",
+      "label": "Copyright"
+    }
+  ],
+  "article-number": "104578"
+}

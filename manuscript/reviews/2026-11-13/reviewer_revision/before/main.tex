@@ -1,0 +1,32 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{manuscript}
+
+\title{CertGraph: Cryptographic Invariant Provenance and Multiplicative Bilinear Gating for Active Directory Certificate Services Escalation Interdiction}
+
+\author{Md.~Hasan~Shahriar, Taufiq~Biswas, and Md.~Ramim~Hossain%
+\thanks{The authors are with the Department of Electronics and Communication Engineering, Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur-5200, Bangladesh. Corresponding author: Md. Hasan Shahriar (e-mail: hasanshahriar32@gmail.com).}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+An ADCS certificate can remain usable after the template that enabled its issuance has been restored. Investigating that sequence requires evidence from directory changes, certificate issuance and domain authentication, whose records do not always expose matching identifiers. CertGraph combines graph analysis, certificate-specific provenance and remediation within an assigned disruption budget. Its evidence contract scopes certificate identity to the issuer, retains compatible candidates when fields are missing, and revises attribution when later records conflict. We evaluate the contract using synthetic histories and controlled Windows experiments. In a frozen 5,400-history study, the randomized subset retains 99.06\% of true observed links as candidates and resolves 55.82\% definitively. Four intervention matrices and a separate concurrent forest workload provide 72 certificate cases: 66 successful exact-certificate authentications, including 13 administrative uses, and six certificate-bound rejections. Current-patch controls distinguish rejection of UPN-only requests from administrative use of SID-URL certificates after template restoration. A guarded SQLite implementation agrees with the identity reference at all 5,423 evaluated prefixes. Separate graph-learning experiments reproduce 10,800 held-out predictions but find no classification advantage for bilinear gating over matched additive attention. The remediation evaluation checks 120 graph/budget instances and exposes heuristic optimality gaps. These results support certificate-specific investigation under explicit evidence assumptions; they do not establish general deployment effectiveness.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Active Directory security, certificate services, provenance analysis, incomplete evidence, graph learning, network interdiction.
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_threat_model_and_blindspots}
+\input{sections/03_certgraph_architecture}
+\input{sections/04_cipg_provenance_automaton}
+\input{sections/05_stackelberg_interdiction}
+\input{sections/06_empirical_evaluation}
+\input{sections/07_related_work_and_conclusion}
+
+\bibliography{references}
+
+\end{document}

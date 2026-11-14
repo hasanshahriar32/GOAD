@@ -1,0 +1,224 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand*\HyPL@Entry[1]{}
+\bibstyle{IEEEtran}
+\citation{rfc4556}
+\citation{schroeder2021certified}
+\citation{microsoft2025strongbinding}
+\citation{microsoft2025strongbinding}
+\citation{lyak2021certipy}
+\citation{liu2026hades,liu2026cpd}
+\citation{geirhos2020shortcut}
+\citation{insecurity2023adcs,splunk2026esc1}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{I}{1}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-A}}Certificate Issuance and the Evidence Gap}{1}{subsection.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-B}}Our Contributions}{1}{subsection.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-C}}Paper Organization}{2}{subsection.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {II}ADCS Threat Model and Systematic Blind Spots}{2}{section.5}\protected@file@percent }
+\newlabel{sec:threat_model}{{II}{2}{ADCS Threat Model and Systematic Blind Spots}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Heterogeneous Access Control Multigraph Formalization}{2}{subsection.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {II-A}0a}ADCS ESC1--ESC15 Taxonomy Scoping Rationale:}{2}{paragraph.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}The Static Snapshot Blind Spot: Formal Proof and Empirical Evidence}{2}{subsection.16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Active Directory Certificate Services (ADCS) Heterogeneous Multigraph Schema, detailing the primary security principal entity classes, sixteen directed relationship edges, and the composite escalation attack surface connecting unprivileged domain footholds to Enterprise Domain Controllers.}}{3}{figure.12}\protected@file@percent }
+\newlabel{fig:adcs_schema}{{1}{3}{Active Directory Certificate Services (ADCS) Heterogeneous Multigraph Schema, detailing the primary security principal entity classes, sixteen directed relationship edges, and the composite escalation attack surface connecting unprivileged domain footholds to Enterprise Domain Controllers}{figure.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {II-B}0a}Snapshot Indistinguishability and Evidence Scope:}{3}{paragraph.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Protocol Discontinuity: PKCS\#10 ASN.1 SAN Concealment and CA--KDC Logging Gap}{3}{subsection.23}\protected@file@percent }
+\citation{scarselli2008graph,wu2021survey}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {II-C}0a}The ASN.1 SAN Concealment Phenomenon:}{4}{paragraph.26}\protected@file@percent }
+\newlabel{lst:ca_event}{{1}{4}{Selected fields from the independent 2019 enabled-condition capture: Security record 20539. The raw XML is retained in the artifact}{lstlisting.29}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}Selected fields from the independent 2019 enabled-condition capture: Security record 20539. The raw XML is retained in the artifact.}{4}{lstlisting.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}CertGraph Static Architecture and Bilinear Gating}{4}{section.46}\protected@file@percent }
+\newlabel{sec:certgraph_arch}{{III}{4}{CertGraph Static Architecture and Bilinear Gating}{section.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Heterogeneous Graph Attention Network (HetGAT)}{4}{subsection.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Theoretical Analysis: Representation Collapse and Gradient Bounds}{4}{subsection.53}\protected@file@percent }
+\newlabel{thm:theorem1}{{III.1}{4}{Intrinsic Attribute Preservation and Gradient Lower Bounds}{theorem.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Graph across 5 entity node types, (2) Layer\nobreakspace  {}1 relational multi-head attention with residual skip projections ($W_{\text  {skip}}$) preserving template attribute gradients, (3) Layer\nobreakspace  {}2 aggregation and template readout embedding, and (4) Classification Head mapping latent embeddings to multi-class ESC predictions.}}{5}{figure.52}\protected@file@percent }
+\newlabel{fig:certgraph_arch}{{2}{5}{CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Graph across 5 entity node types, (2) Layer~1 relational multi-head attention with residual skip projections ($W_{\text {skip}}$) preserving template attribute gradients, (3) Layer~2 aggregation and template readout embedding, and (4) Classification Head mapping latent embeddings to multi-class ESC predictions}{figure.52}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {III-B}0a}Part 1: Intrinsic Feature Erasure under Pure Neighborhood Aggregation.}{5}{paragraph.60}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {III-B}0b}Part 2: Gradient Lower Bounds via Parameterized Residual Skips.}{5}{paragraph.62}\protected@file@percent }
+\citation{garcez2023neurosymbolic}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Shortcut Behavior and Bilinear Gating}{6}{subsection.66}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {III-C}0a}The Shortcut Memorization Failure:}{6}{paragraph.67}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {III-C}0b}Multiplicative Bilinear Reachability Gating (\texttt  {CertGraph-Gated}):}{6}{paragraph.69}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Cryptographic Invariant Provenance Graph (CIPG)}{6}{section.75}\protected@file@percent }
+\newlabel{sec:cipg_provenance}{{IV}{6}{Cryptographic Invariant Provenance Graph (CIPG)}{section.75}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Multi-Source Provenance Ingestion and Entity Resolution}{6}{subsection.76}\protected@file@percent }
+\citation{rfc5280}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Two-tier neuro-symbolic architecture: Tier\nobreakspace  {}1 inductive GNN screening filters benign templates ($O(|V|+|E|)$), while Tier\nobreakspace  {}2 CIPG provenance auditing dynamically correlates temporal LDAP mutations (Event 5136), CA issuances (Event 4887), and Kerberos PKINIT authentications (Event 4768) via the continuous CA Jet Database bridge.}}{7}{figure.82}\protected@file@percent }
+\newlabel{fig:neuro_symbolic_pipeline}{{3}{7}{Two-tier neuro-symbolic architecture: Tier~1 inductive GNN screening filters benign templates ($O(|V|+|E|)$), while Tier~2 CIPG provenance auditing dynamically correlates temporal LDAP mutations (Event 5136), CA issuances (Event 4887), and Kerberos PKINIT authentications (Event 4768) via the continuous CA Jet Database bridge}{figure.82}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Formal Cryptographic Invariants}{7}{subsection.83}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Invariant V: Persistent Cryptographic Taint-Flow Automaton}{7}{subsection.92}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {IV-C}0a}Mathematical Guarantees and Operational Concurrency Realities:}{7}{paragraph.94}\protected@file@percent }
+\citation{dechter1991temporal,amarilli2017order}
+\citation{elmagarmid2007duplicate,heinzl2026timestamps}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces CIPG Invariant V Cryptographic Taint-Flow Automaton}}{8}{algorithm.93}\protected@file@percent }
+\newlabel{alg:invariant5}{{1}{8}{Invariant V: Persistent Cryptographic Taint-Flow Automaton}{algorithm.93}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {IV-C}0b}Bounded-time and source-fault reasoning:}{8}{paragraph.95}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Graph Reduction and Meta-Node Compacting}{8}{subsection.98}\protected@file@percent }
+\citation{garg1994multiway}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {IV-D}0a}Correlated optional sources and self-consistent false order:}{9}{paragraph.100}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Disruption-Budgeted Stackelberg Remediation Game}{9}{section.101}\protected@file@percent }
+\newlabel{sec:game_theoretic}{{V}{9}{Disruption-Budgeted Stackelberg Remediation Game}{section.101}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Bilevel Stackelberg Game Formulation}{9}{subsection.102}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {V-A}0a}Heterogeneous Operational Revocation Costs:}{9}{paragraph.105}\protected@file@percent }
+\newlabel{eq:budget_constraint}{{32}{9}{Heterogeneous Operational Revocation Costs:}{equation.108}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Computational Complexity: NP-Hardness of Multi-Principal Access Interdiction}{9}{subsection.110}\protected@file@percent }
+\newlabel{thm:nphardness}{{V.1}{9}{NP-Hardness of Multi-Principal Access Interdiction}{theorem.111}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {V-B}0a}Part 1: Membership in NP.}{9}{paragraph.112}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {V-B}0b}Part 2: Reduction from Directed Multiway Cut.}{9}{paragraph.116}\protected@file@percent }
+\citation{goel2024hardening}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Co-Adaptive Stackelberg vs. Static Greedy Interdiction}{10}{subsection.118}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Operational Edge Immutability ($E_b \subsetneq E$) and Provenance-Cone Scalability}{10}{subsection.119}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {V-D}0a}Exact small-instance audit and metadata preservation:}{10}{paragraph.120}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Empirical Evaluation and Live Cyber-Range Benchmarks}{10}{section.121}\protected@file@percent }
+\newlabel{sec:evaluation}{{VI}{10}{Empirical Evaluation and Live Cyber-Range Benchmarks}{section.121}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Experimental Setup}{10}{subsection.122}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-A}0a}Synthetic Identity Graphs:}{10}{paragraph.123}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-A}0b}Live Cyber-Range Cyberbed:}{11}{paragraph.124}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}RQ1a: In-Distribution Ablations, Calibration, and Perturbation Asymmetry}{11}{subsection.125}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-B}0a}Empirical Confirmation of Theorem\nobreakspace  {}\ref  {thm:theorem1} (Skip-Connection Ablation):}{11}{paragraph.126}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-B}0b}Class Proportions and Probability Interpretation:}{11}{paragraph.127}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-B}0c}Perturbation Asymmetry and Simple Comparators:}{11}{paragraph.128}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}RQ1b: Static GNN Generalization and Adversarial Hard Negatives}{11}{subsection.129}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-C}0a}Literal bilinear realization and family-disjoint validation:}{11}{paragraph.132}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Matched two-step implementation diagnostic: 1,500 paired test cases per arm across three seeds, with 750 positive and 750 negative labels. Training archetypes repeat across splits; these are synthetic diagnostic outcomes, not enterprise rates.}}{12}{table.131}\protected@file@percent }
+\newlabel{tab:hard_negatives}{{I}{12}{Matched two-step implementation diagnostic: 1,500 paired test cases per arm across three seeds, with 750 positive and 750 negative labels. Training archetypes repeat across splits; these are synthetic diagnostic outcomes, not enterprise rates}{table.131}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}RQ2 \& RQ3: Live Provenance Evaluation and Automaton Scalability}{12}{subsection.135}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0a}Enterprise Concurrency Mechanics and Sensitivity Trade-Offs:}{12}{paragraph.142}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0b}Ingestion Throughput and Memory Profiling:}{12}{paragraph.143}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0c}Outcome-checked split-actor pilot:}{12}{paragraph.144}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Literal two-layer attention comparison: mean accuracy (\%) and sample standard deviation across three seeds, with 150 paired families per test cohort per seed. Every arm starts with identical parameter values. Augmentation is matched; typed whole-graph hashes and family IDs are disjoint across splits within each seed.}}{13}{table.134}\protected@file@percent }
+\newlabel{tab:literal_bilinear}{{II}{13}{Literal two-layer attention comparison: mean accuracy (\%) and sample standard deviation across three seeds, with 150 paired families per test cohort per seed. Every arm starts with identical parameter values. Augmentation is matched; typed whole-graph hashes and family IDs are disjoint across splits within each seed}{table.134}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Audit of Seven Archived GOAD Files: 586 Raw Events. Status concerns the captured certificate issuance-to-use chain, not scenario-level attack recall.}}{13}{table.137}\protected@file@percent }
+\newlabel{tab:live_traces}{{III}{13}{Audit of Seven Archived GOAD Files: 586 Raw Events. Status concerns the captured certificate issuance-to-use chain, not scenario-level attack recall}{table.137}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Earlier Trace-Driven Synthetic Streaming Benchmark ($10,182$ Events, 48 Generated Attack Instances, 50 Simulated Maintenance Windows). These are legacy implementation results, not measurements of the new constraint reference.}}{13}{table.139}\protected@file@percent }
+\newlabel{tab:cipg_stress}{{IV}{13}{Earlier Trace-Driven Synthetic Streaming Benchmark ($10,182$ Events, 48 Generated Attack Instances, 50 Simulated Maintenance Windows). These are legacy implementation results, not measurements of the new constraint reference}{table.139}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces 2D Sensitivity Matrix: Precision / Recall (\%) across Correlation Horizon ($\Delta t$) and CA Jet DB Polling Lag ($\Delta _{\text  {poll}}$).}}{13}{table.141}\protected@file@percent }
+\newlabel{tab:sensitivity_matrix}{{V}{13}{2D Sensitivity Matrix: Precision / Recall (\%) across Correlation Horizon ($\Delta t$) and CA Jet DB Polling Lag ($\Delta _{\text {poll}}$)}{table.141}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0d}Locally frozen confirmation and component studies:}{13}{paragraph.145}\protected@file@percent }
+\citation{splunk2026esc1}
+\citation{sigma2026rules}
+\citation{microsoft2025strongbinding}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0e}Published-rule field-requirement replay:}{14}{paragraph.146}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0f}Repeated fixed-request policy interventions and executed external rules:}{14}{paragraph.155}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0g}Independent forest replication and measured collection cost:}{14}{paragraph.156}\protected@file@percent }
+\citation{microsoft2026october2019}
+\citation{microsoft2025pkcasid}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Confirmation on 2,000 synthetic histories: 1,804 true observed links and 539 true mutation overlaps. Link coverage is a percentage; overlap entries are edge counts. These are attribution outcomes, not exploit detection rates.}}{15}{table.148}\protected@file@percent }
+\newlabel{tab:lineage_confirmation}{{VI}{15}{Confirmation on 2,000 synthetic histories: 1,804 true observed links and 539 true mutation overlaps. Link coverage is a percentage; overlap entries are edge counts. These are attribution outcomes, not exploit detection rates}{table.148}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Temporal component study, 300 histories per observation rate. The order-aware method receives an additional explicit sensor channel; no cross-host ordering is inferred from record numbers. Each row is evaluated on the same cases as the other methods at that rate.}}{15}{table.150}\protected@file@percent }
+\newlabel{tab:order_component}{{VII}{15}{Temporal component study, 300 histories per observation rate. The order-aware method receives an additional explicit sensor channel; no cross-host ordering is inferred from record numbers. Each row is evaluated on the same cases as the other methods at that rate}{table.150}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Bridge-fault component study: 2,700 histories, 2,180 successful observed links. Fault counts range from zero to two; budgets below the true count include outside-assumption controls. Candidate retention and certain-link coverage are reported separately.}}{15}{table.152}\protected@file@percent }
+\newlabel{tab:bridge_component}{{VIII}{15}{Bridge-fault component study: 2,700 histories, 2,180 successful observed links. Fault counts range from zero to two; budgets below the true count include outside-assumption controls. Candidate retention and certain-link coverage are reported separately}{table.152}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Paired interventions in Windows 2016 and an independent Windows 2019 forest: three blocks per environment, with identical signed administrative CSR/key within each block. All 24 certificate-use outcomes are checked and baseline readback is restored. External columns concern configuration risk on the exact template, not attack intent. The 2019 build is 17763.4974.}}{15}{table.154}\protected@file@percent }
+\newlabel{tab:paired_live_policy}{{IX}{15}{Paired interventions in Windows 2016 and an independent Windows 2019 forest: three blocks per environment, with identical signed administrative CSR/key within each block. All 24 certificate-use outcomes are checked and baseline readback is restored. External columns concern configuration risk on the exact template, not attack intent. The 2019 build is 17763.4974}{table.154}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0h}Current-patch request forms and post-rollback observation:}{15}{paragraph.157}\protected@file@percent }
+\citation{microsoft2025strongbinding,microsoft2025pkcasid}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0i}Equal-input relational realization and revision:}{16}{paragraph.160}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0j}Prospective concurrent transfer to a new forest:}{16}{paragraph.167}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-D}0k}Paired collection and authentication-envelope pilot:}{16}{paragraph.168}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces Windows 2019 build 17763.9376: three trials per cell, with baseline restored and actual Certipy enumeration repeated before authentication. Reject denotes a certificate-bound KDC rejection; ESC1 columns are configuration findings before request and after rollback. Eighteen missing per-trial CA exports are supplemented by a separately recorded later read-only CA snapshot; original captures remain unchanged.}}{17}{table.159}\protected@file@percent }
+\newlabel{tab:current_patch_policy}{{X}{17}{Windows 2019 build 17763.9376: three trials per cell, with baseline restored and actual Certipy enumeration repeated before authentication. Reject denotes a certificate-bound KDC rejection; ESC1 columns are configuration findings before request and after rollback. Eighteen missing per-trial CA exports are supplemented by a separately recorded later read-only CA snapshot; original captures remain unchanged}{table.159}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XI}{\ignorespaces Equal-input identity projection on 1,410 main challenge histories, including 60 chronology-negative controls; 1,241 true successful observed links. All event times are erased. The 60 wrong terminal claims in each row are the chronology controls. A separate 60 consistently forged-source controls also fool every method. This compares relational identity contracts, not full PIDS detection.}}{17}{table.162}\protected@file@percent }
+\newlabel{tab:sql_identity}{{XI}{17}{Equal-input identity projection on 1,410 main challenge histories, including 60 chronology-negative controls; 1,241 true successful observed links. All event times are erased. The 60 wrong terminal claims in each row are the chronology controls. A separate 60 consistently forged-source controls also fool every method. This compares relational identity contracts, not full PIDS detection}{table.162}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XII}{\ignorespaces Prospective transfer to a new forest/CA, two templates and two ordinary enrollers: six concurrent batches and 24 distinct certificates. Each condition has four template/batch/enroller units shared by eight certificate cases. ESC1 and Sigma columns count these four configuration units; they are not attack-detection counts. The Windows image family is shared with the previous environment.}}{17}{table.164}\protected@file@percent }
+\newlabel{tab:transfer_workload}{{XII}{17}{Prospective transfer to a new forest/CA, two templates and two ordinary enrollers: six concurrent batches and 24 distinct certificates. Each condition has four template/batch/enroller units shared by eight certificate cases. ESC1 and Sigma columns count these four configuration units; they are not attack-detection counts. The Windows image family is shared with the previous environment}{table.164}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XIII}{\ignorespaces Paired isolated-lab pilot: eight authentications per arm, three seeded arm orders. Auth denotes the median host Certipy process envelope in milliseconds; CPU is Python process CPU time during the arm, also milliseconds. RSS is sampled Python collector MiB, excluding Certipy children and the Windows VM. Outcome-verification waits occur after the measured arm.}}{17}{table.166}\protected@file@percent }
+\newlabel{tab:collection_pilot}{{XIII}{17}{Paired isolated-lab pilot: eight authentications per arm, three seeded arm orders. Auth denotes the median host Certipy process envelope in milliseconds; CPU is Python process CPU time during the arm, also milliseconds. RSS is sampled Python collector MiB, excluding Certipy children and the Windows VM. Outcome-verification waits occur after the measured arm}{table.166}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}RQ4: Game-Theoretic Stackelberg Remediation Performance}{17}{subsection.169}\protected@file@percent }
+\citation{holm1979simple}
+\citation{schroeder2021certified}
+\citation{lyak2021certipy}
+\citation{insecurity2023adcs}
+\citation{splunk2026esc1}
+\citation{scarselli2008graph,wu2021survey,zhou2020review}
+\citation{wu2021survey}
+\citation{velickovic2018graph}
+\citation{king2023euler}
+\citation{geirhos2020shortcut}
+\citation{wu2025understanding}
+\citation{zipperle2023survey,provenance2023security}
+\citation{liu2026hades}
+\citation{liu2026cpd}
+\citation{amarilli2017order}
+\citation{dechter1991temporal}
+\citation{elmagarmid2007duplicate}
+\citation{heinzl2026timestamps}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-E}0a}Operational Immutability Plateau and the Runtime Defense Residual:}{18}{paragraph.178}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-E}0b}Exact paired sensitivity and multiple comparisons:}{18}{paragraph.179}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-E}0c}Corrected Revoked-Edge Count:}{18}{paragraph.180}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VI-E}0d}Scalability via Provenance-Cone Guidance:}{18}{paragraph.183}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Related Work, Discussion, and Conclusion}{18}{section.184}\protected@file@percent }
+\newlabel{sec:related_conclusion}{{VII}{18}{Related Work, Discussion, and Conclusion}{section.184}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}Related Work}{18}{subsection.185}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-A}0a}Active Directory and PKI Security:}{18}{paragraph.186}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-A}0b}Graph learning and shortcut behavior:}{18}{paragraph.187}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-A}0c}Provenance and incomplete evidence:}{18}{paragraph.188}\protected@file@percent }
+\citation{zeng2019attackgraphs}
+\citation{goel2024hardening}
+\citation{tambe2011security}
+\citation{garg1994multiway,dahlhaus1994multiterminal}
+\@writefile{lot}{\contentsline {table}{\numberline {XIV}{\ignorespaces Remediation on the same 30 generated identity graphs. The adaptive row uses full edge-attribute restoration. Mean and population SD describe the finite evaluated set. Tests compare the corrected adaptive policy with static greedy; Holm correction covers four budgets and two test procedures.}}{19}{table.175}\protected@file@percent }
+\newlabel{tab:stackelberg_results}{{XIV}{19}{Remediation on the same 30 generated identity graphs. The adaptive row uses full edge-attribute restoration. Mean and population SD describe the finite evaluated set. Tests compare the corrected adaptive policy with static greedy; Holm correction covers four budgets and two test procedures}{table.175}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Historical remediation visualization. Left: illustrative analytic objective curves, not measured policy-training or equilibrium evidence. Right: historical heuristic results on 30 generated identity graphs; corrected measurements are in Table\nobreakspace  {}\ref  {tab:stackelberg_results}. The horizontal budgets are assigned weighted costs, despite the historical image's revoked-edge-count label.}}{19}{figure.177}\protected@file@percent }
+\newlabel{fig:stackelberg_convergence}{{4}{19}{Historical remediation visualization. Left: illustrative analytic objective curves, not measured policy-training or equilibrium evidence. Right: historical heuristic results on 30 generated identity graphs; corrected measurements are in Table~\ref {tab:stackelberg_results}. The horizontal budgets are assigned weighted costs, despite the historical image's revoked-edge-count label}{figure.177}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XV}{\ignorespaces Path-preserving projection with identical queried pairs: three graph seeds and five alternating-order timing repetitions per seed. Projection time is included. All reported severed-pair outcomes agree; these are hierarchical synthetic graphs on a shared host.}}{19}{table.182}\protected@file@percent }
+\newlabel{tab:scalability_bench}{{XV}{19}{Path-preserving projection with identical queried pairs: three graph seeds and five alternating-order timing repetitions per seed. Projection time is included. All reported severed-pair outcomes agree; these are hierarchical synthetic graphs on a shared host}{table.182}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-A}0d}Interdiction and remediation:}{19}{paragraph.189}\protected@file@percent }
+\citation{goel2024hardening}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Discussion and Operational Considerations}{20}{subsection.190}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-B}0a}Deployment in 24/7 Enterprise SOC Environments:}{20}{paragraph.191}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {VII-B}0b}Cloud-Hybrid Identity Extensions:}{20}{paragraph.192}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Threats to Validity and Limitations}{20}{subsection.193}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Conclusion}{20}{subsection.198}\protected@file@percent }
+\bibdata{references}
+\bibcite{rfc4556}{{1}{}{{}}{{}}}
+\bibcite{schroeder2021certified}{{2}{}{{}}{{}}}
+\bibcite{microsoft2025strongbinding}{{3}{}{{}}{{}}}
+\bibcite{lyak2021certipy}{{4}{}{{}}{{}}}
+\bibcite{liu2026hades}{{5}{}{{}}{{}}}
+\bibcite{liu2026cpd}{{6}{}{{}}{{}}}
+\bibcite{geirhos2020shortcut}{{7}{}{{}}{{}}}
+\bibcite{insecurity2023adcs}{{8}{}{{}}{{}}}
+\bibcite{splunk2026esc1}{{9}{}{{}}{{}}}
+\bibcite{scarselli2008graph}{{10}{}{{}}{{}}}
+\bibcite{wu2021survey}{{11}{}{{}}{{}}}
+\bibcite{garcez2023neurosymbolic}{{12}{}{{}}{{}}}
+\bibcite{rfc5280}{{13}{}{{}}{{}}}
+\bibcite{dechter1991temporal}{{14}{}{{}}{{}}}
+\bibcite{amarilli2017order}{{15}{}{{}}{{}}}
+\bibcite{elmagarmid2007duplicate}{{16}{}{{}}{{}}}
+\bibcite{heinzl2026timestamps}{{17}{}{{}}{{}}}
+\bibcite{garg1994multiway}{{18}{}{{}}{{}}}
+\bibcite{goel2024hardening}{{19}{}{{}}{{}}}
+\bibcite{sigma2026rules}{{20}{}{{}}{{}}}
+\bibcite{microsoft2026october2019}{{21}{}{{}}{{}}}
+\bibcite{microsoft2025pkcasid}{{22}{}{{}}{{}}}
+\bibcite{holm1979simple}{{23}{}{{}}{{}}}
+\bibcite{zhou2020review}{{24}{}{{}}{{}}}
+\bibcite{velickovic2018graph}{{25}{}{{}}{{}}}
+\bibcite{king2023euler}{{26}{}{{}}{{}}}
+\bibcite{wu2025understanding}{{27}{}{{}}{{}}}
+\bibcite{zipperle2023survey}{{28}{}{{}}{{}}}
+\bibcite{provenance2023security}{{29}{}{{}}{{}}}
+\bibcite{zeng2019attackgraphs}{{30}{}{{}}{{}}}
+\bibcite{tambe2011security}{{31}{}{{}}{{}}}
+\bibcite{dahlhaus1994multiterminal}{{32}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\gdef \@abspage@last{22}

@@ -1,0 +1,429 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        30
+      ]
+    ],
+    "date-time": "2026-10-30T00:30:47Z",
+    "timestamp": 1793320247446,
+    "version": "4.5.0"
+  },
+  "reference-count": 45,
+  "publisher": "Wiley",
+  "issue": "2",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2002,
+            8,
+            5
+          ]
+        ],
+        "date-time": "2002-08-05T00:00:00Z",
+        "timestamp": 1028505600000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "http://onlinelibrary.wiley.com/termsAndConditions#vor"
+    }
+  ],
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "Networks"
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2002,
+        9
+      ]
+    ]
+  },
+  "abstract": "<jats:title>Abstract</jats:title><jats:p>We study the problem of interdicting the arcs in a network in order to maximize the shortest <jats:italic>s\u2013t</jats:italic> path length. \u201cInterdiction\u201d is an attack on an arc that destroys the arc or increases its effective length; there is a limited interdiction budget. We formulate this bilevel, max\u2013min problem as a mixed\u2010integer program (MIP), which can be solved directly, but we develop more efficient decomposition algorithms. One algorithm enhances Benders decomposition by adding generalized integer cutting planes, called \u201csupervalid inequalities\u201d (SVIs), to the master problem. A second algorithm exploits a unique set\u2010covering master problem. Computational results demonstrate orders\u2010of\u2010magnitude improvements of the decomposition algorithms over direct solution of the MIP and show that SVIs also help solve the original MIP faster. Published 2002 Wiley Periodicals, Inc.</jats:p>",
+  "DOI": "10.1002/net.10039",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2002,
+        9,
+        5
+      ]
+    ],
+    "date-time": "2002-09-05T20:25:04Z",
+    "timestamp": 1031257504000
+  },
+  "page": "97-111",
+  "source": "Crossref",
+  "is-referenced-by-count": 426,
+  "title": [
+    "Shortest\u2010path network interdiction"
+  ],
+  "prefix": "10.1002",
+  "volume": "40",
+  "author": [
+    {
+      "given": "Eitan",
+      "family": "Israeli",
+      "sequence": "first",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "R. Kevin",
+      "family": "Wood",
+      "sequence": "additional",
+      "affiliation": [],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "311",
+  "published-online": {
+    "date-parts": [
+      [
+        2002,
+        8,
+        5
+      ]
+    ]
+  },
+  "reference": [
+    {
+      "key": "e_1_2_1_2_2",
+      "volume-title": "Network Flows",
+      "author": "Ahuja R. K.",
+      "year": "1993"
+    },
+    {
+      "key": "e_1_2_1_3_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0377-2217(91)90253-R"
+    },
+    {
+      "key": "e_1_2_1_4_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/S0377-2217(99)00015-6"
+    },
+    {
+      "key": "e_1_2_1_5_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1137/0134010"
+    },
+    {
+      "key": "e_1_2_1_6_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0167-6377(89)90003-5"
+    },
+    {
+      "key": "e_1_2_1_7_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1137/0911017"
+    },
+    {
+      "key": "e_1_2_1_8_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/1520-6750(199204)39:3<419::AID-NAV3220390310>3.0.CO;2-C"
+    },
+    {
+      "key": "e_1_2_1_9_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/1520-6750(199002)37:1<151::AID-NAV3220370110>3.0.CO;2-2"
+    },
+    {
+      "key": "e_1_2_1_10_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0305-0548(93)90013-9"
+    },
+    {
+      "key": "e_1_2_1_11_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF01386316"
+    },
+    {
+      "key": "e_1_2_1_12_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/opre.32.6.1381"
+    },
+    {
+      "key": "e_1_2_1_13_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/3-540-61310-2_6"
+    },
+    {
+      "key": "e_1_2_1_14_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0167-6377(82)90020-7"
+    },
+    {
+      "key": "e_1_2_1_15_2",
+      "unstructured": "K. J.Cormican Computational methods for deterministic and stochastic network interdiction problems Masters Thesis Operations Research Department Naval Postgraduate School Monterey CA 1995."
+    },
+    {
+      "key": "e_1_2_1_16_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/opre.46.2.184"
+    },
+    {
+      "key": "e_1_2_1_17_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/opre.2.4.393"
+    },
+    {
+      "key": "e_1_2_1_18_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/moor.1.3.251"
+    },
+    {
+      "key": "e_1_2_1_19_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF01584329"
+    },
+    {
+      "key": "e_1_2_1_20_2",
+      "volume-title": "Integer programming",
+      "author": "Garfinkel R. S.",
+      "year": "1972"
+    },
+    {
+      "key": "e_1_2_1_21_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/mnsc.20.5.822"
+    },
+    {
+      "key": "e_1_2_1_22_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/nav.3800180103"
+    },
+    {
+      "key": "e_1_2_1_23_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/nav.3800250412"
+    },
+    {
+      "key": "e_1_2_1_24_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/opre.40.2.309"
+    },
+    {
+      "key": "e_1_2_1_25_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1137/0913069"
+    },
+    {
+      "key": "e_1_2_1_26_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/3-540-58601-6_111"
+    },
+    {
+      "key": "e_1_2_1_27_2",
+      "volume-title": "ILOG CPLEX 6.5, Reference Manual",
+      "author": "ILOG",
+      "year": "1999"
+    },
+    {
+      "key": "e_1_2_1_28_2",
+      "unstructured": "E.Israeli System interdiction and defense Ph.D. Dissertation Operations Research Department Naval Postgraduate School Monterey CA 1999."
+    },
+    {
+      "key": "e_1_2_1_29_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF02098174"
+    },
+    {
+      "key": "e_1_2_1_30_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/net.3230120406"
+    },
+    {
+      "key": "e_1_2_1_31_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0167-6377(89)90065-5"
+    },
+    {
+      "key": "e_1_2_1_32_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/nav.3800170302"
+    },
+    {
+      "key": "e_1_2_1_33_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TCOMM.1994.577080"
+    },
+    {
+      "key": "e_1_2_1_34_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/opre.38.5.911"
+    },
+    {
+      "key": "e_1_2_1_35_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/9781118627372"
+    },
+    {
+      "key": "e_1_2_1_36_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0377-2217(93)90327-J"
+    },
+    {
+      "key": "e_1_2_1_37_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/opre.23.4.833"
+    },
+    {
+      "key": "e_1_2_1_38_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF00935665"
+    },
+    {
+      "key": "e_1_2_1_39_2",
+      "volume-title": "Integer programming",
+      "author": "Taha H. A.",
+      "year": "1975"
+    },
+    {
+      "key": "e_1_2_1_40_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1002/nav.3800240107"
+    },
+    {
+      "key": "e_1_2_1_41_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/BF02275351"
+    },
+    {
+      "key": "e_1_2_1_42_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1287/opre.43.2.243"
+    },
+    {
+      "key": "e_1_2_1_43_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0305-0548(90)90037-8"
+    },
+    {
+      "key": "e_1_2_1_44_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.5711/morj.4.4.15"
+    },
+    {
+      "key": "e_1_2_1_45_2",
+      "volume-title": "Integer programming",
+      "author": "Wolsey L. A.",
+      "year": "1998"
+    },
+    {
+      "key": "e_1_2_1_46_2",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/0895-7177(93)90236-R"
+    }
+  ],
+  "container-title": [
+    "Networks"
+  ],
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fnet.10039",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://onlinelibrary.wiley.com/doi/pdf/10.1002/net.10039",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2023,
+        11,
+        18
+      ]
+    ],
+    "date-time": "2023-11-18T10:26:14Z",
+    "timestamp": 1700303174000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://onlinelibrary.wiley.com/doi/10.1002/net.10039"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2002,
+        8,
+        5
+      ]
+    ]
+  },
+  "references-count": 45,
+  "journal-issue": {
+    "issue": "2",
+    "published-print": {
+      "date-parts": [
+        [
+          2002,
+          9
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1002/net.10039"
+  ],
+  "URL": "https://doi.org/10.1002/net.10039",
+  "archive": [
+    "Portico"
+  ],
+  "relation": {},
+  "ISSN": [
+    "0028-3045",
+    "1097-0037"
+  ],
+  "issn-type": [
+    {
+      "value": "0028-3045",
+      "type": "print"
+    },
+    {
+      "value": "1097-0037",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2002,
+        8,
+        5
+      ]
+    ]
+  }
+}

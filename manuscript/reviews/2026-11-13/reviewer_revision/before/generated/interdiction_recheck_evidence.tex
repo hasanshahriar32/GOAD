@@ -1,0 +1,22 @@
+\begin{table*}[tbp]
+\centering
+\caption{Remediation on the same 30 generated identity graphs. The adaptive row uses full edge-attribute restoration. Mean and population SD describe the finite evaluated set. Tests compare the corrected adaptive policy with static greedy; Holm correction covers four budgets and two test procedures.}
+\label{tab:stackelberg_results}
+\evidencetable
+
+\begin{tabular}{lcccc}
+\toprule
+Policy & Budget 6 & Budget 12 & Budget 18 & Budget 24 \\
+\midrule
+Random cut & $12.0 \pm 7.3\%$ & $14.0 \pm 10.5\%$ & $12.2 \pm 8.1\%$ & $11.5 \pm 7.4\%$ \\
+Degree centrality & $52.6 \pm 24.7\%$ & $69.1 \pm 16.9\%$ & $77.2 \pm 15.4\%$ & $83.6 \pm 14.1\%$ \\
+Static greedy & $69.5 \pm 16.7\%$ & $88.4 \pm 9.9\%$ & $96.1 \pm 7.1\%$ & $97.6 \pm 6.5\%$ \\
+Metadata-preserving adaptive & $79.0 \pm 16.3\%$ & $92.3 \pm 11.7\%$ & $98.0 \pm 5.1\%$ & $98.5 \pm 4.0\%$ \\
+\midrule
+Paired $t$, raw $p$ & $4.074 \times 10^{-6}$ & $0.07562$ & $0.01028$ & $0.0635$ \\
+Exact signed rank, raw $p$ & $9.537 \times 10^{-7}$ & $0.06465$ & $0.003906$ & $0.0625$ \\
+Holm paired $t$ & $2.852 \times 10^{-5}$ & $0.25$ & $0.05138$ & $0.25$ \\
+Holm signed rank & $7.629 \times 10^{-6}$ & $0.25$ & $0.02344$ & $0.25$ \\
+\bottomrule
+\end{tabular}
+\end{table*}

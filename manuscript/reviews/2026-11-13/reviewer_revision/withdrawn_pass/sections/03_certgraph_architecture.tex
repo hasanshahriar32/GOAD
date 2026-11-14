@@ -1,0 +1,78 @@
+\section{Auxiliary Graph Screening: Formulation and Limits}
+\label{sec:certgraph_arch}
+
+This appendix describes an optional screening experiment. It does not supply the paper's provenance correctness claim or a gate that restricts evidence collection. The matched study in Appendix~\ref{sec:graph_evaluation} finds no classification advantage for bilinear gating.
+
+\subsection{Heterogeneous Graph Attention Network (HetGAT)}
+Following graph-learning formulations~\cite{scarselli2008graph,wu2021survey}, CertGraph employs a multi-relational graph attention network. Let $\mathbf{x}_v \in \mathbb{R}^{d_{\phi(v)}}$ denote the initial feature vector of entity $v \in \mathcal{V}$. Vertices are first projected into a shared hidden space of dimension $d$:
+\begin{equation}
+\fitmath{\mathbf{h}_v^{(0)} = \text{ReLU} \left( \mathbf{W}_{\phi(v)}^{(0)} \mathbf{x}_v + \mathbf{b}_{\phi(v)}^{(0)} \right)}
+\end{equation}
+where $\mathbf{W}_{\phi(v)}^{(0)} \in \mathbb{R}^{d \times d_{\phi(v)}}$ is a type-specific linear projection matrix.
+
+At each layer $l \in \{1, \dots, L\}$, message passing aggregates relational representations across incoming edges $\mathcal{N}_r(v) = \{u \in \mathcal{V} \mid (u, v) \in \mathcal{E}, \psi(u, v) = r\}$:
+\begin{equation}
+\fitmath{\mathbf{h}_v^{(l)} = \sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(l)} \mathbf{W}_r^{(l)} \mathbf{h}_u^{(l-1)} \right)}
+\end{equation}
+where $\mathbf{W}_r^{(l)} \in \mathbb{R}^{d \times d}$ is the relation-specific weight transformation for relation $r \in \mathcal{T}_E$, and $\sigma(\cdot)$ denotes the ELU activation function. The relational attention coefficient $\alpha_{vu}^{(l)}$ assigns dynamic importance to edge $(u, v)$ under relation $r$:
+\begin{equation}
+\fitmath{\begin{gathered}
+\alpha_{vu}^{(l)}=\frac{\exp(z_{vu}^{(l)})}{\sum_{k\in\mathcal N_r(v)}\exp(z_{vk}^{(l)})},\\
+z_{vu}^{(l)}=\operatorname{LeakyReLU}\!\left(\mathbf a_r^\top
+\begin{bmatrix}\mathbf W_r^{(l)}\mathbf h_v^{(l-1)}\\ \mathbf W_r^{(l)}\mathbf h_u^{(l-1)}\end{bmatrix}\right).
+\end{gathered}}
+\end{equation}
+where $\mathbf{a}_r \in \mathbb{R}^{2d}$ is the parameterized attention vector for relation $r$, and $\|$ denotes vector concatenation.
+
+\subsection{Target-Feature Dependence and Residual Sensitivity}
+\label{thm:theorem1}
+Absence of an explicit self-loop does not imply independence from target features. Writing the first-layer pre-activation as $s_v=\sum_{r,u}\alpha_{vu}W_rh_u^{(0)}$, its derivative includes
+\begin{equation}
+\fitmath{\frac{\partial s_v}{\partial h_v^{(0)}}=
+\sum_{r,u}(W_rh_u^{(0)})\frac{\partial\alpha_{vu}}{\partial h_v^{(0)}}.}
+\end{equation}
+For the target-dependent attention defined above, this term need not vanish. It vanishes for a coefficient-independent variant with independent node inputs and no self-loop; only that restricted variant erases the target's own first-layer input. An empty incoming neighborhood yields zero only when there is no bias and the activation maps zero to zero.
+
+For a residual model in a common $d$-dimensional hidden space, let $P_v=W_{\mathrm{skip}}^{(L)}\cdots W_{\mathrm{skip}}^{(1)}$ and let $J_{\mathrm{other}}$ collect every non-skip derivative, including derivatives through attention. At a differentiable input,
+\begin{equation}
+\fitmath{\begin{gathered}
+J_v=\frac{\partial\widetilde h_v^{(L)}}{\partial h_v^{(0)}}=P_v+J_{\mathrm{other}},\\
+\sigma_{\min}(J_v)\ge\prod_{l=1}^{L}\sigma_{\min}(W_{\mathrm{skip}}^{(l)})
+-\|J_{\mathrm{other}}\|_2.
+\end{gathered}}
+\end{equation}
+This follows from the singular-value perturbation inequality and the product bound for square matrices. A positive lower bound requires the skip product to dominate the other derivative. It does not guarantee sensitivity to raw features before the type projection, nor validate every attention architecture. We use it as a conditional diagnostic, not a theorem about shortcut elimination.
+
+\subsection{Shortcut Behavior and Bilinear Gating}
+While the analysis in Appendix~\ref{sec:certgraph_arch} gives a conditional sensitivity bound for additive residual skips ($\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$), empirical testing reveals a secondary failure mode: \textit{inductive shortcut collapse}.
+
+\paragraph{The Shortcut Memorization Failure}
+Because certificate template attributes (e.g., \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT} $= 1$ and Client Authentication EKU $= 1$) are strongly correlated with positive escalation labels in synthetic training distributions, additive skip connections provide a route by which the readout can emphasize template attributes. An attribute-dominated shortcut can take the form:
+\begin{equation}
+\fitmath{\hat{y}_t = \text{MLP}(\tilde{\mathbf{h}}_t^{(L)}) \approx \text{MLP} \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \mathbf{h}_t^{(0)} \right)}
+\end{equation}
+When the trained model is evaluated against \textbf{adversarial hard negatives}—templates that possess vulnerable attribute flags but reside in disconnected graph components or require mandatory manager approval—standard additive-skip GNNs memorize the flag pattern and classify them as vulnerable, showing poor agreement on the canonical generator. The matched audit in Appendix~\ref{sec:graph_evaluation} checks its reachable-path labels and separates augmentation from implementation differences.
+
+\paragraph{Multiplicative Bilinear Reachability Gating (\texttt{CertGraph-Gated}):}
+To test whether learned compatibility changes this behavior, we condition messages on a learned bilinear compatibility gate. The division between learned scoring and symbolic checking follows a broader neuro-symbolic design~\cite{garcez2023neurosymbolic}. Exact reachability is checked separately by the existing symbolic verification step; the learned gate alone is not a Boolean authorization predicate. We formulate the \textbf{Multiplicative Bilinear Reachability Gate}:
+\begin{equation}
+\fitmath{\mathbf{g}_{uv}^{(l)} = \sigma \left( \mathbf{h}_u^{(l-1)\top} \mathbf{W}_g^{(l)} \mathbf{h}_v^{(l-1)} + b_g^{(l)} \right)}
+\end{equation}
+where $\mathbf{W}_g^{(l)} \in \mathbb{R}^{d \times d}$ is a bilinear interaction matrix, $b_g^{(l)} \in \mathbb{R}$ is a scalar bias, and $\sigma(\cdot)$ is the sigmoid function mapping to $(0, 1)$.
+
+The gated message vector $\mathbf{m}_{vu}^{(l)}$ and state update are defined as:
+\begin{equation}
+\fitmath{\begin{gathered}\mathbf{m}_{vu}^{(l)} = \mathbf{g}_{uv}^{(l)} \odot \left( \mathbf{W}_r^{(l)} \mathbf{h}_u^{(l-1)} \right)\end{gathered}}
+\end{equation}
+\begin{equation}
+\fitmath{\begin{gathered}\mathbf{h}_v^{(l)} = \sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(l)} \mathbf{m}_{vu}^{(l)} \right)\\ \quad+\mathbf{g}_{vv}^{(l)} \odot \left( \mathbf{W}_{\text{skip}}^{(l)} \mathbf{h}_v^{(l-1)} \right)\end{gathered}}
+\end{equation}
+where $\odot$ denotes the element-wise Hadamard product.
+
+\begin{proposition}[Conditional Attenuation by Multiplicative Gating]
+For a bounded transformed neighbor message, if its scalar gate tends to zero, multiplicative attenuation gives:
+\begin{equation}
+\fitmath{\lim_{\mathbf{g}_{uv} \to 0} \mathbf{m}_{vu}^{(l)} = \mathbf{0}}
+\end{equation}
+Disconnection alone does not imply this gate limit: with zero embeddings and zero bias, the sigmoid gate equals $1/2$. Other residual paths or classifier biases can also produce a positive output. The attenuation statement therefore does not prove universal elimination of shortcuts. The feature-channel numerical implementation uses a feature-channel gate rather than this literal scorer. We implement a separate two-layer, four-head realization of the displayed bilinear edge and self-skip equations and evaluate it with identical-initialization additive controls and matched augmentation (Table~\ref{tab:literal_bilinear}). All relevant parameter families are trainable through autograd. The two implementations have identical held-out classifications in the matched study, and both miss the positive long-path cases. This validates an auditable realization of the formulation, rather than a universal shortcut-elimination or authorization guarantee. A second-tier verifier must process unresolved and out-of-horizon cases, including neural negatives, if it is to recover those observed misses.
+\end{proposition}

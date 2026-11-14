@@ -1,0 +1,721 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        11,
+        5
+      ]
+    ],
+    "date-time": "2026-11-05T21:43:36Z",
+    "timestamp": 1793915016293,
+    "version": "4.8.0"
+  },
+  "reference-count": 79,
+  "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+  "issue": "4",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2026,
+            7,
+            1
+          ]
+        ],
+        "date-time": "2026-07-01T00:00:00Z",
+        "timestamp": 1782864000000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "https://creativecommons.org/licenses/by/4.0/legalcode"
+    }
+  ],
+  "funder": [
+    {
+      "DOI": "10.13039/501100009318",
+      "name": "Helmholtz Association",
+      "doi-asserted-by": "publisher",
+      "id": [
+        {
+          "id": "10.13039/501100009318",
+          "id-type": "DOI",
+          "asserted-by": "publisher"
+        }
+      ]
+    }
+  ],
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "short-container-title": [
+    "IEEE Trans. Dependable and Secure Comput."
+  ],
+  "published-print": {
+    "date-parts": [
+      [
+        2026,
+        7
+      ]
+    ]
+  },
+  "DOI": "10.1109/tdsc.2026.3689905",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2026,
+        5,
+        4
+      ]
+    ],
+    "date-time": "2026-05-04T19:38:58Z",
+    "timestamp": 1777923538000
+  },
+  "page": "8967-8984",
+  "source": "Crossref",
+  "is-referenced-by-count": 5,
+  "title": [
+    "Accurate and Scalable Detection and Investigation of Cyber Persistence Threats"
+  ],
+  "prefix": "10.1109",
+  "volume": "23",
+  "author": [
+    {
+      "ORCID": "https://orcid.org/0000-0002-9334-953X",
+      "authenticated-orcid": false,
+      "given": "Qi",
+      "family": "Liu",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Institute for Automation and Applied Informatics, Karlsruhe Institute of Technology (KIT), Eggenstein-Leopoldshafen, Germany"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0009-0008-2009-9542",
+      "authenticated-orcid": false,
+      "given": "Muhammad",
+      "family": "Shoaib",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "School of Engineering &amp; Applied Science, University of Virginia, Charlottesville, VA, USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0009-0000-3345-2482",
+      "authenticated-orcid": false,
+      "given": "Mati Ur",
+      "family": "Rehman",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "School of Engineering &amp; Applied Science, University of Virginia, Charlottesville, VA, USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-8231-4331",
+      "authenticated-orcid": false,
+      "given": "Kaibin",
+      "family": "Bao",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Institute for Automation and Applied Informatics, Karlsruhe Institute of Technology (KIT), Eggenstein-Leopoldshafen, Germany"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-3572-9083",
+      "authenticated-orcid": false,
+      "given": "Veit",
+      "family": "Hagenmeyer",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Institute for Automation and Applied Informatics, Karlsruhe Institute of Technology (KIT), Eggenstein-Leopoldshafen, Germany"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "ORCID": "https://orcid.org/0000-0002-5676-6027",
+      "authenticated-orcid": false,
+      "given": "Wajih Ul",
+      "family": "Hassan",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "School of Engineering &amp; Applied Science, University of Virginia, Charlottesville, VA, USA"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "263",
+  "reference": [
+    {
+      "key": "ref1",
+      "article-title": "MITRE ATT&CK",
+      "year": "2023"
+    },
+    {
+      "key": "ref2",
+      "article-title": "Crowdstrike 2023 global threat report",
+      "year": "2023"
+    },
+    {
+      "key": "ref3",
+      "article-title": "The MITRE Corporation, Sandworm Team",
+      "year": "2023"
+    },
+    {
+      "key": "ref4",
+      "article-title": "Sandworm intrusion set campaign targeting centreon systems",
+      "year": "2021"
+    },
+    {
+      "key": "ref5",
+      "article-title": "P. A. S. Webshell",
+      "year": "2023"
+    },
+    {
+      "key": "ref6",
+      "article-title": "Deep dive into the solorigate second-stage activation",
+      "year": "2023"
+    },
+    {
+      "key": "ref7",
+      "article-title": "SolarWinds hack: The mystery of one of the biggest cyberattacks ever",
+      "year": "2023"
+    },
+    {
+      "key": "ref8",
+      "article-title": "SUNSPOT: An implant in the build process",
+      "year": "2023"
+    },
+    {
+      "key": "ref9",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2020.24046"
+    },
+    {
+      "key": "ref10",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2016.23350"
+    },
+    {
+      "key": "ref11",
+      "first-page": "487",
+      "article-title": "SLEUTH: Real-time attack scenario reconstruction from COTS audit data",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Hossain",
+      "year": "2017"
+    },
+    {
+      "key": "ref12",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2018.23141"
+    },
+    {
+      "key": "ref13",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/SP.2019.00026"
+    },
+    {
+      "key": "ref14",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2019.23349"
+    },
+    {
+      "key": "ref15",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/SP40000.2020.00096"
+    },
+    {
+      "key": "ref16",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/SP40000.2020.00064"
+    },
+    {
+      "key": "ref17",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/SP54263.2024.00005"
+    },
+    {
+      "key": "ref18",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/SP54263.2024.00139"
+    },
+    {
+      "key": "ref19",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/SP46214.2022.9833669"
+    },
+    {
+      "key": "ref20",
+      "first-page": "4355",
+      "article-title": "PROGRAPHER: An anomaly detection system based on provenance graph embedding",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Yang",
+      "year": "2023"
+    },
+    {
+      "key": "ref21",
+      "article-title": "Elastic detection rules",
+      "year": "2023"
+    },
+    {
+      "key": "ref22",
+      "article-title": "Chronicle detection rules",
+      "year": "2023"
+    },
+    {
+      "key": "ref23",
+      "article-title": "Sigma",
+      "year": "2023"
+    },
+    {
+      "key": "ref24",
+      "article-title": "MITRE T1547001",
+      "year": "2023"
+    },
+    {
+      "key": "ref25",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2020.24167"
+    },
+    {
+      "key": "ref26",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TIFS.2022.3208815"
+    },
+    {
+      "key": "ref27",
+      "first-page": "5197",
+      "article-title": "MAGIC: Detecting advanced persistent threats via masked graph representation learning",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Jia",
+      "year": "2023"
+    },
+    {
+      "key": "ref28",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2023.24207"
+    },
+    {
+      "key": "ref29",
+      "first-page": "1199",
+      "article-title": "Evading provenance-based ML detectors with adversarial system actions",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Mukherjee",
+      "year": "2023"
+    },
+    {
+      "key": "ref30",
+      "article-title": "Alert fatigue",
+      "year": "2023"
+    },
+    {
+      "key": "ref31",
+      "article-title": "In cybersecurity every alert matters",
+      "author": "Robinson",
+      "year": "2021"
+    },
+    {
+      "key": "ref32",
+      "first-page": "2783",
+      "article-title": "99% false positives: A qualitative study of SOC analysts\u2019 perspectives on security alarms",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Alahmadi",
+      "year": "2022"
+    },
+    {
+      "key": "ref33",
+      "article-title": "The defenders\u2019 dilemma",
+      "author": "Wojtasiak",
+      "year": "2023"
+    },
+    {
+      "key": "ref34",
+      "article-title": "The impact of security alert overload",
+      "year": "2019"
+    },
+    {
+      "key": "ref35",
+      "article-title": "MITRE Matrix",
+      "year": "2023"
+    },
+    {
+      "key": "ref36",
+      "article-title": "MITRE adversary emulation library",
+      "year": "2023"
+    },
+    {
+      "key": "ref37",
+      "article-title": "MITRE attack stix data",
+      "year": "2023"
+    },
+    {
+      "key": "ref38",
+      "article-title": "DARPA OpTC",
+      "author": "Opstal",
+      "year": "2023"
+    },
+    {
+      "key": "ref39",
+      "article-title": "DARPA transparent computing",
+      "year": "2023"
+    },
+    {
+      "key": "ref40",
+      "first-page": "3005",
+      "article-title": "ATLAS: A sequence-based learning approach for attack investigation",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Alsaheel",
+      "year": "2021"
+    },
+    {
+      "key": "ref41",
+      "article-title": "System monitor",
+      "author": "Russinovich",
+      "year": "2023"
+    },
+    {
+      "key": "ref42",
+      "article-title": "The linux audit daemon",
+      "author": "Grubb",
+      "year": "2023"
+    },
+    {
+      "key": "ref43",
+      "article-title": "Atomic Red Team",
+      "year": "2023"
+    },
+    {
+      "key": "ref44",
+      "article-title": "Elastic N V.EQL search",
+      "year": "2023"
+    },
+    {
+      "key": "ref45",
+      "first-page": "5179",
+      "article-title": "You cannot escape me: Detecting evasions of SIEM rules in enterprise networks",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Uetz",
+      "year": "2023"
+    },
+    {
+      "key": "ref46",
+      "volume-title": "Windows Internals, Part 2",
+      "author": "Allievi",
+      "year": "2022"
+    },
+    {
+      "key": "ref47",
+      "article-title": "APT29",
+      "year": "2023"
+    },
+    {
+      "key": "ref48",
+      "article-title": "APT29. Wizard Spider",
+      "year": "2023"
+    },
+    {
+      "key": "ref49",
+      "article-title": "Windows remote management",
+      "author": "White",
+      "year": "2023"
+    },
+    {
+      "key": "ref50",
+      "article-title": "Carbanak",
+      "year": "2023"
+    },
+    {
+      "key": "ref51",
+      "article-title": "Elasticsearch",
+      "year": "2023"
+    },
+    {
+      "key": "ref52",
+      "article-title": "NetworkX",
+      "year": "2023"
+    },
+    {
+      "key": "ref53",
+      "article-title": "PyVis",
+      "year": "2023"
+    },
+    {
+      "key": "ref54",
+      "article-title": "NT Kernel Logger",
+      "year": "2023"
+    },
+    {
+      "key": "ref55",
+      "article-title": "DARPA transparent computing E3",
+      "year": "2023"
+    },
+    {
+      "key": "ref56",
+      "article-title": "ATLASv 2",
+      "author": "Riddle",
+      "year": "2023"
+    },
+    {
+      "key": "ref57",
+      "article-title": "Black Carbon Cloud",
+      "year": "2023"
+    },
+    {
+      "key": "ref58",
+      "article-title": "MITRE Engenuity",
+      "year": "2023"
+    },
+    {
+      "key": "ref59",
+      "article-title": "MITRE engenuity evaluation",
+      "year": "2023"
+    },
+    {
+      "key": "ref60",
+      "article-title": "A elastic rule sample",
+      "year": "2023"
+    },
+    {
+      "key": "ref61",
+      "article-title": "A sigma rule sample",
+      "year": "2023"
+    },
+    {
+      "key": "ref62",
+      "article-title": "A chronicle rule sample",
+      "year": "2023"
+    },
+    {
+      "key": "ref63",
+      "first-page": "7173",
+      "article-title": "ORTHRUS: Achieving high quality of attribution in provenance-based intrusion detection systems",
+      "volume-title": "Proc. Secur. Symp.",
+      "author": "Jiang",
+      "year": "2025"
+    },
+    {
+      "key": "ref64",
+      "first-page": "7193",
+      "article-title": "Sometimes simpler is better: A comprehensive analysis of state-of-the-art provenance-based intrusion detection systems",
+      "volume-title": "Proc. Secur. Symp.",
+      "author": "Bilot",
+      "year": "2025"
+    },
+    {
+      "key": "ref65",
+      "article-title": "PIDSMaker: Building and evaluating provenance-based intrusion detection systems",
+      "author": "Bilot",
+      "year": "2026"
+    },
+    {
+      "key": "ref66",
+      "article-title": "Weights & biases",
+      "year": "2026"
+    },
+    {
+      "key": "ref67",
+      "first-page": "9913",
+      "article-title": "Nondeterminism and instability in neural network optimization",
+      "volume-title": "Proc. 38th Int. Conf. Mach. Learn. in Proc. Mach. Learn. Res.",
+      "volume": "139",
+      "author": "Summers",
+      "year": "2021"
+    },
+    {
+      "key": "ref68",
+      "article-title": "Memory profiler",
+      "year": "2023"
+    },
+    {
+      "key": "ref69",
+      "first-page": "3093",
+      "article-title": "Hopper: Modeling and detecting lateral movement",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Ho",
+      "year": "2021"
+    },
+    {
+      "key": "ref70",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2022.24107"
+    },
+    {
+      "key": "ref71",
+      "first-page": "469",
+      "article-title": "Detecting credential spearphishing in enterprise settings",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Ho",
+      "year": "2017"
+    },
+    {
+      "key": "ref72",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2024.24388"
+    },
+    {
+      "key": "ref73",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3411508.3421379"
+    },
+    {
+      "key": "ref74",
+      "first-page": "757",
+      "article-title": "UNVEIL: A large-scale, automated approach to detecting ransomware",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Kharaz",
+      "year": "2016"
+    },
+    {
+      "key": "ref75",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/SP46215.2023.10179405"
+    },
+    {
+      "key": "ref76",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/2976749.2978378"
+    },
+    {
+      "key": "ref77",
+      "first-page": "3023",
+      "article-title": "ELISE: A storage efficient logging system powered by redundancy reduction and representation learning",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Ding",
+      "year": "2021"
+    },
+    {
+      "key": "ref78",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3243734.3243763"
+    },
+    {
+      "key": "ref79",
+      "first-page": "1723",
+      "article-title": "Dependence-preserving data compaction for scalable forensic analysis",
+      "volume-title": "Proc. USENIX Secur. Symp.",
+      "author": "Hossain",
+      "year": "2018"
+    }
+  ],
+  "container-title": [
+    "IEEE Transactions on Dependable and Secure Computing"
+  ],
+  "original-title": [],
+  "link": [
+    {
+      "URL": "http://xplorestaging.ieee.org/ielx8/8858/11603880/11505042.pdf?arnumber=11505042",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2026,
+        7,
+        13
+      ]
+    ],
+    "date-time": "2026-07-13T20:09:28Z",
+    "timestamp": 1783973368000
+  },
+  "score": 1,
+  "resource": {
+    "primary": {
+      "URL": "https://ieeexplore.ieee.org/document/11505042/"
+    }
+  },
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2026,
+        7
+      ]
+    ]
+  },
+  "references-count": 79,
+  "journal-issue": {
+    "issue": "4"
+  },
+  "URL": "https://doi.org/10.1109/tdsc.2026.3689905",
+  "relation": {},
+  "ISSN": [
+    "1545-5971",
+    "1941-0018",
+    "2160-9209"
+  ],
+  "issn-type": [
+    {
+      "value": "1545-5971",
+      "type": "print"
+    },
+    {
+      "value": "1941-0018",
+      "type": "electronic"
+    },
+    {
+      "value": "2160-9209",
+      "type": "electronic"
+    }
+  ],
+  "subject": [],
+  "published": {
+    "date-parts": [
+      [
+        2026,
+        7
+      ]
+    ]
+  }
+}

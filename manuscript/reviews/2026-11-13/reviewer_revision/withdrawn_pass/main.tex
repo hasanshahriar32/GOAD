@@ -1,0 +1,37 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{manuscript}
+
+\title{CertGraph: Issuer-Scoped Certificate Provenance for Active Directory Certificate Services Investigation and Remediation}
+
+\author{Md.~Hasan~Shahriar, Taufiq~Biswas, and Md.~Ramim~Hossain%
+\thanks{The authors are with the Department of Electronics and Communication Engineering, Hajee Mohammad Danesh Science and Technology University (HSTU), Dinajpur-5200, Bangladesh. Corresponding author: Md. Hasan Shahriar (e-mail: hasanshahriar32@gmail.com).}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Certificate-template restoration can hide the configuration that enabled an earlier Active Directory Certificate Services (ADCS) issuance while leaving the certificate usable. CertGraph reconstructs issuance-to-authentication links through an issuer-scoped evidence contract. It retains compatible candidates when identifiers are incomplete, distinguishes possible from definite attribution, and revises conclusions when evidence conflicts. A frozen study of 5,400 synthetic histories includes 2,000 randomized histories in which the contract retains 99.06\% of true observed links as candidates and resolves 55.82\% definitively. Four controlled Windows intervention matrices and a concurrent forest workload provide 72 certificate cases: 66 successful exact-certificate authentications, including 13 administrative uses, and six certificate-bound rejections. Fixed signed requests isolate the tested template-bit contrast, while current-patch controls distinguish UPN-only rejection from administrative use of SID-URL certificates after restoration. A guarded SQLite implementation agrees with the identity reference at all 5,423 evaluated prefixes. Budgeted sequential interdiction supplies a complementary remediation analysis on 120 graph/budget instances, with explicit small-instance optimality gaps. An auxiliary graph-learning study finds identical additive and bilinear classifications and misses every tested long-path positive. The evidence supports certificate-specific investigation in controlled laboratories and identifies the collection, source-trust and deployment conditions requiring further validation.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Active Directory security, certificate services, provenance analysis, incomplete evidence, certificate authentication, network interdiction.
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/00_related_work}
+\input{sections/02_threat_model_and_blindspots}
+\input{sections/04_cipg_provenance_automaton}
+\input{sections/05_stackelberg_interdiction}
+\input{sections/06_empirical_evaluation}
+\input{sections/07_related_work_and_conclusion}
+
+\appendices
+\input{sections/03_certgraph_architecture}
+\input{sections/08_graph_learning_evaluation}
+\input{sections/09_artifact_corrections}
+
+\bibliography{references}
+
+\end{document}

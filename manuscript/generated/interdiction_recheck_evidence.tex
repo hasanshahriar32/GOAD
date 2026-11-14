@@ -1,10 +1,10 @@
-\begin{table}[ht]
+\begin{table*}[tbp]
 \centering
 \caption{Remediation on the same 30 generated identity graphs. The adaptive row uses full edge-attribute restoration. Mean and population SD describe the finite evaluated set. Tests compare the corrected adaptive policy with static greedy; Holm correction covers four budgets and two test procedures.}
 \label{tab:stackelberg_results}
-\small
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{l@{\hspace{12pt}}c@{\hspace{18pt}}c@{\hspace{18pt}}c@{\hspace{18pt}}c}
+\evidencetable
+
+\begin{tabular}{lcccc}
 \toprule
 Policy & Budget 6 & Budget 12 & Budget 18 & Budget 24 \\
 \midrule
@@ -18,6 +18,5 @@ Exact signed rank, raw $p$ & $9.537 \times 10^{-7}$ & $0.06465$ & $0.003906$ & $
 Holm paired $t$ & $2.852 \times 10^{-5}$ & $0.25$ & $0.05138$ & $0.25$ \\
 Holm signed rank & $7.629 \times 10^{-6}$ & $0.25$ & $0.02344$ & $0.25$ \\
 \bottomrule
-\end{tabular}%
-}
-\end{table}
+\end{tabular}
+\end{table*}

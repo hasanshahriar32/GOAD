@@ -1,0 +1,117 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{manuscript}[2026/10/17 IEEE Journal Manuscript Styling]
+
+% Page geometry and headings are controlled by IEEEtran.
+
+% Mathematics & Symbols
+\RequirePackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+
+% Typography & Spacing
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{newtxtext,newtxmath}
+\RequirePackage{microtype}
+
+% IEEEtran supplies the text grid; do not stretch paragraphs to fill columns.
+\AtBeginDocument{\raggedbottom}
+\setcounter{secnumdepth}{2}
+
+% Floating element control
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.80}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.70}
+
+% Graphics & Colors
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\graphicspath{{figures/}{../thesis_paper/figures/}}
+
+\definecolor{primaryblue}{RGB}{20, 60, 110}
+\definecolor{darkblue}{RGB}{10, 35, 75}
+\definecolor{accentred}{RGB}{160, 20, 35}
+\definecolor{accentgreen}{RGB}{20, 105, 50}
+\definecolor{codebg}{RGB}{248, 249, 250}
+\definecolor{grayborder}{RGB}{220, 224, 230}
+
+% Hyperlinks
+\RequirePackage{hyperref}
+\hypersetup{
+    hidelinks,
+    hypertexnames=false,
+    linkcolor=darkblue,
+    citecolor=primaryblue,
+    urlcolor=accentred,
+    bookmarksnumbered=true,
+    pdfstartview={FitH}
+}
+\RequirePackage{xurl}
+\RequirePackage[htt]{hyphenat}
+% Use an encoded underscore glyph, rather than a drawn rule, so that identifiers
+% retain underscores when copied from or searched in the PDF.
+\DeclareRobustCommand{\_}{\char95\relax\allowbreak}
+
+% Tables
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+\RequirePackage{makecell}
+\RequirePackage[caption=false,font=footnotesize]{subfig}
+
+
+\setlength{\tabcolsep}{4pt}
+\newcommand{\evidencetable}{\footnotesize\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.15}}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{14pt plus 2pt minus 2pt}
+
+
+% IEEEtran supplies section and subsection styles.
+
+% Algorithms & Code
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode}
+\RequirePackage{listings}
+\lstset{
+    backgroundcolor=\color{codebg},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{grayborder},
+    keywordstyle=\color{primaryblue}\bfseries,
+    commentstyle=\color{accentgreen}\itshape,
+    stringstyle=\color{accentred},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    tabsize=2
+}
+
+% Theorems & Formal Statements
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{invariant}{Invariant}[section]
+\newtheorem{remark}{Remark}[section]
+
+% Do not reproduce the reference article's publication banner, DOI or copyright.
+\markboth{CertGraph: Manuscript for Review}{Shahriar et al.: CertGraph}
+
+% Keep vector equations within a column; never enlarge short expressions.
+\newsavebox{\certgraphmathbox}
+\newcommand{\fitmath}[1]{\mbox{\begingroup
+\sbox{\certgraphmathbox}{$\displaystyle #1$}%
+\ifdim\wd\certgraphmathbox>\dimexpr\linewidth-2em\relax
+\resizebox{\dimexpr\linewidth-2em\relax}{!}{\usebox{\certgraphmathbox}}%
+\else\usebox{\certgraphmathbox}\fi\endgroup}}
+
+% Bibliography styling
+\RequirePackage[numbers,sort&compress]{natbib}
+\bibliographystyle{IEEEtran}
+
+\endinput

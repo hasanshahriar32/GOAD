@@ -1,0 +1,549 @@
+--- restored/generated/lineage_evidence.tex
++++ current/generated/lineage_evidence.tex
+@@ -58,18 +58,18 @@
+ \caption{Matched policy interventions: three blocks per OS and three certificate uses per condition. The 2019 build is 17763.4974. Signed administrative CSR/key pairs are matched within blocks. ESC1 and risky EKU measure template configuration, not attack intent.}
+ \label{tab:paired_live_policy}
+ \evidencetable
+-\begin{tabular}{llrrrr}
++\begin{tabular}{llrrrrr}
+ \toprule
+-OS & Condition & Trials & \makecell{Admin\\uses} & ESC1 & \makecell{Risky\\EKU} \\
++OS & Condition & Trials & Self & Admin & ESC1 & \makecell{Risky\\EKU} \\
+ \midrule
+-2016 & \makecell[l]{Baseline/admin\\request} & 3 & 0 & 0 & 0 \\
+-2016 & Subject bit enabled & 3 & 3 & 3 & 3 \\
+-2016 & \makecell[l]{Rollback before\\request} & 3 & 0 & 0 & 0 \\
+-2016 & \makecell[l]{Legitimate self\\request} & 3 & 0 & 3 & 3 \\
+-2019 & \makecell[l]{Baseline/admin\\request} & 3 & 0 & 0 & 0 \\
+-2019 & Subject bit enabled & 3 & 3 & 3 & 3 \\
+-2019 & \makecell[l]{Rollback before\\request} & 3 & 0 & 0 & 0 \\
+-2019 & \makecell[l]{Legitimate self\\request} & 3 & 0 & 3 & 3 \\
++2016 & \makecell[l]{Baseline/admin\\request} & 3 & 3 & 0 & 0 & 0 \\
++2016 & \makecell[l]{Subject bit\\enabled} & 3 & 0 & 3 & 3 & 3 \\
++2016 & \makecell[l]{Rollback before\\request} & 3 & 3 & 0 & 0 & 0 \\
++2016 & \makecell[l]{Legitimate self\\request} & 3 & 3 & 0 & 3 & 3 \\
++2019 & \makecell[l]{Baseline/admin\\request} & 3 & 3 & 0 & 0 & 0 \\
++2019 & \makecell[l]{Subject bit\\enabled} & 3 & 0 & 3 & 3 & 3 \\
++2019 & \makecell[l]{Rollback before\\request} & 3 & 3 & 0 & 0 & 0 \\
++2019 & \makecell[l]{Legitimate self\\request} & 3 & 3 & 0 & 3 & 3 \\
+ \bottomrule
+ \end{tabular}
+ \end{table}
+--- restored/manuscript.sty
++++ current/manuscript.sty
+@@ -47,7 +47,7 @@
+ }
+ \RequirePackage{xurl}
+ \RequirePackage[htt]{hyphenat}
+-\DeclareRobustCommand{\_}{\textunderscore\allowbreak}
++\DeclareRobustCommand{\_}{\char95\relax\allowbreak}
+ 
+ % Tables
+ \RequirePackage{booktabs}
+--- restored/references.bib
++++ current/references.bib
+@@ -6,7 +6,8 @@
+   volume = {90},
+   pages = {4:1--4:19},
+   year = {2017},
+-  doi = {10.4230/LIPIcs.TIME.2017.4}
++  doi = {10.4230/LIPIcs.TIME.2017.4},
++  note = {doi: \href{https://doi.org/10.4230/LIPIcs.TIME.2017.4}{\nolinkurl{10.4230/LIPIcs.TIME.2017.4}}}
+ }
+ 
+ @article{dahlhaus1994multiterminal,
+@@ -16,7 +17,9 @@
+   volume    = {23},
+   number    = {4},
+   pages     = {864--894},
+-  year      = {1994}
++  year      = {1994},
++  doi = {10.1137/S0097539792225297},
++  note = {doi: \href{https://doi.org/10.1137/S0097539792225297}{\nolinkurl{10.1137/S0097539792225297}}}
+ }
+ 
+ @article{dechter1991temporal,
+@@ -27,7 +30,8 @@
+   number = {1--3},
+   pages = {61--95},
+   year = {1991},
+-  doi = {10.1016/0004-3702(91)90006-6}
++  doi = {10.1016/0004-3702(91)90006-6},
++  note = {doi: \href{https://doi.org/10.1016/0004-3702(91)90006-6}{\nolinkurl{10.1016/0004-3702(91)90006-6}}}
+ }
+ 
+ @article{elmagarmid2007duplicate,
+@@ -38,7 +42,8 @@
+   doi = {10.1109/TKDE.2007.250581},
+   volume = {19},
+   number = {1},
+-  pages = {1-16}
++  pages = {1-16},
++  note = {doi: \href{https://doi.org/10.1109/TKDE.2007.250581}{\nolinkurl{10.1109/TKDE.2007.250581}}}
+ }
+ 
+ @article{garcez2023neurosymbolic,
+@@ -49,7 +54,8 @@
+   number    = {11},
+   pages     = {12387--12406},
+   year      = {2023},
+-  doi       = {10.1007/s10462-023-10448-w}
++  doi       = {10.1007/s10462-023-10448-w},
++  note = {doi: \href{https://doi.org/10.1007/s10462-023-10448-w}{\nolinkurl{10.1007/s10462-023-10448-w}}}
+ }
+ 
+ 
+@@ -61,7 +67,9 @@
+   volume    = {2},
+   number    = {11},
+   pages     = {665--673},
+-  year      = {2020}
++  year      = {2020},
++  doi = {10.1038/s42256-020-00257-z},
++  note = {doi: \href{https://doi.org/10.1038/s42256-020-00257-z}{\nolinkurl{10.1038/s42256-020-00257-z}}}
+ }
+ 
+ @article{goel2024hardening,
+@@ -72,7 +80,8 @@
+   doi = {10.1145/3688401},
+   volume = {5},
+   number = {3},
+-  pages = {1-36}
++  pages = {1-36},
++  note = {doi: \href{https://doi.org/10.1145/3688401}{\nolinkurl{10.1145/3688401}}}
+ }
+ 
+ @misc{heinzl2026timestamps,
+@@ -105,7 +114,8 @@
+   number     = {3},
+   pages      = {32:1--32:36},
+   year       = {2023},
+-  doi        = {10.1145/3588401}
++  doi        = {10.1145/3588401},
++  note = {doi: \href{https://doi.org/10.1145/3588401}{\nolinkurl{10.1145/3588401}}}
+ }
+ 
+ 
+@@ -118,7 +128,8 @@
+   number    = {4},
+   pages     = {8967--8984},
+   year      = {2026},
+-  doi       = {10.1109/TDSC.2026.3689905}
++  doi       = {10.1109/TDSC.2026.3689905},
++  note = {doi: \href{https://doi.org/10.1109/TDSC.2026.3689905}{\nolinkurl{10.1109/TDSC.2026.3689905}}}
+ }
+ 
+ @article{liu2026hades,
+@@ -129,15 +140,17 @@
+   number    = {1},
+   pages     = {936--953},
+   year      = {2026},
+-  doi       = {10.1109/TDSC.2025.3611866}
++  doi       = {10.1109/TDSC.2025.3611866},
++  note = {doi: \href{https://doi.org/10.1109/TDSC.2025.3611866}{\nolinkurl{10.1109/TDSC.2025.3611866}}}
+ }
+ 
+ @misc{lyak2021certipy,
+-  author       = {Oliver Lyak},
+-  title        = {Certipy: Active Directory Certificate Services Enumeration and Abuse Tool},
+-  howpublished = {GitHub repository, \url{https://github.com/ly4k/Certipy}},
+-  year         = {2021},
+-  note         = {Technical releases v2.0--v4.8.2 (2021--2024)}
++  author = {Oliver Lyak},
++  title = {{Certipy}: {Active Directory Certificate Services} Enumeration and Abuse Tool},
++  howpublished = {Software, version 5.0.4},
++  year = {2025},
++  url = {https://github.com/ly4k/Certipy/releases/tag/5.0.4},
++  note = {{Accessed}: Nov. 13, 2026}
+ }
+ 
+ @misc{microsoft2025pkcasid,
+@@ -175,7 +188,8 @@
+   doi = {10.1145/3593294},
+   volume = {55},
+   number = {14s},
+-  pages = {1-35}
++  pages = {1-35},
++  note = {doi: \href{https://doi.org/10.1145/3593294}{\nolinkurl{10.1145/3593294}}}
+ }
+ 
+ @techreport{rfc4556,
+@@ -208,7 +222,9 @@
+   volume    = {20},
+   number    = {1},
+   pages     = {61--80},
+-  year      = {2009}
++  year      = {2009},
++  doi = {10.1109/TNN.2008.2005605},
++  note = {doi: \href{https://doi.org/10.1109/TNN.2008.2005605}{\nolinkurl{10.1109/TNN.2008.2005605}}}
+ }
+ 
+ @techreport{schroeder2021certified,
+@@ -258,7 +274,8 @@
+   doi = {10.1109/TNNLS.2020.2978386},
+   volume = {32},
+   number = {1},
+-  pages = {4-24}
++  pages = {4-24},
++  note = {doi: \href{https://doi.org/10.1109/TNNLS.2020.2978386}{\nolinkurl{10.1109/TNNLS.2020.2978386}}}
+ }
+ 
+ @article{wu2025understanding,
+@@ -268,7 +285,8 @@
+   volume    = {313},
+   pages     = {113714},
+   year      = {2025},
+-  doi       = {10.1016/j.knosys.2025.113714}
++  doi       = {10.1016/j.knosys.2025.113714},
++  note = {doi: \href{https://doi.org/10.1016/j.knosys.2025.113714}{\nolinkurl{10.1016/j.knosys.2025.113714}}}
+ }
+ 
+ @article{zeng2019attackgraphs,
+@@ -278,7 +296,8 @@
+   year = {2019},
+   doi = {10.1155/2019/2031063},
+   volume = {2019},
+-  pages = {1-16}
++  pages = {1-16},
++  note = {doi: \href{https://doi.org/10.1155/2019/2031063}{\nolinkurl{10.1155/2019/2031063}}}
+ }
+ 
+ @article{zhou2020review,
+@@ -288,7 +307,8 @@
+   year = {2020},
+   doi = {10.1016/j.aiopen.2021.01.001},
+   volume = {1},
+-  pages = {57-81}
++  pages = {57-81},
++  note = {doi: \href{https://doi.org/10.1016/j.aiopen.2021.01.001}{\nolinkurl{10.1016/j.aiopen.2021.01.001}}}
+ }
+ 
+ @article{zipperle2023survey,
+@@ -299,7 +319,8 @@
+   doi = {10.1145/3539605},
+   volume = {55},
+   number = {7},
+-  pages = {1-36}
++  pages = {1-36},
++  note = {doi: \href{https://doi.org/10.1145/3539605}{\nolinkurl{10.1145/3539605}}}
+ }
+ 
+ @inproceedings{garg1994multiway,
+@@ -310,5 +331,7 @@
+   volume    = {820},
+   pages     = {487--498},
+   year      = {1994},
+-  publisher = {Springer}
+-}
++  publisher = {Springer},
++  doi = {10.1007/3-540-58201-0_92},
++  note = {doi: \href{https://doi.org/10.1007/3-540-58201-0_92}{\nolinkurl{10.1007/3-540-58201-0_92}}}
++}
+--- restored/scripts/evidence_table_layout.py
++++ current/scripts/evidence_table_layout.py
+@@ -3,7 +3,7 @@
+ 
+ WIDE = {'tab:stackelberg_results'}
+ HEADERS = {
+- 'tab:paired_live_policy':r'OS & Condition & Trials & \makecell{Admin\\uses} & ESC1 & \makecell{Risky\\EKU}',
++ 'tab:paired_live_policy':r'OS & Condition & Trials & Self & Admin & ESC1 & \makecell{Risky\\EKU}',
+  'tab:current_patch_policy':r'\makecell{Request\\form} & Condition & Self & Admin & Reject & \makecell{ESC1\\pre} & \makecell{ESC1\\post}',
+  'tab:hard_negatives':r'Implementation & Aug. & Correct & \makecell{False\\positive} & \makecell{False\\negative}',
+  'tab:literal_bilinear':r'Model & Aug. & IID & \makecell{Long\\paths} & \makecell{Larger\\background}',
+@@ -50,6 +50,7 @@
+     'Baseline/admin request':r'\makecell[l]{Baseline/admin\\request}',
+     'Rollback before request':r'\makecell[l]{Rollback before\\request}',
+     'Legitimate self request':r'\makecell[l]{Legitimate self\\request}',
++    'Subject bit enabled':r'\makecell[l]{Subject bit\\enabled}',
+     'Feature-channel gate':r'\makecell[l]{Feature-channel\\gate}',
+     'Additive attention':r'\makecell[l]{Additive\\attention}',
+     'Bilinear attention':r'\makecell[l]{Bilinear\\attention}',
+--- restored/scripts/generate_lineage_evidence.py
++++ current/scripts/generate_lineage_evidence.py
+@@ -70,9 +70,14 @@
+                                      ("rollback_before_enroll", "Rollback before request"),
+                                      ("benign_self_enrollment", "Legitimate self request")):
+                 r = paired["by_condition"][condition]
+-                rows.append([os_label,label,r["trials"],r["verified_privileged_uses"],r["certipy_esc1"],r["sigma_eku_rule"]])
++                outcomes = [x for x in paired['trials'] if x['condition'] == condition]
++                assert len(outcomes) == r['trials']
++                assert all(x['verified_certificate_use'] for x in outcomes)
++                self_uses = sum(not x['verified_administrator_use'] for x in outcomes)
++                assert self_uses + r['verified_privileged_uses'] == r['trials']
++                rows.append([os_label,label,r["trials"],self_uses,r["verified_privileged_uses"],r["certipy_esc1"],r["sigma_eku_rule"]])
+         text += table("Paired interventions in Windows 2016 and an independent Windows 2019 forest: three blocks per environment, with identical signed administrative CSR/key within each block. All 24 certificate-use outcomes are checked and baseline readback is restored. External columns concern configuration risk on the exact template, not attack intent. The 2019 build is 17763.4974.",
+-                      "tab:paired_live_policy", "llrrrr", "OS & Condition & Trials & Admin uses & ESC1 & Risky EKU", rows)
++                      "tab:paired_live_policy", "llrrrrr", "OS & Condition & Trials & Self uses & Admin uses & ESC1 & Risky EKU", rows)
+     path = ROOT/"manuscript/generated/lineage_evidence.tex"
+     path.parent.mkdir(exist_ok=True)
+     path.write_text(style_evidence_tables(text))
+--- restored/sections/02_threat_model_and_blindspots.tex
++++ current/sections/02_threat_model_and_blindspots.tex
+@@ -28,18 +28,18 @@
+ \end{equation}
+ In an ADCS privilege escalation, the path traverses intermediate membership and ACL delegation edges to a certificate template $t$, leverages an enterprise CA $c$ to issue an administrative credential, and culminates in a domain-level credential takeover.
+ 
+-\begin{figure*}[t]
++\begin{figure}[t]
+ \centering
+-\includegraphics[width=\textwidth]{figures/adcs_attack_graph_schema.png}
+-\caption{Active Directory Certificate Services (ADCS) Heterogeneous Multigraph Schema, detailing the primary security principal entity classes, sixteen directed relationship edges, and the composite escalation attack surface connecting unprivileged domain footholds to Enterprise Domain Controllers.}
++\includegraphics[width=\linewidth]{figures/verified_identity_schema.pdf}
++\caption{Node-type and relation vocabulary of the formal identity multigraph: six node types and ten relation types. This summarizes the definition; it is not an additional evaluated graph schema.}
+ \label{fig:adcs_schema}
+-\end{figure*}
++\end{figure}
+ 
+ \paragraph{ADCS ESC1--ESC15 Taxonomy Scoping Rationale}
+-To establish formal defensive boundaries across the full ESC1--ESC15 escalation taxonomy, our framework partitions vulnerabilities into two distinct structural operating regimes:
++Selected ESC categories illustrate different evidence requirements~\cite{schroeder2021certified,lyak2021certipy}. This orientation is not a claim of evaluated ESC1--ESC15 coverage. We distinguish two operating regimes:
+ \begin{enumerate}
+-    \item \textbf{Template-Centric Topological Vectors (Static Graph Evaluation):} Escalation archetypes ESC1 (enrollee supplies SAN), ESC2 (any-purpose EKU), ESC3 (certificate request agent), ESC4 (template DACL overwrite), ESC9 (certificate templates omitting the security extension), and ESC13 (issuance policy OID linkage to administrative groups) are governed by directory access control lists (ACLs), group nesting DAGs, and persistent LDAP configuration flags. These vectors are natively modeled on the static identity multigraph $\mathcal{G}$ and evaluated via reachability-gated graph neural networks and exact symbolic verification.
+-    \item \textbf{Runtime Protocol and Environmental Vectors (Dynamic Invariant Tracking):} In contrast, ESC6 (\texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} CA registry flag), ESC7 (CA administrator compromise), ESC8 (HTTP certificate web enrollment NTLM relay), raw PKCS\#10 ASN.1 SAN concealment, and temporal mutation rollbacks (ephemeral ESC4/ESC9 modifications) manifest as server-level registry states, network-layer NTLM reflections, or transient directory modifications that vanish between audit snapshots. Because these vectors leave zero permanent topological footprints in scheduled directory extractions, they strictly require runtime state-tracking by our continuous Cryptographic Invariant Provenance Graph (CIPG).
++    \item \textbf{Template-Centric Topological Vectors (Static Graph Evaluation):} Escalation archetypes ESC1 (enrollee supplies SAN), ESC2 (any-purpose EKU), ESC3 (certificate request agent), ESC4 (template DACL overwrite), ESC9 (certificate templates omitting the security extension), and ESC13 (issuance policy OID linkage to administrative groups) are governed by directory access control lists (ACLs), group nesting DAGs, and persistent LDAP configuration flags. These vectors motivate graph modeling; the matched learning experiment evaluates only its stated resolved-permission ESC1 abstraction, not every listed ESC category.
++    \item \textbf{Runtime Protocol and Environmental Vectors (Dynamic Invariant Tracking):} In contrast, ESC6 (\texttt{EDITF\_ATTRIBUTESUBJECTALTNAME2} CA registry flag), ESC7 (CA administrator compromise), ESC8 (HTTP certificate web enrollment NTLM relay), raw PKCS\#10 ASN.1 SAN concealment, and temporal mutation rollbacks (ephemeral ESC4/ESC9 modifications) manifest as server-level registry states, network-layer NTLM reflections, or transient directory modifications that vanish between audit snapshots. Protocol activity and server-side settings need not be visible in a scheduled LDAP projection. Runtime and CA evidence therefore complement directory snapshots; this distinction does not imply that every listed vector leaves no persistent artifact.
+ \end{enumerate}
+ 
+ \subsection{Template Rollback and Snapshot Evidence}
+@@ -67,24 +67,22 @@
+ \fitmath{\begin{gathered}\text{SHA-256}(\mathcal{G}_{t_3}) = h_0\end{gathered}}
+ \end{equation}
+ 
+-This is a conditional indistinguishability argument for that projection, not evidence that the entire AD database is bit-identical. The earlier draft's literal digests cannot substitute for retained canonical input bytes. For a detector using only the restored projection and no other historical evidence, the attack-specific restored-state difference is absent:
++This is a conditional indistinguishability argument for that projection, not evidence that the entire AD database is bit-identical. The earlier draft's literal digests cannot substitute for retained canonical input bytes. Let $\operatorname{Obs}_{\mathrm{static}}$ be this restored-attribute projection. With no other historical evidence, its observations are identical:
+ \begin{equation}
+-\fitmath{\text{Recall}_{\text{static}}(\text{Attack}_{t \ge t_3}) = 0.0\%}
++\fitmath{\operatorname{Obs}_{\mathrm{static}}(\mathcal G_{t_0})=\operatorname{Obs}_{\mathrm{static}}(\mathcal G_{t_3})}
+ \end{equation}
+-The issued certificate can remain usable after rollback subject to its validity, revocation, trust, and account-mapping conditions. This does not imply indefinite validity or absence of every residual directory artifact. The new controlled outcome in Section~\ref{sec:evaluation} was measured on inventoried Windows Server 2016 VMs.
++This does not assign a measured recall to every snapshot detector. The issued certificate can remain usable after rollback subject to its validity, revocation, trust, and account-mapping conditions. This does not imply indefinite validity or absence of every residual directory artifact. The new controlled outcome in Section~\ref{sec:evaluation} was measured on inventoried Windows Server 2016 VMs.
+ 
+ \subsection{Protocol Discontinuity: PKCS\#10 ASN.1 SAN Concealment and CA--KDC Logging Gap}
+-Collecting both CA and KDC Security events does not necessarily supply a shared certificate key. The following statement concerns selected observed fields, rather than disjointness of complete Windows event schemas.
++Collecting both CA and KDC Security events does not necessarily supply a shared certificate key. The following projections describe selected observed fields, not a universal disjointness property of Windows event schemas.
+ 
+-\begin{proposition}[CA--KDC Schema Disjointness]
+-Let $\pi_{\text{CA}}$ denote the selected issuance attributes in the captured Security event 4887, and let $\pi_{\text{KDC}}$ denote the projection recorded by Microsoft-Windows-Security-Auditing during Kerberos PKINIT pre-authentication (Event ID 4768). For the listed field-name projections, which exclude generic event metadata:
+-\begin{equation}
+-\fitmath{\pi_{\text{CA}} \cap \pi_{\text{KDC}} = \emptyset}
+-\end{equation}
+-The selected field-name projections are
+-\[\fitmath{\begin{gathered}\pi_{\text{CA}} = \{\text{Subject}, \text{TemplateName}, \text{RequestID},\\  \text{Disposition}, \text{SubjectKeyIdentifier}\}\end{gathered}}\]
+-\[\fitmath{\begin{gathered}\pi_{\text{KDC}} = \{\text{TargetUserName}, \text{PreAuthType}=16,\\  \text{CertSerialNumber}, \text{CertThumbprint}\}\end{gathered}}\]
+-\end{proposition}
++\paragraph{Selected Captured Fields}
++The selected issuance fields shown in Listing~\ref{lst:ca_event} are
++\[\fitmath{\pi_{\mathrm{CA}}=\{\mathrm{RequestId},\mathrm{Requester},\mathrm{Subject},\mathrm{Attributes}\}.}\]
++The certificate-bearing KDC record exposes
++\[\fitmath{\begin{gathered}\pi_{\mathrm{KDC}}=\{\mathrm{TargetUserName},\mathrm{PreAuthType},\\
++\mathrm{CertIssuerName},\mathrm{CertSerialNumber},\mathrm{CertThumbprint}\}.\end{gathered}}\]
++SKID and Disposition are not demonstrated in the selected issuance payload. Optional CA-database enrichment supplies the certificate identifiers used below. The important limitation is the lack of a shared certificate key in these captured fields, not the disjointness of arbitrarily selected field names.
+ 
+ \paragraph{SAN fields in requests and audit records}
+ When an attacker requests a certificate with a rogue Subject Alternative Name (e.g., impersonating the Domain Administrator), the SAN attribute can be supplied through two distinct mechanisms:
+@@ -113,4 +111,4 @@
+ </Event>
+ \end{lstlisting}
+ 
+-Listing~\ref{lst:ca_event} contains a template and client-machine attribute, but no textual SAN UPN. The issued public certificate does contain the requested administrative SAN, and an exact-certificate successful KDC event independently checks its use. A query requiring a textual administrative SAN in this issuance event has no such input here; this is a concrete missing-field case, not a measured universal SIEM false-negative rate. The selected issuance fields supply a Request ID and SKID, whereas the certificate-bearing KDC record supplies issuer, serial, and thumbprint. The CA database export supplies the issuer-scoped bridge evaluated in Section~\ref{sec:evaluation}.
++Listing~\ref{lst:ca_event} contains a template and client-machine attribute, but no textual SAN UPN. The issued public certificate does contain the requested administrative SAN, and an exact-certificate successful KDC event independently checks its use. A query requiring a textual administrative SAN in this issuance event has no such input here; this is a concrete missing-field case, not a measured universal SIEM false-negative rate. The selected issuance event supplies a Request ID, while optional CA-database enrichment supplies SKID. In contrast, the certificate-bearing KDC record supplies issuer, serial, and thumbprint. The CA database export supplies the issuer-scoped bridge evaluated in Section~\ref{sec:evaluation}.
+--- restored/sections/03_certgraph_architecture.tex
++++ current/sections/03_certgraph_architecture.tex
+@@ -36,7 +36,7 @@
+ 
+ \begin{theorem}[Intrinsic Attribute Preservation and Gradient Lower Bounds]
+ \label{thm:theorem1}
+-Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterogeneous multigraph. Consider an $L$-layer pure relational aggregation model with no target-feature dependence in its aggregation coefficients, no biases, and $\sigma(\mathbf{0})=\mathbf{0}$. For the residual bound, assume square compatible skip maps and differentiability at the evaluated input. These assumptions restrict the theorem; attention coefficients that depend on the target features can transmit those features even without a self-loop.
++Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterogeneous multigraph. Consider an $L$-layer pure relational aggregation model with no target-feature dependence in its aggregation coefficients, no biases, and $\sigma(\mathbf{0})=\mathbf{0}$. For the residual bound, differentiate with respect to the common hidden input $\mathbf h_v^{(0)}$ and assume square compatible skip maps and differentiability. No lower bound for the raw type-projected features is asserted. These assumptions restrict the theorem; attention coefficients that depend on the target features can transmit those features even without a self-loop.
+ \begin{enumerate}
+     \item \textbf{Intrinsic Feature Erasure:} If $\mathcal{G}$ contains no explicit self-loops on template nodes ($v \notin \mathcal{N}_r(v)$ for all $r$), the first-layer representation $\mathbf{h}_v^{(1)}$ is conditionally independent of initial features $\mathbf{x}_v$:
+     \begin{equation}
+@@ -45,11 +45,11 @@
+     Furthermore, for any unprivileged source account $u$ with in-degree $d_{\text{in}}(u) = 0$, $\mathbf{h}_u^{(l)} = \mathbf{0}$ for all $l \ge 1$.
+     \item \textbf{Guaranteed Gradient Lower Bound via Residual Skips:} When parameterized residual skip connections are introduced ($\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$) with $\sigma_{\min}(\mathbf{W}_{\text{skip}}^{(l)}) > 0$, the Jacobian of the representation satisfies:
+     \begin{equation}
+-\fitmath{\sigma_{\min} \left( \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right) \ge \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|}
++\fitmath{\sigma_{\min} \left( \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{h}_v^{(0)}} \right) \ge \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|}
+ \end{equation}
+     where $\mathcal{J}_{\text{graph}}(v)$ is the full derivative of all non-skip contributions, including their dependence through earlier residual states. Its norm must be measured or bounded for the particular model; a single path's weight product does not bound an arbitrary graph's aggregate derivative. When $\prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) > \|\mathcal{J}_{\text{graph}}(v)\|$, initial feature sensitivity is strictly preserved:
+     \begin{equation}
+-\fitmath{\left\| \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right\| > 0}
++\fitmath{\left\| \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{h}_v^{(0)}} \right\| > 0}
+ \end{equation}
+ \end{enumerate}
+ \end{theorem}
+@@ -58,24 +58,24 @@
+ We establish the two claims sequentially:
+ 
+ \paragraph{Part 1: Intrinsic Feature Erasure under Pure Neighborhood Aggregation.}
+-Under pure relational convolution at layer $l=1$, the hidden state $\mathbf{h}_v^{(1)}$ is computed as $\sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(1)} \mathbf{W}_r^{(1)} \mathbf{h}_u^{(0)} \right)$. In an Active Directory multigraph, template nodes possess no explicit self-loops ($v \notin \mathcal{N}_r(v)$ for all $r$). Differentiating $\mathbf{h}_v^{(1)}$ with respect to the initial template feature vector $\mathbf{x}_v = \mathbf{h}_v^{(0)}$:
++Under pure relational convolution at layer $l=1$, the hidden state $\mathbf{h}_v^{(1)}$ is computed as $\sigma \left( \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(1)} \mathbf{W}_r^{(1)} \mathbf{h}_u^{(0)} \right)$. In an Active Directory multigraph, template nodes possess no explicit self-loops ($v \notin \mathcal{N}_r(v)$ for all $r$). Differentiating $\mathbf{h}_v^{(1)}$ with respect to the initial template feature vector $\mathbf{x}_v$ through its type-specific initial projection:
+ \begin{equation}
+-\fitmath{\begin{gathered}\frac{\partial \mathbf{h}_v^{(1)}}{\partial \mathbf{x}_v} \\ = \sigma'(\cdot) \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(1)} \mathbf{W}_r^{(1)} \frac{\partial \mathbf{h}_u^{(0)}}{\partial \mathbf{h}_v^{(0)}}\end{gathered}}
++\fitmath{\begin{gathered}\frac{\partial \mathbf{h}_v^{(1)}}{\partial \mathbf{x}_v} \\ = \sigma'(\cdot) \sum_{r \in \mathcal{R}_{\text{in}}(\phi(v))} \sum_{u \in \mathcal{N}_r(v)} \alpha_{vu}^{(1)} \mathbf{W}_r^{(1)} \frac{\partial \mathbf{h}_u^{(0)}}{\partial \mathbf{x}_v}\end{gathered}}
+ \end{equation}
+-Because distinct nodes possess independent initial feature vectors ($\partial \mathbf{h}_u^{(0)} / \partial \mathbf{h}_v^{(0)} = \mathbf{0}$ for all $u \neq v$), every term in the summation vanishes identically, yielding $\partial \mathbf{h}_v^{(1)} / \partial \mathbf{x}_v = \mathbf{0}$. Thus, the layer-1 embedding is conditionally independent of $\mathbf{x}_v$, discarding all intrinsic template configuration flags (e.g., \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT}). Moreover, for any source node $u$ with in-degree $d_{\text{in}}(u) = 0$, $\mathcal{N}_r(u) = \emptyset$ for all $r$, so $\mathbf{h}_u^{(l)} = \mathbf{0}$ for all $l \ge 1$ by empty summation and $\sigma(\mathbf{0}) = \mathbf{0}$.
++Because distinct nodes possess independent initial feature vectors ($\partial \mathbf{h}_u^{(0)} / \partial \mathbf{x}_v = \mathbf{0}$ for all $u \neq v$), every term in the summation vanishes identically, yielding $\partial \mathbf{h}_v^{(1)} / \partial \mathbf{x}_v = \mathbf{0}$. Thus, the layer-1 embedding is conditionally independent of $\mathbf{x}_v$, discarding all intrinsic template configuration flags (e.g., \texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT}). Moreover, for any source node $u$ with in-degree $d_{\text{in}}(u) = 0$, $\mathcal{N}_r(u) = \emptyset$ for all $r$, so $\mathbf{h}_u^{(l)} = \mathbf{0}$ for all $l \ge 1$ by empty summation and $\sigma(\mathbf{0}) = \mathbf{0}$.
+ 
+ \paragraph{Part 2: Gradient Lower Bounds via Parameterized Residual Skips.}
+-With parameterized residual skip connections $\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$ and $\tilde{\mathbf{h}}_v^{(0)} = \mathbf{x}_v$, unrolling the recurrence across $L$ layers yields:
++With parameterized residual skip connections $\tilde{\mathbf{h}}_v^{(l)} = \mathbf{h}_v^{(l)} + \mathbf{W}_{\text{skip}}^{(l)} \tilde{\mathbf{h}}_v^{(l-1)}$ and $\tilde{\mathbf{h}}_v^{(0)} = \mathbf{h}_v^{(0)}$, unrolling the recurrence across $L$ layers yields:
+ \begin{equation}
+-\fitmath{\begin{gathered}\tilde{\mathbf{h}}_v^{(L)} = \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \mathbf{x}_v \\ + \sum_{l=1}^L \left( \prod_{k=l+1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \mathbf{h}_v^{(l)}\end{gathered}}
++\fitmath{\begin{gathered}\tilde{\mathbf{h}}_v^{(L)} = \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \mathbf{h}_v^{(0)} \\ + \sum_{l=1}^L \left( \prod_{k=l+1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \mathbf{h}_v^{(l)}\end{gathered}}
+ \end{equation}
+-Differentiating $\tilde{\mathbf{h}}_v^{(L)}$ with respect to $\mathbf{x}_v$:
++Differentiating $\tilde{\mathbf{h}}_v^{(L)}$ with respect to $\mathbf{h}_v^{(0)}$:
+ \begin{equation}
+-\fitmath{\begin{gathered}\frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} = \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} + \mathcal{J}_{\text{graph}}(v),\\ \text{where}\quad \mathcal{J}_{\text{graph}}(v) = \sum_{l=1}^L \left( \prod_{k=l+1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \frac{\partial \mathbf{h}_v^{(l)}}{\partial \mathbf{x}_v}\end{gathered}}
++\fitmath{\begin{gathered}\frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{h}_v^{(0)}} = \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} + \mathcal{J}_{\text{graph}}(v),\\ \text{where}\quad \mathcal{J}_{\text{graph}}(v) = \sum_{l=1}^L \left( \prod_{k=l+1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) \frac{\partial \mathbf{h}_v^{(l)}}{\partial \mathbf{h}_v^{(0)}}\end{gathered}}
+ \end{equation}
+ By Weyl's singular value perturbation inequality and the sub-multiplicative property of singular values:
+ \begin{equation}
+-\fitmath{\begin{gathered}\sigma_{\min} \left( \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{x}_v} \right) \\ \ge \sigma_{\min} \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) - \|\mathcal{J}_{\text{graph}}(v)\| \\ \ge \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|\end{gathered}}
++\fitmath{\begin{gathered}\sigma_{\min} \left( \frac{\partial \tilde{\mathbf{h}}_v^{(L)}}{\partial \mathbf{h}_v^{(0)}} \right) \\ \ge \sigma_{\min} \left( \prod_{k=1}^L \mathbf{W}_{\text{skip}}^{(k)} \right) - \|\mathcal{J}_{\text{graph}}(v)\| \\ \ge \prod_{k=1}^L \sigma_{\min}(\mathbf{W}_{\text{skip}}^{(k)}) - \|\mathcal{J}_{\text{graph}}(v)\|\end{gathered}}
+ \end{equation}
+ Under the stated coefficient-independence assumptions, absence of every directed return walk to $v$ within the evaluated depth implies $\mathcal{J}_{\text{graph}}(v)=\mathbf{0}$. Then the minimum singular value of the skip product is bounded below by the product of the individual minimum singular values; equality is not generally implied. In cyclic or feature-dependent attention models, the non-skip derivative can reinforce or cancel the skip path. The positive-sensitivity conclusion therefore requires the displayed strict inequality and is not an unconditional guarantee for all GNNs.
+ \end{proof}
+@@ -95,7 +95,7 @@
+ \begin{equation}
+ \fitmath{\mathbf{g}_{uv}^{(l)} = \sigma \left( \mathbf{h}_u^{(l-1)\top} \mathbf{W}_g^{(l)} \mathbf{h}_v^{(l-1)} + b_g^{(l)} \right)}
+ \end{equation}
+-where $\mathbf{W}_g^{(l)} \in \mathbb{R}^{d \times d}$ is a bilinear interaction tensor, $b_g^{(l)} \in \mathbb{R}$ is a scalar bias, and $\sigma(\cdot)$ is the sigmoid function mapping to $(0, 1)$.
++where $\mathbf{W}_g^{(l)} \in \mathbb{R}^{d \times d}$ is a bilinear interaction matrix, $b_g^{(l)} \in \mathbb{R}$ is a scalar bias, and $\sigma(\cdot)$ is the sigmoid function mapping to $(0, 1)$.
+ 
+ The gated message vector $\mathbf{m}_{vu}^{(l)}$ and state update are defined as:
+ \begin{equation}
+--- restored/sections/04_cipg_provenance_automaton.tex
++++ current/sections/04_cipg_provenance_automaton.tex
+@@ -7,7 +7,7 @@
+ CIPG processes heterogeneous audit streams across three disjoint operational layers:
+ \begin{enumerate}
+     \item \textbf{Directory Service Audit Events (NTDS):} Monitored via Windows Security Event ID 5136 (\textit{Directory Service Object Modified}). Captures granular LDAP mutations on certificate templates, user objects, and access control lists, recording the modifying principal, target object GUID, modified attribute (e.g., \texttt{nTDSDSOptions}, \texttt{pKIExtendedKeyUsage}, \texttt{msPKI-Certificate-Name-Flag}), and operation type (Value Added / Value Deleted).
+-    \item \textbf{Certificate Authority Telemetry and CA DB Bridge:} Monitored via Event IDs 4886 (\textit{Certificate Request Received}) and 4887 (\textit{Certificate Issued}). To bridge the PKCS\#10 ASN.1 SAN concealment gap ($\pi_{\text{CA}} \cap \pi_{\text{KDC}} = \emptyset$), CIPG queries the local CA transactional database using \texttt{certutil}, requesting the \texttt{RequestID}, \texttt{SerialNumber}, \texttt{SubjectKeyIdentifier}, and \texttt{CertificateHash} fields, or the raw CA RPC interface. This populates a persistent cryptographic tuple:
++    \item \textbf{Certificate Authority Telemetry and CA DB Bridge:} Monitored via Event IDs 4886 (\textit{Certificate Request Received}) and 4887 (\textit{Certificate Issued}). To supply the missing shared certificate identifiers, CIPG queries the local CA transactional database using \texttt{certutil}, requesting the \texttt{RequestID}, \texttt{SerialNumber}, \texttt{SubjectKeyIdentifier}, and \texttt{CertificateHash} fields, or the raw CA RPC interface. This populates a persistent cryptographic tuple:
+     \begin{equation}
+ \fitmath{\begin{gathered}\tau_{\text{crypto}} = \langle \text{Issuer}, \text{RequestID}, \text{SKID},\\  \text{SerialNumber}, \text{Thumbprint}_{\text{SHA1}} \rangle\end{gathered}}
+ \end{equation}
+@@ -16,8 +16,8 @@
+ 
+ \begin{figure*}[ht]
+ \centering
+-\includegraphics[width=\textwidth]{figures/neuro_symbolic_pipeline.png}
+-\caption{Two-tier neuro-symbolic architecture: Tier~1 inductive GNN screening filters benign templates ($O(|V|+|E|)$), while Tier~2 CIPG provenance auditing dynamically correlates temporal LDAP mutations (Event 5136), CA issuances (Event 4887), and Kerberos PKINIT authentications (Event 4768) via the continuous CA Jet Database bridge.}
++\includegraphics[width=\textwidth]{figures/verified_evidence_pipeline.pdf}
++\caption{Certificate-evidence flow through CIPG. Directory changes, CA issuance/export evidence and KDC outcomes support revisable issuer-scoped linkage. Collection is independent of a neural-positive prediction; optional screening cannot discard the long-path positives missed in the evaluated learning study. Remediation retains its separate budget and immutability assumptions.}
+ \label{fig:neuro_symbolic_pipeline}
+ \end{figure*}
+ 
+@@ -91,6 +91,8 @@
+ \end{algorithm}
+ 
+ 
++Algorithm~\ref{alg:invariant5} illustrates the mutation-taint path. The identity reference also retains unmutated issuances and handles late enrichment and link revision; these broader behaviors are evaluated separately in Section~\ref{sec:evaluation}.
++
+ \paragraph{Mathematical Guarantees and Operational Concurrency Realities}
+ A serial number is scoped to its issuer~\cite{rfc5280}; SKID identifies a public key and can recur across distinct certificates. A thumbprint identifies certificate bytes, while an unauthenticated log field does not itself prove certificate possession or source integrity. The reference implementation requires all shared identity fields to agree and preserves compatible incompletely identified issuances, so missing fields cannot manufacture uniqueness. Late evidence can withdraw a previously resolved link. Retention enables delayed-use analysis only while the necessary observations remain available; no bounded-memory or irreversible-finality guarantee follows.
+ 
+@@ -101,7 +103,7 @@
+ 
+ The earlier trace-driven synthetic stress stream illustrates two configured trade-offs; its rates do not measure a production deployment:
+ \begin{enumerate}
+-    \item \textbf{Poisson Auto-Enrollment Collisions (False Positives):} When an administrator performs a legitimate template modification and subsequent rollback ($n=50$ maintenance windows, duration $\Delta t \in [10\text{s}, 45\text{s}]$), concurrent background machine renewals and user \texttt{AutoEnroll} requests arrive according to a Poisson process ($\lambda_{\text{enroll}} \approx 2,000/\text{hr}$). Any benign enrollment that lands inside $[t_1, t_2]$ is flagged by Causal Invariant~I, generating 4 realistic False Positives ($8.00\%$ maintenance window FPR, $0.0395\%$ overall event FPR, $92.16\%$ precision at $\Delta_{\text{poll}}=5\text{s}$ and $92.31\%$ at $\Delta_{\text{poll}}=1\text{s}$), compared to a $100\%$ FPR and $19.35\%$ precision for naive rollback monitors.
++    \item \textbf{Background Enrollment Collisions (False Positives):} The configured workload contains 50 maintenance windows with durations in $[10,35]$~s and 2,000 renewals sampled uniformly over the simulated duration. Template selection, rather than the total renewal count, determines the candidate collision rate. Four maintenance windows produce false alarms: $8.00\%$ maintenance-window FPR and $0.0395\%$ overall event FPR, with $92.16\%$ precision at $\Delta_{\text{poll}}=5$~s and $92.31\%$ at 1~s. Section~\ref{sec:evaluation} states the actual sampling scheme; these are synthetic-workload counts, not an enterprise Poisson-rate measurement.
+     \item \textbf{CA Database Polling Latency (Simulated False Negatives):} The configured stress stream reports $48/48$ recall at $\Delta_{\text{poll}}=1.0\text{s}$ and $47/48$ at $5.0\text{s}$. These outcomes use the stream's synthetic labels. They are separate from independently checking a successful issuance-to-use chain in captured Windows records; Section~\ref{sec:evaluation} reports that evidence audit.
+ \end{enumerate}
+ 
+--- restored/sections/06_empirical_evaluation.tex
++++ current/sections/06_empirical_evaluation.tex
+@@ -3,16 +3,16 @@
+ 
+ We conduct an empirical evaluation to validate CertGraph's static gating, dynamic provenance tracking, and game-theoretic interdiction. Specifically, we address four core research questions:
+ \begin{itemize}
+-    \item \textbf{RQ1 (Inductive Shortcut Cure):} Does Multiplicative Bilinear Gating eliminate shortcut memorization and prevent accuracy collapse on adversarial hard negatives?
++    \item \textbf{RQ1 (Shortcut Behavior):} How does multiplicative bilinear gating affect classification on hard negatives and long paths when initialization and augmentation are matched?
+     \item \textbf{RQ2 (Provenance Validity):} Which rollback and split-actor certificate lineages are supported by captured Windows evidence, and how do incomplete identity fields, optional-source faults, and time uncertainty affect attribution?
+     \item \textbf{RQ3 (Provenance Scalability):} What processing cost and compression are observed on the configured stress stream, and which retention and reasoning costs remain unresolved?
+-    \item \textbf{RQ4 (Operational Interdiction Efficiency):} Does the Co-Adaptive Stackelberg policy achieve superior path interdiction while minimizing administrative disruption compared to industrial greedy heuristics?
++    \item \textbf{RQ4 (Budgeted Interdiction):} What pair-disconnection values, cut counts and optimality gaps does the sequential adaptive heuristic achieve relative to the implemented greedy comparators under assigned disruption costs?
+ \end{itemize}
+ 
+ \subsection{Experimental Setup}
+ \paragraph{Synthetic Identity Graphs} The historical static benchmark uses 700 class-balanced synthetic identity graphs. Additional graph sizes are used in the separate scalability experiments. Neither the class proportions nor the graph generator constitute a measured enterprise distribution. The new matched gating audit uses the existing two-step implementations with fixed source snapshots and separately recorded training, validation, and test inputs.
+ 
+-\paragraph{Live Cyber-Range Cyberbed} We use a virtualized Game of Active Directory (GOAD) cyber-range. Fresh inventory of the restored DC and CA identifies Windows Server 2016 Standard Evaluation, build 14393. That measured inventory supersedes the earlier draft's Server 2019 description. The two nodes are:
++\paragraph{Live Cyber-Range Testbed} We use a virtualized Game of Active Directory (GOAD) cyber-range. Fresh inventory of the restored DC and CA identifies Windows Server 2016 Standard Evaluation, build 14393. That measured inventory supersedes the earlier draft's Server 2019 description. The two nodes are:
+ \begin{itemize}
+     \item \texttt{DC03} (\texttt{essos.local}): Active Directory Domain Controller, Kerberos KDC, and LDAP directory.
+     \item \texttt{SRV03} (\texttt{braavos.essos.local}): Certificate Authority running Microsoft Active Directory Certificate Services.
+@@ -22,7 +22,7 @@
+ \subsection{RQ1a: In-Distribution Ablations, Calibration, and Perturbation Asymmetry}
+ We first distinguish the historical class-balanced generator from the newer attribution and live-policy experiments. Their labels, model implementations, and observation units differ.
+ 
+-\paragraph{Empirical Confirmation of Theorem~\ref{thm:theorem1} (Skip-Connection Ablation):}
++\paragraph{Skip-Connection Ablation and Conditional Theory:}
+ The saved five-fold artifact reports Macro-F1 $0.9986 \pm 0.0029$ with skips and $0.4768 \pm 0.0239$ without skips. Recomputing the paired statistic from the five saved fold values gives $t=46.245$, $p=1.308\times10^{-6}$, and four degrees of freedom. The dispersions are population standard deviations across these folds. Shared training data and generator assumptions limit interpretation of this descriptive comparison. An empirical ablation does not validate the theorem outside its coefficient-independence and derivative assumptions.
+ 
+ \paragraph{Class Proportions and Probability Interpretation}
+@@ -52,7 +52,7 @@
+ Independent NetworkX reachability checks all 5,100 saved case labels, and checkpoint inference reproduces all 10,800 held-out predictions. The literal bilinear and additive models have identical classifications in every matched arm: IID accuracy averages $86.00\%\pm2.19\%$, larger-background accuracy $87.00\%\pm1.00\%$, and long-path accuracy 50\%. In each arm, all 450 positive long-path cases are missed. Some IID negatives also require deny-membership reasoning beyond the local horizon; 126 pooled false positives remain. Probability scores differ, but their reported calibration errors concern these synthetic cohorts only. This closes the literal-implementation and repeated-whole-input gaps while failing to establish classification superiority for bilinear gating. Exact verification of unresolved cases remains necessary under the stated permission contract.
+ 
+ \subsection{RQ2 \& RQ3: Live Provenance Evaluation and Automaton Scalability}
+-We separate seven archived trace files, one new outcome-checked Windows case, a synthetic attribution confirmation study, and the earlier $10,182$-event trace-driven synthetic stress stream. Their outcome definitions and evidence levels differ; scenario filenames are not independent success labels.
++We separate seven archived trace files, one new outcome-checked Windows case, a synthetic attribution confirmation study, and the earlier $10,182$-event trace-driven synthetic stress stream. Their outcome definitions and evidence levels differ; scenario filenames are not independent success labels. Dispersions are labeled by table: the literal-learning study reports sample SD across three seeds, whereas the finite-graph remediation study reports population SD. Neither is a confidence interval.
+ 
+ \begin{table}[tbp]
+ \centering
+@@ -113,9 +113,9 @@
+ \end{table}
+ 
+ \paragraph{Collection delay and attribution trade-offs}
+-As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matrix}, in the configured synthetic CA/KDC schema model ($\pi_{\text{CA}}(e_{4887}) \cap \pi_{\text{KDC}}(e_{4768}) = \emptyset$), operational performance is governed by two orthogonal systems dimensions:
+-\begin{itemize}
+-    \item \textbf{Correlation Horizon ($\Delta t$) vs. False Positives:} During 50 simulated administrator maintenance windows ($\Delta t \in [10\text{s}, 45\text{s}]$), background \texttt{AutoEnroll} requests arrived concurrently inside the mutation window with probability $1 - e^{-\lambda \Delta t}$. At $\Delta t = 10\text{s}$, zero collisions occur ($0.0\%$ FPR, $100.0\%$ precision). Widening $\Delta t$ to $30\text{s}$ admits 3 Poisson collisions ($6.0\%$ FPR). For $\Delta t \ge 60\text{s}$, false positives plateau at exactly 4 / 50 ($8.00\%$ maintenance window FPR, $0.0395\%$ overall event FPR, $92.16\%$ precision at $\Delta_{\text{poll}}=5\text{s}$ and $92.31\%$ at $\Delta_{\text{poll}}=1\text{s}$) because all 50 administrative maintenance windows conclude within $45\text{s} < 60\text{s}$. Naive rollback monitors generated 50/50 false alarms ($100\%$ FPR, $19.35\%$ precision).
++As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matrix}, in the configured synthetic CA/KDC workload, operational performance is governed by two orthogonal systems dimensions:
++\begin{itemize}
++    \item \textbf{Correlation Horizon ($\Delta t$) vs. False Positives:} The seeded generator places a fixed 2,000 renewal arrivals uniformly over the simulated duration $T$. A renewal chooses one of 15 maintenance templates with probability $0.055$, uniformly among them; otherwise it chooses the machine template. It does not implement an unconditional 2,000-per-hour Poisson process. For a particular maintenance template and $\Delta\le T$, the matching-arrival probability before additional principal or detector conditions is $1-(1-0.055\Delta/(15T))^{2000}$. Thus the total renewal count is not the matching-event rate. The 50 generated maintenance windows have durations in $[10,35]$~s. The saved sensitivity query observes 0/50 false alarms at 10~s, 3/50 at 30~s and 4/50 from 60~s onward. These are finite seeded-workload outcomes, not a general collision-free guarantee. The naive rollback monitor flags all 50 maintenance windows. Table~\ref{tab:sensitivity_matrix} retains the observed precision and recall values.
+     \item \textbf{CA Database Polling Lag ($\Delta_{\text{poll}}$) vs. False Negatives:} Because KDC Event 4768 omits SubjectKeyIdentifier (SKID), linking Event 4887 to Event 4768 strictly requires CA Jet DB enrichment. When an attacker's PKINIT execution delay $\delta_{\text{pkinit}} \sim \text{LogNormal}(1.2, 0.8)$ executes before the next polling tick ($t_{\text{auth}} + \Delta_{\text{watermark}} < t_{\text{poll}}$), the join keys remain un-enriched at evaluation time, generating organic False Negatives. At $\Delta_{\text{poll}} = 1.0\text{s}$, CIPG achieves $100.00\%$ recall ($48/48$). At default $\Delta_{\text{poll}} = 5.0\text{s}$, CIPG achieves $97.92\%$ recall ($47/48$). At $\Delta_{\text{poll}} \in \{15\text{s}, 60\text{s}\}$, rapid attacks beat the polling cycle, resulting in $89.58\%$ recall ($43/48$).
+ \end{itemize}
+ 
+@@ -197,12 +197,12 @@
+ 
+ \input{generated/interdiction_recheck_evidence}
+ 
+-\begin{figure*}[ht]
+-\centering
+-\includegraphics[width=0.88\textwidth]{figures/game_theoretic_convergence.png}
+-\caption{Historical remediation visualization. Left: illustrative analytic objective curves, not measured policy-training or equilibrium evidence. Right: historical heuristic results on 30 generated identity graphs; corrected measurements are in Table~\ref{tab:stackelberg_results}. The horizontal budgets are assigned weighted costs, despite the historical image's revoked-edge-count label.}
++\begin{figure}[ht]
++\centering
++\includegraphics[width=\linewidth]{figures/verified_interdiction_results.pdf}
++\caption{Measured adaptive and static-greedy disconnection results on the same 30 generated graphs as Table~\ref{tab:stackelberg_results}. Error bars show population SD. The horizontal axis is assigned disruption cost. These fixed-budget measurements are not convergence-to-equilibrium trajectories.}
+ \label{fig:stackelberg_convergence}
+-\end{figure*}
++\end{figure}
+ 
+ \paragraph{Operational Immutability Plateau and the Runtime Defense Residual}
+ In enterprise networks, a realistic fraction of directory edges represents immutable operational dependencies ($E_b \subsetneq E$). As shown in Table~\ref{tab:stackelberg_results} and Figure~\ref{fig:stackelberg_convergence}, proactive graph interdiction achieves \textbf{$98.5 \pm 4.0\%$} paths severed at $B_{\text{ops}}=24$ (vs. $97.6 \pm 6.5\%$ for Static Greedy).
+--- restored/sections/07_related_work_and_conclusion.tex
++++ current/sections/07_related_work_and_conclusion.tex
+@@ -27,7 +27,7 @@
+ \begin{enumerate}
+     \item \textbf{Evidence Scale and Label Validity:} The archive's scenario names do not establish seven successful attacks. Four final fixed-request matrices supply 42 successful exact-certificate authentications and six certificate-bound rejections, with nine privileged uses and matched self-use controls. A prospective new-forest cohort adds 24 distinct certificates, including four further privileged uses: the combined primary studies contain 72 certificate cases, 66 successful uses and six rejections. The transfer cohort has new identity namespaces and concurrent multi-template activity but shares the Windows image family. They establish controlled outcomes, not enterprise prevalence. Independent Windows 2019 builds 17763.4974 and 17763.9376 are measured. Current-patch controls reveal request-form differences, but the additional post-rollback workflow prevents attributing every old/new difference solely to the update. Eighteen missing contemporaneous CA exports are explicitly supplemented by a later read-only snapshot; original captures remain intact. Original source images remain read-only.
+     \item \textbf{Static Model and Generator Validity:} The matched audit corrects reachable-path labels and checks 6,000 checkpoint predictions. Repeated training/validation archetypes, fixed first-step transforms, hand-initialized projections, and the distinction between feature-channel and bilinear gating restrict what its numbers establish. A separate literal bilinear study removes those implementation and repeated-whole-input problems with trainable encoders and typed family-disjoint splits. Both literal bilinear and additive attention still miss all 450 long-path positives per arm, without a classification advantage for gating. A verifier restricted to neural positives cannot repair these misses, and symbolic label agreement is not independent Windows ground truth.
+-    \item \textbf{Parametric Disruption Costs vs. Interactive Administrator Feedback:} In our Stackelberg remediation game, operational disruption costs $c(e)$ are assigned parametrically according to relation type ($c(\text{MemberOf}) \in [2.8, 3.8], c(\text{GenericAll}) \in [2.0, 3.0], c(\text{Enroll}) \in [1.0, 1.4]$) and operational edge immutability constraints ($E_b \subsetneq E$). In production enterprise deployments, operational criticality is context-sensitive and evolving. The exact small-instance audit gives concrete optimum comparisons rather than a universal heuristic guarantee. A metadata-preserving rerun also checks all 120 original graph/budget instances; it changes nine objective outcomes and 24 cut counts. The primary table and revoked-edge comparison now use that corrected implementation. Integrating real-time human-in-the-loop preference elicitation~\cite{goel2024hardening} requires a separate evaluation.
++    \item \textbf{Parametric Disruption Costs vs. Interactive Administrator Feedback:} In our Stackelberg remediation game, operational disruption costs $c(e)$ are assigned parametrically according to relation type ($c(\text{MemberOf}) \in [2.8, 3.8], c(\text{GenericAll}) \in [2.0, 3.0], c(\text{Enroll}) \in [1.0, 1.4]$) and operational edge immutability constraints ($E_b \subsetneq E$). In production enterprise deployments, operational criticality is context-sensitive and evolving. The exact small-instance audit gives concrete optimum comparisons rather than a universal heuristic guarantee. A metadata-preserving rerun also checks all 120 original graph/budget instances; it changes nine objective outcomes and 24 cut counts. The primary table and revoked-edge comparison now use that corrected implementation. Administrator preference elicitation requires a separate evaluation; the cited graph-hardening study~\cite{goel2024hardening} is not evidence that such elicitation was performed here.
+     \item \textbf{Trust, Time, and Necessary Causation:} Candidate retention under a bridge fault budget assumes correct raw issuance/KDC records and captured true issuance. Consistently forged raw histories defeat the methods, while faults exceeding the declared budget invalidate its retention guarantee. A counterexample shows that self-consistent false order can also produce a wrong definite overlap. A grouped-source reference handles the six-record correlated-export control under an explicit one-source assumption, which differs from a record budget. The operation-order pilot uses the controlled orchestrator as an additional trusted source and does not repair the failed Windows audit-clock model. Temporal overlap alone does not establish necessity. The new matched CSR/key interventions support a conditional contrast under the recorded policy fields and controlled CA refresh, while unobserved concurrent changes and missing restoration audit events remain distinct evidence concerns.
+ \end{enumerate}
+ 
+@@ -48,5 +48,8 @@
+ \section*{Data Availability}
+ \noindent Research code and the original project materials are associated with \url{https://github.com/hasanshahriar32/CertGraph-CIPG}. The new frozen protocols, raw/latent synthetic histories, outcome-checked pilot, source snapshots, and verification outputs are provided in the accompanying local research artifact. Their publication in that remote repository has not been verified.
+ 
+-\section*{Declaration of Generative AI and AI-Assisted Technologies in the Writing Process}
+-\noindent AI assistance was used for research-code development, literature discovery, experimental analysis, and draft manuscript revisions, in addition to language editing. QuillBot was also used for language-editing suggestions in the abstract, introduction, and conclusion; selected suggestions were checked for technical consistency before incorporation. The authors must review the generated code, source citations, proofs, and reported outcomes before submission and identify the retained AI-assisted material in accordance with the selected journal\textquotesingle s policy. The authors retain responsibility for the final scientific claims and artifact.
++\section*{Funding}
++\noindent This research received no specific grant from any funding agency.
++
++\section*{Ethics and Dual-Use Considerations}
++\noindent The evaluated certificate requests, template changes and authentication attempts were performed in isolated researcher-controlled Windows forests with laboratory accounts. Original images were retained read-only, and execution used writable overlays. The reported experiments concern defensive validation and do not involve production organizations or unsuspecting users. Credentials, private keys and reusable authentication tokens are excluded from public release.

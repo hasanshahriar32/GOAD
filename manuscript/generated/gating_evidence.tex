@@ -1,17 +1,17 @@
 % Generated from independently verified saved checkpoint predictions.
-\begin{table}[ht]
+\begin{table}[tbp]
 \centering
-\caption{Matched two-step implementation diagnostic: 1,500 paired test cases per arm across three seeds, with 750 positive and 750 negative labels. Training archetypes repeat across splits; these are synthetic diagnostic outcomes, not enterprise rates.}
+\caption{Matched two-step diagnostic: 1,500 paired cases per arm (750 positive, 750 negative). Correct classification is a percentage; false positives and negatives are counts. Repeated training archetypes limit this synthetic diagnostic.}
 \label{tab:hard_negatives}
-\small
+\evidencetable
 \begin{tabular}{llrrr}
 \toprule
-Implementation & Augmentation & Correct & False positive & False negative \\
+Implementation & Aug. & Correct & \makecell{False\\positive} & \makecell{False\\negative} \\
 \midrule
 Additive & 0 & 50.00\% & 750 & 0 \\
 Additive & 0.3 & 71.67\% & 425 & 0 \\
-Feature-channel gate & 0 & 70.00\% & 0 & 450 \\
-Feature-channel gate & 0.3 & 70.00\% & 0 & 450 \\
+\makecell[l]{Feature-channel\\gate} & 0 & 70.00\% & 0 & 450 \\
+\makecell[l]{Feature-channel\\gate} & 0.3 & 70.00\% & 0 & 450 \\
 \bottomrule
 \end{tabular}
 \end{table}

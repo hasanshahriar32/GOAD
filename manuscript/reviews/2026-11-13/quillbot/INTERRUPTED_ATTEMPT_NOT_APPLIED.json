@@ -1,0 +1,11 @@
+[
+  {
+    "passage_id": "abstract_1",
+    "input": "An ADCS certificate can remain usable after the template that enabled its issuance has been restored. Investigating that sequence requires evidence from directory changes, certificate issuance and domain authentication, whose records do not always expose matching identifiers. CertGraph combines graph analysis, certificate-specific provenance and remediation under an assigned disruption budget. Its evidence contract scopes certificate identity to the issuer, retains compatible candidates when fields are missing, and revises attribution when later records conflict. We evaluate the contract using synthetic histories and controlled Windows experiments.",
+    "mode": "Fluency",
+    "actual_output": "Active Directory Certificate Services (ADCS) provides certificates that can be used for domain authentication using PKINIT.",
+    "url": "https://quillbot.com/paraphrasing-tool",
+    "mode_confirmed": true,
+    "password_entered_by_assistant": false
+  }
+]

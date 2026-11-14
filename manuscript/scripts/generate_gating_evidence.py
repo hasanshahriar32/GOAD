@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from evidence_table_layout import style_evidence_tables
 
 ROOT=Path(__file__).resolve().parents[2]
 base=ROOT/"thesis_research/results/lineage_constraints/2026-11-10"
@@ -17,7 +18,7 @@ for key,label,augmentation in (("additive/aug=0","Additive","0"),("additive/aug=
     r=data["pooled"][key]
     rows.append(f"{label} & {augmentation} & {100*r['exact_class_accuracy']:.2f}\\% & {r['false_positive']} & {r['false_negative']} \\\\")
 text=r'''% Generated from independently verified saved checkpoint predictions.
-\begin{table}[ht]
+\begin{table*}[ht]
 \centering
 \caption{Matched two-step implementation diagnostic: 1,500 paired test cases per arm across three seeds, with 750 positive and 750 negative labels. Training archetypes repeat across splits; these are synthetic diagnostic outcomes, not enterprise rates.}
 \label{tab:hard_negatives}
@@ -29,9 +30,9 @@ Implementation & Augmentation & Correct & False positive & False negative \\
 '''+"\n".join(rows)+r'''
 \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 '''
-output=ROOT/"manuscript/generated/gating_evidence.tex";output.write_text(text)
-(output.parent/"gating_evidence_manifest.json").write_text(json.dumps({"input_sha256":hashlib.sha256(verification.read_bytes()).hexdigest(),
+output=ROOT/"manuscript/generated/gating_evidence.tex";output.write_text(style_evidence_tables(text))
+(output.parent/"gating_evidence_manifest.json").write_text(json.dumps({"layout_sha256": hashlib.sha256((Path(__file__).parent/"evidence_table_layout.py").read_bytes()).hexdigest(),"input_sha256":hashlib.sha256(verification.read_bytes()).hexdigest(),
     "source_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),"output_sha256":hashlib.sha256(output.read_bytes()).hexdigest()},indent=2)+"\n")
 print(output)

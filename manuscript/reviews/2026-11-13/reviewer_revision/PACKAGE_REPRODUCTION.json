@@ -1,0 +1,27 @@
+{
+  "hash_bound_files_checked": 182,
+  "runs": {
+    "confirmation": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "robustness": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "sql": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "interdiction": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "bilinear": {
+      "exit_code": 0,
+      "passed": true
+    }
+  },
+  "all_passed": true,
+  "scope": "Fresh extraction; no access to original live capture trees; installed project Python dependencies reused"
+}

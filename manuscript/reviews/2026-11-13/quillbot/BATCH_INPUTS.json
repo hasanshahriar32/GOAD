@@ -1,0 +1,32 @@
+[
+  {
+    "passage_id": "abstract_1",
+    "input": "An ADCS certificate can remain usable after the template that enabled its issuance has been restored. Investigating that sequence requires evidence from directory changes, certificate issuance and domain authentication, whose records do not always expose matching identifiers. CertGraph combines graph analysis, certificate-specific provenance and remediation under an assigned disruption budget. Its evidence contract scopes certificate identity to the issuer, retains compatible candidates when fields are missing, and revises attribution when later records conflict. We evaluate the contract using synthetic histories and controlled Windows experiments.",
+    "mode": "Fluency"
+  },
+  {
+    "passage_id": "abstract_2",
+    "input": "In a frozen 5,400-history study, the randomized subset retains 99.06% of true observed links as candidates and resolves 55.82% definitively. Four intervention matrices and a separate concurrent forest workload provide 72 certificate cases: 66 successful exact-certificate authentications, including 13 administrative uses, and six certificate-bound rejections. Current-patch controls distinguish rejection of UPN-only requests from administrative use of SID-URL certificates after template restoration. A guarded SQLite implementation agrees with the identity reference at all 5,423 evaluated prefixes. Separate graph-learning experiments reproduce 10,800 held-out predictions but find no classification advantage for bilinear gating over matched additive attention.",
+    "mode": "Fluency"
+  },
+  {
+    "passage_id": "abstract_3",
+    "input": "The remediation evaluation checks 120 graph/budget instances and exposes heuristic optimality gaps. These results support certificate-specific investigation under explicit evidence assumptions; they do not establish general deployment effectiveness.",
+    "mode": "Fluency"
+  },
+  {
+    "passage_id": "introduction_second_1",
+    "input": "Certificate-service escalation techniques are documented by SpecterOps. Whether a particular certificate yields an administrative identity also depends on certificate mapping and the installed Windows updates. Our question is narrower than detecting every ADCS attack: what certificate-specific attribution is justified when identifiers or timing evidence are incomplete, late or contradictory?",
+    "mode": "Fluency"
+  },
+  {
+    "passage_id": "conclusion_1_1",
+    "input": "CertGraph links certificate issuance and use under an explicit issuer-scoped evidence contract. Its live evaluation verifies 66 successful certificate authentications and six certificate-bound rejections, including 13 administrative uses. The current-patch controls show why a restored template scan and a certificate-use investigation answer different questions. The identity contract can also be implemented with guarded SQL; the evaluated contribution lies in its security requirements and evidence handling rather than a unique reasoning primitive.",
+    "mode": "Fluency"
+  },
+  {
+    "passage_id": "conclusion_2_1",
+    "input": "The graph-learning results do not establish a classification advantage for bilinear gating. Both matched literal models miss the tested long-path positives, so a verifier that examines only neural-positive cases remains incomplete for this workload. The remediation experiments likewise show heuristic optimality gaps and budget-dependent differences from greedy selection. Larger deployments require separate measurements of collection cost, retained history and administrator-assigned disruption costs. The present results support these specific conclusions within the recorded laboratory and generator conditions.",
+    "mode": "Fluency"
+  }
+]

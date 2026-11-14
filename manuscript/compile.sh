@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# compile.sh - Compile the Standalone 1-Column CertGraph Manuscript
+# compile.sh - Compile the IEEE Journal CertGraph Manuscript
 # ==============================================================================
 
 set -euo pipefail
 
-echo "[*] Compiling CertGraph 1-Column Manuscript..."
+echo "[*] Compiling CertGraph IEEE Journal Manuscript..."
 
 if command -v tectonic &> /dev/null; then
     echo "[+] Using tectonic..."

@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+from evidence_table_layout import style_evidence_tables
 from generate_lineage_evidence import table
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -37,8 +38,8 @@ def main():
                      f"{1000*r['python_process_cpu_seconds']:.1f}",f"{r['collector_rss_peak_kib']/1024:.1f}"])
     text+=table('Paired isolated-lab pilot: eight authentications per arm, three seeded arm orders. Auth denotes the median host Certipy process envelope in milliseconds; CPU is Python process CPU time during the arm, also milliseconds. RSS is sampled Python collector MiB, excluding Certipy children and the Windows VM. Outcome-verification waits occur after the measured arm.',
         'tab:collection_pilot','rlrrrr','Pair & Arm & Verified uses & Auth ms & CPU ms & RSS MiB',rows)
-    path=ROOT/'manuscript/generated/gap_closure_evidence.tex';path.write_text(text)
-    path.with_name('gap_closure_evidence_manifest.json').write_text(json.dumps({'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+    path=ROOT/'manuscript/generated/gap_closure_evidence.tex';path.write_text(style_evidence_tables(text))
+    path.with_name('gap_closure_evidence_manifest.json').write_text(json.dumps({"layout_sha256": hashlib.sha256((Path(__file__).parent/"evidence_table_layout.py").read_bytes()).hexdigest(),'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'input_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},'output_sha256':hashlib.sha256(path.read_bytes()).hexdigest()},indent=2)+'\n')
 
 
