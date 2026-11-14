@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "nested_files_checked": 578,
+  "outer_payload_hashes_verified": true,
+  "fresh_extraction_checks": [
+    {
+      "script": "verify_evidence_value.py",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"passed\",\n  \"cases\": 432,\n  \"prediction_rows\": 4320,\n  \"stage_equivalence_checks\": 864,\n  \"latent_certificate_identity_checks\": true,\n  \"within_budget_retention_checks\": true,\n  \"summary\": {\n    \"reference\": {\n      \"cases\": 432,\n      \"correct_resolved\": 260,\n      \"wrong_resolved\": 0,\n      \"truth_retained\": 404\n    },\n    \"sql_guarded\": {\n      \"cases\": 432,\n      \"correct_resolved\": 260,\n      \"wrong_resolved\": 0,\n      \"truth_retained\": 404\n    },\n    \"sql_strong\": {\n      \"cases\": 432,\n      \"correct_resolved\": 292,\n      \"wrong_resolved\": 0,\n      \"truth_retained\": 292\n    },\n    \"ignore_exports\": {\n      \"cases\": 432,\n      \"correct_resolved\": 176,\n      \"wrong_resolved\": 0,\n      \"truth_retained\": 432\n    },\n    \"repair_k1\": {\n      \"cases\": 432,\n      \"correct_resolved\": 131,\n      \"wrong_resolved\": 0,\n      \"truth_retained\": 432\n    }\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "script": "verify_streaming_identity.py",
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"passed\",\n  \"prefixes\": 3726,\n  \"decision_equivalence_checks\": 35055,\n  \"runs\": 9,\n  \"retractions_per_run\": 1,\n  \"final_truth_checks\": 90,\n  \"limit\": \"Verifies saved outputs, expected IDs and aggregates; source execution performed separate restart assertions. Timing is not independently attested.\"\n}\n",
+      "stderr": ""
+    }
+  ]
+}

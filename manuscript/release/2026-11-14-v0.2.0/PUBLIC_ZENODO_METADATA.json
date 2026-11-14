@@ -1,0 +1,116 @@
+{
+  "created": "2026-11-14T13:25:20.820238+00:00",
+  "modified": "2026-11-14T13:25:21.000859+00:00",
+  "id": 24221331,
+  "conceptrecid": "24212037",
+  "doi": "10.5281/zenodo.24221331",
+  "conceptdoi": "10.5281/zenodo.24212037",
+  "doi_url": "https://doi.org/10.5281/zenodo.24221331",
+  "metadata": {
+    "title": "CertGraph research artifact: Revisable Certificate Lineage for Active Directory Certificate Services under Incomplete Evidence",
+    "doi": "10.5281/zenodo.24221331",
+    "publication_date": "2026-11-14",
+    "description": "<p>Version 0.2.0 collects the original 72-case public laboratory artifact, later generated evidence-value and incremental-replay studies, stronger remediation baselines, and the revised anonymous manuscript and editable LaTeX sources. No additional live cases or investigator participants are claimed. See the package README for reproduction and interpretation boundaries.</p><p>License: GNU General Public License v3.0 only (SPDX GPL-3.0-only), https://spdx.org/licenses/GPL-3.0-only.html . No CC-BY relicensing is granted. This research artifact is not an assertion of journal publication.</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Shahriar, Md. Hasan",
+        "affiliation": "Hajee Mohammad Danesh Science and Technology University"
+      },
+      {
+        "name": "Biswas, Taufiq",
+        "affiliation": null
+      },
+      {
+        "name": "Hossain, Md. Ramim",
+        "affiliation": null
+      }
+    ],
+    "version": "0.2.0",
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "license": {
+      "id": "gpl-3.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 1,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "24212037"
+          }
+        }
+      ]
+    }
+  },
+  "title": "CertGraph research artifact: Revisable Certificate Lineage for Active Directory Certificate Services under Incomplete Evidence",
+  "links": {
+    "self": "https://zenodo.org/api/records/24221331",
+    "self_html": "https://zenodo.org/records/24221331",
+    "preview_html": "https://zenodo.org/records/24221331?preview=1",
+    "doi": "https://doi.org/10.5281/zenodo.24221331",
+    "self_doi": "https://doi.org/10.5281/zenodo.24221331",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24221331",
+    "reserve_doi": "https://zenodo.org/api/records/24221331/draft/pids/doi",
+    "parent": "https://zenodo.org/api/records/24212037",
+    "parent_html": "https://zenodo.org/records/24212037",
+    "parent_doi": "https://doi.org/10.5281/zenodo.24212037",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24212037",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:24221331/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:24221331/sequence/default",
+    "files": "https://zenodo.org/api/records/24221331/files",
+    "media_files": "https://zenodo.org/api/records/24221331/media-files",
+    "latest": "https://zenodo.org/api/records/24221331/versions/latest",
+    "latest_html": "https://zenodo.org/records/24221331/latest",
+    "versions": "https://zenodo.org/api/records/24221331/versions",
+    "draft": "https://zenodo.org/api/records/24221331/draft",
+    "access_links": "https://zenodo.org/api/records/24221331/access/links",
+    "access_grants": "https://zenodo.org/api/records/24221331/access/grants",
+    "access_users": "https://zenodo.org/api/records/24221331/access/users",
+    "access_request": "https://zenodo.org/api/records/24221331/access/request",
+    "access": "https://zenodo.org/api/records/24221331/access",
+    "communities": "https://zenodo.org/api/records/24221331/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/24221331/communities-suggestions",
+    "request_deletion": "https://zenodo.org/api/records/24221331/request-deletion",
+    "file_modification": "https://zenodo.org/api/records/24221331/file-modification",
+    "quota_increase": "https://zenodo.org/api/records/24221331/quota-increase",
+    "requests": "https://zenodo.org/api/records/24221331/requests"
+  },
+  "updated": "2026-11-14T13:25:21.000859+00:00",
+  "recid": "24221331",
+  "revision": 3,
+  "files": [
+    {
+      "id": "9cd28b22-645d-4a97-bf08-ebefbed68eb4",
+      "key": "CertGraph_Artifact_v0.2.0.zip",
+      "size": 10923000,
+      "checksum": "md5:b7748fcd834b2223b7fe80b5451c8774",
+      "links": {
+        "self": "https://zenodo.org/api/records/24221331/files/CertGraph_Artifact_v0.2.0.zip/content"
+      }
+    }
+  ],
+  "swh": {},
+  "owners": [
+    {
+      "id": "2012221"
+    }
+  ],
+  "status": "published",
+  "stats": {
+    "downloads": 0,
+    "unique_downloads": 0,
+    "views": 0,
+    "unique_views": 0,
+    "version_downloads": 0,
+    "version_unique_downloads": 0,
+    "version_unique_views": 0,
+    "version_views": 0
+  },
+  "state": "done",
+  "submitted": true
+}
