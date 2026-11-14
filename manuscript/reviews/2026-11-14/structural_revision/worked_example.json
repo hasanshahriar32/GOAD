@@ -1,0 +1,23 @@
+{
+  "source_case": "s2011:missing_competitor:0",
+  "updates": [
+    {
+      "observation": "s2011:missing_competitor:0:auth",
+      "status": "resolved",
+      "candidates": [
+        "s2011:missing_competitor:0:issuance"
+      ],
+      "retracts": false
+    },
+    {
+      "observation": "s2011:missing_competitor:0:unidentified",
+      "status": "ambiguous",
+      "candidates": [
+        "s2011:missing_competitor:0:issuance",
+        "s2011:missing_competitor:0:unidentified"
+      ],
+      "retracts": true
+    }
+  ],
+  "scope": "Existing frozen synthetic case; no new live case or accuracy result"
+}

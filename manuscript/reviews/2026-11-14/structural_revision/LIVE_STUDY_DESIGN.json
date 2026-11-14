@@ -1,0 +1,59 @@
+{
+  "status": "design only; not executed",
+  "version": 1,
+  "primary_unit": "certificate lifecycle within policy block/environment",
+  "primary_endpoints": [
+    "unsupported definite conclusions",
+    "correct definite coverage"
+  ],
+  "secondary_endpoints": [
+    "candidate p95/max",
+    "logical and elapsed time to resolution",
+    "retractions",
+    "review count",
+    "collector CPU/RSS",
+    "retained bytes",
+    "backlog"
+  ],
+  "comparators": [
+    "current contract",
+    "guarded SQL",
+    "strong identifier join",
+    "bounded-time correlation"
+  ],
+  "ablation": "same captured lifecycle with optional exports withheld; perturbations explicitly labeled",
+  "environments": [
+    {
+      "id": "E1",
+      "requirement": "inventory and independently adjudicated outcomes"
+    },
+    {
+      "id": "E2",
+      "requirement": "separately configured policy/workflow; disclose image and administrator dependence"
+    }
+  ],
+  "workflow_families": [
+    "ordinary_self",
+    "enabled_admin_san",
+    "restore_before_request",
+    "legitimate_self_on_risky_template",
+    "authorized_delegation",
+    "renewal_reused_key",
+    "concurrent_issuance",
+    "delayed_post_restore_use"
+  ],
+  "blocks_per_family_per_environment": 3,
+  "planned_workflow_runs": 48,
+  "sample_size_status": "feasibility pilot design; not powered confirmatory sample; revise with supervisor before freeze",
+  "ground_truth": [
+    "exact public certificate and signed request",
+    "contemporaneous CA export",
+    "certificate-bound KDC success/rejection",
+    "target SID and issuer scope",
+    "recorded effective policy and restoration evidence"
+  ],
+  "exclusions": "Predeclare infrastructure failures; preserve failed runs; do not turn unavailable outcome evidence into a negative label",
+  "trust": "Do not infer effective operation bounds from unaudited cross-host timestamps",
+  "independence": "Source evidence adjudicated before detector outputs are inspected",
+  "prerequisite": "external backing disk or equivalent isolated Windows lab; independent adjudicator"
+}

@@ -1,0 +1,97 @@
+\section{Legacy Streaming and Archive Diagnostics}
+\label{sec:legacy_stream}
+
+These retained diagnostics concern the historical implementation and selected archived inputs. They do not characterize the current reference or add outcome-checked Windows attacks.
+
+The earlier trace-driven synthetic stress stream illustrates two configured trade-offs; its rates do not measure a production deployment:
+\begin{enumerate}
+    \item \textbf{Background Enrollment Collisions (False Positives):} The configured workload contains 50 maintenance windows with durations in $[10,35]$~s and 2,000 renewals sampled uniformly over the simulated duration. Template selection, rather than the total renewal count, determines the candidate collision rate. Four maintenance windows produce false alarms: $8.00\%$ maintenance-window FPR and $0.0395\%$ overall event FPR, with $92.16\%$ precision at $\Delta_{\text{poll}}=5$~s and $92.31\%$ at 1~s. Section~\ref{sec:evaluation} states the actual sampling scheme; these are synthetic-workload counts, not an enterprise Poisson-rate measurement.
+    \item \textbf{CA Database Polling Latency (Simulated False Negatives):} The configured stress stream reports $48/48$ recall at $\Delta_{\text{poll}}=1.0\text{s}$ and $47/48$ at $5.0\text{s}$. These outcomes use the stream's synthetic labels. They are separate from independently checking a successful issuance-to-use chain in captured Windows records; Section~\ref{sec:evaluation} reports that evidence audit.
+\end{enumerate}
+
+\subsection{Graph Reduction and Meta-Node Compacting}
+Repeated authentication observations can make a provenance graph costly to retain and query. The legacy CIPG implementation groups repeated events into meta-nodes:
+\begin{equation}
+\fitmath{\mathcal{C}: (v_{\text{event}}^{(1)}, v_{\text{event}}^{(2)}, \dots, v_{\text{event}}^{(m)}) \mapsto \mathcal{V}_{\text{meta}}}
+\end{equation}
+Whenever repetitive, non-mutating events share identical source principals, destination templates, and access control rights within a sliding window, CIPG collapses them into a single directed meta-edge annotated with frequency counters and temporal bounding intervals $[t_{\min}, t_{\max}]$. As quantified in Section~\ref{sec:evaluation}, this reduces graph storage overhead by \textbf{76.61\%} (compressing 10,182 raw elements to 2,382 compressed elements) in the legacy implementation. Its reported $6.91$~MB and $13,192.4$~events/second do not characterize the current reference. Preservation of all identity, contradiction and revision queries under this compression has not been established; the current correctness reference retains its observations.
+
+
+\begin{table}[tbp]
+\centering
+\caption{Audit of Seven Archived GOAD Files: 586 Raw Events. Linkage concerns the captured certificate issuance-to-use chain. Attack recall is not established for any file.}
+\label{tab:live_traces}
+\evidencetable
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.32\linewidth}rY@{}}
+\toprule
+Scenario & Events & Captured linkage \\
+\midrule
+Normal enrollment & 89 & No consistent captured issuance \\
+ESC4 rollback & 90 & No consistent captured issuance \\
+ESC6 CA flag scenario & 172 & KDC failure result \texttt{0x42} \\
+ESC9 UPN swap & 94 & No consistent captured issuance \\
+ASN.1 SAN concealment & 88 & No consistent captured issuance \\
+Admin typo rollback & 6 & No certificate-use observation \\
+Split-actor scenario & 47 & Resolved observed linkage \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table*}[tbp]
+\centering
+\caption{Earlier Trace-Driven Synthetic Streaming Benchmark ($10,182$ Events, 48 Generated Attack Instances, 50 Simulated Maintenance Windows). These are legacy implementation results, not measurements of the new constraint reference.}
+\label{tab:cipg_stress}
+\evidencetable
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}Y*{5}{>{\centering\arraybackslash}p{.13\linewidth}}@{}}
+\toprule
+Pipeline & \textbf{Prec.} & \textbf{Recall} & \textbf{F1} & \makecell{Maint.\\FPR} & \makecell{Event\\FPR} \\
+\midrule
+Snapshot rollback & 19.35\% & 25.00\% & 21.82\% & 100.0\% (50/50) & 0.49\% \\
+CA event 4887 & 88.24\% & 58.33\% & 70.16\% & 0.00\% (0/50) & 0.00\% \\
+\makecell[l]{CIPG, default\\$\Delta_{\text{poll}}=5$ s} & \textbf{92.16\%} & \textbf{97.92\%} & \textbf{94.95\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
+\makecell[l]{CIPG, fast\\$\Delta_{\text{poll}}=1$ s} & \textbf{92.31\%} & \textbf{100.00\%} & \textbf{96.00\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{table}[tbp]
+\centering
+\caption{2D Sensitivity Matrix: Precision above recall (\%) across Correlation Horizon ($\Delta t$) and CA Jet DB Polling Lag ($\Delta_{\text{poll}}$).}
+\label{tab:sensitivity_matrix}
+\evidencetable
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.22\linewidth}*{4}{C}@{}}
+\toprule
+\makecell{Window (s)\\FPR (\%)} & \makecell{Poll\\1 s} & \makecell{Poll\\5 s} & \makecell{Poll\\15 s} & \makecell{Poll\\60 s} \\
+\midrule
+\makecell[l]{10\\0.0} & \makecell{100.0\%\\100.0\%} & \makecell{100.0\%\\97.92\%} & \makecell{100.0\%\\89.58\%} & \makecell{100.0\%\\89.58\%} \\
+\addlinespace[2pt]
+\makecell[l]{30\\6.0} & \makecell{94.12\%\\100.0\%} & \makecell{94.00\%\\97.92\%} & \makecell{93.48\%\\89.58\%} & \makecell{93.48\%\\89.58\%} \\
+\addlinespace[2pt]
+\makecell[l]{60\\8.0} & \makecell{92.31\%\\100.0\%} & \makecell{92.16\%\\97.92\%} & \makecell{91.49\%\\89.58\%} & \makecell{91.49\%\\89.58\%} \\
+\addlinespace[2pt]
+\makecell[l]{300\\8.0} & \makecell{92.31\%\\100.0\%} & \makecell{92.16\%\\97.92\%} & \makecell{91.49\%\\89.58\%} & \makecell{91.49\%\\89.58\%} \\
+\addlinespace[2pt]
+\makecell[l]{900\\8.0} & \makecell{92.31\%\\100.0\%} & \makecell{92.16\%\\97.92\%} & \makecell{91.49\%\\89.58\%} & \makecell{91.49\%\\89.58\%} \\
+\addlinespace[2pt]
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Collection delay and attribution trade-offs}
+As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matrix}, in the configured synthetic CA/KDC workload, operational performance is governed by two orthogonal systems dimensions:
+\begin{itemize}
+    \item \textbf{Correlation Horizon ($\Delta t$) vs. False Positives:} The seeded generator places a fixed 2,000 renewal arrivals uniformly over the simulated duration $T$. A renewal chooses one of 15 maintenance templates with probability $0.055$, uniformly among them; otherwise it chooses the machine template. It does not implement an unconditional 2,000-per-hour Poisson process. For a particular maintenance template and $\Delta\le T$, the matching-arrival probability before additional principal or detector conditions is $1-(1-0.055\Delta/(15T))^{2000}$. Thus the total renewal count is not the matching-event rate. The 50 generated maintenance windows have durations in $[10,35]$~s. The saved sensitivity query observes 0/50 false alarms at 10~s, 3/50 at 30~s and 4/50 from 60~s onward. These are finite seeded-workload outcomes, not a general collision-free guarantee. The naive rollback monitor flags all 50 maintenance windows. Table~\ref{tab:sensitivity_matrix} retains the observed precision and recall values.
+    \item \textbf{CA Database Polling Lag ($\Delta_{\text{poll}}$) vs. False Negatives:} The selected 4887 and 4768 fields lack a shared strong certificate key; the evaluated pipeline uses CA database enrichment to bridge them. When an attacker's PKINIT execution delay $\delta_{\text{pkinit}} \sim \text{LogNormal}(1.2, 0.8)$ executes before the next polling tick ($t_{\text{auth}} + \Delta_{\text{watermark}} < t_{\text{poll}}$), the join keys remain un-enriched at evaluation time, generating organic False Negatives. At $\Delta_{\text{poll}} = 1.0\text{s}$, CIPG achieves $100.00\%$ recall ($48/48$). At default $\Delta_{\text{poll}} = 5.0\text{s}$, CIPG achieves $97.92\%$ recall ($47/48$). At $\Delta_{\text{poll}} \in \{15\text{s}, 60\text{s}\}$, rapid attacks beat the polling cycle, resulting in $89.58\%$ recall ($43/48$).
+\end{itemize}
+
+\paragraph{Ingestion Throughput and Memory Profiling}
+Under continuous streaming load:
+\begin{itemize}
+    \item \textbf{Throughput:} The saved legacy benchmark reports \textbf{13,192.4 events/second} (771.81~ms) on the configured synthetic stream. This excludes a demonstrated end-to-end Windows collection/deployment pipeline and is not a throughput measurement of the new reference reasoners.
+    \item \textbf{Memory Footprint:} The earlier result reports \textbf{6.91 MB}. A finite-run measurement does not establish bounded retained memory as the certificate history grows.
+    \item \textbf{Meta-Node Compression:} Meta-node compacting collapsed 10,182 raw elements into 2,382 compressed elements, achieving a \textbf{76.61\% reduction in graph size} without loss of topological taint information.
+\end{itemize}
+

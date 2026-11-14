@@ -313,7 +313,8 @@ def main():
                ROOT/'thesis_research/src/lineage_constraints/literal_bilinear.py']
     sources += [ROOT/'manuscript/sections'/name for name in (
         '02_threat_model_and_blindspots.tex', '03_certgraph_architecture.tex',
-        '04_cipg_provenance_automaton.tex', '06_empirical_evaluation.tex')]
+        '04_cipg_provenance_automaton.tex', '06_empirical_evaluation.tex',
+        'appendix_a_learning.tex', 'appendix_b_interdiction.tex', 'appendix_c_legacy_stream.tex')]
     manifest = {'scope': 'Illustrative formal diagrams and saved synthetic-graph measurements; no new experiments.',
                 'authoritative_source': str(Path(__file__).relative_to(ROOT)),
                 'source_sha256': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},

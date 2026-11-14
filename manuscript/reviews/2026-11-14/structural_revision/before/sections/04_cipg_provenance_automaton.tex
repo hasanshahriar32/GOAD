@@ -1,0 +1,91 @@
+\section{Certificate Evidence Contract and Revisable Provenance}
+\label{sec:cipg_provenance}
+
+The Cryptographic Invariant Provenance Graph (CIPG) represents certificate observations and their supported relationships. Its central task is to identify a captured issuance that explains successful certificate authentication, then assess whether that issuance overlaps an observed template mutation. Identity, temporal overlap, necessary enabling policy and malicious intent are distinct questions. The current reference answers the first two under explicit evidence assumptions; controlled policy interventions supply separate evidence about necessity.
+
+\subsection{Inputs, Namespaces and Trust Assumptions}
+Directory modification records (5136) supply an exact object, attribute, operation and actor. Issuance records (4887) and optional CA database exports supply request and certificate fields; 4886 records receipt rather than issuance. Authentication records (4768) supply outcome, pre-authentication type, target principal and available certificate identifiers. The evaluated enrichment uses \texttt{certutil} exports, scoped by issuer and request ID. This is one bridge for the selected captured fields; it is not the only possible telemetry design.
+
+An immutable observation contains a source record ID, kind, bounded effective-operation time, issuer and optional request ID, serial, thumbprint, SKID, template and principal. Authentication additionally carries success and pre-authentication type. Exact template aliases require supplied directory evidence. String comparison trims and case-folds names; hexadecimal identifiers remove whitespace, colons and presentation prefixes, with serial padding normalized. The reference does not infer that differently named issuers are equivalent.
+
+Serial uniqueness is issuer-scoped~\cite{rfc5280}; SKID can recur when a key is reused. A matching certificate thumbprint, or matching serial with a known matching issuer, supplies strong shared identity in this contract. These identifiers do not authenticate their log sources. Sound attribution additionally assumes truthful raw observations and mappings, captured true issuance, noncolliding strong identity and true operation times inside the supplied bounds. Certificate signature checks in the public verifier are separate from these log-trust assumptions.
+
+\begin{figure*}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/verified_evidence_pipeline.pdf}
+\caption{CIPG evidence flow and revisable certificate lineage. (A) Directory changes, CA issuance/export evidence and KDC outcomes are retained independently of neural predictions. (B) Issuer-scoped identifiers, justified time bounds and mutation context support compatible lineage candidates; late evidence can revise a link. (C) Investigation reports overlap status, conflicts and authentication outcomes, while remediation planning retains its separate budget and immutability assumptions. Symbols denote logical roles rather than an observed deployment inventory.}
+\label{fig:neuro_symbolic_pipeline}
+\end{figure*}
+
+\subsection{Compatible Candidates and Resolution}
+For authentication $a$, enrich each successful issuance $c$ only with bridge rows matching its issuer/request pair. Conflicting nonempty fields remain conflicts; they are not overwritten. Let $[c^-,c^+]$ and $[a^-,a^+]$ denote justified time bounds. Exclude a profile with a known identity contradiction or $c^->a^+$. Otherwise retain it as a compatible candidate, including incompletely identified issuances. Missing identifiers therefore cannot manufacture uniqueness.
+
+Let $C(a)$ denote the retained compatible set, with relevant conflicting profiles retained for reporting. A resolved link requires:
+\begin{enumerate}
+\item observed successful certificate authentication (pre-authentication type 15, 16 or 17);
+\item exactly one compatible issuance, with strong shared identity and no relevant profile conflict; and
+\item justified issuance-before-use order, $c^+\le a^-$.
+\end{enumerate}
+The implementation otherwise reports failed/unknown authentication, non-certificate authentication, no consistent candidate, missing identifiers, ambiguity, insufficient identity, uncertain order or conflicting evidence. An identity difference between requester and target is contextual evidence. Authorized delegation must be considered before interpreting that difference as malicious escalation.
+
+\subsection{Mutation Overlap and Revisable Updates}
+An observed mutation window contains an exact template, opening interval $O$ and restoration interval $R$. For a resolved issuance with interval $I$, definite overlap requires $O^+\le I^-$ and $I^+\le R^-$. Possible overlap requires a feasible assignment placing issuance between opening and restoration. No observed overlap means that the retained windows do not supply one; it does not prove the configuration was safe. Temporal overlap alone does not show which policy the CA consumed or whether the mutation was necessary.
+
+\begin{algorithm}[H]
+\caption{Current certificate-lineage reference update}
+\label{alg:invariant5}
+\footnotesize
+\begin{algorithmic}[1]
+\Require Retained observations $\mathcal S$, windows $\mathcal W$, previous decisions $D$
+\State Add or remove the supplied immutable observation or window
+\State Build issuance profiles using issuer/request-scoped bridge rows
+\State Preserve conflicting nonempty profile fields
+\For{each authentication $a$ in $\mathcal S$}
+ \If{success or certificate pre-authentication is not established}
+  \State Record ineligible outcome; \textbf{continue}
+ \EndIf
+ \State Retain compatible issuance profiles, including incomplete ones
+ \State Exclude known contradictions and impossible issuance order
+ \If{exactly one strong candidate, no relevant conflict, and justified order}
+  \State Resolve issuance identity
+  \State Evaluate exact-template mutation overlap separately
+ \Else
+  \State Retain candidate IDs and the reason for abstention
+ \EndIf
+ \State Compare the new decision with $D[a]$
+ \State Emit changes, including withdrawal of a prior resolved link
+\EndFor
+\State Retain observations and decisions for subsequent updates
+\end{algorithmic}
+\end{algorithm}
+
+The reference recomputes from retained observations after each update; it retains unmutated issuances as well as mutation candidates. Late enrichment may resolve a link, add ambiguity or reveal a conflict. Deletion and checkpoint restoration also recompute decisions. Final decisions depend on the retained set, while intermediate outputs depend on delivery order. No irreversible finality, automatic history eviction or bounded-memory guarantee is asserted. Algorithm~\ref{alg:invariant5} describes this reference, rather than the earlier mutation-only streaming automaton.
+
+\paragraph{Conditional unique-link property}
+Under the stated identity, capture and time assumptions, the true issuance cannot be excluded by a truthful field mismatch or impossible time test. If the reference resolves exactly one compatible candidate, it must be that issuance. This is a conditional property of the contract, not a new cryptographic primitive. Missing true issuances, forged sources and incorrect mappings invalidate its premise. A later observation can still change a conclusion relative to the larger retained set.
+
+\paragraph{Contract versus implementation choice}
+Issuer scoping, consistent matching and possible/certain reasoning use established ideas~\cite{amarilli2017order,elmagarmid2007duplicate}. Guarded SQL reproduces the evaluated identity projection. The contribution concerns certificate evidence requirements and their tested consequences, rather than a uniquely necessary graph execution model. The separate difference-constraint and fault-hypothesis references below extend the identity experiment under additional assumptions; their costs and guarantees are reported separately.
+
+\paragraph{Bounded-time and source-fault reasoning}
+For opening, issuance, and rollback intervals $O,I,R$, definite temporal overlap requires $O^{+}\le I^{-}$ and $I^{+}\le R^{-}$. Otherwise, a feasible overlap remains possible. An exact difference-constraint reference additionally accepts explicitly justified operation-order edges~\cite{dechter1991temporal,amarilli2017order}; contradictory constraints yield an inconsistent-evidence answer. Cross-host record numbers do not supply those edges. This is an application of established temporal reasoning, with certificate-specific evidence requirements.
+
+For a declared optional-export fault budget $k$, let $\mathcal{H}_k$ contain every deletion of at most $k$ CA bridge records. Candidate union over $\mathcal{H}_k$ preserves alternative explanations; a certain link must be resolved to the same issuance in every hypothesis. Abstaining hypotheses are retained, rather than removed to force agreement. If the true issuance is captured, raw issuance/KDC fields and time bounds are correct, and at most $k$ bridge records are faulty, deleting those faulty records leaves a hypothesis containing the true candidate. This is a conditional retention property, not a claim of certain resolution or robustness to compromised raw audit sources. The exhaustive implementation is a correctness reference with combinatorial cost, and source-level compromise can invalidate a record-level budget~\cite{elmagarmid2007duplicate,heinzl2026timestamps}.
+
+The earlier trace-driven synthetic stress stream illustrates two configured trade-offs; its rates do not measure a production deployment:
+\begin{enumerate}
+    \item \textbf{Background Enrollment Collisions (False Positives):} The configured workload contains 50 maintenance windows with durations in $[10,35]$~s and 2,000 renewals sampled uniformly over the simulated duration. Template selection, rather than the total renewal count, determines the candidate collision rate. Four maintenance windows produce false alarms: $8.00\%$ maintenance-window FPR and $0.0395\%$ overall event FPR, with $92.16\%$ precision at $\Delta_{\text{poll}}=5$~s and $92.31\%$ at 1~s. Section~\ref{sec:evaluation} states the actual sampling scheme; these are synthetic-workload counts, not an enterprise Poisson-rate measurement.
+    \item \textbf{CA Database Polling Latency (Simulated False Negatives):} The configured stress stream reports $48/48$ recall at $\Delta_{\text{poll}}=1.0\text{s}$ and $47/48$ at $5.0\text{s}$. These outcomes use the stream's synthetic labels. They are separate from independently checking a successful issuance-to-use chain in captured Windows records; Section~\ref{sec:evaluation} reports that evidence audit.
+\end{enumerate}
+
+\subsection{Graph Reduction and Meta-Node Compacting}
+Repeated authentication observations can make a provenance graph costly to retain and query. The legacy CIPG implementation groups repeated events into meta-nodes:
+\begin{equation}
+\fitmath{\mathcal{C}: (v_{\text{event}}^{(1)}, v_{\text{event}}^{(2)}, \dots, v_{\text{event}}^{(m)}) \mapsto \mathcal{V}_{\text{meta}}}
+\end{equation}
+Whenever repetitive, non-mutating events share identical source principals, destination templates, and access control rights within a sliding window, CIPG collapses them into a single directed meta-edge annotated with frequency counters and temporal bounding intervals $[t_{\min}, t_{\max}]$. As quantified in Section~\ref{sec:evaluation}, this reduces graph storage overhead by \textbf{76.61\%} (compressing 10,182 raw elements to 2,382 compressed elements) in the legacy implementation. Its reported $6.91$~MB and $13,192.4$~events/second do not characterize the current reference. Preservation of all identity, contradiction and revision queries under this compression has not been established; the current correctness reference retains its observations.
+
+\paragraph{Correlated optional sources and self-consistent false order}
+Two explicit falsification controls test the boundaries of these guarantees. Six false bridge rows from one exporter exceed a two-record fault budget and produce a wrong certain link. A sufficient six-record reference retains the true candidate with 64 hypotheses; a whole-source deletion reference retains it with two hypotheses under the different assumption of at most one faulty failure domain. It abstains from certainty, and requires an explicitly supplied source partition rather than treating file copies as independent origins. This is a failure-model comparison, not equal-budget accuracy superiority.
+
+A second control supplies true times $o=0$, $c=1$, $i=2$ inside declared bounds $[0,3]$, then fabricates the jointly consistent order $o\le i\le c$. The temporal solver returns definite overlap although the latent history has none. Thus consistency checking cannot authenticate the order channel. The controlled orchestrator is an additional trusted source in our pilot; its truth assumption cannot be replaced by the mere absence of contradictory constraints.
