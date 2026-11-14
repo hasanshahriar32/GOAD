@@ -1,0 +1,72 @@
+{
+  "scope": "Exploratory reanalysis of 2000 frozen randomized histories; no enterprise prevalence inference",
+  "input_sha256": {
+    "labels.jsonl": "b5bd6a970b5940c0237fb8914c3a598d6665340a9f62839694a263561ed18d40",
+    "predictions.jsonl": "c5c244ceee13409dda17a9ed8cc14b2ba7166b64ce67f347b0ca9b8c5df60cbc"
+  },
+  "methods": {
+    "conjunctive_point": {
+      "cases": 2000,
+      "mean_candidates": 0.6725,
+      "p95_candidates": 1,
+      "max_candidates": 1,
+      "false_candidate_edges": 0,
+      "true_candidates_retained": 1345,
+      "true_overlap_edges": 539,
+      "correct_definite_overlap_edges": 310,
+      "false_definite_overlap_edges": 51,
+      "unclaimed_true_overlap_edges": 229
+    },
+    "conjunctive_window300": {
+      "cases": 2000,
+      "mean_candidates": 0.43,
+      "p95_candidates": 1,
+      "max_candidates": 1,
+      "false_candidate_edges": 0,
+      "true_candidates_retained": 860,
+      "true_overlap_edges": 539,
+      "correct_definite_overlap_edges": 196,
+      "false_definite_overlap_edges": 34,
+      "unclaimed_true_overlap_edges": 343
+    },
+    "constraint_lineage": {
+      "cases": 2000,
+      "mean_candidates": 1.0785,
+      "p95_candidates": 2,
+      "max_candidates": 9,
+      "false_candidate_edges": 370,
+      "true_candidates_retained": 1787,
+      "true_overlap_edges": 539,
+      "correct_definite_overlap_edges": 107,
+      "false_definite_overlap_edges": 0,
+      "unclaimed_true_overlap_edges": 432
+    },
+    "issuer_serial": {
+      "cases": 2000,
+      "mean_candidates": 0.6245,
+      "p95_candidates": 1,
+      "max_candidates": 1,
+      "false_candidate_edges": 115,
+      "true_candidates_retained": 1134,
+      "true_overlap_edges": 539,
+      "correct_definite_overlap_edges": 265,
+      "false_definite_overlap_edges": 88,
+      "unclaimed_true_overlap_edges": 274
+    },
+    "legacy_or_keys": {
+      "cases": 2000,
+      "mean_candidates": 2.2895,
+      "p95_candidates": 5,
+      "max_candidates": 7,
+      "false_candidate_edges": 2925,
+      "true_candidates_retained": 1654,
+      "true_overlap_edges": 539,
+      "correct_definite_overlap_edges": 374,
+      "false_definite_overlap_edges": 175,
+      "unclaimed_true_overlap_edges": 165
+    }
+  },
+  "loss_model": "L = unclaimed true overlap edges + r * false definite overlap edges",
+  "break_even_false_to_missed_cost": 3.980392156862745,
+  "cost_assumptions": "Common unit costs, no review/time cost, no utility assigned to possible answers; illustrative only"
+}

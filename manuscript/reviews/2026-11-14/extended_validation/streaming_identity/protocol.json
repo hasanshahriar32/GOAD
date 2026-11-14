@@ -1,0 +1,23 @@
+{
+  "authentications": 10,
+  "evidence": "Complete issuer scope; all event times zero; delayed correct bridges, duplicates, conflicting bridge/remove, checkpoint recovery",
+  "issuances": [
+    100,
+    300,
+    600
+  ],
+  "missing_serial_rate": 0.2,
+  "platform": "Linux-7.2.9-3-aegis-offensive-x86_64-with-glibc2.44",
+  "python": "3.11.17",
+  "scope": "Matched identity projection on one host; no Windows, mutation, intent or production interference claim",
+  "seeds": [
+    94009,
+    95003,
+    96001
+  ],
+  "source_sha256": {
+    "manuscript/scripts/benchmark_streaming_identity.py": "99de2cff811890dd9f861ae373dccd1539f7ba9ac06ba7f9a9b8c2b642e4731c",
+    "thesis_research/src/lineage_constraints/engine.py": "86613cc1d461b196234621eca93be12c4f83c1fbd97253dbf5c277bb1fc603e4",
+    "thesis_research/src/lineage_constraints/sql_lineage.py": "bdc47417288f155208b9c5cfd9a8270fc1c45983c0834d8e175cff24074c2627"
+  }
+}

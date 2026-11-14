@@ -1,0 +1,58 @@
+{
+  "live_validation": "not run: base disk unavailable",
+  "previous_mount_exists": false,
+  "devices": {
+    "blockdevices": [
+      {
+        "name": "sda",
+        "size": "476.9G",
+        "fstype": null,
+        "mountpoints": [],
+        "children": [
+          {
+            "name": "sda1",
+            "size": "500M",
+            "fstype": "vfat",
+            "mountpoints": [
+              "/efi"
+            ]
+          },
+          {
+            "name": "sda2",
+            "size": "468.5G",
+            "fstype": "ext4",
+            "mountpoints": [
+              "/"
+            ]
+          },
+          {
+            "name": "sda3",
+            "size": "8G",
+            "fstype": "swap",
+            "mountpoints": [
+              "[SWAP]"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sdb",
+        "size": "0B",
+        "fstype": null,
+        "mountpoints": []
+      },
+      {
+        "name": "zram0",
+        "size": "23.2G",
+        "fstype": "swap",
+        "mountpoints": [
+          "[SWAP]"
+        ]
+      }
+    ]
+  },
+  "vm_running": false,
+  "backing_image": "/source/goad_vms/jborean93-VAGRANTSLASH-WindowsServer2019_vagrant_box_image_1.2.0_box.img",
+  "observation": "Local Windows overlay exists but requires unavailable external backing image; do not boot as standalone or alter originals.",
+  "human_investigator_study": "Not run; requires actual independent participants and responses"
+}

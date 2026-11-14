@@ -1,0 +1,134 @@
+{
+  "protocol": {
+    "issuances": [
+      100,
+      1000,
+      5000
+    ],
+    "authentications": 20,
+    "repetitions": 5,
+    "incomplete_rates": [
+      0,
+      0.1
+    ],
+    "timing": "One authentication add, recomputing all 20 retained authentication decisions",
+    "time_bounds": "All issuance [0,0], authentication [1,1]",
+    "scope": "Generated retained snapshots; excludes ingestion history, Windows collection, SQL and deployment",
+    "source_sha256": "86613cc1d461b196234621eca93be12c4f83c1fbd97253dbf5c277bb1fc603e4",
+    "script_sha256": "f2c76b1308b494d341524ff4c1f8d7378a9705ea1afe5acf33582fcd65a06cbc",
+    "python": "3.11.17 (main, Oct 21 2026, 17:46:53) [Clang 23.1.3 ]",
+    "platform": "Linux-7.2.9-3-aegis-offensive-x86_64-with-glibc2.44"
+  },
+  "rows": [
+    {
+      "issuances": 100,
+      "incomplete_rate": 0,
+      "repetitions": 5,
+      "update_ms": [
+        3.552308,
+        3.058528,
+        3.414242,
+        6.362473,
+        4.695603
+      ],
+      "median_update_ms": 3.552308,
+      "max_update_ms": 6.362473,
+      "candidates_per_auth": 1,
+      "checkpoint_bytes": 27266,
+      "traced_recompute_peak_bytes": 138095,
+      "verified_decisions": 100
+    },
+    {
+      "issuances": 100,
+      "incomplete_rate": 0.1,
+      "repetitions": 5,
+      "update_ms": [
+        3.308974,
+        3.094631,
+        3.078189,
+        2.413752,
+        3.076927
+      ],
+      "median_update_ms": 3.078189,
+      "max_update_ms": 3.308974,
+      "candidates_per_auth": 11,
+      "checkpoint_bytes": 27248,
+      "traced_recompute_peak_bytes": 138739,
+      "verified_decisions": 100
+    },
+    {
+      "issuances": 1000,
+      "incomplete_rate": 0,
+      "repetitions": 5,
+      "update_ms": [
+        30.159253,
+        28.216528,
+        30.771555,
+        36.173051,
+        28.682296
+      ],
+      "median_update_ms": 30.159253,
+      "max_update_ms": 36.173051,
+      "candidates_per_auth": 1,
+      "checkpoint_bytes": 232313,
+      "traced_recompute_peak_bytes": 1505642,
+      "verified_decisions": 100
+    },
+    {
+      "issuances": 1000,
+      "incomplete_rate": 0.1,
+      "repetitions": 5,
+      "update_ms": [
+        55.372555,
+        39.266653,
+        28.072876,
+        32.922238,
+        31.416947
+      ],
+      "median_update_ms": 32.922238,
+      "max_update_ms": 55.372555,
+      "candidates_per_auth": 101,
+      "checkpoint_bytes": 232041,
+      "traced_recompute_peak_bytes": 1507404,
+      "verified_decisions": 100
+    },
+    {
+      "issuances": 5000,
+      "incomplete_rate": 0,
+      "repetitions": 5,
+      "update_ms": [
+        161.501525,
+        159.999106,
+        172.345418,
+        165.786478,
+        189.758761
+      ],
+      "median_update_ms": 165.786478,
+      "max_update_ms": 189.758761,
+      "candidates_per_auth": 1,
+      "checkpoint_bytes": 1149218,
+      "traced_recompute_peak_bytes": 7599571,
+      "verified_decisions": 100
+    },
+    {
+      "issuances": 5000,
+      "incomplete_rate": 0.1,
+      "repetitions": 5,
+      "update_ms": [
+        165.360633,
+        191.693594,
+        160.348785,
+        164.629799,
+        181.191052
+      ],
+      "median_update_ms": 165.360633,
+      "max_update_ms": 191.693594,
+      "candidates_per_auth": 501,
+      "checkpoint_bytes": 1147656,
+      "traced_recompute_peak_bytes": 7608731,
+      "verified_decisions": 100
+    }
+  ],
+  "status": "passed",
+  "claims": "Timing is descriptive on one shared host; snapshot records seeded outside timer; traced memory excludes resident state."
+}

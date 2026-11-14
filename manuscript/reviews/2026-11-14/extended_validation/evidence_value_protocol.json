@@ -1,0 +1,41 @@
+{
+  "ablation": "ignore_exports deliberately removes optional evidence; repair enumerates deletion of at most one bridge",
+  "exports": [
+    "none",
+    "clean",
+    "one_fault",
+    "delayed"
+  ],
+  "issuances": [
+    4,
+    16,
+    64
+  ],
+  "missing_rates": [
+    0,
+    0.25,
+    0.75
+  ],
+  "primary": [
+    "wrong_resolved",
+    "correct_resolved",
+    "truth_retained",
+    "candidate_count",
+    "retractions"
+  ],
+  "projection": "Identity only, all timestamps [0,0], no mutation/intent labels; same records per primary method",
+  "python": "3.11.17",
+  "replicates": 4,
+  "scope": "Independent synthetic generator, not independent operational deployment or enterprise prevalence",
+  "seeds": [
+    91009,
+    92003,
+    93001
+  ],
+  "source_sha256": {
+    "manuscript/scripts/evaluate_evidence_value.py": "be0d7b41beca20c9d6bc3edde365717a2df45e08a74c7f1df4b36fa59abf872c",
+    "thesis_research/src/lineage_constraints/engine.py": "86613cc1d461b196234621eca93be12c4f83c1fbd97253dbf5c277bb1fc603e4",
+    "thesis_research/src/lineage_constraints/repair.py": "60b9c47970be1be9574b8ad4acadb2bf3688bf31cd0d447f624f99d676c4823a",
+    "thesis_research/src/lineage_constraints/sql_lineage.py": "bdc47417288f155208b9c5cfd9a8270fc1c45983c0834d8e175cff24074c2627"
+  }
+}

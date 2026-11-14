@@ -4,7 +4,7 @@
 \caption{Matched two-step diagnostic: 1,500 paired cases per arm (750 positive, 750 negative). Correct classification is a percentage; false positives and negatives are counts. Repeated training archetypes limit this synthetic diagnostic.}
 \label{tab:hard_negatives}
 \evidencetable
-\begin{tabular}{llrrr}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.34\linewidth}*{4}{C}@{}}
 \toprule
 Implementation & Aug. & Correct & \makecell{False\\positive} & \makecell{False\\negative} \\
 \midrule
@@ -13,5 +13,5 @@ Additive & 0.3 & 71.67\% & 425 & 0 \\
 \makecell[l]{Feature-channel\\gate} & 0 & 70.00\% & 0 & 450 \\
 \makecell[l]{Feature-channel\\gate} & 0.3 & 70.00\% & 0 & 450 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}

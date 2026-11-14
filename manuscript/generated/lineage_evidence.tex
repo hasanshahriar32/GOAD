@@ -4,7 +4,7 @@
 \caption{Confirmation on 2,000 synthetic histories: 1,804 true observed links and 539 true mutation overlaps. Link coverage is a percentage; overlap entries are edge counts. These are attribution outcomes, not exploit detection rates.}
 \label{tab:lineage_confirmation}
 \evidencetable
-\begin{tabular}{lrrrr}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.34\linewidth}*{4}{C}@{}}
 \toprule
 Method & \makecell{Definite\\links (\%)} & \makecell{Possible\\links (\%)} & \makecell{True\\overlap} & \makecell{False\\overlap} \\
 \midrule
@@ -14,14 +14,14 @@ Conjunctive, 300 s & 47.67 & 47.67 & 196 & 34 \\
 Conjunctive, point & 74.56 & 74.56 & 310 & 51 \\
 \makecell[l]{CIPG constraint\\reference} & 55.82 & 99.06 & 107 & 0 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 \begin{table}[tbp]
 \centering
 \caption{Temporal component study, 300 histories per observation rate. The order-aware method receives an additional explicit sensor channel; no cross-host ordering is inferred from record numbers. Each row is evaluated on the same cases as the other methods at that rate.}
 \label{tab:order_component}
 \evidencetable
-\begin{tabular}{rlrrr}
+\begin{tabularx}{\linewidth}{@{}r>{\raggedright\arraybackslash}p{.32\linewidth}*{3}{C}@{}}
 \toprule
 \makecell{Order\\rate} & Method & \makecell{True\\overlaps} & Recovered & \makecell{False\\claims} \\
 \midrule
@@ -35,14 +35,14 @@ Conjunctive, point & 74.56 & 74.56 & 310 & 51 \\
 1 & Interval boxes & 138 & 53 & 0 \\
 1 & \makecell[l]{Intervals +\\observed order} & 138 & 138 & 0 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 \begin{table}[tbp]
 \centering
 \caption{Bridge-fault component study: 2,700 histories, 2,180 successful observed links. Fault counts range from zero to two; budgets below the true count include outside-assumption controls. Candidate retention and certain-link coverage are reported separately.}
 \label{tab:bridge_component}
 \evidencetable
-\begin{tabular}{lrrrr}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.28\linewidth}*{3}{C}r@{}}
 \toprule
 Method & \makecell{Retained\\true links} & \makecell{Certain\\true links} & \makecell{Wrong\\certain} & Hypotheses \\
 \midrule
@@ -51,25 +51,25 @@ $k=1$ & 1811 & 602 & 0 & 15300 \\
 $k=2$ & 2180 & 602 & 0 & 49800 \\
 \makecell[l]{Ignore optional\\exports} & 2180 & 1757 & 0 & 2700 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
-\begin{table}[tbp]
+\begin{table*}[tbp]
 \centering
 \caption{Matched policy interventions: three blocks per OS and three certificate uses per condition. The 2019 build is 17763.4974. Signed administrative CSR/key pairs are matched within blocks. ESC1 and risky EKU measure template configuration, not attack intent.}
 \label{tab:paired_live_policy}
 \evidencetable
-\begin{tabular}{llrrrrr}
+\begin{tabularx}{\linewidth}{@{}cY*{5}{>{\centering\arraybackslash}p{.105\linewidth}}@{}}
 \toprule
 OS & Condition & Trials & Self & Admin & ESC1 & \makecell{Risky\\EKU} \\
 \midrule
-2016 & \makecell[l]{Baseline/admin\\request} & 3 & 3 & 0 & 0 & 0 \\
-2016 & \makecell[l]{Subject bit\\enabled} & 3 & 0 & 3 & 3 & 3 \\
-2016 & \makecell[l]{Rollback before\\request} & 3 & 3 & 0 & 0 & 0 \\
-2016 & \makecell[l]{Legitimate self\\request} & 3 & 3 & 0 & 3 & 3 \\
-2019 & \makecell[l]{Baseline/admin\\request} & 3 & 3 & 0 & 0 & 0 \\
-2019 & \makecell[l]{Subject bit\\enabled} & 3 & 0 & 3 & 3 & 3 \\
-2019 & \makecell[l]{Rollback before\\request} & 3 & 3 & 0 & 0 & 0 \\
-2019 & \makecell[l]{Legitimate self\\request} & 3 & 3 & 0 & 3 & 3 \\
+2016 & Baseline/admin request & 3 & 3 & 0 & 0 & 0 \\
+2016 & Subject bit enabled & 3 & 0 & 3 & 3 & 3 \\
+2016 & Rollback before request & 3 & 3 & 0 & 0 & 0 \\
+2016 & Legitimate self request & 3 & 3 & 0 & 3 & 3 \\
+2019 & Baseline/admin request & 3 & 3 & 0 & 0 & 0 \\
+2019 & Subject bit enabled & 3 & 0 & 3 & 3 & 3 \\
+2019 & Rollback before request & 3 & 3 & 0 & 0 & 0 \\
+2019 & Legitimate self request & 3 & 3 & 0 & 3 & 3 \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{tabularx}
+\end{table*}

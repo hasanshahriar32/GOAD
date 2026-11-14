@@ -1,0 +1,47 @@
+{
+  "all/reference": {
+    "cases": 432,
+    "correct_resolved": 260,
+    "wrong_resolved": 0,
+    "truth_retained": 404,
+    "mean_candidates": 1.9837962962962963,
+    "p95_candidates": 8,
+    "max_candidates": 28
+  },
+  "all/sql_guarded": {
+    "cases": 432,
+    "correct_resolved": 260,
+    "wrong_resolved": 0,
+    "truth_retained": 404,
+    "mean_candidates": 1.9837962962962963,
+    "p95_candidates": 8,
+    "max_candidates": 28
+  },
+  "all/sql_strong": {
+    "cases": 432,
+    "correct_resolved": 292,
+    "wrong_resolved": 0,
+    "truth_retained": 292,
+    "mean_candidates": 0.6759259259259259,
+    "p95_candidates": 1,
+    "max_candidates": 1
+  },
+  "all/ignore_exports": {
+    "cases": 432,
+    "correct_resolved": 176,
+    "wrong_resolved": 0,
+    "truth_retained": 432,
+    "mean_candidates": 5.3032407407407405,
+    "p95_candidates": 25,
+    "max_candidates": 29
+  },
+  "all/repair_k1": {
+    "cases": 432,
+    "correct_resolved": 131,
+    "wrong_resolved": 0,
+    "truth_retained": 432,
+    "mean_candidates": 5.3032407407407405,
+    "p95_candidates": 25,
+    "max_candidates": 29
+  }
+}

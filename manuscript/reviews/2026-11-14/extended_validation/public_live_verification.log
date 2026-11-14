@@ -1,0 +1,34 @@
+{
+  "administrative_uses": 13,
+  "by_cohort": {
+    "current_patch_sid_01": {
+      "privileged_certificate_use": 3,
+      "self_certificate_use": 9
+    },
+    "current_patch_upn_01": {
+      "certificate_authentication_rejected": 6,
+      "self_certificate_use": 6
+    },
+    "independent_2019_matrix_02": {
+      "privileged_certificate_use": 3,
+      "self_certificate_use": 9
+    },
+    "paired_policy_matrix_02": {
+      "privileged_certificate_use": 3,
+      "self_certificate_use": 9
+    },
+    "transfer_workload_01": {
+      "privileged_certificate_use": 4,
+      "self_certificate_use": 20
+    }
+  },
+  "certificate_bound_rejections": 6,
+  "certificate_cases": 72,
+  "later_supplemented_ca_exports": 18,
+  "scope": "Public certificate/CSR/CA/KDC selected-field verification; no private keys or raw capture tree required. Source integrity and missing historical policy are not established by these unkeyed hashes.",
+  "self_uses": 53,
+  "signed_requests_verified": 72,
+  "status": "passed",
+  "successful_uses": 66,
+  "transfer_leaf_signatures_verified": 24
+}

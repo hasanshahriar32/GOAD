@@ -1,9 +1,9 @@
-\begin{table}[tbp]
+\begin{table*}[tbp]
 \centering
 \caption{Certificate outcomes on Windows Server 2019 build 17763.9376: three trials per condition and request form. Reject denotes a certificate-bound KDC rejection. ESC1 pre/post are configuration findings before request and after rollback. Missing CA exports and later snapshot adjudication are described in Section~\ref{sec:evaluation}.}
 \label{tab:current_patch_policy}
 \evidencetable
-\begin{tabular}{llrrrrr}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.15\linewidth}Y*{5}{>{\centering\arraybackslash}p{.105\linewidth}}@{}}
 \toprule
 \makecell{Request\\form} & Condition & Self & Admin & Reject & \makecell{ESC1\\pre} & \makecell{ESC1\\post} \\
 \midrule
@@ -11,10 +11,10 @@ UPN & Baseline & 3 & 0 & 0 & 0 & 0 \\
 UPN & Enabled & 0 & 0 & 3 & 3 & 0 \\
 UPN & Rollback first & 3 & 0 & 0 & 0 & 0 \\
 UPN & Self request & 0 & 0 & 3 & 3 & 0 \\
-\makecell[l]{UPN +\\SID URL} & Baseline & 3 & 0 & 0 & 0 & 0 \\
-\makecell[l]{UPN +\\SID URL} & Enabled & 0 & 3 & 0 & 3 & 0 \\
-\makecell[l]{UPN +\\SID URL} & Rollback first & 3 & 0 & 0 & 0 & 0 \\
-\makecell[l]{UPN +\\SID URL} & Self request & 3 & 0 & 0 & 3 & 0 \\
+UPN + SID URL & Baseline & 3 & 0 & 0 & 0 & 0 \\
+UPN + SID URL & Enabled & 0 & 3 & 0 & 3 & 0 \\
+UPN + SID URL & Rollback first & 3 & 0 & 0 & 0 & 0 \\
+UPN + SID URL & Self request & 3 & 0 & 0 & 3 & 0 \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{tabularx}
+\end{table*}

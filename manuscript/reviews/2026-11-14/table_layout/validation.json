@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "table_numeric_token_counts": {
+    "tab:live_traces": 13,
+    "tab:cipg_stress": 31,
+    "tab:sensitivity_matrix": 50,
+    "tab:stackelberg_results": 56,
+    "tab:literal_bilinear": 28,
+    "tab:hard_negatives": 16,
+    "tab:current_patch_policy": 40,
+    "tab:sql_identity": 12,
+    "tab:transfer_workload": 18,
+    "tab:collection_pilot": 30,
+    "tab:lineage_confirmation": 21,
+    "tab:order_component": 36,
+    "tab:bridge_component": 19,
+    "tab:paired_live_policy": 48,
+    "tab:scalability_bench": 17
+  },
+  "total_numeric_tokens": 435,
+  "layout_idempotent": true,
+  "evidence_manifests": "verified",
+  "manuscript_pages": 22,
+  "table_pages_visually_inspected": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18
+  ],
+  "table_count": 15,
+  "single_column_tables": 11,
+  "spanning_tables": 4,
+  "table_rule_widths_pt": [
+    251.06,
+    514.07
+  ],
+  "horizontal_table_rules_checked": 46,
+  "overflow_warnings": 0,
+  "unresolved_reference_markers": 0,
+  "figure_manifest": "verified after updated section hash",
+  "local_source_bundle": "manuscript/submission_files/CertGraph_IEEE_Professor_Revision.zip",
+  "bundle_sha256": "d570310f94e3c3ec59011c2c1b4fb5b4d3f9420e7d049188cd0bbf6214146182",
+  "remaining_build_warnings": "Tectonic main.bbl consistency/rerun and typography warnings persist; compilation succeeds."
+}

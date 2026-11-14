@@ -4,7 +4,7 @@
 \caption{Literal two-layer attention: mean accuracy (\%) $\pm$ sample SD over three seeds. Each test cohort contains 150 paired families per seed; initialization and augmentation are matched.}
 \label{tab:literal_bilinear}
 \evidencetable
-\begin{tabular}{llrrr}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.22\linewidth}c*{3}{C}@{}}
 \toprule
 Model & Aug. & IID & \makecell{Long\\paths} & \makecell{Larger\\background} \\
 \midrule
@@ -13,5 +13,5 @@ Model & Aug. & IID & \makecell{Long\\paths} & \makecell{Larger\\background} \\
 \makecell[l]{Bilinear\\attention} & 0 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
 \makecell[l]{Bilinear\\attention} & 0.3 & $86.00 \pm 2.19$ & $50.00 \pm 0.00$ & $87.00 \pm 1.00$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}

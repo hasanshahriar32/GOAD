@@ -15,8 +15,10 @@ Let $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \phi, \psi)$ be a directed heterog
 \end{equation}
     \item $\mathcal{E}$ is the finite set of directed edges, and $\psi: \mathcal{E} \to \mathcal{T}_E$ maps edges to relationship types:
     \begin{equation}
-\fitmath{\begin{gathered}\mathcal{T}_E = \{\text{MemberOf}, \text{GenericAll}, \text{GenericWrite}, \text{WriteOwner}, \text{WriteDacl},   \\ 
-    \text{Enroll}, \text{ExtendedRight}, \text{EnablesEnrollment}, \text{IssuedBy}, \text{TrustedForNTAuth}\}\end{gathered}}
+\fitmath{\begin{aligned}\mathcal{T}_E = \{&\text{MemberOf},\text{GenericAll},\text{GenericWrite},\\
+    &\text{WriteOwner},\text{WriteDacl},\text{Enroll},\\
+    &\text{ExtendedRight},\text{EnablesEnrollment},\\
+    &\text{IssuedBy},\text{TrustedForNTAuth}\}\end{aligned}}
 \end{equation}
     \item Each node $v \in \mathcal{V}$ is associated with a raw feature vector $\mathbf{x}_v \in \mathbb{R}^{d_{\phi(v)}}$. For certificate templates $t \in \mathcal{V}_{\text{Template}}$, $\mathbf{x}_t \in \{0, 1\}^{10}$ encodes security configuration flags, including whether the template permits enrollee-supplied SANs (\texttt{CT\_FLAG\_ENROLLEE\_SUPPLIES\_SUBJECT}), requires manager approval (\texttt{CT\_FLAG\_PEND\_ALL\_REQUESTS}), or specifies Client Authentication EKUs (\texttt{1.3.6.1.5.5.7.3.2}).
 \end{itemize}
@@ -31,7 +33,7 @@ In an ADCS privilege escalation, the path traverses intermediate membership and 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figures/verified_identity_schema.pdf}
-\caption{Node-type and relation vocabulary of the formal identity multigraph: six node types and ten relation types. This summarizes the definition; it is not an additional evaluated graph schema.}
+\caption{Illustrative identity and PKI topology for the formal multigraph. Membership, enrollment, issuance and trust edges connect the six node types; the dashed ACL edge represents the permission vocabulary listed below the drawing. The topology illustrates the definition rather than an additional evaluated graph instance.}
 \label{fig:adcs_schema}
 \end{figure}
 
@@ -43,7 +45,7 @@ Selected ESC categories illustrate different evidence requirements~\cite{schroed
 \end{enumerate}
 
 \subsection{Template Rollback and Snapshot Evidence}
-Existing enterprise defense workflows rely on periodic directory extraction tools (e.g., BloodHound, SharpHound, Certipy) that execute every 6 to 24 hours. Under temporal mutation-and-rollback attacks (such as ESC4 and ESC9), an attacker exploits transient write permissions to mutate a template, obtain a rogue certificate, and immediately roll back the attributes to their original configuration.
+A periodic directory extraction with tools such as BloodHound, SharpHound or Certipy observes configuration at its collection times. We assume an interval between snapshots during which a template can be changed and restored; no enterprise-wide polling schedule is assumed. Under temporal mutation-and-rollback attacks (such as ESC4 and ESC9), an attacker exploits transient write permissions to mutate a template, obtain a rogue certificate, and immediately roll back the attributes to their original configuration.
 
 \begin{definition}[Static Snapshot Invariance under Rollback]
 Let $t_0 < t_1 < t_2 < t_3$ denote the sequence of discrete timestamps in an attack execution lifecycle:
@@ -67,7 +69,7 @@ For a projection restricted to configuration attributes restored by rollback, le
 \fitmath{\begin{gathered}\text{SHA-256}(\mathcal{G}_{t_3}) = h_0\end{gathered}}
 \end{equation}
 
-This is a conditional indistinguishability argument for that projection, not evidence that the entire AD database is bit-identical. The earlier draft's literal digests cannot substitute for retained canonical input bytes. Let $\operatorname{Obs}_{\mathrm{static}}$ be this restored-attribute projection. With no other historical evidence, its observations are identical:
+This is a conditional indistinguishability argument for that projection, not evidence that the entire AD database is bit-identical. A reproducible digest comparison additionally requires retained canonical input bytes. Let $\operatorname{Obs}_{\mathrm{static}}$ be this restored-attribute projection. With no other historical evidence, its observations are identical:
 \begin{equation}
 \fitmath{\operatorname{Obs}_{\mathrm{static}}(\mathcal G_{t_0})=\operatorname{Obs}_{\mathrm{static}}(\mathcal G_{t_3})}
 \end{equation}
@@ -92,7 +94,7 @@ When an attacker requests a certificate with a rogue Subject Alternative Name (e
 \end{enumerate}
 
 Our forensic investigation of live archived GOAD event streams reveals that when an attacker employs the PKCS\#10 ASN.1 CSR extension (as executed natively by modern exploit tooling), the CA event log omits the SAN string entirely from the XML event payload:
-\begin{lstlisting}[language=XML,caption={Selected fields from the independent 2019 enabled-condition capture: Security record 20539. The raw XML is retained in the artifact.},label=lst:ca_event]
+\begin{lstlisting}[language=XML,float=tbp,caption={Selected fields from the independent 2019 enabled-condition capture: Security record 20539. The raw XML is retained in the artifact.},label=lst:ca_event]
 <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
   <System>
     <Provider Name="Microsoft-Windows-Security-Auditing"/>

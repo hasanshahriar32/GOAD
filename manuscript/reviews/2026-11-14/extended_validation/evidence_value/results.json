@@ -1,0 +1,382 @@
+{
+  "cases": 432,
+  "groups": {
+    "all/ignore_exports": {
+      "cases": 432,
+      "correct_resolved": 176,
+      "max_candidates": 29,
+      "mean_candidates": 5.3032407407407405,
+      "p95_candidates": 25,
+      "truth_retained": 432,
+      "wrong_resolved": 0
+    },
+    "all/reference": {
+      "cases": 432,
+      "correct_resolved": 260,
+      "max_candidates": 28,
+      "mean_candidates": 1.9837962962962963,
+      "p95_candidates": 8,
+      "truth_retained": 404,
+      "wrong_resolved": 0
+    },
+    "all/repair_k1": {
+      "cases": 432,
+      "correct_resolved": 131,
+      "max_candidates": 29,
+      "mean_candidates": 5.3032407407407405,
+      "p95_candidates": 25,
+      "truth_retained": 432,
+      "wrong_resolved": 0
+    },
+    "all/sql_guarded": {
+      "cases": 432,
+      "correct_resolved": 260,
+      "max_candidates": 28,
+      "mean_candidates": 1.9837962962962963,
+      "p95_candidates": 8,
+      "truth_retained": 404,
+      "wrong_resolved": 0
+    },
+    "all/sql_strong": {
+      "cases": 432,
+      "correct_resolved": 292,
+      "max_candidates": 1,
+      "mean_candidates": 0.6759259259259259,
+      "p95_candidates": 1,
+      "truth_retained": 292,
+      "wrong_resolved": 0
+    },
+    "export:clean/ignore_exports": {
+      "cases": 108,
+      "correct_resolved": 44,
+      "max_candidates": 28,
+      "mean_candidates": 5.324074074074074,
+      "p95_candidates": 25,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:clean/reference": {
+      "cases": 108,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:clean/repair_k1": {
+      "cases": 108,
+      "correct_resolved": 44,
+      "max_candidates": 28,
+      "mean_candidates": 5.324074074074074,
+      "p95_candidates": 25,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:clean/sql_guarded": {
+      "cases": 108,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:clean/sql_strong": {
+      "cases": 108,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:delayed/ignore_exports": {
+      "cases": 108,
+      "correct_resolved": 43,
+      "max_candidates": 28,
+      "mean_candidates": 5.342592592592593,
+      "p95_candidates": 25,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:delayed/reference": {
+      "cases": 108,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:delayed/repair_k1": {
+      "cases": 108,
+      "correct_resolved": 43,
+      "max_candidates": 28,
+      "mean_candidates": 5.342592592592593,
+      "p95_candidates": 25,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:delayed/sql_guarded": {
+      "cases": 108,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:delayed/sql_strong": {
+      "cases": 108,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:none/ignore_exports": {
+      "cases": 108,
+      "correct_resolved": 44,
+      "max_candidates": 28,
+      "mean_candidates": 5.194444444444445,
+      "p95_candidates": 23,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:none/reference": {
+      "cases": 108,
+      "correct_resolved": 44,
+      "max_candidates": 28,
+      "mean_candidates": 5.194444444444445,
+      "p95_candidates": 23,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:none/repair_k1": {
+      "cases": 108,
+      "correct_resolved": 44,
+      "max_candidates": 28,
+      "mean_candidates": 5.194444444444445,
+      "p95_candidates": 23,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:none/sql_guarded": {
+      "cases": 108,
+      "correct_resolved": 44,
+      "max_candidates": 28,
+      "mean_candidates": 5.194444444444445,
+      "p95_candidates": 23,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:none/sql_strong": {
+      "cases": 108,
+      "correct_resolved": 76,
+      "max_candidates": 1,
+      "mean_candidates": 0.7037037037037037,
+      "p95_candidates": 1,
+      "truth_retained": 76,
+      "wrong_resolved": 0
+    },
+    "export:one_fault/ignore_exports": {
+      "cases": 108,
+      "correct_resolved": 45,
+      "max_candidates": 29,
+      "mean_candidates": 5.351851851851852,
+      "p95_candidates": 25,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:one_fault/reference": {
+      "cases": 108,
+      "correct_resolved": 0,
+      "max_candidates": 1,
+      "mean_candidates": 0.7407407407407407,
+      "p95_candidates": 1,
+      "truth_retained": 80,
+      "wrong_resolved": 0
+    },
+    "export:one_fault/repair_k1": {
+      "cases": 108,
+      "correct_resolved": 0,
+      "max_candidates": 29,
+      "mean_candidates": 5.351851851851852,
+      "p95_candidates": 25,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    },
+    "export:one_fault/sql_guarded": {
+      "cases": 108,
+      "correct_resolved": 0,
+      "max_candidates": 1,
+      "mean_candidates": 0.7407407407407407,
+      "p95_candidates": 1,
+      "truth_retained": 80,
+      "wrong_resolved": 0
+    },
+    "export:one_fault/sql_strong": {
+      "cases": 108,
+      "correct_resolved": 0,
+      "max_candidates": 0,
+      "mean_candidates": 0,
+      "p95_candidates": 0,
+      "truth_retained": 0,
+      "wrong_resolved": 0
+    },
+    "missing:0.25/ignore_exports": {
+      "cases": 144,
+      "correct_resolved": 27,
+      "max_candidates": 12,
+      "mean_candidates": 4.201388888888889,
+      "p95_candidates": 11,
+      "truth_retained": 144,
+      "wrong_resolved": 0
+    },
+    "missing:0.25/reference": {
+      "cases": 144,
+      "correct_resolved": 79,
+      "max_candidates": 11,
+      "mean_candidates": 1.7638888888888888,
+      "p95_candidates": 8,
+      "truth_retained": 138,
+      "wrong_resolved": 0
+    },
+    "missing:0.25/repair_k1": {
+      "cases": 144,
+      "correct_resolved": 19,
+      "max_candidates": 12,
+      "mean_candidates": 4.201388888888889,
+      "p95_candidates": 11,
+      "truth_retained": 144,
+      "wrong_resolved": 0
+    },
+    "missing:0.25/sql_guarded": {
+      "cases": 144,
+      "correct_resolved": 79,
+      "max_candidates": 11,
+      "mean_candidates": 1.7638888888888888,
+      "p95_candidates": 8,
+      "truth_retained": 138,
+      "wrong_resolved": 0
+    },
+    "missing:0.25/sql_strong": {
+      "cases": 144,
+      "correct_resolved": 99,
+      "max_candidates": 1,
+      "mean_candidates": 0.6875,
+      "p95_candidates": 1,
+      "truth_retained": 99,
+      "wrong_resolved": 0
+    },
+    "missing:0.75/ignore_exports": {
+      "cases": 144,
+      "correct_resolved": 5,
+      "max_candidates": 29,
+      "mean_candidates": 10.708333333333334,
+      "p95_candidates": 27,
+      "truth_retained": 144,
+      "wrong_resolved": 0
+    },
+    "missing:0.75/reference": {
+      "cases": 144,
+      "correct_resolved": 73,
+      "max_candidates": 28,
+      "mean_candidates": 3.1875,
+      "p95_candidates": 22,
+      "truth_retained": 122,
+      "wrong_resolved": 0
+    },
+    "missing:0.75/repair_k1": {
+      "cases": 144,
+      "correct_resolved": 4,
+      "max_candidates": 29,
+      "mean_candidates": 10.708333333333334,
+      "p95_candidates": 27,
+      "truth_retained": 144,
+      "wrong_resolved": 0
+    },
+    "missing:0.75/sql_guarded": {
+      "cases": 144,
+      "correct_resolved": 73,
+      "max_candidates": 28,
+      "mean_candidates": 3.1875,
+      "p95_candidates": 22,
+      "truth_retained": 122,
+      "wrong_resolved": 0
+    },
+    "missing:0.75/sql_strong": {
+      "cases": 144,
+      "correct_resolved": 85,
+      "max_candidates": 1,
+      "mean_candidates": 0.5902777777777778,
+      "p95_candidates": 1,
+      "truth_retained": 85,
+      "wrong_resolved": 0
+    },
+    "missing:0/ignore_exports": {
+      "cases": 144,
+      "correct_resolved": 144,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 144,
+      "wrong_resolved": 0
+    },
+    "missing:0/reference": {
+      "cases": 144,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 144,
+      "wrong_resolved": 0
+    },
+    "missing:0/repair_k1": {
+      "cases": 144,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 144,
+      "wrong_resolved": 0
+    },
+    "missing:0/sql_guarded": {
+      "cases": 144,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 1,
+      "p95_candidates": 1,
+      "truth_retained": 144,
+      "wrong_resolved": 0
+    },
+    "missing:0/sql_strong": {
+      "cases": 144,
+      "correct_resolved": 108,
+      "max_candidates": 1,
+      "mean_candidates": 0.75,
+      "p95_candidates": 1,
+      "truth_retained": 108,
+      "wrong_resolved": 0
+    }
+  },
+  "measured_runner_seconds": {
+    "ignore_exports": 0.22802546723687556,
+    "reference": 0.30142933006573003,
+    "repair_k1": 7.933239969002898,
+    "sql_guarded": 9.46911697507312,
+    "sql_strong": 9.074887671988108
+  },
+  "prefix_retractions": {
+    "ignore_exports": 0,
+    "reference": 45,
+    "repair_k1": 45,
+    "sql_guarded": 45,
+    "sql_strong": 80
+  },
+  "protocol_sha256": "1721273627b448c0bd574136112500b1c828ee33591454bd2e29b2b4eb3dda04",
+  "status": "passed",
+  "timing_scope": "Includes fresh SQL loading and intermediate add queries, excludes generator; not a fair engine speed comparison"
+}

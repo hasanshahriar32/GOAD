@@ -4,13 +4,13 @@
 \caption{Equal-query projection timing (ms), including projection construction. Three graph seeds and five alternating-order repetitions per seed; all severed-pair outcomes agree. Hierarchical synthetic graphs, shared host.}
 \label{tab:scalability_bench}
 \evidencetable
-\begin{tabular}{rrrrr}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.21\linewidth}*{4}{C}@{}}
 \toprule
-Nodes & \makecell{Queried\\pairs} & \makecell{Full\\(ms)} & \makecell{Projection +\\solve (ms)} & \makecell{Median\\ratio} \\
+Nodes & \makecell{Queried\\pairs} & \makecell{Full\\(ms)} & \makecell{Projection\\+ solve\\(ms)} & \makecell{Median\\ratio} \\
 \midrule
 100 & 6 & 1.99 & 1.16 & $1.78\times$ \\
 1,000 & 65 & 86.36 & 21.56 & $4.01\times$ \\
 5,000 & 325 & 3448.15 & 439.29 & $7.54\times$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}

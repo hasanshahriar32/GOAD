@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "cases": 432,
+  "prediction_rows": 4320,
+  "stage_equivalence_checks": 864,
+  "latent_certificate_identity_checks": true,
+  "within_budget_retention_checks": true,
+  "summary": {
+    "reference": {
+      "cases": 432,
+      "correct_resolved": 260,
+      "wrong_resolved": 0,
+      "truth_retained": 404
+    },
+    "sql_guarded": {
+      "cases": 432,
+      "correct_resolved": 260,
+      "wrong_resolved": 0,
+      "truth_retained": 404
+    },
+    "sql_strong": {
+      "cases": 432,
+      "correct_resolved": 292,
+      "wrong_resolved": 0,
+      "truth_retained": 292
+    },
+    "ignore_exports": {
+      "cases": 432,
+      "correct_resolved": 176,
+      "wrong_resolved": 0,
+      "truth_retained": 432
+    },
+    "repair_k1": {
+      "cases": 432,
+      "correct_resolved": 131,
+      "wrong_resolved": 0,
+      "truth_retained": 432
+    }
+  }
+}

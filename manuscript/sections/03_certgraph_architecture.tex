@@ -1,7 +1,7 @@
-\section{CertGraph Static Architecture and Bilinear Gating}
+\section{Supporting Study: Graph Learning and Bilinear Gating}
 \label{sec:certgraph_arch}
 
-This section details the static detection layer of CertGraph (Figure~\ref{fig:certgraph_arch}), analyzes the theoretical failure of standard message passing on access control graphs, and introduces a bilinear compatibility formulation whose learned output must be distinguished from exact authorization reachability.
+This supporting study examines whether learned graph representations help identify the stated resolved-permission predicate (Figure~\ref{fig:certgraph_arch}). Certificate evidence is collected independently of its predictions. The conditional analysis below motivates matched experiments; it does not establish a failure of every attention model. The evaluated bilinear scorer provides no classification advantage over additive attention, so the certificate-lineage contribution does not depend on it.
 
 \subsection{Heterogeneous Graph Attention Network (HetGAT)}
 Following graph-learning formulations~\cite{scarselli2008graph,wu2021survey}, CertGraph employs a multi-relational graph attention network. Let $\mathbf{x}_v \in \mathbb{R}^{d_{\phi(v)}}$ denote the initial feature vector of entity $v \in \mathcal{V}$. Vertices are first projected into a shared hidden space of dimension $d$:
@@ -26,8 +26,8 @@ where $\mathbf{a}_r \in \mathbb{R}^{2d}$ is the parameterized attention vector f
 
 \begin{figure*}[ht]
 \centering
-\includegraphics[width=\textwidth]{figures/certgraph_architecture_diagram.png}
-\caption{CertGraph end-to-end Hetero-GAT pipeline for ESC vulnerability classification: (1) Heterogeneous Input Graph across 5 entity node types, (2) Layer~1 relational multi-head attention with residual skip projections ($W_{\text{skip}}$) preserving template attribute gradients, (3) Layer~2 aggregation and template readout embedding, and (4) Classification Head mapping latent embeddings to multi-class ESC predictions.}
+\includegraphics[width=\textwidth]{figures/certgraph_learning_architecture.pdf}
+\caption{CertGraph learning architecture and the literal bilinear mechanism. (A) Typed graph features enter (B) two relational attention layers with four heads per layer and gated self-skips, followed by (C) template readout and binary classification in the matched resolved-permission ESC1 study. (D) Source and target states determine a scalar bilinear gate that scales the transformed neighbor message before attention-weighted aggregation. Exact authorization is checked separately; the learned gate is not a Boolean reachability test. The input topology is illustrative.}
 \label{fig:certgraph_arch}
 \end{figure*}
 
@@ -91,7 +91,7 @@ Because certificate template attributes (e.g., \texttt{CT\_FLAG\_ENROLLEE\_SUPPL
 When the trained model is evaluated against \textbf{adversarial hard negatives}—templates that possess vulnerable attribute flags but reside in disconnected graph components or require mandatory manager approval—standard additive-skip GNNs memorize the flag pattern and classify them as vulnerable, showing poor agreement on the historical canonical generator. The matched audit in Section~\ref{sec:evaluation} corrects its reachable-path labels and separates augmentation from implementation differences.
 
 \paragraph{Multiplicative Bilinear Reachability Gating (\texttt{CertGraph-Gated}):}
-To reduce shortcut memorization, we condition messages on a learned bilinear compatibility gate. The division between learned scoring and symbolic checking follows a broader neuro-symbolic design~\cite{garcez2023neurosymbolic}. Exact reachability is checked separately by the existing symbolic verification step; the learned gate alone is not a Boolean authorization predicate. We formulate the \textbf{Multiplicative Bilinear Reachability Gate}:
+To reduce shortcut memorization, we condition messages on a learned bilinear compatibility gate. The division between learned scoring and symbolic checking follows a broader neuro-symbolic design~\cite{garcez2023neurosymbolic}. Exact reachability is checked separately by the existing symbolic verification step; the learned gate alone is not a Boolean authorization predicate. We formulate the \textbf{Multiplicative Bilinear Compatibility Gate}:
 \begin{equation}
 \fitmath{\mathbf{g}_{uv}^{(l)} = \sigma \left( \mathbf{h}_u^{(l-1)\top} \mathbf{W}_g^{(l)} \mathbf{h}_v^{(l-1)} + b_g^{(l)} \right)}
 \end{equation}

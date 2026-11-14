@@ -1,7 +1,49 @@
 """Presentation rules shared by evidence generators; numerical cells are untouched."""
 import re
 
-WIDE = {'tab:stackelberg_results'}
+WIDE = {'tab:stackelberg_results', 'tab:cipg_stress',
+        'tab:paired_live_policy', 'tab:current_patch_policy'}
+
+# tabularx uses the float's current linewidth; X text columns absorb remaining
+# space, while numeric columns retain alignment. No whole-table shrink-to-fit.
+LAYOUTS = {
+ 'tab:hard_negatives': r'@{}>{\raggedright\arraybackslash}p{.34\linewidth}*{4}{C}@{}',
+ 'tab:literal_bilinear': r'@{}>{\raggedright\arraybackslash}p{.22\linewidth}c*{3}{C}@{}',
+ 'tab:lineage_confirmation': r'@{}>{\raggedright\arraybackslash}p{.34\linewidth}*{4}{C}@{}',
+ 'tab:order_component': r'@{}r>{\raggedright\arraybackslash}p{.32\linewidth}*{3}{C}@{}',
+ 'tab:bridge_component': r'@{}>{\raggedright\arraybackslash}p{.28\linewidth}*{3}{C}r@{}',
+ 'tab:paired_live_policy': r'@{}cY*{5}{>{\centering\arraybackslash}p{.105\linewidth}}@{}',
+ 'tab:current_patch_policy': r'@{}>{\raggedright\arraybackslash}p{.15\linewidth}Y*{5}{>{\centering\arraybackslash}p{.105\linewidth}}@{}',
+ 'tab:sql_identity': r'@{}Yrrrr@{}',
+ 'tab:transfer_workload': r'@{}Y*{6}{r}@{}',
+ 'tab:collection_pilot': r'@{}r>{\raggedright\arraybackslash}p{.20\linewidth}*{4}{C}@{}',
+ 'tab:scalability_bench': r'@{}>{\raggedright\arraybackslash}p{.21\linewidth}*{4}{C}@{}',
+ 'tab:stackelberg_results': r'@{}Y*{4}{>{\centering\arraybackslash}p{.145\linewidth}}@{}',
+ 'tab:live_traces': r'@{}>{\raggedright\arraybackslash}p{.32\linewidth}rY@{}',
+ 'tab:cipg_stress': r'@{}Y*{5}{>{\centering\arraybackslash}p{.13\linewidth}}@{}',
+ 'tab:sensitivity_matrix': r'@{}>{\raggedright\arraybackslash}p{.22\linewidth}*{4}{C}@{}',
+}
+
+
+def flexible_columns(body, specification):
+ """Replace a balanced tabular preamble, including an already styled one."""
+ match = re.search(r'\\begin\{(tabularx|tabular)\}', body)
+ if not match:
+  raise ValueError('Expected a tabular or tabularx environment')
+ pos = match.end()
+ for _ in range(2 if match[1] == 'tabularx' else 1):
+  while body[pos].isspace():
+   pos += 1
+  if body[pos] != '{':
+   raise ValueError('Expected a braced table preamble')
+  depth = 1
+  pos += 1
+  while depth:
+   if body[pos] == '{': depth += 1
+   elif body[pos] == '}': depth -= 1
+   pos += 1
+ body = body[:match.start()] + r'\begin{tabularx}{\linewidth}{' + specification + '}' + body[pos:]
+ return body.replace(r'\end{tabular}', r'\end{tabularx}')
 HEADERS = {
  'tab:paired_live_policy':r'OS & Condition & Trials & Self & Admin & ESC1 & \makecell{Risky\\EKU}',
  'tab:current_patch_policy':r'\makecell{Request\\form} & Condition & Self & Admin & Reject & \makecell{ESC1\\pre} & \makecell{ESC1\\post}',
@@ -13,7 +55,7 @@ HEADERS = {
  'tab:sql_identity':r'Method & Resolved & Correct & Wrong & \makecell{True candidates\\retained}',
  'tab:transfer_workload':r'Condition & Cases & Self & Admin & \makecell{ESC1\\pre} & \makecell{ESC1\\post} & \makecell{Risky\\EKU}',
  'tab:collection_pilot':r'Pair & Arm & \makecell{Verified\\uses} & \makecell{Auth\\(ms)} & \makecell{CPU\\(ms)} & \makecell{RSS\\(MiB)}',
- 'tab:scalability_bench':r'Nodes & \makecell{Queried\\pairs} & \makecell{Full\\(ms)} & \makecell{Projection +\\solve (ms)} & \makecell{Median\\ratio}',
+ 'tab:scalability_bench':r'Nodes & \makecell{Queried\\pairs} & \makecell{Full\\(ms)} & \makecell{Projection\\+ solve\\(ms)} & \makecell{Median\\ratio}',
 }
 
 def style_evidence_tables(text):
@@ -61,5 +103,14 @@ def style_evidence_tables(text):
   if label=='tab:stackelberg_results':
    body=body.replace(r'l@{\hspace{12pt}}c@{\hspace{18pt}}c@{\hspace{18pt}}c@{\hspace{18pt}}c','lcccc')
    body=body.replace('\\resizebox{\\textwidth}{!}{%','').replace('\\end{tabular}%\n}', '\\end{tabular}')
+  if label in LAYOUTS:
+   body=flexible_columns(body, LAYOUTS[label])
+  if label=='tab:sensitivity_matrix':
+   # Keep each precision/recall pair visually grouped within its window row.
+   body=body.replace('\\addlinespace[2pt]\n','')
+   start=body.index('\\midrule')+len('\\midrule')
+   end=body.index('\\bottomrule',start)
+   rows=body[start:end].replace(' \\\\\n',' \\\\\n\\addlinespace[2pt]\n')
+   body=body[:start]+rows+body[end:]
   return '\\begin{'+env+'}[tbp]\n'+body.strip()+'\n\\end{'+env+'}'
  return re.sub(r'\\begin\{table\*?\}\[[^\]]*\](.*?)\\end\{table\*?\}',format_table,text,flags=re.S)

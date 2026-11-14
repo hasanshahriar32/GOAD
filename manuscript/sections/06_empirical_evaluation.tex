@@ -1,11 +1,11 @@
 \section{Empirical Evaluation and Live Cyber-Range Benchmarks}
 \label{sec:evaluation}
 
-We conduct an empirical evaluation to validate CertGraph's static gating, dynamic provenance tracking, and game-theoretic interdiction. Specifically, we address four core research questions:
+The primary evaluation concerns the certificate-evidence contract (RQ2) and its processing cost (RQ3). The learning and interdiction studies (RQ1 and RQ4) test supporting design choices rather than prerequisites for certificate collection. We ask:
 \begin{itemize}
     \item \textbf{RQ1 (Shortcut Behavior):} How does multiplicative bilinear gating affect classification on hard negatives and long paths when initialization and augmentation are matched?
     \item \textbf{RQ2 (Provenance Validity):} Which rollback and split-actor certificate lineages are supported by captured Windows evidence, and how do incomplete identity fields, optional-source faults, and time uncertainty affect attribution?
-    \item \textbf{RQ3 (Provenance Scalability):} What processing cost and compression are observed on the configured stress stream, and which retention and reasoning costs remain unresolved?
+    \item \textbf{RQ3 (Provenance Scalability):} How do retained history and incomplete identity affect the current reference, and how do its measurements differ from legacy streaming and live collection costs?
     \item \textbf{RQ4 (Budgeted Interdiction):} What pair-disconnection values, cut counts and optimality gaps does the sequential adaptive heuristic achieve relative to the implemented greedy comparators under assigned disruption costs?
 \end{itemize}
 
@@ -42,7 +42,7 @@ The gate gives zero false positives but misses all 450 positive cases at depths 
 
 Only 22 unique training inputs occur per seed, with 21 also present in validation. Consequently, validation selection in this diagnostic is not an independent-distribution generalization test. All 6,000 saved test predictions are reproduced from saved checkpoints, and their labels and aggregates are checked independently. A symbolic second tier must also examine unresolved or out-of-horizon cases: verifying only neural-positive candidates cannot recover these observed neural false negatives.
 
-\paragraph{Literal bilinear realization and family-disjoint validation}
+\subsubsection{Literal bilinear evaluation}
 We address the implementation mismatch with a separate literal realization of the bilinear edge and self-skip equations: two relational-attention layers, four heads, 32 hidden channels, type-specific input projection, and fully trainable encoder, attention, skip, and gate parameters. The binary readout evaluates the stated ESC1 resolved-permission predicate, not observed Windows compromise. Additive and gated arms start with identical parameter values and receive matched augmentation. Neither symbolic closure nor outcome labels enter the forward pass. Gradient, node-relabeling, and padding checks validate implementation properties; the historical implementations remain unchanged.
 
 The new generator constructs varied reachable and unreachable membership branches and paired allow/deny interventions. For each of three new seeds, 300 training and 100 validation families are separated from 150 families in each of IID, long-path, and larger-background test cohorts. Typed five-round Weisfeiler--Lehman input hashes and family IDs are disjoint across splits within a seed. This conservatively excludes isomorphic whole inputs under the encoded roles and edge types, without claiming disjoint local motifs. Long-path positive enrollment chains have membership depth 2, 4, or 8. The larger-background cohort adds isolated nodes to different generated families; it is not a matched causal estimate of graph-size effects or enterprise-scale generalization.
@@ -51,7 +51,7 @@ The new generator constructs varied reachable and unreachable membership branche
 
 Independent NetworkX reachability checks all 5,100 saved case labels, and checkpoint inference reproduces all 10,800 held-out predictions. The literal bilinear and additive models have identical classifications in every matched arm: IID accuracy averages $86.00\%\pm2.19\%$, larger-background accuracy $87.00\%\pm1.00\%$, and long-path accuracy 50\%. In each arm, all 450 positive long-path cases are missed. Some IID negatives also require deny-membership reasoning beyond the local horizon; 126 pooled false positives remain. Probability scores differ, but their reported calibration errors concern these synthetic cohorts only. This closes the literal-implementation and repeated-whole-input gaps while failing to establish classification superiority for bilinear gating. Exact verification of unresolved cases remains necessary under the stated permission contract.
 
-\subsection{RQ2 \& RQ3: Live Provenance Evaluation and Automaton Scalability}
+\subsection{RQ2 \& RQ3: Certificate Evidence and Collection Cost}
 We separate seven archived trace files, one new outcome-checked Windows case, a synthetic attribution confirmation study, and the earlier $10,182$-event trace-driven synthetic stress stream. Their outcome definitions and evidence levels differ; scenario filenames are not independent success labels. Dispersions are labeled by table: the literal-learning study reports sample SD across three seeds, whereas the finite-graph remediation study reports population SD. Neither is a confidence interval.
 
 \begin{table}[tbp]
@@ -60,7 +60,7 @@ We separate seven archived trace files, one new outcome-checked Windows case, a 
 \label{tab:live_traces}
 \evidencetable
 \setlength{\tabcolsep}{2pt}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.32\linewidth}r>{\raggedright\arraybackslash}p{.51\linewidth}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.32\linewidth}rY@{}}
 \toprule
 Scenario & Events & Captured linkage \\
 \midrule
@@ -72,16 +72,16 @@ ASN.1 SAN concealment & 88 & No consistent captured issuance \\
 Admin typo rollback & 6 & No certificate-use observation \\
 Split-actor scenario & 47 & Resolved observed linkage \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-\begin{table}[tbp]
+\begin{table*}[tbp]
 \centering
 \caption{Earlier Trace-Driven Synthetic Streaming Benchmark ($10,182$ Events, 48 Generated Attack Instances, 50 Simulated Maintenance Windows). These are legacy implementation results, not measurements of the new constraint reference.}
 \label{tab:cipg_stress}
 \evidencetable
 \setlength{\tabcolsep}{2pt}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.30\linewidth}*{5}{>{\centering\arraybackslash}p{.12\linewidth}}@{}}
+\begin{tabularx}{\linewidth}{@{}Y*{5}{>{\centering\arraybackslash}p{.13\linewidth}}@{}}
 \toprule
 Pipeline & \textbf{Prec.} & \textbf{Recall} & \textbf{F1} & \makecell{Maint.\\FPR} & \makecell{Event\\FPR} \\
 \midrule
@@ -90,8 +90,8 @@ CA event 4887 & 88.24\% & 58.33\% & 70.16\% & 0.00\% (0/50) & 0.00\% \\
 \makecell[l]{CIPG, default\\$\Delta_{\text{poll}}=5$ s} & \textbf{92.16\%} & \textbf{97.92\%} & \textbf{94.95\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
 \makecell[l]{CIPG, fast\\$\Delta_{\text{poll}}=1$ s} & \textbf{92.31\%} & \textbf{100.00\%} & \textbf{96.00\%} & \textbf{8.00\% (4/50)} & \textbf{0.0395\%} \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{tabularx}
+\end{table*}
 
 \begin{table}[tbp]
 \centering
@@ -99,24 +99,29 @@ CA event 4887 & 88.24\% & 58.33\% & 70.16\% & 0.00\% (0/50) & 0.00\% \\
 \label{tab:sensitivity_matrix}
 \evidencetable
 \setlength{\tabcolsep}{2pt}
-\begin{tabular}{@{}lcccc@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.22\linewidth}*{4}{C}@{}}
 \toprule
 \makecell{Window (s)\\FPR (\%)} & \makecell{Poll\\1 s} & \makecell{Poll\\5 s} & \makecell{Poll\\15 s} & \makecell{Poll\\60 s} \\
 \midrule
 \makecell[l]{10\\0.0} & \makecell{100.0\%\\100.0\%} & \makecell{100.0\%\\97.92\%} & \makecell{100.0\%\\89.58\%} & \makecell{100.0\%\\89.58\%} \\
+\addlinespace[2pt]
 \makecell[l]{30\\6.0} & \makecell{94.12\%\\100.0\%} & \makecell{94.00\%\\97.92\%} & \makecell{93.48\%\\89.58\%} & \makecell{93.48\%\\89.58\%} \\
+\addlinespace[2pt]
 \makecell[l]{60\\8.0} & \makecell{92.31\%\\100.0\%} & \makecell{92.16\%\\97.92\%} & \makecell{91.49\%\\89.58\%} & \makecell{91.49\%\\89.58\%} \\
+\addlinespace[2pt]
 \makecell[l]{300\\8.0} & \makecell{92.31\%\\100.0\%} & \makecell{92.16\%\\97.92\%} & \makecell{91.49\%\\89.58\%} & \makecell{91.49\%\\89.58\%} \\
+\addlinespace[2pt]
 \makecell[l]{900\\8.0} & \makecell{92.31\%\\100.0\%} & \makecell{92.16\%\\97.92\%} & \makecell{91.49\%\\89.58\%} & \makecell{91.49\%\\89.58\%} \\
+\addlinespace[2pt]
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \paragraph{Collection delay and attribution trade-offs}
 As documented in Table~\ref{tab:cipg_stress} and Table~\ref{tab:sensitivity_matrix}, in the configured synthetic CA/KDC workload, operational performance is governed by two orthogonal systems dimensions:
 \begin{itemize}
     \item \textbf{Correlation Horizon ($\Delta t$) vs. False Positives:} The seeded generator places a fixed 2,000 renewal arrivals uniformly over the simulated duration $T$. A renewal chooses one of 15 maintenance templates with probability $0.055$, uniformly among them; otherwise it chooses the machine template. It does not implement an unconditional 2,000-per-hour Poisson process. For a particular maintenance template and $\Delta\le T$, the matching-arrival probability before additional principal or detector conditions is $1-(1-0.055\Delta/(15T))^{2000}$. Thus the total renewal count is not the matching-event rate. The 50 generated maintenance windows have durations in $[10,35]$~s. The saved sensitivity query observes 0/50 false alarms at 10~s, 3/50 at 30~s and 4/50 from 60~s onward. These are finite seeded-workload outcomes, not a general collision-free guarantee. The naive rollback monitor flags all 50 maintenance windows. Table~\ref{tab:sensitivity_matrix} retains the observed precision and recall values.
-    \item \textbf{CA Database Polling Lag ($\Delta_{\text{poll}}$) vs. False Negatives:} Because KDC Event 4768 omits SubjectKeyIdentifier (SKID), linking Event 4887 to Event 4768 strictly requires CA Jet DB enrichment. When an attacker's PKINIT execution delay $\delta_{\text{pkinit}} \sim \text{LogNormal}(1.2, 0.8)$ executes before the next polling tick ($t_{\text{auth}} + \Delta_{\text{watermark}} < t_{\text{poll}}$), the join keys remain un-enriched at evaluation time, generating organic False Negatives. At $\Delta_{\text{poll}} = 1.0\text{s}$, CIPG achieves $100.00\%$ recall ($48/48$). At default $\Delta_{\text{poll}} = 5.0\text{s}$, CIPG achieves $97.92\%$ recall ($47/48$). At $\Delta_{\text{poll}} \in \{15\text{s}, 60\text{s}\}$, rapid attacks beat the polling cycle, resulting in $89.58\%$ recall ($43/48$).
+    \item \textbf{CA Database Polling Lag ($\Delta_{\text{poll}}$) vs. False Negatives:} The selected 4887 and 4768 fields lack a shared strong certificate key; the evaluated pipeline uses CA database enrichment to bridge them. When an attacker's PKINIT execution delay $\delta_{\text{pkinit}} \sim \text{LogNormal}(1.2, 0.8)$ executes before the next polling tick ($t_{\text{auth}} + \Delta_{\text{watermark}} < t_{\text{poll}}$), the join keys remain un-enriched at evaluation time, generating organic False Negatives. At $\Delta_{\text{poll}} = 1.0\text{s}$, CIPG achieves $100.00\%$ recall ($48/48$). At default $\Delta_{\text{poll}} = 5.0\text{s}$, CIPG achieves $97.92\%$ recall ($47/48$). At $\Delta_{\text{poll}} \in \{15\text{s}, 60\text{s}\}$, rapid attacks beat the polling cycle, resulting in $89.58\%$ recall ($43/48$).
 \end{itemize}
 
 \paragraph{Ingestion Throughput and Memory Profiling}
@@ -132,7 +137,7 @@ The new capture contains 49 selected raw Security records. CA request 25 and iss
 
 The pre-capture clock-offset bracket fails a consistency check: the rollback audit timestamp precedes the host's rollback invocation under that constant-offset model. Point-time and assumed-error outputs therefore cannot establish guaranteed audit-time attribution. Separately, the frozen synchronous orchestrator records mutation completion before submission and retrieval of the exact issued certificate before rollback. Difference constraints over that additional operation-order channel establish controlled issuance between those operations without aligning the Windows audit clocks. Removing any one of the five required order edges returns a merely possible overlap. This does not establish when the CA consumed template policy, rule out every intervening mutation, or prove that the changed flag was necessary for issuance.
 
-\paragraph{Locally frozen confirmation and component studies}
+\subsubsection{Frozen confirmation and component studies}
 The original constraint reference was frozen before a five-seed confirmation run containing 5,400 cases and 27,000 method/case predictions. Table~\ref{tab:lineage_confirmation} reports the 2,000 variable-size histories separately from repeated logical challenges and forged-log controls. Compared with the conjunctive point-time baseline, the prototype makes fewer definitive claims: it resolves 55.82\% rather than 74.56\% of true observed links, retaining 99.06\% in possible sets. It recovers 107 of 539 true mutation overlaps definitively with zero false overlap claims, versus 310 correct and 51 false claims for the point baseline. This is a coverage/certainty trade-off, not universal superiority. All 200 internally consistent forged-record controls defeat every method; truthful raw sources remain an explicit premise.
 
 A separate source-hash-frozen factorial study uses 2,700 identity histories and 1,800 temporal histories from an independent component generator. The temporal solver agrees with 3,600 independently enumerated query answers. With a fully observed additional order channel, it recovers all 138 true overlaps in 300 histories; interval boxes recover 53 and point time recovers 112 with 11 false claims (Table~\ref{tab:order_component}). All 900 intentionally contradictory-order controls are rejected by the order-aware method. Complete observation is a designed upper-bound condition, not a measured enterprise sensor rate.
@@ -144,21 +149,52 @@ We also execute a SQLite candidate-association proxy for the SAN/principal condi
 
 \input{generated/lineage_evidence}
 
-\paragraph{Repeated fixed-request policy interventions and executed external rules}
+\subsubsection{Candidate ambiguity and decision-cost sensitivity}
+An exploratory analysis of the same 2,000 frozen randomized histories measures the ambiguity accompanying candidate retention. The constraint reference returns a mean of 1.0785 candidates per history (nearest-rank 95th percentile 2; maximum 9). Its 2,157 candidate edges include 1,787 true edges and 370 incorrect alternatives. The point-time baseline returns 1,345 candidates, all true in this cohort, but excludes more true links. Candidate retention therefore incurs additional review work; it is not equivalent to precise attribution.
+
+For mutation overlap, the constraint reference leaves 432 of 539 true overlaps unclaimed, compared with 229 for point-time matching; their false definite claims are zero and 51. Consider the explicit illustrative loss
+\begin{equation}
+ L_r=M+rF,
+\end{equation}
+where $M$ counts unclaimed true overlaps and $F$ counts false definite overlap edges. The constraint reference has smaller loss only for $r>203/51\approx3.98$, with equality at the boundary. This calculation assumes common unit costs, omits candidate-review and timing costs, and assigns no value to possible answers. It is a sensitivity analysis of frozen outcomes, not an elicited operational utility or an independent confirmatory experiment. It states which preferences could favor conservatism rather than claiming universal superiority.
+
+\subsubsection{Independent-generator evidence-value study}
+A separately implemented factorial generator evaluates 432 histories from three seeds, three issuance counts (4, 16 and 64), three identifier-missingness rates (0, 25 and 75\%), four export conditions and four replicates. It imports neither the earlier simulator nor its case generator. Each latent certificate has an issuer-scoped serial and a certificate fingerprint; a physical certificate is selected before projecting identifiers. The four export conditions are no export, clean export, one corrupted optional row and delayed clean export. Equal timestamps erase chronology for every method, so this is an identity experiment. All primary comparators receive identical observations at each stage; ignoring exports is an explicit information ablation, while the repair reference quantifies over deletion of at most one bridge row.
+
+\begin{table}[tbp]
+\centering
+\caption{Final outcomes on 432 designed histories. Retained counts histories whose candidate set contains the true issuance. Mean and p95 describe candidate-set size. This balanced factorial mixture is not an enterprise prevalence estimate.}
+\label{tab:evidence_value}
+\evidencetable
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.34\linewidth}*{4}{C}@{}}
+\toprule
+Method & \makecell{Correct\\resolved} & Retained & Mean & p95 \\
+\midrule
+\makecell[l]{CIPG / guarded\\SQL (equal)} & 260 & 404 & 1.98 & 8 \\
+Strong SQL & 292 & 292 & 0.68 & 1 \\
+Ignore exports & 176 & 432 & 5.30 & 25 \\
+Repair, $k=1$ & 131 & 432 & 5.30 & 25 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The guarded SQL realization agrees at all 864 observation stages, covering 4,320 method/stage predictions. An independent verifier checks latent certificate identities, truthful raw projections, within-budget candidate retention and saved aggregates. No method makes a wrong resolved claim in this grid. Corrupted enrichment nevertheless excludes the true candidate in 28 final reference decisions. Repair retains every true candidate but resolves fewer histories than ignoring exports (Table~\ref{tab:evidence_value}). Thus useful exports can reduce ambiguity, while conservative fault handling still has no demonstrated certain-resolution advantage over the ablation here. Prefix stages and designed factorial cells are not independent samples from enterprise traffic.
+
+\subsubsection{Matched policy interventions and external rules}
 We extend the initial pilot with a locally frozen 12-trial matrix and three repeated intervention blocks (Table~\ref{tab:paired_live_policy}). Within each block, baseline, enabled, and rollback-before-request conditions reuse identical signed CSR bytes and the same public key. Only the enrollee-supplied-subject bit changes; recorded template DACL, EKU, approval, signature, and OID fields remain equal. CA cache refresh and low-privilege RPC readiness checks are applied consistently. The enabled condition produces three exact-certificate Administrator authentications. Baseline and rollback-before-request conditions each produce three ordinary-user authentications, despite requesting the same administrative SAN. Three legitimate self-enrollments also authenticate as the ordinary user. All 12 outcomes are checked against public certificate bytes, CA database/4887 evidence, successful 4768 outcomes, target SID/name/domain, mutation evidence, and restoration. These controlled contrasts support necessity of the tested bit for the privileged outcome under the recorded conditions; they do not turn temporal overlap alone into a causal explanation.
 
 Earlier development attempts remain in the artifact: the first matrix contains two RPC failures among 12 attempts, and the initial fixed-CSR collector stops on a Windows pending-request-store binding failure in its second trial. Those are infrastructure failures, not policy negatives. The corrected collector explicitly binds the verified held key to the exact new certificate and refuses unrelated keys; it never substitutes a prior certificate. The final fixed-CSR matrix is reported separately. Its Windows-generated requests use their observed SHA-1 signature algorithm, verified explicitly, rather than being relabeled modern SHA-256 requests.
 
 Certipy 5.0.4 is executed against LDAP for each assigned configuration using its DC-only mode. Three unmodified upstream Sigma rules~\cite{sigma2026rules} are compiled by pySigma 2.1.0/SQLite backend 2.1.1 and executed on the captured event fields. Template-load events 4898 supply the actual tested-template configuration. Both Certipy's ESC1 finding and Sigma's risky-EKU predicate identify all three enabled administrative conditions and all three enabled legitimate-self conditions, with no tested-template match in baseline or rollback-before-request conditions. That agreement concerns risky configuration, not malicious intent: legitimate self-enrollment does not become an attack false positive merely because its template remains risky. Sigma matches on other loaded templates are retained separately. The machine-account rule has no matching human-account target. This is an actual external-rule/tool execution, separate from the earlier Splunk semantic proxy and from a full SIEM or HADES deployment.
 
-\paragraph{Independent forest replication and measured collection cost}
+\subsubsection{Independent forest replication}
 We repeat the four-condition matrix in a newly provisioned \texttt{q1lab.test} forest, with its own \texttt{Q1-Evidence-CA}, ordinary \texttt{q1.enroller} account, separate template, and host-generated SHA-256-signed CSRs. All 12 exact-certificate outcomes are verified: three enabled-condition Administrator uses and nine self-uses. Three matched signed-request/policy blocks reproduce the controlled contrast. Some restoration value-addition events are absent despite successful write responses and restored readback; certificate-use validation and complete mutation-audit history are therefore reported separately. The measured build, 17763.4974, predates current strong-binding enforcement updates~\cite{microsoft2025strongbinding}. An earlier interrupted collection with a four-hour clock difference is preserved as a failed setup attempt, not counted as a policy or detection result.
 
 On the independent captures, raw template names and CA database template OIDs initially disagree, causing the identity reference to abstain in all 12 cases. Adding the collected directory object's explicit OID/name mapping resolves all 12 identities, with three privileged SID divergences and nine nonprivileged outcomes. Certificate/CSR bytes and adjudicator labels remain excluded from inference. The initial abstentions are retained as development results; the mapping adjustment is not presented as untouched held-out performance. Actual Certipy/Sigma configuration-risk results repeat the Windows 2016 pattern in the independent forest.
 
 The median recorded command envelope is 50.91~s per trial on the two-node 2016 setup and 32.14~s on the single-node independent 2019 setup. Ten offline identity-inference repetitions per captured trial give medians across trials of 10.99~ms and 9.18~ms, respectively. Python-traced peak allocations are approximately 1.74~MB and 1.50~MB at the median. These measurements describe the captured experiment and offline inference; they do not measure continuous polling delay, host RSS, or enterprise authentication interference.
 
-\paragraph{Current-patch request forms and post-rollback observation}
+\subsubsection{Current-patch requests and post-rollback evidence}
 We update the independent forest using signed Microsoft packages to Windows Server 2019 build 17763.9376 (October 2026 security update KB5126651~\cite{microsoft2026october2019}). Post-reboot inventory verifies the installed build, no pending reboot, running CA/KDC services, an ordinary enroller, and enabled Defender. No binding-compatibility override is introduced. Two locally frozen 12-trial protocols repeat the four conditions with UPN-only and UPN-plus-SID-URL requests. Administrative requests reuse identical signed CSR bytes and keys within each block and request form; keys are not matched across forms. The SID URL follows the documented Microsoft mapping format~\cite{microsoft2025pkcasid}. All conditions now include restored template readback, CA refresh, RPC readiness and actual Certipy enumeration before authentication. These additional controls differ from the older-build workflow, so the old/new contrast is not an isolated patch-only experiment.
 
 \input{generated/current_patch_evidence}
@@ -169,19 +205,48 @@ Actual Certipy and Sigma executions retain the same pre-request risky-configurat
 
 The first adjudication preserves a collector defect: an empty System-log query prevented the following CA database export in 18 trials. A separately recorded later read-only CA snapshot supplies only those missing exports in ephemeral verification views; all original captures and manifests remain unchanged. Matching public certificate bytes, CA rows, trial issuance events and KDC evidence then resolves all 24 outcomes. This later snapshot does not establish historical template state or repair the audit-clock model. A live empty-query control validates the collector correction before the restored lab is shut down. Across the four final matrices, 48 trials therefore provide 42 successful exact-certificate authentications, including nine administrative uses, and six exact-certificate rejections.
 
-\paragraph{Equal-input relational realization and revision}
+\subsubsection{Equal-input relational identity and revision}
 We execute two SQLite correlators on the same canonical observations as the identity reference. A strong conjunctive join resolves a unique strong, nonconflicting match; a guarded query also retains incomplete candidates and relevant conflicts. All event intervals are projected to $[0,0]$, with no mutation windows, so this experiment concerns identity and revisions rather than temporal attribution. Across 1,470 newly seeded histories, the guarded query and reference agree at all 5,423 evaluated prefixes. Independent set-based verification checks 16,269 prediction rows and 450 saved latent random-history labels. Both methods retract 225 provisional resolved links during shuffled delivery and bridge removal/reinsertion. This establishes relational realizability of the contract; the query is our implementation in SQLite, not an execution of HADES or Splunk.
 
 \input{generated/gap_closure_evidence}
 
 The main 1,410-case group includes 60 chronology-negative controls, which produce wrong terminal claims in every identity-only method because time was erased. A separate 60 consistently forged-source controls also fool every method. The guarded contract retains more true candidates but resolves fewer correct links than the strong join on this challenge. We therefore do not claim unique reasoning power or universal superiority over a competent relational implementation. Candidate completeness, temporal evidence and source truth remain separate requirements.
 
-\paragraph{Prospective concurrent transfer to a new forest}
+\subsubsection{Concurrent transfer to a new forest}
 Before collection, we freeze the unchanged identity detector and a new workload protocol. A writable child of the updated Windows image is demoted and reprovisioned as \texttt{q1transfer.test}, with a fresh domain SID, hostname, CA, two templates and two ordinary enrollers. The seed and original disk mounts remain read-only. This transfers identity namespaces and workload conditions while sharing the Windows image family. Six batches each issue four certificates through overlapping enrollment command envelopes. Each enroller reuses one RSA key across its certificates, with identical signed request bytes within each enroller/target group. These are repeated issuances with reused keys, not a Windows renewal-protocol experiment.
 
 All 24 distinct public certificates match their CSR keys, CA issuance and successful KDC outcomes: 20 self-uses and four administrative uses. Every batch has four overlapping submission command envelopes; that does not prove simultaneous CA execution. All 24 leaf signatures verify under the separately captured public CA certificate, whose current NTAuth membership is observed. The frozen detector links all 24 successful uses, including four privileged SID divergences. A later adjudicator reporting fix leaves legacy mutation-history fields unvalidated for the new condition names; certificate-use criteria and labels are unchanged. Actual Certipy/Sigma findings are counted in 12 distinct template/batch/enroller units, since two certificate cases share each enumeration. All 12 postrollback enumerations cease flagging tested-template ESC1. The six batch exports contain 4,544 Security events, including process creation/termination, explicit credentials and service-ticket events. They are not full Sysmon/file/socket provenance for an end-to-end PIDS comparison.
 
-\paragraph{Paired collection and authentication-envelope pilot}
+\subsubsection{Retained-history cost of the current reference}
+A separate frozen snapshot protocol evaluates the current reference at 100, 1,000 and 5,000 retained issuances with 20 authentications. Each measured update adds the twentieth authentication and recomputes all decisions; five repetitions follow an unmeasured warm-up. Complete profiles have unique issuer-scoped serials. In the incomplete arm, every tenth issuance omits its serial and remains compatible with every tested authentication. Timestamps are exact, and no bridge or mutation records are included. Independent expected-ID sets check all 600 measured decisions, and all 30 checkpoint restorations reproduce them.
+
+\begin{table}[tbp]
+\centering
+\caption{Current-reference snapshot update cost on one shared host. Median of five runs; candidates are counted per authentication. Snapshot construction is outside the timing interval.}
+\label{tab:retained_history}
+\evidencetable
+\begin{tabularx}{\linewidth}{@{}*{4}{C}@{}}
+\toprule
+Issuances & \makecell{Missing\\serial (\%)} & \makecell{Update\\(ms)} & Candidates \\
+\midrule
+100 & 0 & 3.55 & 1 \\
+100 & 10 & 3.08 & 11 \\
+1,000 & 0 & 30.16 & 1 \\
+1,000 & 10 & 32.92 & 101 \\
+5,000 & 0 & 165.79 & 1 \\
+5,000 & 10 & 165.36 & 501 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The largest complete snapshot has a 1,149,218-byte JSON checkpoint. Incomplete profiles expand each candidate set to 501 at 5,000 issuances, although update time remains similar in this workload (Table~\ref{tab:retained_history}). This demonstrates that retained identity ambiguity can grow with history even when average ambiguity is small in the randomized study. The benchmark excludes sequential ingestion, Windows collection, simultaneous writers and fault-hypothesis enumeration. It establishes neither a sustainable arrival rate nor bounded lifetime storage. The protocol, raw timings, source hashes and expected-candidate checks are retained with the revision artifact.
+
+\subsubsection{Matched incremental identity replay}
+A second frozen protocol compares reference and guarded SQL updates on generated streams with 100, 300 and 600 issuances, ten certificate authentications and three delivery seeds. Twenty percent of issuances omit the serial until delayed bridge enrichment. The streams include duplicate delivery, checkpoint/database recovery, and one conflicting bridge followed by its removal. Both methods receive the same canonical inputs, with times erased equally. All 35,055 evaluated authentication-prefix decisions agree; each run withdraws one resolved link after the conflict and recovers it after removal. All 90 final authentication decisions identify their generated physical certificates.
+
+Across the three seeds, median total measured reference-update times are 125.95, 1,079.43 and 4,382.80~ms for 134, 374 and 734 updates respectively. Guarded SQL takes 258.43, 1,884.22 and 7,298.14~ms. These totals measure each implementation's add/remove call, including its internal decision update. An additional SQL query used for equality checking lies outside timing. Restart and verification are also outside the update totals; serialized reference restore and repeated SQL reinsertion are different recovery paths. The workload is a serial shared-host replay, not sustained CA/DC collection or a temporal-solver comparison. Growth in cumulative update cost supports reporting a tested envelope rather than extrapolating the legacy streaming rate.
+
+\subsubsection{Paired collection-cost pilot}
 A separately frozen pilot compares periodic collection with an idle collector in three seeded arm orders on the restored transfer forest. Each arm performs eight legitimate certificate authentications at a three-second target start period. Polling targets two seconds, exports incremental Security records and the CA database, updates the identity reference and retains checkpoints. Independent public-certificate/KDC checks validate all 48 measured authentications. Median authentication process envelopes increase by 48.6, 80.0 and 100.3~ms in the three pairs. These include Certipy startup and network work; they are not packet-level KDC latency or a production interference bound.
 
 The 33 polling iterations have per-arm median collection-plus-reasoning envelopes of 1.586--1.659~s. Sampled Python collector RSS ranges from 56.5 to 59.5~MiB across arms, excluding Certipy children and the Windows VM. Periodic reference state grows from 30 seeded records to 37 records, with a 16,000-byte final checkpoint in each polling arm. This short pilot does not establish bounded lifetime retention or maximum sustainable throughput. An initial run exported outcome evidence too early and undercounted final idle-arm records; it is retained separately. The corrected run waits for outcome verification after the measured interval, preserving the authentication timing denominator.
@@ -200,7 +265,7 @@ We evaluated our Co-Adaptive Stackelberg policy against three standard remediati
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{figures/verified_interdiction_results.pdf}
-\caption{Measured adaptive and static-greedy disconnection results on the same 30 generated graphs as Table~\ref{tab:stackelberg_results}. Error bars show population SD. The horizontal axis is assigned disruption cost. These fixed-budget measurements are not convergence-to-equilibrium trajectories.}
+\caption{Remediation on the same 30 generated graphs as Table~\ref{tab:stackelberg_results}: (a) mean disconnected-pair percentages with population SD bars and (b) mean adaptive-minus-static gain in percentage points (pp). The dashed line marks 100\%; symmetric SD bars are descriptive and can extend above that bound. The horizontal axis is assigned disruption cost. These are fixed-budget comparisons rather than equilibrium trajectories.}
 \label{fig:stackelberg_convergence}
 \end{figure}
 
@@ -215,6 +280,9 @@ Recomputing all saved per-topology statistics reproduces the historical values. 
 Under $B_{\text{ops}} = 24$, Static Greedy revokes an average of \textbf{10.9 edges} ($10.9 \pm 0.9$), under the assigned heterogeneous costs. The saved summary does not measure the resulting business-workflow disruption. The metadata-preserving adaptive rerun revokes an average of \textbf{5.7 edges} ($5.7 \pm 2.3$), a \textbf{47.7\% reduction in revoked-edge count}. The historical implementation used 6.0 edges on average; its source, results and retained visualization remain labeled historical. The disruption weights are assigned model parameters; actual administrator effort and business disruption were not measured.
 
 \input{generated/projection_evidence}
+
+\paragraph{Stronger dynamic baselines on exact instances}
+An exploratory extension evaluates two simple dynamic marginal-gain-per-cost baselines on the same 60 saved exact instances. One examines individual feasible edges; the other examines feasible subsets of one or two edges at each step. Both recompute gain after every chosen set and use declared cost, set-size and lexicographic tie breaks. Independent exhaustive enumeration with plain adjacency-list traversal reproduces every saved optimal pair count and verifies budget and immutability constraints. Single-edge dynamic greedy matches the optimum in 45/60 cases, two-edge lookahead in 56/60, and the metadata-preserving adaptive policy in 43/60; their maximum gaps are two pairs. Static greedy matches in 21/60, with maximum gap four. These results further restrict the adaptive policy's novelty and quality claim. Pair lookahead searches more subsets; no equal-time or enterprise superiority is asserted.
 
 \paragraph{Scalability via Provenance-Cone Guidance}
 The historical depth-limited cone benchmark drops some queried source--target pairs. Its nominal $N=5,000$ graph actually contains 4,551 nodes, and its $1,246.3\times$ timing ratio compares different pair tasks. It therefore does not establish equal-task solver acceleration or online response latency.

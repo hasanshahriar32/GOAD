@@ -1,7 +1,7 @@
-\section{Disruption-Budgeted Stackelberg Remediation Game}
+\section{Supporting Study: Budgeted Permission Interdiction}
 \label{sec:game_theoretic}
 
-Detecting vulnerabilities is insufficient if remediation induces unacceptable operational friction. In this section, we formulate proposed permission-edge revocation as a leader--follower model between an enterprise defender and an optimal adversary, prove its computational hardness, and detail the co-adaptive interdiction algorithm.
+This supporting study evaluates preventive permission-edge revocation under assigned costs and immutable dependencies. A leader--follower formulation motivates a sequential heuristic, while the measured objective is pair disconnection. Revoking an enrollment edge can prevent future issuance without invalidating a certificate already issued. The experiment therefore does not establish containment of the post-rollback credentials investigated by the lineage method; certificate revocation, account response and mapping changes require separate validation.
 
 \subsection{Bilevel Stackelberg Game Formulation}
 We model the defensive interaction on the identity multigraph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ as a non-cooperative Stackelberg game:
@@ -11,20 +11,22 @@ We model the defensive interaction on the identity multigraph $\mathcal{G} = (\m
 \end{enumerate}
 
 \paragraph{Heterogeneous Operational Revocation Costs}
-In enterprise Active Directory environments, revoking different permission types imposes vastly unequal operational disruption on legitimate business workflows. We assign heterogeneous cost functions $c: \mathcal{E} \to \mathbb{R}^+$ based on enterprise operational impact:
+In enterprise Active Directory environments, revoking different permission types imposes vastly unequal operational disruption on legitimate business workflows. We assign heterogeneous cost functions $c: \mathcal{E} \to \mathbb{R}^+$ as sensitivity parameters rather than measured enterprise impact:
 \begin{equation}
 \fitmath{c(e)=\begin{cases}
  c_{\mathrm{group}}\in[2.8,3.8], & \psi(e)=\mathrm{MemberOf},\\
- c_{\mathrm{acl}}\in[2.0,3.0], & \psi(e)\in\{\mathrm{GenericAll},\mathrm{WriteDacl}\},\\
+ c_{\mathrm{acl}}\in[2.0,3.0], & \begin{gathered}\psi(e)\in\{\mathrm{GenericAll},\\\mathrm{WriteDacl}\},\end{gathered}\\
  c_{\mathrm{choke}}\in[1.0,1.4], & \begin{gathered}\psi(e)\in\{\mathrm{Enroll},\\ \mathrm{EnablesEnrollment}\}.\end{gathered}
 \end{cases}}
 \end{equation}
 The assigned disruption labels are high for changes to user-role workflows, medium for changes to administrative synchronization, and low for template-enrollment reconfiguration.
 
 
-The defender's optimization problem is formalized as:
+Let $\mathcal G_{\mathrm{cut}}=(\mathcal V,\mathcal E\setminus E_{\mathrm{cut}})$ denote the residual graph. The defender's optimization problem is:
 \begin{equation}
-\fitmath{\begin{gathered}\max_{E_{\text{cut}} \subseteq \mathcal{E}} \quad  \mathcal{U}_{\text{def}}(E_{\text{cut}}, p^*(E_{\text{cut}})) = \\ \sum_{i=1}^k \mathbb{I} \left[ \text{Path}(s_i \rightsquigarrow t_i) = \emptyset \text{ in } (\mathcal{V}, \mathcal{E} \setminus E_{\text{cut}}) \right]\\ \quad-\lambda \sum_{e \in E_{\text{cut}}} c(e)\end{gathered}}
+\fitmath{\begin{gathered}\max_{E_{\text{cut}} \subseteq \mathcal{E}}\mathcal{U}_{\text{def}}(E_{\text{cut}}, p^*(E_{\text{cut}})) = \\
+\sum_{i=1}^k \mathbb{I}\left[\text{Path}(s_i\rightsquigarrow t_i)=\emptyset\text{ in }\mathcal G_{\mathrm{cut}}\right]\\
+-\lambda\sum_{e\in E_{\text{cut}}}c(e)\end{gathered}}
 \end{equation}
 \begin{equation}
 \fitmath{\begin{gathered}\text{subject to} \quad  \sum_{e \in E_{\text{cut}}} c(e) \le B_{\text{ops}}\end{gathered}}
@@ -32,7 +34,7 @@ The defender's optimization problem is formalized as:
 \end{equation}
 where $\mathbb{I}[\cdot]$ is the indicator function, $\lambda \ge 0$ is a regularizing trade-off parameter, and the follower's best response is:
 \begin{equation}
-\fitmath{p^*(E_{\text{cut}}) = \arg\min_{p \in \mathcal{P}(\mathcal{V}, \mathcal{E} \setminus E_{\text{cut}})} \sum_{e \in p} w_{\text{attack}}(e)}
+\fitmath{p^*(E_{\text{cut}}) = \arg\min_{p \in \mathcal{P}(\mathcal G_{\mathrm{cut}})} \sum_{e \in p} w_{\text{attack}}(e)}
 \end{equation}
 
 \subsection{Computational Complexity: NP-Hardness of Multi-Principal Access Interdiction}

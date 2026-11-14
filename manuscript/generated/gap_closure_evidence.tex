@@ -3,7 +3,7 @@
 \caption{Identity projection on 1,410 histories, including 60 chronology-negative controls, with 1,241 true observed links. Event times are erased. The 60 wrong terminal claims per method are chronology controls; 60 separate forged-source controls also fool every method. These are identity-query outcomes, not full PIDS detection.}
 \label{tab:sql_identity}
 \evidencetable
-\begin{tabular}{lrrrr}
+\begin{tabularx}{\linewidth}{@{}Yrrrr@{}}
 \toprule
 Method & Resolved & Correct & Wrong & \makecell{True candidates\\retained} \\
 \midrule
@@ -11,14 +11,14 @@ CIPG identity & 820 & 760 & 60 & 1176 \\
 SQL strong join & 912 & 852 & 60 & 852 \\
 SQL guarded & 820 & 760 & 60 & 1176 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 \begin{table}[tbp]
 \centering
 \caption{Prospective new-forest workload: 24 certificates in six concurrent batches, two templates and two enrollers. Configuration columns count four template/batch/enroller units per condition, shared by eight certificate cases. The Windows image family is shared with the previous environment.}
 \label{tab:transfer_workload}
 \evidencetable
-\begin{tabular}{lrrrrrr}
+\begin{tabularx}{\linewidth}{@{}Y*{6}{r}@{}}
 \toprule
 Condition & Cases & Self & Admin & \makecell{ESC1\\pre} & \makecell{ESC1\\post} & \makecell{Risky\\EKU} \\
 \midrule
@@ -26,14 +26,14 @@ Baseline & 8 & 8 & 0 & 0 & 0 & 0 \\
 Enabled & 8 & 4 & 4 & 4 & 0 & 4 \\
 Rollback first & 8 & 8 & 0 & 0 & 0 & 0 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 \begin{table}[tbp]
 \centering
 \caption{Paired isolated-lab pilot; eight verified authentications per arm. Auth is the median Certipy process envelope (ms); CPU is Python collector CPU time (ms). RSS is Python collector MiB, excluding children and the Windows VM. Verification waits follow timing.}
 \label{tab:collection_pilot}
 \evidencetable
-\begin{tabular}{rlrrrr}
+\begin{tabularx}{\linewidth}{@{}r>{\raggedright\arraybackslash}p{.20\linewidth}*{4}{C}@{}}
 \toprule
 Pair & Arm & \makecell{Verified\\uses} & \makecell{Auth\\(ms)} & \makecell{CPU\\(ms)} & \makecell{RSS\\(MiB)} \\
 \midrule
@@ -44,5 +44,5 @@ Pair & Arm & \makecell{Verified\\uses} & \makecell{Auth\\(ms)} & \makecell{CPU\\
 3 & idle & 8 & 602.9 & 88.6 & 59.4 \\
 3 & polling & 8 & 703.2 & 664.7 & 59.5 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
