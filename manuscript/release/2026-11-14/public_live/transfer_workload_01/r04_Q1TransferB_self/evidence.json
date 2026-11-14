@@ -1,0 +1,1026 @@
+{
+  "ca_export_timing": "trial_capture",
+  "ca_rows": [
+    {
+      "Certificate Hash": "c2 14 25 2f d3 d2 64 e0 eb 14 9e 5a f7 8b c6 66 64 66 24 bd",
+      "Certificate Template": "1.3.6.1.4.1.311.21.8.9212900.723218.13584008.10710937.6832666.141.20261110.2030",
+      "Issued Request ID": "15",
+      "Requester Name": "Q1XFER\\q1.operator",
+      "Serial Number": "370000000f6512bd82a9b3dd3c00000000000f"
+    }
+  ],
+  "cohort": "transfer_workload_01",
+  "condition": "transfer_rollback_first_self",
+  "context": {
+    "admin_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+    "build": "17763",
+    "ca_name": "Q1-Transfer-CA",
+    "computer": "Q1XFER19",
+    "dns_root": "q1transfer.test",
+    "domain_netbios": "Q1XFER",
+    "domain_sid": "S-1-5-21-3576737527-1549231359-1615615133",
+    "enroller_name": "q1.operator",
+    "enroller_sid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+    "mutator_name": "Administrator",
+    "mutator_sid": "S-1-5-21-3576737527-1549231359-1615615133-500",
+    "template_name": "Q1TransferB",
+    "ubr": 9376
+  },
+  "events": [
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{c1981f78-2f2f-4dda-b1da-fa96713fc36d}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52626",
+      "recorded_time": "2026-11-10T17:44:42.705987100Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{c1981f78-2f2f-4dda-b1da-fa96713fc36d}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52625",
+      "recorded_time": "2026-11-10T17:44:42.705346700Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{67d3535e-d0e4-498c-936b-ca04c94e910c}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52624",
+      "recorded_time": "2026-11-10T17:44:42.704956800Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{67d3535e-d0e4-498c-936b-ca04c94e910c}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52623",
+      "recorded_time": "2026-11-10T17:44:42.704286100Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "Q1-Transfer-CA",
+        "CertSerialNumber": "370000000F6512BD82A9B3DD3C00000000000F",
+        "CertThumbprint": "C214252FD3D264E0EB149E5AF78BC666646624BD",
+        "PreAuthType": "16",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+        "TargetUserName": "q1.operator"
+      },
+      "record_id": "52584",
+      "recorded_time": "2026-11-10T17:44:39.319055000Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "Q1-Transfer-CA",
+        "CertSerialNumber": "37000000128299BF265293F42E000000000012",
+        "CertThumbprint": "115BEE4377E446BB870FDF3A49D06A9B2D5B2441",
+        "PreAuthType": "16",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+        "TargetUserName": "q1.reader"
+      },
+      "record_id": "52583",
+      "recorded_time": "2026-11-10T17:44:39.286748200Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "Q1-Transfer-CA",
+        "CertSerialNumber": "37000000105ACE5652EAC703AB000000000010",
+        "CertThumbprint": "35A6C5E090B85F3CAE7F2AD0759B7C43C33226C1",
+        "PreAuthType": "16",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1104",
+        "TargetUserName": "q1.operator"
+      },
+      "record_id": "52582",
+      "recorded_time": "2026-11-10T17:44:39.269389000Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "Q1-Transfer-CA",
+        "CertSerialNumber": "3700000011AC2B5FBC8D838DE5000000000011",
+        "CertThumbprint": "97936DF41B8A1BC71E6EF6528CCAE6630309D0BF",
+        "PreAuthType": "16",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1103",
+        "TargetUserName": "q1.reader"
+      },
+      "record_id": "52581",
+      "recorded_time": "2026-11-10T17:44:39.258844000Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52559",
+      "recorded_time": "2026-11-10T17:44:35.620320200Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52552",
+      "recorded_time": "2026-11-10T17:44:35.600677700Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52545",
+      "recorded_time": "2026-11-10T17:44:35.583141000Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52538",
+      "recorded_time": "2026-11-10T17:44:35.566418900Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52531",
+      "recorded_time": "2026-11-10T17:44:35.550410400Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52524",
+      "recorded_time": "2026-11-10T17:44:35.532594900Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52517",
+      "recorded_time": "2026-11-10T17:44:35.515554600Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52510",
+      "recorded_time": "2026-11-10T17:44:35.500302800Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52503",
+      "recorded_time": "2026-11-10T17:44:35.477519200Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52496",
+      "recorded_time": "2026-11-10T17:44:35.456099600Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52489",
+      "recorded_time": "2026-11-10T17:44:35.433706900Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52482",
+      "recorded_time": "2026-11-10T17:44:35.416834700Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52475",
+      "recorded_time": "2026-11-10T17:44:35.364846100Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52469",
+      "recorded_time": "2026-11-10T17:44:35.358361800Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52457",
+      "recorded_time": "2026-11-10T17:44:35.332950900Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{c1981f78-2f2f-4dda-b1da-fa96713fc36d}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52454",
+      "recorded_time": "2026-11-10T17:44:32.704184500Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{c1981f78-2f2f-4dda-b1da-fa96713fc36d}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52453",
+      "recorded_time": "2026-11-10T17:44:32.703937300Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{67d3535e-d0e4-498c-936b-ca04c94e910c}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52452",
+      "recorded_time": "2026-11-10T17:44:32.703626900Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{67d3535e-d0e4-498c-936b-ca04c94e910c}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52451",
+      "recorded_time": "2026-11-10T17:44:32.703343400Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52417",
+      "recorded_time": "2026-11-10T17:44:29.674757800Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4887,
+      "fields": {
+        "Attributes": "\nCertificateTemplate:Q1TransferA\nccm:Q1XFER19.q1transfer.test",
+        "RequestId": "17",
+        "Requester": "Q1XFER\\q1.reader",
+        "Subject": ""
+      },
+      "record_id": "52314",
+      "recorded_time": "2026-11-10T17:44:24.127294600Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4887,
+      "fields": {
+        "Attributes": "\nCertificateTemplate:Q1TransferA\nccm:Q1XFER19.q1transfer.test",
+        "RequestId": "18",
+        "Requester": "Q1XFER\\q1.reader",
+        "Subject": ""
+      },
+      "record_id": "52312",
+      "recorded_time": "2026-11-10T17:44:24.123787300Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52302",
+      "recorded_time": "2026-11-10T17:44:24.106352800Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52301",
+      "recorded_time": "2026-11-10T17:44:24.106344300Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4887,
+      "fields": {
+        "Attributes": "\nCertificateTemplate:Q1TransferB\nccm:Q1XFER19.q1transfer.test",
+        "RequestId": "15",
+        "Requester": "Q1XFER\\q1.operator",
+        "Subject": ""
+      },
+      "record_id": "52300",
+      "recorded_time": "2026-11-10T17:44:24.094846100Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4887,
+      "fields": {
+        "Attributes": "\nCertificateTemplate:Q1TransferB\nccm:Q1XFER19.q1transfer.test",
+        "RequestId": "16",
+        "Requester": "Q1XFER\\q1.operator",
+        "Subject": ""
+      },
+      "record_id": "52298",
+      "recorded_time": "2026-11-10T17:44:24.091835300Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52288",
+      "recorded_time": "2026-11-10T17:44:24.079175200Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52287",
+      "recorded_time": "2026-11-10T17:44:24.077952300Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554433",
+        "ObjectDN": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{c1981f78-2f2f-4dda-b1da-fa96713fc36d}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52080",
+      "recorded_time": "2026-11-10T17:44:02.675728600Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{c1981f78-2f2f-4dda-b1da-fa96713fc36d}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52079",
+      "recorded_time": "2026-11-10T17:44:02.675429300Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{c1981f78-2f2f-4dda-b1da-fa96713fc36d}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52078",
+      "recorded_time": "2026-11-10T17:44:02.675160600Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554433",
+        "ObjectDN": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{c1981f78-2f2f-4dda-b1da-fa96713fc36d}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52077",
+      "recorded_time": "2026-11-10T17:44:02.674419600Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{67d3535e-d0e4-498c-936b-ca04c94e910c}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52076",
+      "recorded_time": "2026-11-10T17:44:02.674164500Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554433",
+        "ObjectDN": "CN=Q1TransferA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{67d3535e-d0e4-498c-936b-ca04c94e910c}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52075",
+      "recorded_time": "2026-11-10T17:44:02.673885900Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554433",
+        "ObjectDN": "CN=Q1TransferA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{67d3535e-d0e4-498c-936b-ca04c94e910c}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52074",
+      "recorded_time": "2026-11-10T17:44:02.673250400Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1TransferA,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+        "ObjectGUID": "{67d3535e-d0e4-498c-936b-ca04c94e910c}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-3576737527-1549231359-1615615133-500"
+      },
+      "record_id": "52073",
+      "recorded_time": "2026-11-10T17:44:02.672606600Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52054",
+      "recorded_time": "2026-11-10T17:44:00.907728400Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52047",
+      "recorded_time": "2026-11-10T17:44:00.893867900Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52040",
+      "recorded_time": "2026-11-10T17:44:00.875614300Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52033",
+      "recorded_time": "2026-11-10T17:44:00.861612400Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52026",
+      "recorded_time": "2026-11-10T17:44:00.844570500Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52019",
+      "recorded_time": "2026-11-10T17:44:00.824565200Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52012",
+      "recorded_time": "2026-11-10T17:44:00.806922100Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "52005",
+      "recorded_time": "2026-11-10T17:44:00.787098200Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "51998",
+      "recorded_time": "2026-11-10T17:44:00.764834500Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "51991",
+      "recorded_time": "2026-11-10T17:44:00.739988800Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "51984",
+      "recorded_time": "2026-11-10T17:44:00.715008300Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "51977",
+      "recorded_time": "2026-11-10T17:44:00.700710700Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "51970",
+      "recorded_time": "2026-11-10T17:44:00.628318800Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "51964",
+      "recorded_time": "2026-11-10T17:44:00.620111800Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "51952",
+      "recorded_time": "2026-11-10T17:44:00.559996400Z"
+    },
+    {
+      "computer": "Q1XFER19.q1transfer.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1TRANSFER.TEST",
+        "TargetSid": "S-1-5-21-3576737527-1549231359-1615615133-1000",
+        "TargetUserName": "Q1XFER19$"
+      },
+      "record_id": "51922",
+      "recorded_time": "2026-11-10T17:44:00.054898800Z"
+    }
+  ],
+  "kdc_system_events": [],
+  "mutation_history_validation": "not_evaluated_for_this_condition",
+  "policies": {
+    "assigned": {
+      "dn": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:S-1-5-21-3576737527-1549231359-1615615133-519D:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3576737527-1549231359-1615615133-1104)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.9212900.723218.13584008.10710937.6832666.141.20261110.2030"
+    },
+    "before": {
+      "dn": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:S-1-5-21-3576737527-1549231359-1615615133-519D:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3576737527-1549231359-1615615133-1104)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.9212900.723218.13584008.10710937.6832666.141.20261110.2030"
+    },
+    "effective": {
+      "dn": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:S-1-5-21-3576737527-1549231359-1615615133-519D:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3576737527-1549231359-1615615133-1104)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.9212900.723218.13584008.10710937.6832666.141.20261110.2030"
+    },
+    "restored": {
+      "dn": "CN=Q1TransferB,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1transfer,DC=test",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:S-1-5-21-3576737527-1549231359-1615615133-519D:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3576737527-1549231359-1615615133-1104)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.9212900.723218.13584008.10710937.6832666.141.20261110.2030"
+    }
+  },
+  "reported_outcome": "self_certificate_use",
+  "schema_version": 1,
+  "source_provenance": {
+    "adjudication_sha256": "6fdad435e61f2ef2f18f2f8d449228842b49e7f6495e00ec37da52c5de141d25",
+    "selected_source_sha256": {
+      "00_domain_context.json": "eefa0442b9f86b643b4765d7f4cfdd712a4132bef8cc7098e66c87bade2a018c",
+      "01_before_state.json": "bf9a2b53fae6b3885df822f567b1f58ed25ebe62dbd8c581649c4c82c8b8e470",
+      "04_assigned_state.json": "ecf19f68b217fd4f7340038b76553cdb23f4621cf3635096d237385abd71415f",
+      "04_assigned_state_effective_policy.json": "ecf19f68b217fd4f7340038b76553cdb23f4621cf3635096d237385abd71415f",
+      "99_ca_bridge.json": "6af703978fb024fe1037c3f226bcec84aafd4052270088287e30ac39693faf9c",
+      "99_final_state.json": "12b3870ffddc93e418029eae1decd69c7508edc8d8eb96350b969bae7e7ff3f9",
+      "events.xml": "085131f7920b0f4217fcb4fbb8dcf933b2a0be406a43c41faffe0a7e783bbe1d",
+      "issued_certificate.cer": "126d4ff002903cc941f4dc07d3512914609336690bf40aaa70e309d8c7ccbf26",
+      "kdc_system_events.xml": "cc413701a7e9b8950207bf0006d795210d1528605d877bdb04d994c0d7201a07",
+      "request.csr": "d525a0fbd327f98c5977b3915ac00530e4773d031e876d1ceaff40bccc3d8d77"
+    },
+    "trial_manifest_sha256": "d76b9d10942dfeb6bfe3902565a506f80bd08213085332922ddd65563a456eb6"
+  },
+  "trial": "r04_Q1TransferB_self"
+}

@@ -1,0 +1,481 @@
+{
+  "ca_export_timing": "trial_capture",
+  "ca_rows": [
+    {
+      "Certificate Hash": "db b6 13 7a a6 d5 56 2d bc b1 4e c4 ed 2b 41 2c ef ad e0 21",
+      "Certificate Template": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.100",
+      "Issued Request ID": "41",
+      "Requester Name": "ESSOS\\viserys.targaryen",
+      "Serial Number": "1d0000002943aff07cdac4b38a000000000029"
+    }
+  ],
+  "cohort": "paired_policy_matrix_02",
+  "condition": "rollback_before_enroll",
+  "context": {
+    "admin_sid": "S-1-5-21-3304911894-2815406861-4222388662-500",
+    "build": "14393",
+    "ca_name": "CertGraph-Lab-CA",
+    "computer": "MEEREEN",
+    "dns_root": "essos.local",
+    "domain_netbios": "ESSOS",
+    "domain_sid": "S-1-5-21-3304911894-2815406861-4222388662",
+    "enroller_name": "viserys.targaryen",
+    "enroller_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+    "os": "Microsoft Windows Server 2016 Standard Evaluation",
+    "viserys_sid": "S-1-5-21-3304911894-2815406861-4222388662-1114"
+  },
+  "events": [
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "CertGraph-Lab-CA",
+        "CertSerialNumber": "1D0000002943AFF07CDAC4B38A000000000029",
+        "CertThumbprint": "DBB6137AA6D5562DBCB14EC4ED2B412CEFADE021",
+        "PreAuthType": "16",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1114",
+        "TargetUserName": "viserys.targaryen"
+      },
+      "record_id": "185714",
+      "recorded_time": "2026-11-10T05:02:56.519414700Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185502",
+      "recorded_time": "2026-11-10T05:02:38.987791200Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185500",
+      "recorded_time": "2026-11-10T05:02:38.822606600Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185498",
+      "recorded_time": "2026-11-10T05:02:38.646096400Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185496",
+      "recorded_time": "2026-11-10T05:02:38.476828700Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185494",
+      "recorded_time": "2026-11-10T05:02:38.301841600Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185492",
+      "recorded_time": "2026-11-10T05:02:38.130574900Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185490",
+      "recorded_time": "2026-11-10T05:02:37.958869100Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185488",
+      "recorded_time": "2026-11-10T05:02:37.792010200Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185486",
+      "recorded_time": "2026-11-10T05:02:37.622029300Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185484",
+      "recorded_time": "2026-11-10T05:02:37.445572800Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185482",
+      "recorded_time": "2026-11-10T05:02:37.275403200Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185478",
+      "recorded_time": "2026-11-10T05:02:37.016308500Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+        "ObjectGUID": "{DBD77AA7-45A5-45D4-8E67-5CEE1B359345}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "khal.drogo",
+        "SubjectUserSid": "S-1-5-21-3304911894-2815406861-4222388662-1115"
+      },
+      "record_id": "185476",
+      "recorded_time": "2026-11-10T05:02:36.907054100Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554433",
+        "ObjectDN": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+        "ObjectGUID": "{DBD77AA7-45A5-45D4-8E67-5CEE1B359345}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "khal.drogo",
+        "SubjectUserSid": "S-1-5-21-3304911894-2815406861-4222388662-1115"
+      },
+      "record_id": "185475",
+      "recorded_time": "2026-11-10T05:02:36.906352200Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185472",
+      "recorded_time": "2026-11-10T05:02:36.767342200Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185468",
+      "recorded_time": "2026-11-10T05:02:36.505120600Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185464",
+      "recorded_time": "2026-11-10T05:02:36.238685800Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185345",
+      "recorded_time": "2026-11-10T05:02:36.081612800Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185343",
+      "recorded_time": "2026-11-10T05:02:35.971997300Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185337",
+      "recorded_time": "2026-11-10T05:02:35.722363800Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "ESSOS.LOCAL",
+        "TargetSid": "S-1-5-21-3304911894-2815406861-4222388662-1104",
+        "TargetUserName": "BRAAVOS$"
+      },
+      "record_id": "185213",
+      "recorded_time": "2026-11-10T05:02:31.847233700Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554433",
+        "ObjectDN": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+        "ObjectGUID": "{DBD77AA7-45A5-45D4-8E67-5CEE1B359345}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "khal.drogo",
+        "SubjectUserSid": "S-1-5-21-3304911894-2815406861-4222388662-1115"
+      },
+      "record_id": "185186",
+      "recorded_time": "2026-11-10T05:02:26.891107300Z"
+    },
+    {
+      "computer": "meereen.essos.local",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+        "ObjectGUID": "{DBD77AA7-45A5-45D4-8E67-5CEE1B359345}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "khal.drogo",
+        "SubjectUserSid": "S-1-5-21-3304911894-2815406861-4222388662-1115"
+      },
+      "record_id": "185185",
+      "recorded_time": "2026-11-10T05:02:26.890699900Z"
+    },
+    {
+      "computer": "braavos.essos.local",
+      "event_id": 4887,
+      "fields": {
+        "Attributes": "\nccm:braavos.essos.local",
+        "RequestId": "41",
+        "Requester": "ESSOS\\viserys.targaryen",
+        "Subject": ""
+      },
+      "record_id": "68022",
+      "recorded_time": "2026-11-10T05:02:49.968290600Z"
+    }
+  ],
+  "kdc_system_events": [],
+  "mutation_history_validation": null,
+  "policies": {
+    "assigned": {
+      "dn": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "template_oid": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.100"
+    },
+    "before": {
+      "dn": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "template_oid": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.100"
+    },
+    "effective": {
+      "dn": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:DAD:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-519)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-3304911894-2815406861-4222388662-1000)(A;;SWWPRC;;;S-1-5-21-3304911894-2815406861-4222388662-1115)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1114)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1115)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-3304911894-2815406861-4222388662-1122)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.100"
+    },
+    "restored": {
+      "dn": "CN=CGPubPositive,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=essos,DC=local",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "template_oid": "1.3.6.1.4.1.311.21.8.16498715.5495470.4474791.2833472.4821338.196.20261014.100"
+    }
+  },
+  "reported_outcome": "self_certificate_use",
+  "schema_version": 1,
+  "source_provenance": {
+    "adjudication_sha256": "9678cefafed4125cd017d1a5301b7115f412095f3645b2aca4da2b4e55834a9c",
+    "selected_source_sha256": {
+      "00_domain_context.json": "ce922c63d6233fe324edb603e24de2471bebb85ae646d9d1c03526caecb86582",
+      "01_before_state.json": "fe93988f25d40a32bbf4e825db4a72e960865f4c7b149bb6b5eda71492c85b46",
+      "04_assigned_state.json": "040900eb95d414943098856203fa285f07f15dc1468aa93bb3754693173d5e12",
+      "04_assigned_state_effective_policy.json": "c1b60c20e3632aeda306ba91dd4555173b2d15227687aa9854ae6d80240b6e83",
+      "99_ca_bridge.json": "91e6c1edddf55676fc2b54ea487c51878afc1a2e1ed2c0de1e8b386a10e827ad",
+      "99_final_state.json": "11ef2dfcce888479158c232d82d91eb3240e506bedc3c71ea976f68b402bf604",
+      "events.xml": "0d19939e6eae20e57280fa39ea4921b09a478eac78630ed9dbdeddc775ed8105",
+      "issued_certificate.cer": "7900cbb6149259f809628847712ee49238a34afa3fb28a83a6578d6ceeb6ffed",
+      "request.csr": "b1c33ab6fd6291e408ad68b1b7bbee51472c576083d0ffbc498d16a78627c65b"
+    },
+    "trial_manifest_sha256": "072c375998285469c59807543f11fde107ea79d374ef05766958944ad81f591b"
+  },
+  "trial": "r01_rollback_before_enroll"
+}

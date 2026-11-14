@@ -1,0 +1,679 @@
+{
+  "ca_export_timing": "later_read_only_supplement",
+  "ca_rows": [
+    {
+      "Certificate Hash": "86 ec 4b d6 06 91 17 6b 2f aa 4b d4 95 e8 a7 46 d4 02 9c 90",
+      "Certificate Template": "1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.20261110.2019",
+      "Issued Request ID": "20",
+      "Requester Name": "Q1LAB\\q1.enroller",
+      "Serial Number": "2900000014aef8f45696c76572000000000014"
+    }
+  ],
+  "cohort": "current_patch_upn_01",
+  "condition": "rollback_before_enroll",
+  "context": {
+    "admin_sid": "S-1-5-21-229414924-2366940259-2788903835-500",
+    "ca_name": "Q1-Evidence-CA",
+    "computer": "WIN-NA2FC16NO63",
+    "dns_root": "q1lab.test",
+    "domain_netbios": "Q1LAB",
+    "domain_sid": "S-1-5-21-229414924-2366940259-2788903835",
+    "enroller_name": "q1.enroller",
+    "enroller_sid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+    "mutator_name": "Administrator",
+    "mutator_sid": "S-1-5-21-229414924-2366940259-2788903835-500",
+    "template_name": "Q1Evidence"
+  },
+  "events": [
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "Q1-Evidence-CA",
+        "CertSerialNumber": "2900000014AEF8F45696C76572000000000014",
+        "CertThumbprint": "86EC4BD60691176B2FAA4BD495E8A746D4029C90",
+        "PreAuthType": "16",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1104",
+        "TargetUserName": "q1.enroller"
+      },
+      "record_id": "36610",
+      "recorded_time": "2026-11-10T15:44:50.136595000Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36597",
+      "recorded_time": "2026-11-10T15:44:46.781729000Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36590",
+      "recorded_time": "2026-11-10T15:44:46.760399400Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36583",
+      "recorded_time": "2026-11-10T15:44:46.742922500Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36576",
+      "recorded_time": "2026-11-10T15:44:46.726539800Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36569",
+      "recorded_time": "2026-11-10T15:44:46.706557000Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36562",
+      "recorded_time": "2026-11-10T15:44:46.687085400Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36555",
+      "recorded_time": "2026-11-10T15:44:46.673724500Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36548",
+      "recorded_time": "2026-11-10T15:44:46.660800500Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36541",
+      "recorded_time": "2026-11-10T15:44:46.642836100Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36534",
+      "recorded_time": "2026-11-10T15:44:46.624959500Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36527",
+      "recorded_time": "2026-11-10T15:44:46.607643200Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36520",
+      "recorded_time": "2026-11-10T15:44:46.572531400Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36514",
+      "recorded_time": "2026-11-10T15:44:46.567995000Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36502",
+      "recorded_time": "2026-11-10T15:44:46.546288000Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36480",
+      "recorded_time": "2026-11-10T15:44:35.339710200Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4887,
+      "fields": {
+        "Attributes": "\nCertificateTemplate:Q1Evidence\nccm:WIN-NA2FC16NO63.q1lab.test",
+        "RequestId": "20",
+        "Requester": "Q1LAB\\q1.enroller",
+        "Subject": ""
+      },
+      "record_id": "36455",
+      "recorded_time": "2026-11-10T15:44:32.230763600Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36449",
+      "recorded_time": "2026-11-10T15:44:32.222527600Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36420",
+      "recorded_time": "2026-11-10T15:44:27.720679000Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36413",
+      "recorded_time": "2026-11-10T15:44:27.709789700Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36406",
+      "recorded_time": "2026-11-10T15:44:27.697619700Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36399",
+      "recorded_time": "2026-11-10T15:44:27.686873200Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36392",
+      "recorded_time": "2026-11-10T15:44:27.675506100Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36385",
+      "recorded_time": "2026-11-10T15:44:27.662403300Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36378",
+      "recorded_time": "2026-11-10T15:44:27.651261600Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36371",
+      "recorded_time": "2026-11-10T15:44:27.638200200Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36364",
+      "recorded_time": "2026-11-10T15:44:27.621258200Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36357",
+      "recorded_time": "2026-11-10T15:44:27.604728700Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36350",
+      "recorded_time": "2026-11-10T15:44:27.586879700Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36343",
+      "recorded_time": "2026-11-10T15:44:27.547187900Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36337",
+      "recorded_time": "2026-11-10T15:44:27.542256600Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36325",
+      "recorded_time": "2026-11-10T15:44:27.516862600Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test",
+        "ObjectGUID": "{b0bd2121-8537-426a-ba44-a6f8a71cff4e}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-229414924-2366940259-2788903835-500"
+      },
+      "record_id": "36324",
+      "recorded_time": "2026-11-10T15:44:16.632047500Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554433",
+        "ObjectDN": "CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test",
+        "ObjectGUID": "{b0bd2121-8537-426a-ba44-a6f8a71cff4e}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-229414924-2366940259-2788903835-500"
+      },
+      "record_id": "36323",
+      "recorded_time": "2026-11-10T15:44:16.631821400Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554433",
+        "ObjectDN": "CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test",
+        "ObjectGUID": "{b0bd2121-8537-426a-ba44-a6f8a71cff4e}",
+        "OperationType": "%%14674",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-229414924-2366940259-2788903835-500"
+      },
+      "record_id": "36322",
+      "recorded_time": "2026-11-10T15:44:16.631573100Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 5136,
+      "fields": {
+        "AttributeLDAPDisplayName": "msPKI-Certificate-Name-Flag",
+        "AttributeValue": "33554432",
+        "ObjectDN": "CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test",
+        "ObjectGUID": "{b0bd2121-8537-426a-ba44-a6f8a71cff4e}",
+        "OperationType": "%%14675",
+        "SubjectUserName": "Administrator",
+        "SubjectUserSid": "S-1-5-21-229414924-2366940259-2788903835-500"
+      },
+      "record_id": "36321",
+      "recorded_time": "2026-11-10T15:44:16.631315000Z"
+    },
+    {
+      "computer": "WIN-NA2FC16NO63.q1lab.test",
+      "event_id": 4768,
+      "fields": {
+        "CertIssuerName": "",
+        "CertSerialNumber": "",
+        "CertThumbprint": "",
+        "PreAuthType": "2",
+        "Status": "0x0",
+        "TargetDomainName": "Q1LAB.TEST",
+        "TargetSid": "S-1-5-21-229414924-2366940259-2788903835-1001",
+        "TargetUserName": "WIN-NA2FC16NO63$"
+      },
+      "record_id": "36299",
+      "recorded_time": "2026-11-10T15:44:16.269945400Z"
+    }
+  ],
+  "kdc_system_events": [],
+  "mutation_history_validation": null,
+  "policies": {
+    "assigned": {
+      "dn": "CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-1104)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.20261110.2019"
+    },
+    "before": {
+      "dn": "CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-1104)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.20261110.2019"
+    },
+    "effective": {
+      "dn": "CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-1104)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.20261110.2019"
+    },
+    "restored": {
+      "dn": "CN=Q1Evidence,CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=q1lab,DC=test",
+      "eku": [
+        "1.3.6.1.5.5.7.3.2"
+      ],
+      "enrollment_flag": 0,
+      "name_flag": 33554432,
+      "ra_signatures": 0,
+      "sddl": "O:DAG:S-1-5-21-229414924-2366940259-2788903835-519D:PAI(A;;LCRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;DA)(OA;;CR;0e10c968-78fb-11d2-90d4-00c04f79dc55;;S-1-5-21-229414924-2366940259-2788903835-1104)",
+      "template_oid": "1.3.6.1.4.1.311.21.8.16066548.784979.12600472.8333593.15610374.141.20261110.2019"
+    }
+  },
+  "reported_outcome": "self_certificate_use",
+  "schema_version": 1,
+  "source_provenance": {
+    "adjudication_sha256": "c13b084180cc987278c21e46cad55c03653da6f8c75693098b6cfa9b910e6f80",
+    "later_ca_export_sha256": "21dbdbae9e0717e282e4211f1e7ee214e0b142d6944bbcf52fcab9a8620c3730",
+    "selected_source_sha256": {
+      "00_domain_context.json": "99d4c6357c46842c84b681ecf4b8661fba52851d74fa5f3157bcef6fc385c880",
+      "01_before_state.json": "595d9c20e7e9440cc0a47c02036b71ccc4434177a6911349e442d84e7d2c9c35",
+      "04_assigned_state.json": "460e43f2fe0eb6387a808a68babc3690d6f8dd3fa60e748c2b3775768b179076",
+      "04_assigned_state_effective_policy.json": "460e43f2fe0eb6387a808a68babc3690d6f8dd3fa60e748c2b3775768b179076",
+      "99_final_state.json": "5aec623ea6497c8e4b375cd82bcada0dc3ac0be5391a904548047a834693ac78",
+      "events.xml": "67d5bcb2ad31cddab673b621c759c8d99c17eff7224a3a28f1e5b8198d1acddf",
+      "issued_certificate.cer": "dfe6cbee665546574a0f04d0720ca1d13b147767b9ab5f9820e2f66d39209a9a",
+      "request.csr": "1b1b7373634387ec3ff73185747556b295a88dc602fc1fe8f377d3c4e4420e46"
+    },
+    "trial_manifest_sha256": "03a0c159b35a6b3b267463f19523f27029bd352d607a8d2830abb9f6bdf53ce7"
+  },
+  "trial": "r01_rollback_before_enroll"
+}

@@ -1,0 +1,33 @@
+{
+  "artifact_sha256": "2a1fe45f236b5a1da4b0368c83d0abb5630d47d861786082cd39dcb724bb2fb2",
+  "bound_payload_files": 443,
+  "checks": {
+    "confirmation": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "components": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "sql": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "interdiction": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "bilinear": {
+      "exit_code": 0,
+      "passed": true
+    },
+    "public_live": {
+      "exit_code": 0,
+      "passed": true
+    }
+  },
+  "all_passed": true,
+  "original_capture_tree_access": false,
+  "environment": "Existing pinned project Python packages; fresh ZIP extraction"
+}

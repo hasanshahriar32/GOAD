@@ -1,0 +1,20 @@
+{
+  "checks": [
+    {
+      "control": "payload_byte_change",
+      "rejected": true,
+      "reason": "Release evidence changed: paired_policy_matrix_02/r01_enabled_admin_san/evidence.json"
+    },
+    {
+      "control": "wrong_ca_serial",
+      "rejected": true,
+      "reason": "Missing/nonunique CA row"
+    },
+    {
+      "control": "wrong_kdc_issuer",
+      "rejected": true,
+      "reason": "Outcome differs: paired_policy_matrix_02/r01_enabled_admin_san"
+    }
+  ],
+  "all_rejected": true
+}
