@@ -328,7 +328,9 @@ warning: sections/06_empirical_evaluation:98: Requested font "[TeXGyreTermesX-Re
 warning: sections/06_empirical_evaluation:119: Requested font "[TeXGyreTermesX-Bold.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 7.3pt
 warning: sections/06_empirical_evaluation:119: Requested font "[TeXGyreTermesX-Bold.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 5.5pt
 warning: sections/06_empirical_evaluation:126: Underfull \hbox (badness 3138) in paragraph at lines 125--126
+warning: sections/06_empirical_evaluation:153: Underfull \hbox (badness 1502) in paragraph at lines 152--153
 warning: sections/06_empirical_evaluation:189: Underfull \hbox (badness 1472) in paragraph at lines 189--189
+warning: sections/07_related_work_and_conclusion:16: Underfull \hbox (badness 2512) in paragraph at lines 15--16
 warning: sections/07_related_work_and_conclusion:24: Underfull \hbox (badness 1917) in paragraph at lines 23--24
 warning: sections/07_related_work_and_conclusion:30: Underfull \hbox (badness 4569) in paragraph at lines 29--30
 warning: sections/07_related_work_and_conclusion:31: Underfull \hbox (badness 3635) in paragraph at lines 30--31
@@ -574,12 +576,15 @@ warning: sections/06_empirical_evaluation:98: Requested font "[TeXGyreTermesX-Re
 warning: sections/06_empirical_evaluation:119: Requested font "[TeXGyreTermesX-Bold.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 7.3pt
 warning: sections/06_empirical_evaluation:119: Requested font "[TeXGyreTermesX-Bold.otf]/OT:script=latn;language=dflt;-ss05;+tnum;+lnum;mapping=tex-text;" at 5.5pt
 warning: sections/06_empirical_evaluation:126: Underfull \hbox (badness 3138) in paragraph at lines 125--126
+warning: sections/06_empirical_evaluation:153: Underfull \hbox (badness 1502) in paragraph at lines 152--153
 warning: sections/06_empirical_evaluation:189: Underfull \hbox (badness 1472) in paragraph at lines 189--189
+warning: sections/07_related_work_and_conclusion:16: Underfull \hbox (badness 2512) in paragraph at lines 15--16
 warning: sections/07_related_work_and_conclusion:24: Underfull \hbox (badness 1917) in paragraph at lines 23--24
 warning: sections/07_related_work_and_conclusion:30: Underfull \hbox (badness 4569) in paragraph at lines 29--30
 warning: sections/07_related_work_and_conclusion:31: Underfull \hbox (badness 3635) in paragraph at lines 30--31
 warning: sections/07_related_work_and_conclusion:37: Underfull \hbox (badness 2103) in paragraph at lines 36--37
-note: Rerunning TeX because "main.aux" changed ...
+warning: internal consistency problem when checking if main.bbl changed
+note: Rerunning TeX because "main.bbl" changed ...
 warning: hyperref.sty:4873: Requested font "pzdr" at 0.00002pt
 warning: hyperref.sty:4873:  -> pzdr
 warning: algorithm.sty:11: 
@@ -1822,9 +1827,9 @@ warning: internal consistency problem when checking if main.bbl changed
 warning: TeX rerun seems needed, but stopping at 6 passes
 warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
 note: Running xdvipdfmx ...
-note: Writing `main.blg` (379 B)
-note: Writing `main.out` (10.32 KiB)
-note: Writing `main.aux` (28.86 KiB)
 note: Writing `main.log` (64.13 KiB)
 note: Writing `main.bbl` (11.33 KiB)
-note: Writing `main.pdf` (802.95 KiB)
+note: Writing `main.blg` (379 B)
+note: Writing `main.out` (10.32 KiB)
+note: Writing `main.pdf` (802.84 KiB)
+note: Writing `main.aux` (28.86 KiB)

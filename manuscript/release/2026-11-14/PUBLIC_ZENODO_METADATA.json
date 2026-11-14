@@ -1,0 +1,116 @@
+{
+  "created": "2026-11-14T04:31:04.751637+00:00",
+  "modified": "2026-11-14T04:31:04.985737+00:00",
+  "id": 24212038,
+  "conceptrecid": "24212037",
+  "doi": "10.5281/zenodo.24212038",
+  "conceptdoi": "10.5281/zenodo.24212037",
+  "doi_url": "https://doi.org/10.5281/zenodo.24212038",
+  "metadata": {
+    "title": "CertGraph research artifact: Cryptographic Invariant Provenance and Multiplicative Bilinear Gating for Active Directory Certificate Services Escalation Interdiction",
+    "doi": "10.5281/zenodo.24212038",
+    "publication_date": "2026-11-14",
+    "description": "<p>Software retains the existing project GPL v3 license. Selected public laboratory evidence is included; private keys, passwords, reusable authentication tickets and VM disks are excluded. Eighteen CA exports are explicitly later read-only supplements. This is a research artifact, not an assertion of journal publication.</p><p>License: GNU General Public License v3.0 only (SPDX GPL-3.0-only). The license text and terms are https://spdx.org/licenses/GPL-3.0-only.html and the LICENSE/CITATION.cff files in the artifact. No CC-BY relicensing is granted.</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Shahriar, Md. Hasan",
+        "affiliation": "Hajee Mohammad Danesh Science and Technology University"
+      },
+      {
+        "name": "Biswas, Taufiq",
+        "affiliation": null
+      },
+      {
+        "name": "Hossain, Md. Ramim",
+        "affiliation": null
+      }
+    ],
+    "version": "0.1.0",
+    "resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "license": {
+      "id": "gpl-3.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "24212037"
+          }
+        }
+      ]
+    }
+  },
+  "title": "CertGraph research artifact: Cryptographic Invariant Provenance and Multiplicative Bilinear Gating for Active Directory Certificate Services Escalation Interdiction",
+  "links": {
+    "self": "https://zenodo.org/api/records/24212038",
+    "self_html": "https://zenodo.org/records/24212038",
+    "preview_html": "https://zenodo.org/records/24212038?preview=1",
+    "doi": "https://doi.org/10.5281/zenodo.24212038",
+    "self_doi": "https://doi.org/10.5281/zenodo.24212038",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24212038",
+    "reserve_doi": "https://zenodo.org/api/records/24212038/draft/pids/doi",
+    "parent": "https://zenodo.org/api/records/24212037",
+    "parent_html": "https://zenodo.org/records/24212037",
+    "parent_doi": "https://doi.org/10.5281/zenodo.24212037",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.24212037",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:24212038/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:24212038/sequence/default",
+    "files": "https://zenodo.org/api/records/24212038/files",
+    "media_files": "https://zenodo.org/api/records/24212038/media-files",
+    "latest": "https://zenodo.org/api/records/24212038/versions/latest",
+    "latest_html": "https://zenodo.org/records/24212038/latest",
+    "versions": "https://zenodo.org/api/records/24212038/versions",
+    "draft": "https://zenodo.org/api/records/24212038/draft",
+    "access_links": "https://zenodo.org/api/records/24212038/access/links",
+    "access_grants": "https://zenodo.org/api/records/24212038/access/grants",
+    "access_users": "https://zenodo.org/api/records/24212038/access/users",
+    "access_request": "https://zenodo.org/api/records/24212038/access/request",
+    "access": "https://zenodo.org/api/records/24212038/access",
+    "communities": "https://zenodo.org/api/records/24212038/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/24212038/communities-suggestions",
+    "request_deletion": "https://zenodo.org/api/records/24212038/request-deletion",
+    "file_modification": "https://zenodo.org/api/records/24212038/file-modification",
+    "quota_increase": "https://zenodo.org/api/records/24212038/quota-increase",
+    "requests": "https://zenodo.org/api/records/24212038/requests"
+  },
+  "updated": "2026-11-14T04:31:04.985737+00:00",
+  "recid": "24212038",
+  "revision": 3,
+  "files": [
+    {
+      "id": "2566d52c-0d01-4427-a5af-e3b1f7a3598f",
+      "key": "CertGraph_Artifact_v0.1.0.zip",
+      "size": 7297087,
+      "checksum": "md5:94f3f5648c6141ea548b16bb1fa34c2a",
+      "links": {
+        "self": "https://zenodo.org/api/records/24212038/files/CertGraph_Artifact_v0.1.0.zip/content"
+      }
+    }
+  ],
+  "swh": {},
+  "owners": [
+    {
+      "id": "2012221"
+    }
+  ],
+  "status": "published",
+  "stats": {
+    "downloads": 0,
+    "unique_downloads": 0,
+    "views": 0,
+    "unique_views": 0,
+    "version_downloads": 0,
+    "version_unique_downloads": 0,
+    "version_unique_views": 0,
+    "version_views": 0
+  },
+  "state": "done",
+  "submitted": true
+}

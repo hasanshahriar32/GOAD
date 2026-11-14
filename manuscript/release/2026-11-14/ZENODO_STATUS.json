@@ -2,9 +2,9 @@
   "record_id": "24212038",
   "reserved_doi": "10.5281/zenodo.24212038",
   "draft_url": "https://zenodo.org/uploads/24212038",
-  "published": false,
-  "files_uploaded": false,
-  "status": "draft_reserved",
+  "published": true,
+  "files_uploaded": true,
+  "status": "published_verified",
   "default_license_observed": "CC-BY-4.0",
   "source": "authenticated browser draft creation",
   "created_date": "2026-11-14",
@@ -13,5 +13,33 @@
   "public_evidence_cases_verified": 72,
   "offline_reproduction_checks_passed": 6,
   "public_verifier_negative_controls_passed": 3,
-  "upload_automation_run": "a2a0eae7-6ce2-4856-b6cf-fa409b7e278d"
+  "upload_automation_run": "a2a0eae7-6ce2-4856-b6cf-fa409b7e278d",
+  "draft_license": {
+    "title": "GNU General Public License v3.0 only",
+    "url": "https://spdx.org/licenses/GPL-3.0-only.html",
+    "verification": "Saved authenticated browser form",
+    "run_id": "d774f7ee-79a2-4214-a9f0-66dd9946a6d9"
+  },
+  "binary_browser_upload_supported": false,
+  "required_next_access": "Private local Zenodo token file",
+  "license_verified": true,
+  "public_record_url": "https://zenodo.org/records/24212038",
+  "file_url": "https://zenodo.org/records/24212038/files/CertGraph_Artifact_v0.1.0.zip?download=1",
+  "license": "gpl-3.0",
+  "published_verification": {
+    "verified_utc": "2026-11-14T04:32:52.825953+00:00",
+    "public_record_url": "https://zenodo.org/records/24212038",
+    "doi": "10.5281/zenodo.24212038",
+    "file_url": "https://zenodo.org/records/24212038/files/CertGraph_Artifact_v0.1.0.zip?download=1",
+    "size_bytes": 7297087,
+    "sha256": "2a1fe45f236b5a1da4b0368c83d0abb5630d47d861786082cd39dcb724bb2fb2",
+    "archive_checksum": "md5:94f3f5648c6141ea548b16bb1fa34c2a",
+    "license_id": "gpl-3.0",
+    "license_title": "GNU General Public License v3.0 only",
+    "license_url": "https://spdx.org/licenses/GPL-3.0-only.html",
+    "creator_count": 3,
+    "version": "0.1.0",
+    "anonymous_download_verified": true,
+    "status": "passed"
+  }
 }

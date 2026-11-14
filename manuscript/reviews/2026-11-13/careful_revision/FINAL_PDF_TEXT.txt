@@ -2799,13 +2799,19 @@ The authors declare that they have no known competing
 financial interests or personal relationships that could have
 appeared to influence the work reported in this paper.
 DATA AVAILABILITY
-Research code and the original project materials are associated
-with https://github.com/hasanshahriar32/CertGraph-CIP
-G. The new frozen protocols, raw/latent synthetic histories,
-outcome-checked pilot, source snapshots, and verification out-
-puts are provided in the accompanying local research artifact.
-Their publication in that remote repository has not been
-verified.
+The versioned CertGraph research artifact contains frozen syn-
+thetic protocols, labels, predictions, source snapshots, check-
+points, and offline verification code, together with selected
+public certificate, CA and KDC evidence for the 72 primary
+laboratory cases. It is archived at https://doi.org/10.5281/zeno
+do.24212038. The public-evidence verifier checks 66 success-
+ful uses, including 13 administrative uses, and six certificate-
+bound rejections without private keys or access to the original
+capture trees. Eighteen CA exports are explicitly identified as
+later read-only supplements. Private keys, passwords, reusable
+tickets, VM disks and complete command transcripts are
+excluded. The release README and hash manifests define
+the included fields and reproduction boundaries.
 FUNDING
 This research received no specific grant from any funding
 agency.
